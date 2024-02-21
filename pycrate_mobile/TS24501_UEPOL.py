@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 #/**
 # * Software Name : pycrate
-# * Version : 0.4
+# * Version : 0.7
 # *
 # * Copyright 2019. Benoit Michau. P1Sec.
 # *
@@ -32,7 +32,7 @@
 
 #------------------------------------------------------------------------------#
 # 3GPP TS 24.501: UE policy delivery service (annex D)
-# release 16 (g20)
+# release 17 (hd0)
 #------------------------------------------------------------------------------#
 
 from pycrate_core.utils import *
@@ -54,10 +54,12 @@ from .TS24008_IE    import (
 
 _UEPolMsgType_dict = {
     0 : 'Reserved',
-    1 : 'MANAGE UE POLICY COMMAND message',
-    2 : 'MANAGE UE POLICY COMPLETE message',
-    3 : 'MANAGE UE POLICY COMMAND REJECT message',
-    4 : 'UE STATE INDICATION message'
+    1 : 'MANAGE UE POLICY COMMAND',
+    2 : 'MANAGE UE POLICY COMPLETE',
+    3 : 'MANAGE UE POLICY COMMAND REJECT',
+    4 : 'UE STATE INDICATION',
+    5 : 'UE POLICY PROVISIONING REQUEST', # defined in TS 24.587
+    6 : 'UE POLICY PROVISIONING REJECT', # defined in TS 24.587
     }
 
 class FGUEPOLHeader(Envelope):
@@ -77,7 +79,8 @@ _UEPolPartType_dict = {
     0 : 'Reserved',
     1 : 'URSP',
     2 : 'ANDSP',
-    3 : 'V2XP'
+    3 : 'V2XP',
+    4 : 'ProSeP',
     }
 
 
@@ -90,6 +93,7 @@ class UEPolPart(Envelope):
             1 : URSPRules(),
             2 : ANDSPInfos(),
             3 : V2XPInfos()
+            # TODO: ProSePInfos(), see TS 24.555
             },
             DEFAULT=Buf('unk', val=b'', rep=REPR_HEX),
             sel=lambda self: self.get_env()[2].get_val())
@@ -97,21 +101,21 @@ class UEPolPart(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 1 + self[3].get_len())
-        self[3].set_blauto(lambda: (self[0].get_val()-1)<<3)
+        self[0].set_valauto(lambda: self[3].get_len())
+        self[3].set_blauto(lambda: self[0].get_val()<<3)
 
 
 class UEPolInstruction(Envelope):
     _GEN = (
         Uint16('Len'),
-        Uint16('UPSC'),
+        Uint16('UPSC', rep=REPR_HEX),
         Sequence('Cont', GEN=UEPolPart())
         )
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 2 + self[2].get_len())
-        self[2].set_blauto(lambda: (self[0].get_val()-2)<<3)
+        self[0].set_valauto(lambda: self[2].get_len())
+        self[2].set_blauto(lambda: self[0].get_val()<<3)
 
 
 class UEPolSectionSublist(Envelope):
@@ -123,8 +127,8 @@ class UEPolSectionSublist(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 3 + self[2].get_len())
-        self[2].set_blauto(lambda: (self[0].get_val()-3)<<3)
+        self[0].set_valauto(lambda: self[2].get_len())
+        self[2].set_blauto(lambda: self[0].get_val()<<3)
 
 
 class UEPolSectionList(Sequence):
@@ -138,23 +142,23 @@ class UEPolSectionList(Sequence):
 
 class UEPolResult(Envelope):
     _GEN = (
-        Uint16('UPSC'),
-        Uint16('FailedInstructionOrder'),
+        Uint16('UPSC', rep=REPR_HEX),
+        Uint16('FailedInstructionOrder', rep=REPR_HEX),
         Uint8('Cause', val=111, dic={111:'Protocol error, unspecified'})
         )
 
 
 class UEPolSectionMgmtSubresult(Envelope):
     _GEN = (
-        Uint16('Len'),
+        Uint8('Num'),
         PLMN(),
         Sequence('Cont', GEN=UEPolResult())
         )
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 3 + self[2].get_len())
-        self[2].set_blauto(lambda: (self[0].get_val()-3)<<3)
+        self[0].set_valauto(lambda: self[2].get_num())
+        self[2].set_numauto(lambda: self[0].get_val())
 
 
 class UEPolSectionMgmtResult(Sequence):
@@ -170,8 +174,13 @@ class UPSISublist(Envelope):
     _GEN = (
         Uint16('Len'),
         PLMN(),
-        Array('Cont', GEN=Uint16('UPSC'))
+        Array('Cont', GEN=Uint16('UPSC', rep=REPR_HEX))
         )
+    
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self[0].set_valauto(lambda: self[2].get_len()+3)
+        self[2].set_blauto(lambda: (self[0].get_val()-3)<<3)
 
 
 class UPSIList(Sequence):
@@ -217,6 +226,35 @@ class UEOSId(Array):
 
 
 #------------------------------------------------------------------------------#
+# UE policy network classmark
+# TS 24.501, section D.6.7
+#------------------------------------------------------------------------------#
+
+class UEPolicyNetCm(Envelope):
+    _GEN = (
+        Uint('spare', bl=7),
+        Uint('NSSUI', bl=1),
+        Buf('spare', val=b'', rep=REPR_HEX)
+        )
+    
+    def disable_from(self, ind):
+        """disables all elements from index `ind' excluded (integer -bit offset- 
+        or element name)
+        """
+        if isinstance(ind, str_types) and ind in self._by_name:
+            ind = self._by_name.index(ind)
+        [e.set_trans(True) for e in self._content[ind:]]
+    
+    def enable_upto(self, ind):
+        """enables all elements up to index `ind' included (integer -bit offset- 
+        or element name)
+        """
+        if isinstance(ind, str_types) and ind in self._by_name:
+            ind = 1 + self._by_name.index(ind)
+        [e.set_trans(False) for e in self._content[:ind]]
+
+
+#------------------------------------------------------------------------------#
 # Manage UE policy command
 # TS 24.501, section D.5.1
 #------------------------------------------------------------------------------#
@@ -225,7 +263,8 @@ class FGUEPOLManageUEPolicyCommand(Layer3):
     _name = '5GUEPOLManageUEPolicyCommand'
     _GEN = (
         FGUEPOLHeader(val={'Type':1}),
-        Type6LVE('UEPolSectionList', val={'V':b'\0\7\0\0\0\0\2\0\0'}, IE=UEPolSectionList()),
+        Type6LVE('UEPolSectionList', val={'V':b'\0\7\0\xf1\x10\0\3\0\0\0\0\0'}, IE=UEPolSectionList()),
+        Type4TLV('UEPolicyCm', val={'T':0x42, 'V':b'\0'}, IE=UEPolicyNetCm()),
         )
 
 
@@ -250,7 +289,7 @@ class FGUEPOLManageUEPolicyCommandReject(Layer3):
     _name = '5GUEPOLManageUEPolicyCommandReject'
     _GEN = (
         FGUEPOLHeader(val={'Type':3}),
-        Type6LVE('UEPolSectionMgmtResult', val={'V':b'\0\7\0\0\0\0\0\0\0\0\x6f'}, IE=UEPolSectionMgmtResult()),
+        Type6LVE('UEPolSectionMgmtResult', val={'V':b'\1\0\xf1\x10\0\0\0\0\x6f'}, IE=UEPolSectionMgmtResult()),
         )
 
 
@@ -263,8 +302,8 @@ class FGUEPOLStateInd(Layer3):
     _name = '5GUEPOLStateInd'
     _GEN = (
         FGUEPOLHeader(val={'Type':4}),
-        Type6LVE('UPSIList', val={'V':b'\0\7\0\0\0\0\0\0\0'}, IE=UPSIList()),
-        Type4LV('UEPolicyCm', val={'V':b'\x01'}, IE=UEPolicyCm()),
+        Type6LVE('UPSIList', val={'V':b'\0\5\0\xf1\x10\0\0'}, IE=UPSIList()),
+        Type4LV('UEPolicyCm', val={'V':b'\0'}, IE=UEPolicyCm()),
         Type4TLV('UEOSId', val={'T':0x41, 'V':16*b'\0'}, IE=UEOSId())
         )
 
