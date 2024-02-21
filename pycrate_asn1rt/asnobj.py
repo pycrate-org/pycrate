@@ -1346,6 +1346,8 @@ class ASN1Obj(Element):
         raise(ASN1NotSuppErr(self.fullname()))
     
     def from_asn1(self, txt):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         txt = clean_text(txt)
         ret = self._from_asn1(txt)
         if self._SAFE_BND:
@@ -1374,6 +1376,8 @@ class ASN1Obj(Element):
         raise(ASN1NotSuppErr(self.fullname()))
     
     def from_uper(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         ASN1CodecPER.ALIGNED = False
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
@@ -1395,6 +1399,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
     
     def to_uper(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecPER.ALIGNED = False
         if val is not None:
             self.set_val(val)
@@ -1408,6 +1414,8 @@ class ASN1Obj(Element):
             return None
     
     def from_aper(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         ASN1CodecPER.ALIGNED = True
         ASN1CodecPER._off.append(0)
         if isinstance(buf, bytes_types):
@@ -1429,6 +1437,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
     
     def to_aper(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecPER.ALIGNED = True
         if val is not None:
             self.set_val(val)
@@ -1451,6 +1461,8 @@ class ASN1Obj(Element):
         raise(ASN1NotSuppErr(self.fullname()))
     
     def from_uper_ws(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         ASN1CodecPER.ALIGNED = False
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
@@ -1478,6 +1490,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
     
     def to_uper_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecPER.ALIGNED = False
         if val is not None:
             self.set_val(val)
@@ -1493,6 +1507,8 @@ class ASN1Obj(Element):
             return None
     
     def from_aper_ws(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         ASN1CodecPER.ALIGNED = True
         ASN1CodecPER._off.append(0)
         if isinstance(buf, bytes_types):
@@ -1519,6 +1535,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
     
     def to_aper_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecPER.ALIGNED = True
         if val is not None:
             self.set_val(val)
@@ -1604,6 +1622,8 @@ class ASN1Obj(Element):
         self._decode_ber_cont(char, tlv)
     
     def from_ber(self, buf, single=True):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
         else:
@@ -1674,6 +1694,8 @@ class ASN1Obj(Element):
         return ret
     
     def to_ber(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         if val is not None:
             self.set_val(val)
         if self._val is not None:
@@ -1732,6 +1754,8 @@ class ASN1Obj(Element):
         self._struct = TLV
     
     def from_ber_ws(self, buf, single=True):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
         else:
@@ -1806,6 +1830,8 @@ class ASN1Obj(Element):
         return TLV
     
     def to_ber_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         if val is not None:
             self.set_val(val)
         if self._val is not None:
@@ -1819,6 +1845,8 @@ class ASN1Obj(Element):
     ###
     
     def from_cer(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = True
@@ -1833,6 +1861,8 @@ class ASN1Obj(Element):
         return ret
     
     def to_cer(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = True
@@ -1849,6 +1879,8 @@ class ASN1Obj(Element):
     # methods generating complete transfer structure in _struct attributes
     
     def from_cer_ws(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = True
@@ -1863,6 +1895,8 @@ class ASN1Obj(Element):
         return ret
     
     def to_cer_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = True
@@ -1882,6 +1916,8 @@ class ASN1Obj(Element):
     ###
     
     def from_der(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = False
@@ -1896,6 +1932,8 @@ class ASN1Obj(Element):
         return ret
     
     def to_der(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = False
@@ -1912,6 +1950,8 @@ class ASN1Obj(Element):
     # methods generating complete transfer structure in _struct attributes
     
     def from_der_ws(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = False
@@ -1926,6 +1966,8 @@ class ASN1Obj(Element):
         return ret
     
     def to_der_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         _save_ber_params()
         ASN1CodecBER.ENC_LLONG      = 0
         ASN1CodecBER.ENC_LUNDEF     = False
@@ -1960,6 +2002,8 @@ class ASN1Obj(Element):
             raise(ASN1NotSuppErr(self.fullname()))
         
         def from_jer(self, txt):
+            if self._param:
+                raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
             try:
                 val = JsonDec.decode(txt)
             except JSONDecodeError as err:
@@ -1973,6 +2017,8 @@ class ASN1Obj(Element):
             raise(ASN1NotSuppErr(self.fullname()))
         
         def to_jer(self, val=None):
+            if self._param:
+                raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
             if val is not None:
                 self.set_val(val)
             if self._val is not None:
@@ -2002,6 +2048,8 @@ class ASN1Obj(Element):
         raise (ASN1NotSuppErr(self.fullname()))
 
     def from_oer(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         # ASN1CodecOER.CANONICAL = False
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
@@ -2014,6 +2062,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
 
     def from_oer_ws(self, buf):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for decoding'))
         # ASN1CodecOER.CANONICAL = False
         if isinstance(buf, bytes_types):
             char = Charpy(buf)
@@ -2026,6 +2076,8 @@ class ASN1Obj(Element):
             self._safechk_bnd(self._val)
 
     def to_oer(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecOER.CANONICAL = False
         if val is not None:
             self.set_val(val)
@@ -2039,6 +2091,8 @@ class ASN1Obj(Element):
             return None
 
     def to_oer_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecOER.CANONICAL = False
         if val is not None:
             self.set_val(val)
@@ -2059,6 +2113,8 @@ class ASN1Obj(Element):
         self.from_oer_ws(buf)
 
     def to_coer(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecOER.CANONICAL = True
         if val is not None:
             self.set_val(val)
@@ -2072,6 +2128,8 @@ class ASN1Obj(Element):
             return None
 
     def to_coer_ws(self, val=None):
+        if self._param:
+            raise(ASN1ObjErr('Parameterized object cannot be used for encoding'))
         ASN1CodecOER.CANONICAL = True
         if val is not None:
             self.set_val(val)
