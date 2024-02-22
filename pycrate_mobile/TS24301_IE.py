@@ -39,11 +39,12 @@ from time     import struct_time
 from pycrate_core.utils  import *
 from pycrate_core.elt    import (
     Envelope, Sequence, Array, Alt,
-    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM
+    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM,
+    EltErr, _with_json
     )
 from pycrate_core.base   import *
 from pycrate_core.repr   import *
-from pycrate_core.charpy import Charpy
+from pycrate_core.charpy import Charpy, CharpyErr
 
 from pycrate_mobile.MCC_MNC     import MNC_dict
 from pycrate_mobile.TS23038     import encode_7b, decode_7b
@@ -491,6 +492,44 @@ class EPSID(Envelope):
             return Envelope.repr(self)
     
     __repr__ = repr
+    
+    #--------------------------------------------------------------------------#
+    # json interface
+    #--------------------------------------------------------------------------#
+    # Custom method to be able to set a JSON value back to an EPSID IE
+    # As it has a custom content generation method
+    
+    if _with_json:
+        
+        def _from_jval(self, val):
+            if not isinstance(val, list):
+                raise(EltErr('{0} [_from_jval]: invalid EPSID format, {1!r}'.format(self._name, val)))
+            try:
+                type = val[2]['Type']
+            except Exception:
+                pass
+            else:
+                #
+                if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
+                    if not hasattr(self, '_IDDigit'):
+                        self._IDDigit = IDDigit()
+                    self._content = self._IDDigit._content
+                    self._by_id   = self._IDDigit._by_id
+                    self._by_name = self._IDDigit._by_name
+                #
+                elif type == IDTYPE_GUTI:
+                    if not hasattr(self, '_IDGUTI'):
+                        self._IDGUTI = IDGUTI()
+                    self._content = self._IDGUTI._content
+                    self._by_id   = self._IDGUTI._by_id
+                    self._by_name = self._IDGUTI._by_name
+                #
+                else:
+                    raise(PycrateErr('{0}: invalid identity to decode, {1}'\
+                          .format(self._name, type)))
+            #
+            print(self._name, val)
+            Envelope._from_jval(self, val)
 
 
 #------------------------------------------------------------------------------#

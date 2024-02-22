@@ -54,7 +54,11 @@ __all__ = [
 from binascii import hexlify
 
 from pycrate_core.utils  import *
-from pycrate_core.elt    import Element, Envelope, EltErr, CharpyErr, REPR_RAW, REPR_HEX, REPR_BIN
+from pycrate_core.elt    import (
+    Element, Envelope, EltErr, CharpyErr,
+    REPR_RAW, REPR_HEX, REPR_BIN,
+    _with_json
+    )
 from pycrate_core.base   import *
 from pycrate_core.repr   import *
 from pycrate_csn1.csnobj import CSN1Obj
@@ -334,6 +338,45 @@ class IE(Envelope):
     def unset_IE(self):
         if self[-1]._name != 'V' and self._V is not None:
             self.replace(self[-1], self._V)
+    
+    #--------------------------------------------------------------------------#
+    # json interface
+    #--------------------------------------------------------------------------#
+    # Custom method to be able to set a JSON value back to a fresh NAS message,
+    # where the value has inner IEs set
+    
+    if _with_json:
+        
+        def _from_jval(self, val):
+            if not isinstance(val, list):
+                raise(EltErr('{0} [_from_jval]: invalid format, {1!r}'.format(self._name, val)))
+            i = 0
+            for e in self._content:
+                if not e.get_trans():
+                    try:
+                        val_e = val[i]
+                        print(e._name, val_e)
+                        if e._name in {'T', 'L'}:
+                            e._from_jval_wrap(val_e)
+                        else:
+                            val_n = tuple(val_e.keys())[0]
+                            if val_n == 'V':
+                                self.unset_IE()
+                                e = self._V
+                            else:
+                                self.set_IE()
+                                e = self._IE
+                            #print(val_e)
+                            e._from_jval_wrap(val_e)
+                    except Exception:
+                        break
+                    else:
+                        i += 1
+            # ensure all non-transparent elements were set
+            for e in self._content[1+self._content.index(e):]:
+                if not e.get_trans() and e.get_bl():
+                    raise(EltErr('{0} [_from_jval]: missing elements, {1} ...'\
+                          .format(self._name, e._name)))
 
 
 class Type1V(IE):
