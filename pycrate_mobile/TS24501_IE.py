@@ -39,7 +39,8 @@ from binascii   import unhexlify
 from pycrate_core.utils  import *
 from pycrate_core.elt    import (
     Envelope, Sequence, Array, Alt,
-    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM
+    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM,
+    EltErr, _with_json
     )
 from pycrate_core.base   import *
 from pycrate_core.repr   import *
@@ -244,15 +245,7 @@ class L_SNSSAI(Envelope):
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
         self[0].set_valauto(lambda: self[1].get_len())
-    
-    def _from_char(self, char):
-        if self.get_trans():
-            return
-        self[0]._from_char(char)
-        char_lb = char._len_bit
-        char._len_bit = char._cur + 8*self[0].get_val()
-        self[1]._from_char(char)
-        char._len_bit = char_lb
+        self[1].set_blauto(lambda: self[0].get_val()<<3)
 
 
 #------------------------------------------------------------------------------#
@@ -1242,6 +1235,25 @@ class FGSID(Envelope):
         typ = char.to_uint(8) & 0x7
         self._set_content(typ)
         Envelope._from_char(self, char)
+    
+    #--------------------------------------------------------------------------#
+    # json interface
+    #--------------------------------------------------------------------------#
+    # Custom method to be able to set a JSON value back to an FGSID IE
+    # As it has a custom content generation method
+    
+    if _with_json:
+        
+        def _from_jval(self, val):
+            if not isinstance(val, list):
+                raise(EltErr('{0} [_from_jval]: invalid FGSID format, {1!r}'.format(self._name, val)))
+            typ = FGSIDTYPE.NO
+            for val_e in val:
+                if tuple(val_e.keys())[0] == 'Type':
+                    typ = tuple(val_e.values())[0]
+                    break
+            self._set_content(typ)
+            Envelope._from_jval(self, val)
 
 
 #------------------------------------------------------------------------------#
@@ -2093,16 +2105,7 @@ class RejectedSNSSAI(Envelope):
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
         self[0].set_valauto(lambda: self[2].get_len())
-    
-    def _from_char(self, char):
-        if self.get_trans():
-            return
-        self[0]._from_char(char)
-        self[1]._from_char(char)
-        char_lb = char._len_bit
-        char._len_bit = char._cur + 8*self[0].get_val()
-        self[2]._from_char(char)
-        char._len_bit = char_lb
+        self[2].set_blauto(lambda: self[0].get_val()<<3)
     
     def decode(self):
         return {'Cause': self['Cause'].get_val(), 'SNSSAI': self['SNSSAI'].get_val_d()}

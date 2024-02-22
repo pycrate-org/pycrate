@@ -368,7 +368,6 @@ class EPSID(Envelope):
     
     # during encode() / _from_char() methods
     # specific attributes are created:
-    # self._IDNone  = IDNone()
     # self._IDDigit = IDDigit()
     # self._IDGUTI  = IDGUTI()
     
@@ -378,97 +377,89 @@ class EPSID(Envelope):
         else:
             Envelope.set_val(self, vals)
     
+    def _set_content(self, typ):
+        if typ in {IDTYPE_IMSI, IDTYPE_IMEISV}:
+            if not hasattr(self, '_IDDigit'):
+                self._IDDigit = IDDigit()
+            self._content = self._IDDigit._content
+            self._by_id   = self._IDDigit._by_id
+            self._by_name = self._IDDigit._by_name
+        #
+        elif typ == IDTYPE_GUTI:
+            if not hasattr(self, '_IDGUTI'):
+                self._IDGUTI = IDGUTI()
+            self._content = self._IDGUTI._content
+            self._by_id   = self._IDGUTI._by_id
+            self._by_name = self._IDGUTI._by_name
+    
     def decode(self):
         """returns the mobile identity type and value
         """
-        type = self['Type'].get_val()
+        typ = self['Type'].get_val()
         #
-        if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
-            return (type, str(self[0].get_val()) + decode_bcd(self[3].get_val()))
+        if typ in {IDTYPE_IMSI, IDTYPE_IMEISV}:
+            return (typ, str(self[0].get_val()) + decode_bcd(self[3].get_val()))
         #
-        elif type == IDTYPE_GUTI:
-            return (type, self[3].decode(), self[4](), self[5](), self[6]())
+        elif typ == IDTYPE_GUTI:
+            return (typ, self[3].decode(), self[4](), self[5](), self[6]())
     
-    def encode(self, type, ident):
+    def encode(self, typ, ident):
         """sets the EPS mobile identity with given type
         
         if type is IDTYPE_IMSI or IDTYPE_IMEISV: ident must be a string of digits
         if type is IDTYPE_GUTI: ident must be a 4-tuple (PLMN -string of digits-, 
             MMEGroupID -uint16-, MMECode -uint8-, MTMSI -uint32-)
         """
-        if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
+        self._set_content(typ)
+        #
+        if typ in {IDTYPE_IMSI, IDTYPE_IMEISV}:
             if not ident.isdigit():
-                raise(PycrateErr('{0}: invalid identity to encode, {1!r}'\
-                      .format(self._name, ident)))
-            if not hasattr(self, '_IDDigit'):
-                self._IDDigit = IDDigit()
-            self._content = self._IDDigit._content
-            self._by_id   = self._IDDigit._by_id
-            self._by_name = self._IDDigit._by_name
-            self[2]._val = type
+                raise(PycrateErr('{0}: invalid EPSID to encode, {1!r}'.format(self._name, ident)))
+            self[2]._val = typ
             if len(ident) % 2:
                 self[1]._val = 1
             # encode digits the BCD way
             self[0]._val = int(ident[0])
             self[3]._val = encode_bcd(ident[1:])
         #
-        elif type == IDTYPE_GUTI:
+        elif typ == IDTYPE_GUTI:
             if not isinstance(ident, (tuple, list)) or len(ident) != 4:
-                raise(PycrateErr('{0}: invalid identity to encode, {1!r}'\
-                      .format(self._name, ident)))
-            if not hasattr(self, '_IDGUTI'):
-                self._IDGUTI = IDGUTI()
-            self._content = self._IDGUTI._content
-            self._by_id   = self._IDGUTI._by_id
-            self._by_name = self._IDGUTI._by_name
+                raise(PycrateErr('{0}: invalid EPSID to encode, {1!r}'.format(self._name, ident)))
             self[3].set_val(ident[0])
             self[4].set_val(ident[1])
             self[5].set_val(ident[2])
             self[6].set_val(ident[3])
         #
         else:
-            raise(PycrateErr('{0}: invalid identity type to encode, {1!r}'\
-                  .format(self._name, ident)))
+            raise(PycrateErr('{0}: invalid EPSID type to encode, {1!r}'.format(self._name, ident)))
     
     def _from_char(self, char):
         if self.get_trans():
             return
         try:
             spare = char.get_uint(5)
-            type  = char.get_uint(3)
+            typ   = char.get_uint(3)
         except CharpyErr as err:
             raise(CharpyErr('{0} [_from_char]: {1}'.format(self._name, err)))
         except Exception as err:
             raise(EltErr('{0} [_from_char]: {1}'.format(self._name, err)))
         #
-        if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
-            if not hasattr(self, '_IDDigit'):
-                self._IDDigit = IDDigit()
-            self._content = self._IDDigit._content
-            self._by_id   = self._IDDigit._by_id
-            self._by_name = self._IDDigit._by_name
+        # this may raise in case of invalid ID type
+        # in that case, the buffer will remain undecoded in the IE
+        self._set_content(typ)
+        if typ in {IDTYPE_IMSI, IDTYPE_IMEISV}:
             self[0]._val = spare >> 1
             self[1]._val = spare & 1
-            self[2]._val = type
-            self[3]._from_char(char)   
-        #
-        elif type == IDTYPE_GUTI:
-            if not hasattr(self, '_IDGUTI'):
-                self._IDGUTI = IDGUTI()
-            self._content = self._IDGUTI._content
-            self._by_id   = self._IDGUTI._by_id
-            self._by_name = self._IDGUTI._by_name
+            self[2]._val = typ
+            self[3]._from_char(char)
+        elif typ == IDTYPE_GUTI:
             self[0]._val = spare >> 1
             self[1]._val = spare & 1
-            self[2]._val = type
+            self[2]._val = typ
             self[3]._from_char(char)
             self[4]._from_char(char)
             self[5]._from_char(char)
             self[6]._from_char(char)
-        #
-        else:
-            raise(PycrateErr('{0}: invalid identity to decode, {1}'\
-                  .format(self._name, type)))
     
     def repr(self):
         if not self._content:
@@ -484,9 +475,9 @@ class EPSID(Envelope):
         else:
             trans = ''
         #
-        type = self['Type'].get_val()
-        if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
-            return '<%s%s%s [%s] : %s>' % (self._name, desc, trans, EPSIDType_dict[type],
+        typ = self['Type'].get_val()
+        if typ in {IDTYPE_IMSI, IDTYPE_IMEISV}:
+            return '<%s%s%s [%s] : %s>' % (self._name, desc, trans, EPSIDType_dict[typ],
                                            str(self[0].get_val()) + decode_bcd(self[3].get_val()))
         else:
             return Envelope.repr(self)
@@ -504,31 +495,12 @@ class EPSID(Envelope):
         def _from_jval(self, val):
             if not isinstance(val, list):
                 raise(EltErr('{0} [_from_jval]: invalid EPSID format, {1!r}'.format(self._name, val)))
+            typ = IDTYPE_IMSI
             try:
-                type = val[2]['Type']
+                typ = val[2]['Type']
             except Exception:
                 pass
-            else:
-                #
-                if type in (IDTYPE_IMSI, IDTYPE_IMEISV):
-                    if not hasattr(self, '_IDDigit'):
-                        self._IDDigit = IDDigit()
-                    self._content = self._IDDigit._content
-                    self._by_id   = self._IDDigit._by_id
-                    self._by_name = self._IDDigit._by_name
-                #
-                elif type == IDTYPE_GUTI:
-                    if not hasattr(self, '_IDGUTI'):
-                        self._IDGUTI = IDGUTI()
-                    self._content = self._IDGUTI._content
-                    self._by_id   = self._IDGUTI._by_id
-                    self._by_name = self._IDGUTI._by_name
-                #
-                else:
-                    raise(PycrateErr('{0}: invalid identity to decode, {1}'\
-                          .format(self._name, type)))
-            #
-            print(self._name, val)
+            self._set_content(typ)
             Envelope._from_jval(self, val)
 
 

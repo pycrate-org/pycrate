@@ -355,18 +355,16 @@ class IE(Envelope):
                 if not e.get_trans():
                     try:
                         val_e = val[i]
-                        print(e._name, val_e)
                         if e._name in {'T', 'L'}:
                             e._from_jval_wrap(val_e)
                         else:
                             val_n = tuple(val_e.keys())[0]
-                            if val_n == 'V':
+                            if val_n == 'V' and e._name != 'V':
                                 self.unset_IE()
                                 e = self._V
-                            else:
+                            elif val_n != 'V' and e._name =='V':
                                 self.set_IE()
                                 e = self._IE
-                            #print(val_e)
                             e._from_jval_wrap(val_e)
                     except Exception:
                         break

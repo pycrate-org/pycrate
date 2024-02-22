@@ -40,7 +40,8 @@ from enum     import IntEnum
 from pycrate_core.utils  import *
 from pycrate_core.elt    import (
     Envelope, Array, Sequence, Alt,
-    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM
+    REPR_RAW, REPR_HEX, REPR_BIN, REPR_HD, REPR_HUM,
+    EltErr, _with_json
     )
 from pycrate_core.base      import *
 from pycrate_core.repr      import *
@@ -392,6 +393,7 @@ IDType_dict = {
     5 : 'TMGI',
     6 : 'ffu'
     }
+
 IDTYPE_NONE   = 0
 IDTYPE_IMSI   = 1
 IDTYPE_IMEI   = 2
@@ -439,6 +441,7 @@ class IDGroup(Envelope):
         self[6].set_transauto(lambda: False if self[2].get_val() else True)
         self[7].set_transauto(lambda: False if self[1].get_val() else True)
 
+
 class ID(Envelope):
     
     # during encode() / _from_char() processing
@@ -454,20 +457,52 @@ class ID(Envelope):
         else:
             Envelope.set_val(self, vals)
     
+    def _set_content(self, typ):
+        if typ == IDTYPE_TMSI:
+            if not hasattr(self, '_IDTemp'):
+                self._IDTemp = IDTemp()
+            self._content = self._IDTemp._content
+            self._by_id   = self._IDTemp._by_id
+            self._by_name = self._IDTemp._by_name
+        #
+        elif typ in {IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV}:
+            if not hasattr(self, '_IDDigit'):
+                self._IDDigit = IDDigit()
+            self._content = self._IDDigit._content
+            self._by_id   = self._IDDigit._by_id
+            self._by_name = self._IDDigit._by_name 
+        #
+        elif typ == IDTYPE_TMGI:
+            if not hasattr(self, '_IDGroup'):
+                self._IDGroup = IDGroup()
+            self._content = self._IDGroup._content
+            self._by_id   = self._IDGroup._by_id
+            self._by_name = self._IDGroup._by_name
+        #
+        elif typ == IDTYPE_NONE:
+            if not hasattr(self, '_IDNone'):
+                self._IDNone = IDNone()
+            self._content = self._IDNone._content
+            self._by_id   = self._IDNone._by_id
+            self._by_name = self._IDNone._by_name
+        #
+        else:
+            raise(PycrateErr('Invalid ID type: %r' % typ))
+    
     def decode(self):
         """returns the mobile identity type and value
         """
-        type = self['Type'].get_val()
-        if type == IDTYPE_NONE:
-            return (type, None)
+        typ = self['Type'].get_val()
+        if typ == IDTYPE_NONE:
+            return (typ, None)
         #
-        elif type == IDTYPE_TMSI:
-            return (type, self[3].get_val())
+        elif typ == IDTYPE_TMSI:
+            return (typ, self[3].get_val())
         #
-        elif type in (IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV):
-            return (type, str(self[0].get_val()) + decode_bcd(self[3].get_val()))
+        elif typ in {IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV}:
+            return (typ, str(self[0].get_val()) + decode_bcd(self[3].get_val()))
         #
-        elif type == IDTYPE_TMGI:
+        elif typ == IDTYPE_TMGI:
             if self[1].get_val():
                 # MBMSSessID
                 mid = self[7].get_val()
@@ -478,57 +513,35 @@ class ID(Envelope):
                 plmn = self[6].decode()
             else:
                 plmn = None
-            return (type, (self[5].get_val(), plmn, mid))
+            return (typ, (self[5].get_val(), plmn, mid))
     
-    def encode(self, type=IDTYPE_NONE, ident=None):
+    def encode(self, typ=IDTYPE_NONE, ident=None):
         """sets the mobile identity with given type
         
-        if type is IDTYPE_TMSI: ident must be an uint32
-        if type is IDTYPE_IMSI, IDTYPE_IMEI or IDTYPE_IMEISV: ident must be a 
+        if typ is IDTYPE_TMSI: ident must be an uint32
+        if typ is IDTYPE_IMSI, IDTYPE_IMEI or IDTYPE_IMEISV: ident must be a 
             string of digits
-        if type is IDTYPE_TMGI: ident must be a 3-tuple (MBMSServID -uint24-, 
+        if typ is IDTYPE_TMGI: ident must be a 3-tuple (MBMSServID -uint24-, 
             PLMN -string of digits- or None, MBMSSessID -uint8- or None)
         """
-        if type == IDTYPE_NONE:
-            if not hasattr(self, '_IDNone'):
-                self._IDNone = IDNone()
-            self._content = self._IDNone._content
-            self._by_id   = self._IDNone._by_id
-            self._by_name = self._IDNone._by_name
+        self._set_content(typ)
         #
-        elif type == IDTYPE_TMSI:
-            if not hasattr(self, '_IDTemp'):
-                self._IDTemp = IDTemp()
-            self._content = self._IDTemp._content
-            self._by_id   = self._IDTemp._by_id
-            self._by_name = self._IDTemp._by_name
+        if typ == IDTYPE_TMSI:
             self[3].set_val(ident)
         #
-        elif type in (IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV):
+        elif typ in {IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV}:
             if not ident.isdigit():
-                raise(PycrateErr('{0}: invalid identity to encode, {1!r}'\
-                      .format(self._name, ident)))
-            if not hasattr(self, '_IDDigit'):
-                self._IDDigit = IDDigit()
-            self._content = self._IDDigit._content
-            self._by_id   = self._IDDigit._by_id
-            self._by_name = self._IDDigit._by_name
-            self[2]._val = type
+                raise(PycrateErr('{0}: invalid ID to encode, {1!r}'.format(self._name, ident)))
+            self[2]._val = typ
             if len(ident) % 2:
                 self[1]._val = 1
             # encode digits the BCD way
             self[0]._val = int(ident[0])
             self[3]._val = encode_bcd(ident[1:])
         #
-        elif type == IDTYPE_TMGI:
+        elif typ == IDTYPE_TMGI:
             if not isinstance(ident, (tuple, list)) or len(ident) != 3:
-                raise(PycrateErr('{0}: invalid identity to encode, {1!r}'\
-                      .format(self._name, ident)))
-            if not hasattr(self, '_IDGroup'):
-                self._IDGroup = IDGroup()
-            self._content = self._IDGroup._content
-            self._by_id   = self._IDGroup._by_id
-            self._by_name = self._IDGroup._by_name
+                raise(PycrateErr('{0}: invalid ID to encode, {1!r}'.format(self._name, ident)))
             self[5].set_val( ident[0] )
             if ident[1] is not None:
                 # MCCMNC
@@ -540,66 +553,38 @@ class ID(Envelope):
                 self[7].set_val( ident[2] )
     
     def _from_char(self, char):
-        if not self.get_trans():
-            try:
-                spare = char.get_uint(5)
-                type  = char.get_uint(3)
-            except CharpyErr as err:
-                raise(CharpyErr('{0} [_from_char]: {1}'.format(self._name, err)))
-            except Exception as err:
-                raise(EltErr('{0} [_from_char]: {1}'.format(self._name, err)))
-            #
-            if type == IDTYPE_TMSI:
-                if not hasattr(self, '_IDTemp'):
-                    self._IDTemp = IDTemp()
-                self._content = self._IDTemp._content
-                self._by_id   = self._IDTemp._by_id
-                self._by_name = self._IDTemp._by_name
-                self[0]._val = spare >> 1
-                self[1]._val = spare & 1
-                self[3]._from_char(char)
-            #
-            elif type in (IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV):
-                if not hasattr(self, '_IDDigit'):
-                    self._IDDigit = IDDigit()
-                self._content = self._IDDigit._content
-                self._by_id   = self._IDDigit._by_id
-                self._by_name = self._IDDigit._by_name
-                self[0]._val = spare >> 1
-                self[1]._val = spare & 1
-                self[2]._val = type
-                self[3]._from_char(char)   
-            #
-            elif type == IDTYPE_TMGI:
-                if not hasattr(self, '_IDGroup'):
-                    self._IDGroup = IDGroup()
-                self._content = self._IDGroup._content
-                self._by_id   = self._IDGroup._by_id
-                self._by_name = self._IDGroup._by_name
-                self[0]._val = spare >> 3
-                self[1]._val = (spare >> 2) & 1
-                self[2]._val = (spare >> 1) & 1
-                self[3]._val = spare & 1
-                self[5]._from_char(char)
-                if self[2]._val:
-                    self[6]._from_char(char)
-                if self[1]._val:
-                    self[7]._from_char(char)
-            #
-            elif type == IDTYPE_NONE:
-                if not hasattr(self, '_IDNone'):
-                    self._IDNone = IDNone()
-                self._content = self._IDNone._content
-                self._by_id   = self._IDNone._by_id
-                self._by_name = self._IDNone._by_name
-            #
-            else:
-                if not hasattr(self, '_IDNone'):
-                    self._IDNone = IDNone()
-                log('WNG: ID, type unhandled, %i' % type)
-                self._content = self._IDNone._content
-                self._by_id   = self._IDNone._by_id
-                self._by_name = self._IDNone._by_name
+        if self.get_trans():
+            return
+        try:
+            spare = char.get_uint(5)
+            typ   = char.get_uint(3)
+        except CharpyErr as err:
+            raise(CharpyErr('{0} [_from_char]: {1}'.format(self._name, err)))
+        except Exception as err:
+            raise(EltErr('{0} [_from_char]: {1}'.format(self._name, err)))
+        #
+        # this may raise in case of invalid ID type
+        # in that case, the buffer will remain undecoded in the IE
+        self._set_content(typ)
+        if typ == IDTYPE_TMSI:
+            self[0]._val = spare >> 1
+            self[1]._val = spare & 1
+            self[3]._from_char(char)
+        elif typ in {IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV}:
+            self[0]._val = spare >> 1
+            self[1]._val = spare & 1
+            self[2]._val = typ
+            self[3]._from_char(char)   
+        elif typ == IDTYPE_TMGI:
+            self[0]._val = spare >> 3
+            self[1]._val = (spare >> 2) & 1
+            self[2]._val = (spare >> 1) & 1
+            self[3]._val = spare & 1
+            self[5]._from_char(char)
+            if self[2]._val:
+                self[6]._from_char(char)
+            if self[1]._val:
+                self[7]._from_char(char)
     
     def repr(self):
         if not self._content:
@@ -615,9 +600,9 @@ class ID(Envelope):
         else:
             trans = ''
         #
-        type = self['Type'].get_val()
+        typ = self['Type'].get_val()
         #
-        if type == IDTYPE_TMSI:
+        if typ == IDTYPE_TMSI:
             if self[3]._rep in (REPR_RAW, REPR_HUM):
                 t_repr = repr(self[3].get_val())
             elif self[3]._rep == REPR_HEX:
@@ -627,13 +612,32 @@ class ID(Envelope):
             else:
                 t_repr = ''
             return '<%s%s%s [TMSI] : %s>' % (self._name, desc, trans, t_repr)
-        elif type in (IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV):
-            return '<%s%s%s [%s] : %s>' % (self._name, desc, trans, IDType_dict[type],
+        elif typ in {IDTYPE_IMSI, IDTYPE_IMEI, IDTYPE_IMEISV}:
+            return '<%s%s%s [%s] : %s>' % (self._name, desc, trans, IDType_dict[typ],
                                            str(self[0].get_val()) + decode_bcd(self[3].get_val()))  
         else:
             return Envelope.repr(self)
     
     __repr__ = repr
+    
+    #--------------------------------------------------------------------------#
+    # json interface
+    #--------------------------------------------------------------------------#
+    # Custom method to be able to set a JSON value back to an ID IE
+    # As it has a custom content generation method
+    
+    if _with_json:
+        
+        def _from_jval(self, val):
+            if not isinstance(val, list):
+                raise(EltErr('{0} [_from_jval]: invalid ID format, {1!r}'.format(self._name, val)))
+            typ = IDTYPE_NONE
+            for val_e in val:
+                if tuple(val_e.keys())[0] == 'Type':
+                    typ = tuple(val_e.values())[0]
+                    break
+            self._set_content(typ)
+            Envelope._from_jval(self, val)
 
 
 #------------------------------------------------------------------------------#
