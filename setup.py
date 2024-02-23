@@ -42,6 +42,7 @@ setup(
     scripts=[
         "tools/pycrate_asn1compile.py",
         "tools/pycrate_berdecode.py",
+        'tools/pycrate_certdecode.py',
         "tools/pycrate_showmedia.py",
         "tools/pycrate_shownas.py",
         "tools/pycrate_gtp_type_info.py",
