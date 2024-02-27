@@ -1,7 +1,7 @@
 What is pycrate
 ===============
 
-Pycrate is a french word for qualifying bad wine (when it's close to vinegar !).
+While this is a french joke about bad wine (you say "picrate" when it's close to vinegar !).
 The present software library has nothing to do with wine (except it is developed in France), 
 it is simply a Python library for manipulating various digital formats in an easy way,
 with a funny name. Most of the format supported are related in one way or another
@@ -11,6 +11,11 @@ which was started back in 2009, served well and retired in 2017.
 
 It provides basically a runtime for encoding and decoding data structures, including
 CSN.1 and ASN.1. Additionally, it features a 3G and LTE mobile core network.
+
+This updated repository inside the collaborative organization [pycrate-org](https://github.com/pycrate-org/),
+is the new home to keep maintaining and updating the project, starting February 2024.
+Any and all collaborative efforts will be much appreciated: from uncovering bugs and discussing issues, 
+to integrate fixes and extensions through PR...
 
 
 License
