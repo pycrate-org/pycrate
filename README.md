@@ -25,7 +25,7 @@ For more details, please report to the
 Wiki
 ====
 
-Pycrate has a growing [wiki](https://github.com/pycrate-org/pycrate/wiki/The-pycrate-wiki).
+Pycrate has a growing [wiki](https://github.com/pycrate-org/pycrate/wiki/).
 Use it as much as possible before opening an issue.
 Feel free also to propose some additional content.
 
@@ -135,7 +135,7 @@ Contact and support
 
 This library is free software, and you are free to use it (or not to use it). 
 In case you encounter a problem with it, first read this README completely and then
-check the [Wiki](https://github.com/pycrate-org/pycrate/wiki/The-pycrate-wiki) ; moreover many classes, 
+check the [Wiki](https://github.com/pycrate-org/pycrate/wiki/) ; moreover many classes, 
 methods and functions are documented with docstrings, and finally you can have a look 
 at the source code (it won't bite you).
 
@@ -183,7 +183,7 @@ and opening an issue with concrete debugging information
 * writing new test cases for more coverage (have a look at the *test/* directory)
 * sending captures / real-world data that can be used for writing new test cases
 * writing new parts of the wiki (have a look at the 
-[pycrate wiki](https://github.com/pycrate-org/pycrate/wiki/The-pycrate-wiki))
+[pycrate wiki](https://github.com/pycrate-org/pycrate/wiki/))
 
 Getting contributions is extremely important to encourage the continuous development
 of the library, and to confirm the choice made to open-source it.
@@ -414,7 +414,7 @@ Usage
 Most of the modules have doc strings. I try also to write readable sources and to
 comment them as much as possible for understanding them easily (and to allow also
 myself to understand my own code years after...).
-A [wiki](https://github.com/pycrate-org/pycrate/wiki/The-pycrate-wiki) is provided 
+A [wiki](https://github.com/pycrate-org/pycrate/wiki/) is provided 
 and extended from time to time, to bring examples and methods on how to use the 
 different modules (any contribution on this would be very welcome, too).
 Finally, the code provided in the *test/* subdirectory is also representative on
@@ -675,5 +675,5 @@ True
 
 For more information about the API exposed for each ASN.1 object, you can check
 the docstrings of all ASN.1 objects, and also read the source file *pycrate_asn1rt/asnobj.py*.
-Do not forget to have a look at the [Wiki](https://github.com/pycrate-org/pycrate/wiki/The-pycrate-wiki), too!
+Do not forget to have a look at the [Wiki](https://github.com/pycrate-org/pycrate/wiki/), too!
 
