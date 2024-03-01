@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 
 # Pycrate Version
-VERSION = "0.7.0"
+VERSION = "0.7.1"
 
 
 # get long description from the README.md
@@ -71,7 +71,7 @@ setup(
     # 
     # for pycrate_corenet:
     # the AuC.db file is the mobile subscriber authentication database 
-    # containing Ki and is required at runtime when using corenet
+    # containing Ki and is required at runtime when using corenet
     #
     package_data={
         #"pycrate_asn1dir"   : ["*.asn", "*.json"],
