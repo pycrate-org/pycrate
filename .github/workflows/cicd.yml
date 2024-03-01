@@ -85,7 +85,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPITEST_PYCRATEORG_PYCRATE }}
           repository-url: https://test.pypi.org/legacy/
           skip-existing: true
       - name: publish built artifacts to pypi.org
@@ -93,4 +93,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPI_PYCRATEORG_PYCRATE }}
