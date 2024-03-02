@@ -1,0 +1,6 @@
+E2AP-CommonDataTypes.asn
+E2AP-Constants.asn
+E2AP-Containers.asn
+E2AP-IEs.asn
+E2AP-PDU-Contents.asn
+E2AP-PDU-Descriptions.asn

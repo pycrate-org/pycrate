@@ -5,6 +5,7 @@
 # *
 # * Copyright 2016. Benoit Michau. ANSSI.
 # * Copyright 2019. Benoit Michau. P1Sec.
+# * Copyright 2024. Benoit Michau
 # *
 # * This library is free software; you can redistribute it and/or
 # * modify it under the terms of the GNU Lesser General Public
@@ -77,6 +78,11 @@ ASN_SPECS_5G = {
 ASN_SPECS_MULT = {
     'LPP'       : '3GPP_MULT_LPP_37355',
     'E1AP'      : '3GPP_MULT_E1AP_37483',
+    }
+
+# O-RAN
+ASN_SPECS_ORAN = {
+    'E2AP'      : 'ORAN_E2AP',
     }
 
 # ITU-T various recommendations
@@ -202,6 +208,7 @@ ASN_SPECS.update( ASN_SPECS_3G )
 ASN_SPECS.update( ASN_SPECS_LTE )
 ASN_SPECS.update( ASN_SPECS_5G )
 ASN_SPECS.update( ASN_SPECS_MULT )
+ASN_SPECS.update( ASN_SPECS_ORAN )
 ASN_SPECS.update( ASN_SPECS_ITUT )
 ASN_SPECS.update( ASN_SPECS_IETF )
 ASN_SPECS.update( ASN_SPECS_CORE )
