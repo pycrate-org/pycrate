@@ -4,6 +4,7 @@
 # * Version : 0.7
 # *
 # * Copyright 2019. Benoit Michau. P1Sec.
+# * Copyright 2024. Benoit Michau
 # *
 # * This library is free software; you can redistribute it and/or
 # * modify it under the terms of the GNU Lesser General Public

@@ -4,6 +4,7 @@
 # * Version : 0.4
 # *
 # * Copyright 2017. Benoit Michau. ANSSI. P1sec.
+# * Copyright 2024. Benoit Michau
 # *
 # * This library is free software; you can redistribute it and/or
 # * modify it under the terms of the GNU Lesser General Public
