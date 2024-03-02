@@ -89,7 +89,6 @@ the library within your Python package directory:
 ```
 python setup.py install
 ```
-With 
 
 Run it as superuser for a system-wide install, or as-is for a user home-directory 
 level install. You can also run _develop_ instead of _install_ if you want a 
@@ -119,7 +118,6 @@ python -m pycrate_asn1c.asnproc
 
 More generally, installation is not required, and simply having all _pycrate\_*_ 
 subdirectories into the PYTHONPATH enables to use the entire library.
-
 
 Newer Python versions (3.11, maybe 3.10 already) are deprecating the direct call of the `setup.py` script.
 Have a look at the [modern way](https://packaging.python.org/en/latest/discussions/setup-py-deprecated/)
