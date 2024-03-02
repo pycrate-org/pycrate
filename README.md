@@ -89,6 +89,7 @@ the library within your Python package directory:
 ```
 python setup.py install
 ```
+With 
 
 Run it as superuser for a system-wide install, or as-is for a user home-directory 
 level install. You can also run _develop_ instead of _install_ if you want a 
@@ -118,6 +119,11 @@ python -m pycrate_asn1c.asnproc
 
 More generally, installation is not required, and simply having all _pycrate\_*_ 
 subdirectories into the PYTHONPATH enables to use the entire library.
+
+
+Newer Python versions (3.11, maybe 3.10 already) are deprecating the direct call of the `setup.py` script.
+Have a look at the [modern way](https://packaging.python.org/en/latest/discussions/setup-py-deprecated/)
+to install or build a project.
 
 
 Installation with pip
@@ -188,7 +194,7 @@ and opening an issue with concrete debugging information
 * writing new test cases for more coverage (have a look at the *test/* directory)
 * sending captures / real-world data that can be used for writing new test cases
 * writing new parts of the wiki (have a look at the 
-[pycrate wiki](https://github.com/pycrate-org/pycrate/wiki/))
+[pycrate wiki](https://github.com/pycrate-org/pycrate/wiki/)
 
 Getting contributions is extremely important to encourage the continuous development
 of the library, and to confirm the choice made to open-source it.
