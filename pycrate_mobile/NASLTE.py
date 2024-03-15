@@ -56,9 +56,9 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
         pd = buf[0]
     except Exception:
         return None, 111
-    shdr = pd>>4
-    pd  &= 0xf
-        
+    shdr = pd >> 4
+    pd &= 0xf
+
     if sec_hdr and shdr in {1, 2, 3, 4}:
         # EMM security protected NAS message
         Msg = EMMSecProtNASMessage()
@@ -67,7 +67,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
         except Exception:
             # error 96, invalid mandatory info
             return None, 96
-        #
+
         if (inner and shdr in {1, 3}) or force_inner:
             # parse clear-text NAS message container
             cont, err = parse_NASLTE_MO(Msg[3].get_val(), inner=inner, force_inner=force_inner)
@@ -76,7 +76,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
             return Msg, err
         else:
             return Msg, 0
-        
+
     elif sec_hdr and shdr == 12:
         # EMM service request message
         Msg = EMMServiceRequest()
@@ -85,7 +85,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
         except Exception:
             return None, 96
         return Msg, 0
-    
+
     else:
         # sec hdr == 0 or undefined
         # no security, straight LTE NAS message
@@ -130,7 +130,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
                     if cont is not None:
                         esmc.replace(esmc[-1], cont)
             if typ in {77, 98, 99}:
-                nasc   = Msg['NASContainer']
+                nasc = Msg['NASContainer']
                 if not nasc.get_trans():
                     # NAS Container with PP-SMS present in Msg
                     ppsmsb = nasc[-1].get_val()
@@ -171,9 +171,9 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
         pd = buf[0]
     except Exception:
         return None, 111
-    shdr = pd>>4
-    pd  &= 0xf
-        
+    shdr = pd >> 4
+    pd &= 0xf
+
     if sec_hdr and shdr in {1, 2, 3, 4}:
         # EMM security protected NAS message
         Msg = EMMSecProtNASMessage()
@@ -182,7 +182,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
         except Exception:
             # error 96, invalid mandatory info
             return None, 96
-        #
+
         if (inner and shdr in {1, 3}) or force_inner:
             # parse clear-text NAS message container
             cont, err = parse_NASLTE_MT(Msg[3].get_val(), inner=inner, force_inner=force_inner)
@@ -191,7 +191,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
             return Msg, err
         else:
             return Msg, 0
-        
+
     elif sec_hdr and shdr == 12:
         # EMM service request message
         Msg = EMMServiceRequest()
@@ -200,7 +200,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
         except Exception:
             return None, 96
         return Msg, 0
-    
+
     else:
         # sec hdr == 0 or undefined
         # no security, straight LTE NAS message
@@ -246,7 +246,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
                     if cont is not None:
                         esmc.replace(esmc[-1], cont)
             if typ in {77, 98, 99}:
-                nasc   = Msg['NASContainer']
+                nasc = Msg['NASContainer']
                 if not nasc.get_trans():
                     # NAS Container with PP-SMS present in Msg
                     ppsmsb = nasc[-1].get_val()
