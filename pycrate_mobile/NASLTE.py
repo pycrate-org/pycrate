@@ -35,7 +35,7 @@ from .TS24301_ESM   import ESMTypeClasses
 from .TS24011_PPSMS import PPSMSCPTypeClasses
 
 
-def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
+def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, force_inner=False):
     """Parses a Mobile Originated LTE NAS message bytes' buffer
     
     Args:
@@ -45,6 +45,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
                         decode NASContainer within EMM NAS Transport message if possible
         sec_hdr: if True, handle the NAS EMM security header
                  otherwise, just consider the NAS message is in plain text
+        force_inner: if True, decode inner asumming it is null-ciphered
     
     Returns:
         element, err: 2-tuple
@@ -67,9 +68,9 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
             # error 96, invalid mandatory info
             return None, 96
         #
-        if inner and shdr in {1, 3}:
+        if (inner and shdr in {1, 3}) or force_inner:
             # parse clear-text NAS message container
-            cont, err = parse_NASLTE_MO(Msg[3].get_val(), inner=inner)
+            cont, err = parse_NASLTE_MO(Msg[3].get_val(), inner=inner, force_inner=force_inner)
             if cont is not None:
                 Msg.replace(Msg[3], cont)
             return Msg, err
@@ -149,7 +150,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
         return Msg, err
 
 
-def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
+def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, force_inner=False):
     """Parses a Mobile Terminated LTE NAS message bytes' buffer
     
     Args:
@@ -159,6 +160,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
                         decode NASContainer within EMM NAS Transport message if possible
         sec_hdr: if True, handle the NAS EMM security header
                  otherwise, just consider the NAS message is in plain text
+        force_inner: if True, decode inner asumming it is null-ciphered
     
     Returns:
         element, err: 2-tuple
@@ -181,9 +183,9 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
             # error 96, invalid mandatory info
             return None, 96
         #
-        if inner and shdr in {1, 3}:
+        if (inner and shdr in {1, 3}) or force_inner:
             # parse clear-text NAS message container
-            cont, err = parse_NASLTE_MT(Msg[3].get_val(), inner=inner)
+            cont, err = parse_NASLTE_MT(Msg[3].get_val(), inner=inner, force_inner=force_inner)
             if cont is not None:
                 Msg.replace(Msg[3], cont)
             return Msg, err
