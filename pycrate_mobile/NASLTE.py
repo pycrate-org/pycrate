@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 #/**
 # * Software Name : pycrate
-# * Version : 0.4
+# * Version : 0.7
 # *
 # * Copyright 2017. Benoit Michau. ANSSI.
 # *
@@ -35,7 +35,7 @@ from .TS24301_ESM   import ESMTypeClasses
 from .TS24011_PPSMS import PPSMSCPTypeClasses
 
 
-def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
+def parse_NASLTE_MO(buf, inner=True, sec_hdr=True, null_cipher=False):
     """Parses a Mobile Originated LTE NAS message bytes' buffer
     
     Args:
@@ -45,6 +45,8 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
                         decode NASContainer within EMM NAS Transport message if possible
         sec_hdr: if True, handle the NAS EMM security header
                  otherwise, just consider the NAS message is in plain text
+        null_cipher: if True, try to decode the 1st level inner payload, even if security header
+                     indicates encryption is applied, but suppose null-cipher is used
     
     Returns:
         element, err: 2-tuple
@@ -67,7 +69,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
             # error 96, invalid mandatory info
             return None, 96
         #
-        if inner and shdr in {1, 3}:
+        if inner and (shdr in {1, 3} or null_cipher):
             # parse clear-text NAS message container
             cont, err = parse_NASLTE_MO(Msg[3].get_val(), inner=inner)
             if cont is not None:
@@ -149,7 +151,7 @@ def parse_NASLTE_MO(buf, inner=True, sec_hdr=True):
         return Msg, err
 
 
-def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
+def parse_NASLTE_MT(buf, inner=True, sec_hdr=True, null_cipher=False):
     """Parses a Mobile Terminated LTE NAS message bytes' buffer
     
     Args:
@@ -159,6 +161,8 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
                         decode NASContainer within EMM NAS Transport message if possible
         sec_hdr: if True, handle the NAS EMM security header
                  otherwise, just consider the NAS message is in plain text
+        null_cipher: if True, try to decode the 1st level inner payload, even if security header
+                     indicates encryption is applied, but suppose null-cipher is used
     
     Returns:
         element, err: 2-tuple
@@ -181,7 +185,7 @@ def parse_NASLTE_MT(buf, inner=True, sec_hdr=True):
             # error 96, invalid mandatory info
             return None, 96
         #
-        if inner and shdr in {1, 3}:
+        if inner and (shdr in {1, 3} or null_cipher):
             # parse clear-text NAS message container
             cont, err = parse_NASLTE_MT(Msg[3].get_val(), inner=inner)
             if cont is not None:
