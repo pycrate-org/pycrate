@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 #/**
 # * Software Name : pycrate
-# * Version : 0.4
+# * Version : 0.7
 # *
 # * Copyright 2019. Benoit Michau. P1Sec.
 # *
@@ -40,7 +40,7 @@ from .TS24011_PPSMS import PPSMSCPTypeClasses
 # TODO: migrate TS24519_TSNAF to the new TS24539 spec
 
 
-def parse_NAS5G(buf, inner=True, sec_hdr=True):
+def parse_NAS5G(buf, inner=True, sec_hdr=True, null_cipher=False):
     """Parses a 5G NAS message bytes' buffer
     
     Args:
@@ -48,9 +48,10 @@ def parse_NAS5G(buf, inner=True, sec_hdr=True):
         inner: if True, decode NASMessage within the security header, PayloadContainer
                and PortMgmtInfoContainer if possible
                otherwise, keep those field as plain bytes buffer (e.g. for later decoding)
-                        
         sec_hdr: if True, consider the 5GMM security header with potential encryption
                  otherwise, just consider the NAS message is in plain text
+        null_cipher: if True, try to decode the 1st level inner payload, even if security header
+                     indicates encryption is applied, but suppose null-cipher is used
     
     Returns:
         element, err: 2-tuple
@@ -74,7 +75,7 @@ def parse_NAS5G(buf, inner=True, sec_hdr=True):
             except Exception:
                 # error 96, invalid mandatory info
                 return None, 96
-            if inner and shdr in (1, 3):
+            if inner and (shdr in (1, 3) or null_cipher):
                 # parse clear-text NAS message container
                 cont, err = parse_NAS5G(Msg[3].get_val(), inner=inner)
                 if cont is not None:
@@ -92,7 +93,7 @@ def parse_NAS5G(buf, inner=True, sec_hdr=True):
                 return None, 97
     #
     elif pd == 46:
-        # 5GSM
+        # 5GSM
         try:
             typ = buf[3]
         except:
