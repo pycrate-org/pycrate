@@ -128,8 +128,8 @@ class UEPolSectionSublist(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: self[2].get_len())
-        self[2].set_blauto(lambda: self[0].get_val()<<3)
+        self[0].set_valauto(lambda: 3+self[2].get_len())
+        self[2].set_blauto(lambda: (self[0].get_val()-3)<<3)
 
 
 class UEPolSectionList(Sequence):
