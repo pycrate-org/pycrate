@@ -14,10 +14,12 @@ jobs:
           - windows-latest
           - macos-latest
         python-version:
-          - 3.8
-          - '3.10'
+          - 3.9
           - '3.11'
           - '3.12'
+        include:
+          - os: ubuntu-20.04
+            python-version: 3.8
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
