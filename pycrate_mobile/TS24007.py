@@ -146,6 +146,7 @@ class Layer3(Envelope):
             dec_brk = self.DEC_BREAK_ON_UNK_IE
             self.DEC_BREAK_ON_UNK_IE = True
         Envelope._from_char(self, char)
+        #
         # 2) decode optional part
         opts, dec = self._opts[:], False
         while char.len_bit() >= 8:
@@ -168,6 +169,7 @@ class Layer3(Envelope):
                 else:
                     char._cur += 8
                     self._dec_unk_ie(T8, char)
+        #
         # 3) decode rest octets
         if not dec and self._rest is not None:
             self._rest.set_trans(False)
@@ -203,6 +205,81 @@ class Layer3(Envelope):
                (self._name, desc, trans, ''.join(map(repr, self._content)))
     
     __repr__ = repr
+    
+    
+    if _with_json:
+        
+        def _from_jval(self, val):
+            if not isinstance(val, list):
+                raise(EltErr('{0} [_from_jval]: invalid format, {1!r}'.format(self._name, val)))
+            #
+            # when parsing JSON, we follow the same strategy as the binary parser,
+            # where we set optional IEs as non-transparent, in case the value is available in 
+            # the JSON structure
+            #
+            # reserve RestOctets for the last part of the parsing (for GSM L3)
+            if self._rest is not None:
+                self._rest.set_trans(True)
+                dec_brk = self.DEC_BREAK_ON_UNK_IE
+                self.DEC_BREAK_ON_UNK_IE = True
+            #
+            # 1) decode mandatory part
+            i = 0
+            for e in self._content:
+                if not e.get_trans():
+                    e._from_jval_wrap(val[i])
+                    i += 1
+                else:
+                    break
+            #
+            # 2) decode optional part
+            opts, dec = self._opts[:], False
+            while i < len(val):
+                if not val[i]:
+                    log('%s, _from_jval: invalid empty value at %i' % (self._name, val, i))
+                    break
+                elif not isinstance(val[i], list) or 'T' not in val[i][0]:
+                    # not an optional TV / TLV structure, eventually RestOctets
+                    break
+                tj = val[i][0]['T']
+                for j, opt in enumerate(opts):
+                    # check the list of optional IEs in order
+                    # warning: as the JSON value does not hold information in the tag length
+                    # this could lead to tag confusion or failure
+                    _, tv, ie = opt
+                    if tj == tv:
+                        ie._trans = False
+                        ie._from_jval_wrap(val[i])
+                        dec = True
+                        del opts[j]
+                        i += 1
+                        break
+                if not dec:
+                    # unknown IEI
+                    if self.DEC_BREAK_ON_UNK_IEI:
+                        log('%s, unknown IE remaining, not decoded' % self._name)
+                        break
+                    elif val[i]:
+                        self._dec_unk_ie_jv(val[i])
+                    i += 1
+            #
+            # 3) decode rest octets
+            if not dec and self._rest is not None:
+                self._rest.set_trans(False)
+                self.DEC_BREAK_ON_UNK_IE: dec_brk
+                self._rest._from_jval_wrap(val[i])
+        
+        def _dec_unk_ie_jv(self, val):
+            tj = val[0]
+            if tj & 0x80:
+                # Type1TV IE, could also be a Type2 IE
+                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tj))
+                tv = Type1TV('_T_%X' % (tj>>4), val={'T':tj>>4, 'V':tj&0xf})
+            elif len(val) >= 3:
+                # Type4 TLV IE
+                log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
+                    % (self._name, tj, hexlify(val[2]).decode()))
+                self.append( Type4TLV('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
 
 
 class Layer3E(Layer3):
@@ -217,15 +294,36 @@ class Layer3E(Layer3):
             L = char.get_uint(16)
             V = char.get_bytes(8*L)
             log('%s, _dec_unk_ie: unknown Type6TLVE IE, T: 0x%.2x, V: 0x%s' \
-                % (self._name, T8, hexlify(V)))
-            self.append( Type6TLVE('_T_%i' % T8, val=[T8, L, V]) )
+                % (self._name, T8, hexlify(V).decode()))
+            self.append( Type6TLVE('_T_%X' % T8, val=[T8, L, V]) )
         else:
             # Type4TLV IE
             L = char.get_uint(8)
             V = char.get_bytes(8*L)
             log('%s, _dec_unk_ie: unknown Type4TLV IE, T: 0x%.2x, V: 0x%s' \
-                % (self._name, T8, hexlify(V).decode('ascii')))
+                % (self._name, T8, hexlify(V).decode()))
             self.append( Type4TLV('_T_%X' % T8, val=[T8, L, V]) )
+    
+    
+    if _with_json:
+        
+        def _dec_unk_ie_jv(self, val):
+            tj = val[0]
+            if tj & 0x80:
+                # Type1TV IE, could also be a Type2 IE
+                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tj))
+                self.append( Type1TV('_T_%X' % (tj>>4), val={'T':tj>>4, 'V':tj&0xf}) )
+            elif len(val) >= 3:
+                if tj & 0x70:
+                    # Type6TLV IE
+                    log('%s, _from_jval: unknown Type6TLVE, T: 0x%.2x, V: 0x%s'\
+                        % (self._name, tj, hexlify(val[2]).decode()))
+                    self.append( Type6TLVE('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
+                else:
+                    # Type4 TLV IE
+                    log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
+                        % (self._name, tj, hexlify(val[2]).decode()))
+                    self.append( Type4TLV('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
 
 
 class IE(Envelope):
