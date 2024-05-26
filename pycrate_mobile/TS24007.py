@@ -238,10 +238,11 @@ class Layer3(Envelope):
                 if not val[i]:
                     log('%s, _from_jval: invalid empty value at %i' % (self._name, val, i))
                     break
-                elif not isinstance(val[i], list) or 'T' not in val[i][0]:
+                ki, vi = list(val[i].items())[0]
+                if not isinstance(vi, list) or 'T' not in vi[0]:
                     # not an optional TV / TLV structure, eventually RestOctets
                     break
-                tj = val[i][0]['T']
+                tj = vi[0]['T']
                 for j, opt in enumerate(opts):
                     # check the list of optional IEs in order
                     # warning: as the JSON value does not hold information in the tag length
@@ -249,7 +250,7 @@ class Layer3(Envelope):
                     _, tv, ie = opt
                     if tj == tv:
                         ie._trans = False
-                        ie._from_jval_wrap(val[i])
+                        ie._from_jval(vi)
                         dec = True
                         del opts[j]
                         i += 1
@@ -259,8 +260,9 @@ class Layer3(Envelope):
                     if self.DEC_BREAK_ON_UNK_IEI:
                         log('%s, unknown IE remaining, not decoded' % self._name)
                         break
-                    elif val[i]:
-                        self._dec_unk_ie_jv(val[i])
+                    else:
+                        self._dec_unk_ie_jv(tj, vi)
+                        dec = True
                     i += 1
             #
             # 3) decode rest octets
@@ -269,17 +271,16 @@ class Layer3(Envelope):
                 self.DEC_BREAK_ON_UNK_IE: dec_brk
                 self._rest._from_jval_wrap(val[i])
         
-        def _dec_unk_ie_jv(self, val):
-            tj = val[0]
-            if tj & 0x80:
+        def _dec_unk_ie_jv(self, tag, jval):
+            if tag & 0x80:
                 # Type1TV IE, could also be a Type2 IE
-                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tj))
-                tv = Type1TV('_T_%X' % (tj>>4), val={'T':tj>>4, 'V':tj&0xf})
+                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
+                tv = Type1TV('_T_%X' % (tag>>4), val={'T':tag>>4, 'V':tag&0xf})
             elif len(val) >= 3:
                 # Type4 TLV IE
                 log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
-                    % (self._name, tj, hexlify(val[2]).decode()))
-                self.append( Type4TLV('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
+                    % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                self.append( Type4TLV('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
 
 
 class Layer3E(Layer3):
@@ -307,23 +308,22 @@ class Layer3E(Layer3):
     
     if _with_json:
         
-        def _dec_unk_ie_jv(self, val):
-            tj = val[0]
-            if tj & 0x80:
+        def _dec_unk_ie_jv(self, tag, jval):
+            if tag & 0x80:
                 # Type1TV IE, could also be a Type2 IE
-                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tj))
-                self.append( Type1TV('_T_%X' % (tj>>4), val={'T':tj>>4, 'V':tj&0xf}) )
+                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
+                self.append( Type1TV('_T_%X' % (tag>>4), val={'T':tag>>4, 'V':tag&0xf}) )
             elif len(val) >= 3:
-                if tj & 0x70:
+                if tag & 0x70:
                     # Type6TLV IE
                     log('%s, _from_jval: unknown Type6TLVE, T: 0x%.2x, V: 0x%s'\
-                        % (self._name, tj, hexlify(val[2]).decode()))
-                    self.append( Type6TLVE('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
+                        % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                    self.append( Type6TLVE('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
                 else:
                     # Type4 TLV IE
                     log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
-                        % (self._name, tj, hexlify(val[2]).decode()))
-                    self.append( Type4TLV('_T_%X' % tj, val={'T':tj, 'L':val[1], 'V':val[2]}) )
+                        % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                    self.append( Type4TLV('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
 
 
 class IE(Envelope):

@@ -290,6 +290,7 @@ bssap_pdu = tuple(map(unhexlify, (
     '000121', # BSSAP Mgmt / BSSMAP Clear compl
     )))
 
+
 def test_nas_mo(nas_pdu=nas_pdu_mo):
     for pdu in nas_pdu:
         m, e = parse_NAS_MO(pdu)
