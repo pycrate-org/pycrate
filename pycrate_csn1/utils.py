@@ -129,9 +129,9 @@ def pythonize_name(name=''):
     pythonize CSN.1 object name
     """
     # remove any trailing special chars
-    name = re.sub('[-/\.\s]{1,}$', '', name)
+    name = re.sub(r'[-/\.\s]{1,}$', '', name)
     # change space(s) and special character(s) to a single underscore
-    name = re.sub('[-/\.\s]{1,}', '_', name)
+    name = re.sub(r'[-/\.\s]{1,}', '_', name)
     # do not let name starts with a numeric char
     if name and name[0] in '0123456789':
         name = '_' + name
@@ -141,12 +141,12 @@ def pythonize_name(name=''):
 # CSN.1 tokens
 #------------------------------------------------------------------------------#
 
-_RE_NAME  = '[0-9a-zA-Z_ \-/\.]{1,}'
-_RE_VAL   = 'val\s{0,}\(\s{0,}(%s)\s{0,}\)' % _RE_NAME
+_RE_NAME  = r'[0-9a-zA-Z_ \-/\.]{1,}'
+_RE_VAL   = r'val\s{0,}\(\s{0,}(%s)\s{0,}\)' % _RE_NAME
 
-SYNT_RE_NAME  = re.compile('<\s{0,}(%s)\s{0,}>' % _RE_NAME)
-SYNT_RE_VALUE = re.compile('([01\s]{1,})|([LH\s]{1,})|(null)')
-SYNT_RE_NOSTR = re.compile('=\s{0,}<\s{0,}no\s{1,}string\s{0,}>')
+SYNT_RE_NAME  = re.compile(r'<\s{0,}(%s)\s{0,}>' % _RE_NAME)
+SYNT_RE_VALUE = re.compile(r'([01\s]{1,})|([LH\s]{1,})|(null)')
+SYNT_RE_NOSTR = re.compile(r'=\s{0,}<\s{0,}no\s{1,}string\s{0,}>')
 
 # {iteration / length} arithmetic expression
 TOK_UINT = 1
