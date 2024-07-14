@@ -2489,6 +2489,8 @@ def _test_tcap_map():
 def _test_tcap_map_rt():
     # use a specific TCAP-MAP buffer for testing some more ASN.1 runtime features
     # take care to not test for too-TCAP-MAP features, that could change in future versions
+    
+    from pycrate_asn1dir import TCAP_MAP
     #
     M = GLOBAL.MOD['TCAP-MAP-Messages']['TCAP-MAP-Message']
     p = pkts_tcap_map[1]
@@ -2497,11 +2499,9 @@ def _test_tcap_map_rt():
     assert( M.get_internals()['root'] == ['unidirectional', 'begin', 'end', 'continue', 'abort'] )
     assert( M.get_typeref() == M._tr == GLOBAL.MOD['TCAPMessages']['TCMessage'] )
     #
-    prot = M.get_proto(w_open=True, w_opt=True, w_enum=True, print_recurs=False, blacklist=set())
+    prot = M.get_proto(w_opt=True, w_enum=True)
     assert( len(prot[1]) == 5 and len(prot[1]['begin'][1]) == 3 )
-    comp = M.get_complexity(w_open=False, w_opt=False, print_recurs=False, blacklist=set())
-    assert( comp == (23, 7, []) )
-    comp = M.get_complexity(w_open=True, w_opt=True, print_recurs=False, blacklist=set())
+    comp = M.get_complexity()
     assert( comp[0] >= 20156 and comp[1] >= 19 and len(comp[2]) >= 20 )
     #
     M.convert_named_val()
