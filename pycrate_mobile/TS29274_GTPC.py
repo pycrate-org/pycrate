@@ -3968,7 +3968,7 @@ class GTPCIE(Envelope):
     # - bytes, assigned to the Buf raw object
     # - dedicated type, assigned to the dedicated object
     def set_val(self, val):
-        if isinstance(val, (tuple, list)) and 1<= len(val) <= 2:
+        if isinstance(val, (tuple, list)) and 1 <= len(val) <= 2:
             self[0].set_val(val[0])
             if len(val) == 2:
                 if isinstance(val[1], bytes_types):
@@ -3980,11 +3980,14 @@ class GTPCIE(Envelope):
                 self._set_data_cls()
         elif isinstance(val, dict):
             if 'Data' in val:
-                if 'Hdr' in val and 'Type' in val['Hdr']:
-                    if val['Hdr']['Type'] != 254:
-                        self._set_data_type(val['Data'], val['Hdr']['Type'])
-                    elif 'TypeExt' in val['Hdr']:
-                        self._set_data_type(val['Data'], val['Hdr']['TypeExt'])
+                if 'Hdr' in val:
+                    if 'Type' in val['Hdr']:
+                        if val['Hdr']['Type'] != 254:
+                            self._set_data_type(val['Data'], val['Hdr']['Type'])
+                        elif 'TypeExt' in val['Hdr']:
+                            self._set_data_type(val['Data'], val['Hdr']['TypeExt'])
+                    # set the entire Hdr
+                    self[0].set_val(val['Hdr'])
                 else:
                     self._set_data_type(val['Data'], None)
             else:
