@@ -623,6 +623,7 @@ class ASN1Obj(Element):
     def get_proto(self, w_opt=False, w_enum=False,
                         print_ext=False,
                         print_unbound=False,
+                        print_strbound=0,
                         print_unalignbound=False,
                         print_recurs=False,
                         blacklist=set()):
@@ -640,6 +641,9 @@ class ASN1Obj(Element):
             print_unbound : bool,
                           if True, print paths that lead to unbounded objects
                           INTEGER, BIT STRING, OCTET STRING, *String, SEQUENCE OF, SET OF
+            print_strbound : int,
+                          if not null, print BIT STRING, OCTET STRING and *String
+                          for which size constraint's upper bound is over the given value
             print_unalignbound (not implemeted): bool,
                           if True, print paths that lead to object with bound
                           unaligned to a power of 2
@@ -676,7 +680,7 @@ class ASN1Obj(Element):
                         Comp._proto_path  = self._proto_path  + [ident]
                         cont[ident] = Comp.get_proto(
                             w_opt, w_enum,
-                            print_ext, print_unbound, print_unalignbound, print_recurs,
+                            print_ext, print_unbound, print_strbound, print_unalignbound, print_recurs,
                             blacklist)
                         del Comp._proto_recur, Comp._proto_path
                 ret = (self.TYPE, cont)
@@ -703,7 +707,7 @@ class ASN1Obj(Element):
                         Comp._proto_path  = self._proto_path  + [ident]
                         cont[ident_ret] = Comp.get_proto(
                             w_opt, w_enum,
-                            print_ext, print_unbound, print_unalignbound, print_recurs,
+                            print_ext, print_unbound, print_strbound, print_unalignbound, print_recurs,
                             blacklist)
                         del Comp._proto_recur, Comp._proto_path
                 ret = (self.TYPE, cont)
@@ -727,15 +731,18 @@ class ASN1Obj(Element):
                     self.TYPE,
                     self._cont.get_proto(
                             w_opt, w_enum,
-                            print_ext, print_unbound, print_unalignbound, print_recurs,
+                            print_ext, print_unbound, print_strbound, print_unalignbound, print_recurs,
                             blacklist)
                     )
                 del Comp._proto_recur, Comp._proto_path
         #
-        elif self.TYPE in {TYPE_BIT_STR, TYPE_OCT_STR} and self._const_cont:
+        elif self.TYPE in {TYPE_BIT_STR, TYPE_OCT_STR}:
             if print_unbound \
             and (self._const_sz is None or self._const_sz.ub is None or self._const_sz.ext is not None):
                 print('[+] unbounded %s, %s: %r' % (self.TYPE, self._name, self._proto_path))
+            if print_strbound \
+            and (self._const_sz and self._const_sz.ub and self._const_sz.ub > print_strbound):
+                print('[+] bounded %s, %s, max sz %i: %r' % (self.TYPE, self._name, self._const_sz.ub, self._proto_path))
             if self._const_cont:
                 Comp = self._const_cont
                 if id(Comp) in self._proto_recur:
@@ -750,19 +757,24 @@ class ASN1Obj(Element):
                         self.TYPE,
                         self._const_cont.get_proto(
                             w_opt, w_enum,
-                            print_ext, print_unbound, print_unalignbound, print_recurs,
+                            print_ext, print_unbound, print_strbound, print_unalignbound, print_recurs,
                             blacklist)
                         )
                     del Comp._proto_recur, Comp._proto_path
+            else:
+                ret = self.TYPE
         #
-        elif self.TYPE == TYPE_ENUM and w_enum:
+        elif self.TYPE == TYPE_ENUM:
             if print_ext and self._ext is not None:
                 print('[+] extensible %s, %s: %r' % (self.TYPE, self._name, self._proto_path))
-            enum = self._root[:]
-            if self._ext is not None:
-                enum.append('...')
-                enum.extend(self._ext)
-            ret = (self.TYPE, enum)
+            if w_enum:
+                enum = self._root[:]
+                if self._ext is not None:
+                    enum.append('...')
+                    enum.extend(self._ext)
+                ret = (self.TYPE, enum)
+            else:
+                ret = self.TYPE
         #
         else:
             assert( self.TYPE in set(TYPES_BASIC + TYPES_EXT) )
@@ -773,6 +785,9 @@ class ASN1Obj(Element):
                 elif self.TYPE in {TYPE_INT, TYPE_REAL} \
                 and (self._const_val is None or self._const_val.ub is None or self._const_val.ext is not None):
                     print('[+] unbounded %s, %s: %r' % (self.TYPE, self._name, self._proto_path))
+            if print_strbound and self.TYPE in set(TYPES_STRING) \
+            and (self._const_sz and self._const_sz.ub and self._const_sz.ub > print_strbound):
+                print('[+] bounded %s, %s, max sz %i: %r' % (self.TYPE, self._name, self._const_sz.ub, self._proto_path))
             ret = self.TYPE
         #
         if root:
