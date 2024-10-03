@@ -85,7 +85,7 @@ def get_construct_info(obj, info, wext=True, space=SPACE_CONSTRUCT):
             if wext and c.TYPE in TYPE_CONSTRUCT and \
             (c._name != 'extensionContainer' or PRINT_PROTO_EXTCONTAINER):
                 info.append( SPACE_MARGIN + space + pp.pformat(
-                    c.get_proto(w_open=wext, w_opt=wext, w_enum=wext, blacklist=bl)[1]
+                    c.get_proto(w_opt=wext, w_enum=wext, blacklist=bl)[1]
                     ).replace('\n', '\n' + SPACE_MARGIN + space) )
         info.append(space + 'mandatory : %s' % ', '.join(obj._root_mand))
     #
@@ -94,7 +94,7 @@ def get_construct_info(obj, info, wext=True, space=SPACE_CONSTRUCT):
         info.append(SPACE_MARGIN + '- %s (%s)' % (c._typeref.called[1], c.TYPE))
         if wext and c.TYPE in TYPE_CONSTRUCT:
             info.append( SPACE_MARGIN + space + pp.pformat(
-                c.get_proto(w_open=wext, w_opt=wext, w_enum=wext, blacklist=bl)[1]
+                c.get_proto(w_opt=wext, w_enum=wext, blacklist=bl)[1]
                 ).replace('\n', '\n' + SPACE_MARGIN + space) )
     #
     elif obj.TYPE == TYPE_CHOICE:
@@ -102,7 +102,7 @@ def get_construct_info(obj, info, wext=True, space=SPACE_CONSTRUCT):
             info.append(SPACE_MARGIN + '- %s (%s)' % (c._name, c.TYPE))
             if wext and c.TYPE in TYPE_CONSTRUCT:
                 info.append( SPACE_MARGIN + space + pp.pformat(
-                    c.get_proto(w_open=wext, w_opt=wext, w_enum=wext, blacklist=bl)[1]
+                    c.get_proto(w_opt=wext, w_enum=wext, blacklist=bl)[1]
                     ).replace('\n', '\n' + SPACE_MARGIN + space) )
     #
     elif obj.TYPE == TYPE_ENUM and wext:
