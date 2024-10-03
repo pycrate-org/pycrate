@@ -1779,7 +1779,7 @@ class ASN1Obj(object):
             val = int(valnum)
         text = text[m.end():].strip()
         # 3) get TAG mode
-        m = re.match('(IMPLICIT|EXPLICIT)(?:\s)', text)
+        m = re.match(r'(IMPLICIT|EXPLICIT)(?:\s)', text)
         if m:
             self._tag = [val, cla, m.group(1)]
             text = text[m.end():].strip()
@@ -3675,7 +3675,7 @@ class ASN1Obj(object):
             else:
                 # 1.6) get potential type or typeref
                 if name[0].isupper() and (not field or \
-                re.match('(UNIQUE|OPTIONAL|DEFAULT)(\s{1,}|$)', field)):
+                re.match(r'(UNIQUE|OPTIONAL|DEFAULT)(\s{1,}|$)', field)):
                     # no type is provided, so this is must be an OPEN TYPE
                     Field._mode = MODE_TYPE
                     Field._type = TYPE_OPEN
@@ -3841,7 +3841,7 @@ class ASN1Obj(object):
         # remove comas, as they are just here for beauty !
         text = text.replace(',', '')
         # replace any kind of space(s) with single white space
-        text = re.subn('\s{1,}', ' ', text)[0]
+        text = re.subn(r'\s{1,}', ' ', text)[0]
         #
         self._syntax = []
         #
@@ -4802,7 +4802,7 @@ class ASN1Obj(object):
         value is the integer 0
         """
         # test NULL ::= NULL
-        m = re.match('(?:^|\s{1})(NULL)', text)
+        m = re.match(r'(?:^|\s{1})(NULL)', text)
         if not m:
             # reference to a local formal parameter identifier 
             # or a global identifier
@@ -4819,7 +4819,7 @@ class ASN1Obj(object):
         value is a boolean (Python bool)
         """
         # test BOOLEAN ::= TRUE (/ FALSE)
-        m = re.match('(?:^|\s{1})(TRUE|FALSE)', text)
+        m = re.match(r'(?:^|\s{1})(TRUE|FALSE)', text)
         if not m:
             # reference to a local formal parameter identifier 
             # or a global identifier
@@ -4949,7 +4949,7 @@ class ASN1Obj(object):
         m = SYNT_RE_BSTRING.match(text)
         if m:
             # bstring
-            bs = re.subn('\s{1,}', '', m.group(1))[0]
+            bs = re.subn(r'\s{1,}', '', m.group(1))[0]
             if not bs:
                 # null length bit string
                 val = [0, 0]
@@ -4961,7 +4961,7 @@ class ASN1Obj(object):
         m = SYNT_RE_HSTRING.match(text)
         if m:
             # hstring
-            hs = re.subn('\s{1,}', '', m.group(1))[0]
+            hs = re.subn(r'\s{1,}', '', m.group(1))[0]
             if not hs:
                 # null length bit string
                 val = [0, 0]
@@ -5059,7 +5059,7 @@ class ASN1Obj(object):
         m = SYNT_RE_BSTRING.match(text)
         if m:
             # bstring
-            bs = re.subn('\s{1,}', '', m.group(1))[0]
+            bs = re.subn(r'\s{1,}', '', m.group(1))[0]
             if not bs:
                 # null length octet string
                 val = b''
@@ -5071,7 +5071,7 @@ class ASN1Obj(object):
             m = SYNT_RE_HSTRING.match(text)
             if m:
                 # hstring
-                hs = re.subn('\s{1,}', '', m.group(1))[0]
+                hs = re.subn(r'\s{1,}', '', m.group(1))[0]
                 if len(hs)%2:
                     val = unhexlify(hs + '0')
                 else:
@@ -6114,7 +6114,7 @@ class ASN1Obj(object):
     
     def _parse_value_or_range(self, text):
         # check for the range marker ".."
-        m = re.search('[^.]\.\.[^.]', text)
+        m = re.search(r'[^.]\.\.[^.]', text)
         if m:
             if self._type == TYPE_INT:
                 ra = ASN1RangeInt()

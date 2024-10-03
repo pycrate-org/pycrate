@@ -296,122 +296,122 @@ SYNT_SYNTAX_BL = (
     'SET', 'TRUE', 'UNION')
 
 # basic ASN.1 tokens
-_RE_INTEGER = '(?:\-{0,1}0{1})|(?:\-{0,1}[1-9]{1}[0-9]{0,})'
-_RE_INTEGER_POS = '(?:\-{0,1}0{1})|(?:[1-9]{1}[0-9]{0,})'
-_RE_IDENT = '[a-z]{1,}[a-zA-Z0-9\-]{0,}'
-_RE_TYPEREF = '[A-Z]{1,}[a-zA-Z0-9\-]{0,}'
-_RE_CLASSREF = '[A-Z]{1,}[A-Z0-9\-]{0,}'
-_RE_WORD = '[a-zA-Z]{1,}[a-zA-Z0-9\-]{0,}'
+_RE_INTEGER     = r'(?:\-{0,1}0{1})|(?:\-{0,1}[1-9]{1}[0-9]{0,})'
+_RE_INTEGER_POS = r'(?:\-{0,1}0{1})|(?:[1-9]{1}[0-9]{0,})'
+_RE_IDENT       = r'[a-z]{1,}[a-zA-Z0-9\-]{0,}'
+_RE_TYPEREF     = r'[A-Z]{1,}[a-zA-Z0-9\-]{0,}'
+_RE_CLASSREF    = r'[A-Z]{1,}[A-Z0-9\-]{0,}'
+_RE_WORD        = r'[a-zA-Z]{1,}[a-zA-Z0-9\-]{0,}'
 
 # ASN.1 names
 SYNT_RE_WORD = re.compile(
-    '(?:^|\s{1})(%s)' % _RE_WORD)
+    r'(?:^|\s{1})(%s)' % _RE_WORD)
 SYNT_RE_IDENT = re.compile(
-    '(?:^|\s{1})(%s)' % _RE_IDENT)
+    r'(?:^|\s{1})(%s)' % _RE_IDENT)
 SYNT_RE_TYPE = re.compile(
-    '(?:^|\s{1})(%s)(?:$|[^0-9^a-z^A-Z^\-]{1,})' % _RE_NATIVE_TYPES)
+    r'(?:^|\s{1})(%s)(?:$|[^0-9^a-z^A-Z^\-]{1,})' % _RE_NATIVE_TYPES)
 SYNT_RE_TYPEREF = re.compile(
-    '(?:^|\s{1})(%s)' % _RE_TYPEREF)
+    r'(?:^|\s{1})(%s)' % _RE_TYPEREF)
 SYNT_RE_CLASSREF = re.compile(
-    '(?:^|\s{1})(%s)' % _RE_CLASSREF)
+    r'(?:^|\s{1})(%s)' % _RE_CLASSREF)
 SYNT_RE_CLASSFIELDIDENT = re.compile(
-    '(?:^|\s{1})\&([a-zA-Z0-9\-]{1,})')
+    r'(?:^|\s{1})\&([a-zA-Z0-9\-]{1,})')
 SYNT_RE_CLASSFIELDREF = re.compile(
-    '(?:^|\s{1})((%s)\s{0,1}\.\&([a-zA-Z0-9\-]{1,}))' % _RE_CLASSREF)
+    r'(?:^|\s{1})((%s)\s{0,1}\.\&([a-zA-Z0-9\-]{1,}))' % _RE_CLASSREF)
 SYNT_RE_CLASSFIELDREFINT = re.compile(
-    '(?:^|\s{1})\&(%s)' % _RE_TYPEREF)
+    r'(?:^|\s{1})\&(%s)' % _RE_TYPEREF)
 SYNT_RE_CLASSVALREF = re.compile(
-    '(?:^|\s{1})((%s)\s{0,1}\.\&([a-zA-Z0-9\-]{1,}))' % _RE_IDENT)
+    r'(?:^|\s{1})((%s)\s{0,1}\.\&([a-zA-Z0-9\-]{1,}))' % _RE_IDENT)
 SYNT_RE_CLASSINSTFIELDREF = re.compile(
-    '(?:^|\s{1})(%s)(?:\s{0,1}\.\&(%s)){0,}' % (_RE_WORD, _RE_WORD))
+    r'(?:^|\s{1})(%s)(?:\s{0,1}\.\&(%s)){0,}' % (_RE_WORD, _RE_WORD))
 SYNT_RE_IDENTEXT = re.compile(
-    '(?:^|\s{1})((%s)\.(%s))' % (_RE_TYPEREF, _RE_IDENT))
+    r'(?:^|\s{1})((%s)\.(%s))' % (_RE_TYPEREF, _RE_IDENT))
 # WNG: SYNT_RE_TYPEREF matches also SYNT_RE_CLASSREF
 
 # ASN.1 expressions
 SYNT_RE_MODULEDEF = re.compile(
-    '\s{1,}(DEFINITIONS)\s{1,}')
+    r'\s{1,}(DEFINITIONS)\s{1,}')
 SYNT_RE_MODULEREF = re.compile(
-    '(?:^|\s{1})(%s){1}\s{0,}(\{[\s\-a-zA-Z0-9\(\)]{1,}\}){0,1}' % _RE_TYPEREF)
+    r'(?:^|\s{1})(%s){1}\s{0,}(\{[\s\-a-zA-Z0-9\(\)]{1,}\}){0,1}' % _RE_TYPEREF)
 
 SYNT_RE_MODULEFROM = re.compile(
-    '(?:FROM\s{1,})(%s)\s*' % _RE_TYPEREF)
+    r'(?:FROM\s{1,})(%s)\s*' % _RE_TYPEREF)
 SYNT_RE_MODULEFROM_SYM = re.compile(
-    '(%s)(?:\s*\{\s*\}){0,1}(?:\s*,|\s{1,}FROM)' % _RE_WORD)
+    r'(%s)(?:\s*\{\s*\}){0,1}(?:\s*,|\s{1,}FROM)' % _RE_WORD)
 SYNT_RE_MODULEFROM_OID = re.compile(
-    '(%s)\s*|(\{[a-zA-Z0-9\(\)\-\s]{4,}\})\s*' % _RE_IDENT)
+    r'(%s)\s*|(\{[a-zA-Z0-9\(\)\-\s]{4,}\})\s*' % _RE_IDENT)
 SYNT_RE_MODULEFROM_WIT = re.compile(
-    'WITH\s{1,}(SUCCESSORS|DESCENDANTS)\s*')
+    r'WITH\s{1,}(SUCCESSORS|DESCENDANTS)\s*')
 
 SYNT_RE_MODULEEXP = re.compile(
-    '(?:^|\s{1})EXPORTS((.|\n)*?);')
+    r'(?:^|\s{1})EXPORTS((.|\n)*?);')
 SYNT_RE_MODULEIMP = re.compile(
-    '(?:^|\s{1})IMPORTS((.|\n)*?);')
+    r'(?:^|\s{1})IMPORTS((.|\n)*?);')
 SYNT_RE_MODULEOPT = re.compile(
-    '(?:^|\s{1})(EXPLICIT\s{1,}TAGS|IMPLICIT\s{1,}TAGS|AUTOMATIC\s{1,}TAGS)')
+    r'(?:^|\s{1})(EXPLICIT\s{1,}TAGS|IMPLICIT\s{1,}TAGS|AUTOMATIC\s{1,}TAGS)')
 SYNT_RE_MODULEEXT = re.compile(
-    '(?:^|\s{1})(EXTENSIBILITY\s{1,}IMPLIED)')
+    r'(?:^|\s{1})(EXTENSIBILITY\s{1,}IMPLIED)')
 SYNT_RE_TAG = re.compile(
-    '\[\s{0,}(UNIVERSAL|APPLICATION|PRIVATE){0,1}\s{0,}(?:(%s)|(%s))\s{0,}\]' \
+    r'\[\s{0,}(UNIVERSAL|APPLICATION|PRIVATE){0,1}\s{0,}(?:(%s)|(%s))\s{0,}\]' \
     % (_RE_INTEGER_POS, _RE_IDENT))
 SYNT_RE_PARAM = re.compile(
-    '(%s)(?:\s{0,}\:\s{0,}(%s|%s)){0,1}' \
+    r'(%s)(?:\s{0,}\:\s{0,}(%s|%s)){0,1}' \
     % (_RE_TYPEREF, _RE_IDENT, _RE_TYPEREF))
 SYNT_RE_SIZEOF = re.compile(
-    '(\({0,1}\s{0,}SIZE)|(OF)')
+    r'(\({0,1}\s{0,}SIZE)|(OF)')
 SYNT_RE_INT_ID = re.compile(
-    '(%s)\s{0,}\(\s{0,}((%s)|(%s))\s{0,}\)' \
+    r'(%s)\s{0,}\(\s{0,}((%s)|(%s))\s{0,}\)' \
     % (_RE_IDENT, _RE_INTEGER, _RE_IDENT))
 SYNT_RE_ENUM = re.compile(
-    '(%s|\.{3})\s{0,}(?:\(\s{0,}((%s)|(%s))\s{0,}\)){0,1}' \
+    r'(%s|\.{3})\s{0,}(?:\(\s{0,}((%s)|(%s))\s{0,}\)){0,1}' \
     % (_RE_IDENT, _RE_INTEGER, _RE_IDENT))
 SYNT_RE_OID_COMP = re.compile(
-    '(%s)|((%s)\s{0,}(?:\((%s)\)){0,1})' \
+    r'(%s)|((%s)\s{0,}(?:\((%s)\)){0,1})' \
     % (_RE_INTEGER_POS, _RE_IDENT, _RE_INTEGER_POS))
 SYNT_RE_CLASSSYNTAX = re.compile(
-    '(?:^|\s{1})((\[)|(\])|([A-Z\-]{1,})|(\&([a-zA-Z0-9\-]{1,})))')
+    r'(?:^|\s{1})((\[)|(\])|([A-Z\-]{1,})|(\&([a-zA-Z0-9\-]{1,})))')
 SYNT_RE_CHOICEALT = re.compile(
-    '(?:^|\s{1})(?:(%s)(?:\s{0,}<\s{0,})){1,}(%s)' % (_RE_IDENT, _RE_TYPEREF))
+    r'(?:^|\s{1})(?:(%s)(?:\s{0,}<\s{0,})){1,}(%s)' % (_RE_IDENT, _RE_TYPEREF))
 SYNT_RE_INTVAL = re.compile(
-    '(?:^|\s{1})(\-{0,1}[0-9]{1,})')
+    r'(?:^|\s{1})(\-{0,1}[0-9]{1,})')
 SYNT_RE_BSTRING = re.compile(
-    '(?:^|\s{1})\'([\s01]{0,})\'B')
+    r'(?:^|\s{1})\'([\s01]{0,})\'B')
 SYNT_RE_HSTRING = re.compile(
-    '(?:^|\s{1})\'([\s0-9A-F]{0,})\'H')
+    r'(?:^|\s{1})\'([\s0-9A-F]{0,})\'H')
 SYNT_RE_REALNUM = re.compile(
-    '(?:^|\s{1})' \
-    '(\-{0,1}[0-9]{1,}){1}' \
-    '(?:\.([0-9]{0,})){0,1}' \
-    '(?:[eE](\-{0,1}[0-9]{1,})){0,1}')
+    r'(?:^|\s{1})' \
+    r'(\-{0,1}[0-9]{1,}){1}' \
+    r'(?:\.([0-9]{0,})){0,1}' \
+    r'(?:[eE](\-{0,1}[0-9]{1,})){0,1}')
 SYNT_RE_REALSEQ = re.compile(
-    '(?:^|\s{1})' \
-    '(?:\{\s{0,}mantissa\s{1,}(\-{0,1}[0-9]{1,})\s{0,},' \
-    '\s{0,}base\s{1,}(2|10)\s{0,},' \
-    '\s{0,}exponent\s{1,}(\-{0,1}[0-9]{1,})\s{0,}\})')
+    r'(?:^|\s{1})' \
+    r'(?:\{\s{0,}mantissa\s{1,}(\-{0,1}[0-9]{1,})\s{0,},' \
+    r'\s{0,}base\s{1,}(2|10)\s{0,},' \
+    r'\s{0,}exponent\s{1,}(\-{0,1}[0-9]{1,})\s{0,}\})')
 SYNT_RE_REALSPEC = re.compile(
-    '(?:^|\s{1})((?:PLUS\-INFINITY)|(?:MINUS\-INFINITY)|(?:NOT-A-NUMBER))')
+    r'(?:^|\s{1})((?:PLUS\-INFINITY)|(?:MINUS\-INFINITY)|(?:NOT-A-NUMBER))')
 SYNT_RE_UNIVSTR = re.compile(
-    '(?:^|\s{1})(?:\{\s{0,}'\
-    '([0-9]{1,3})\s{0,},\s{0,}([0-9]{1,3})\s{0,},\s{0,}'\
-    '([0-9]{1,3})\s{0,},\s{0,}([0-9]{1,3})\s{0,}\})')
+    r'(?:^|\s{1})(?:\{\s{0,}'\
+    r'([0-9]{1,3})\s{0,},\s{0,}([0-9]{1,3})\s{0,},\s{0,}'\
+    r'([0-9]{1,3})\s{0,},\s{0,}([0-9]{1,3})\s{0,}\})')
 SYNT_RE_TIMEUTC = re.compile(
-    '(?:^|\s{1})' \
-    '"([0-9]{2})([0-9]{2})([0-9]{2})' \
-    '([0-9]{2})([0-9]{2})([0-9]{2}){0,1}' \
-    '((?:Z)|(?:[+-]{1}[0-9]{4}))"')
+    r'(?:^|\s{1})' \
+    r'"([0-9]{2})([0-9]{2})([0-9]{2})' \
+    r'([0-9]{2})([0-9]{2})([0-9]{2}){0,1}' \
+    r'((?:Z)|(?:[+-]{1}[0-9]{4}))"')
 SYNT_RE_TIMEGENE = re.compile(
-    '(?:^|\s{1})' \
-    '"([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})' \
-    '(?:([0-9]{2})([0-9]{2}){0,1}){0,1}' \
-    '(?:(?:\.|,)([0-9]{1,})){0,1}' \
-    '((?:Z)|(?:[+-](?:[0-9]{2}){0,2})){0,1}"')
+    r'(?:^|\s{1})' \
+    r'"([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})' \
+    r'(?:([0-9]{2})([0-9]{2}){0,1}){0,1}' \
+    r'(?:(?:\.|,)([0-9]{1,})){0,1}' \
+    r'((?:Z)|(?:[+-](?:[0-9]{2}){0,2})){0,1}"')
 SYNT_RE_CONST_DISPATCH = re.compile(
-    '(?:^|\s{1})(INCLUDES)|(SIZE)|(FROM)|(WITH COMPONENTS)|(WITH COMPONENT)|' \
-    '(PATTERN)|(SETTINGS)|(CONTAINING)|(ENCODED BY)|(CONSTRAINED BY)')
+    r'(?:^|\s{1})(INCLUDES)|(SIZE)|(FROM)|(WITH COMPONENTS)|(WITH COMPONENT)|' \
+    r'(PATTERN)|(SETTINGS)|(CONTAINING)|(ENCODED BY)|(CONSTRAINED BY)')
 SYNT_RE_CONST_EXT = re.compile(
-    ',\s{0,}\.\.\.')
+    r',\s{0,}\.\.\.')
 SYNT_RE_GROUPVERS = re.compile(
-    '(?:^|\s{1})[0-9]{1,}\s{0,1}\:')
+    r'(?:^|\s{1})[0-9]{1,}\s{0,1}\:')
 
 def match_typeref(text):
     m = SYNT_RE_TYPEREF.match(text)
@@ -720,7 +720,7 @@ def extract_charstr(text=''):
                 # no end-of-charstr found
                 return text, None
             else:
-                return '', re.subn('\s{0,}\n\s{0,}', '', text[1:-1])[0]
+                return '', re.subn(r'\s{0,}\n\s{0,}', '', text[1:-1])[0]
         
         # 2) finding a double-quote
         if text[cur:1+cur] == '"':
@@ -737,7 +737,7 @@ def extract_charstr(text=''):
                     else:
                         # end of charstr
                         return text[1+cur:].strip(), \
-                               re.subn('\s{0,}\n\s{0,}', '', text[1:cur])[0]
+                               re.subn(r'\s{0,}\n\s{0,}', '', text[1:cur])[0]
             else:
                 # 2.2) escape cursor not set
                 if text[1+cur:2+cur] == '"':
@@ -746,7 +746,7 @@ def extract_charstr(text=''):
                 else:
                     # end of charstr
                     return text[1+cur:].strip(), \
-                           re.subn('\s{0,}\n\s{0,}', '', text[1:cur])[0]
+                           re.subn(r'\s{0,}\n\s{0,}', '', text[1:cur])[0]
 
 
 def extract_multi(text=''):

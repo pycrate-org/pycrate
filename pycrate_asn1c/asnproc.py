@@ -350,7 +350,7 @@ def _compile_text_pass(text, with_order, **kwargs):
         # 3) scan text for BEGIN - END block
         # WNG: old school ASN.1 MACRO (with BEGIN - END block within ASN.1 module)
         # are not supported
-        m = re.search('(^|\s)BEGIN(\s)((.|\n)*?)(\s)END($|\s)', text)
+        m = re.search(r'(^|\s)BEGIN(\s)((.|\n)*?)(\s)END($|\s)', text)
         if not m:
             raise(ASN1ProcTextErr('[proc]{0} module {1}: BEGIN - END scheme not found'\
                   .format(fn, name)))
@@ -610,7 +610,7 @@ def module_get_name(text, fn):
     name, oidstr = name_all[-1]
     # clean-up the oid
     if oidstr:
-        oidstr = re.sub('\s{1,}', ' ', oidstr[1:-1]).strip()
+        oidstr = re.sub(r'\s{1,}', ' ', oidstr[1:-1]).strip()
     else:
         oidstr = None
     return name, oidstr
@@ -641,7 +641,7 @@ def module_get_export(text=''):
         # remove CR
         exp = m.group(1).replace('\n', ',').strip()
         # remove duplicated spaces / comas
-        exp = re.sub('[ ]{0,},{1,}[ ]{0,},{1,}[ ]{0,}', ', ', exp)
+        exp = re.sub(r'[ ]{0,},{1,}[ ]{0,},{1,}[ ]{0,}', ', ', exp)
         # split, strip, and keep only strings
         exp = [s for s in map(strip, exp.split(',')) if s != '']
         return exp, m.end()
@@ -655,7 +655,7 @@ def module_get_import(text=''):
     if m:
         l = []
         imp = m.group(1).strip()
-        if not re.match('\s{0,}', imp):
+        if not re.match(r'\s{0,}', imp):
             # in case of "IMPORTS ;"
             return None, m.end()
         # take care of FROM directives, that can reference the complete module name
@@ -665,7 +665,7 @@ def module_get_import(text=''):
             cur_end, import_prm = extract_from_import(imp[fro.start():])
             # clean-up the OID
             if import_prm['oid']:
-                oidstr = re.sub('\s{1,}', ' ', import_prm['oid']).strip()
+                oidstr = re.sub(r'\s{1,}', ' ', import_prm['oid']).strip()
                 OidDummy = OID()
                 _path_stack(['val'])
                 try:
@@ -688,7 +688,7 @@ def module_get_import(text=''):
             # get all ASN.1 objects reference before FROM
             obj = imp[:fro.start()].strip()
             # clean them up and split them to a list
-            obj = map(strip, re.sub('\s{1,}', ' ', obj).split(','))
+            obj = map(strip, re.sub(r'\s{1,}', ' ', obj).split(','))
             # remove {} at the end of parameterized objects
             obj = [o[:-2].strip() if o[-2:] == '{}' else o for o in obj] 
             # fill-in the import list
@@ -739,7 +739,7 @@ def module_extract_assign(lines):
                 Obj._text_decl = declared
             else:
                 # we are on a 2nd new assignments, just returning the 1st object
-                Obj._text_def = re.sub('\s{1,}', ' ', ' '.join(content).strip())
+                Obj._text_def = re.sub(r'\s{1,}', ' ', ' '.join(content).strip())
                 del lines[:line_num]
                 asnobj_getname(Obj)
                 asnobj_getparnum(Obj)
@@ -752,7 +752,7 @@ def module_extract_assign(lines):
     #
     # end of lines
     if Obj is not None:
-        Obj._text_def = re.sub('\s{1,}', ' ', ' '.join(content).strip())
+        Obj._text_def = re.sub(r'\s{1,}', ' ', ' '.join(content).strip())
     #
     del lines[:]
     asnobj_getname(Obj)
@@ -811,7 +811,7 @@ def asnobj_gettype(Obj):
         if not tag:
             raise(ASN1ProcTextErr('{0}: invalid tagging, {1}'\
                   .format(self._name, Obj._text_def)))
-        m = re.match('(IMPLICIT|EXPLICIT)(?:\s)', text)
+        m = re.match(r'(IMPLICIT|EXPLICIT)(?:\s)', text)
         if m:
             text = text[m.end():].strip()
     # 2) try to get native type
