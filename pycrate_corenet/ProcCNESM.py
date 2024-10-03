@@ -131,7 +131,7 @@ class ESMSigProc(NASSigProc):
     
     def output(self):
         self._log('ERR', 'output() not implemented')
-        return None
+        return []
     
     def process(self, pdu):
         if self.TRACK_PDU:
@@ -140,12 +140,12 @@ class ESMSigProc(NASSigProc):
         self.decode_msg(pdu, self.UEInfo)
         #
         self._log('ERR', 'process() not implemented')
-        return None
+        return []
     
     def postprocess(self, Proc=None):
         self._log('ERR', 'postprocess() not implemented')
         self.rm_from_esm_stack()
-        return None
+        return []
     
     def abort(self):
         # abort this procedure, and all procedures started within this one

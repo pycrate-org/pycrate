@@ -31,8 +31,8 @@
 HOWTO:
 
 1) in order to use AuC, the following parameters and files need to be configured:
--> files AuC.db need to be edited with IMSI and authentication parameters from your (U)SIM cards
--> AuC.AUC_DB_PATH can be change if the AuC.db file is put elsewhere
+-> file AuC.db needs to be edited with IMSI and authentication parameters from your (U)SIM cards
+-> AuC.AUC_DB_PATH can be changed if the AuC.db file is put elsewhere, it refers to the directory in which AuC.db lies
 -> AuC.OP needs to be changed according to your Milenage customization
 
 2) To use the AuC (in case your IMSI is '001010000000001'):
@@ -160,7 +160,7 @@ class AuC:
             db_fd = open('%sAuC.db' % self.AUC_DB_PATH, 'r')
             # parse it into a dict object with IMSI as key
             for line in db_fd.readlines():
-                if line[0] != '#' and line.count(';') >= 3:
+                if line and line[0] != '#' and line.count(';') >= 3:
                     fields = line[:-1].split(';')
                     IMSI   = str( fields[0] )
                     K      = unhexlify( fields[1].encode('ascii') )
@@ -320,14 +320,10 @@ class AuC:
             K, ALG, SQN = K_ALG_SQN_OP
             OP = None
         #
-        if SQN == -1:
-            # Milenage / TUAK not supported
-            self._log('WNG', '[make_3g_vector] IMSI %s does not support Milenage / TUAK' % IMSI)
-            return None
-        #
         # increment SQN counter in the db
-        K_ALG_SQN_OP[2] += 1
-        self._save_required = True
+        if SQN >= 0:
+            K_ALG_SQN_OP[2] += 1
+            self._save_required = True
         #
         # pack SQN from integer to a 48-bit buffer
         SQNb = pack('>Q', SQN)[2:]

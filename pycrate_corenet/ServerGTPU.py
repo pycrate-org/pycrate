@@ -221,7 +221,7 @@ class ARPd(object):
                 self.sk_arp.close()
                 self.sk_ip.close()
             except Exception as err:
-                self._log('ERR', 'socket error: {0}'.format(err))
+                self._log('ERR', 'socket error: %r' % err)
     
     def listen(self):
         # select() until we receive arp or ip packet
@@ -232,7 +232,7 @@ class ARPd(object):
                 try:
                     buf = sk.recvfrom(self.BUFLEN)[0]
                 except Exception as err:
-                    self._log('ERR', 'external network error (recvfrom): %s' % err)
+                    self._log('ERR', 'external network error (recvfrom): %r' % err)
                     buf = b''
                 # dipatch ARP request / IP response
                 if sk != self.sk_arp:
@@ -266,7 +266,7 @@ class ARPd(object):
                                   b'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0')),    
                         (self.GGSN_ETH_IF, 0x0806))
                 except Exception as err:
-                    self._log('ERR', 'external network error (sendto) on ARP response: %s' % err)
+                    self._log('ERR', 'external network error (sendto) on ARP response: %r' % err)
                 else:
                     self._log('DBG', 'ARP response sent for IP: %s' % ipreq)
         # 2) check if it responses something useful for us
@@ -312,7 +312,7 @@ class ARPd(object):
                               b'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0')),
                     (self.GGSN_ETH_IF, 0x0806))
             except Exception as err:
-                self._log('ERR', 'external network error (sendto) on ARP request: %s' % err)
+                self._log('ERR', 'external network error (sendto) on ARP request: %r' % err)
             else:
                 self._log('DBG', 'ARP request sent for local IP: %s' % ip)
             # wait for the answer
@@ -521,7 +521,7 @@ class GTPUd(object):
                 for sk in self.sk_int:
                     sk.close()
             except Exception as err:
-                self._log('ERR', 'socket error: %s' % err)
+                self._log('ERR', 'socket error: %r' % err)
     
     def listen(self):
         # select() until we receive something on 1 side
@@ -537,7 +537,7 @@ class GTPUd(object):
                     #except timeout:
                     #    pass
                     except Exception as err:
-                        self._log('ERR', 'sk_ext_v4 IF error (recvfrom): %s' % err)
+                        self._log('ERR', 'sk_ext_v4 IF error (recvfrom): %r' % err)
                     else:
                         #self._log('DBG', 'sk_ext_v4, recvfrom()')
                         if len(buf) >= 34 and buf[:6] == self.EXT_MAC_BUF \
@@ -554,7 +554,7 @@ class GTPUd(object):
                     #except timeout:
                     #    pass
                     except Exception as err:
-                        self._log('ERR', 'sk_ext_v6 IF error (recvfrom): %s' % err)
+                        self._log('ERR', 'sk_ext_v6 IF error (recvfrom): %r' % err)
                     else:
                         #self._log('DBG', 'sk_ext_v6, recvfrom()')
                         if len(buf) >= 54 and buf[:6] == self.EXT_MAC_BUF \
@@ -572,7 +572,7 @@ class GTPUd(object):
                     #except timeout:
                     #    pass
                     except Exception as err:
-                        self._log('ERR', 'sk_int IF error (recv): %s' % err)
+                        self._log('ERR', 'sk_int IF error (recv): %r' % err)
                     else:
                         self.transfer_to_ext(buf)
                         #threadit(self.transfer_to_ext, buf)
@@ -633,7 +633,7 @@ class GTPUd(object):
                         else:
                             mod.handle_ul(ipbuf)
                 except Exception as err:
-                    self._log('ERR', 'MOD error: %s' % err)
+                    self._log('ERR', 'MOD error: %r' % err)
             # resolve the dest MAC addr
             macdst = self.resolve_mac(ipdst)
             # apply blackholing
@@ -675,7 +675,7 @@ class GTPUd(object):
                         else:
                             mod.handle_ul(ipbuf)
                 except Exception as err:
-                    self._log('ERR', 'MOD error: %s' % err)
+                    self._log('ERR', 'MOD error: %r' % err)
             # resolve the dest MAC addr
             macdst = self.resolve_mac(ipdst)
             # apply blackholing
@@ -700,7 +700,7 @@ class GTPUd(object):
                         else:
                             return
             else:
-                self._transfer_v6_to_ext_v6(macdst, ipbuf)
+                self._transfer_v6_to_ext(macdst, ipbuf)
     
     def _transfer_v4_to_ext(self, macdst, ipbuf):
         # forward to the external PF_PACKET socket, over the Gi interface
@@ -708,7 +708,7 @@ class GTPUd(object):
             self.sk_ext_v4.sendto(b''.join((macdst, self.EXT_MAC_BUF, b'\x08\0', ipbuf)),
                                   (self.EXT_IF, 0x0800))
         except Exception as err:
-            self._log('ERR', 'sk_ext_v4 IF error (sendto): %s' % err)
+            self._log('ERR', 'sk_ext_v4 IF error (sendto): %r' % err)
     
     def _transfer_v6_to_ext(self, macdst, ipbuf):
         # forward to the external PF_PACKET socket, over the Gi interface
@@ -716,7 +716,7 @@ class GTPUd(object):
             self.sk_ext_v6.sendto(b''.join((macdst, self.EXT_MAC_BUF, b'\x86\xdd', ipbuf)),
                                   (self.EXT_IF, 0x86dd))
         except Exception as err:
-            self._log('ERR', 'sk_ext_v6 IF error (sendto): %s' % err)
+            self._log('ERR', 'sk_ext_v6 IF error (sendto): %r' % err)
     
     def _analyze(self, ipvers, ipsrc, ipbuf):
         #
@@ -771,7 +771,7 @@ class GTPUd(object):
                     else:
                         mod.handle_dl(buf)
             except Exception as err:
-                self._log('ERR', 'MOD error: %s' % err)        
+                self._log('ERR', 'MOD error: %r' % err)        
         #
         teid_ul = self._mobiles_addr[buf[16:20]]
         ran_info, teid_dl = self._mobiles_teid[teid_ul][:2]
@@ -782,7 +782,7 @@ class GTPUd(object):
             try:
                 ret = ran_info[2].sendto(gtphdr + buf, (ran_info[1], self.GTP_PORT))
             except Exception as err:
-                self._log('ERR', 'sk_int IF error (sendto): %s' % err)
+                self._log('ERR', 'sk_int IF error (sendto): %r' % err)
         else:
             self._log('WNG', 'teid_ul 0x%.8x, downlink GTP parameters not set' % teid_ul)
     
@@ -799,7 +799,7 @@ class GTPUd(object):
                     else:
                         mod.handle_dl(buf)
             except Exception as err:
-                self._log('ERR', 'MOD error: %s' % err)        
+                self._log('ERR', 'MOD error: %r' % err)        
         #
         teid_ul = self._mobiles_addr[buf[32:40]]
         ran_info, teid_dl = self._mobiles_teid[teid_ul][:2]
@@ -810,7 +810,7 @@ class GTPUd(object):
             try:
                 ret = ran_info[2].sendto(gtphdr + buf, (ran_info[1], self.GTP_PORT))
             except Exception as err:
-                self._log('ERR', 'sk_int IF error (sendto): %s' % err)
+                self._log('ERR', 'sk_int IF error (sendto): %r' % err)
         else:
             self._log('WNG', 'teid_ul 0x%.8x, downlink GTP parameters not set' % teid_ul)
     
@@ -933,6 +933,30 @@ class GTPUd(object):
                     ipaddr = 'IPv6 ' + ipv6addr
                 self._log('DBG', 'deleting GTP-U context for UE with addr %s, teid_ul 0x%.8x'\
                           % (ipaddr, teid_ul))
+    
+    #--------------------------------------------------------------------------#
+    # DL packet injection
+    #--------------------------------------------------------------------------#
+    
+    def inj_mobile(self, ip4addr, ipbuf):
+        ip4b = inet_aton(ip4addr)
+        try:
+            teid_ul = self._mobiles_addr[ip4b]
+        except KeyError:
+            self._log('INF', 'unknown IP address: %s' % ip4addr)
+            return
+        ran_info, teid_dl = self._mobiles_teid[teid_ul][:2]
+        #
+        # prepend GTP header and forward to the RAN IP
+        if ran_info and teid_dl is not None:
+            gtphdr = pack('>BBHI', 0x30, 0xff, len(ipbuf), teid_dl)
+            try:
+                ret = ran_info[2].sendto(gtphdr + ipbuf, (ran_info[1], self.GTP_PORT))
+            except Exception as err:
+                self._log('ERR', 'sk_int IF error (sendto): %r' % err)
+        else:
+            self._log('INF', 'teid_ul 0x%.8x, downlink GTP parameters not set' % teid_ul)
+
 
 
 class _DPI(object):
@@ -944,7 +968,7 @@ class _DPI(object):
         return unpack('!H', pay[2:4])[0]
     
     @staticmethod
-    def __get_dn_req(req):
+    def get_dn_req(req):
         """return the DNS name requested
         """
         # remove fixed DNS header and Type / Class
@@ -960,7 +984,7 @@ class _DPI(object):
 class DPIv4(_DPI):
     
     @staticmethod
-    def __get_ip_info(ipbuf):
+    def get_ip_info(ipbuf):
         """return a 3-tuple: ipdst (asc), protocol (uint), payload (bytes)
         """
         # returns a 3-tuple: dst IP, protocol, payload buffer
@@ -977,7 +1001,7 @@ class DPIv4(_DPI):
 class DPIv6(_DPI):
     
     @staticmethod
-    def __get_ip_info(ipbuf):
+    def get_ip_info(ipbuf):
         """return a 3-tuple: ipdst (asc), protocol (uint), payload (bytes)
         """
         # returns a 3-tuple: dst IP, protocol, payload buffer

@@ -90,7 +90,7 @@ class UEEMMd(SigStack):
     # Unit: 0: 2s, 1: 1mn, 2: 6mn, 7: deactivated
     _T3412             = {'Unit': 2, 'Value': 2} # 12mn
     #_T3412             = {'Unit': 7, 'Value': 0} # deactivated
-    # 
+    #
     # Reattach attempt after a failure timer: dict {'Unit': uint3, 'Value': uint5}
     # Unit: 0: 2s, 1: 1mn, 2: 6mn, 7: deactivated
     _T3402              = {'Unit': 1, 'Value': 2} # 2mn
@@ -379,7 +379,7 @@ class UEEMMd(SigStack):
     def require_auth(self, Proc, ksi=None):
         # ksi is a 2-tuple (TSC 0..1, Value 0..7)
         # check if an EMMAuthentication procedure is required
-        if self.S1.SECNAS_DISABLED or self.AUTH_DISABLED:
+        if self.AUTH_DISABLED:
             return False
         elif ksi is None or ksi[1] == 7:
             self.S1.SEC['KSI'] = None
@@ -426,7 +426,7 @@ class UEEMMd(SigStack):
     
     def require_smc(self, Proc):
         # check if an EMMSecurityModeControl procedure is required
-        if self.S1.SECNAS_DISABLED or self.SMC_DISABLED:
+        if self.SMC_DISABLED:
             return False
         #
         elif ProcAbbrLUT[Proc.Name] in self.SMC_DISABLED_PROC:
@@ -602,7 +602,7 @@ class UEEMMd(SigStack):
                 if UESecCap._content[8+eia].get_val():
                     return eia
             self._log('INF', 'no matching EIA identifier, using EIA%i' % self.SMC_EIA_DEF)
-            return self.SMC_EEA_DEF
+            return self.SMC_EIA_DEF
     
     #--------------------------------------------------------------------------#
     # network-initiated method (fg task, to be used from the interpreter)
@@ -668,14 +668,14 @@ class UEEMMd(SigStack):
         """
         return self.run_proc(EMMIdentification, IDType=idtype)
     
-    def detach(self, type=1, cause=None):
+    def detach(self, typ=1, cause=None):
         """send an EMM Detach with type and cause (optional) and wait for the
         response or timeout
         """
         if cause is not None:
-            return self.run_proc(EMMDetachCN, EPSDetachTypeMT={'Type': type}, EMMCause=cause)
+            return self.run_proc(EMMDetachCN, EPSDetachType={'Type': typ}, EMMCause=cause)
         else:
-            return self.run_proc(EMMDetachCN, EPSDetachTypeMT={'Type': type})
+            return self.run_proc(EMMDetachCN, EPSDetachType={'Type': typ})
     
     def inform(self, **info):
         """send an EMM information with given info
@@ -993,8 +993,8 @@ class UEESMd(SigStack):
             # 2.2) check the protocol config options
             if trans['ProtConfig']:
                 IEs['ProtConfig'], pdnaddrreq = self.process_protconfig(pdncfg, trans['ProtConfig'])
-                if not pdnaddrreq:
-                    IEs['PDNAddr'] = b''
+                #if not pdnaddrreq:
+                #    IEs['PDNAddr'] = b''
             #
             if 'NBIFOMContainer' in trans:
                 self._log('WNG', 'NBIFOMContainer IE unsupported')
@@ -1124,9 +1124,9 @@ class UES1d(SigStack):
     #--------------------------------------------------------------------------#
     # global security policy
     #--------------------------------------------------------------------------#
-    # this will systematically bypass all auth and smc procedures,
-    # NAS MAC and UL count verification in the uplink
-    # and setting of the EMM security header (and encryption) in the downlink
+    # this will systematically bypass the NAS security layer:
+    # - NAS MAC and UL count verification in the uplink
+    # - setting of the EMM security header (and encryption) in the downlink
     SECNAS_DISABLED = False
     #
     # finer grained NAS security checks:
@@ -1140,6 +1140,11 @@ class UES1d(SigStack):
     # this will disable the setting of the EMM security header (and encryption)
     # in the downlink for given NAS message (by name)
     SECNAS_PDU_NOSEC = set()
+    #
+    # to force EEA0 despite the selected encryption algorithm for DL NAS messages
+    SECNAS_FORCE_EEA0 = False
+    # to force EIA0 despite the selected IP algorithm for DL NAS messages
+    SECNAS_FORCE_EIA0 = False
     #
     # format of the security context dict self.SEC:
     # self.SEC is a dict of available 3G / 4G security contexts indexed by KSI,
@@ -1539,8 +1544,10 @@ class UES1d(SigStack):
         else:
             self.SEC['KSI'] = ue_ksi
         secctx = self.SEC[ue_ksi]
-        #
+        if 'Knasint' not in secctx:
+            self.EMM.set_sec_ctx_smc(ue_ksi)
         sqnmsb, sqnlsb = secctx['UL'] & 0xffffffe0, secctx['UL'] & 0x1f
+        #
         verif_mac = ServReq.mac_verify(secctx['Knasint'], 0, secctx['EIA'], sqnmsb)
         verif_sqn = True if ue_sqn == sqnlsb else False
         #
@@ -1725,8 +1732,7 @@ class UES1d(SigStack):
         """
         if self.UE.TRACE_NAS_EPS:
             self._log('TRACE_NAS_EPS_DL', '\n' + NasTx.show())
-        if self.SECNAS_DISABLED or NasTx._name in self.SECNAS_PDU_NOSEC or \
-        NasTx._sec == False:
+        if self.SECNAS_DISABLED or NasTx._name in self.SECNAS_PDU_NOSEC or NasTx._sec == False:
             sec = False
         else:
             ksi = self.SEC['KSI']
@@ -1742,6 +1748,8 @@ class UES1d(SigStack):
                 return None
             else:
                 secctx = self.SEC[self.SEC['KSI']]
+                if 'Knasint' not in secctx:
+                    self.EMM.set_sec_ctx_smc(ksi)
                 sqnmsb, sqnlsb = secctx['DL'] & 0xffffff00, secctx['DL'] & 0xff
                 if NasTx._name == 'EMMSecurityModeCommand':
                     # integrity protextion only + new security context
@@ -1753,11 +1761,12 @@ class UES1d(SigStack):
                     NasTxSec = NAS.EMMSecProtNASMessage(val={'EMMHeaderSec': {'SecHdr': sh},
                                                              'Seqn': sqnlsb,
                                                              'NASMessage': NasTx.to_bytes()})
-                    if sh == 2:
+                    if sh == 2 and not self.SECNAS_FORCE_EEA0:
                         NasTxSec.encrypt(secctx['Knasenc'], 1, secctx['EEA'], sqnmsb)
-                    NasTxSec.mac_compute(secctx['Knasint'], 1, secctx['EIA'], sqnmsb)
-                except Exception:
-                    self._log('ERR', 'NAS SEC DL: unable to protect the NAS message %s' % NasTx._name)
+                    if not self.SECNAS_FORCE_EIA0:
+                        NasTxSec.mac_compute(secctx['Knasint'], 1, secctx['EIA'], sqnmsb)
+                except Exception as err:
+                    self._log('ERR', 'NAS SEC DL: unable to protect the NAS message %s: %r' % (NasTx._name, err))
                     #self.reset_sec_ctx()
                     return None
                 else:
@@ -1789,7 +1798,7 @@ class UES1d(SigStack):
             if buf is None:
                 return self._s1ap_nas_sec_err()
             IEs['NAS_PDU'] = buf
-            NgapProc = self.init_ngap_proc(NGAPDownlinkNASTransport, **IEs)
+            S1apProc = self.init_s1ap_proc(S1APDownlinkNASTransport, **IEs)
             if S1apProc:
                 return [S1apProc]
             else:

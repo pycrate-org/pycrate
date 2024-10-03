@@ -646,6 +646,7 @@ class EMMSecurityModeControl(EMMSigProc):
         if self.UE.IMEISV is None and self.EMM.SMC_IMEISV_REQ:
             IEs['IMEISVReq'] = 1
         # TODO: check support of NonceUE / NonceMME for mobility procedures
+        # TODO: check support for UE Additional Security Capabilities
         #
         self.set_msg(7, 93, **IEs)
         self.encode_msg(7, 93)
@@ -1013,7 +1014,7 @@ class EMMAttach(EMMSigProc):
             # prepare the TAIList for the UE:
             # it only contains a single PartialTAIList of type 0 with the TAI of the eNB
             # to which the UE is connected
-            tailist = [{'Type':0, 'PLMN':self.UE.PLMN, 'TACValues':[self.UE.TAC]}]
+            tailist = [{'Type':0, 'PTAI':{'PLMN':self.UE.PLMN, 'TACs':[self.UE.TAC]}}]
             #
             # prepare AttachAccept IEs
             IEs = {'EPSAttachResult': self.att_type,
@@ -1235,7 +1236,7 @@ class EMMDetachCN(EMMSigProc):
             self._pdu.append( (time(), 'DL', self._nas_tx) )
         self._log('INF', self._nas_tx['EPSDetachType'].repr())
         # in case of IMSI-detach, a TAU with IMSI attach is expected in response
-        if self._nas_tx['EPSDetachType']['Type'].get_val() != 3:
+        if self._nas_tx['EPSDetachType']['EPSDetachTypeMT']['Type'].get_val() != 3:
             self.init_timer()
         else:
             self.rm_from_emm_stack()

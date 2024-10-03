@@ -29,7 +29,7 @@
 
 from binascii  import hexlify, unhexlify
 from struct    import pack, unpack
-from socket    import inet_aton, inet_ntoa, inet_pton, inet_ntop
+from socket    import inet_aton, inet_ntoa, inet_pton, inet_ntop, AF_INET, AF_INET6
 
 from pycrate_core.utils import *
 
@@ -134,6 +134,7 @@ def inet_aton_cn(*pdnaddr, **kw):
             log('WNG: IPv4 address conversion error, %r' % pdnaddr[1])
             return pdnaddr[1]
     elif pdnaddr[0] == 2:
+        # IPv6 address
         # accept 64-bit IPv6 prefix / subnet or full 128-bit IPv6 address
         ipaddr = pdnaddr[1]
         if ipaddr.count(':') == 3:
@@ -142,8 +143,8 @@ def inet_aton_cn(*pdnaddr, **kw):
         else:
             try:
                 return inet_pton(AF_INET6, ipaddr)
-            except Exception:
-                log('WNG: IPv6 address conversion error, %r' % pdnaddr[1])
+            except Exception as err:
+                log('WNG: IPv6 address conversion error, %r: %r' % (pdnaddr[1], err))
                 return ipaddr
     elif pdnaddr[0] == 3:
         # IPv4v6 addresses
@@ -151,15 +152,15 @@ def inet_aton_cn(*pdnaddr, **kw):
             # PDN address
             try:
                 return inet_aton_cn(2, pdnaddr[2]) + inet_aton_cn(1, pdnaddr[1])
-            except Exception:
-                log('WNG: IPv4v6 PDN address conversion error, %r' % pdnaddr[1])
+            except Exception as err:
+                log('WNG: IPv4v6 PDN address conversion error, %r: %r' % (pdnaddr[1], err))
                 return pdnaddr[1]
         else:
             # PDP address
             try:
                 return inet_aton_cn(1, pdnaddr[1]) + inet_aton_cn(2, pdnaddr[2])
-            except Exception:
-                log('WNG: IPv4v6 PDP address conversion error, %r' % pdnaddr[1])
+            except Exception as err:
+                log('WNG: IPv4v6 PDP address conversion error, %r: %r' % (pdnaddr[1], err))
                 return pdnaddr[1]
     else:
         # unknown address type

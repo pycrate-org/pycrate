@@ -5,7 +5,7 @@
 # file used by ServerAuC.py
 # 
 # csv'style file, with the following fields:
-#  - IMSI (digits);
+#  - IMSI (15 or 16 digits);
 #  - K (hex), subscriber authentication key,
 #      16-bytes when using Milenage or comp128
 #      16 or 32-bytes when using TUAK;
