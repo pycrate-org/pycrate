@@ -608,7 +608,7 @@ class Type4LV(IE):
         )
     def __init__(self, *args, **kwargs):
         IE.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: self[1].get_len())
+        self[0].set_valauto(lambda: min(255, self[1].get_len()))
         self[1].set_blauto(lambda: 8*self[0]())
 
 
@@ -624,7 +624,7 @@ class Type4TLV(IE):
         )
     def __init__(self, *args, **kwargs):
         IE.__init__(self, *args, **kwargs)
-        self[1].set_valauto(lambda: self[2].get_len())
+        self[1].set_valauto(lambda: min(255, self[2].get_len()))
         self[2].set_blauto(lambda: 8*self[1].get_val())
 
 
@@ -638,7 +638,7 @@ class Type6LVE(IE):
         )
     def __init__(self, *args, **kwargs):
         IE.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: self[1].get_len())
+        self[0].set_valauto(lambda: min(65535, self[1].get_len()))
         self[1].set_blauto(lambda: 8*self[0].get_val())
 
 
@@ -654,7 +654,7 @@ class Type6TLVE(IE):
         )
     def __init__(self, *args, **kwargs):
         IE.__init__(self, *args, **kwargs)
-        self[1].set_valauto(lambda: self[2].get_len())
+        self[1].set_valauto(lambda: min(65535, self[2].get_len()))
         self[2].set_blauto(lambda: 8*self[1].get_val())
 
 
