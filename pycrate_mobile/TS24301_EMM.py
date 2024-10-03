@@ -93,6 +93,7 @@ except:
     log('warning: CryptoMobile Python module not found, unable to handle LTE NAS security')
 else:
     _with_cm = True
+    _with_cm_eia_unk_as_eia0 = False
     if hasattr(CM, 'EEA2'):
         _EIA = {
             1 : CM.EIA1,
@@ -590,8 +591,11 @@ if _with_cm:
                 try:
                     EIA = _EIA[eia]
                 except KeyError:
-                    raise(PycrateErr('EMMSecProtNASMessage.mac_verify(): invalid EIA identifier, {0}'\
-                          .format(eia)))
+                    if _with_cm_eia_unk_as_eia0:
+                        return True
+                    else:
+                        raise(PycrateErr('EMMSecProtNASMessage.mac_verify(): invalid EIA identifier, {0}'\
+                              .format(eia)))
                 nasmsg = self[-1]
                 if isinstance(nasmsg, Buf):
                     nasbuf = nasmsg.get_val()
@@ -626,8 +630,12 @@ if _with_cm:
                 try:
                     EIA = _EIA[eia]
                 except KeyError:
-                    raise(PycrateErr('EMMSecProtNASMessage.mac_compute(): invalid EIA identifier, {0}'\
-                          .format(eia)))
+                    if _with_cm_eia_unk_as_eia0:
+                        self[1].set_val(b'\0\0\0\0')
+                        return
+                    else:
+                        raise(PycrateErr('EMMSecProtNASMessage.mac_compute(): invalid EIA identifier, {0}'\
+                              .format(eia)))
                 nasmsg = self[-1]
                 if isinstance(nasmsg, Buf):
                     nasbuf = nasmsg.get_val()
