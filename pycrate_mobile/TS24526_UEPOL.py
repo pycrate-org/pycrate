@@ -262,7 +262,7 @@ class _RouteSelectDescCompTimeWin(Envelope):
         )
 
 
-# Table 5.2.2: Location criteria
+# Table 5.2.2: Location criteria
 class _LocAreaEUTRACellID(Envelope):
     _GEN = (
         PLMN(),
@@ -283,7 +283,7 @@ class _LocAreaCompEUtra(Envelope):
         self[1].set_numauto(lambda: self[0].get_num())
 
 
-class _LocAreaEUTRACellID(Envelope):
+class _LocAreaNRCellID(Envelope):
     _GEN = (
         PLMN(),
         Buf('NRCellID', bl=36, rep=REPR_HEX),
@@ -294,7 +294,7 @@ class _LocAreaEUTRACellID(Envelope):
 class _LocAreaCompNR(Envelope):
     _GEN = (
         Uint8('Num'),
-        Sequence('CellIDs', GEN=_LocAreaEUTRACellID('NRCellID'))
+        Sequence('CellIDs', GEN=_LocAreaNRCellID('NRCellID'))
         )
     
     def __init__(self, *args, **kwargs):
@@ -322,7 +322,7 @@ class _LocAreaCompGNID(Envelope):
         self[1].set_numauto(lambda: self[0].get_num())
 
 
-# Figure 5.2.6: Location area
+# Figure 5.2.6: Location area
 _RouteSelectLocAreaType_dict = {
     1 : 'E-UTRA cell identities list',
     2 : 'NR cell identities list',
