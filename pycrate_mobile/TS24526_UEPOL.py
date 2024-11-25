@@ -251,8 +251,14 @@ class _RouteSelectDescCompAccessType(Envelope):
 # Table 5.2.1, time window type
 class _RouteSelectDescCompTimeWin(Envelope):
     _GEN = (
-        Uint32('Second'),
-        Uint32('Fraction')
+        Envelope('StartTime', GEN=(
+            Uint32('Second'),
+            Uint32('Fraction')
+            )),
+        Envelope('StopTime', GEN=(
+            Uint32('Second'),
+            Uint32('Fraction')
+            ))
         )
 
 
