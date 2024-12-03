@@ -173,6 +173,8 @@ ASN_SPECS_ITS = {
 
 # Electronic Fee Collection
 ASN_SPECS_EFC = {
+    'DSRC_2014'  : 'ISO_EFC_DSRC_2014',
+    'DSRC_2018'  : 'ISO_EFC_DSRC_2018',
     'EFC_2015'   : 'ISO_EFC_2015',
     'EFC_2023'   : 'ISO_EFC_2023',
     }
