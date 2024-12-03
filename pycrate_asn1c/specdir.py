@@ -171,6 +171,12 @@ ASN_SPECS_ITS = {
     'ITS_IS'          : 'ETSI_ITS_IS_TS103301',
     }
 
+# Electronic Fee Collection
+ASN_SPECS_EFC = {
+    'EFC_2015'   : 'ISO_EFC_2015',
+    'EFC_2023'   : 'ISO_EFC_2023',
+    }
+
 # Open Mobile Alliance geolocation protocols
 ASN_SPECS_OMA = {
     'ILP'       : 'OMA_ILP',
@@ -212,6 +218,7 @@ ASN_SPECS.update( ASN_SPECS_ORAN )
 ASN_SPECS.update( ASN_SPECS_ITUT )
 ASN_SPECS.update( ASN_SPECS_IETF )
 ASN_SPECS.update( ASN_SPECS_CORE )
+ASN_SPECS.update( ASN_SPECS_EFC )
 ASN_SPECS.update( ASN_SPECS_ITS )
 ASN_SPECS.update( ASN_SPECS_OMA )
 ASN_SPECS.update( ASN_SPECS_EUICC )
