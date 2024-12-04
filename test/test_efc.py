@@ -70,9 +70,34 @@ print("EFC Container with AttrList encoded in UPER in hex:", EfcContainer.to_upe
 print(EfcContainer.to_asn1())
 
 print("We now get to the most important part: encoding/decoding EFC T-APDUs (ISO 15628)")
-get_resp_t_apdu_bytes = b't\x04\x01 @\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0fY_\x00\x00'
-print(f"T-APDU containing Get-Response encoded in UPER in hex: {get_resp_t_apdu_bytes.hex().upper()}")
-EfcDsrcGeneric.T_APDUs.from_uper(get_resp_t_apdu_bytes)
+print("Sending a BST...")
 
-print(f"Python T-APDU value:\n{EfcDsrcGeneric.T_APDUs._val}")
-print(f"T-APDU encoded in JER: {EfcDsrcGeneric.T_APDUs.to_jer()}")
+t_apdu_init_req = bytes.fromhex("807FF8000100674F0C38000301141D0100")
+EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_init_req)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
+
+print("Receiving VST...")
+# BR in ITA2/baudot is 10011 01010 (=0x9A8 aligned to the left)
+t_apdu_init_resp = bytes.fromhex("900002C10402069A8001000102D40302109A8001000101020200FF0204C8A11E6E800100020000")
+EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_init_resp)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
+
+print("Sending GET.request")
+t_apdu_get_req = bytes.fromhex("6A0304ACCE55C80110")
+EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_req)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
+
+print("Receiving GET.response")
+t_apdu_get_resp = bytes.fromhex("740301102FB280085745522D30303031")
+EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_resp)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
+
+print("Sending ACTION.request with GET_STAMPED.request parameter")
+fragmented_t_apdu_action_req = bytes.fromhex("0D030004ACCE55C811012004FFFFFFFFF")
+EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_req)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
+
+print("Receiving ACTION.response with GET_STAMPED.response parameter")
+fragmented_t_apdu_action_resp = bytes.fromhex("1403120120400F0F0F0F0F0F0F0F0F0F599F000004FFFFFFFF")
+EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_resp)
+print(EfcDsrcGeneric.T_APDUs.to_asn1())
