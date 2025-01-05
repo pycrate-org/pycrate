@@ -1040,7 +1040,7 @@ class TimeZoneTime(Envelope):
         self['Hour'].encode( ts.tm_hour )
         self['Min'].encode( ts.tm_min  )
         self['Sec'].encode( ts.tm_sec )
-        self['TZ'].encode( tz )
+        self['TimeZone'].encode( tz )
     
     def decode(self):
         """decode the value of the TimeZoneTime into a Python struct_time and 
