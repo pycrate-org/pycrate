@@ -1166,8 +1166,20 @@ def _verify_const_val(val, consts, mod, name, ind):
     if len(consts_val) == 0:
         return True
     elif len(consts_val) == 1:
+        if consts_val[0]['excl']:
+            excl = True
+        else:
+            excl = False
         S = ASN1Set(consts_val[0])
     else:
+        excl = [c['excl'] for c in consts_val]
+        if all(excl):
+            excl = True
+        elif any(excl):
+            warn('{0}.{1}: mixed inclusive and exclusive value constraints'.format(mod, name))
+            excl = False
+        else:
+            excl = False
         S = reduce_setdicts(consts_val)
     #
     if S.is_ext():
@@ -1175,9 +1187,9 @@ def _verify_const_val(val, consts, mod, name, ind):
         return True
     elif S.in_root(val):
         # value is in the root part of the constraint
-        return True
+        return not excl
     else:
-        return False
+        return excl
 
 
 def _verify_seq_const_tab(Obj, open_name, const_tab, modname, objname, obj_index):
