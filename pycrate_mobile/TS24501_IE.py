@@ -473,6 +473,7 @@ class FGMMCap(Envelope):
             self.disable_from(32)
         elif l > 40:
             # enables some spare bits at the end
+            self[-1].set_trans(False)
             self[-1]._bl = l-40
         Envelope._from_char(self, char)
     
@@ -1313,6 +1314,7 @@ class FGSNetFeat(Envelope):
             self.disable_from('spare')
         elif l > 24:
             # enables some spare bits at the end
+            self[-1].set_trans(False)
             self[-1]._bl = l-24
         Envelope._from_char(self, char)
     
@@ -2065,6 +2067,7 @@ class PDUSessStat(Envelope):
             self.disable_from(l)
         elif l > 16:
             # enables some spare bits at the end
+            self[-1].set_trans(False)
             self[-1]._bl = l-16
         Envelope._from_char(self, char)
     
@@ -2871,6 +2874,7 @@ class FGSMCap(Envelope):
             self.disable_from(5)
         elif l > 16:
             # enables some spare bits at the end
+            self[-1].set_trans(False)
             self[-1]._bl = l-16
         Envelope._from_char(self, char)
     
