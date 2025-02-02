@@ -57,7 +57,7 @@ jobs:
         env:
           DIST: ${{ matrix.distribution }}
       - name: upload ${{ matrix.distribution }} artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.distribution }}
           path: dist/
@@ -71,12 +71,12 @@ jobs:
       - name: setup python ${{ env.DEFAULT_PYTHON }}
         uses: actions/setup-python@v4
       - name: download sdist artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: sdist
           path: dist/
       - name: download wheel artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: wheel
           path: dist/
