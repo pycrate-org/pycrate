@@ -2416,7 +2416,7 @@ class UESecCap(Envelope):
         Uint('EIA5', bl=1),
         Uint('EIA6', bl=1),
         Uint('EIA7', bl=1), # end of octet 4 (optional part)
-        Buf('spare', val=b'', rep=REPR_HEX, trans=True)
+        Buf('spare', val=b'', rep=REPR_HEX)
         )
     
     def set_val(self, val):
@@ -2436,6 +2436,7 @@ class UESecCap(Envelope):
             self.disable_from(l)
         elif l > 32:
             # enables some spare bits at the end
+            self[-1].set_trans(False)
             self[-1]._bl = l-32
         Envelope._from_char(self, char)
     
