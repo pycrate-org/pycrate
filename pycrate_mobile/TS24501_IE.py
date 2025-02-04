@@ -426,7 +426,7 @@ class FGMMCap(Envelope):
         Uint('RestrictEC', bl=1),
         Uint('LPP', bl=1),
         Uint('HOAttach', bl=1),
-        Uint('S1Mode', bl=1), # end of octet 1
+        Uint('S1Mode', bl=1), # 7: end of octet 1
         Uint('RACS', bl=1),
         Uint('NSSAA', bl=1),
         Uint('5G-LCS', bl=1),
@@ -434,12 +434,12 @@ class FGMMCap(Envelope):
         Uint('V2XCEPC5', bl=1),
         Uint('V2X', bl=1),
         Uint('5G-UP-CIoT', bl=1),
-        Uint('5GSRVCC', bl=1), # end of octet 2
+        Uint('5GSRVCC', bl=1), # 15: end of octet 2
         Uint('spare', bl=4),
         Uint('5G-EHC-CP-CIoT', bl=1),
         Uint('MultipleUP', bl=1),
         Uint('WUSA', bl=1),
-        Uint('CAG', bl=1), # end of octet 3
+        Uint('CAG', bl=1), # 20: end of octet 3
         Uint('PR', bl=1),
         Uint('RPR', bl=1),
         Uint('PIV', bl=1),
@@ -447,7 +447,7 @@ class FGMMCap(Envelope):
         Uint('NR-PSSI', bl=1),
         Uint('5G-ProSe-l3rmt', bl=1),
         Uint('5G-ProSe-l2rmt', bl=1),
-        Uint('5G-ProSe-l3relay', bl=1), # end of octet 4
+        Uint('5G-ProSe-l3relay', bl=1), # 28: end of octet 4
         Uint('spare', bl=1),
         Uint('UAS', bl=1),
         Uint('NSAG', bl=1),
@@ -455,7 +455,7 @@ class FGMMCap(Envelope):
         Uint('SSNPNSI', bl=1),
         Uint('EventNotification', bl=1),
         Uint('MINT', bl=1),
-        Uint('NSSRG', bl=1), # end of octet 5
+        Uint('NSSRG', bl=1), # 36: end of octet 5
         Buf('spare', val=b'', rep=REPR_HEX)
         )
     
@@ -468,9 +468,9 @@ class FGMMCap(Envelope):
         elif l <= 16:
             self.disable_from(16)
         elif l <= 24:
-            self.disable_from(24)
+            self.disable_from(21)
         elif l <= 32:
-            self.disable_from(32)
+            self.disable_from(29)
         elif l > 40:
             # enables some spare bits at the end
             self[-1].set_trans(False)
