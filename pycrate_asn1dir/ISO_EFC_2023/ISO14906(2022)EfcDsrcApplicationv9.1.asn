@@ -1,0 +1,141 @@
+EfcDsrcApplication {iso(1) standard(0) 14906 application(0) version9(9) minorVersion1(1)}
+DEFINITIONS AUTOMATIC TAGS 
+::= BEGIN
+EXPORTS ALL;
+IMPORTS
+-- ********* ISO/DIS 17573-3:2022 *********
+	Int1Unsigned, Lpn, PaymentFee, PayUnit, ReceiptData, ResultFin
+	FROM EfcDataDictionary {iso(1) standard(0) 17573 dd(3) version1(1) minorVersion1(1)} WITH SUCCESSORS
+
+-- ********* ISO/FDIS 14906:2022 generic *********
+	AttributeIdList, Attributes{}, AttributeList{}
+	FROM EfcDsrcGeneric {iso(1) standard(0) 14906 generic(1) version10(10) minorVersion1(1)} WITH SUCCESSORS;
+
+-- NOTE: The following are the definitions of the action and response parameters
+AddRq::= SEQUENCE {
+	attributeId INTEGER(0..127,...),
+	value INTEGER
+}
+
+ChannelId::= INTEGER {
+	obu					(0),
+	sam1				(1), -- secure application module
+	sam2				(2),
+	icc					(3), -- integrated circuit(s) card
+	display				(4),
+	buzzer				(5),
+	printer				(6),
+	serialInterface		(7), -- serial interface: eg. RS232 and RS485
+	parallelInterface	(8),
+	gps					(9), 
+	tachograph			(10),
+	privateUse1			(11), -- free for proprietary use
+	privateUse2			(12), -- free for proprietary use
+	privateUse3			(13), -- free for proprietary use
+	privateUse4			(14), -- free for proprietary use
+	privateUse5			(15), -- free for proprietary use
+	bluetooth			(16)
+	-- (17-255) are reserved for future CEN use
+} (0..255)
+
+ChannelRq::= SEQUENCE{
+	channelId 	ChannelId,
+	apdu 		OCTET STRING
+	-- format according to the interface of the channelId
+}
+
+ChannelRs::= SEQUENCE{
+	channelId	ChannelId,
+	apdu		OCTET STRING
+	-- format according to the interface of the channelId
+}
+
+CopyRq::= SEQUENCE {
+	destinationEID		INTEGER(0..127,...),
+	attributeIdList		AttributeIdList
+}
+
+CreditRq::= SEQUENCE {
+	refund		PaymentFee,
+	nonce		OCTET STRING,
+	key			Int1Unsigned
+}
+
+CreditRs ::= SEQUENCE {
+	creditResult			ResultFin,
+	creditAuthenticator		OCTET STRING
+}
+
+DebitRq::= SEQUENCE {
+	debitPaymentFee		PaymentFee,
+	nonce				OCTET STRING,
+	keyRef				Int1Unsigned
+}
+
+DebitRs ::= SEQUENCE {
+	debitResult 		ResultFin,
+	debitAuthenticator	OCTET STRING
+}
+
+GetInstanceRq ::= SEQUENCE {
+	posOfFirstInstance		Int1Unsigned, -- position of first instance to be retrieved
+	posOfLastInstance		Int1Unsigned, -- position last instance to be retrieved
+	attributeIdList			AttributeIdList -- Ids of attributes to be retrieved
+}
+
+GetInstanceRs{Container}::= SEQUENCE (SIZE (0..127,...)) OF SEQUENCE {
+	attributeId 		INTEGER(0..127,...),
+	-- number of instances retrieved
+	attributeValues		Container (WITH COMPONENTS {octetstring PRESENT})
+	-- The octetstring shall contain the contatenation of the unaligned PER encodings of the values of the
+	-- instances, with each encoding padded to an integral of octets as specified for a top-level type in ISO/IEC 8825-2
+}
+
+GetStampedRq::= SEQUENCE {
+	attributeIdList		AttributeIdList,
+	nonce				OCTET STRING, -- e.g. a random number
+	keyRef				Int1Unsigned 
+}
+
+GetStampedRs{Container}::= SEQUENCE {
+	attributeList	AttributeList{Container},
+	authenticator	OCTET STRING
+}
+
+SetInstanceRq{Container} ::= SEQUENCE {
+	posOfInstance	Int1Unsigned,
+	attribute		Attributes{Container}
+}
+
+SetMMIRq::= INTEGER {
+	ok				(0), -- operation / transaction successfully completed
+	nok				(1), -- operation / transaction not successfully completed
+	contactOperator	(2), -- e.g. due to low balance or battery
+	noSignalling	(255) -- no signalling
+	-- (3-127) are reserved for future CEN use
+	-- (128-254) are reserved for private use
+} (0..255)
+
+SetStampedRq{Container}::= SEQUENCE {
+	attributeList	AttributeList{Container},
+	nonce			OCTET STRING,
+	keyRef			Int1Unsigned
+}
+
+SubRq::= SEQUENCE {
+	attributeId		INTEGER(0..127,...),
+	value			INTEGER
+}
+
+-- NOTE: The following are the definitions of EFC attributes
+ContractVehicle ::= Lpn
+
+PaymentMeansUnit ::= PayUnit
+
+ReceiptData1 ::= ReceiptData
+
+ReceiptData2 ::= ReceiptData
+
+TrailerLicencePlateNumber ::= Lpn
+
+END
