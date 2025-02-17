@@ -301,7 +301,7 @@ class _ServiceLevelAAServerAddr(Envelope):
                     Buf('IPv6', bl=128, rep=REPR_HEX))),
             4 : FQDN()},
             DEFAULT=Buf('unk', rep=REPR_HEX),
-            sel=lambda self: self.get_env()[1].get_val()
+            sel=lambda self: self.get_env()[2].get_val()
             )
         )
     
