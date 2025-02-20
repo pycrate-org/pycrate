@@ -3110,11 +3110,11 @@ class MaxPktFilters(Envelope):
 
 class PDUAddress(Envelope):
     _GEN = (
-        Uint('spare', bl=5, rep=REPR_HEX),
+        Uint('spare', bl=4, rep=REPR_HEX),
         Uint('SI6LLA', val=0, bl=1, dic={
             0 : 'SMF\'s IPv6 link local address absent',
             1 : 'SMF\'s IPv6 link local address present'}),
-        Uint('Type', val=1, bl=2, dic={1:'IPv4', 2:'IPv6', 3:'IPv4v6'}),
+        Uint('Type', val=1, bl=3, dic={1:'IPv4', 2:'IPv6', 3:'IPv4v6'}),
         Alt('Addr', GEN={
             1 : Buf('IPv4', bl=32, rep=REPR_HEX),
             2 : Buf('IPv6IfId', bl=64, rep=REPR_HEX),
