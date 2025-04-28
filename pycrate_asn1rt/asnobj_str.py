@@ -63,7 +63,7 @@ ASN.1 basic type BIT STRING object
 Single value: Python 2-tuple of int
     1st int is the unsigned integral value, 2nd int is the length in bits
 
-Alternative single value: Python set of str (from the object's NamedBitList)
+Alternative single value: Python list of str (from the object's NamedBitList)
     This is only to be used in set_val() method, and is converted to a Python
     2-tuple of int when set
 
@@ -130,7 +130,7 @@ Specific constraints attributes:
             else:
                 # CONTAINING value
                 self._get_val_obj(val[0])._safechk_val(val[1])
-        elif isinstance(val, set):
+        elif isinstance(val, list):
             # named bits
             if not self._cont:
                 raise(ASN1ObjErr('{0}: invalid named bits, {1!r}'.format(self.fullname(), val)))
@@ -159,19 +159,19 @@ Specific constraints attributes:
                           .format(self.fullname(), val)))
     
     def get_names(self):
-        """Returns the set of names from the NamedBitList corresponding to the 
+        """Returns the list of names from the NamedBitList corresponding to the
         internal value currently set
         """
         if isinstance(self._val, set):
             return self._val
-        names = set()
+        names = []
         if self._cont is None or not isinstance(self._val, tuple) \
         or len(self._val) != 2 or not isinstance(self._val[0], integer_types):
             # self._val has not the correct format
             return names
         for off, bit in enumerate(uint_to_bitstr(self._val[0], self._val[1])):
             if bit == '1' and off in self._cont_rev:
-                names.add(self._cont_rev[off])
+                names.append(self._cont_rev[off])
         return names
     
     def _names_to_val(self):

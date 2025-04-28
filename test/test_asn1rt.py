@@ -2510,7 +2510,7 @@ def _test_tcap_map_rt():
     assert( len(mvp) == len(mvjp) == 12 )
     assert( mvp[0] == (['begin', 'otid'], b'mS\x07\x02') )
     assert( mvp[5] == (['begin', 'components', 0, 'basicROS', 'invoke', 'opcode', 'local'], 2) )
-    assert( mvp[9] == (['begin', 'components', 0, 'basicROS', 'invoke', 'argument', 'UpdateLocationArg', 'vlr-Capability', 'supportedCamelPhases'], {'phase1'}) )
+    assert( mvp[9] == (['begin', 'components', 0, 'basicROS', 'invoke', 'argument', 'UpdateLocationArg', 'vlr-Capability', 'supportedCamelPhases'], ['phase1']) )
     assert( mvp[11] == (['begin', 'components', 0, 'basicROS', 'invoke', 'argument', 'UpdateLocationArg', 'add-info', 'imeisv'], b"h5a0Q\x86\x84'") )
     #
     imei = M.get_at(mvp[11][0])

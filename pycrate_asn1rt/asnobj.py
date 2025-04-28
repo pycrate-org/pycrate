@@ -1315,7 +1315,7 @@ class ASN1Obj(Element):
     
     def convert_named_val(self):
         """convert all INTEGER and BIT STRING values within self to named values and
-        sets of named bits when possible
+        list of named bits when possible
         """
         for path, val in self.get_val_paths():
             Obj = self.get_at(path)
