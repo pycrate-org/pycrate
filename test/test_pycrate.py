@@ -34,6 +34,13 @@ import importlib
 import unittest
 import time
 
+try:
+    # required for SEDebugMux module
+    import crcmod
+    _with_crcmod = True
+except ImportError:
+    _with_crcmod = False
+
 from test.test_core   import *
 from test.test_media  import *
 from test.test_ether  import *
@@ -205,10 +212,11 @@ class TestPycrate(unittest.TestCase):
         print('[<>] testing GMR-1 RR in pycrate_gmr1 and pycrate_gmr1_csn1')
         test_gmr()
     
-    # osmo related protocols
+    # osmo related protocols, needs crcmod
     def test_osmo(self):
         print('[<>] testing pycrate_osmo')
-        test_sedebugmux()
+        if _with_crcmod:
+            test_sedebugmux()
     
     # crypto protocols
     def test_crypto(self):
