@@ -16,9 +16,9 @@ jobs:
         python-version:
           - 3.9
           - '3.11'
-          - '3.12'
+          - '3.13'
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             python-version: 3.8
     runs-on: ${{ matrix.os }}
     steps:
