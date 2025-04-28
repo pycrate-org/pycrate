@@ -668,20 +668,19 @@ Single value: Python 2-tuple
             # until a correct one is found !!!
             Obj = None
         #
+        # decode_open_type() returns bytes
         val_bytes = ASN1CodecOER.decode_open_type(char)
-        val = Obj.from_oer(val_bytes) if (Obj is not None) else val_bytes
-        
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_per: %s, potential type constraint(s) available but unused' \
+                asnlog('OPEN._from_oer: %s, potential type constraint(s) available but unused' \
                        % self.fullname())
-            assert( isinstance(val, bytes_types) )
-            self._val = ('_unk_004', val)
+            self._val = ('_unk_004', val_bytes)
         else:
+            Obj.from_oer(val_bytes)
             if Obj._typeref is not None:
-                self._val = (Obj._typeref.called[1], val)
+                self._val = (Obj._typeref.called[1], Obj._val)
             else:
-                self._val = (Obj.TYPE, val)
+                self._val = (Obj.TYPE, Obj._val)
         return
     
     def _from_oer_ws(self, char):
@@ -690,7 +689,7 @@ Single value: Python 2-tuple
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
                 if not self._SILENT:
-                    asnlog('OPEN._from_per_ws: %s, unable to retrieve a table-looked up object' \
+                    asnlog('OPEN._from_oer_ws: %s, unable to retrieve a table-looked up object' \
                            % (self.fullname()))
                 Obj = None
             elif const_obj_type == CLASET_UNIQ:
@@ -709,15 +708,15 @@ Single value: Python 2-tuple
         val_bytes, GEN = ASN1CodecOER.decode_open_type_ws(char)
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_per_ws: %s, potential type constraint(s) available but unused' \
+                asnlog('OPEN._from_oer_ws: %s, potential type constraint(s) available but unused' \
                        % self.fullname())
             self._val = ('_unk_004', val_bytes)
         else:
-            val = Obj.from_oer(val_bytes)
+            Obj.from_oer(val_bytes)
             if Obj._typeref is not None:
-                self._val = (Obj._typeref.called[1], val)
+                self._val = (Obj._typeref.called[1], Obj._val)
             else:
-                self._val = (Obj.TYPE, val)
+                self._val = (Obj.TYPE, Obj._val)
         self._struct = Envelope(self._name, GEN=tuple(GEN))
     
     def _to_oer(self):
