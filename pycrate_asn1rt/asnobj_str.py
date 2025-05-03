@@ -2036,7 +2036,7 @@ Virtual parent for any ASN.1 *String object
     
     def _from_per_ws(self, char):
         GEN = []
-        if self._const_sz:
+        if self._const_sz and self._clen is not None:
             if self._const_sz._ev is not None:
                 E = Uint('E', bl=1)
                 E._from_char(char)
@@ -2215,7 +2215,7 @@ Virtual parent for any ASN.1 *String object
         self._struct = Envelope(self._name, GEN=tuple(GEN))
     
     def _from_per(self, char):
-        if self._const_sz:
+        if self._const_sz and self._clen is not None:
             if self._const_sz._ev is not None:
                 E = char.get_uint(1)
                 if ASN1CodecPER.ALIGNED:
@@ -2382,7 +2382,7 @@ Virtual parent for any ASN.1 *String object
     def _to_per_ws(self):
         GEN = []
         val, cdyn, ldet = self.__to_per_val()
-        if self._const_sz:
+        if self._const_sz and self._clen is not None:
             if self._const_sz._ev is not None:
                 if not self._const_sz.in_root(ldet):
                     # 1) size in the extension part
@@ -2514,7 +2514,7 @@ Virtual parent for any ASN.1 *String object
     def _to_per(self):
         GEN = []
         val, cdyn, ldet = self.__to_per_val()
-        if self._const_sz:
+        if self._const_sz and self._clen is not None:
             if self._const_sz._ev is not None:
                 if not self._const_sz.in_root(ldet):
                     # 1) size in the extension part
