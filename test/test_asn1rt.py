@@ -1818,6 +1818,19 @@ def _test_rt_base():
     assert( U8s01._val == u'ambiguïté' )
     U8s01.from_coer_ws(b'\x0bambigu\xc3\xaft\xc3\xa9')
     assert( U8s01._val == u'ambiguïté' )
+    # additional PER tests
+    U8s02 = Mod['U8s02']
+    U8s02.from_asn1('"βββ"')
+    assert( U8s02.to_uper() == U8s02.to_uper_ws() == b'\x06\xce\xb2\xce\xb2\xce\xb2' )
+    assert( U8s02.to_aper() == U8s02.to_aper_ws() == b'\x06\xce\xb2\xce\xb2\xce\xb2' )
+    U8s02.from_uper(b'\x06\xce\xb2\xce\xb2\xce\xb2')
+    assert( U8s02._val == 'βββ' )
+    U8s02.from_uper_ws(b'\x06\xce\xb2\xce\xb2\xce\xb2')
+    assert( U8s02._val == 'βββ' )
+    U8s02.from_aper(b'\x06\xce\xb2\xce\xb2\xce\xb2')
+    assert( U8s02._val == 'βββ' )
+    U8s02.from_aper_ws(b'\x06\xce\xb2\xce\xb2\xce\xb2')
+    assert( U8s02._val == 'βββ' )
     
     # Uns01 ::= UniversalString
     Uns01 = Mod['Uns01']
