@@ -210,26 +210,35 @@ class SNSSAI(Envelope):
             if 'MappedHPLMNSST' in val:
                 self[2].set_trans(False)
             if 'MappedHPLMNSD' in val:
+                self[1].set_trans(False)
                 self[3].set_trans(False)
         Envelope.set_val(self, val)
     
     def _from_char(self, char):
         if self.get_trans():
             return
-        l = char.len_bit()
-        if l == 8:
+        if self._blauto is not None:
+            # this is required when this struct is wrapped as L_SNSSAI
+            bl = self._blauto()
+        else:
+            bl = char.len_bit()
+        if bl == 8:
             self[1].set_trans(True)
             self[2].set_trans(True)
             self[3].set_trans(True)
-        elif l == 32:
+        elif bl == 16:
+            self[1].set_trans(True)
+            self[2].set_trans(False)
+            self[3].set_trans(True)
+        elif bl == 32:
             self[1].set_trans(False)
             self[2].set_trans(True)
             self[3].set_trans(True)
-        elif l == 40:
+        elif bl == 40:
             self[1].set_trans(False)
             self[2].set_trans(False)
             self[3].set_trans(True)
-        elif l >= 64:
+        elif bl >= 64:
             self[1].set_trans(False)
             self[2].set_trans(False)
             self[3].set_trans(False)
@@ -1297,7 +1306,11 @@ class FGSNetFeat(Envelope):
         Uint('RestrictEC', bl=2),
         Uint('MCSI', bl=1),
         Uint('EMCN3', bl=1), # end of octet 2
-        Uint('spare', bl=5),
+        Uint('spare', bl=1),
+        Uint('PR', bl=1),
+        Uint('RPR', bl=1),
+        Uint('PIV', bl=1),
+        Uint('NCR', bl=1),
         Uint('5G-EHC-CP-CIoT', bl=1),
         Uint('ATS-IND', bl=1),
         Uint('5G-LCS', bl=1), # end of octet 3
@@ -1349,7 +1362,8 @@ _FGSRegResult_dict = {
 class FGSRegResult(Envelope):
     _name = '5GSRegResult'
     _GEN = (
-        Uint('spare', bl=2),
+        Uint('spare', bl=1),
+        Uint('DisasterRoaming', bl=1),
         Uint('Emergency', bl=1),
         Uint('NSSAAPerformed', bl=1),
         Uint('SMSAllowed', bl=1),
@@ -2195,12 +2209,12 @@ class PSAList(Envelope):
 
 
 class SAList(Sequence):
-    _GEN = FGSPTAIList() 
+    _GEN = PSAList() 
     
     def get_tai(self):
         tai = set()
-        for tl in self:
-            tai.update(tl.get_tai())
+        for sl in self:
+            tai.update(sl.get_tai())
         return tai
 
 
