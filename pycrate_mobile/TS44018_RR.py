@@ -240,7 +240,7 @@ class RRAssignmentCmd(Layer3):
         Type3TV('FirstChanDescBefore', val={'T':0x1C, 'V':b'\0\0\0'}, bl={'V':24}, IE=ChanDesc2()),
         Type3TV('SecondChanDescBefore', val={'T':0x1D, 'V':b'\0\0\0'}, bl={'V':24}, IE=ChanDesc()),
         Type3TV('FreqChanSeqBefore', val={'T':0x1E, 'V':9*b'\0'}, bl={'V':72}, IE=FreqChanSeq()),
-        Type4TLV('MobileAllocBefore', val={'T':0x72, 'V':b'\0'}, IE=MobileAlloc()),
+        Type4TLV('MobileAllocBefore', val={'T':0x21, 'V':b'\0'}, IE=MobileAlloc()),
         Type1TV('CipherModeSetting', val={'T':0x9, 'V':0}, IE=CipherModeSetting()),
         Type4TLV('VGCSTargetModeInd', val={'T':0x1, 'V':b'\0'}, IE=VGCSTargetModeInd()),
         Type4TLV('MultirateConfig', val={'T':0x3, 'V':b'\0\0'}, IE=MultirateConfig()),
