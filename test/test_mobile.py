@@ -105,6 +105,7 @@ nas_pdu_mo = tuple(map(unhexlify, (
 
 # downlink messages
 nas_pdu_mt = tuple(map(unhexlify, (
+    '062e09006400634103022080', # RR Assignment Command
     # CS domain
     '051201f6e3c095753f23a9194291c86395f4782010a322f1689dc5000030dcb7d5eaafafe3', # MM Auth Request
     '0521', # MM CM Service Accept
