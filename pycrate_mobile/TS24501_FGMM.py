@@ -152,7 +152,7 @@ _FGMM_dict = {
     86 : "Authentication request",
     87 : "Authentication response",
     88 : "Authentication reject",
-    89 : "Authentiction failure",
+    89 : "Authentication failure",
     90 : "Authentication result",
     91 : "Identity request",
     92 : "Identity response",
