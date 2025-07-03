@@ -2747,7 +2747,7 @@ class RegistrationWaitRange(Envelope):
 # TS 24.501, 9.11.3.86
 #------------------------------------------------------------------------------#
 
-class CAGInfo(Envelope):
+class ExtCAGInfo(Envelope):
     _GEN = (
         Uint8('Len'),
         PLMN(),
@@ -2772,7 +2772,7 @@ class CAGInfo(Envelope):
 
 
 class ExtCAGInfoList(Sequence):
-    _GEN = CAGInfo()
+    _GEN = ExtCAGInfo()
     
     def decode(self):
         return [caginfo.decode() for caginfo in self._content]
@@ -3286,7 +3286,7 @@ class QoSFlowParam(Envelope):
 class QoSFlow(Envelope):
     _GEN = (
         Uint('spare', bl=2),
-        Uint('QFI', bl=6),
+        Uint('QFI', val=9, bl=6),
         Uint('OpCode', bl=3, dic=_QoSFlowOC_dict),
         Uint('spare', bl=6), # last 5 bit of 2nd octet and 1st bit of 3rd octet
         Uint('E', bl=1),
@@ -3297,6 +3297,7 @@ class QoSFlow(Envelope):
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
         self['E'].set_dicauto(lambda: _QoSFlowE_dict[self['OpCode'].get_val()])
+        self['E'].set_valauto(lambda: 1 if self['Params'].get_num() else 0)
         self['Num'].set_valauto(lambda: self['Params'].get_num())
         self['Params'].set_numauto(lambda: self['Num'].get_val())
 
@@ -3350,7 +3351,9 @@ _PktFilterCompType_dict = {
     132 : '802.1Q S-TAG VID type',
     133 : '802.1Q C-TAG PCP/DEI type',
     134 : '802.1Q S-TAG PCP/DEI type',
-    135 : 'Ethertype type'
+    135 : 'Ethertype type',
+    136 : 'Destination MAC address range type',
+    137 : 'Source MAC address range type',
     }
 
 
@@ -3411,6 +3414,13 @@ class _PktFilterPCPDEI(Envelope):
         )
 
 
+class _PktFilterMACRange(Envelope):
+    _GEN = (
+        Buf('MACLow', bl=48, rep=REPR_HEX),
+        Buf('MACHigh', bl=48, rep=REPR_HEX)
+        )
+
+
 class PktFilterComp(Envelope):
     _GEN = (
         Uint8('Type', dic=_PktFilterCompType_dict),
@@ -3434,7 +3444,9 @@ class PktFilterComp(Envelope):
             132 : _PktFilterVID('STagVID'),
             133 : _PktFilterPCPDEI('CTagPCPDEI'),
             134 : _PktFilterPCPDEI('STagPCPDEI'),
-            135 : Uint16('EtherType', dic=EtherType_dict)
+            135 : Uint16('EtherType', dic=EtherType_dict),
+            136 : _PktFilterMACRange('MACRangeDest'),
+            137 : _PktFilterMACRange('MACRangeSrc'),
             },
             DEFAULT=Buf('unk', val=b'', rep=REPR_HEX),
             sel=lambda self: self.get_env()['Type'].get_val())
