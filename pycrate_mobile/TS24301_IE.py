@@ -1000,7 +1000,7 @@ class _SubServices(Buf):
             Buf.set_val(self, val)
     
     def encode(self, val):
-        self._val, _ = encode_7b(val)
+        self._val = encode_7b(val)[0]
     
     def decode(self):
         return decode_7b(self.get_val())
@@ -1013,7 +1013,7 @@ class _SubServices(Buf):
 
 class ExtEmergNum(Envelope):
     _GEN = (
-        Uint8('LenNum'), # number of digits
+        Uint8('LenNum'), # number of bytes
         BufBCD('Num'),
         Uint8('LenSubServices'), # number of bytes
         _SubServices('SubServices')
@@ -1021,17 +1021,10 @@ class ExtEmergNum(Envelope):
     
     def __init__(self, *args, **kw):
         Envelope.__init__(self, *args, **kw)
-        self[0].set_valauto(lambda: len(self[1].decode()))
-        self[1].set_blauto(lambda: self._get_len_num())
+        self[0].set_valauto(lambda: self[1].get_len())
+        self[1].set_blauto(lambda: self[0].get_val()<<3)
         self[2].set_valauto(lambda: self[3].get_len())
         self[3].set_blauto(lambda: self[2].get_val()<<3)
-    
-    def _get_len_num(self):
-        len_num = self[0].get_val()
-        if len_num % 2:
-            return (1+len_num)<<2
-        else:
-            return len_num<<2
 
 
 EENLValidity_dict = {
