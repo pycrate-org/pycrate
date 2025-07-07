@@ -2848,7 +2848,6 @@ class ExtCAGInfo(Envelope):
                                     (2 if self[4].get_val() else 0) +
                                     self[8].get_len() +
                                     self[9].get_len())
-        self[4].set_blauto(lambda: (self[0].get_val() - 4) << 3)
         self[7].set_transauto(lambda: not self[4].get_val())
         self[7].set_valauto(lambda: self[8].get_len())
         self[8].set_numauto(lambda: self[7].get_val())
