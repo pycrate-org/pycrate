@@ -588,11 +588,12 @@ class EPSUpdateType(Envelope):
 # NAS key set identifier
 # TS 24.301, 9.9.3.21
 #------------------------------------------------------------------------------#
-
+_NAS_KSI_str = 'Key set identifier'
+_NAS_KSI_dic = {i:_NAS_KSI_str for i in range(6)} | {7:'no key available'}
 class NAS_KSI(Envelope):
     _GEN = (
         Uint('TSC', bl=1, dic={0:'native security context', 1:'mapped security context'}),
-        Uint('Value', bl=3, dic={7:'no key available'})
+        Uint('Value', bl=3, dic=_NAS_KSI_dic)
         )
 
 
