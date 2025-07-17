@@ -1,0 +1,229 @@
+EfcLac {iso(1) standard(0) 13141 version2(2) minorVersion1(1)}
+
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+IMPORTS 
+-- ********* ISO 17573-3:2023 *********
+	Altitude, EfcContextMark, Latitude, Longitude, Provider, Time, Int1Unsigned, Int2Unsigned, Int2Signed, Int4Unsigned
+	FROM EfcDataDictionary {iso(1) standard(0) 17573 dd(3) version1(1) minorVersion1(2)} WITH SUCCESSORS 
+	
+-- ********* ISO 14906:2022 (EFC modules)
+	Action-Request{}, Action-Response{}, ActionType, ApplicationList, AttributeIdList, AttributeList{}, Attributes{}, 
+	BeaconID, BST, Dsrc-EID, DSRCApplicationEntityID, Event-Report-Request{}, Event-Report-Response, EventType, 
+	Initialisation-Request, Initialisation-Response, ObeConfiguration, Profile, ReturnStatus, Set-Request{}, Set-Response, VST
+	FROM EfcDsrcGeneric {iso(1) standard(0) 14906 generic(1) version10(10) minorVersion1(1)} WITH SUCCESSORS;
+
+-- ******************************************************************
+-- Level 1: LAC functions
+-- ******************************************************************
+
+LacInitialiseCommRequest ::= BST
+
+LacInitialiseCommResponse ::= VST
+
+LacDataTxRequest ::= Set-Request {LacContainer} (WITH COMPONENTS {..., accessCredentials (SIZE(4)), iid ABSENT})
+
+LacDataTxResponse ::= Set-Response (WITH COMPONENTS {..., iid ABSENT, ret PRESENT})
+
+LacTerminateComm ::= Event-Report-Request {LacContainer} (WITH COMPONENTS {mode (FALSE), eid (0), eventType (0)})
+
+-- ******************************************************************
+-- Level 1: CCC attributes
+-- ******************************************************************
+
+LacContextMark ::= EfcContextMark
+
+LacData ::= SEQUENCE {
+	lacOperator			Provider,
+	rseId				Int2Unsigned,
+	latitude			Latitude,
+	longitude			Longitude,
+	altitude			Altitude,
+	tollCharger			TollCharger,
+	chargeObject		ChargeObjectId,
+	distanceToObject	Int2Signed,
+	lacTime				Time,
+	macTc				MacTc,
+	mac2				OCTET STRING (SIZE (8))
+}
+
+-- ******************************************************************
+-- Level 2: data elements for the LAC attributes
+-- ******************************************************************
+
+ChargeObjectId ::= SEQUENCE{
+	regimeId					Int2Unsigned,
+	chargeObjectDesignation		Int4Unsigned 
+}
+
+TollCharger ::= SEQUENCE {
+	tollContext					Provider,
+	chargeReportFinalRecipient	Provider
+}
+	
+MacTc ::= SEQUENCE {
+	keyRef			Int1Unsigned,
+	algorithmId		MacTcAlgorithm,
+	mac				OCTET STRING (SIZE (4)),
+	nonce			OCTET STRING (SIZE (2))
+}
+
+MacTcAlgorithm ::= INTEGER {
+	cbcDes64bitKey		(0),
+	cmacAes128bitKey	(1)
+	-- (2..255) are reserved for future CEN and ISO use
+} (0..255)
+
+ApplicationContextMark::= SEQUENCE {
+	lacContextMark		LacContextMark,
+	ac-cr-reference		OCTET STRING (SIZE (2)),
+	rndOBE				OCTET STRING (SIZE (4))
+}
+
+-- Adoption of T-APDUs for LAC
+LacTApdus ::= CHOICE { --#Qbody: changed from LAC-T-APDUs
+	actionRequest			[0] Action-Request{LacContainer},
+	actionResponse			[1] Action-Response{LacContainer},
+	eventReportRequest		[2] LacTerminateComm,
+	eventReportResponse		[3] Event-Report-Response,
+	setRequest				[4] LacDataTxRequest,
+	setResponse				[5] LacDataTxResponse,
+	reserved6				[6] NULL,
+	reserved7				[7] NULL,
+	initialisationRequest	[8] LacInitialiseCommRequest,
+	initialisationResponse	[9] LacInitialiseCommResponse
+}
+
+-- ******************************************************************
+-- Level 1: Extension of the layer 7 module
+-- ******************************************************************
+
+LacContainer ::= CHOICE {
+	integer							[0]	 INTEGER,
+	reserved1						[1]	 NULL,
+	octetstring						[2]	 OCTET STRING (SIZE (0..127, ...)),
+	universalString					[3]	 UniversalString,
+	beaconId						[4]	 BeaconID,
+	t-apdu							[5]	 LacTApdus,
+	dsrcApplicationEntityId			[6]	 DSRCApplicationEntityID,
+	dsrc-Ase-Id						[7]	 Dsrc-EID,
+	attrIdList						[8]	 AttributeIdList,
+	attrList						[9]	 AttributeList{LacContainer},
+
+	reserved10						[10]	NULL,
+	reserved11						[11]	NULL,
+	reserved12						[12]	NULL,
+	reserved13						[13]	NULL,
+	reserved14						[14]	NULL,
+	time							[15]	Time,
+	vector							[16]	SEQUENCE (SIZE(0..255)) OF INTEGER(0..127,...),
+	reserved17						[17]	NULL,
+	reserved18						[18]	NULL,   
+	reserved19						[19]	NULL,
+
+	reserved20						[20]	NULL,
+	reserved21						[21]	NULL,
+	reserved22						[22]	NULL,
+	reserved23						[23]	NULL,
+	reserved24						[24]	NULL,
+	reserved25						[25]	NULL,
+	reserved26						[26]	NULL,
+	reserved27						[27]	NULL,
+	reserved28						[28]	NULL,
+	reserved29						[29]	NULL,
+
+	reserved30						[30]	NULL,
+	reserved31						[31]	NULL,
+	reserved32						[32]	NULL,
+	reserved33						[33]	NULL,
+	reserved34						[34]	NULL,
+	reserved35						[35]	NULL,
+	reserved36						[36]	NULL,
+	reserved37						[37]	NULL,
+	reserved38						[38]	NULL,
+	reserved39						[39]	NULL,
+
+	reserved40						[40]	NULL,
+	reserved41						[41]	NULL,
+	reserved42						[42]	NULL,
+	reserved43						[43]	NULL,
+	reserved44						[44]	NULL,
+	reserved45						[45]	NULL,
+	reserved46						[46]	NULL,
+	reserved47						[47]	NULL,
+	reserved48						[48]	NULL,
+	reserved49						[49]	NULL,
+
+	reserved50						[50]	NULL,
+	reserved51						[51]	NULL,
+	reserved52						[52]	NULL,
+	reserved53						[53]	NULL,
+	reserved54						[54]	NULL,
+	reserved55						[55]	NULL,
+	reserved56						[56]	NULL,
+	reserved57						[57]	NULL,
+	reserved58						[58]	NULL,
+	reserved59						[59]	NULL,
+
+	reserved60						[60]	NULL,
+	reserved61						[61]	NULL,
+	reserved62						[62]	NULL,
+	reserved63						[63]	NULL,
+	reserved64						[64]	NULL,
+	reserved65						[65]	NULL,
+	reserved66						[66]	NULL,
+	reserved67						[67]	NULL,
+	reserved68						[68]	NULL,
+	reserved69						[69]	NULL,
+
+	reserved70						[70]	NULL,
+	reserved71						[71]	NULL,
+	reserved72						[72]	NULL,
+	reserved73						[73]	NULL,
+	reserved74						[74]	NULL,
+	reserved75						[75]	NULL,
+	reserved76						[76]	NULL,
+	reserved77						[77]	NULL,
+	reserved78						[78]	NULL,
+	reserved79						[79]	NULL,
+
+	reservedForFutureISOCENuse80	[80]	NULL,
+	reservedForFutureISOCENuse81	[81]	NULL, 
+	reservedForFutureISOCENuse82	[82]	NULL,
+	reservedForFutureISOCENuse83	[83]	NULL,
+	reservedForFutureISOCENuse84	[84]	NULL,
+	reservedForFutureISOCENuse85	[85]	NULL,
+	reservedForFutureISOCENuse86	[86]	NULL,
+
+	contLAC							[87]	LacData,
+	reservedForFutureISOCENuse88	[88]	NULL,
+	reservedForFutureISOCENuse89	[89]	NULL,
+	reservedForFutureISOCENuse90	[90]	NULL,
+	reservedForFutureISOCENuse91	[91]	NULL,
+	reservedForFutureISOCENuse92	[92]	NULL,
+
+	reservedForFutureISOCENuse93	[93]	NULL,
+	reservedForFutureISOCENuse94	[94]	NULL, 
+	reservedForFutureISOCENuse95	[95]	NULL,
+	reservedForFutureISOCENuse96	[96]	NULL,
+	reservedForFutureISOCENuse97	[97]	NULL,
+	reservedForFutureISOCENuse98	[98]	NULL,
+	reservedForFutureISOCENuse99	[99]	NULL,
+	reservedForFutureISOCENuse100	[100]   NULL,
+	reservedForFutureISOCENuse101	[101]   NULL,
+	reservedForFutureISOCENuse102	[102]   NULL,
+
+	reservedForFutureISOCENuse103	[103]   NULL,
+	reservedForFutureISOCENuse104	[104]   NULL,
+	reservedForFutureISOCENuse105	[105]   NULL,
+	reservedForFutureISOCENuse106	[106]   NULL,
+	reservedForFutureISOCENuse107	[107]   NULL,
+	reservedForFutureISOCENuse108	[108]   NULL,
+	reservedForFutureISOCENuse109	[109]   NULL,
+	reservedForFutureISOCENuse110	[110]   NULL,
+	reservedForFutureISOCENuse111	[111]   NULL,
+	reservedForFutureISOCENuse112	[112]   NULL,
+	...
+}
+
+END
