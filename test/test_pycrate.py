@@ -164,7 +164,6 @@ class TestPycrate(unittest.TestCase):
         GLOBAL.clear()
 
     # asn1c IMPORTS
-    @unittest.expectedFailure
     def test_asn1c_imports(self):
         print('[<>] testing pycrate_asn1c complex IMPORTS')
         # create an "asn" dir for storing compiled specifications
@@ -173,13 +172,7 @@ class TestPycrate(unittest.TestCase):
         # compile and generate the Imports ASN.1 module
         with open('./test/res/Imports.asn', 'r') as fd:
             asntext = fd.read()
-        # Handle expected compile failure
-        with self.assertRaises(
-            ASN1ProcTextErr,
-            msg="[proc] module BaseModule: duplicate object with import, ConflictSeq)"):
-                compile_text(asntext)
-        # Force test to fail
-        self.assertTrue(False, msg="rest of test method won't succeed")
+        compile_text(asntext)
         # generate JSON dependency graph
         generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Imports.json')
         GLOBAL.clear()

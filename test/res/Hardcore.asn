@@ -3,8 +3,11 @@ HardcoreSyntax DEFINITIONS AUTOMATIC TAGS ::=
 BEGIN
 
 IMPORTS
+  ConflictSeq,
   Imp1Int
     FROM ImportModule1
+
+  ConflictSeq,
   Imp2Str
     FROM ImportModule2
 ;
@@ -314,14 +317,14 @@ Seq ::= SEQUENCE
 {
   seqint        [1] INTEGER,
   basecs        [2] ConflictSeq,
--- FIX:  imp1cs        [3] ImportModule1.ConflictSeq,
+  imp1cs        [3] ImportModule1.ConflictSeq,
   imp1int       [4] Imp1Int,
--- FIX:  imp2cs        [5] ImportModule2.ConflictSeq,
+  imp2cs        [5] ImportModule2.ConflictSeq,
   imp2str       [6] Imp2Str,
   last          [7] BOOLEAN
 }
 
--- ConflictSeq is also defined in other modules, but not imported yet
+-- ConflictSeq is also defined in imported modules
 ConflictSeq ::= SEQUENCE
 {
   bcsint        [1] INTEGER

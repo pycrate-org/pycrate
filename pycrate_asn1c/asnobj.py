@@ -92,12 +92,17 @@ def get_asnobj(mod_name, obj_name):
         mod = GLOBAL.MOD[mod_name]
     except KeyError:
         raise(ASN1Err('module {0}, undefined'.format(mod_name)))
-    # it is possible to import an object from a module which itsel imports it...
-    while obj_name in mod['_imp_']:
-        try:
-            mod = GLOBAL.MOD[mod['_imp_'][obj_name]]
-        except KeyError:
-            raise(ASN1Err('module {0}, undefined'.format(mod_name)))
+    if obj_name in mod:
+        # locally defined name, use it
+        pass
+    else:
+        # it is possible to import an object from a module which itsel imports it...
+        while obj_name in mod['_imp_']:
+            try:
+                impmods = mod['_imp_'][obj_name]
+                mod = GLOBAL.MOD[impmods[0]] # return the first IMPORTED name
+            except KeyError:
+                raise(ASN1Err('module {0}, undefined'.format(mod_name)))
     try:
         obj = mod[obj_name]
     except KeyError:
