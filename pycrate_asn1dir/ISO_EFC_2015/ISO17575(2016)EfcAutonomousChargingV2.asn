@@ -1,0 +1,387 @@
+EfcAutonomousCharging {iso(1) standard(0) 17575 part1(1) version2(2)}
+
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+
+IMPORTS
+
+EquipmentOBUId, PaymentMeans, EFC-ContextMark, Provider, DriverCharacteristics, PaymentFee, VehicleAxles, VehicleClass, VehicleDimensions, VehicleLicencePlateNumber, VehicleSpecificCharacteristics, VehicleWeightLaden, VehicleWeightLimits, TrailerCharacteristics, SetMMIRq, Int1, Int2, Int4
+
+FROM EfcDsrcApplication {iso(1) standard(0) 14906 application(0) version5(5)}
+
+AttributeList{}, EfcContainer
+
+FROM EfcDsrcGeneric {iso(1) standard(0) 14906 generic(1) version5(5)}
+
+TariffClassId, LocalVehicleClassId, TimeClassId, LocationClassId, UserClassId
+
+FROM EfcAutonomousContextData {iso(1) standard(0) 17575 part3(3) version2(2)}
+
+VehicleAxlesHistory, CommunicationStatus, GnssStatus, DistanceRecordingStatus, ActiveContexts, OBEStatusHistory, CccContainer
+
+FROM EfcCcc {iso(1) standard(0) 12813 version2(2)}
+
+LacContainer
+
+FROM EfcLac {iso(1) standard(0) 13141 version2(2)}
+
+Certificate, AlgorithmIdentifier, SupportedAlgorithms, CertificateSerialNumber, Name
+
+FROM AuthenticationFramework {joint-iso-itu-t ds(5) module(1) authenticationFramework(7) 6}
+
+SigningCertificateV2
+
+FROM ExtendedSecurityServices-2006 {iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs-9(9) smime(16) modules(0) id-mod-ess-2006(30)};
+-- RFC 5035 Enhanced Security Services
+
+----------------------------------
+-- Top Level Data Strucutres
+----------------------------------
+
+AuthenticatedChargeReport ::= SEQUENCE {
+	chargeReportPer			BIT STRING,
+	messageAuthenticator		MessageAuthenticator
+	}
+
+AuthenticatedChargeReportResponse ::= SEQUENCE {
+	chargeReportResponsePer		BIT STRING,
+	messageAuthenticator		MessageAuthenticator
+	}
+
+ChargeReport ::= SEQUENCE {
+	protocolVersion			AidIdentifier,
+	obeId				ObeId OPTIONAL,
+	vehicleLPNr			VehicleLicencePlateNumber OPTIONAL,
+	paymentMeans			PaymentMeans OPTIONAL,	
+	serviceProviderContract		EFC-ContextMark,
+	tollContext				Provider OPTIONAL,
+	chargeReportFinalRecipient		Provider OPTIONAL,
+	timeOfReport			GeneralizedTime OPTIONAL,
+	reportPeriod			Period OPTIONAL,
+	versionInfo			VersionId OPTIONAL,
+	usageStatementList SEQUENCE OF CHOICE {
+		usageStatement			UsageStatement,
+		authenticatedUsageStatement		AuthenticatedUsageStatement
+		},
+	sumVatForThisSession		PaymentFee OPTIONAL,
+	accountStatus			AccountStatus OPTIONAL,
+	chargeReportCounter			Int4 OPTIONAL,
+	mileage				Distance OPTIONAL,
+	listOfCccAttributes			SEQUENCE OF CccAttributes OPTIONAL,
+	...
+	}
+
+ChargeReportResponse ::= SEQUENCE {
+	chargeReportRespSender		Provider OPTIONAL,	-- 14906
+	dataReceived			DataReceived OPTIONAL,
+	versionsResponse			VersionId OPTIONAL,
+	obeStatusForDriver			SetMMIRq OPTIONAL,
+	accountUpdate			AccountUpdate OPTIONAL,
+	...
+	}
+
+-------------------------------------------------------
+-- Other Data Elements, ordered alphabetically
+-------------------------------------------------------
+
+AccountStatus ::= INTEGER {
+	ok				(0),
+	low				(1),
+	empty				(2),
+	negative				(3)
+		-- (4-127) are reserved for future CEN use
+		-- (128-255) are reserved for private use
+	} (0..255)
+
+AccountUpdate ::= CHOICE {
+	reloadAccount			ReloadAccount,
+	setAccount			NewAccountLimit,
+	addToAccount			AddToAccount,
+	authenticatedReloadAccount		AuthenticatedReloadAccount,
+	authenticatedSetAccount		AuthenticatedNewAccountLimit,
+	authenticatedAddToAccount		AuthenticatedAddToAccount
+	}
+
+AddToAccount ::= SEQUENCE {
+	addCredit 				PaymentFee OPTIONAL, 		-- 14906
+	addDistance			Distance OPTIONAL,	
+	addTime				GeneralizedTime OPTIONAL,
+	addDuration			Duration OPTIONAL,
+	addEvents				INTEGER OPTIONAL,	
+	...
+	}
+
+AggregatedFee ::= SEQUENCE {
+	timePeriodCovered			Period,
+	feeExclVat			PaymentFee,
+	sumVat				PaymentFee OPTIONAL
+	}
+
+AggregatedSingleTariffClassSession ::= SEQUENCE {
+	timePeriodCovered			Period OPTIONAL,
+	currentTariffClass			TariffClassDescription OPTIONAL,
+	vehicleDescription			VehicleDescription OPTIONAL,
+	totalDistanceCovered			Distance OPTIONAL,
+	numberOfDetectedEvents		INTEGER OPTIONAL,
+	obeStatus				SetMMIRq OPTIONAL,
+	feeExclVat			PaymentFee OPTIONAL, 	-- 14906
+	sumVat				PaymentFee OPTIONAL,	-- 14906
+	...
+	}
+
+AidIdentifier ::= INTEGER {
+	iso17575-1-2016			(0)
+		-- (1-127) are reserved for future CEN use
+		-- (128-255) are reserved for private use
+	} (0..255)
+
+Altitude ::= SEQUENCE {
+	altitude				INTEGER(-65536..65535),
+	altUnit				DisUnit DEFAULT metres
+	}
+
+AuthenticatedAddToAccount ::= SEQUENCE {
+	addAccountPer			BIT STRING,
+	messageAuthenticator		MessageAuthenticator
+	}
+
+AuthenticatedNewAccountLimit ::= SEQUENCE {
+	newAccountPer			BIT STRING,
+	messageAuthenticator		MessageAuthenticator
+	}
+
+AuthenticatedReloadAccount ::= SEQUENCE {
+	reloadAccountPer			BIT STRING,	
+	messageAuthenticator		MessageAuthenticator
+	}
+
+AuthenticatedUsageStatement ::= SEQUENCE {
+	usageStatementPer			BIT STRING,
+	messageAuthenticator		MessageAuthenticator
+	}
+
+CccAttributes ::= SEQUENCE {
+	timeOfCccRecord			GeneralizedTime OPTIONAL,
+	axlesHistory			VehicleAxlesHistory OPTIONAL,
+	commStatus			CommunicationStatus OPTIONAL,
+	gnssStatus				GnssStatus OPTIONAL,
+	distRecStatus			DistanceRecordingStatus OPTIONAL,
+	activeContexts			ActiveContexts OPTIONAL,
+	obeHistory			OBEStatusHistory OPTIONAL
+	}
+
+ChargeObjectId ::= SEQUENCE {
+	chargeReportFinalRecipient		Provider OPTIONAL,
+	chargeObjectDesignation		Int4
+	}
+
+DataReceived ::= CHOICE {
+	timeOfReport			GeneralizedTime,
+	mileage				Distance,
+	chargeReportCounter			Int4
+	}
+
+DetectedChargeObject ::= SEQUENCE {
+	chargeObjectId			ChargeObjectId,
+	subObjectNumber			Int4 OPTIONAL,
+	timeWhenUsed			GeneralizedTime OPTIONAL,
+	mileageWhenUsed			Distance OPTIONAL,
+	currentTariffClass			TariffClassDescription OPTIONAL,
+	vehicleDescription			VehicleDescription OPTIONAL,
+	obeStatus				SetMMIRq OPTIONAL,
+	feeExclVat			PaymentFee OPTIONAL, 		-- 14906
+	sumVat				PaymentFee OPTIONAL, 		-- 14906
+	chargeObjDetectionMode		DetectionMode OPTIONAL
+	}
+
+DetectionMode ::= INTEGER {
+	measured				(0),
+	inferred				(1),
+	lac				(2)
+		-- (3-127) are reserved for future CEN use
+		-- (128-255) are reserved for private use
+	} (0..255)
+
+Distance ::= SEQUENCE {
+	dist				Int4,
+	disUnit				DisUnit DEFAULT kilometres
+	}
+
+DisUnit::= INTEGER {
+	kilometres				(0),
+	miles				(1),
+	metres				(2),
+	yards				(3),
+	feet				(4),
+	decimetres			(5), 
+	quartermetres			(6)	-- for compatibility with ISO 12813, ISO 13141
+		-- (7-127) are reserved for future CEN use
+		-- (128-255) are reserved for private use
+	} (0..255)
+
+Duration ::= SEQUENCE {
+	dur				Int4,
+	durUnit				DurUnit DEFAULT seconds
+	}
+
+DurUnit ::= INTEGER {
+	seconds				(0),
+	minutes				(1),
+	hours				(2),
+	days				(3),
+	months				(4)
+		-- (5-127) are reserved for future CEN use
+		-- (128-255) are reserved for private use
+	} (0..255)
+
+ListOfDsrcUsageData ::= SEQUENCE OF CHOICE {
+	data14906				AttributeList{EfcContainer},		-- EN ISO 14906
+	data12813				AttributeList{CccContainer},		-- EN ISO 12813
+	data13141				AttributeList{LacContainer},		-- EN ISO 13141
+	...
+	}	-- contains EFC attributes as defined in DSRC standards
+
+ListOfRawUsageData ::= SEQUENCE {
+	rawDataList			SEQUENCE OF MeasuredRawData,
+	currentTariffClass			TariffClassDescription OPTIONAL,
+	vehicleDescription			VehicleDescription OPTIONAL,
+	...
+	}
+
+MacMessageAuthenticator ::= SEQUENCE {
+	algorithmIdentifier			AlgorithmIdentifier,
+	masterKeyRef			INTEGER,
+	keyDerivationID			OCTET STRING,
+	authenticator			BIT STRING
+	}
+
+MeasuredRawData ::= SEQUENCE {
+	measuredPosition			Position OPTIONAL,
+	timeWhenMeasured			GeneralizedTime OPTIONAL,
+	nmeaData 			NmeaData OPTIONAL,
+	additionalGnssData			OCTET STRING OPTIONAL,
+	...
+	}
+
+MessageAuthenticator ::= CHOICE {
+	mac				[0] MacMessageAuthenticator,
+	signature				[1] MessageAuthenticatorEfc
+	}
+
+MessageAuthenticatorEfc ::= SEQUENCE {
+	tbsMessageAuthenticatorEfc		TbsMessageAuthenticatorEfc,
+	signatureAlgorithm			AlgorithmIdentifier,
+	signatureValue      			BIT STRING
+	}
+
+MessageContentDigest ::= SEQUENCE {
+	hashAlgorithm			AlgorithmIdentifier,
+	hashedMessageContent		OCTET STRING
+	}
+
+NewAccountLimit ::= SEQUENCE {
+	newCreditLimit			PaymentFee OPTIONAL, 		-- 14906
+	newDistanceLimit			Distance OPTIONAL,
+	newTimeLimit			GeneralizedTime OPTIONAL,
+	newDurationLimit			Duration OPTIONAL,
+	newEventLimit			INTEGER OPTIONAL,
+	...
+	}
+
+NmeaData ::= SEQUENCE {
+	time				NumericString (SIZE(9)) OPTIONAL,
+	status				PrintableString ("A"|"V") OPTIONAL,
+	latitude				NumericString (SIZE(8)) OPTIONAL,
+	latNS				PrintableString ("N"|"S") OPTIONAL,
+	longitude				NumericString (SIZE(9)) OPTIONAL,
+	longEW				PrintableString ("E"|"W") OPTIONAL,
+	speed				NumericString (SIZE(3)) OPTIONAL,
+	heading				NumericString (SIZE(3)) OPTIONAL,
+	date				NumericString (SIZE(6)) OPTIONAL,
+	signalIntegrity			PrintableString ("A"|"D"|"E"|"M"|"S"|"N") OPTIONAL,
+	altitude				PrintableString (FROM ("0".."9"|"-"))(SIZE(5)) OPTIONAL,
+	usedSatellites			NumericString (SIZE(2)) OPTIONAL,
+	hdop				NumericString (SIZE(3)) OPTIONAL,
+	...
+	}
+
+ObeId ::= SEQUENCE {
+	manufacturerId			Int2, 			-- see ObeConfiguration in 14906
+	equipmentObuId			EquipmentOBUId
+	}
+
+Period ::= SEQUENCE {
+	beginOfPeriod			GeneralizedTime,
+	endOfPeriod			GeneralizedTime
+	}
+
+Position ::= SEQUENCE {
+	longitude				INTEGER(-2147483648..2147483647), -- as defined in ISO 6709
+	latitude				INTEGER(-2147483648..2147483647), -- as defined in ISO 6709
+	altitude				Altitude OPTIONAL
+	}
+
+ReloadAccount ::= SEQUENCE {
+	reloadOldCreditAmount		BOOLEAN OPTIONAL,
+	reloadOldDistanceLimit		BOOLEAN OPTIONAL,
+	reloadOldTimeLimit			BOOLEAN OPTIONAL,
+	reloadOldDurationLimit		BOOLEAN OPTIONAL,
+	reloadOldEventLimit			BOOLEAN OPTIONAL,
+	...
+	}
+
+TariffClassDescription ::= SEQUENCE {
+	tariffClassId			TariffClassId OPTIONAL,
+	localVehicleClass			LocalVehicleClassId OPTIONAL,
+	timeClass				TimeClassId OPTIONAL,
+	locationClass			LocationClassId OPTIONAL,
+	userClass				UserClassId OPTIONAL
+	}
+
+TbsMessageAuthenticatorEfc ::= SEQUENCE {
+	version				INTEGER DEFAULT 1,
+	signatureAlgorithm			AlgorithmIdentifier,
+	issuer				Name,
+	serialNumber			CertificateSerialNumber,
+	messageContentDigest		MessageContentDigest,
+	signatureDate			GeneralizedTime,
+	certificates			SEQUENCE OF Certificate OPTIONAL,
+	signingCertificate			SigningCertificateV2 OPTIONAL
+	}
+
+UsageStatement ::= SEQUENCE {
+	usageStatementId			Int2 OPTIONAL,
+	tollContext				Provider OPTIONAL,
+	chargeReportFinalRecipient		Provider OPTIONAL,
+	aggregatedFee			AggregatedFee OPTIONAL,
+	sumVat				PaymentFee OPTIONAL, 
+	aggregatedSingleTariffClassSession	AggregatedSingleTariffClassSession OPTIONAL,
+	listOfChargeObjects			SEQUENCE OF DetectedChargeObject OPTIONAL,
+	listOfDsrcUsageData 		ListOfDsrcUsageData OPTIONAL,
+	listOfRawUsageData			ListOfRawUsageData OPTIONAL,
+	noUsage				BOOLEAN OPTIONAL,
+	additionalUsageInformation 		OCTET STRING OPTIONAL,
+	...
+	}
+
+VehicleDescription ::= SEQUENCE {
+	vehicleLPNr			VehicleLicencePlateNumber OPTIONAL,
+	axles				VehicleAxles OPTIONAL,
+	class				VehicleClass OPTIONAL,
+	dimensions			VehicleDimensions OPTIONAL,
+	specificCharacteristics		VehicleSpecificCharacteristics OPTIONAL,
+	ladenWeight			VehicleWeightLaden OPTIONAL,
+	weightLimits			VehicleWeightLimits OPTIONAL,
+	trailerCharacteristics			TrailerCharacteristics OPTIONAL,
+	...
+	}
+
+VersionId ::= CHOICE{
+	basicVersionId			OCTET STRING,
+	extendedVersionId			SEQUENCE OF SEQUENCE{
+		versionName			UTF8String,
+		value				UTF8String
+		}
+	}
+
+END
