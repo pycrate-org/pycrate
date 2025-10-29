@@ -59,6 +59,7 @@ from pycrate_asn1c.asnproc import (
     compile_all,
     generate_modules,
     PycrateGenerator,
+    JSONDepGraphGenerator,
     GLOBAL
     )
 from pycrate_asn1rt.asnobj import ASN1Obj
@@ -123,6 +124,7 @@ class TestPycrate(unittest.TestCase):
         fd_init.write('__all__ = [')
         compile_text(asntext)
         generate_modules(PycrateGenerator, './test_asn_todelete/Hardcore.py')
+        generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Hardcore.json')
         GLOBAL.clear()
         fd_init.write('\'Hardcore\', ')
         if test_all_comp:
@@ -152,6 +154,11 @@ class TestPycrate(unittest.TestCase):
                     importlib.import_module('pycrate_asn1dir.%s' % sn)
                     del sys.modules['pycrate_asn1dir.%s' % sn]
                     print('  - loaded %s' % sn)
+        # validate JSON
+        print('[<>] checking JSON dependency graph')
+        with open('./test/res/Hardcore.json') as inj, \
+            open('./test_asn_todelete/Hardcore.json') as outj:
+            self.assertListEqual(list(inj), list(outj))
         print('[<>] all ASN.1 modules loaded successfully')
         GLOBAL.clear()
     
