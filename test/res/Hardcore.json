@@ -15,6 +15,7 @@
     {"id": "HardcoreSyntax.Bs", "group": 2},
     {"id": "HardcoreSyntax.Bs01A", "group": 2},
     {"id": "HardcoreSyntax.Cho000", "group": 2},
+    {"id": "HardcoreSyntax.ConflictSeq", "group": 2},
     {"id": "HardcoreSyntax.Enum00", "group": 2},
     {"id": "HardcoreSyntax.Enum000", "group": 2},
     {"id": "HardcoreSyntax.Enum001", "group": 2},
@@ -55,6 +56,7 @@
     {"id": "HardcoreSyntax.Recur1", "group": 2},
     {"id": "HardcoreSyntax.Recur2", "group": 2},
     {"id": "HardcoreSyntax.Recur3", "group": 2},
+    {"id": "HardcoreSyntax.Seq", "group": 2},
     {"id": "HardcoreSyntax.Seq00", "group": 2},
     {"id": "HardcoreSyntax.Seq000", "group": 2},
     {"id": "HardcoreSyntax.Seq01", "group": 2},
@@ -117,6 +119,11 @@
     {"id": "HardcoreSyntax.test2", "group": 2},
     {"id": "HardcoreSyntax.utim00", "group": 2},
     {"id": "HardcoreSyntax.utim01", "group": 2},
+    {"id": "ImportModule1.ConflictSeq", "group": 3},
+    {"id": "ImportModule1.Imp1Int", "group": 3},
+    {"id": "ImportModule1.Imp1Str", "group": 3},
+    {"id": "ImportModule2.ConflictSeq", "group": 4},
+    {"id": "ImportModule2.Imp2Str", "group": 4},
     {"id": "_IMPL_.ABSTRACT-SYNTAX", "group": 0},
     {"id": "_IMPL_.CHARACTER STRING", "group": 0},
     {"id": "_IMPL_.EMBEDDED PDV", "group": 0},
@@ -165,6 +172,9 @@
     {"source": "HardcoreSyntax.Recur1", "target": "HardcoreSyntax.Recur2", "value": 1},
     {"source": "HardcoreSyntax.Recur2", "target": "HardcoreSyntax.Recur1", "value": 1},
     {"source": "HardcoreSyntax.Recur3", "target": "HardcoreSyntax.Recur3", "value": 1},
+    {"source": "HardcoreSyntax.Seq", "target": "HardcoreSyntax.ConflictSeq", "value": 1},
+    {"source": "HardcoreSyntax.Seq", "target": "ImportModule1.Imp1Int", "value": 1},
+    {"source": "HardcoreSyntax.Seq", "target": "ImportModule2.Imp2Str", "value": 1},
     {"source": "HardcoreSyntax.Seq00", "target": "HardcoreSyntax.Seq00", "value": 1},
     {"source": "HardcoreSyntax.Seq000", "target": "HardcoreSyntax.Int001", "value": 1},
     {"source": "HardcoreSyntax.Seq000", "target": "HardcoreSyntax.OStr001", "value": 1},
@@ -204,6 +214,7 @@
     {"source": "HardcoreSyntax.int03", "target": "HardcoreSyntax.INT03", "value": 1},
     {"source": "HardcoreSyntax.int04", "target": "HardcoreSyntax.Int04", "value": 1},
     {"source": "HardcoreSyntax.test", "target": "HardcoreSyntax.TEST", "value": 1},
-    {"source": "HardcoreSyntax.test2", "target": "HardcoreSyntax.TEST2", "value": 1}
+    {"source": "HardcoreSyntax.test2", "target": "HardcoreSyntax.TEST2", "value": 1},
+    {"source": "ImportModule1.Imp1Str", "target": "ImportModule2.Imp2Str", "value": 1}
   ]
 }
