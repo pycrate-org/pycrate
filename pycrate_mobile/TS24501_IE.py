@@ -1230,7 +1230,7 @@ class FGSID(Envelope):
             return FGSIDTYPE.NO, None
         elif typ == FGSIDTYPE.SUPI:
             return FGSIDTYPE.SUPI, FGSIDSUPI.to_nai(self)
-        elif typ in {FGSIDTYPE.GUTI, FGSIDTYPE.STMSI}:
+        elif typ == FGSIDTYPE.GUTI:
             return typ, {
                 'PLMN': self[3].decode(), 
                 'AMFRegionID': self[4].get_val(),
@@ -1240,6 +1240,12 @@ class FGSID(Envelope):
                 }
         elif typ in {FGSIDTYPE.IMEI, FGSIDTYPE.IMEISV}:
             return typ, FGSIDDigit.decode(self)
+        elif typ == FGSIDTYPE.STMSI:
+            return typ, {
+                'AMFSetID': self[3].get_val(),
+                'AMFPtr': self[4].get_val(),
+                '5GTMSI': self[5].get_val()
+                }
         elif typ == FGSIDTYPE.MAC:
             return FGSIDTYPE.MAC, {'MAURI': self[1].get_val(), 'MAC': self[3].get_val()}
         elif typ == FGSIDTYPE.EUI64:
