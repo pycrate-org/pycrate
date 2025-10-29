@@ -58,6 +58,7 @@ from pycrate_asn1c.asnproc import (
     compile_spec,
     compile_all,
     generate_modules,
+    ASN1ProcTextErr,
     PycrateGenerator,
     JSONDepGraphGenerator,
     GLOBAL
@@ -161,7 +162,35 @@ class TestPycrate(unittest.TestCase):
             self.assertListEqual(list(inj), list(outj))
         print('[<>] all ASN.1 modules loaded successfully')
         GLOBAL.clear()
-    
+
+    # asn1c IMPORTS
+    @unittest.expectedFailure
+    def test_asn1c_imports(self):
+        print('[<>] testing pycrate_asn1c complex IMPORTS')
+        # create an "asn" dir for storing compiled specifications
+        if 'test_asn_todelete' not in os.listdir('.'):
+            os.mkdir('test_asn_todelete')
+        # compile and generate the Imports ASN.1 module
+        with open('./test/res/Imports.asn', 'r') as fd:
+            asntext = fd.read()
+        # Handle expected compile failure
+        with self.assertRaises(
+            ASN1ProcTextErr,
+            msg="[proc] module BaseModule: duplicate object with import, ConflictSeq)"):
+                compile_text(asntext)
+        # Force test to fail
+        self.assertTrue(False, msg="rest of test method won't succeed")
+        # generate JSON dependency graph
+        generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Imports.json')
+        GLOBAL.clear()
+        # validate JSON dependency graph
+        print('[<>] checking JSON dependency graph')
+        with open('./test/res/Imports.json') as inj, \
+            open('./test_asn_todelete/Imports.json') as outj:
+            self.assertListEqual(list(inj), list(outj))
+        print('[<>] all ASN.1 modules loaded successfully')
+        GLOBAL.clear()
+
     # asn1rt
     def test_asn1rt(self):
         print('[<>] testing pycrate_asn1rt')
