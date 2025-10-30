@@ -184,6 +184,7 @@ class TestPycrate(unittest.TestCase):
         test_nas_mo()
         test_nas_mt()
         test_nas_5g()
+        test_5gsid()
         test_sigtran()
         test_sccp()
         test_isup()
