@@ -1076,8 +1076,8 @@ class JSONDepGraphGenerator(_Generator):
                     # we must ensure that tgt is really defined within tgt.called[0]
                     # and not imported from another module
                     while tgt[1] not in GLOBAL.MOD[tgt[0]]:
-                        # TODO: confirm working after _imp_ change to dict of list
-                        tgt[0] = GLOBAL.MOD[tgt[0]]['_imp_'][tgt[1]]
+                        # use the first imported module for name tgt[1]
+                        tgt[0] = GLOBAL.MOD[tgt[0]]['_imp_'][tgt[1]][0]
                     links.append('{"source": "%s.%s", "target": "%s.%s", "value": %i},'\
                                  % (mod, name, tgt[0], tgt[1], self.LINK_FORCE))
         links.sort()
