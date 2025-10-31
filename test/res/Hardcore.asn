@@ -4,7 +4,8 @@ BEGIN
 
 IMPORTS
   ConflictSeq,
-  Imp1Int
+  Imp1Int,
+  Imp1Str,
     FROM ImportModule1
 
   ConflictSeq,
@@ -319,9 +320,10 @@ Seq ::= SEQUENCE
   basecs        [2] ConflictSeq,
   imp1cs        [3] ImportModule1.ConflictSeq,
   imp1int       [4] Imp1Int,
-  imp2cs        [5] ImportModule2.ConflictSeq,
-  imp2str       [6] Imp2Str,
-  last          [7] BOOLEAN
+  imp1str       [5] Imp1Str,
+  imp2cs        [6] ImportModule2.ConflictSeq,
+  imp2str       [7] Imp2Str,
+  last          [8] BOOLEAN
 }
 
 -- ConflictSeq is also defined in imported modules

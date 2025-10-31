@@ -175,6 +175,7 @@
     {"source": "HardcoreSyntax.Seq", "target": "HardcoreSyntax.ConflictSeq", "value": 1},
     {"source": "HardcoreSyntax.Seq", "target": "ImportModule1.ConflictSeq", "value": 1},
     {"source": "HardcoreSyntax.Seq", "target": "ImportModule1.Imp1Int", "value": 1},
+    {"source": "HardcoreSyntax.Seq", "target": "ImportModule1.Imp1Str", "value": 1},
     {"source": "HardcoreSyntax.Seq", "target": "ImportModule2.ConflictSeq", "value": 1},
     {"source": "HardcoreSyntax.Seq", "target": "ImportModule2.Imp2Str", "value": 1},
     {"source": "HardcoreSyntax.Seq00", "target": "HardcoreSyntax.Seq00", "value": 1},
