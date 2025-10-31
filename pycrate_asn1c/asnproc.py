@@ -27,6 +27,7 @@
 # *--------------------------------------------------------
 #*/
 
+import collections
 import os
 import re
 
@@ -186,7 +187,7 @@ def compile_text(text=u'', **kwargs):
         - _tag_: str (EXPLICIT, IMPLICIT, AUTOMATIC), tagging mode of the module
         - _ext_: str (IMPLIED) or None, extensibility mode of the module
         - _exp_: list of str or None, list of objects' name exported
-        - _imp_: dict of imported objects' name (str) and corresponding module name (str)
+        - _imp_: dict of imported objects' name (str) to list(corresponding module names (str))
         - _obj_: list of str, all objects' name defined in the module
         - _type_: list of str, all ASN.1 subtypes' name defined in the module
         - _val_: list of str, all ASN.1 values' name defined in the module
@@ -364,12 +365,12 @@ def _compile_text_pass(text, with_order, **kwargs):
         #
         # 5) scan the asnblock for module imports
         imports, cur = module_get_import(asnblock)
-        module['_imp_'] = {}
+        module['_imp_'] = collections.defaultdict(list)
         if cur:
             asnblock = asnblock[cur:]
             for imp in imports:
                 for obj_name in imp['obj']:
-                    module['_imp_'][obj_name] = imp['name']
+                    module['_imp_'][obj_name].append(imp['name'])
         #
         # 6) init objects lists for the module
         module['_obj_']   = []
@@ -387,9 +388,6 @@ def _compile_text_pass(text, with_order, **kwargs):
             Obj._mod = name
             if Obj._name in module:
                 raise(ASN1ProcTextErr('[proc]{0} module {1}: duplicate object, {2}'\
-                      .format(fn, name, Obj._name)))
-            elif Obj._name in module['_imp_']:
-                raise(ASN1ProcTextErr('[proc]{0} module {1}: duplicate object with import, {2}'\
                       .format(fn, name, Obj._name)))
             module[Obj._name] = Obj
             module['_obj_'].append(Obj._name)
@@ -433,7 +431,7 @@ def build_implicit_mod():
     module = GLOBAL.MOD['_IMPL_']
     module['_name_'] = '_IMPL_'
     module['_oid_']  = []
-    module['_imp_']  = {}
+    module['_imp_'] = collections.defaultdict(list)
     module['_obj_'] = [TYPE_REAL, TYPE_EXT, TYPE_EMB_PDV, TYPE_CHAR_STR, TYPE_TYPEIDENT, TYPE_ABSSYNT]
     GLOBAL.COMP['NS']['mod'] = '_IMPL_'
     #
@@ -918,8 +916,11 @@ def init_ns_mod(mod_name):
     # add module's local objects
     GLOBAL.COMP['NS']['obj'].update(
         dict((obj_name, mod_name) for obj_name in Mod if obj_name[0] != '_'))
-    # add module's imported objects
-    GLOBAL.COMP['NS']['obj'].update(GLOBAL.MOD[mod_name]['_imp_'])
+    # add module's imported objects only if not present
+    for imp_name, imp_mods in GLOBAL.MOD[mod_name]['_imp_'].items():
+        if imp_name not in GLOBAL.COMP['NS']['obj']:
+            GLOBAL.COMP['NS']['obj'][imp_name] = imp_mods[0]
+
     # tagging and extensibility mode for the module
     GLOBAL.COMP['NS']['tag'] = GLOBAL.MOD[mod_name]['_tag_']
     GLOBAL.COMP['NS']['ext'] = GLOBAL.MOD[mod_name]['_ext_']

@@ -1,0 +1,74 @@
+BaseModule DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+IMPORTS
+  ConflictSeq,
+  Imp1Int,
+  Imp1Str,
+    FROM ImportModule1
+
+  ConflictSeq,
+  Imp2Str
+    FROM ImportModule2
+;
+
+
+Seq ::= SEQUENCE
+{
+  seqint        [1] INTEGER,
+  basecs        [2] ConflictSeq,
+  imp1cs        [3] ImportModule1.ConflictSeq,
+  imp1int       [4] Imp1Int,
+  imp1str       [5] Imp1Str,
+  imp2cs        [6] ImportModule2.ConflictSeq,
+  imp2str       [7] Imp2Str,
+  last          [8] BOOLEAN
+}
+
+-- ConflictSeq is also defined in imported modules
+ConflictSeq ::= SEQUENCE
+{
+  bcsint        [1] INTEGER
+}
+
+END
+
+
+--
+-- ImportModule1
+--
+ImportModule1 DEFINITIONS AUTOMATIC TAGS ::=
+
+IMPORTS
+  Imp2Str FROM ImportModule2
+;
+
+BEGIN
+
+Imp1Int ::= INTEGER
+
+Imp1Str ::= ImportModule2.Imp2Str
+
+ConflictSeq ::= SEQUENCE
+{
+  i1int         [1] INTEGER
+}
+
+END
+
+--
+-- ImportModule2
+--
+ImportModule2 DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+Imp2Str ::= OCTET STRING (SIZE(0..7))
+
+ConflictSeq ::= SEQUENCE
+{
+  i2str        [1] OCTET STRING
+}
+
+END
