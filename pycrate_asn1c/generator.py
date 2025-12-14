@@ -294,8 +294,12 @@ def typeref_to_defin(Obj):
     # which be misleading due to IMPORTS chain)
     else:
         (modname, objname) = Obj._typeref.called
-        while objname in GLOBAL.MOD[modname]['_imp_']:
-            modname = GLOBAL.MOD[modname]['_imp_'][objname]
+        if objname in GLOBAL.MOD[modname]:
+            # locally defined name, use it
+            pass
+        else:
+            while objname in GLOBAL.MOD[modname]['_imp_']:
+                modname = GLOBAL.MOD[modname]['_imp_'][objname][0]
         if isinstance(Obj._typeref, ASN1RefType):
             return 'ASN1RefType((\'{0}\', \'{1}\'))'.format(modname, objname)
         elif isinstance(Obj._typeref, ASN1RefClassField):
@@ -1047,6 +1051,7 @@ class JSONDepGraphGenerator(_Generator):
                 for name in GLOBAL.MOD[mod]['_obj_']:
                     nodes.append('{"id": "%s.%s", "group": %i},'\
                                  % (mod, name, groups.index(mod)))
+        nodes.sort()
         # remove last coma
         #nodes[-1] = nodes[-1][:-1]
         last_node = nodes[-1]
@@ -1071,9 +1076,11 @@ class JSONDepGraphGenerator(_Generator):
                     # we must ensure that tgt is really defined within tgt.called[0]
                     # and not imported from another module
                     while tgt[1] not in GLOBAL.MOD[tgt[0]]:
-                        tgt[0] = GLOBAL.MOD[tgt[0]]['_imp_'][tgt[1]]
+                        # use the first imported module for name tgt[1]
+                        tgt[0] = GLOBAL.MOD[tgt[0]]['_imp_'][tgt[1]][0]
                     links.append('{"source": "%s.%s", "target": "%s.%s", "value": %i},'\
                                  % (mod, name, tgt[0], tgt[1], self.LINK_FORCE))
+        links.sort()
         # remove last coma
         #links[-1] = links[-1][:-1]
         last_link = links[-1]
