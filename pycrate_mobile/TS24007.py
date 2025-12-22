@@ -398,7 +398,7 @@ class IE(Envelope):
                 log('%s, _from_char: unable to decode IE, %s'\
                     % (self._name, self._IE._name))
             else:
-                if char.len_bit() > 0:
+                if char.len_bit() > 7:
                     log('%s, _from_char: uncorrect decoding for IE, %s'\
                         % (self._name, self._IE._name))
                 else:
