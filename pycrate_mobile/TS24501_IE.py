@@ -3106,7 +3106,7 @@ class EPSBearerCtxt(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self['Len'].set_valauto(lambda: 1 + self['EPSParams'].get_len()) # TS does not define which length it is...
+        self['Len'].set_valauto(lambda: 1 + self['EPSParamList'].get_len()) # TS does not define which length it is...
         self['E'].set_dicauto(lambda: _EPSBearerCtxtEDict_dict.get(self['OpCode'].get_val(), {}))
         self['Num'].set_valauto(lambda: self['EPSParamList'].get_num())
         self['EPSParamList'].set_numauto(lambda: self['Num'].get_val())
