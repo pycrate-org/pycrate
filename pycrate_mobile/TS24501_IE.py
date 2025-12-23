@@ -2800,8 +2800,8 @@ class NSAG(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 2 + self[2][0].get_val() + self[4].get_len())
-        self[4].set_blauto(lambda: (self[0].get_val() - self[2][0].get_val() - 2)<<3)
+        self[0].set_valauto(lambda: 2 + self[2].get_len() + self[4].get_len())
+        self[4].set_blauto(lambda: (self[0].get_val() - self[2].get_len() - 2)<<3)
 
 
 class NSAGInfo(Sequence):
@@ -3302,7 +3302,7 @@ class QoSFlow(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self['E'].set_dicauto(lambda: _QoSFlowE_dict[self['OpCode'].get_val()])
+        self['E'].set_dicauto(lambda: _QoSFlowE_dict.get(self['OpCode'].get_val(), {}))
         self['E'].set_valauto(lambda: 1 if self['Params'].get_num() else 0)
         self['Num'].set_valauto(lambda: self['Params'].get_num())
         self['Params'].set_numauto(lambda: self['Num'].get_val())
