@@ -159,6 +159,7 @@ class Buf(Atom):
     def get_num(self):
         return self.get_len()
     
+    get_val_d = get_val
     __call__ = get_val
     
     #--------------------------------------------------------------------------#
@@ -291,6 +292,7 @@ class BufAuto(Buf):
         else:
             return self.DEFAULT_BL
     
+    get_val_d = get_val
     __call__ = get_val
 
 
@@ -489,6 +491,7 @@ class Uint(Atom):
         # Python int.bit_length() API, nice
         return self.get_val().bit_length()
     
+    get_val_d = get_val
     __call__ = get_val
     
     #--------------------------------------------------------------------------#
@@ -628,6 +631,7 @@ class Int(Atom):
         # so we just return 1 additional bit for the sign
         return 1 + self.get_val().bit_length()
     
+    get_val_d = get_val
     __call__ = get_val
     
     #--------------------------------------------------------------------------#
