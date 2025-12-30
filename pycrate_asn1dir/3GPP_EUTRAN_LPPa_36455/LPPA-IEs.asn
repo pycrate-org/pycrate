@@ -817,7 +817,7 @@ SRSConfigurationForOneCell ::= SEQUENCE {
 	srs-HoppingBandwidth		ENUMERATED {hbw0, hbw1, hbw2, hbw3},
 	srs-cyclicShift				ENUMERATED {cs0, cs1, cs2, cs3, cs4, cs5, cs6, cs7},
 	srs-ConfigIndex				INTEGER (0..1023),
-	maxUpPts					ENUMERATED {true}			OPTIONAL,	-- Cond ifTDD
+	maxUpPts					ENUMERATED {true}			OPTIONAL,	-- This IE shall be present if the UL-EARFCN IE refers to TDD operation. --
 	transmissionComb			INTEGER (0..1),
 	freqDomainPosition			INTEGER (0..23),
 	groupHoppingEnabled			BOOLEAN,

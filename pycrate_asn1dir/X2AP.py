@@ -176,6 +176,7 @@ class X2AP_Constants:
         'id-accessAndMobilityIndication',
         'id-procedure-code-58-not-to-be-used',
         'id-CPC-cancel',
+        'id-rachIndication',
         'maxEARFCN',
         'maxEARFCNPlusOne',
         'newmaxEARFCN',
@@ -231,7 +232,7 @@ class X2AP_Constants:
         'maxnoofNRSCSs',
         'maxnoofNRPhysicalResourceBlocks',
         'maxnoofNonAnchorCarrierFreqConfig',
-        'maxnoofRACHReports',
+        'maxnoofRAReports',
         'maxnoofPSCellsPerSN',
         'maxnoofPSCellsPerPrimaryCellinUEHistoryInfo',
         'maxnoofReportedNRCellsPossiblyAggregated',
@@ -243,6 +244,7 @@ class X2AP_Constants:
         'maxnoofCSIRSneighbourCellsInMTC',
         'maxnoofSensorName',
         'maxnoofTargetSgNBsMinusOne',
+        'maxnoofUEsforRAReportIndications',
         'id-E-RABs-Admitted-Item',
         'id-E-RABs-Admitted-List',
         'id-E-RAB-Item',
@@ -646,7 +648,7 @@ class X2AP_Constants:
         'id-sourceNG-RAN-node-id',
         'id-SourceDLForwardingIPAddress',
         'id-SourceNodeDLForwardingIPAddress',
-        'id-NRRACHReportInformation',
+        'id-NRRAReport',
         'id-SCG-UE-HistoryInformation',
         'id-PSCellHistoryInformationRetrieve',
         'id-MeasurementResultforNRCellsPossiblyAggregated',
@@ -674,6 +676,14 @@ class X2AP_Constants:
         'id-MIMOPRBusageInformation',
         'id-SensorMeasurementConfiguration',
         'id-AdditionalListofForwardingGTPTunnelEndpoint',
+        'id-M4ReportAmount',
+        'id-M5ReportAmount',
+        'id-M6ReportAmount',
+        'id-M7ReportAmount',
+        'id-CHOTimeBasedInformation',
+        'id-RaReportIndicationList',
+        'id-PSCellListContainer',
+        'id-IABAuthorized',
         ]
     _type_ = [
         ]
@@ -740,6 +750,7 @@ class X2AP_Constants:
         'id-accessAndMobilityIndication',
         'id-procedure-code-58-not-to-be-used',
         'id-CPC-cancel',
+        'id-rachIndication',
         'maxEARFCN',
         'maxEARFCNPlusOne',
         'newmaxEARFCN',
@@ -795,7 +806,7 @@ class X2AP_Constants:
         'maxnoofNRSCSs',
         'maxnoofNRPhysicalResourceBlocks',
         'maxnoofNonAnchorCarrierFreqConfig',
-        'maxnoofRACHReports',
+        'maxnoofRAReports',
         'maxnoofPSCellsPerSN',
         'maxnoofPSCellsPerPrimaryCellinUEHistoryInfo',
         'maxnoofReportedNRCellsPossiblyAggregated',
@@ -807,6 +818,7 @@ class X2AP_Constants:
         'maxnoofCSIRSneighbourCellsInMTC',
         'maxnoofSensorName',
         'maxnoofTargetSgNBsMinusOne',
+        'maxnoofUEsforRAReportIndications',
         'id-E-RABs-Admitted-Item',
         'id-E-RABs-Admitted-List',
         'id-E-RAB-Item',
@@ -1210,7 +1222,7 @@ class X2AP_Constants:
         'id-sourceNG-RAN-node-id',
         'id-SourceDLForwardingIPAddress',
         'id-SourceNodeDLForwardingIPAddress',
-        'id-NRRACHReportInformation',
+        'id-NRRAReport',
         'id-SCG-UE-HistoryInformation',
         'id-PSCellHistoryInformationRetrieve',
         'id-MeasurementResultforNRCellsPossiblyAggregated',
@@ -1238,6 +1250,14 @@ class X2AP_Constants:
         'id-MIMOPRBusageInformation',
         'id-SensorMeasurementConfiguration',
         'id-AdditionalListofForwardingGTPTunnelEndpoint',
+        'id-M4ReportAmount',
+        'id-M5ReportAmount',
+        'id-M6ReportAmount',
+        'id-M7ReportAmount',
+        'id-CHOTimeBasedInformation',
+        'id-RaReportIndicationList',
+        'id-PSCellListContainer',
+        'id-IABAuthorized',
         ]
     _class_ = [
         ]
@@ -1484,6 +1504,10 @@ class X2AP_Constants:
     id_CPC_cancel = INT(name='id-CPC-cancel', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProcedureCode')))
     id_CPC_cancel._val = 59
     
+    #-----< id-rachIndication >-----#
+    id_rachIndication = INT(name='id-rachIndication', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProcedureCode')))
+    id_rachIndication._val = 60
+    
     #-----< maxEARFCN >-----#
     maxEARFCN = INT(name='maxEARFCN', mode=MODE_VALUE)
     maxEARFCN._val = 65535
@@ -1704,9 +1728,9 @@ class X2AP_Constants:
     maxnoofNonAnchorCarrierFreqConfig = INT(name='maxnoofNonAnchorCarrierFreqConfig', mode=MODE_VALUE)
     maxnoofNonAnchorCarrierFreqConfig._val = 15
     
-    #-----< maxnoofRACHReports >-----#
-    maxnoofRACHReports = INT(name='maxnoofRACHReports', mode=MODE_VALUE)
-    maxnoofRACHReports._val = 64
+    #-----< maxnoofRAReports >-----#
+    maxnoofRAReports = INT(name='maxnoofRAReports', mode=MODE_VALUE)
+    maxnoofRAReports._val = 64
     
     #-----< maxnoofPSCellsPerSN >-----#
     maxnoofPSCellsPerSN = INT(name='maxnoofPSCellsPerSN', mode=MODE_VALUE)
@@ -1751,6 +1775,10 @@ class X2AP_Constants:
     #-----< maxnoofTargetSgNBsMinusOne >-----#
     maxnoofTargetSgNBsMinusOne = INT(name='maxnoofTargetSgNBsMinusOne', mode=MODE_VALUE)
     maxnoofTargetSgNBsMinusOne._val = 7
+    
+    #-----< maxnoofUEsforRAReportIndications >-----#
+    maxnoofUEsforRAReportIndications = INT(name='maxnoofUEsforRAReportIndications', mode=MODE_VALUE)
+    maxnoofUEsforRAReportIndications._val = 64
     
     #-----< id-E-RABs-Admitted-Item >-----#
     id_E_RABs_Admitted_Item = INT(name='id-E-RABs-Admitted-Item', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
@@ -3364,9 +3392,9 @@ class X2AP_Constants:
     id_SourceNodeDLForwardingIPAddress = INT(name='id-SourceNodeDLForwardingIPAddress', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
     id_SourceNodeDLForwardingIPAddress._val = 413
     
-    #-----< id-NRRACHReportInformation >-----#
-    id_NRRACHReportInformation = INT(name='id-NRRACHReportInformation', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
-    id_NRRACHReportInformation._val = 414
+    #-----< id-NRRAReport >-----#
+    id_NRRAReport = INT(name='id-NRRAReport', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_NRRAReport._val = 414
     
     #-----< id-SCG-UE-HistoryInformation >-----#
     id_SCG_UE_HistoryInformation = INT(name='id-SCG-UE-HistoryInformation', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
@@ -3476,6 +3504,38 @@ class X2AP_Constants:
     id_AdditionalListofForwardingGTPTunnelEndpoint = INT(name='id-AdditionalListofForwardingGTPTunnelEndpoint', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
     id_AdditionalListofForwardingGTPTunnelEndpoint._val = 441
     
+    #-----< id-M4ReportAmount >-----#
+    id_M4ReportAmount = INT(name='id-M4ReportAmount', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_M4ReportAmount._val = 442
+    
+    #-----< id-M5ReportAmount >-----#
+    id_M5ReportAmount = INT(name='id-M5ReportAmount', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_M5ReportAmount._val = 443
+    
+    #-----< id-M6ReportAmount >-----#
+    id_M6ReportAmount = INT(name='id-M6ReportAmount', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_M6ReportAmount._val = 444
+    
+    #-----< id-M7ReportAmount >-----#
+    id_M7ReportAmount = INT(name='id-M7ReportAmount', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_M7ReportAmount._val = 445
+    
+    #-----< id-CHOTimeBasedInformation >-----#
+    id_CHOTimeBasedInformation = INT(name='id-CHOTimeBasedInformation', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_CHOTimeBasedInformation._val = 446
+    
+    #-----< id-RaReportIndicationList >-----#
+    id_RaReportIndicationList = INT(name='id-RaReportIndicationList', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_RaReportIndicationList._val = 447
+    
+    #-----< id-PSCellListContainer >-----#
+    id_PSCellListContainer = INT(name='id-PSCellListContainer', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PSCellListContainer._val = 448
+    
+    #-----< id-IABAuthorized >-----#
+    id_IABAuthorized = INT(name='id-IABAuthorized', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-CommonDataTypes', 'ProtocolIE-ID')))
+    id_IABAuthorized._val = 449
+    
     _all_ = [
         id_handoverPreparation,
         id_handoverCancel,
@@ -3537,6 +3597,7 @@ class X2AP_Constants:
         id_accessAndMobilityIndication,
         id_procedure_code_58_not_to_be_used,
         id_CPC_cancel,
+        id_rachIndication,
         maxEARFCN,
         maxEARFCNPlusOne,
         newmaxEARFCN,
@@ -3592,7 +3653,7 @@ class X2AP_Constants:
         maxnoofNRSCSs,
         maxnoofNRPhysicalResourceBlocks,
         maxnoofNonAnchorCarrierFreqConfig,
-        maxnoofRACHReports,
+        maxnoofRAReports,
         maxnoofPSCellsPerSN,
         maxnoofPSCellsPerPrimaryCellinUEHistoryInfo,
         maxnoofReportedNRCellsPossiblyAggregated,
@@ -3604,6 +3665,7 @@ class X2AP_Constants:
         maxnoofCSIRSneighbourCellsInMTC,
         maxnoofSensorName,
         maxnoofTargetSgNBsMinusOne,
+        maxnoofUEsforRAReportIndications,
         id_E_RABs_Admitted_Item,
         id_E_RABs_Admitted_List,
         id_E_RAB_Item,
@@ -4007,7 +4069,7 @@ class X2AP_Constants:
         id_sourceNG_RAN_node_id,
         id_SourceDLForwardingIPAddress,
         id_SourceNodeDLForwardingIPAddress,
-        id_NRRACHReportInformation,
+        id_NRRAReport,
         id_SCG_UE_HistoryInformation,
         id_PSCellHistoryInformationRetrieve,
         id_MeasurementResultforNRCellsPossiblyAggregated,
@@ -4035,6 +4097,14 @@ class X2AP_Constants:
         id_MIMOPRBusageInformation,
         id_SensorMeasurementConfiguration,
         id_AdditionalListofForwardingGTPTunnelEndpoint,
+        id_M4ReportAmount,
+        id_M5ReportAmount,
+        id_M6ReportAmount,
+        id_M7ReportAmount,
+        id_CHOTimeBasedInformation,
+        id_RaReportIndicationList,
+        id_PSCellListContainer,
+        id_IABAuthorized,
     ]
 
 class X2AP_Containers:
@@ -4375,10 +4445,14 @@ class X2AP_IEs:
         'CHOtrigger',
         'CHOinformation-REQ',
         'CHOinformation-REQ-ExtIEs',
+        'CHOTimeBasedInformation',
+        'CHOTimeBasedInformation-ExtIEs',
         'CHOinformation-ACK',
         'CHOinformation-ACK-ExtIEs',
         'CandidateCellsToBeCancelledList',
         'CHO-Probability',
+        'CHO-HandoverWindowStart',
+        'CHO-HandoverWindowDuration',
         'CHOinformation-AddReq',
         'CHOinformation-AddReq-ExtIEs',
         'CHOinformation-ModReq',
@@ -4515,6 +4589,7 @@ class X2AP_IEs:
         'HWLoadIndicator',
         'HWLoadIndicator-ExtIEs',
         'IABNodeIndication',
+        'IABAuthorized',
         'IMSvoiceEPSfallbackfrom5G',
         'IntegrityProtectionAlgorithms',
         'IntegrityProtectionIndication',
@@ -4553,16 +4628,20 @@ class X2AP_IEs:
         'M4Configuration',
         'M4Configuration-ExtIEs',
         'M4period',
+        'M4ReportAmountMDT',
         'M5Configuration',
         'M5Configuration-ExtIEs',
         'M5period',
+        'M5ReportAmountMDT',
         'M6Configuration',
         'M6Configuration-ExtIEs',
         'M6report-interval',
         'M6delay-threshold',
+        'M6ReportAmountMDT',
         'M7Configuration',
         'M7Configuration-ExtIEs',
         'M7period',
+        'M7ReportAmountMDT',
         'MakeBeforeBreakIndicator',
         'ManagementBasedMDTallowed',
         'Masked-IMEISV',
@@ -4623,10 +4702,10 @@ class X2AP_IEs:
         'NRCellIdentifier',
         'NRCGI',
         'NRCGI-ExtIEs',
-        'NRRACHReportContainer',
-        'NRRACHReportInformation',
-        'NRRACHReportList-Item',
-        'NRRACHReportList-Item-ExtIEs',
+        'NRRAReportContainer',
+        'NRRAReport',
+        'NRRAReportList-Item',
+        'NRRAReportList-Item-ExtIEs',
         'NRNeighbour-Information',
         'NRNeighbour-Information-ExtIEs',
         'NPRACHConfiguration',
@@ -4710,6 +4789,7 @@ class X2AP_IEs:
         'PSCellHistoryInformationRetrieve',
         'PSCell-UE-HistoryInformation',
         'PSCellChangeHistory',
+        'PSCellListContainer',
         'QCI',
         'QoS-Mapping-Information',
         'QoS-Mapping-Information-ExtIEs',
@@ -4759,6 +4839,9 @@ class X2AP_IEs:
         'RSRPMRList',
         'RSRPMRList-ExtIEs',
         'RRCContainer',
+        'RaReportIndicationList',
+        'RaReportIndicationList-Item',
+        'RaReportIndicationList-Item-ExtIEs',
         'S1TNLLoadIndicator',
         'S1TNLLoadIndicator-ExtIEs',
         'SCGActivationStatus',
@@ -5084,9 +5167,12 @@ class X2AP_IEs:
         'CyclicPrefixUL',
         'CHOtrigger',
         'CHOinformation-REQ',
+        'CHOTimeBasedInformation',
         'CHOinformation-ACK',
         'CandidateCellsToBeCancelledList',
         'CHO-Probability',
+        'CHO-HandoverWindowStart',
+        'CHO-HandoverWindowDuration',
         'CHOinformation-AddReq',
         'CHOinformation-ModReq',
         'CSI-RSTransmissionIndication',
@@ -5185,6 +5271,7 @@ class X2AP_IEs:
         'HFNforPDCP-SNlength18',
         'HWLoadIndicator',
         'IABNodeIndication',
+        'IABAuthorized',
         'IMSvoiceEPSfallbackfrom5G',
         'IntegrityProtectionAlgorithms',
         'IntegrityProtectionIndication',
@@ -5216,13 +5303,17 @@ class X2AP_IEs:
         'M3period',
         'M4Configuration',
         'M4period',
+        'M4ReportAmountMDT',
         'M5Configuration',
         'M5period',
+        'M5ReportAmountMDT',
         'M6Configuration',
         'M6report-interval',
         'M6delay-threshold',
+        'M6ReportAmountMDT',
         'M7Configuration',
         'M7period',
+        'M7ReportAmountMDT',
         'MakeBeforeBreakIndicator',
         'ManagementBasedMDTallowed',
         'Masked-IMEISV',
@@ -5270,9 +5361,9 @@ class X2AP_IEs:
         'NRFreqInfo',
         'NRCellIdentifier',
         'NRCGI',
-        'NRRACHReportContainer',
-        'NRRACHReportInformation',
-        'NRRACHReportList-Item',
+        'NRRAReportContainer',
+        'NRRAReport',
+        'NRRAReportList-Item',
         'NRNeighbour-Information',
         'NPRACHConfiguration',
         'NPRACHConfiguration-FDD',
@@ -5334,6 +5425,7 @@ class X2AP_IEs:
         'PSCellHistoryInformationRetrieve',
         'PSCell-UE-HistoryInformation',
         'PSCellChangeHistory',
+        'PSCellListContainer',
         'QCI',
         'QoS-Mapping-Information',
         'RadioframeAllocationOffset',
@@ -5375,6 +5467,8 @@ class X2AP_IEs:
         'RSRPMeasurementResult',
         'RSRPMRList',
         'RRCContainer',
+        'RaReportIndicationList',
+        'RaReportIndicationList-Item',
         'S1TNLLoadIndicator',
         'SCGActivationStatus',
         'SCGActivationRequest',
@@ -5586,6 +5680,7 @@ class X2AP_IEs:
         'CSIReportPerCSIProcess-ExtIEs',
         'CSIReportPerCSIProcessItem-ExtIEs',
         'CHOinformation-REQ-ExtIEs',
+        'CHOTimeBasedInformation-ExtIEs',
         'CHOinformation-ACK-ExtIEs',
         'CHOinformation-AddReq-ExtIEs',
         'CHOinformation-ModReq-ExtIEs',
@@ -5648,7 +5743,7 @@ class X2AP_IEs:
         'NRCompositeAvailableCapacity-ExtIEs',
         'NRFreqInfo-ExtIEs',
         'NRCGI-ExtIEs',
-        'NRRACHReportList-Item-ExtIEs',
+        'NRRAReportList-Item-ExtIEs',
         'NRNeighbour-Information-ExtIEs',
         'NPRACHConfiguration-ExtIEs',
         'NPRACHConfiguration-FDD-ExtIEs',
@@ -5679,6 +5774,7 @@ class X2AP_IEs:
         'RLC-Status-ExtIEs',
         'RSRPMeasurementResult-ExtIEs',
         'RSRPMRList-ExtIEs',
+        'RaReportIndicationList-Item-ExtIEs',
         'S1TNLLoadIndicator-ExtIEs',
         'SecondaryRATUsageReport-ItemIEs',
         'SecondaryRATUsageReport-Item-ExtIEs',
@@ -5786,6 +5882,7 @@ class X2AP_IEs:
         'CSIReportPerCSIProcess-ExtIEs',
         'CSIReportPerCSIProcessItem-ExtIEs',
         'CHOinformation-REQ-ExtIEs',
+        'CHOTimeBasedInformation-ExtIEs',
         'CHOinformation-ACK-ExtIEs',
         'CHOinformation-AddReq-ExtIEs',
         'CHOinformation-ModReq-ExtIEs',
@@ -5848,7 +5945,7 @@ class X2AP_IEs:
         'NRCompositeAvailableCapacity-ExtIEs',
         'NRFreqInfo-ExtIEs',
         'NRCGI-ExtIEs',
-        'NRRACHReportList-Item-ExtIEs',
+        'NRRAReportList-Item-ExtIEs',
         'NRNeighbour-Information-ExtIEs',
         'NPRACHConfiguration-ExtIEs',
         'NPRACHConfiguration-FDD-ExtIEs',
@@ -5879,6 +5976,7 @@ class X2AP_IEs:
         'RLC-Status-ExtIEs',
         'RSRPMeasurementResult-ExtIEs',
         'RSRPMRList-ExtIEs',
+        'RaReportIndicationList-Item-ExtIEs',
         'S1TNLLoadIndicator-ExtIEs',
         'SecondaryRATUsageReport-ItemIEs',
         'SecondaryRATUsageReport-Item-ExtIEs',
@@ -6810,8 +6908,8 @@ class X2AP_IEs:
     
     #-----< CauseRadioNetwork >-----#
     CauseRadioNetwork = ENUM(name='CauseRadioNetwork', mode=MODE_TYPE)
-    CauseRadioNetwork._cont = ASN1Dict([('handover-desirable-for-radio-reasons', 0), ('time-critical-handover', 1), ('resource-optimisation-handover', 2), ('reduce-load-in-serving-cell', 3), ('partial-handover', 4), ('unknown-new-eNB-UE-X2AP-ID', 5), ('unknown-old-eNB-UE-X2AP-ID', 6), ('unknown-pair-of-UE-X2AP-ID', 7), ('ho-target-not-allowed', 8), ('tx2relocoverall-expiry', 9), ('trelocprep-expiry', 10), ('cell-not-available', 11), ('no-radio-resources-available-in-target-cell', 12), ('invalid-MME-GroupID', 13), ('unknown-MME-Code', 14), ('encryption-and-or-integrity-protection-algorithms-not-supported', 15), ('reportCharacteristicsEmpty', 16), ('noReportPeriodicity', 17), ('existingMeasurementID', 18), ('unknown-eNB-Measurement-ID', 19), ('measurement-temporarily-not-available', 20), ('unspecified', 21), ('load-balancing', 22), ('handover-optimisation', 23), ('value-out-of-allowed-range', 24), ('multiple-E-RAB-ID-instances', 25), ('switch-off-ongoing', 26), ('not-supported-QCI-value', 27), ('measurement-not-supported-for-the-object', 28), ('tDCoverall-expiry', 29), ('tDCprep-expiry', 30), ('action-desirable-for-radio-reasons', 31), ('reduce-load', 32), ('resource-optimisation', 33), ('time-critical-action', 34), ('target-not-allowed', 35), ('no-radio-resources-available', 36), ('invalid-QoS-combination', 37), ('encryption-algorithms-not-supported', 38), ('procedure-cancelled', 39), ('rRM-purpose', 40), ('improve-user-bit-rate', 41), ('user-inactivity', 42), ('radio-connection-with-UE-lost', 43), ('failure-in-the-radio-interface-procedure', 44), ('bearer-option-not-supported', 45), ('mCG-Mobility', 46), ('sCG-Mobility', 47), ('count-reaches-max-value', 48), ('unknown-old-en-gNB-UE-X2AP-ID', 49), ('pDCP-Overload', 50), ('cho-cpc-resources-tobechanged', 51), ('ue-power-saving', 52), ('insufficient-ue-capabilities', 53), ('normal-release', 54), ('unknown-E-UTRAN-Node-Measurement-ID', 55), ('sCG-activation-deactivation-failure', 56), ('sCG-deactivation-failure-due-to-data-transmission', 57), ('up-integrity-protection-not-possible', 58)])
-    CauseRadioNetwork._ext = ['load-balancing', 'handover-optimisation', 'value-out-of-allowed-range', 'multiple-E-RAB-ID-instances', 'switch-off-ongoing', 'not-supported-QCI-value', 'measurement-not-supported-for-the-object', 'tDCoverall-expiry', 'tDCprep-expiry', 'action-desirable-for-radio-reasons', 'reduce-load', 'resource-optimisation', 'time-critical-action', 'target-not-allowed', 'no-radio-resources-available', 'invalid-QoS-combination', 'encryption-algorithms-not-supported', 'procedure-cancelled', 'rRM-purpose', 'improve-user-bit-rate', 'user-inactivity', 'radio-connection-with-UE-lost', 'failure-in-the-radio-interface-procedure', 'bearer-option-not-supported', 'mCG-Mobility', 'sCG-Mobility', 'count-reaches-max-value', 'unknown-old-en-gNB-UE-X2AP-ID', 'pDCP-Overload', 'cho-cpc-resources-tobechanged', 'ue-power-saving', 'insufficient-ue-capabilities', 'normal-release', 'unknown-E-UTRAN-Node-Measurement-ID', 'sCG-activation-deactivation-failure', 'sCG-deactivation-failure-due-to-data-transmission', 'up-integrity-protection-not-possible']
+    CauseRadioNetwork._cont = ASN1Dict([('handover-desirable-for-radio-reasons', 0), ('time-critical-handover', 1), ('resource-optimisation-handover', 2), ('reduce-load-in-serving-cell', 3), ('partial-handover', 4), ('unknown-new-eNB-UE-X2AP-ID', 5), ('unknown-old-eNB-UE-X2AP-ID', 6), ('unknown-pair-of-UE-X2AP-ID', 7), ('ho-target-not-allowed', 8), ('tx2relocoverall-expiry', 9), ('trelocprep-expiry', 10), ('cell-not-available', 11), ('no-radio-resources-available-in-target-cell', 12), ('invalid-MME-GroupID', 13), ('unknown-MME-Code', 14), ('encryption-and-or-integrity-protection-algorithms-not-supported', 15), ('reportCharacteristicsEmpty', 16), ('noReportPeriodicity', 17), ('existingMeasurementID', 18), ('unknown-eNB-Measurement-ID', 19), ('measurement-temporarily-not-available', 20), ('unspecified', 21), ('load-balancing', 22), ('handover-optimisation', 23), ('value-out-of-allowed-range', 24), ('multiple-E-RAB-ID-instances', 25), ('switch-off-ongoing', 26), ('not-supported-QCI-value', 27), ('measurement-not-supported-for-the-object', 28), ('tDCoverall-expiry', 29), ('tDCprep-expiry', 30), ('action-desirable-for-radio-reasons', 31), ('reduce-load', 32), ('resource-optimisation', 33), ('time-critical-action', 34), ('target-not-allowed', 35), ('no-radio-resources-available', 36), ('invalid-QoS-combination', 37), ('encryption-algorithms-not-supported', 38), ('procedure-cancelled', 39), ('rRM-purpose', 40), ('improve-user-bit-rate', 41), ('user-inactivity', 42), ('radio-connection-with-UE-lost', 43), ('failure-in-the-radio-interface-procedure', 44), ('bearer-option-not-supported', 45), ('mCG-Mobility', 46), ('sCG-Mobility', 47), ('count-reaches-max-value', 48), ('unknown-old-en-gNB-UE-X2AP-ID', 49), ('pDCP-Overload', 50), ('cho-cpc-resources-tobechanged', 51), ('ue-power-saving', 52), ('insufficient-ue-capabilities', 53), ('normal-release', 54), ('unknown-E-UTRAN-Node-Measurement-ID', 55), ('sCG-activation-deactivation-failure', 56), ('sCG-deactivation-failure-due-to-data-transmission', 57), ('up-integrity-protection-not-possible', 58), ('iAB-not-Authorized', 59)])
+    CauseRadioNetwork._ext = ['load-balancing', 'handover-optimisation', 'value-out-of-allowed-range', 'multiple-E-RAB-ID-instances', 'switch-off-ongoing', 'not-supported-QCI-value', 'measurement-not-supported-for-the-object', 'tDCoverall-expiry', 'tDCprep-expiry', 'action-desirable-for-radio-reasons', 'reduce-load', 'resource-optimisation', 'time-critical-action', 'target-not-allowed', 'no-radio-resources-available', 'invalid-QoS-combination', 'encryption-algorithms-not-supported', 'procedure-cancelled', 'rRM-purpose', 'improve-user-bit-rate', 'user-inactivity', 'radio-connection-with-UE-lost', 'failure-in-the-radio-interface-procedure', 'bearer-option-not-supported', 'mCG-Mobility', 'sCG-Mobility', 'count-reaches-max-value', 'unknown-old-en-gNB-UE-X2AP-ID', 'pDCP-Overload', 'cho-cpc-resources-tobechanged', 'ue-power-saving', 'insufficient-ue-capabilities', 'normal-release', 'unknown-E-UTRAN-Node-Measurement-ID', 'sCG-activation-deactivation-failure', 'sCG-deactivation-failure-due-to-data-transmission', 'up-integrity-protection-not-possible', 'iAB-not-Authorized']
     
     #-----< CauseTransport >-----#
     CauseTransport = ENUM(name='CauseTransport', mode=MODE_TYPE)
@@ -8374,20 +8472,17 @@ class X2AP_IEs:
     __CHOinformation_REQ_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
     ___CHOinformation_REQ_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
     ____CHOinformation_REQ_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____CHOinformation_REQ_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____CHOinformation_REQ_iE_Extensions__item__id_tab_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CHOTimeBasedInformation')))
+    ____CHOinformation_REQ_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 446), ('criticality', 'reject'), ('Extension', _____CHOinformation_REQ_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___CHOinformation_REQ_iE_Extensions__item__id._const_tab = ____CHOinformation_REQ_iE_Extensions__item__id_tab
     ___CHOinformation_REQ_iE_Extensions__item__id._const_tab_at = None
     ___CHOinformation_REQ_iE_Extensions__item__id._const_tab_id = 'id'
     ___CHOinformation_REQ_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____CHOinformation_REQ_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____CHOinformation_REQ_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___CHOinformation_REQ_iE_Extensions__item__criticality._const_tab = ____CHOinformation_REQ_iE_Extensions__item__criticality_tab
+    ___CHOinformation_REQ_iE_Extensions__item__criticality._const_tab = ____CHOinformation_REQ_iE_Extensions__item__id_tab
     ___CHOinformation_REQ_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___CHOinformation_REQ_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___CHOinformation_REQ_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____CHOinformation_REQ_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____CHOinformation_REQ_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___CHOinformation_REQ_iE_Extensions__item__extensionValue._const_tab = ____CHOinformation_REQ_iE_Extensions__item__extensionValue_tab
+    ___CHOinformation_REQ_iE_Extensions__item__extensionValue._const_tab = ____CHOinformation_REQ_iE_Extensions__item__id_tab
     ___CHOinformation_REQ_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___CHOinformation_REQ_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __CHOinformation_REQ_iE_Extensions__item_._cont = ASN1Dict([
@@ -8409,7 +8504,51 @@ class X2AP_IEs:
     
     #-----< CHOinformation-REQ-ExtIEs >-----#
     CHOinformation_REQ_ExtIEs = CLASS(name='CHOinformation-REQ-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    CHOinformation_REQ_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _CHOinformation_REQ_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CHOTimeBasedInformation')))
+    CHOinformation_REQ_ExtIEs._val = ASN1Set(rv=[dict([('id', 446), ('criticality', 'reject'), ('Extension', _CHOinformation_REQ_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< CHOTimeBasedInformation >-----#
+    CHOTimeBasedInformation = SEQ(name='CHOTimeBasedInformation', mode=MODE_TYPE)
+    _CHOTimeBasedInformation_cHO_HOWindowStart = INT(name='cHO-HOWindowStart', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'CHO-HandoverWindowStart')))
+    _CHOTimeBasedInformation_cHO_HOWindowDuration = INT(name='cHO-HOWindowDuration', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'CHO-HandoverWindowDuration')))
+    _CHOTimeBasedInformation_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __CHOTimeBasedInformation_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
+    ___CHOTimeBasedInformation_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
+    ____CHOTimeBasedInformation_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____CHOTimeBasedInformation_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CHOTimeBasedInformation_iE_Extensions__item__id._const_tab = ____CHOTimeBasedInformation_iE_Extensions__item__id_tab
+    ___CHOTimeBasedInformation_iE_Extensions__item__id._const_tab_at = None
+    ___CHOTimeBasedInformation_iE_Extensions__item__id._const_tab_id = 'id'
+    ___CHOTimeBasedInformation_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
+    ____CHOTimeBasedInformation_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____CHOTimeBasedInformation_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CHOTimeBasedInformation_iE_Extensions__item__criticality._const_tab = ____CHOTimeBasedInformation_iE_Extensions__item__criticality_tab
+    ___CHOTimeBasedInformation_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___CHOTimeBasedInformation_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
+    ____CHOTimeBasedInformation_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____CHOTimeBasedInformation_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue._const_tab = ____CHOTimeBasedInformation_iE_Extensions__item__extensionValue_tab
+    ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __CHOTimeBasedInformation_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___CHOTimeBasedInformation_iE_Extensions__item__id),
+        ('criticality', ___CHOTimeBasedInformation_iE_Extensions__item__criticality),
+        ('extensionValue', ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue),
+        ])
+    __CHOTimeBasedInformation_iE_Extensions__item_._ext = None
+    _CHOTimeBasedInformation_iE_Extensions._cont = __CHOTimeBasedInformation_iE_Extensions__item_
+    _CHOTimeBasedInformation_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    CHOTimeBasedInformation._cont = ASN1Dict([
+        ('cHO-HOWindowStart', _CHOTimeBasedInformation_cHO_HOWindowStart),
+        ('cHO-HOWindowDuration', _CHOTimeBasedInformation_cHO_HOWindowDuration),
+        ('iE-Extensions', _CHOTimeBasedInformation_iE_Extensions),
+        ])
+    CHOTimeBasedInformation._ext = []
+    
+    #-----< CHOTimeBasedInformation-ExtIEs >-----#
+    CHOTimeBasedInformation_ExtIEs = CLASS(name='CHOTimeBasedInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    CHOTimeBasedInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< CHOinformation-ACK >-----#
     CHOinformation_ACK = SEQ(name='CHOinformation-ACK', mode=MODE_TYPE)
@@ -8463,6 +8602,14 @@ class X2AP_IEs:
     #-----< CHO-Probability >-----#
     CHO_Probability = INT(name='CHO-Probability', mode=MODE_TYPE)
     CHO_Probability._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=100)], ev=None, er=[])
+    
+    #-----< CHO-HandoverWindowStart >-----#
+    CHO_HandoverWindowStart = INT(name='CHO-HandoverWindowStart', mode=MODE_TYPE)
+    CHO_HandoverWindowStart._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1048575)], ev=None, er=[])
+    
+    #-----< CHO-HandoverWindowDuration >-----#
+    CHO_HandoverWindowDuration = INT(name='CHO-HandoverWindowDuration', mode=MODE_TYPE)
+    CHO_HandoverWindowDuration._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=6000)], ev=None, er=[])
     
     #-----< CHOinformation-AddReq >-----#
     CHOinformation_AddReq = SEQ(name='CHOinformation-AddReq', mode=MODE_TYPE)
@@ -10458,6 +10605,11 @@ class X2AP_IEs:
     IABNodeIndication._cont = ASN1Dict([('true', 0)])
     IABNodeIndication._ext = []
     
+    #-----< IABAuthorized >-----#
+    IABAuthorized = ENUM(name='IABAuthorized', mode=MODE_TYPE)
+    IABAuthorized._cont = ASN1Dict([('authorized', 0), ('not-authorized', 1)])
+    IABAuthorized._ext = []
+    
     #-----< IMSvoiceEPSfallbackfrom5G >-----#
     IMSvoiceEPSfallbackfrom5G = ENUM(name='IMSvoiceEPSfallbackfrom5G', mode=MODE_TYPE)
     IMSvoiceEPSfallbackfrom5G._cont = ASN1Dict([('true', 0)])
@@ -10832,20 +10984,17 @@ class X2AP_IEs:
     __M4Configuration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
     ___M4Configuration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
     ____M4Configuration_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M4Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____M4Configuration_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M4ReportAmountMDT')))
+    ____M4Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 442), ('criticality', 'ignore'), ('Extension', _____M4Configuration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___M4Configuration_iE_Extensions__item__id._const_tab = ____M4Configuration_iE_Extensions__item__id_tab
     ___M4Configuration_iE_Extensions__item__id._const_tab_at = None
     ___M4Configuration_iE_Extensions__item__id._const_tab_id = 'id'
     ___M4Configuration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____M4Configuration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M4Configuration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M4Configuration_iE_Extensions__item__criticality._const_tab = ____M4Configuration_iE_Extensions__item__criticality_tab
+    ___M4Configuration_iE_Extensions__item__criticality._const_tab = ____M4Configuration_iE_Extensions__item__id_tab
     ___M4Configuration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___M4Configuration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___M4Configuration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____M4Configuration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M4Configuration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M4Configuration_iE_Extensions__item__extensionValue._const_tab = ____M4Configuration_iE_Extensions__item__extensionValue_tab
+    ___M4Configuration_iE_Extensions__item__extensionValue._const_tab = ____M4Configuration_iE_Extensions__item__id_tab
     ___M4Configuration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___M4Configuration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __M4Configuration_iE_Extensions__item_._cont = ASN1Dict([
@@ -10865,12 +11014,18 @@ class X2AP_IEs:
     
     #-----< M4Configuration-ExtIEs >-----#
     M4Configuration_ExtIEs = CLASS(name='M4Configuration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    M4Configuration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _M4Configuration_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M4ReportAmountMDT')))
+    M4Configuration_ExtIEs._val = ASN1Set(rv=[dict([('id', 442), ('criticality', 'ignore'), ('Extension', _M4Configuration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< M4period >-----#
     M4period = ENUM(name='M4period', mode=MODE_TYPE)
     M4period._cont = ASN1Dict([('ms1024', 0), ('ms2048', 1), ('ms5120', 2), ('ms10240', 3), ('min1', 4)])
     M4period._ext = []
+    
+    #-----< M4ReportAmountMDT >-----#
+    M4ReportAmountMDT = ENUM(name='M4ReportAmountMDT', mode=MODE_TYPE)
+    M4ReportAmountMDT._cont = ASN1Dict([('r1', 0), ('r2', 1), ('r4', 2), ('r8', 3), ('r16', 4), ('r32', 5), ('r64', 6), ('infinity', 7)])
+    M4ReportAmountMDT._ext = []
     
     #-----< M5Configuration >-----#
     M5Configuration = SEQ(name='M5Configuration', mode=MODE_TYPE)
@@ -10880,20 +11035,17 @@ class X2AP_IEs:
     __M5Configuration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
     ___M5Configuration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
     ____M5Configuration_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M5Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____M5Configuration_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M5ReportAmountMDT')))
+    ____M5Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 443), ('criticality', 'ignore'), ('Extension', _____M5Configuration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___M5Configuration_iE_Extensions__item__id._const_tab = ____M5Configuration_iE_Extensions__item__id_tab
     ___M5Configuration_iE_Extensions__item__id._const_tab_at = None
     ___M5Configuration_iE_Extensions__item__id._const_tab_id = 'id'
     ___M5Configuration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____M5Configuration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M5Configuration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M5Configuration_iE_Extensions__item__criticality._const_tab = ____M5Configuration_iE_Extensions__item__criticality_tab
+    ___M5Configuration_iE_Extensions__item__criticality._const_tab = ____M5Configuration_iE_Extensions__item__id_tab
     ___M5Configuration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___M5Configuration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___M5Configuration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____M5Configuration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M5Configuration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M5Configuration_iE_Extensions__item__extensionValue._const_tab = ____M5Configuration_iE_Extensions__item__extensionValue_tab
+    ___M5Configuration_iE_Extensions__item__extensionValue._const_tab = ____M5Configuration_iE_Extensions__item__id_tab
     ___M5Configuration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___M5Configuration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __M5Configuration_iE_Extensions__item_._cont = ASN1Dict([
@@ -10913,12 +11065,18 @@ class X2AP_IEs:
     
     #-----< M5Configuration-ExtIEs >-----#
     M5Configuration_ExtIEs = CLASS(name='M5Configuration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    M5Configuration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _M5Configuration_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M5ReportAmountMDT')))
+    M5Configuration_ExtIEs._val = ASN1Set(rv=[dict([('id', 443), ('criticality', 'ignore'), ('Extension', _M5Configuration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< M5period >-----#
     M5period = ENUM(name='M5period', mode=MODE_TYPE)
     M5period._cont = ASN1Dict([('ms1024', 0), ('ms2048', 1), ('ms5120', 2), ('ms10240', 3), ('min1', 4)])
     M5period._ext = []
+    
+    #-----< M5ReportAmountMDT >-----#
+    M5ReportAmountMDT = ENUM(name='M5ReportAmountMDT', mode=MODE_TYPE)
+    M5ReportAmountMDT._cont = ASN1Dict([('r1', 0), ('r2', 1), ('r4', 2), ('r8', 3), ('r16', 4), ('r32', 5), ('r64', 6), ('infinity', 7)])
+    M5ReportAmountMDT._ext = []
     
     #-----< M6Configuration >-----#
     M6Configuration = SEQ(name='M6Configuration', mode=MODE_TYPE)
@@ -10929,20 +11087,17 @@ class X2AP_IEs:
     __M6Configuration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
     ___M6Configuration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
     ____M6Configuration_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M6Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____M6Configuration_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M6ReportAmountMDT')))
+    ____M6Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 444), ('criticality', 'ignore'), ('Extension', _____M6Configuration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___M6Configuration_iE_Extensions__item__id._const_tab = ____M6Configuration_iE_Extensions__item__id_tab
     ___M6Configuration_iE_Extensions__item__id._const_tab_at = None
     ___M6Configuration_iE_Extensions__item__id._const_tab_id = 'id'
     ___M6Configuration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____M6Configuration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M6Configuration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M6Configuration_iE_Extensions__item__criticality._const_tab = ____M6Configuration_iE_Extensions__item__criticality_tab
+    ___M6Configuration_iE_Extensions__item__criticality._const_tab = ____M6Configuration_iE_Extensions__item__id_tab
     ___M6Configuration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___M6Configuration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___M6Configuration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____M6Configuration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M6Configuration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M6Configuration_iE_Extensions__item__extensionValue._const_tab = ____M6Configuration_iE_Extensions__item__extensionValue_tab
+    ___M6Configuration_iE_Extensions__item__extensionValue._const_tab = ____M6Configuration_iE_Extensions__item__id_tab
     ___M6Configuration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___M6Configuration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __M6Configuration_iE_Extensions__item_._cont = ASN1Dict([
@@ -10963,7 +11118,8 @@ class X2AP_IEs:
     
     #-----< M6Configuration-ExtIEs >-----#
     M6Configuration_ExtIEs = CLASS(name='M6Configuration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    M6Configuration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _M6Configuration_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M6ReportAmountMDT')))
+    M6Configuration_ExtIEs._val = ASN1Set(rv=[dict([('id', 444), ('criticality', 'ignore'), ('Extension', _M6Configuration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< M6report-interval >-----#
     M6report_interval = ENUM(name='M6report-interval', mode=MODE_TYPE)
@@ -10975,6 +11131,11 @@ class X2AP_IEs:
     M6delay_threshold._cont = ASN1Dict([('ms30', 0), ('ms40', 1), ('ms50', 2), ('ms60', 3), ('ms70', 4), ('ms80', 5), ('ms90', 6), ('ms100', 7), ('ms150', 8), ('ms300', 9), ('ms500', 10), ('ms750', 11)])
     M6delay_threshold._ext = []
     
+    #-----< M6ReportAmountMDT >-----#
+    M6ReportAmountMDT = ENUM(name='M6ReportAmountMDT', mode=MODE_TYPE)
+    M6ReportAmountMDT._cont = ASN1Dict([('r1', 0), ('r2', 1), ('r4', 2), ('r8', 3), ('r16', 4), ('r32', 5), ('r64', 6), ('infinity', 7)])
+    M6ReportAmountMDT._ext = []
+    
     #-----< M7Configuration >-----#
     M7Configuration = SEQ(name='M7Configuration', mode=MODE_TYPE)
     _M7Configuration_m7period = INT(name='m7period', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'M7period')))
@@ -10983,20 +11144,17 @@ class X2AP_IEs:
     __M7Configuration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
     ___M7Configuration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
     ____M7Configuration_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M7Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____M7Configuration_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M7ReportAmountMDT')))
+    ____M7Configuration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 445), ('criticality', 'ignore'), ('Extension', _____M7Configuration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___M7Configuration_iE_Extensions__item__id._const_tab = ____M7Configuration_iE_Extensions__item__id_tab
     ___M7Configuration_iE_Extensions__item__id._const_tab_at = None
     ___M7Configuration_iE_Extensions__item__id._const_tab_id = 'id'
     ___M7Configuration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____M7Configuration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M7Configuration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M7Configuration_iE_Extensions__item__criticality._const_tab = ____M7Configuration_iE_Extensions__item__criticality_tab
+    ___M7Configuration_iE_Extensions__item__criticality._const_tab = ____M7Configuration_iE_Extensions__item__id_tab
     ___M7Configuration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___M7Configuration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___M7Configuration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____M7Configuration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____M7Configuration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___M7Configuration_iE_Extensions__item__extensionValue._const_tab = ____M7Configuration_iE_Extensions__item__extensionValue_tab
+    ___M7Configuration_iE_Extensions__item__extensionValue._const_tab = ____M7Configuration_iE_Extensions__item__id_tab
     ___M7Configuration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___M7Configuration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __M7Configuration_iE_Extensions__item_._cont = ASN1Dict([
@@ -11016,11 +11174,17 @@ class X2AP_IEs:
     
     #-----< M7Configuration-ExtIEs >-----#
     M7Configuration_ExtIEs = CLASS(name='M7Configuration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    M7Configuration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _M7Configuration_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'M7ReportAmountMDT')))
+    M7Configuration_ExtIEs._val = ASN1Set(rv=[dict([('id', 445), ('criticality', 'ignore'), ('Extension', _M7Configuration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< M7period >-----#
     M7period = INT(name='M7period', mode=MODE_TYPE)
     M7period._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=60)], ev=[], er=[])
+    
+    #-----< M7ReportAmountMDT >-----#
+    M7ReportAmountMDT = ENUM(name='M7ReportAmountMDT', mode=MODE_TYPE)
+    M7ReportAmountMDT._cont = ASN1Dict([('r1', 0), ('r2', 1), ('r4', 2), ('r8', 3), ('r16', 4), ('r32', 5), ('r64', 6), ('infinity', 7)])
+    M7ReportAmountMDT._ext = []
     
     #-----< MakeBeforeBreakIndicator >-----#
     MakeBeforeBreakIndicator = ENUM(name='MakeBeforeBreakIndicator', mode=MODE_TYPE)
@@ -11791,57 +11955,55 @@ class X2AP_IEs:
     NRCGI_ExtIEs = CLASS(name='NRCGI-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
     NRCGI_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
-    #-----< NRRACHReportContainer >-----#
-    NRRACHReportContainer = OCT_STR(name='NRRACHReportContainer', mode=MODE_TYPE)
+    #-----< NRRAReportContainer >-----#
+    NRRAReportContainer = OCT_STR(name='NRRAReportContainer', mode=MODE_TYPE)
     
-    #-----< NRRACHReportInformation >-----#
-    NRRACHReportInformation = SEQ_OF(name='NRRACHReportInformation', mode=MODE_TYPE)
-    _NRRACHReportInformation__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRACHReportList-Item')))
-    NRRACHReportInformation._cont = _NRRACHReportInformation__item_
-    NRRACHReportInformation._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    #-----< NRRAReport >-----#
+    NRRAReport = SEQ_OF(name='NRRAReport', mode=MODE_TYPE)
+    _NRRAReport__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRAReportList-Item')))
+    NRRAReport._cont = _NRRAReport__item_
+    NRRAReport._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
     
-    #-----< NRRACHReportList-Item >-----#
-    NRRACHReportList_Item = SEQ(name='NRRACHReportList-Item', mode=MODE_TYPE)
-    _NRRACHReportList_Item_nRRACHReport = OCT_STR(name='nRRACHReport', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'NRRACHReportContainer')))
-    _NRRACHReportList_Item_uEAssitantIdentifier = INT(name='uEAssitantIdentifier', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'SgNB-UE-X2AP-ID')), opt=True)
-    _NRRACHReportList_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionContainer')), opt=True)
-    __NRRACHReportList_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
-    ___NRRACHReportList_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
-    ____NRRACHReportList_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____NRRACHReportList_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___NRRACHReportList_Item_iE_Extensions__item__id._const_tab = ____NRRACHReportList_Item_iE_Extensions__item__id_tab
-    ___NRRACHReportList_Item_iE_Extensions__item__id._const_tab_at = None
-    ___NRRACHReportList_Item_iE_Extensions__item__id._const_tab_id = 'id'
-    ___NRRACHReportList_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
-    ____NRRACHReportList_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____NRRACHReportList_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___NRRACHReportList_Item_iE_Extensions__item__criticality._const_tab = ____NRRACHReportList_Item_iE_Extensions__item__criticality_tab
-    ___NRRACHReportList_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
-    ___NRRACHReportList_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
-    ___NRRACHReportList_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
-    ____NRRACHReportList_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    ____NRRACHReportList_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___NRRACHReportList_Item_iE_Extensions__item__extensionValue._const_tab = ____NRRACHReportList_Item_iE_Extensions__item__extensionValue_tab
-    ___NRRACHReportList_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
-    ___NRRACHReportList_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
-    __NRRACHReportList_Item_iE_Extensions__item_._cont = ASN1Dict([
-        ('id', ___NRRACHReportList_Item_iE_Extensions__item__id),
-        ('criticality', ___NRRACHReportList_Item_iE_Extensions__item__criticality),
-        ('extensionValue', ___NRRACHReportList_Item_iE_Extensions__item__extensionValue),
+    #-----< NRRAReportList-Item >-----#
+    NRRAReportList_Item = SEQ(name='NRRAReportList-Item', mode=MODE_TYPE)
+    _NRRAReportList_Item_nRRAReport = OCT_STR(name='nRRAReport', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'NRRAReportContainer')))
+    _NRRAReportList_Item_uEAssitantIdentifier = INT(name='uEAssitantIdentifier', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'SgNB-UE-X2AP-ID')), opt=True)
+    _NRRAReportList_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __NRRAReportList_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
+    ___NRRAReportList_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
+    ____NRRAReportList_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    _____NRRAReportList_Item_iE_Extensions__item__id_tab_val_Extension_0 = OCT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'PSCellListContainer')))
+    ____NRRAReportList_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 448), ('criticality', 'ignore'), ('Extension', _____NRRAReportList_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    ___NRRAReportList_Item_iE_Extensions__item__id._const_tab = ____NRRAReportList_Item_iE_Extensions__item__id_tab
+    ___NRRAReportList_Item_iE_Extensions__item__id._const_tab_at = None
+    ___NRRAReportList_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___NRRAReportList_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
+    ___NRRAReportList_Item_iE_Extensions__item__criticality._const_tab = ____NRRAReportList_Item_iE_Extensions__item__id_tab
+    ___NRRAReportList_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___NRRAReportList_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___NRRAReportList_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
+    ___NRRAReportList_Item_iE_Extensions__item__extensionValue._const_tab = ____NRRAReportList_Item_iE_Extensions__item__id_tab
+    ___NRRAReportList_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___NRRAReportList_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __NRRAReportList_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___NRRAReportList_Item_iE_Extensions__item__id),
+        ('criticality', ___NRRAReportList_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___NRRAReportList_Item_iE_Extensions__item__extensionValue),
         ])
-    __NRRACHReportList_Item_iE_Extensions__item_._ext = None
-    _NRRACHReportList_Item_iE_Extensions._cont = __NRRACHReportList_Item_iE_Extensions__item_
-    _NRRACHReportList_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
-    NRRACHReportList_Item._cont = ASN1Dict([
-        ('nRRACHReport', _NRRACHReportList_Item_nRRACHReport),
-        ('uEAssitantIdentifier', _NRRACHReportList_Item_uEAssitantIdentifier),
-        ('iE-Extensions', _NRRACHReportList_Item_iE_Extensions),
+    __NRRAReportList_Item_iE_Extensions__item_._ext = None
+    _NRRAReportList_Item_iE_Extensions._cont = __NRRAReportList_Item_iE_Extensions__item_
+    _NRRAReportList_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    NRRAReportList_Item._cont = ASN1Dict([
+        ('nRRAReport', _NRRAReportList_Item_nRRAReport),
+        ('uEAssitantIdentifier', _NRRAReportList_Item_uEAssitantIdentifier),
+        ('iE-Extensions', _NRRAReportList_Item_iE_Extensions),
         ])
-    NRRACHReportList_Item._ext = []
+    NRRAReportList_Item._ext = []
     
-    #-----< NRRACHReportList-Item-ExtIEs >-----#
-    NRRACHReportList_Item_ExtIEs = CLASS(name='NRRACHReportList-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
-    NRRACHReportList_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    #-----< NRRAReportList-Item-ExtIEs >-----#
+    NRRAReportList_Item_ExtIEs = CLASS(name='NRRAReportList-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    _NRRAReportList_Item_ExtIEs_val_Extension_0 = OCT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'PSCellListContainer')))
+    NRRAReportList_Item_ExtIEs._val = ASN1Set(rv=[dict([('id', 448), ('criticality', 'ignore'), ('Extension', _NRRAReportList_Item_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< NRNeighbour-Information >-----#
     NRNeighbour_Information = SEQ_OF(name='NRNeighbour-Information', mode=MODE_TYPE)
@@ -12316,8 +12478,8 @@ class X2AP_IEs:
     
     #-----< NRNRB >-----#
     NRNRB = ENUM(name='NRNRB', mode=MODE_TYPE)
-    NRNRB._cont = ASN1Dict([('nrb11', 0), ('nrb18', 1), ('nrb24', 2), ('nrb25', 3), ('nrb31', 4), ('nrb32', 5), ('nrb38', 6), ('nrb51', 7), ('nrb52', 8), ('nrb65', 9), ('nrb66', 10), ('nrb78', 11), ('nrb79', 12), ('nrb93', 13), ('nrb106', 14), ('nrb107', 15), ('nrb121', 16), ('nrb132', 17), ('nrb133', 18), ('nrb135', 19), ('nrb160', 20), ('nrb162', 21), ('nrb189', 22), ('nrb216', 23), ('nrb217', 24), ('nrb245', 25), ('nrb264', 26), ('nrb270', 27), ('nrb273', 28)])
-    NRNRB._ext = []
+    NRNRB._cont = ASN1Dict([('nrb11', 0), ('nrb18', 1), ('nrb24', 2), ('nrb25', 3), ('nrb31', 4), ('nrb32', 5), ('nrb38', 6), ('nrb51', 7), ('nrb52', 8), ('nrb65', 9), ('nrb66', 10), ('nrb78', 11), ('nrb79', 12), ('nrb93', 13), ('nrb106', 14), ('nrb107', 15), ('nrb121', 16), ('nrb132', 17), ('nrb133', 18), ('nrb135', 19), ('nrb160', 20), ('nrb162', 21), ('nrb189', 22), ('nrb216', 23), ('nrb217', 24), ('nrb245', 25), ('nrb264', 26), ('nrb270', 27), ('nrb273', 28), ('nrb44', 29), ('nrb58', 30), ('nrb92', 31), ('nrb119', 32), ('nrb188', 33), ('nrb242', 34)])
+    NRNRB._ext = ['nrb44', 'nrb58', 'nrb92', 'nrb119', 'nrb188', 'nrb242']
     
     #-----< NRSCS >-----#
     NRSCS = ENUM(name='NRSCS', mode=MODE_TYPE)
@@ -13042,6 +13204,9 @@ class X2AP_IEs:
     PSCellChangeHistory._cont = ASN1Dict([('reportingFullHistory', 0)])
     PSCellChangeHistory._ext = []
     
+    #-----< PSCellListContainer >-----#
+    PSCellListContainer = OCT_STR(name='PSCellListContainer', mode=MODE_TYPE)
+    
     #-----< QCI >-----#
     QCI = INT(name='QCI', mode=MODE_TYPE)
     QCI._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
@@ -13575,6 +13740,55 @@ class X2AP_IEs:
     
     #-----< RRCContainer >-----#
     RRCContainer = OCT_STR(name='RRCContainer', mode=MODE_TYPE)
+    
+    #-----< RaReportIndicationList >-----#
+    RaReportIndicationList = SEQ_OF(name='RaReportIndicationList', mode=MODE_TYPE)
+    _RaReportIndicationList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'RaReportIndicationList-Item')))
+    RaReportIndicationList._cont = _RaReportIndicationList__item_
+    RaReportIndicationList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< RaReportIndicationList-Item >-----#
+    RaReportIndicationList_Item = SEQ(name='RaReportIndicationList-Item', mode=MODE_TYPE)
+    _RaReportIndicationList_Item_meNB_UE_X2AP_ID = INT(name='meNB-UE-X2AP-ID', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'UE-X2AP-ID')))
+    _RaReportIndicationList_Item_meNB_UE_X2AP_ID_Extension = INT(name='meNB-UE-X2AP-ID-Extension', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-IEs', 'UE-X2AP-ID-Extension')), opt=True)
+    _RaReportIndicationList_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __RaReportIndicationList_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolExtensionField')))
+    ___RaReportIndicationList_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['id']))
+    ____RaReportIndicationList_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____RaReportIndicationList_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RaReportIndicationList_Item_iE_Extensions__item__id._const_tab = ____RaReportIndicationList_Item_iE_Extensions__item__id_tab
+    ___RaReportIndicationList_Item_iE_Extensions__item__id._const_tab_at = None
+    ___RaReportIndicationList_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___RaReportIndicationList_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['criticality']))
+    ____RaReportIndicationList_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____RaReportIndicationList_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RaReportIndicationList_Item_iE_Extensions__item__criticality._const_tab = ____RaReportIndicationList_Item_iE_Extensions__item__criticality_tab
+    ___RaReportIndicationList_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___RaReportIndicationList_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION'), ['Extension']))
+    ____RaReportIndicationList_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_X2AP-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    ____RaReportIndicationList_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue._const_tab = ____RaReportIndicationList_Item_iE_Extensions__item__extensionValue_tab
+    ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __RaReportIndicationList_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___RaReportIndicationList_Item_iE_Extensions__item__id),
+        ('criticality', ___RaReportIndicationList_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue),
+        ])
+    __RaReportIndicationList_Item_iE_Extensions__item_._ext = None
+    _RaReportIndicationList_Item_iE_Extensions._cont = __RaReportIndicationList_Item_iE_Extensions__item_
+    _RaReportIndicationList_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    RaReportIndicationList_Item._cont = ASN1Dict([
+        ('meNB-UE-X2AP-ID', _RaReportIndicationList_Item_meNB_UE_X2AP_ID),
+        ('meNB-UE-X2AP-ID-Extension', _RaReportIndicationList_Item_meNB_UE_X2AP_ID_Extension),
+        ('iE-Extensions', _RaReportIndicationList_Item_iE_Extensions),
+        ])
+    RaReportIndicationList_Item._ext = []
+    
+    #-----< RaReportIndicationList-Item-ExtIEs >-----#
+    RaReportIndicationList_Item_ExtIEs = CLASS(name='RaReportIndicationList-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-EXTENSION')))
+    RaReportIndicationList_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< S1TNLLoadIndicator >-----#
     S1TNLLoadIndicator = SEQ(name='S1TNLLoadIndicator', mode=MODE_TYPE)
@@ -17267,15 +17481,27 @@ class X2AP_IEs:
         _CHOinformation_REQ_new_eNB_UE_X2AP_ID_Extension,
         _CHOinformation_REQ_cHO_EstimatedArrivalProbability,
         ____CHOinformation_REQ_iE_Extensions__item__id_tab,
+        _____CHOinformation_REQ_iE_Extensions__item__id_tab_val_Extension_0,
         ___CHOinformation_REQ_iE_Extensions__item__id,
-        ____CHOinformation_REQ_iE_Extensions__item__criticality_tab,
         ___CHOinformation_REQ_iE_Extensions__item__criticality,
-        ____CHOinformation_REQ_iE_Extensions__item__extensionValue_tab,
         ___CHOinformation_REQ_iE_Extensions__item__extensionValue,
         __CHOinformation_REQ_iE_Extensions__item_,
         _CHOinformation_REQ_iE_Extensions,
         CHOinformation_REQ,
         CHOinformation_REQ_ExtIEs,
+        _CHOinformation_REQ_ExtIEs_val_Extension_0,
+        _CHOTimeBasedInformation_cHO_HOWindowStart,
+        _CHOTimeBasedInformation_cHO_HOWindowDuration,
+        ____CHOTimeBasedInformation_iE_Extensions__item__id_tab,
+        ___CHOTimeBasedInformation_iE_Extensions__item__id,
+        ____CHOTimeBasedInformation_iE_Extensions__item__criticality_tab,
+        ___CHOTimeBasedInformation_iE_Extensions__item__criticality,
+        ____CHOTimeBasedInformation_iE_Extensions__item__extensionValue_tab,
+        ___CHOTimeBasedInformation_iE_Extensions__item__extensionValue,
+        __CHOTimeBasedInformation_iE_Extensions__item_,
+        _CHOTimeBasedInformation_iE_Extensions,
+        CHOTimeBasedInformation,
+        CHOTimeBasedInformation_ExtIEs,
         _CHOinformation_ACK_requestedTargetCellID,
         _CHOinformation_ACK_maxCHOpreparations,
         ____CHOinformation_ACK_iE_Extensions__item__id_tab,
@@ -17291,6 +17517,8 @@ class X2AP_IEs:
         _CandidateCellsToBeCancelledList__item_,
         CandidateCellsToBeCancelledList,
         CHO_Probability,
+        CHO_HandoverWindowStart,
+        CHO_HandoverWindowDuration,
         _CHOinformation_AddReq_source_eNB_ID,
         _CHOinformation_AddReq_source_eNB_UE_X2AP_ID,
         _CHOinformation_AddReq_source_eNB_UE_X2AP_ID_Ext,
@@ -17866,6 +18094,7 @@ class X2AP_IEs:
         HWLoadIndicator,
         HWLoadIndicator_ExtIEs,
         IABNodeIndication,
+        IABAuthorized,
         IMSvoiceEPSfallbackfrom5G,
         IntegrityProtectionAlgorithms,
         IntegrityProtectionIndication,
@@ -17971,57 +18200,61 @@ class X2AP_IEs:
         _M4Configuration_m4period,
         _M4Configuration_m4_links_to_log,
         ____M4Configuration_iE_Extensions__item__id_tab,
+        _____M4Configuration_iE_Extensions__item__id_tab_val_Extension_0,
         ___M4Configuration_iE_Extensions__item__id,
-        ____M4Configuration_iE_Extensions__item__criticality_tab,
         ___M4Configuration_iE_Extensions__item__criticality,
-        ____M4Configuration_iE_Extensions__item__extensionValue_tab,
         ___M4Configuration_iE_Extensions__item__extensionValue,
         __M4Configuration_iE_Extensions__item_,
         _M4Configuration_iE_Extensions,
         M4Configuration,
         M4Configuration_ExtIEs,
+        _M4Configuration_ExtIEs_val_Extension_0,
         M4period,
+        M4ReportAmountMDT,
         _M5Configuration_m5period,
         _M5Configuration_m5_links_to_log,
         ____M5Configuration_iE_Extensions__item__id_tab,
+        _____M5Configuration_iE_Extensions__item__id_tab_val_Extension_0,
         ___M5Configuration_iE_Extensions__item__id,
-        ____M5Configuration_iE_Extensions__item__criticality_tab,
         ___M5Configuration_iE_Extensions__item__criticality,
-        ____M5Configuration_iE_Extensions__item__extensionValue_tab,
         ___M5Configuration_iE_Extensions__item__extensionValue,
         __M5Configuration_iE_Extensions__item_,
         _M5Configuration_iE_Extensions,
         M5Configuration,
         M5Configuration_ExtIEs,
+        _M5Configuration_ExtIEs_val_Extension_0,
         M5period,
+        M5ReportAmountMDT,
         _M6Configuration_m6report_interval,
         _M6Configuration_m6delay_threshold,
         _M6Configuration_m6_links_to_log,
         ____M6Configuration_iE_Extensions__item__id_tab,
+        _____M6Configuration_iE_Extensions__item__id_tab_val_Extension_0,
         ___M6Configuration_iE_Extensions__item__id,
-        ____M6Configuration_iE_Extensions__item__criticality_tab,
         ___M6Configuration_iE_Extensions__item__criticality,
-        ____M6Configuration_iE_Extensions__item__extensionValue_tab,
         ___M6Configuration_iE_Extensions__item__extensionValue,
         __M6Configuration_iE_Extensions__item_,
         _M6Configuration_iE_Extensions,
         M6Configuration,
         M6Configuration_ExtIEs,
+        _M6Configuration_ExtIEs_val_Extension_0,
         M6report_interval,
         M6delay_threshold,
+        M6ReportAmountMDT,
         _M7Configuration_m7period,
         _M7Configuration_m7_links_to_log,
         ____M7Configuration_iE_Extensions__item__id_tab,
+        _____M7Configuration_iE_Extensions__item__id_tab_val_Extension_0,
         ___M7Configuration_iE_Extensions__item__id,
-        ____M7Configuration_iE_Extensions__item__criticality_tab,
         ___M7Configuration_iE_Extensions__item__criticality,
-        ____M7Configuration_iE_Extensions__item__extensionValue_tab,
         ___M7Configuration_iE_Extensions__item__extensionValue,
         __M7Configuration_iE_Extensions__item_,
         _M7Configuration_iE_Extensions,
         M7Configuration,
         M7Configuration_ExtIEs,
+        _M7Configuration_ExtIEs_val_Extension_0,
         M7period,
+        M7ReportAmountMDT,
         MakeBeforeBreakIndicator,
         ManagementBasedMDTallowed,
         Masked_IMEISV,
@@ -18254,21 +18487,21 @@ class X2AP_IEs:
         _NRCGI_iE_Extensions,
         NRCGI,
         NRCGI_ExtIEs,
-        NRRACHReportContainer,
-        _NRRACHReportInformation__item_,
-        NRRACHReportInformation,
-        _NRRACHReportList_Item_nRRACHReport,
-        _NRRACHReportList_Item_uEAssitantIdentifier,
-        ____NRRACHReportList_Item_iE_Extensions__item__id_tab,
-        ___NRRACHReportList_Item_iE_Extensions__item__id,
-        ____NRRACHReportList_Item_iE_Extensions__item__criticality_tab,
-        ___NRRACHReportList_Item_iE_Extensions__item__criticality,
-        ____NRRACHReportList_Item_iE_Extensions__item__extensionValue_tab,
-        ___NRRACHReportList_Item_iE_Extensions__item__extensionValue,
-        __NRRACHReportList_Item_iE_Extensions__item_,
-        _NRRACHReportList_Item_iE_Extensions,
-        NRRACHReportList_Item,
-        NRRACHReportList_Item_ExtIEs,
+        NRRAReportContainer,
+        _NRRAReport__item_,
+        NRRAReport,
+        _NRRAReportList_Item_nRRAReport,
+        _NRRAReportList_Item_uEAssitantIdentifier,
+        ____NRRAReportList_Item_iE_Extensions__item__id_tab,
+        _____NRRAReportList_Item_iE_Extensions__item__id_tab_val_Extension_0,
+        ___NRRAReportList_Item_iE_Extensions__item__id,
+        ___NRRAReportList_Item_iE_Extensions__item__criticality,
+        ___NRRAReportList_Item_iE_Extensions__item__extensionValue,
+        __NRRAReportList_Item_iE_Extensions__item_,
+        _NRRAReportList_Item_iE_Extensions,
+        NRRAReportList_Item,
+        NRRAReportList_Item_ExtIEs,
+        _NRRAReportList_Item_ExtIEs_val_Extension_0,
         __NRNeighbour_Information__item__nrpCI,
         __NRNeighbour_Information__item__nrCellID,
         __NRNeighbour_Information__item__fiveGS_TAC,
@@ -18606,6 +18839,7 @@ class X2AP_IEs:
         _PSCell_UE_HistoryInformation__item_,
         PSCell_UE_HistoryInformation,
         PSCellChangeHistory,
+        PSCellListContainer,
         QCI,
         _QoS_Mapping_Information_dscp,
         _QoS_Mapping_Information_flow_label,
@@ -18750,6 +18984,20 @@ class X2AP_IEs:
         RSRPMRList_ExtIEs,
         _RSRPMRList_ExtIEs_val_Extension_0,
         RRCContainer,
+        _RaReportIndicationList__item_,
+        RaReportIndicationList,
+        _RaReportIndicationList_Item_meNB_UE_X2AP_ID,
+        _RaReportIndicationList_Item_meNB_UE_X2AP_ID_Extension,
+        ____RaReportIndicationList_Item_iE_Extensions__item__id_tab,
+        ___RaReportIndicationList_Item_iE_Extensions__item__id,
+        ____RaReportIndicationList_Item_iE_Extensions__item__criticality_tab,
+        ___RaReportIndicationList_Item_iE_Extensions__item__criticality,
+        ____RaReportIndicationList_Item_iE_Extensions__item__extensionValue_tab,
+        ___RaReportIndicationList_Item_iE_Extensions__item__extensionValue,
+        __RaReportIndicationList_Item_iE_Extensions__item_,
+        _RaReportIndicationList_Item_iE_Extensions,
+        RaReportIndicationList_Item,
+        RaReportIndicationList_Item_ExtIEs,
         _S1TNLLoadIndicator_dLS1TNLLoadIndicator,
         _S1TNLLoadIndicator_uLS1TNLLoadIndicator,
         ____S1TNLLoadIndicator_iE_Extensions__item__id_tab,
@@ -20203,6 +20451,8 @@ class X2AP_PDU_Contents:
         'UERadioCapabilityIDMappingResponseIEs',
         'CPC-cancel',
         'CPC-cancel-IEs',
+        'RachIndication',
+        'RachIndication-IEs',
         ]
     _type_ = [
         'HandoverRequest',
@@ -20508,6 +20758,7 @@ class X2AP_PDU_Contents:
         'UERadioCapabilityIDMappingRequest',
         'UERadioCapabilityIDMappingResponse',
         'CPC-cancel',
+        'RachIndication',
         ]
     _set_ = [
         'HandoverRequest-IEs',
@@ -20787,6 +21038,7 @@ class X2AP_PDU_Contents:
         'UERadioCapabilityIDMappingRequestIEs',
         'UERadioCapabilityIDMappingResponseIEs',
         'CPC-cancel-IEs',
+        'RachIndication-IEs',
         ]
     _val_ = [
         ]
@@ -21068,6 +21320,7 @@ class X2AP_PDU_Contents:
         'UERadioCapabilityIDMappingRequestIEs',
         'UERadioCapabilityIDMappingResponseIEs',
         'CPC-cancel-IEs',
+        'RachIndication-IEs',
         ]
     _param_ = [
         ]
@@ -21104,7 +21357,7 @@ class X2AP_PDU_Contents:
     _____HandoverRequest_protocolIEs__item__id_tab_val_Value_23 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRV2XServicesAuthorized')))
     _____HandoverRequest_protocolIEs__item__id_tab_val_Value_24 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'PC5QoSParameters')))
     _____HandoverRequest_protocolIEs__item__id_tab_val_Value_25 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABNodeIndication')))
-    ____HandoverRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 10), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 11), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 23), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 14), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'mandatory')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 71), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 82), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 103), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 156), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'optional')]), dict([('id', 176), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 182), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 248), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 254), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 277), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 309), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 361), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 370), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 372), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_25), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    ____HandoverRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 10), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 11), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 23), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 14), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'mandatory')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 71), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 82), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 103), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 156), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'optional')]), dict([('id', 176), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 182), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 248), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 254), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 277), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 309), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 361), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 370), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 372), ('criticality', 'ignore'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____HandoverRequest_protocolIEs__item__id_tab_val_Value_25), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___HandoverRequest_protocolIEs__item__id._const_tab = ____HandoverRequest_protocolIEs__item__id_tab
     ___HandoverRequest_protocolIEs__item__id._const_tab_at = None
     ___HandoverRequest_protocolIEs__item__id._const_tab_id = 'id'
@@ -21157,7 +21410,7 @@ class X2AP_PDU_Contents:
     _HandoverRequest_IEs_val_Value_23 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRV2XServicesAuthorized')))
     _HandoverRequest_IEs_val_Value_24 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'PC5QoSParameters')))
     _HandoverRequest_IEs_val_Value_25 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABNodeIndication')))
-    HandoverRequest_IEs._val = ASN1Set(rv=[dict([('id', 10), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 11), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 23), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 14), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_5), ('presence', 'mandatory')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 71), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 82), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 103), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 156), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_15), ('presence', 'optional')]), dict([('id', 176), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 182), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 248), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 254), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 277), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 309), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 361), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 370), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 372), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_24), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_25), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    HandoverRequest_IEs._val = ASN1Set(rv=[dict([('id', 10), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 11), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 23), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 14), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_5), ('presence', 'mandatory')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 71), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 82), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 103), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 156), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_15), ('presence', 'optional')]), dict([('id', 176), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 182), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 248), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 254), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 277), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 309), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 361), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 370), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 372), ('criticality', 'ignore'), ('Value', _HandoverRequest_IEs_val_Value_24), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _HandoverRequest_IEs_val_Value_25), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< UE-ContextInformation >-----#
     UE_ContextInformation = SEQ(name='UE-ContextInformation', mode=MODE_TYPE)
@@ -26528,7 +26781,8 @@ class X2AP_PDU_Contents:
     _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'DL-Forwarding')))
     _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_2 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'Ethernet-Type')))
     _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SecurityIndication')))
-    ____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 185), ('criticality', 'reject'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 306), ('criticality', 'ignore'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 369), ('criticality', 'ignore'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')]), dict([('id', 435), ('criticality', 'reject'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_3), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_4 = BIT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'TransportLayerAddress')))
+    ____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 185), ('criticality', 'reject'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 306), ('criticality', 'ignore'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 369), ('criticality', 'ignore'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')]), dict([('id', 435), ('criticality', 'reject'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_3), ('presence', 'optional')]), dict([('id', 412), ('criticality', 'ignore'), ('Extension', _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_4), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id._const_tab = ____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab
     ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id._const_tab_at = None
     ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id._const_tab_id = 'id'
@@ -26562,7 +26816,8 @@ class X2AP_PDU_Contents:
     _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'DL-Forwarding')))
     _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_2 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'Ethernet-Type')))
     _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SecurityIndication')))
-    E_RABs_ToBeSetupRetrieve_ItemExtIEs._val = ASN1Set(rv=[dict([('id', 185), ('criticality', 'reject'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 306), ('criticality', 'ignore'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 369), ('criticality', 'ignore'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_2), ('presence', 'optional')]), dict([('id', 435), ('criticality', 'reject'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_3), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_4 = BIT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'TransportLayerAddress')))
+    E_RABs_ToBeSetupRetrieve_ItemExtIEs._val = ASN1Set(rv=[dict([('id', 185), ('criticality', 'reject'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 306), ('criticality', 'ignore'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 369), ('criticality', 'ignore'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_2), ('presence', 'optional')]), dict([('id', 435), ('criticality', 'reject'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_3), ('presence', 'optional')]), dict([('id', 412), ('criticality', 'ignore'), ('Extension', _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_4), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< RetrieveUEContextFailure >-----#
     RetrieveUEContextFailure = SEQ(name='RetrieveUEContextFailure', mode=MODE_TYPE)
@@ -26647,7 +26902,8 @@ class X2AP_PDU_Contents:
     _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_31 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CHOinformation-AddReq')))
     _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_32 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SCGActivationRequest')))
     _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_33 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPAinformation-REQ')))
-    ____SgNBAdditionRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 248), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 203), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 204), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 205), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'mandatory')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 278), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 275), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'mandatory')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 340), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 359), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 74), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 89), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')]), dict([('id', 378), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_25), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_26), ('presence', 'optional')]), dict([('id', 411), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_27), ('presence', 'optional')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_28), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_29), ('presence', 'optional')]), dict([('id', 419), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_30), ('presence', 'optional')]), dict([('id', 420), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_31), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_32), ('presence', 'optional')]), dict([('id', 424), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_33), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_34 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABAuthorized')))
+    ____SgNBAdditionRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 248), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 203), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 204), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 205), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'mandatory')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 278), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 275), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'mandatory')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 340), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 359), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 74), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 89), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')]), dict([('id', 378), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_25), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_26), ('presence', 'optional')]), dict([('id', 411), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_27), ('presence', 'optional')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_28), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_29), ('presence', 'optional')]), dict([('id', 419), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_30), ('presence', 'optional')]), dict([('id', 420), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_31), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_32), ('presence', 'optional')]), dict([('id', 424), ('criticality', 'reject'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_33), ('presence', 'optional')]), dict([('id', 449), ('criticality', 'ignore'), ('Value', _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_34), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___SgNBAdditionRequest_protocolIEs__item__id._const_tab = ____SgNBAdditionRequest_protocolIEs__item__id_tab
     ___SgNBAdditionRequest_protocolIEs__item__id._const_tab_at = None
     ___SgNBAdditionRequest_protocolIEs__item__id._const_tab_id = 'id'
@@ -26708,7 +26964,8 @@ class X2AP_PDU_Contents:
     _SgNBAdditionRequest_IEs_val_Value_31 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CHOinformation-AddReq')))
     _SgNBAdditionRequest_IEs_val_Value_32 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SCGActivationRequest')))
     _SgNBAdditionRequest_IEs_val_Value_33 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPAinformation-REQ')))
-    SgNBAdditionRequest_IEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 248), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 203), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 204), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 205), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_6), ('presence', 'mandatory')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_7), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 278), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 275), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_15), ('presence', 'mandatory')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 340), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 359), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 74), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 89), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_24), ('presence', 'optional')]), dict([('id', 378), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_25), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_26), ('presence', 'optional')]), dict([('id', 411), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_27), ('presence', 'optional')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_28), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_29), ('presence', 'optional')]), dict([('id', 419), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_30), ('presence', 'optional')]), dict([('id', 420), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_31), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_32), ('presence', 'optional')]), dict([('id', 424), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_33), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _SgNBAdditionRequest_IEs_val_Value_34 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABAuthorized')))
+    SgNBAdditionRequest_IEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 248), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 203), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 204), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 205), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_6), ('presence', 'mandatory')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_7), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 104), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 278), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 275), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_15), ('presence', 'mandatory')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 13), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 98), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 340), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 359), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 74), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 89), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_24), ('presence', 'optional')]), dict([('id', 378), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_25), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_26), ('presence', 'optional')]), dict([('id', 411), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_27), ('presence', 'optional')]), dict([('id', 15), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_28), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_29), ('presence', 'optional')]), dict([('id', 419), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_30), ('presence', 'optional')]), dict([('id', 420), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_31), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_32), ('presence', 'optional')]), dict([('id', 424), ('criticality', 'reject'), ('Value', _SgNBAdditionRequest_IEs_val_Value_33), ('presence', 'optional')]), dict([('id', 449), ('criticality', 'ignore'), ('Value', _SgNBAdditionRequest_IEs_val_Value_34), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< E-RABs-ToBeAdded-SgNBAddReqList >-----#
     E_RABs_ToBeAdded_SgNBAddReqList = SEQ_OF(name='E-RABs-ToBeAdded-SgNBAddReqList', mode=MODE_TYPE)
@@ -27362,7 +27619,8 @@ class X2AP_PDU_Contents:
     _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_22 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SCGActivationRequest')))
     _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_23 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPAinformation-MOD')))
     _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_24 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPCupdate-MOD')))
-    ____SgNBModificationRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 241), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 215), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 280), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'optional')]), dict([('id', 345), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 379), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 416), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 421), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 426), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 432), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_25 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABAuthorized')))
+    ____SgNBModificationRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 241), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 215), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'optional')]), dict([('id', 280), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'optional')]), dict([('id', 345), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_16), ('presence', 'optional')]), dict([('id', 379), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_17), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_18), ('presence', 'optional')]), dict([('id', 416), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_19), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_20), ('presence', 'optional')]), dict([('id', 421), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_21), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_22), ('presence', 'optional')]), dict([('id', 426), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_23), ('presence', 'optional')]), dict([('id', 432), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_24), ('presence', 'optional')]), dict([('id', 449), ('criticality', 'ignore'), ('Value', _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_25), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___SgNBModificationRequest_protocolIEs__item__id._const_tab = ____SgNBModificationRequest_protocolIEs__item__id_tab
     ___SgNBModificationRequest_protocolIEs__item__id._const_tab_at = None
     ___SgNBModificationRequest_protocolIEs__item__id._const_tab_id = 'id'
@@ -27414,7 +27672,8 @@ class X2AP_PDU_Contents:
     _SgNBModificationRequest_IEs_val_Value_22 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'SCGActivationRequest')))
     _SgNBModificationRequest_IEs_val_Value_23 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPAinformation-MOD')))
     _SgNBModificationRequest_IEs_val_Value_24 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'CPCupdate-MOD')))
-    SgNBModificationRequest_IEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_3), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 241), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 215), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 280), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_15), ('presence', 'optional')]), dict([('id', 345), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 379), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 416), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 421), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 426), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 432), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_24), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _SgNBModificationRequest_IEs_val_Value_25 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'IABAuthorized')))
+    SgNBModificationRequest_IEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 269), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_3), ('presence', 'optional')]), dict([('id', 240), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 241), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 215), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 206), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 257), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 208), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_10), ('presence', 'optional')]), dict([('id', 280), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 329), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 330), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 279), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 343), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_15), ('presence', 'optional')]), dict([('id', 345), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_16), ('presence', 'optional')]), dict([('id', 379), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_17), ('presence', 'optional')]), dict([('id', 395), ('criticality', 'reject'), ('Value', _SgNBModificationRequest_IEs_val_Value_18), ('presence', 'optional')]), dict([('id', 416), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_19), ('presence', 'optional')]), dict([('id', 105), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_20), ('presence', 'optional')]), dict([('id', 421), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_21), ('presence', 'optional')]), dict([('id', 423), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_22), ('presence', 'optional')]), dict([('id', 426), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_23), ('presence', 'optional')]), dict([('id', 432), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_24), ('presence', 'optional')]), dict([('id', 449), ('criticality', 'ignore'), ('Value', _SgNBModificationRequest_IEs_val_Value_25), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< UE-ContextInformation-SgNBModReq >-----#
     UE_ContextInformation_SgNBModReq = SEQ(name='UE-ContextInformation-SgNBModReq', mode=MODE_TYPE)
@@ -30109,7 +30368,7 @@ class X2AP_PDU_Contents:
     __AccessAndMobilityIndication_protocolIEs__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolIE-Field')))
     ___AccessAndMobilityIndication_protocolIEs__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-IES'), ['id']))
     ____AccessAndMobilityIndication_protocolIEs__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-IES')))
-    _____AccessAndMobilityIndication_protocolIEs__item__id_tab_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRACHReportInformation')))
+    _____AccessAndMobilityIndication_protocolIEs__item__id_tab_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRAReport')))
     ____AccessAndMobilityIndication_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 414), ('criticality', 'ignore'), ('Value', _____AccessAndMobilityIndication_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___AccessAndMobilityIndication_protocolIEs__item__id._const_tab = ____AccessAndMobilityIndication_protocolIEs__item__id_tab
     ___AccessAndMobilityIndication_protocolIEs__item__id._const_tab_at = None
@@ -30137,7 +30396,7 @@ class X2AP_PDU_Contents:
     
     #-----< AccessAndMobilityIndication-IEs >-----#
     AccessAndMobilityIndication_IEs = CLASS(name='AccessAndMobilityIndication-IEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-IES')))
-    _AccessAndMobilityIndication_IEs_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRACHReportInformation')))
+    _AccessAndMobilityIndication_IEs_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'NRRAReport')))
     AccessAndMobilityIndication_IEs._val = ASN1Set(rv=[dict([('id', 414), ('criticality', 'ignore'), ('Value', _AccessAndMobilityIndication_IEs_val_Value_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< SgNBChangeConfirm >-----#
@@ -33437,6 +33696,43 @@ class X2AP_PDU_Contents:
     _CPC_cancel_IEs_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'GlobalGNB-ID')))
     CPC_cancel_IEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _CPC_cancel_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 207), ('criticality', 'reject'), ('Value', _CPC_cancel_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 157), ('criticality', 'reject'), ('Value', _CPC_cancel_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 5), ('criticality', 'ignore'), ('Value', _CPC_cancel_IEs_val_Value_3), ('presence', 'optional')]), dict([('id', 239), ('criticality', 'reject'), ('Value', _CPC_cancel_IEs_val_Value_4), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
+    #-----< RachIndication >-----#
+    RachIndication = SEQ(name='RachIndication', mode=MODE_TYPE)
+    _RachIndication_protocolIEs = SEQ_OF(name='protocolIEs', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('X2AP-Containers', 'ProtocolIE-Container')))
+    __RachIndication_protocolIEs__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-Containers', 'ProtocolIE-Field')))
+    ___RachIndication_protocolIEs__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-IES'), ['id']))
+    ____RachIndication_protocolIEs__item__id_tab = CLASS(name='_tab_X2AP-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-IES')))
+    _____RachIndication_protocolIEs__item__id_tab_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'RaReportIndicationList')))
+    ____RachIndication_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 447), ('criticality', 'reject'), ('Value', _____RachIndication_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
+    ___RachIndication_protocolIEs__item__id._const_tab = ____RachIndication_protocolIEs__item__id_tab
+    ___RachIndication_protocolIEs__item__id._const_tab_at = None
+    ___RachIndication_protocolIEs__item__id._const_tab_id = 'id'
+    ___RachIndication_protocolIEs__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-IES'), ['criticality']))
+    ___RachIndication_protocolIEs__item__criticality._const_tab = ____RachIndication_protocolIEs__item__id_tab
+    ___RachIndication_protocolIEs__item__criticality._const_tab_at = ('..', 'id')
+    ___RachIndication_protocolIEs__item__criticality._const_tab_id = 'criticality'
+    ___RachIndication_protocolIEs__item__value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('X2AP-Containers', 'X2AP-PROTOCOL-IES'), ['Value']))
+    ___RachIndication_protocolIEs__item__value._const_tab = ____RachIndication_protocolIEs__item__id_tab
+    ___RachIndication_protocolIEs__item__value._const_tab_at = ('..', 'id')
+    ___RachIndication_protocolIEs__item__value._const_tab_id = 'Value'
+    __RachIndication_protocolIEs__item_._cont = ASN1Dict([
+        ('id', ___RachIndication_protocolIEs__item__id),
+        ('criticality', ___RachIndication_protocolIEs__item__criticality),
+        ('value', ___RachIndication_protocolIEs__item__value),
+        ])
+    __RachIndication_protocolIEs__item_._ext = None
+    _RachIndication_protocolIEs._cont = __RachIndication_protocolIEs__item_
+    _RachIndication_protocolIEs._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65535)], ev=None, er=[])
+    RachIndication._cont = ASN1Dict([
+        ('protocolIEs', _RachIndication_protocolIEs),
+        ])
+    RachIndication._ext = []
+    
+    #-----< RachIndication-IEs >-----#
+    RachIndication_IEs = CLASS(name='RachIndication-IEs', mode=MODE_SET, typeref=ASN1RefType(('X2AP-Containers', 'X2AP-PROTOCOL-IES')))
+    _RachIndication_IEs_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-IEs', 'RaReportIndicationList')))
+    RachIndication_IEs._val = ASN1Set(rv=[dict([('id', 447), ('criticality', 'reject'), ('Value', _RachIndication_IEs_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    
     _all_ = [
         ____HandoverRequest_protocolIEs__item__id_tab,
         _____HandoverRequest_protocolIEs__item__id_tab_val_Value_0,
@@ -35408,6 +35704,7 @@ class X2AP_PDU_Contents:
         _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_1,
         _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_2,
         _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_3,
+        _____E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id_tab_val_Extension_4,
         ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__id,
         ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__criticality,
         ___E_RABs_ToBeSetupRetrieve_Item_iE_Extensions__item__extensionValue,
@@ -35419,6 +35716,7 @@ class X2AP_PDU_Contents:
         _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_1,
         _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_2,
         _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_3,
+        _E_RABs_ToBeSetupRetrieve_ItemExtIEs_val_Extension_4,
         ____RetrieveUEContextFailure_protocolIEs__item__id_tab,
         _____RetrieveUEContextFailure_protocolIEs__item__id_tab_val_Value_0,
         _____RetrieveUEContextFailure_protocolIEs__item__id_tab_val_Value_1,
@@ -35470,6 +35768,7 @@ class X2AP_PDU_Contents:
         _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_31,
         _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_32,
         _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_33,
+        _____SgNBAdditionRequest_protocolIEs__item__id_tab_val_Value_34,
         ___SgNBAdditionRequest_protocolIEs__item__id,
         ___SgNBAdditionRequest_protocolIEs__item__criticality,
         ___SgNBAdditionRequest_protocolIEs__item__value,
@@ -35511,6 +35810,7 @@ class X2AP_PDU_Contents:
         _SgNBAdditionRequest_IEs_val_Value_31,
         _SgNBAdditionRequest_IEs_val_Value_32,
         _SgNBAdditionRequest_IEs_val_Value_33,
+        _SgNBAdditionRequest_IEs_val_Value_34,
         ___E_RABs_ToBeAdded_SgNBAddReqList__item__id_tab,
         ____E_RABs_ToBeAdded_SgNBAddReqList__item__id_tab_val_Value_0,
         __E_RABs_ToBeAdded_SgNBAddReqList__item__id,
@@ -35762,6 +36062,7 @@ class X2AP_PDU_Contents:
         _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_22,
         _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_23,
         _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_24,
+        _____SgNBModificationRequest_protocolIEs__item__id_tab_val_Value_25,
         ___SgNBModificationRequest_protocolIEs__item__id,
         ___SgNBModificationRequest_protocolIEs__item__criticality,
         ___SgNBModificationRequest_protocolIEs__item__value,
@@ -35794,6 +36095,7 @@ class X2AP_PDU_Contents:
         _SgNBModificationRequest_IEs_val_Value_22,
         _SgNBModificationRequest_IEs_val_Value_23,
         _SgNBModificationRequest_IEs_val_Value_24,
+        _SgNBModificationRequest_IEs_val_Value_25,
         _UE_ContextInformation_SgNBModReq_nRUE_SecurityCapabilities,
         _UE_ContextInformation_SgNBModReq_sgNB_SecurityKey,
         _UE_ContextInformation_SgNBModReq_sgNBUEAggregateMaximumBitRate,
@@ -37838,6 +38140,16 @@ class X2AP_PDU_Contents:
         _CPC_cancel_IEs_val_Value_2,
         _CPC_cancel_IEs_val_Value_3,
         _CPC_cancel_IEs_val_Value_4,
+        ____RachIndication_protocolIEs__item__id_tab,
+        _____RachIndication_protocolIEs__item__id_tab_val_Value_0,
+        ___RachIndication_protocolIEs__item__id,
+        ___RachIndication_protocolIEs__item__criticality,
+        ___RachIndication_protocolIEs__item__value,
+        __RachIndication_protocolIEs__item_,
+        _RachIndication_protocolIEs,
+        RachIndication,
+        RachIndication_IEs,
+        _RachIndication_IEs_val_Value_0,
     ]
 
 class X2AP_PDU_Descriptions:
@@ -37913,6 +38225,7 @@ class X2AP_PDU_Descriptions:
         'uERadioCapabilityIDMapping',
         'accessAndMobilityIndication',
         'cPC-cancel',
+        'rachIndication',
         ]
     _type_ = [
         'X2AP-ELEMENTARY-PROCEDURE',
@@ -37986,6 +38299,7 @@ class X2AP_PDU_Descriptions:
         'uERadioCapabilityIDMapping',
         'accessAndMobilityIndication',
         'cPC-cancel',
+        'rachIndication',
         ]
     _class_ = [
         'X2AP-ELEMENTARY-PROCEDURE',
@@ -38051,6 +38365,7 @@ class X2AP_PDU_Descriptions:
         'uERadioCapabilityIDMapping',
         'accessAndMobilityIndication',
         'cPC-cancel',
+        'rachIndication',
         ]
     _param_ = [
         ]
@@ -38193,7 +38508,8 @@ class X2AP_PDU_Descriptions:
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_56 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'F1CTrafficTransfer')))
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_57 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'AccessAndMobilityIndication')))
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_58 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
-    __InitiatingMessage_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_59 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    __InitiatingMessage_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_59), ('procedureCode', 60), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
     _InitiatingMessage_procedureCode._const_tab = __InitiatingMessage_procedureCode_tab
     _InitiatingMessage_procedureCode._const_tab_at = None
     _InitiatingMessage_procedureCode._const_tab_id = 'procedureCode'
@@ -38323,7 +38639,8 @@ class X2AP_PDU_Descriptions:
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'F1CTrafficTransfer')))
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'AccessAndMobilityIndication')))
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
-    __SuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    __SuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59), ('procedureCode', 60), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
     _SuccessfulOutcome_procedureCode._const_tab = __SuccessfulOutcome_procedureCode_tab
     _SuccessfulOutcome_procedureCode._const_tab_at = None
     _SuccessfulOutcome_procedureCode._const_tab_id = 'procedureCode'
@@ -38453,7 +38770,8 @@ class X2AP_PDU_Descriptions:
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'F1CTrafficTransfer')))
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'AccessAndMobilityIndication')))
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
-    __UnsuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    __UnsuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_23), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_24), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_25), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_26), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59), ('procedureCode', 60), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
     _UnsuccessfulOutcome_procedureCode._const_tab = __UnsuccessfulOutcome_procedureCode_tab
     _UnsuccessfulOutcome_procedureCode._const_tab_at = None
     _UnsuccessfulOutcome_procedureCode._const_tab_id = 'procedureCode'
@@ -38581,7 +38899,8 @@ class X2AP_PDU_Descriptions:
     _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_56 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'F1CTrafficTransfer')))
     _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_57 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'AccessAndMobilityIndication')))
     _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_58 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
-    X2AP_ELEMENTARY_PROCEDURES._val = ASN1Set(rv=[dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_0), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_1), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_2), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_3), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_4), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_5), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_6), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_7), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_8), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_9), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_10), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_11), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_12), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_13), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_14), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_15), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_16), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_17), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_18), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_22), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_23), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_24), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_25), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_26), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
+    _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_59 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    X2AP_ELEMENTARY_PROCEDURES._val = ASN1Set(rv=[dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_0), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_0), ('procedureCode', 0), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_1), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_1), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_2), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_2), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_3), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_3), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_4), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_4), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_5), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_5), ('procedureCode', 12), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_6), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_6), ('procedureCode', 15), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_7), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_7), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_8), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_8), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_8), ('procedureCode', 21), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_9), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_9), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_9), ('procedureCode', 22), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_10), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_10), ('procedureCode', 24), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_11), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_11), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_11), ('procedureCode', 18), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_12), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_12), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_12), ('procedureCode', 26), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_13), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_13), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_13), ('procedureCode', 27), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_14), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_14), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_14), ('procedureCode', 29), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_15), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_15), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_15), ('procedureCode', 30), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_16), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_16), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_16), ('procedureCode', 31), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_17), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_17), ('procedureCode', 32), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_18), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_18), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_18), ('procedureCode', 34), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_19), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_19), ('procedureCode', 36), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_20), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_20), ('procedureCode', 37), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_21), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_21), ('procedureCode', 39), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_22), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_22), ('procedureCode', 40), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_23), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_23), ('procedureCode', 41), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_24), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_24), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_24), ('procedureCode', 43), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_25), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_25), ('UnsuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_25), ('procedureCode', 54), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_26), ('SuccessfulOutcome', _X2AP_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_26), ('procedureCode', 56), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_27), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_28), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_29), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_30), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_31), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_32), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_33), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_34), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_35), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_36), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_37), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_38), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_39), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_40), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_41), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_42), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_43), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_44), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_45), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_46), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_47), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_48), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_49), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_50), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_51), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_52), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_53), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_54), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_55), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_56), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_57), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_58), ('procedureCode', 59), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_59), ('procedureCode', 60), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
     
     #-----< X2AP-ELEMENTARY-PROCEDURES-CLASS-1 >-----#
     X2AP_ELEMENTARY_PROCEDURES_CLASS_1 = CLASS(name='X2AP-ELEMENTARY-PROCEDURES-CLASS-1', mode=MODE_SET, typeref=ASN1RefType(('X2AP-PDU-Descriptions', 'X2AP-ELEMENTARY-PROCEDURE')))
@@ -38696,7 +39015,8 @@ class X2AP_PDU_Descriptions:
     _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_29 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'F1CTrafficTransfer')))
     _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_30 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'AccessAndMobilityIndication')))
     _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_31 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
-    X2AP_ELEMENTARY_PROCEDURES_CLASS_2._val = ASN1Set(rv=[dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_0), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_1), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_2), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_3), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_4), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_5), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_6), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_7), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_8), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_9), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_10), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_14), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_15), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_16), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_17), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_18), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_19), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_20), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_21), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_22), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_23), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_24), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_25), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_26), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_27), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_28), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_29), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_30), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_31), ('procedureCode', 59), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
+    _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_32 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    X2AP_ELEMENTARY_PROCEDURES_CLASS_2._val = ASN1Set(rv=[dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_0), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_1), ('procedureCode', 5), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_2), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_3), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_4), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_5), ('procedureCode', 2), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_6), ('procedureCode', 11), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_7), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_8), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_9), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_10), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11), ('procedureCode', 20), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12), ('procedureCode', 23), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13), ('procedureCode', 25), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_14), ('procedureCode', 28), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_15), ('procedureCode', 33), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_16), ('procedureCode', 35), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_17), ('procedureCode', 38), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_18), ('procedureCode', 42), ('criticality', 'reject')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_19), ('procedureCode', 44), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_20), ('procedureCode', 45), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_21), ('procedureCode', 48), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_22), ('procedureCode', 46), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_23), ('procedureCode', 47), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_24), ('procedureCode', 49), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_25), ('procedureCode', 51), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_26), ('procedureCode', 50), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_27), ('procedureCode', 53), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_28), ('procedureCode', 52), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_29), ('procedureCode', 55), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_30), ('procedureCode', 57), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_31), ('procedureCode', 59), ('criticality', 'ignore')]), dict([('InitiatingMessage', _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_32), ('procedureCode', 60), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
     
     #-----< handoverPreparation >-----#
     handoverPreparation = CLASS(name='handoverPreparation', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-PDU-Descriptions', 'X2AP-ELEMENTARY-PROCEDURE')))
@@ -39041,6 +39361,11 @@ class X2AP_PDU_Descriptions:
     _cPC_cancel_val_InitiatingMessage = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'CPC-cancel')))
     cPC_cancel._val = dict([('InitiatingMessage', _cPC_cancel_val_InitiatingMessage), ('procedureCode', 59), ('criticality', 'ignore')])
     
+    #-----< rachIndication >-----#
+    rachIndication = CLASS(name='rachIndication', mode=MODE_VALUE, typeref=ASN1RefType(('X2AP-PDU-Descriptions', 'X2AP-ELEMENTARY-PROCEDURE')))
+    _rachIndication_val_InitiatingMessage = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('X2AP-PDU-Contents', 'RachIndication')))
+    rachIndication._val = dict([('InitiatingMessage', _rachIndication_val_InitiatingMessage), ('procedureCode', 60), ('criticality', 'ignore')])
+    
     _all_ = [
         _X2AP_ELEMENTARY_PROCEDURE_InitiatingMessage,
         _X2AP_ELEMENTARY_PROCEDURE_SuccessfulOutcome,
@@ -39160,6 +39485,7 @@ class X2AP_PDU_Descriptions:
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_56,
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_57,
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_58,
+        ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_59,
         _InitiatingMessage_procedureCode,
         _InitiatingMessage_criticality,
         _InitiatingMessage_value,
@@ -39272,6 +39598,7 @@ class X2AP_PDU_Descriptions:
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56,
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57,
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58,
+        ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59,
         _SuccessfulOutcome_procedureCode,
         _SuccessfulOutcome_criticality,
         _SuccessfulOutcome_value,
@@ -39384,6 +39711,7 @@ class X2AP_PDU_Descriptions:
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_56,
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_57,
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_58,
+        ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_59,
         _UnsuccessfulOutcome_procedureCode,
         _UnsuccessfulOutcome_criticality,
         _UnsuccessfulOutcome_value,
@@ -39496,6 +39824,7 @@ class X2AP_PDU_Descriptions:
         _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_56,
         _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_57,
         _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_58,
+        _X2AP_ELEMENTARY_PROCEDURES_val_InitiatingMessage_59,
         X2AP_ELEMENTARY_PROCEDURES_CLASS_1,
         _X2AP_ELEMENTARY_PROCEDURES_CLASS_1_val_InitiatingMessage_0,
         _X2AP_ELEMENTARY_PROCEDURES_CLASS_1_val_SuccessfulOutcome_0,
@@ -39605,6 +39934,7 @@ class X2AP_PDU_Descriptions:
         _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_29,
         _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_30,
         _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_31,
+        _X2AP_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_32,
         handoverPreparation,
         _handoverPreparation_val_InitiatingMessage,
         _handoverPreparation_val_SuccessfulOutcome,
@@ -39771,6 +40101,8 @@ class X2AP_PDU_Descriptions:
         _accessAndMobilityIndication_val_InitiatingMessage,
         cPC_cancel,
         _cPC_cancel_val_InitiatingMessage,
+        rachIndication,
+        _rachIndication_val_InitiatingMessage,
     ]
 
 init_modules(X2AP_CommonDataTypes, X2AP_Constants, X2AP_Containers, X2AP_IEs, X2AP_PDU_Contents, X2AP_PDU_Descriptions)

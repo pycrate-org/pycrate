@@ -76,6 +76,7 @@ FROM E1AP-CommonDataTypes
 	MCBearerContextModificationFailure,
 	MCBearerContextModificationRequired,
 	MCBearerContextModificationConfirm,
+	MCBearerNotification,
 	MCBearerContextReleaseCommand,
 	MCBearerContextReleaseComplete,
 	MCBearerContextReleaseRequest,
@@ -133,6 +134,7 @@ FROM E1AP-PDU-Contents
 	id-MCBearerContextSetup,
 	id-MCBearerContextModification,
 	id-MCBearerContextModificationRequired,
+	id-MCBearerNotification,
 	id-MCBearerContextRelease,
 	id-MCBearerContextReleaseRequest
 
@@ -247,7 +249,8 @@ E1AP-ELEMENTARY-PROCEDURES-CLASS-2 E1AP-ELEMENTARY-PROCEDURE ::= {
 	gNB-CU-CPMeasurementResultsInformation  |
 	iABPSKNotification						|
 	bCBearerContextReleaseRequest			|
-	mCBearerContextReleaseRequest			,
+	mCBearerContextReleaseRequest			|
+	mCBearerNotification					,
 	...
 }
 
@@ -507,6 +510,12 @@ mCBearerContextModificationRequired E1AP-ELEMENTARY-PROCEDURE ::= {
 	INITIATING MESSAGE		MCBearerContextModificationRequired
 	SUCCESSFUL OUTCOME		MCBearerContextModificationConfirm
 	PROCEDURE CODE			id-MCBearerContextModificationRequired
+	CRITICALITY				reject
+}
+
+mCBearerNotification E1AP-ELEMENTARY-PROCEDURE ::= {
+	INITIATING MESSAGE		MCBearerNotification
+	PROCEDURE CODE			id-MCBearerNotification
 	CRITICALITY				reject
 }
 

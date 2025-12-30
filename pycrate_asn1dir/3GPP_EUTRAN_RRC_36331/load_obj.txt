@@ -144,6 +144,7 @@ EUTRA-RRC-Definitions.LoggedMeasurementConfiguration-v1130-IEs
 EUTRA-RRC-Definitions.LoggedMeasurementConfiguration-v1250-IEs
 EUTRA-RRC-Definitions.LoggedMeasurementConfiguration-v1530-IEs
 EUTRA-RRC-Definitions.LoggedMeasurementConfiguration-v1700-IEs
+EUTRA-RRC-Definitions.LoggedMeasurementConfiguration-v1800-IEs
 EUTRA-RRC-Definitions.TargetMBSFN-Area-r12
 EUTRA-RRC-Definitions.LoggedEventTriggerConfig-r17
 EUTRA-RRC-Definitions.EventType-r17
@@ -257,6 +258,7 @@ EUTRA-RRC-Definitions.RRCConnectionReconfigurationComplete-v1510-IEs
 EUTRA-RRC-Definitions.RRCConnectionReconfigurationComplete-v1530-IEs
 EUTRA-RRC-Definitions.RRCConnectionReconfigurationComplete-v1700-IEs
 EUTRA-RRC-Definitions.RRCConnectionReconfigurationComplete-v1710-IEs
+EUTRA-RRC-Definitions.RRCConnectionReconfigurationComplete-v1800-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishment
 EUTRA-RRC-Definitions.RRCConnectionReestablishment-r8-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishment-v8a0-IEs
@@ -269,6 +271,7 @@ EUTRA-RRC-Definitions.RRCConnectionReestablishmentComplete-v1130-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentComplete-v1250-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentComplete-v1530-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentComplete-v1710-IEs
+EUTRA-RRC-Definitions.RRCConnectionReestablishmentComplete-v1800-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentReject
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentReject-r8-IEs
 EUTRA-RRC-Definitions.RRCConnectionReestablishmentReject-v8a0-IEs
@@ -337,6 +340,7 @@ EUTRA-RRC-Definitions.RRCConnectionResumeComplete-r13
 EUTRA-RRC-Definitions.RRCConnectionResumeComplete-v1530-IEs
 EUTRA-RRC-Definitions.RRCConnectionResumeComplete-v1610-IEs
 EUTRA-RRC-Definitions.RRCConnectionResumeComplete-v1710-IEs
+EUTRA-RRC-Definitions.RRCConnectionResumeComplete-v1800-IEs
 EUTRA-RRC-Definitions.RRCConnectionResumeRequest-r13
 EUTRA-RRC-Definitions.RRCConnectionResumeRequest-r13-IEs
 EUTRA-RRC-Definitions.RRCConnectionResumeRequest-5GC-r15-IEs
@@ -348,6 +352,8 @@ EUTRA-RRC-Definitions.RRCConnectionSetup-v8a0-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetup-v1610-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v8a0-IEs
+EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v8x0-IEs
+EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v17b0-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1020-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1130-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1250-IEs
@@ -358,6 +364,7 @@ EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1540-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1610-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1690-IEs
 EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1710-IEs
+EUTRA-RRC-Definitions.RRCConnectionSetupComplete-v1800-IEs
 EUTRA-RRC-Definitions.RegisteredMME
 EUTRA-RRC-Definitions.RegisteredAMF-r15
 EUTRA-RRC-Definitions.RRCEarlyDataComplete-r15
@@ -424,6 +431,7 @@ EUTRA-RRC-Definitions.SystemInformationBlockType1-v1450-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType1-v1540-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType1-v1610-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType1-v1700-IEs
+EUTRA-RRC-Definitions.SystemInformationBlockType1-v1800-IEs
 EUTRA-RRC-Definitions.PLMN-IdentityInfo
 EUTRA-RRC-Definitions.PLMN-IdentityInfo-v1530
 EUTRA-RRC-Definitions.PLMN-IdentityInfo-v1610
@@ -472,6 +480,7 @@ EUTRA-RRC-Definitions.UECapabilityEnquiry-v1550-IEs
 EUTRA-RRC-Definitions.UECapabilityEnquiry-v1560-IEs
 EUTRA-RRC-Definitions.UECapabilityEnquiry-v1610-IEs
 EUTRA-RRC-Definitions.UECapabilityEnquiry-v1710-IEs
+EUTRA-RRC-Definitions.UECapabilityEnquiry-v17b0-IEs
 EUTRA-RRC-Definitions.UECapabilityInformation
 EUTRA-RRC-Definitions.UECapabilityInformation-r8-IEs
 EUTRA-RRC-Definitions.UECapabilityInformation-v8a0-IEs
@@ -486,6 +495,7 @@ EUTRA-RRC-Definitions.UEInformationRequest-v1130-IEs
 EUTRA-RRC-Definitions.UEInformationRequest-v1250-IEs
 EUTRA-RRC-Definitions.UEInformationRequest-v1530-IEs
 EUTRA-RRC-Definitions.UEInformationRequest-v1710-IEs
+EUTRA-RRC-Definitions.UEInformationRequest-v1800-IEs
 EUTRA-RRC-Definitions.UEInformationResponse-r9
 EUTRA-RRC-Definitions.UEInformationResponse-r9-IEs
 EUTRA-RRC-Definitions.UEInformationResponse-v9e0-IEs
@@ -495,8 +505,11 @@ EUTRA-RRC-Definitions.UEInformationResponse-v1130-IEs
 EUTRA-RRC-Definitions.UEInformationResponse-v1530-IEs
 EUTRA-RRC-Definitions.UEInformationResponse-v1610-IEs
 EUTRA-RRC-Definitions.UEInformationResponse-v1710-IEs
+EUTRA-RRC-Definitions.UEInformationResponse-v1800-IEs
 EUTRA-RRC-Definitions.RACH-Report-r16
 EUTRA-RRC-Definitions.RACH-Report-v1610
+EUTRA-RRC-Definitions.RACH-ReportNR-r18
+EUTRA-RRC-Definitions.CellIdNR-r18
 EUTRA-RRC-Definitions.RLF-Report-r9
 EUTRA-RRC-Definitions.RLF-Report-v9e0
 EUTRA-RRC-Definitions.MeasResult2EUTRA-r9
@@ -531,7 +544,6 @@ EUTRA-RRC-Definitions.WLANConnectionStatusReport-r13-IEs
 EUTRA-RRC-Definitions.WLANConnectionStatusReport-v1430-IEs
 EUTRA-RRC-Definitions.SetupRelease
 EUTRA-RRC-Definitions.SystemInformationBlockPos-r15
-EUTRA-RRC-Definitions.SystemInformationBlockType2
 EUTRA-RRC-Definitions.SystemInformationBlockType2-v9e0-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType2-v9i0-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType2-v10n0-IEs
@@ -541,7 +553,6 @@ EUTRA-RRC-Definitions.ACDC-BarringForCommon-r13
 EUTRA-RRC-Definitions.UDT-Restricting-r13
 EUTRA-RRC-Definitions.CIOT-OptimisationPLMN-r13
 EUTRA-RRC-Definitions.PLMN-Info-r15
-EUTRA-RRC-Definitions.SystemInformationBlockType3
 EUTRA-RRC-Definitions.RedistributionServingInfo-r13
 EUTRA-RRC-Definitions.CellReselectionServingFreqInfo-v1310
 EUTRA-RRC-Definitions.CellReselectionServingFreqInfo-v1610
@@ -623,11 +634,13 @@ EUTRA-RRC-Definitions.SL-ResourcesInterFreq-r13
 EUTRA-RRC-Definitions.SC-MCCH-SchedulingInfo-r14
 EUTRA-RRC-Definitions.SystemInformationBlockType21-r14
 EUTRA-RRC-Definitions.SL-V2X-ConfigCommon-r14
+EUTRA-RRC-Definitions.SL-A2X-ConfigCommon-r18
 EUTRA-RRC-Definitions.SystemInformationBlockType24-r15
 EUTRA-RRC-Definitions.CarrierFreqNR-r15
 EUTRA-RRC-Definitions.CarrierFreqNR-v1610
 EUTRA-RRC-Definitions.CarrierFreqNR-v1700
 EUTRA-RRC-Definitions.CarrierFreqNR-v1720
+EUTRA-RRC-Definitions.CarrierFreqNR-v1810
 EUTRA-RRC-Definitions.UAC-BarringInfoSet-r15
 EUTRA-RRC-Definitions.UAC-BarringInfoSet-v1700
 EUTRA-RRC-Definitions.UAC-AC1-SelectAssistInfo-r15
@@ -640,8 +653,11 @@ EUTRA-RRC-Definitions.SystemInformationBlockType28-r16
 EUTRA-RRC-Definitions.SystemInformationBlockType29-r16
 EUTRA-RRC-Definitions.SystemInformationBlockType31-r17
 EUTRA-RRC-Definitions.ServingSatelliteInfo-r17
+EUTRA-RRC-Definitions.ServingSatelliteInfo-v1820
 EUTRA-RRC-Definitions.SystemInformationBlockType32-r17
 EUTRA-RRC-Definitions.SatelliteInfo-r17
+EUTRA-RRC-Definitions.SystemInformationBlockType33-r18
+EUTRA-RRC-Definitions.NeighSatelliteInfo-r18
 EUTRA-RRC-Definitions.Alpha-r12
 EUTRA-RRC-Definitions.AntennaInfoCommon
 EUTRA-RRC-Definitions.AntennaInfoDedicated
@@ -781,10 +797,12 @@ EUTRA-RRC-Definitions.PDSCH-ConfigDedicated-v1430
 EUTRA-RRC-Definitions.PDSCH-ConfigDedicated-v1530
 EUTRA-RRC-Definitions.PDSCH-ConfigDedicated-v1610
 EUTRA-RRC-Definitions.PDSCH-ConfigDedicated-v1700
+EUTRA-RRC-Definitions.PDSCH-ConfigDedicated-v1800
 EUTRA-RRC-Definitions.PDSCH-ConfigDedicatedSCell-v1430
 EUTRA-RRC-Definitions.CE-PDSCH-MultiTB-Config-r16
 EUTRA-RRC-Definitions.CE-PDSCH-14HARQ-Config-r17
 EUTRA-RRC-Definitions.PDSCH-RE-MappingQCL-Config-r11
+EUTRA-RRC-Definitions.DownlinkHARQ-FeedbackDisabledBitmap-r18
 EUTRA-RRC-Definitions.PerCC-GapIndication-r14
 EUTRA-RRC-Definitions.PHICH-Config
 EUTRA-RRC-Definitions.PhysicalConfigDedicated
@@ -834,7 +852,6 @@ EUTRA-RRC-Definitions.PUCCH-ConfigDedicated-v13c0
 EUTRA-RRC-Definitions.PUCCH-Format3-Conf-r13
 EUTRA-RRC-Definitions.PUCCH-ConfigDedicated-v1430
 EUTRA-RRC-Definitions.PUCCH-ConfigDedicated-v1530
-EUTRA-RRC-Definitions.CE-PUCCH-TxDurationConfig-r17
 EUTRA-RRC-Definitions.Format4-resource-r13
 EUTRA-RRC-Definitions.Format5-resource-r13
 EUTRA-RRC-Definitions.N1PUCCH-AN-CS-r10
@@ -856,6 +873,7 @@ EUTRA-RRC-Definitions.PUSCH-ConfigDedicated-r13
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicated-v1430
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicated-v1530
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicated-v1610
+EUTRA-RRC-Definitions.PUSCH-ConfigDedicated-v1800
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicatedSCell-r10
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicatedSCell-v1430
 EUTRA-RRC-Definitions.PUSCH-ConfigDedicatedScell-v1530
@@ -865,6 +883,7 @@ EUTRA-RRC-Definitions.PUSCH-TxDuration-r17
 EUTRA-RRC-Definitions.Enable256QAM-r14
 EUTRA-RRC-Definitions.PUSCH-EnhancementsConfig-r14
 EUTRA-RRC-Definitions.UL-ReferenceSignalsPUSCH
+EUTRA-RRC-Definitions.UplinkHARQ-Mode-r18
 EUTRA-RRC-Definitions.RACH-ConfigCommon
 EUTRA-RRC-Definitions.RACH-ConfigCommon-v1250
 EUTRA-RRC-Definitions.RACH-ConfigCommonSCell-r11
@@ -1045,7 +1064,10 @@ EUTRA-RRC-Definitions.CipheringAlgorithm-r12
 EUTRA-RRC-Definitions.ShortMAC-I
 EUTRA-RRC-Definitions.AdditionalSpectrumEmission
 EUTRA-RRC-Definitions.AdditionalSpectrumEmission-v10l0
+EUTRA-RRC-Definitions.AdditionalSpectrumEmission-r18
 EUTRA-RRC-Definitions.AdditionalSpectrumEmissionNR-r15
+EUTRA-RRC-Definitions.AdditionalSpectrumEmissionNR-v1760
+EUTRA-RRC-Definitions.AdditionalSpectrumEmissionNR-r18
 EUTRA-RRC-Definitions.ARFCN-ValueCDMA2000
 EUTRA-RRC-Definitions.ARFCN-ValueGERAN
 EUTRA-RRC-Definitions.ARFCN-ValueNR-r15
@@ -1092,10 +1114,16 @@ EUTRA-RRC-Definitions.RACH-Skip-r14
 EUTRA-RRC-Definitions.MobilityParametersCDMA2000
 EUTRA-RRC-Definitions.MobilityStateParameters
 EUTRA-RRC-Definitions.MultiBandInfo-v9e0
+EUTRA-RRC-Definitions.MultiBandInfoAerial-r18
 EUTRA-RRC-Definitions.NS-PmaxValue-r10
 EUTRA-RRC-Definitions.NS-PmaxValue-v10l0
+EUTRA-RRC-Definitions.NS-PmaxValueAerial-r18
 EUTRA-RRC-Definitions.NS-PmaxListNR-r15
 EUTRA-RRC-Definitions.NS-PmaxValueNR-r15
+EUTRA-RRC-Definitions.NS-PmaxListNR-v1760
+EUTRA-RRC-Definitions.NS-PmaxValueNR-v1760
+EUTRA-RRC-Definitions.NS-PmaxListNR-Aerial-r18
+EUTRA-RRC-Definitions.NS-PmaxValueNR-Aerial-r18
 EUTRA-RRC-Definitions.PhysCellId
 EUTRA-RRC-Definitions.PhysCellIdGERAN
 EUTRA-RRC-Definitions.PhysCellIdNR-r15
@@ -1138,6 +1166,7 @@ EUTRA-RRC-Definitions.BT-NameListConfig-r15
 EUTRA-RRC-Definitions.BT-Name-r15
 EUTRA-RRC-Definitions.CSI-RSRP-Range-r12
 EUTRA-RRC-Definitions.Hysteresis
+EUTRA-RRC-Definitions.HysteresisLocation-r18
 EUTRA-RRC-Definitions.LocationInfo-r10
 EUTRA-RRC-Definitions.LogMeasResultBT-r15
 EUTRA-RRC-Definitions.LogMeasResultWLAN-r15
@@ -1163,6 +1192,7 @@ EUTRA-RRC-Definitions.MeasObjectEUTRA
 EUTRA-RRC-Definitions.MeasObjectEUTRA-v9e0
 EUTRA-RRC-Definitions.MeasRSS-DedicatedConfig-r16
 EUTRA-RRC-Definitions.CellsToAddMod-v1610
+EUTRA-RRC-Definitions.CellsToAddMod-v1810
 EUTRA-RRC-Definitions.MeasCycleSCell-r10
 EUTRA-RRC-Definitions.MeasSubframePatternConfigNeigh-r10
 EUTRA-RRC-Definitions.RMTC-Config-r13
@@ -1219,6 +1249,7 @@ EUTRA-RRC-Definitions.QuantityConfig
 EUTRA-RRC-Definitions.QuantityConfigEUTRA-v1250
 EUTRA-RRC-Definitions.QuantityConfigCDMA2000
 EUTRA-RRC-Definitions.QuantityConfigNR-r15
+EUTRA-RRC-Definitions.ReferenceLocation-r18
 EUTRA-RRC-Definitions.CondReconfigurationTriggerEUTRA-r16
 EUTRA-RRC-Definitions.RSRQ-RangeConfig-r12
 EUTRA-RRC-Definitions.ThresholdEUTRA
@@ -1276,6 +1307,7 @@ EUTRA-RRC-Definitions.DedicatedInfoF1c-r16
 EUTRA-RRC-Definitions.DedicatedInfoNAS
 EUTRA-RRC-Definitions.FilterCoefficient
 EUTRA-RRC-Definitions.GNSS-ID-r15
+EUTRA-RRC-Definitions.GNSS-PositionFixDuration-r18
 EUTRA-RRC-Definitions.GNSS-ValidityDuration-r17
 EUTRA-RRC-Definitions.I-RNTI-r15
 EUTRA-RRC-Definitions.LoggingDuration-r10
@@ -1295,6 +1327,7 @@ EUTRA-RRC-Definitions.RAND-CDMA2000
 EUTRA-RRC-Definitions.RAT-Type
 EUTRA-RRC-Definitions.ResumeIdentity-r13
 EUTRA-RRC-Definitions.RRC-TransactionIdentifier
+EUTRA-RRC-Definitions.SatelliteId-r18
 EUTRA-RRC-Definitions.SBAS-ID-r15
 EUTRA-RRC-Definitions.ShortI-RNTI-r15
 EUTRA-RRC-Definitions.S-NSSAI-r15
@@ -1326,7 +1359,9 @@ EUTRA-RRC-Definitions.UE-EUTRA-Capability-v14a0-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v14b0-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v14x0-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v15x0-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v15o0-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v16c0-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v17b0-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v920-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v940-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1020-IEs
@@ -1367,6 +1402,10 @@ EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1700-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1710-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1720-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1730-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1770-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1800-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1830-IEs
+EUTRA-RRC-Definitions.UE-EUTRA-Capability-v1840-IEs
 EUTRA-RRC-Definitions.UE-EUTRA-CapabilityAddXDD-Mode-r9
 EUTRA-RRC-Definitions.UE-EUTRA-CapabilityAddXDD-Mode-v1060
 EUTRA-RRC-Definitions.UE-EUTRA-CapabilityAddXDD-Mode-v1130
@@ -1400,6 +1439,8 @@ EUTRA-RRC-Definitions.MAC-Parameters-v1610
 EUTRA-RRC-Definitions.MAC-Parameters-v1630
 EUTRA-RRC-Definitions.NTN-Parameters-r17
 EUTRA-RRC-Definitions.NTN-Parameters-v1720
+EUTRA-RRC-Definitions.NTN-Parameters-v1800
+EUTRA-RRC-Definitions.NTN-Parameters-v1830
 EUTRA-RRC-Definitions.ProcessingTimelineSet-r15
 EUTRA-RRC-Definitions.RLC-Parameters-r12
 EUTRA-RRC-Definitions.RLC-Parameters-v1310
@@ -1479,6 +1520,7 @@ EUTRA-RRC-Definitions.RF-Parameters-v1530
 EUTRA-RRC-Definitions.RF-Parameters-v1570
 EUTRA-RRC-Definitions.RF-Parameters-v1610
 EUTRA-RRC-Definitions.RF-Parameters-v1630
+EUTRA-RRC-Definitions.RF-Parameters-v1800
 EUTRA-RRC-Definitions.SkipSubframeProcessing-r15
 EUTRA-RRC-Definitions.SPT-Parameters-r15
 EUTRA-RRC-Definitions.STTI-SPT-BandParameters-r15
@@ -1486,6 +1528,7 @@ EUTRA-RRC-Definitions.STTI-SupportedCombinations-r15
 EUTRA-RRC-Definitions.DL-UL-CCs-r15
 EUTRA-RRC-Definitions.BandCombinationParametersExt-r10
 EUTRA-RRC-Definitions.BandCombinationParameters-v1390
+EUTRA-RRC-Definitions.BandCombinationParameters-v1800
 EUTRA-RRC-Definitions.ScalingFactorSidelink-r16
 EUTRA-RRC-Definitions.BandParameters-r10
 EUTRA-RRC-Definitions.BandParameters-v1090
@@ -1530,14 +1573,19 @@ EUTRA-RRC-Definitions.MeasParameters-v1310
 EUTRA-RRC-Definitions.MeasParameters-v1430
 EUTRA-RRC-Definitions.MeasParameters-v1520
 EUTRA-RRC-Definitions.MeasParameters-v1530
+EUTRA-RRC-Definitions.MeasParameters-v15o0
 EUTRA-RRC-Definitions.MeasParameters-v1630
 EUTRA-RRC-Definitions.MeasParameters-v16c0
+EUTRA-RRC-Definitions.MeasParameters-v1770
+EUTRA-RRC-Definitions.MeasParameters-v1840
 EUTRA-RRC-Definitions.SharedSpectrumMeasNR-r17
 EUTRA-RRC-Definitions.MeasGapInfoNR-r16
+EUTRA-RRC-Definitions.MeasGapInfoNR-r18
 EUTRA-RRC-Definitions.BandInfoEUTRA
 EUTRA-RRC-Definitions.InterFreqBandInfo
 EUTRA-RRC-Definitions.InterRAT-BandInfo
 EUTRA-RRC-Definitions.InterRAT-BandInfoNR-r16
+EUTRA-RRC-Definitions.InterRAT-BandInfoNR-r18
 EUTRA-RRC-Definitions.IRAT-ParametersNR-r15
 EUTRA-RRC-Definitions.IRAT-ParametersNR-v1540
 EUTRA-RRC-Definitions.IRAT-ParametersNR-v1560
@@ -1546,6 +1594,7 @@ EUTRA-RRC-Definitions.IRAT-ParametersNR-v1610
 EUTRA-RRC-Definitions.IRAT-ParametersNR-v1660
 EUTRA-RRC-Definitions.IRAT-ParametersNR-v1700
 EUTRA-RRC-Definitions.IRAT-ParametersNR-v1710
+EUTRA-RRC-Definitions.MSD-Information-r18
 EUTRA-RRC-Definitions.EUTRA-5GC-Parameters-r15
 EUTRA-RRC-Definitions.EUTRA-5GC-Parameters-v1610
 EUTRA-RRC-Definitions.PDCP-ParametersNR-r15
@@ -1580,6 +1629,7 @@ EUTRA-RRC-Definitions.NeighCellSI-AcquisitionParameters-v15a0
 EUTRA-RRC-Definitions.NeighCellSI-AcquisitionParameters-v1610
 EUTRA-RRC-Definitions.NeighCellSI-AcquisitionParameters-v1710
 EUTRA-RRC-Definitions.SON-Parameters-r9
+EUTRA-RRC-Definitions.SON-Parameters-v1800
 EUTRA-RRC-Definitions.PUR-Parameters-r16
 EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-r10
 EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1250
@@ -1587,6 +1637,7 @@ EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1430
 EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1530
 EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1610
 EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1700
+EUTRA-RRC-Definitions.UE-BasedNetwPerfMeasParameters-v1800
 EUTRA-RRC-Definitions.OTDOA-PositioningCapabilities-r10
 EUTRA-RRC-Definitions.Other-Parameters-r11
 EUTRA-RRC-Definitions.Other-Parameters-v11d0
@@ -1634,10 +1685,14 @@ EUTRA-RRC-Definitions.SL-Parameters-v1540
 EUTRA-RRC-Definitions.SL-Parameters-v1610
 EUTRA-RRC-Definitions.SL-Parameters-v1630
 EUTRA-RRC-Definitions.SL-Parameters-v1710
+EUTRA-RRC-Definitions.SL-Parameters-v1800
 EUTRA-RRC-Definitions.UE-CategorySL-r15
 EUTRA-RRC-Definitions.V2X-BandParametersEUTRA-NR-r16
 EUTRA-RRC-Definitions.V2X-BandParametersEUTRA-NR-v1630
 EUTRA-RRC-Definitions.V2X-BandParametersEUTRA-NR-v1710
+EUTRA-RRC-Definitions.SL-A2X-BandParameters-r18
+EUTRA-RRC-Definitions.BandParametersTxA2X-r18
+EUTRA-RRC-Definitions.BandParametersRxA2X-r18
 EUTRA-RRC-Definitions.SupportedBandInfo-r12
 EUTRA-RRC-Definitions.MMTEL-Parameters-r14
 EUTRA-RRC-Definitions.MMTEL-Parameters-v1610
@@ -1782,6 +1837,7 @@ EUTRA-RRC-Definitions.maxCellInter
 EUTRA-RRC-Definitions.maxCellIntra
 EUTRA-RRC-Definitions.maxCellListGERAN
 EUTRA-RRC-Definitions.maxCellMeas
+EUTRA-RRC-Definitions.maxCellRAReportNR-r18
 EUTRA-RRC-Definitions.maxCellReport
 EUTRA-RRC-Definitions.maxCellSFTD
 EUTRA-RRC-Definitions.maxCellAllowedNR-r16
@@ -1824,6 +1880,8 @@ EUTRA-RRC-Definitions.maxIdleMeasCarriersExt-r16
 EUTRA-RRC-Definitions.maxIdleMeasCarriers-r16
 EUTRA-RRC-Definitions.maxLCG-r13
 EUTRA-RRC-Definitions.maxLogMeasReport-r10
+EUTRA-RRC-Definitions.maxLowerMSD-r18
+EUTRA-RRC-Definitions.maxLowerMSD-Info-r18
 EUTRA-RRC-Definitions.maxMBSFN-Allocations
 EUTRA-RRC-Definitions.maxMBSFN-Area
 EUTRA-RRC-Definitions.maxMBSFN-Area-1
@@ -2045,6 +2103,7 @@ NBIOT-RRC-Definitions.PURConfigurationRequest-NB-r16
 NBIOT-RRC-Definitions.PURConfigurationRequest-NB-r16-IEs
 NBIOT-RRC-Definitions.PUR-ConfigRequest-NB-r16
 NBIOT-RRC-Definitions.RRCConnectionReconfiguration-NB
+NBIOT-RRC-Definitions.RRCConnectionReconfiguration-NB-v16f0-IEs
 NBIOT-RRC-Definitions.RRCConnectionReconfigurationComplete-NB
 NBIOT-RRC-Definitions.RRCConnectionReconfigurationComplete-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishment-NB
@@ -2055,6 +2114,7 @@ NBIOT-RRC-Definitions.RRCConnectionReestablishmentComplete-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentComplete-NB-v1470-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentComplete-NB-v1610-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentComplete-NB-v1710-IEs
+NBIOT-RRC-Definitions.RRCConnectionReestablishmentComplete-NB-v1800-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentRequest-NB
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentRequest-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionReestablishmentRequest-NB-r14-IEs
@@ -2081,11 +2141,13 @@ NBIOT-RRC-Definitions.InitialUE-Identity-5GC-NB-r16
 NBIOT-RRC-Definitions.RRCConnectionResume-NB
 NBIOT-RRC-Definitions.RRCConnectionResume-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionResume-NB-v1610-IEs
+NBIOT-RRC-Definitions.RRCConnectionResume-NB-v16f0-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB
 NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB-v1470-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB-v1610-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB-v1710-IEs
+NBIOT-RRC-Definitions.RRCConnectionResumeComplete-NB-v1800-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeRequest-NB
 NBIOT-RRC-Definitions.RRCConnectionResumeRequest-NB-r13-IEs
 NBIOT-RRC-Definitions.RRCConnectionResumeRequest-5GC-NB-r16-IEs
@@ -2098,6 +2160,7 @@ NBIOT-RRC-Definitions.RRCConnectionSetupComplete-NB-v1430-IEs
 NBIOT-RRC-Definitions.RRCConnectionSetupComplete-NB-v1470-IEs
 NBIOT-RRC-Definitions.RRCConnectionSetupComplete-NB-v1610-IEs
 NBIOT-RRC-Definitions.RRCConnectionSetupComplete-NB-v1710-IEs
+NBIOT-RRC-Definitions.RRCConnectionSetupComplete-NB-v1800-IEs
 NBIOT-RRC-Definitions.RRCEarlyDataComplete-NB-r15
 NBIOT-RRC-Definitions.RRCEarlyDataComplete-NB-r15-IEs
 NBIOT-RRC-Definitions.RRCEarlyDataComplete-NB-v1590-IEs
@@ -2155,7 +2218,9 @@ NBIOT-RRC-Definitions.IntraFreqNeighCellList-NB-v1530
 NBIOT-RRC-Definitions.IntraFreqNeighCellInfo-NB-v1530
 NBIOT-RRC-Definitions.SystemInformationBlockType5-NB-r13
 NBIOT-RRC-Definitions.InterFreqCarrierFreqList-NB-r13
+NBIOT-RRC-Definitions.InterFreqCarrierFreqList-NB-v1820
 NBIOT-RRC-Definitions.InterFreqCarrierFreqInfo-NB-r13
+NBIOT-RRC-Definitions.InterFreqCarrierFreqInfo-NB-v1820
 NBIOT-RRC-Definitions.InterFreqNeighCellList-NB-r13
 NBIOT-RRC-Definitions.InterFreqNeighCellList-NB-v1530
 NBIOT-RRC-Definitions.InterFreqNeighCellInfo-NB-v1530
@@ -2188,6 +2253,9 @@ NBIOT-RRC-Definitions.CarrierFreqEUTRA-NB-r16
 NBIOT-RRC-Definitions.CarrierFreqsGERAN-NB-r16
 NBIOT-RRC-Definitions.SystemInformationBlockType31-NB-r17
 NBIOT-RRC-Definitions.SystemInformationBlockType32-NB-r17
+NBIOT-RRC-Definitions.SatelliteInfoList-NB-v1830
+NBIOT-RRC-Definitions.CarrierFreqList-NB-r18
+NBIOT-RRC-Definitions.SystemInformationBlockType33-NB-r18
 NBIOT-RRC-Definitions.CarrierConfigDedicated-NB-r13
 NBIOT-RRC-Definitions.DL-CarrierConfigDedicated-NB-r13
 NBIOT-RRC-Definitions.UL-CarrierConfigDedicated-NB-r13
@@ -2214,7 +2282,9 @@ NBIOT-RRC-Definitions.NPDSCH-ConfigCommon-NB-r13
 NBIOT-RRC-Definitions.NPDSCH-ConfigDedicated-NB-r16
 NBIOT-RRC-Definitions.NPDSCH-MultiTB-Config-NB-r16
 NBIOT-RRC-Definitions.NPDSCH-ConfigDedicated-NB-v1710
+NBIOT-RRC-Definitions.NPDSCH-ConfigDedicated-NB-v1800
 NBIOT-RRC-Definitions.NPDSCH-16QAM-Config-NB-r17
+NBIOT-RRC-Definitions.DownlinkHARQ-FeedbackDisabledBitmap-NB-r18
 NBIOT-RRC-Definitions.NPRACH-ConfigSIB-NB-r13
 NBIOT-RRC-Definitions.NPRACH-ConfigSIB-NB-v1330
 NBIOT-RRC-Definitions.NPRACH-ConfigSIB-NB-v1450
@@ -2232,8 +2302,10 @@ NBIOT-RRC-Definitions.UL-ReferenceSignalsNPUSCH-NB-r13
 NBIOT-RRC-Definitions.NPUSCH-ConfigDedicated-NB-r13
 NBIOT-RRC-Definitions.NPUSCH-ConfigDedicated-NB-v1610
 NBIOT-RRC-Definitions.NPUSCH-ConfigDedicated-NB-v1700
+NBIOT-RRC-Definitions.NPUSCH-ConfigDedicated-NB-v1800
 NBIOT-RRC-Definitions.NPUSCH-TxDuration-NB-r17
 NBIOT-RRC-Definitions.ACK-NACK-NumRepetitions-NB-r13
+NBIOT-RRC-Definitions.UplinkHARQ-Mode-NB-r18
 NBIOT-RRC-Definitions.PDCP-Config-NB-r13
 NBIOT-RRC-Definitions.PhysicalConfigDedicated-NB-r13
 NBIOT-RRC-Definitions.PUR-Config-NB-r16
@@ -2301,9 +2373,11 @@ NBIOT-RRC-Definitions.UE-Capability-NB-v1530-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v15x0-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v1610-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v16x0-IEs
+NBIOT-RRC-Definitions.UE-EUTRA-Capability-v16f0-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v1700-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v1710-IEs
 NBIOT-RRC-Definitions.UE-Capability-NB-v1720-IEs
+NBIOT-RRC-Definitions.UE-Capability-NB-v1800-IEs
 NBIOT-RRC-Definitions.TDD-UE-Capability-NB-r15
 NBIOT-RRC-Definitions.TDD-UE-Capability-NB-v1610
 NBIOT-RRC-Definitions.TDD-UE-Capability-NB-v1710
@@ -2315,6 +2389,7 @@ NBIOT-RRC-Definitions.MAC-Parameters-NB-v1530
 NBIOT-RRC-Definitions.MAC-Parameters-NB-v1610
 NBIOT-RRC-Definitions.NTN-Parameters-NB-r17
 NBIOT-RRC-Definitions.NTN-Parameters-NB-v1720
+NBIOT-RRC-Definitions.NTN-Parameters-NB-v1800
 NBIOT-RRC-Definitions.MeasParameters-NB-r16
 NBIOT-RRC-Definitions.MeasParameters-NB-v1710
 NBIOT-RRC-Definitions.PhyLayerParameters-NB-r13
@@ -2332,6 +2407,7 @@ NBIOT-RRC-Definitions.SupportedBandList-NB-v1710
 NBIOT-RRC-Definitions.SupportedBand-NB-r13
 NBIOT-RRC-Definitions.SupportedBand-NB-v1710
 NBIOT-RRC-Definitions.SON-Parameters-NB-r16
+NBIOT-RRC-Definitions.SON-Parameters-NB-v16f0
 NBIOT-RRC-Definitions.UE-RadioPagingInfo-NB-r13
 NBIOT-RRC-Definitions.UE-TimersAndConstants-NB-r13
 NBIOT-RRC-Definitions.SC-MTCH-SchedulingInfo-NB-r14
@@ -2479,6 +2555,7 @@ EUTRA-RRC-Definitions.TrafficPatternInfoList-r14
 EUTRA-RRC-Definitions.TrafficPatternInfoList-v1530
 EUTRA-RRC-Definitions.UE-CapabilityRequest
 EUTRA-RRC-Definitions.UEInformationResponse-v1250-IEs
+EUTRA-RRC-Definitions.CellIdListNR-r18
 EUTRA-RRC-Definitions.MeasResultList2EUTRA-r9
 EUTRA-RRC-Definitions.MeasResultList2EUTRA-v9e0
 EUTRA-RRC-Definitions.MeasResultList2EUTRA-v1250
@@ -2491,6 +2568,7 @@ EUTRA-RRC-Definitions.DataBLER-MCH-Result-r12
 EUTRA-RRC-Definitions.MeasResultList2GERAN-r10
 EUTRA-RRC-Definitions.MeasResultFreqListNR-r16
 EUTRA-RRC-Definitions.FlightPathInfoReport-r15
+EUTRA-RRC-Definitions.SystemInformationBlockType2
 EUTRA-RRC-Definitions.SystemInformationBlockType2-v8h0-IEs
 EUTRA-RRC-Definitions.SystemInformationBlockType2-v10m0-IEs
 EUTRA-RRC-Definitions.MBSFN-SubframeConfigList
@@ -2505,6 +2583,7 @@ EUTRA-RRC-Definitions.UDT-RestrictingPerPLMN-List-r13
 EUTRA-RRC-Definitions.UDT-RestrictingPerPLMN-r13
 EUTRA-RRC-Definitions.CIOT-EPS-OptimisationInfo-r13
 EUTRA-RRC-Definitions.PLMN-InfoList-r15
+EUTRA-RRC-Definitions.SystemInformationBlockType3
 EUTRA-RRC-Definitions.IntraFreqNeighCellList
 EUTRA-RRC-Definitions.IntraFreqNeighCellList-v1610
 EUTRA-RRC-Definitions.IntraFreqNeighHSDN-CellList-r15
@@ -2520,6 +2599,7 @@ EUTRA-RRC-Definitions.InterFreqCarrierFreqList-v1350
 EUTRA-RRC-Definitions.InterFreqCarrierFreqList-v13a0
 EUTRA-RRC-Definitions.InterFreqCarrierFreqList-v1530
 EUTRA-RRC-Definitions.InterFreqCarrierFreqList-v1610
+EUTRA-RRC-Definitions.InterFreqCarrierFreqList-v1800
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-r12
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1280
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1310
@@ -2527,8 +2607,10 @@ EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1350
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1360
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1530
 EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1610
+EUTRA-RRC-Definitions.InterFreqCarrierFreqListExt-v1800
 EUTRA-RRC-Definitions.InterFreqCarrierFreqInfo
 EUTRA-RRC-Definitions.InterFreqCarrierFreqInfo-r12
+EUTRA-RRC-Definitions.InterFreqCarrierFreqInfo-v1800
 EUTRA-RRC-Definitions.InterFreqNeighCellList
 EUTRA-RRC-Definitions.InterFreqNeighCellList-v1610
 EUTRA-RRC-Definitions.InterFreqNeighHSDN-CellList-r15
@@ -2562,8 +2644,12 @@ EUTRA-RRC-Definitions.CarrierFreqListNR-r15
 EUTRA-RRC-Definitions.CarrierFreqListNR-v1610
 EUTRA-RRC-Definitions.CarrierFreqListNR-v1700
 EUTRA-RRC-Definitions.CarrierFreqListNR-v1720
+EUTRA-RRC-Definitions.CarrierFreqListNR-v1810
 EUTRA-RRC-Definitions.MultiBandNsPmaxListNR-1-v1550
 EUTRA-RRC-Definitions.MultiBandNsPmaxListNR-v1550
+EUTRA-RRC-Definitions.MultiBandNsPmaxListNR-1-v1760
+EUTRA-RRC-Definitions.MultiBandNsPmaxListNR-v1760
+EUTRA-RRC-Definitions.MultiBandNsPmaxListNR-Aerial-1-r18
 EUTRA-RRC-Definitions.AllowedCellListNR-r16
 EUTRA-RRC-Definitions.NR-FreqNeighHSDN-CellList-r17
 EUTRA-RRC-Definitions.SystemInformationBlockType25-r15
@@ -2581,6 +2667,11 @@ EUTRA-RRC-Definitions.CarrierFreqListNBIOT-r16
 EUTRA-RRC-Definitions.SystemInformationBlockType30-r17
 EUTRA-RRC-Definitions.ApplicableDisasterInfo-r17
 EUTRA-RRC-Definitions.SatelliteInfoList-r17
+EUTRA-RRC-Definitions.SatelliteInfoList-v1800
+EUTRA-RRC-Definitions.SatelliteInfoList-v1830
+EUTRA-RRC-Definitions.CarrierFreqList-v1800
+EUTRA-RRC-Definitions.CarrierFreqList-v1830
+EUTRA-RRC-Definitions.NeighSatelliteInfoList-r18
 EUTRA-RRC-Definitions.CSI-IM-ConfigToAddModList-r11
 EUTRA-RRC-Definitions.CSI-IM-ConfigToAddModListExt-r13
 EUTRA-RRC-Definitions.CSI-IM-ConfigToReleaseList-r11
@@ -2679,9 +2770,11 @@ EUTRA-RRC-Definitions.MultiBandInfoList-v9e0
 EUTRA-RRC-Definitions.MultiBandInfoList-v10j0
 EUTRA-RRC-Definitions.MultiBandInfoList-v10l0
 EUTRA-RRC-Definitions.MultiBandInfoList-r11
+EUTRA-RRC-Definitions.MultiBandInfoListAerial-r18
 EUTRA-RRC-Definitions.MultiFrequencyBandListNR-r15
 EUTRA-RRC-Definitions.NS-PmaxList-r10
 EUTRA-RRC-Definitions.NS-PmaxList-v10l0
+EUTRA-RRC-Definitions.NS-PmaxListAerial-r18
 EUTRA-RRC-Definitions.PhysCellIdCDMA2000
 EUTRA-RRC-Definitions.PhysCellIdRangeUTRA-FDDList-r9
 EUTRA-RRC-Definitions.RSS-ConfigCarrierInfo-r16
@@ -2718,6 +2811,7 @@ EUTRA-RRC-Definitions.CellsToAddModListCDMA2000
 EUTRA-RRC-Definitions.CellsToAddModCDMA2000
 EUTRA-RRC-Definitions.CellsToAddModList
 EUTRA-RRC-Definitions.CellsToAddModList-v1610
+EUTRA-RRC-Definitions.CellsToAddModList-v1810
 EUTRA-RRC-Definitions.CellsToAddMod
 EUTRA-RRC-Definitions.ExcludedCellsToAddModList
 EUTRA-RRC-Definitions.ExcludedCellsToAddMod
@@ -2817,6 +2911,7 @@ EUTRA-RRC-Definitions.SupportedBandCombination-v14b0
 EUTRA-RRC-Definitions.SupportedBandCombination-v1530
 EUTRA-RRC-Definitions.SupportedBandCombination-v1610
 EUTRA-RRC-Definitions.SupportedBandCombination-v1630
+EUTRA-RRC-Definitions.SupportedBandCombination-v1800
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-r11
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v11d0
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v1250
@@ -2831,6 +2926,7 @@ EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v14b0
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v1530
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v1610
 EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v1630
+EUTRA-RRC-Definitions.SupportedBandCombinationAdd-v1800
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-r13
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1320
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1380
@@ -2842,6 +2938,7 @@ EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v14b0
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1530
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1610
 EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1630
+EUTRA-RRC-Definitions.SupportedBandCombinationReduced-v1800
 EUTRA-RRC-Definitions.BandCombinationParameters-r10
 EUTRA-RRC-Definitions.BandCombinationParameters-v1090
 EUTRA-RRC-Definitions.BandCombinationParameters-v10i0
@@ -2881,13 +2978,18 @@ EUTRA-RRC-Definitions.SupportedBandListEUTRA-v9e0
 EUTRA-RRC-Definitions.SupportedBandListEUTRA-v1250
 EUTRA-RRC-Definitions.SupportedBandListEUTRA-v1310
 EUTRA-RRC-Definitions.SupportedBandListEUTRA-v1320
+EUTRA-RRC-Definitions.SupportedBandListEUTRA-v1800
+EUTRA-RRC-Definitions.SupportedBandEUTRA-v1800
 EUTRA-RRC-Definitions.MeasParameters-v1610
 EUTRA-RRC-Definitions.MeasParameters-v1700
+EUTRA-RRC-Definitions.MeasParameters-v1800
 EUTRA-RRC-Definitions.BandListEUTRA
 EUTRA-RRC-Definitions.BandCombinationListEUTRA-r10
 EUTRA-RRC-Definitions.InterFreqBandList
 EUTRA-RRC-Definitions.InterRAT-BandList
 EUTRA-RRC-Definitions.InterRAT-BandListNR-r16
+EUTRA-RRC-Definitions.InterRAT-BandListNR-r18
+EUTRA-RRC-Definitions.LowerMSD-MRDC-r18
 EUTRA-RRC-Definitions.SupportedBandListNR-r15
 EUTRA-RRC-Definitions.SupportedBandListUTRA-FDD
 EUTRA-RRC-Definitions.SupportedBandListUTRA-TDD128
@@ -2909,6 +3011,8 @@ EUTRA-RRC-Definitions.V2X-SupportedBandCombinationEUTRA-NR-v1630
 EUTRA-RRC-Definitions.V2X-SupportedBandCombinationEUTRA-NR-v1710
 EUTRA-RRC-Definitions.V2X-BandCombinationParametersEUTRA-NR-v1630
 EUTRA-RRC-Definitions.V2X-BandCombinationParametersEUTRA-NR-v1710
+EUTRA-RRC-Definitions.SL-A2X-SupportedBandCombination-r18
+EUTRA-RRC-Definitions.SL-A2X-BandCombinationParameters-r18
 EUTRA-RRC-Definitions.SupportedBandInfoList-r12
 EUTRA-RRC-Definitions.FreqBandIndicatorListEUTRA-r12
 EUTRA-RRC-Definitions.VisitedCellInfoList-r12

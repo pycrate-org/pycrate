@@ -47,6 +47,8 @@ id-positioningDeactivation										ProcedureCode ::= 18
 id-pRSConfigurationExchange										ProcedureCode ::= 19
 id-measurementPreconfiguration									ProcedureCode ::= 20
 id-measurementActivation										ProcedureCode ::= 21
+id-sRSInformationReservationNotification						ProcedureCode ::= 22
+
 
 -- **************************************************************
 --
@@ -105,6 +107,17 @@ maxNumResourcesPerAngle						INTEGER ::= 24
 maxnoAzimuthAngles							INTEGER ::= 3600
 maxnoElevationAngles						INTEGER ::= 1801
 maxnoPRSTRPs								INTEGER ::= 256
+maxnoVACell									INTEGER ::= 32
+maxnoaggregatedPosSRS-Resources				INTEGER ::= 3
+maxnoaggregatedPosSRS-ResourceSets			INTEGER ::= 3
+maxnoAggPosPRSResourceSets					INTEGER ::= 3
+maxnoofTimeWindowSRS						INTEGER ::= 16
+maxnoofTimeWindowMeas						INTEGER ::= 16
+maxnoPreconfiguredSRS						INTEGER ::= 16
+maxnoofHopsMinusOne							INTEGER ::= 5
+maxnoAggCombinations						INTEGER ::= 2
+maxnoAggregatedPosSRSCombinations			INTEGER ::= 32
+
 
 
 
@@ -180,7 +193,7 @@ id-MeasurementPeriodicityExtended								ProtocolIE-ID ::= 64
 id-PRS-Resource-ID												ProtocolIE-ID ::= 65
 id-PRSTRPList													ProtocolIE-ID ::= 66
 id-PRSTransmissionTRPList										ProtocolIE-ID ::= 67
-id-OnDemandPRS												ProtocolIE-ID ::= 68
+id-OnDemandPRS													ProtocolIE-ID ::= 68
 id-AoA-SearchWindow												ProtocolIE-ID ::= 69
 id-TRP-MeasurementUpdateList									ProtocolIE-ID ::= 70
 id-ZoA															ProtocolIE-ID ::= 71
@@ -198,7 +211,7 @@ id-NumberOfTRPRxTEG												ProtocolIE-ID ::= 82
 id-NumberOfTRPRxTxTEG											ProtocolIE-ID ::= 83
 id-TRPTxTEGAssociation											ProtocolIE-ID ::= 84
 id-TRPTEGInformation											ProtocolIE-ID ::= 85
-id-TRP-Rx-TEGInformation													ProtocolIE-ID ::= 86
+id-TRP-Rx-TEGInformation										ProtocolIE-ID ::= 86
 id-TRP-PRS-Information-List										ProtocolIE-ID ::= 87
 id-PRS-Measurements-Info-List									ProtocolIE-ID ::= 88
 id-PRSConfigRequestType											ProtocolIE-ID ::= 89
@@ -219,6 +232,66 @@ id-procedure-code-103-not-to-be-used							ProtocolIE-ID ::= 103
 id-UETxTimingErrorMargin										ProtocolIE-ID ::= 104
 id-MeasurementPeriodicityNR-AoA									ProtocolIE-ID ::= 105
 id-SRSTransmissionStatus										ProtocolIE-ID ::= 106
+id-nrofSymbolsExtended											ProtocolIE-ID ::= 107
+id-repetitionFactorExtended										ProtocolIE-ID ::= 108
+id-StartRBHopping												ProtocolIE-ID ::= 109
+id-StartRBIndex													ProtocolIE-ID ::= 110
+id-transmissionCombn8											ProtocolIE-ID ::= 111
+id-ExtendedResourceSymbolOffset									ProtocolIE-ID ::= 112
+id-NewNRCGI														ProtocolIE-ID ::= 113
+id-Mobile-TRP-LocationInformation								ProtocolIE-ID ::= 114
+id-Mobile-IAB-MT-UE-ID											ProtocolIE-ID ::= 115
+id-MobileAccessPointLocation									ProtocolIE-ID ::= 116
+id-CommonTAParameters											ProtocolIE-ID ::= 117
+id-UE-Rx-Tx-Time-Diff											ProtocolIE-ID ::= 118
+id-SCS-480														ProtocolIE-ID ::= 119
+id-SCS-960														ProtocolIE-ID ::= 120
+id-Bandwidth-Aggregation-Request-Indication						ProtocolIE-ID ::= 121
+id-PosSRSResourceSet-Aggregation-List							ProtocolIE-ID ::= 122
+id-TimingReportingGranularityFactorExtended						ProtocolIE-ID ::= 123
+id-TimeWindowInformation-SRS-List								ProtocolIE-ID ::= 124
+id-TimeWindowInformation-Measurement-List						ProtocolIE-ID ::= 125
+id-UL-RSCPMeas													ProtocolIE-ID ::= 126
+id-SymbolIndex													ProtocolIE-ID ::= 127
+id-PosValidityAreaCellList 										ProtocolIE-ID ::= 128
+id-SRSReservationType											ProtocolIE-ID ::= 129
+id-PRSBWAggregationRequestInfoList								ProtocolIE-ID ::= 130
+id-AggregatedPosSRSResourceID-List								ProtocolIE-ID ::= 131
+id-AggregatedPRSResourceSetList									ProtocolIE-ID ::= 132
+id-TRPPhaseQuality												ProtocolIE-ID ::= 133
+id-NewCellIdentity												ProtocolIE-ID ::= 134
+id-ValidityAreaSpecificSRSInformation							ProtocolIE-ID ::= 135
+id-RequestedSRSPreconfigurationCharacteristics-List				ProtocolIE-ID ::= 136
+id-SRSPreconfiguration-List										ProtocolIE-ID ::= 137
+id-SRSInformation												ProtocolIE-ID ::= 138
+id-TxHoppingConfiguration										ProtocolIE-ID ::= 139
+id-MeasuredFrequencyHops										ProtocolIE-ID ::= 140
+id-ReportingGranularitykminus1									ProtocolIE-ID ::= 141
+id-ReportingGranularitykminus2									ProtocolIE-ID ::= 142
+id-ReportingGranularitykminus3									ProtocolIE-ID ::= 143
+id-ReportingGranularitykminus4									ProtocolIE-ID ::= 144
+id-ReportingGranularitykminus5									ProtocolIE-ID ::= 145
+id-ReportingGranularitykminus6									ProtocolIE-ID ::= 146
+id-ReportingGranularitykminus1AdditionalPath					ProtocolIE-ID ::= 147
+id-ReportingGranularitykminus2AdditionalPath					ProtocolIE-ID ::= 148
+id-ReportingGranularitykminus3AdditionalPath					ProtocolIE-ID ::= 149
+id-ReportingGranularitykminus4AdditionalPath					ProtocolIE-ID ::= 150
+id-ReportingGranularitykminus5AdditionalPath					ProtocolIE-ID ::= 151
+id-ReportingGranularitykminus6AdditionalPath					ProtocolIE-ID ::= 152
+id-MeasuredResultsAssociatedInfoList							ProtocolIE-ID ::= 153
+id-PointA														ProtocolIE-ID ::= 154
+id-NR-PCI														ProtocolIE-ID ::= 155
+id-SCS-SpecificCarrier											ProtocolIE-ID ::= 156
+id-MeasBasedOnAggregatedResources								ProtocolIE-ID ::= 157
+id-UEReportingInterval-milliseconds								ProtocolIE-ID ::= 158
+id-Remote-UE-Indication-Request									ProtocolIE-ID ::= 159
+id-Remote-UE-Indication											ProtocolIE-ID ::= 160
+id-Remote-UE-Status												ProtocolIE-ID ::= 161
+id-LocalOrigin													ProtocolIE-ID ::= 162
+id-PreconfiguredSRSInformation									ProtocolIE-ID ::= 163
+id-DL-reference-signal-UERxTx-TD								ProtocolIE-ID ::= 164
+id-SRSPosPeriodicConfigHyperSFNIndex							ProtocolIE-ID ::= 165
+id-ValidityAreaSpecificSRSInformationExtended					ProtocolIE-ID ::= 166
 
 
 

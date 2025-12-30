@@ -450,6 +450,15 @@ S1AP-Constants.id-E-RABToBeUpdatedItem
 S1AP-Constants.id-SourceSNID
 S1AP-Constants.id-LoggedMDTTrigger
 S1AP-Constants.id-SensorMeasurementConfiguration
+S1AP-Constants.id-M4ReportAmount
+S1AP-Constants.id-M5ReportAmount
+S1AP-Constants.id-M6ReportAmount
+S1AP-Constants.id-M7ReportAmount
+S1AP-Constants.id-TimeBasedHandoverInformation
+S1AP-Constants.id-Bearers-SubjectToDLDiscarding-Item
+S1AP-Constants.id-Bearers-SubjectToDLDiscardingList
+S1AP-Constants.id-CoarseUELocationRequested
+S1AP-Constants.id-CoarseUELocation
 S1AP-Containers.S1AP-PROTOCOL-IES
 S1AP-Containers.S1AP-PROTOCOL-IES-PAIR
 S1AP-Containers.S1AP-PROTOCOL-EXTENSION
@@ -471,6 +480,8 @@ S1AP-IEs.Bearers-SubjectToStatusTransfer-ItemIEs
 S1AP-IEs.Bearers-SubjectToStatusTransfer-ItemExtIEs
 S1AP-IEs.Bearers-SubjectToEarlyStatusTransfer-ItemIEs
 S1AP-IEs.Bearers-SubjectToEarlyStatusTransfer-ItemExtIEs
+S1AP-IEs.Bearers-SubjectToDLDiscarding-ItemIEs
+S1AP-IEs.Bearers-SubjectToDLDiscarding-ItemExtIEs
 S1AP-IEs.BearerType
 S1AP-IEs.BitRate
 S1AP-IEs.BluetoothMeasurementConfiguration-ExtIEs
@@ -520,6 +531,8 @@ S1AP-IEs.CNDomain
 S1AP-IEs.CNTypeRestrictions
 S1AP-IEs.CNTypeRestrictions-Item-ExtIEs
 S1AP-IEs.CNType
+S1AP-IEs.CoarseUELocationRequested
+S1AP-IEs.CoarseUELocation
 S1AP-IEs.ConcurrentWarningMessageIndicator
 S1AP-IEs.ConnectedengNBList
 S1AP-IEs.ConnectedengNBItem-ExtIEs
@@ -551,6 +564,7 @@ S1AP-IEs.DL-CP-SecurityInformation-ExtIEs
 S1AP-IEs.DL-Forwarding
 S1AP-IEs.DL-NAS-MAC
 S1AP-IEs.DLCOUNT-PDCP-SNlength
+S1AP-IEs.DLDiscarding
 S1AP-IEs.Direct-Forwarding-Path-Availability
 S1AP-IEs.Data-Forwarding-Not-Possible
 S1AP-IEs.DLNASPDUDeliveryAckRequest
@@ -680,13 +694,17 @@ S1AP-IEs.LTE-NTN-TAI-Information-ExtIEs
 S1AP-IEs.M3Configuration-ExtIEs
 S1AP-IEs.M3period
 S1AP-IEs.M4Configuration-ExtIEs
+S1AP-IEs.M4ReportAmountMDT
 S1AP-IEs.M4period
 S1AP-IEs.M5Configuration-ExtIEs
+S1AP-IEs.M5ReportAmountMDT
 S1AP-IEs.M5period
 S1AP-IEs.M6Configuration-ExtIEs
+S1AP-IEs.M6ReportAmountMDT
 S1AP-IEs.M6report-Interval
 S1AP-IEs.M6delay-threshold
 S1AP-IEs.M7Configuration-ExtIEs
+S1AP-IEs.M7ReportAmountMDT
 S1AP-IEs.M7period
 S1AP-IEs.MDT-Activation
 S1AP-IEs.MDT-Location-Info
@@ -889,6 +907,9 @@ S1AP-IEs.TargetNgRanNode-ToSourceNgRanNode-TransparentContainer
 S1AP-IEs.M1ThresholdEventA2-ExtIEs
 S1AP-IEs.Threshold-RSRP
 S1AP-IEs.Threshold-RSRQ
+S1AP-IEs.TimeBasedHandoverInformation-ExtIEs
+S1AP-IEs.HandoverWindowStart
+S1AP-IEs.HandoverWindowDuration
 S1AP-IEs.TimeToTrigger
 S1AP-IEs.TimeToWait
 S1AP-IEs.Time-UE-StayedInCell
@@ -1213,6 +1234,8 @@ S1AP-IEs.Bearers-SubjectToStatusTransferList
 S1AP-IEs.Bearers-SubjectToStatusTransfer-Item
 S1AP-IEs.Bearers-SubjectToEarlyStatusTransferList
 S1AP-IEs.Bearers-SubjectToEarlyStatusTransfer-Item
+S1AP-IEs.Bearers-SubjectToDLDiscardingList
+S1AP-IEs.Bearers-SubjectToDLDiscarding-Item
 S1AP-IEs.BluetoothMeasurementConfiguration
 S1AP-IEs.BPLMNs
 S1AP-IEs.CancelledCellinEAI-Item
@@ -1359,6 +1382,7 @@ S1AP-IEs.Global-GNB-ID
 S1AP-IEs.NG-eNB
 S1AP-IEs.TargeteNB-ToSourceeNB-TransparentContainer
 S1AP-IEs.M1ThresholdEventA2
+S1AP-IEs.TimeBasedHandoverInformation
 S1AP-IEs.TraceActivation
 S1AP-IEs.TunnelInformation
 S1AP-IEs.UEAggregateMaximumBitrate

@@ -26,6 +26,7 @@ class LPP_Broadcast_Definitions:
         'OTDOA-UE-Assisted-r15',
         'NR-UEB-TRP-LocationData-r16',
         'NR-UEB-TRP-RTD-Info-r16',
+        'NR-IntegrityParameters-r18',
         ]
     _type_ = [
         'AssistanceDataSIBelement-r15',
@@ -34,6 +35,7 @@ class LPP_Broadcast_Definitions:
         'OTDOA-UE-Assisted-r15',
         'NR-UEB-TRP-LocationData-r16',
         'NR-UEB-TRP-RTD-Info-r16',
+        'NR-IntegrityParameters-r18',
         ]
     _set_ = [
         ]
@@ -118,6 +120,20 @@ class LPP_Broadcast_Definitions:
         ])
     NR_UEB_TRP_RTD_Info_r16._ext = []
     
+    #-----< NR-IntegrityParameters-r18 >-----#
+    NR_IntegrityParameters_r18 = SEQ(name='NR-IntegrityParameters-r18', mode=MODE_TYPE)
+    _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_LocationInfo_r18 = SEQ(name='nr-IntegrityParametersTRP-LocationInfo-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersTRP-LocationInfo-r18')), opt=True)
+    _NR_IntegrityParameters_r18_nr_IntegrityParametersDL_PRS_BeamInfo_r18 = SEQ(name='nr-IntegrityParametersDL-PRS-BeamInfo-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersDL-PRS-BeamInfo-r18')), opt=True)
+    _NR_IntegrityParameters_r18_nr_IntegrityParametersRTD_Info_r18 = SEQ(name='nr-IntegrityParametersRTD-Info-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersRTD-Info-r18')), opt=True)
+    _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_BeamAntennaInfo_r18 = SEQ(name='nr-IntegrityParametersTRP-BeamAntennaInfo-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersTRP-BeamAntennaInfo-r18')), opt=True)
+    NR_IntegrityParameters_r18._cont = ASN1Dict([
+        ('nr-IntegrityParametersTRP-LocationInfo-r18', _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_LocationInfo_r18),
+        ('nr-IntegrityParametersDL-PRS-BeamInfo-r18', _NR_IntegrityParameters_r18_nr_IntegrityParametersDL_PRS_BeamInfo_r18),
+        ('nr-IntegrityParametersRTD-Info-r18', _NR_IntegrityParameters_r18_nr_IntegrityParametersRTD_Info_r18),
+        ('nr-IntegrityParametersTRP-BeamAntennaInfo-r18', _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_BeamAntennaInfo_r18),
+        ])
+    NR_IntegrityParameters_r18._ext = []
+    
     _all_ = [
         _AssistanceDataSIBelement_r15_valueTag_r15,
         _AssistanceDataSIBelement_r15_expirationTime_r15,
@@ -140,6 +156,11 @@ class LPP_Broadcast_Definitions:
         NR_UEB_TRP_LocationData_r16,
         _NR_UEB_TRP_RTD_Info_r16_nr_rtd_Info_r16,
         NR_UEB_TRP_RTD_Info_r16,
+        _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_LocationInfo_r18,
+        _NR_IntegrityParameters_r18_nr_IntegrityParametersDL_PRS_BeamInfo_r18,
+        _NR_IntegrityParameters_r18_nr_IntegrityParametersRTD_Info_r18,
+        _NR_IntegrityParameters_r18_nr_IntegrityParametersTRP_BeamAntennaInfo_r18,
+        NR_IntegrityParameters_r18,
     ]
 
 class LPP_PDU_Definitions:
@@ -204,12 +225,16 @@ class LPP_PDU_Definitions:
         'HorizontalWithVerticalVelocity',
         'HorizontalVelocityWithUncertainty',
         'HorizontalWithVerticalVelocityAndUncertainty',
+        'Local2dPointWithUncertaintyEllipse-r18',
+        'Local3dPointWithUncertaintyEllipsoid-r18',
         'LocationCoordinateTypes',
         'NCGI-r15',
         'NR-PhysCellID-r16',
         'PeriodicAssistanceDataControlParameters-r15',
         'PeriodicSessionID-r15',
         'UpdateCapabilities-r15',
+        'PeriodicReportingIntervalMsSupport-r18',
+        'PeriodicReportingIntervalMsSupportPerMode-r18',
         'Polygon',
         'PolygonPoints',
         'PositioningModes',
@@ -224,6 +249,7 @@ class LPP_PDU_Definitions:
         'CommonIEsRequestLocationInformation',
         'LocationInformationType',
         'PeriodicalReportingCriteria',
+        'PeriodicalReportingCriteriaExt-r18',
         'TriggeredReportingCriteria',
         'ReportingDuration',
         'AdditionalInformation',
@@ -252,6 +278,7 @@ class LPP_PDU_Definitions:
         'NR-Cell-IDs-r17',
         'DL-PRS-ID-Info-r16',
         'LCS-GCS-TranslationParameter-r16',
+        'LocalOrigin-r18',
         'LOS-NLOS-Indicator-r17',
         'LOS-NLOS-IndicatorGranularity1-r17',
         'LOS-NLOS-IndicatorGranularity2-r17',
@@ -260,18 +287,23 @@ class LPP_PDU_Definitions:
         'NR-AdditionalPathList-r16',
         'NR-AdditionalPathListExt-r17',
         'NR-AdditionalPath-r16',
+        'NR-AggregatedDL-PRS-ResourceInfo-Element-r18',
         'NR-DL-PRS-AssistanceData-r16',
         'NR-DL-PRS-AssistanceDataPerFreq-r16',
         'NR-DL-PRS-AssistanceDataPerTRP-r16',
         'NR-DL-PRS-PositioningFrequencyLayer-r16',
         'NR-DL-PRS-SFN0-Offset-r16',
         'NR-DL-PRS-ExpectedAoD-or-AoA-r17',
+        'NR-DL-PRS-AggregationInfo-r18',
+        'NR-linkedDL-PRS-ResourceSetID-PRS-AggregationList-r18',
+        'NR-DL-PRS-AggregationElement-r18',
         'NR-DL-PRS-BeamInfo-r16',
         'NR-DL-PRS-BeamInfoPerFreqLayer-r16',
         'NR-DL-PRS-BeamInfoPerTRP-r16',
         'DL-PRS-BeamInfoSet-r16',
         'DL-PRS-BeamInfoResourceSet-r16',
         'DL-PRS-BeamInfoElement-r16',
+        'NR-IntegrityBeamInfoBounds-r18',
         'NR-DL-PRS-ExpectedLOS-NLOS-Assistance-r17',
         'NR-DL-PRS-ExpectedLOS-NLOS-AssistancePerFreqLayer-r17',
         'NR-DL-PRS-ExpectedLOS-NLOS-AssistancePerTRP-r17',
@@ -286,9 +318,15 @@ class LPP_PDU_Definitions:
         'NR-DL-PRS-Periodicity-and-ResourceSetSlotOffset-r16',
         'DL-PRS-ResourcePrioritySubset-r17',
         'NR-DL-PRSResourcePriorityItem-r17',
+        'NR-DL-PRS-MeasurementTimeWindowsConfig-r18',
+        'NR-DL-PRS-MeasurementTimeWindowsConfigElement-r18',
+        'NR-SelectedDL-PRS-IndexPerTRP-r18',
         'NR-DL-PRS-ProcessingCapability-r16',
         'PRS-ProcessingCapabilityPerBand-r16',
         'PRS-ProcessingCapabilityOutsideMGinPPWperType-r17',
+        'PRS-BWA-TwoContiguousIntrabandInMG-r18',
+        'PRS-BWA-ThreeContiguousIntrabandInMG-r18',
+        'DL-PRS-MeasurementWithRxFH-RRC-Connected-r18',
         'NR-DL-PRS-QCL-ProcessingCapability-r16',
         'DL-PRS-QCL-ProcessingCapabilityPerBand-r16',
         'NR-DL-PRS-ResourceID-r16',
@@ -302,9 +340,15 @@ class LPP_PDU_Definitions:
         'NR-DL-PRS-TRP-TEG-InfoPerTRP-r17',
         'DL-PRS-TEG-InfoPerResourceSet-r17',
         'DL-PRS-TEG-InfoElement-r17',
+        'NR-IntegrityRiskParameters-r18',
+        'NR-IntegrityServiceAlert-r18',
+        'NR-TRP-IntegrityServiceAlertPerFreqLayer-r18',
+        'NR-TRP-IntegrityServiceAlertElement-r18',
+        'NR-IntegrityServiceParameters-r18',
         'NR-On-Demand-DL-PRS-Configurations-r17',
         'On-Demand-DL-PRS-Configuration-r17',
         'DL-PRS-Configuration-ID-r17',
+        'OnDemandDL-PRS-AggregationInfo-r18',
         'NR-On-Demand-DL-PRS-Information-r17',
         'NR-On-Demand-DL-PRS-PerFreqLayer-r17',
         'DL-PRS-QCL-InformationReqTRPlist-r17',
@@ -312,14 +356,28 @@ class LPP_PDU_Definitions:
         'DL-PRS-QCL-InfoReq-r17',
         'NR-On-Demand-DL-PRS-Request-r17',
         'DL-PRS-StartTime-and-Duration-r17',
+        'NR-OnDemandDL-PRS-AggregationReqElement-r18',
         'NR-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17',
         'NR-On-Demand-DL-PRS-Support-r17',
+        'NR-PeriodicAssistData-r18',
+        'NR-PeriodicAssistDataReq-r18',
+        'NR-PeriodicControlParam-r18',
         'NR-PositionCalculationAssistance-r16',
+        'NR-IntegrityParametersTRP-LocationInfo-r18',
+        'NR-IntegrityParametersDL-PRS-BeamInfo-r18',
+        'NR-IntegrityParametersRTD-Info-r18',
+        'NR-IntegrityParametersTRP-BeamAntennaInfo-r18',
+        'NR-PRU-DL-Info-r18',
+        'NR-PRU-RSCP-MeasurementInformation-r18',
+        'NR-PRU-RSCP-MeasElement-r18',
+        'NR-PRU-RSCP-AdditionalMeasurements-r18',
+        'NR-PRU-RSCP-AdditionalMeasurementElement-r18',
         'NR-RTD-Info-r16',
         'ReferenceTRP-RTD-Info-r16',
         'RTD-InfoList-r16',
         'RTD-InfoListPerFreqLayer-r16',
         'RTD-InfoElement-r16',
+        'NR-IntegrityRTD-InfoBounds-r18',
         'NR-SelectedDL-PRS-IndexList-r16',
         'NR-SelectedDL-PRS-PerFreq-r16',
         'NR-SelectedDL-PRS-IndexPerTRP-r16',
@@ -335,11 +393,13 @@ class LPP_PDU_Definitions:
         'NR-TRP-BeamAntennaInfoAzimuthElevation-r17',
         'ElevationElement-R17',
         'BeamPowerElement-r17',
+        'NR-IntegrityBeamPowerBounds-r18',
         'NR-TRP-LocationInfo-r16',
         'NR-TRP-LocationInfoPerFreqLayer-r16',
         'TRP-LocationInfoElement-r16',
         'DL-PRS-ResourceSets-TRP-Element-r16',
         'DL-PRS-Resource-ARP-Element-r16',
+        'NR-IntegrityLocationBounds-r18',
         'NR-UE-TEG-Capability-r17',
         'NR-UE-TEG-ID-CapabilityPerBand-r17',
         'NR-UL-SRS-Capability-r16',
@@ -350,7 +410,17 @@ class LPP_PDU_Definitions:
         'PosSRS-RRC-Inactive-InInitialUL-BWP-r17',
         'PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17',
         'PosSRS-SP-RRC-Inactive-InInitialUL-BWP-r17',
+        'PosSRS-TxFrequencyHoppingRRC-Connected-r18',
+        'PosSRS-TxFrequencyHoppingRRC-Inactive-r18',
+        'PosSRS-BWA-RRC-Connected-r18',
+        'PosSRS-BWA-IndependentCA-RRC-Connected-r18',
+        'PosSRS-BWA-RRC-Inactive-r18',
+        'NR-PhaseQuality-r18',
         'ReferencePoint-r16',
+        'RelativeCartesianLocation-r18',
+        'X-Value-r18',
+        'Y-Value-r18',
+        'Z-Value-r18',
         'RelativeLocation-r16',
         'Delta-Latitude-r16',
         'Delta-Longitude-r16',
@@ -435,6 +505,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-ArrayOfCorrectionPoints-r16',
         'GNSS-Integrity-ServiceParameters-r17',
         'GNSS-Integrity-ServiceAlert-r17',
+        'GNSS-LOS-NLOS-GridPoints-r18',
+        'ArrayOfGridPoints-r18',
+        'VerticalGridPoints-r18',
+        'SpatialDelta-r18',
+        'GNSS-SSR-IOD-Update-r18',
         'GNSS-TimeModelList',
         'GNSS-TimeModelElement',
         'GNSS-DifferentialCorrections',
@@ -571,6 +646,20 @@ class LPP_PDU_Definitions:
         'NavIC-GridModelParameter-r16',
         'RegionIgpList-r16',
         'RegionIgpElement-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2-r17',
+        'GNSS-SSR-ClockCorrectionsSet2-r17',
+        'GNSS-SSR-URA-Set2-r17',
+        'GNSS-LOS-NLOS-GriddedIndications-r18',
+        'GridList-r18',
+        'GridElement-r18',
+        'GNSS-LOS-InfoList-r18',
+        'GNSS-LOS-InfoElement-r18',
+        'GNSS-SSR-SatellitePCVResiduals-r18',
+        'SSR-SatellitePCV-List-r18',
+        'SSR-SatellitePCV-Element-r18',
+        'SSR-SatellitePCV-FrequencyList-r18',
+        'SSR-SatellitePCV-FrequencyElement-r18',
+        'SSR-PhaseCenterVariationList-r18',
         'A-GNSS-RequestAssistanceData',
         'GNSS-CommonAssistDataReq',
         'GNSS-GenericAssistDataReq',
@@ -585,6 +674,7 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-CorrectionPointsReq-r16',
         'GNSS-Integrity-ServiceParametersReq-r17',
         'GNSS-Integrity-ServiceAlertReq-r17',
+        'GNSS-SSR-IOD-UpdateReq-r18',
         'GNSS-TimeModelListReq',
         'GNSS-TimeModelElementReq',
         'GNSS-DifferentialCorrectionsReq',
@@ -619,6 +709,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-GriddedCorrectionReq-r16',
         'NavIC-DifferentialCorrectionsReq-r16',
         'NavIC-GridModelReq-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2Req-r17',
+        'GNSS-SSR-ClockCorrectionsSet2Req-r17',
+        'GNSS-SSR-URA-Set2Req-r17',
+        'GNSS-LOS-NLOS-GriddedIndicationsReq-r18',
+        'GNSS-SSR-SatellitePCVResidualsReq-r18',
         'A-GNSS-ProvideLocationInformation',
         'GNSS-SignalMeasurementInformation',
         'MeasurementReferenceTime',
@@ -645,6 +740,7 @@ class LPP_PDU_Definitions:
         'GNSS-RTK-AuxiliaryStationDataSupport-r15',
         'GNSS-Integrity-ServiceParametersSupport-r17',
         'GNSS-Integrity-ServiceAlertSupport-r17',
+        'GNSS-SSR-IOD-UpdateSupport-r18',
         'GNSS-GenericAssistanceDataSupport',
         'GNSS-GenericAssistDataSupportElement',
         'GNSS-TimeModelListSupport',
@@ -672,6 +768,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-GriddedCorrectionSupport-r16',
         'NavIC-DifferentialCorrectionsSupport-r16',
         'NavIC-GridModelSupport-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2Support-r17',
+        'GNSS-SSR-ClockCorrectionsSet2Support-r17',
+        'GNSS-SSR-URA-Set2Support-r17',
+        'GNSS-LOS-NLOS-GriddedIndicationsSupport-r18',
+        'GNSS-SSR-SatellitePCVResidualsSupport-r18',
         'A-GNSS-RequestCapabilities',
         'A-GNSS-Error',
         'GNSS-LocationServerErrorCauses',
@@ -763,15 +864,32 @@ class LPP_PDU_Definitions:
         'LocationDataLCI-r14',
         'WLAN-RequestAssistanceData-r14',
         'BT-ProvideLocationInformation-r13',
+        'BT-AoA-Config-r18',
         'BT-MeasurementInformation-r13',
         'BT-MeasurementList-r13',
         'BT-MeasurementElement-r13',
+        'BT-MeasurementList-r18',
+        'BT-MeasurementElement-r18',
         'BT-RequestLocationInformation-r13',
+        'BT-SuggestedAoA-Config-r18',
         'BT-ProvideCapabilities-r13',
         'BT-RequestCapabilities-r13',
         'BT-Error-r13',
         'BT-LocationServerErrorCauses-r13',
         'BT-TargetDeviceErrorCauses-r13',
+        'BT-ProvideAssistanceData-r18',
+        'BT-BeaconInfo-r18',
+        'BT-BeaconInfoElement-r18',
+        'BT-AntArrayConfig-r18',
+        'BT-AntElement-r18',
+        'BT-AntSwitchElement-r18',
+        'BT-AoD-TransmConfig-r18',
+        'BT-UniformLinearArray-r18',
+        'BT-UniformRectangularArray-r18',
+        'BT-UniformCircularArray-r18',
+        'BT-GenericArray-r18',
+        'BT-ULA-GenericAntElement-r18',
+        'BT-RequestAssistanceData-r18',
         'NR-UL-ProvideCapabilities-r16',
         'NR-UL-RequestCapabilities-r16',
         'NR-ECID-ProvideLocationInformation-r16',
@@ -798,6 +916,7 @@ class LPP_PDU_Definitions:
         'NR-DL-TDOA-AdditionalMeasurements-r16',
         'NR-DL-TDOA-AdditionalMeasurementsExt-r17',
         'NR-DL-TDOA-AdditionalMeasurementElement-r16',
+        'NR-RSCPD-AdditionalMeasurementSamplesElement-r18',
         'NR-DL-TDOA-LocationInformation-r16',
         'NR-DL-TDOA-RequestLocationInformation-r16',
         'NR-DL-TDOA-ReportConfig-r16',
@@ -839,6 +958,8 @@ class LPP_PDU_Definitions:
         'NR-Multi-RTT-AdditionalMeasurementElement-r16',
         'NR-SRS-TxTEG-Element-r17',
         'NR-UE-RxTx-TEG-Info-r17',
+        'NR-RSCP-AdditionalMeasurements-r18',
+        'NR-NTN-UE-RxTxMeasurements-r18',
         'NR-Multi-RTT-RequestLocationInformation-r16',
         'NR-Multi-RTT-ReportConfig-r16',
         'NR-Multi-RTT-ProvideCapabilities-r16',
@@ -858,6 +979,8 @@ class LPP_PDU_Definitions:
         'maxWLAN-AP-r14',
         'maxWLAN-DataSets-r14',
         'maxBT-Beacon-r13',
+        'maxBT-BeaconAntElt-r18',
+        'maxBT-BeaconAD-r18',
         'nrMaxBands-r16',
         'nrMaxFreqLayers-r16',
         'nrMaxFreqLayers-1-r16',
@@ -891,6 +1014,9 @@ class LPP_PDU_Definitions:
         'maxCellIDsPerArea-r17',
         'maxNrOfAreas-r17',
         'maxMeasInstances-r17',
+        'nrMaxNumPRS-BandWidthAggregation-r18',
+        'nrNumOfSamples-r18',
+        'nrNumOfSamples-1-r18',
         ]
     _type_ = [
         'LPP-Message',
@@ -948,12 +1074,16 @@ class LPP_PDU_Definitions:
         'HorizontalWithVerticalVelocity',
         'HorizontalVelocityWithUncertainty',
         'HorizontalWithVerticalVelocityAndUncertainty',
+        'Local2dPointWithUncertaintyEllipse-r18',
+        'Local3dPointWithUncertaintyEllipsoid-r18',
         'LocationCoordinateTypes',
         'NCGI-r15',
         'NR-PhysCellID-r16',
         'PeriodicAssistanceDataControlParameters-r15',
         'PeriodicSessionID-r15',
         'UpdateCapabilities-r15',
+        'PeriodicReportingIntervalMsSupport-r18',
+        'PeriodicReportingIntervalMsSupportPerMode-r18',
         'Polygon',
         'PolygonPoints',
         'PositioningModes',
@@ -968,6 +1098,7 @@ class LPP_PDU_Definitions:
         'CommonIEsRequestLocationInformation',
         'LocationInformationType',
         'PeriodicalReportingCriteria',
+        'PeriodicalReportingCriteriaExt-r18',
         'TriggeredReportingCriteria',
         'ReportingDuration',
         'AdditionalInformation',
@@ -996,6 +1127,7 @@ class LPP_PDU_Definitions:
         'NR-Cell-IDs-r17',
         'DL-PRS-ID-Info-r16',
         'LCS-GCS-TranslationParameter-r16',
+        'LocalOrigin-r18',
         'LOS-NLOS-Indicator-r17',
         'LOS-NLOS-IndicatorGranularity1-r17',
         'LOS-NLOS-IndicatorGranularity2-r17',
@@ -1004,18 +1136,23 @@ class LPP_PDU_Definitions:
         'NR-AdditionalPathList-r16',
         'NR-AdditionalPathListExt-r17',
         'NR-AdditionalPath-r16',
+        'NR-AggregatedDL-PRS-ResourceInfo-Element-r18',
         'NR-DL-PRS-AssistanceData-r16',
         'NR-DL-PRS-AssistanceDataPerFreq-r16',
         'NR-DL-PRS-AssistanceDataPerTRP-r16',
         'NR-DL-PRS-PositioningFrequencyLayer-r16',
         'NR-DL-PRS-SFN0-Offset-r16',
         'NR-DL-PRS-ExpectedAoD-or-AoA-r17',
+        'NR-DL-PRS-AggregationInfo-r18',
+        'NR-linkedDL-PRS-ResourceSetID-PRS-AggregationList-r18',
+        'NR-DL-PRS-AggregationElement-r18',
         'NR-DL-PRS-BeamInfo-r16',
         'NR-DL-PRS-BeamInfoPerFreqLayer-r16',
         'NR-DL-PRS-BeamInfoPerTRP-r16',
         'DL-PRS-BeamInfoSet-r16',
         'DL-PRS-BeamInfoResourceSet-r16',
         'DL-PRS-BeamInfoElement-r16',
+        'NR-IntegrityBeamInfoBounds-r18',
         'NR-DL-PRS-ExpectedLOS-NLOS-Assistance-r17',
         'NR-DL-PRS-ExpectedLOS-NLOS-AssistancePerFreqLayer-r17',
         'NR-DL-PRS-ExpectedLOS-NLOS-AssistancePerTRP-r17',
@@ -1030,9 +1167,15 @@ class LPP_PDU_Definitions:
         'NR-DL-PRS-Periodicity-and-ResourceSetSlotOffset-r16',
         'DL-PRS-ResourcePrioritySubset-r17',
         'NR-DL-PRSResourcePriorityItem-r17',
+        'NR-DL-PRS-MeasurementTimeWindowsConfig-r18',
+        'NR-DL-PRS-MeasurementTimeWindowsConfigElement-r18',
+        'NR-SelectedDL-PRS-IndexPerTRP-r18',
         'NR-DL-PRS-ProcessingCapability-r16',
         'PRS-ProcessingCapabilityPerBand-r16',
         'PRS-ProcessingCapabilityOutsideMGinPPWperType-r17',
+        'PRS-BWA-TwoContiguousIntrabandInMG-r18',
+        'PRS-BWA-ThreeContiguousIntrabandInMG-r18',
+        'DL-PRS-MeasurementWithRxFH-RRC-Connected-r18',
         'NR-DL-PRS-QCL-ProcessingCapability-r16',
         'DL-PRS-QCL-ProcessingCapabilityPerBand-r16',
         'NR-DL-PRS-ResourceID-r16',
@@ -1046,9 +1189,15 @@ class LPP_PDU_Definitions:
         'NR-DL-PRS-TRP-TEG-InfoPerTRP-r17',
         'DL-PRS-TEG-InfoPerResourceSet-r17',
         'DL-PRS-TEG-InfoElement-r17',
+        'NR-IntegrityRiskParameters-r18',
+        'NR-IntegrityServiceAlert-r18',
+        'NR-TRP-IntegrityServiceAlertPerFreqLayer-r18',
+        'NR-TRP-IntegrityServiceAlertElement-r18',
+        'NR-IntegrityServiceParameters-r18',
         'NR-On-Demand-DL-PRS-Configurations-r17',
         'On-Demand-DL-PRS-Configuration-r17',
         'DL-PRS-Configuration-ID-r17',
+        'OnDemandDL-PRS-AggregationInfo-r18',
         'NR-On-Demand-DL-PRS-Information-r17',
         'NR-On-Demand-DL-PRS-PerFreqLayer-r17',
         'DL-PRS-QCL-InformationReqTRPlist-r17',
@@ -1056,14 +1205,28 @@ class LPP_PDU_Definitions:
         'DL-PRS-QCL-InfoReq-r17',
         'NR-On-Demand-DL-PRS-Request-r17',
         'DL-PRS-StartTime-and-Duration-r17',
+        'NR-OnDemandDL-PRS-AggregationReqElement-r18',
         'NR-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17',
         'NR-On-Demand-DL-PRS-Support-r17',
+        'NR-PeriodicAssistData-r18',
+        'NR-PeriodicAssistDataReq-r18',
+        'NR-PeriodicControlParam-r18',
         'NR-PositionCalculationAssistance-r16',
+        'NR-IntegrityParametersTRP-LocationInfo-r18',
+        'NR-IntegrityParametersDL-PRS-BeamInfo-r18',
+        'NR-IntegrityParametersRTD-Info-r18',
+        'NR-IntegrityParametersTRP-BeamAntennaInfo-r18',
+        'NR-PRU-DL-Info-r18',
+        'NR-PRU-RSCP-MeasurementInformation-r18',
+        'NR-PRU-RSCP-MeasElement-r18',
+        'NR-PRU-RSCP-AdditionalMeasurements-r18',
+        'NR-PRU-RSCP-AdditionalMeasurementElement-r18',
         'NR-RTD-Info-r16',
         'ReferenceTRP-RTD-Info-r16',
         'RTD-InfoList-r16',
         'RTD-InfoListPerFreqLayer-r16',
         'RTD-InfoElement-r16',
+        'NR-IntegrityRTD-InfoBounds-r18',
         'NR-SelectedDL-PRS-IndexList-r16',
         'NR-SelectedDL-PRS-PerFreq-r16',
         'NR-SelectedDL-PRS-IndexPerTRP-r16',
@@ -1079,11 +1242,13 @@ class LPP_PDU_Definitions:
         'NR-TRP-BeamAntennaInfoAzimuthElevation-r17',
         'ElevationElement-R17',
         'BeamPowerElement-r17',
+        'NR-IntegrityBeamPowerBounds-r18',
         'NR-TRP-LocationInfo-r16',
         'NR-TRP-LocationInfoPerFreqLayer-r16',
         'TRP-LocationInfoElement-r16',
         'DL-PRS-ResourceSets-TRP-Element-r16',
         'DL-PRS-Resource-ARP-Element-r16',
+        'NR-IntegrityLocationBounds-r18',
         'NR-UE-TEG-Capability-r17',
         'NR-UE-TEG-ID-CapabilityPerBand-r17',
         'NR-UL-SRS-Capability-r16',
@@ -1094,7 +1259,17 @@ class LPP_PDU_Definitions:
         'PosSRS-RRC-Inactive-InInitialUL-BWP-r17',
         'PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17',
         'PosSRS-SP-RRC-Inactive-InInitialUL-BWP-r17',
+        'PosSRS-TxFrequencyHoppingRRC-Connected-r18',
+        'PosSRS-TxFrequencyHoppingRRC-Inactive-r18',
+        'PosSRS-BWA-RRC-Connected-r18',
+        'PosSRS-BWA-IndependentCA-RRC-Connected-r18',
+        'PosSRS-BWA-RRC-Inactive-r18',
+        'NR-PhaseQuality-r18',
         'ReferencePoint-r16',
+        'RelativeCartesianLocation-r18',
+        'X-Value-r18',
+        'Y-Value-r18',
+        'Z-Value-r18',
         'RelativeLocation-r16',
         'Delta-Latitude-r16',
         'Delta-Longitude-r16',
@@ -1169,6 +1344,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-ArrayOfCorrectionPoints-r16',
         'GNSS-Integrity-ServiceParameters-r17',
         'GNSS-Integrity-ServiceAlert-r17',
+        'GNSS-LOS-NLOS-GridPoints-r18',
+        'ArrayOfGridPoints-r18',
+        'VerticalGridPoints-r18',
+        'SpatialDelta-r18',
+        'GNSS-SSR-IOD-Update-r18',
         'GNSS-TimeModelList',
         'GNSS-TimeModelElement',
         'GNSS-DifferentialCorrections',
@@ -1305,6 +1485,20 @@ class LPP_PDU_Definitions:
         'NavIC-GridModelParameter-r16',
         'RegionIgpList-r16',
         'RegionIgpElement-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2-r17',
+        'GNSS-SSR-ClockCorrectionsSet2-r17',
+        'GNSS-SSR-URA-Set2-r17',
+        'GNSS-LOS-NLOS-GriddedIndications-r18',
+        'GridList-r18',
+        'GridElement-r18',
+        'GNSS-LOS-InfoList-r18',
+        'GNSS-LOS-InfoElement-r18',
+        'GNSS-SSR-SatellitePCVResiduals-r18',
+        'SSR-SatellitePCV-List-r18',
+        'SSR-SatellitePCV-Element-r18',
+        'SSR-SatellitePCV-FrequencyList-r18',
+        'SSR-SatellitePCV-FrequencyElement-r18',
+        'SSR-PhaseCenterVariationList-r18',
         'A-GNSS-RequestAssistanceData',
         'GNSS-CommonAssistDataReq',
         'GNSS-GenericAssistDataReq',
@@ -1319,6 +1513,7 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-CorrectionPointsReq-r16',
         'GNSS-Integrity-ServiceParametersReq-r17',
         'GNSS-Integrity-ServiceAlertReq-r17',
+        'GNSS-SSR-IOD-UpdateReq-r18',
         'GNSS-TimeModelListReq',
         'GNSS-TimeModelElementReq',
         'GNSS-DifferentialCorrectionsReq',
@@ -1353,6 +1548,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-GriddedCorrectionReq-r16',
         'NavIC-DifferentialCorrectionsReq-r16',
         'NavIC-GridModelReq-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2Req-r17',
+        'GNSS-SSR-ClockCorrectionsSet2Req-r17',
+        'GNSS-SSR-URA-Set2Req-r17',
+        'GNSS-LOS-NLOS-GriddedIndicationsReq-r18',
+        'GNSS-SSR-SatellitePCVResidualsReq-r18',
         'A-GNSS-ProvideLocationInformation',
         'GNSS-SignalMeasurementInformation',
         'MeasurementReferenceTime',
@@ -1379,6 +1579,7 @@ class LPP_PDU_Definitions:
         'GNSS-RTK-AuxiliaryStationDataSupport-r15',
         'GNSS-Integrity-ServiceParametersSupport-r17',
         'GNSS-Integrity-ServiceAlertSupport-r17',
+        'GNSS-SSR-IOD-UpdateSupport-r18',
         'GNSS-GenericAssistanceDataSupport',
         'GNSS-GenericAssistDataSupportElement',
         'GNSS-TimeModelListSupport',
@@ -1406,6 +1607,11 @@ class LPP_PDU_Definitions:
         'GNSS-SSR-GriddedCorrectionSupport-r16',
         'NavIC-DifferentialCorrectionsSupport-r16',
         'NavIC-GridModelSupport-r16',
+        'GNSS-SSR-OrbitCorrectionsSet2Support-r17',
+        'GNSS-SSR-ClockCorrectionsSet2Support-r17',
+        'GNSS-SSR-URA-Set2Support-r17',
+        'GNSS-LOS-NLOS-GriddedIndicationsSupport-r18',
+        'GNSS-SSR-SatellitePCVResidualsSupport-r18',
         'A-GNSS-RequestCapabilities',
         'A-GNSS-Error',
         'GNSS-LocationServerErrorCauses',
@@ -1497,15 +1703,32 @@ class LPP_PDU_Definitions:
         'LocationDataLCI-r14',
         'WLAN-RequestAssistanceData-r14',
         'BT-ProvideLocationInformation-r13',
+        'BT-AoA-Config-r18',
         'BT-MeasurementInformation-r13',
         'BT-MeasurementList-r13',
         'BT-MeasurementElement-r13',
+        'BT-MeasurementList-r18',
+        'BT-MeasurementElement-r18',
         'BT-RequestLocationInformation-r13',
+        'BT-SuggestedAoA-Config-r18',
         'BT-ProvideCapabilities-r13',
         'BT-RequestCapabilities-r13',
         'BT-Error-r13',
         'BT-LocationServerErrorCauses-r13',
         'BT-TargetDeviceErrorCauses-r13',
+        'BT-ProvideAssistanceData-r18',
+        'BT-BeaconInfo-r18',
+        'BT-BeaconInfoElement-r18',
+        'BT-AntArrayConfig-r18',
+        'BT-AntElement-r18',
+        'BT-AntSwitchElement-r18',
+        'BT-AoD-TransmConfig-r18',
+        'BT-UniformLinearArray-r18',
+        'BT-UniformRectangularArray-r18',
+        'BT-UniformCircularArray-r18',
+        'BT-GenericArray-r18',
+        'BT-ULA-GenericAntElement-r18',
+        'BT-RequestAssistanceData-r18',
         'NR-UL-ProvideCapabilities-r16',
         'NR-UL-RequestCapabilities-r16',
         'NR-ECID-ProvideLocationInformation-r16',
@@ -1532,6 +1755,7 @@ class LPP_PDU_Definitions:
         'NR-DL-TDOA-AdditionalMeasurements-r16',
         'NR-DL-TDOA-AdditionalMeasurementsExt-r17',
         'NR-DL-TDOA-AdditionalMeasurementElement-r16',
+        'NR-RSCPD-AdditionalMeasurementSamplesElement-r18',
         'NR-DL-TDOA-LocationInformation-r16',
         'NR-DL-TDOA-RequestLocationInformation-r16',
         'NR-DL-TDOA-ReportConfig-r16',
@@ -1573,6 +1797,8 @@ class LPP_PDU_Definitions:
         'NR-Multi-RTT-AdditionalMeasurementElement-r16',
         'NR-SRS-TxTEG-Element-r17',
         'NR-UE-RxTx-TEG-Info-r17',
+        'NR-RSCP-AdditionalMeasurements-r18',
+        'NR-NTN-UE-RxTxMeasurements-r18',
         'NR-Multi-RTT-RequestLocationInformation-r16',
         'NR-Multi-RTT-ReportConfig-r16',
         'NR-Multi-RTT-ProvideCapabilities-r16',
@@ -1607,6 +1833,8 @@ class LPP_PDU_Definitions:
         'maxWLAN-AP-r14',
         'maxWLAN-DataSets-r14',
         'maxBT-Beacon-r13',
+        'maxBT-BeaconAntElt-r18',
+        'maxBT-BeaconAD-r18',
         'nrMaxBands-r16',
         'nrMaxFreqLayers-r16',
         'nrMaxFreqLayers-1-r16',
@@ -1640,6 +1868,9 @@ class LPP_PDU_Definitions:
         'maxCellIDsPerArea-r17',
         'maxNrOfAreas-r17',
         'maxMeasInstances-r17',
+        'nrMaxNumPRS-BandWidthAggregation-r18',
+        'nrNumOfSamples-r18',
+        'nrNumOfSamples-1-r18',
         ]
     _class_ = [
         ]
@@ -1910,6 +2141,7 @@ class LPP_PDU_Definitions:
     _RequestAssistanceData_r9_IEs_nr_Multi_RTT_RequestAssistanceData_r16 = SEQ(name='nr-Multi-RTT-RequestAssistanceData-r16', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-Multi-RTT-RequestAssistanceData-r16')), opt=True, group=1)
     _RequestAssistanceData_r9_IEs_nr_DL_AoD_RequestAssistanceData_r16 = SEQ(name='nr-DL-AoD-RequestAssistanceData-r16', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-AoD-RequestAssistanceData-r16')), opt=True, group=1)
     _RequestAssistanceData_r9_IEs_nr_DL_TDOA_RequestAssistanceData_r16 = SEQ(name='nr-DL-TDOA-RequestAssistanceData-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-TDOA-RequestAssistanceData-r16')), opt=True, group=1)
+    _RequestAssistanceData_r9_IEs_bt_RequestAssistanceData_r18 = SEQ(name='bt-RequestAssistanceData-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-RequestAssistanceData-r18')), opt=True, group=2)
     RequestAssistanceData_r9_IEs._cont = ASN1Dict([
         ('commonIEsRequestAssistanceData', _RequestAssistanceData_r9_IEs_commonIEsRequestAssistanceData),
         ('a-gnss-RequestAssistanceData', _RequestAssistanceData_r9_IEs_a_gnss_RequestAssistanceData),
@@ -1921,8 +2153,9 @@ class LPP_PDU_Definitions:
         ('nr-Multi-RTT-RequestAssistanceData-r16', _RequestAssistanceData_r9_IEs_nr_Multi_RTT_RequestAssistanceData_r16),
         ('nr-DL-AoD-RequestAssistanceData-r16', _RequestAssistanceData_r9_IEs_nr_DL_AoD_RequestAssistanceData_r16),
         ('nr-DL-TDOA-RequestAssistanceData-r16', _RequestAssistanceData_r9_IEs_nr_DL_TDOA_RequestAssistanceData_r16),
+        ('bt-RequestAssistanceData-r18', _RequestAssistanceData_r9_IEs_bt_RequestAssistanceData_r18),
         ])
-    RequestAssistanceData_r9_IEs._ext = ['sensor-RequestAssistanceData-r14', 'tbs-RequestAssistanceData-r14', 'wlan-RequestAssistanceData-r14', 'nr-Multi-RTT-RequestAssistanceData-r16', 'nr-DL-AoD-RequestAssistanceData-r16', 'nr-DL-TDOA-RequestAssistanceData-r16']
+    RequestAssistanceData_r9_IEs._ext = ['sensor-RequestAssistanceData-r14', 'tbs-RequestAssistanceData-r14', 'wlan-RequestAssistanceData-r14', 'nr-Multi-RTT-RequestAssistanceData-r16', 'nr-DL-AoD-RequestAssistanceData-r16', 'nr-DL-TDOA-RequestAssistanceData-r16', 'bt-RequestAssistanceData-r18']
     
     #-----< ProvideAssistanceData >-----#
     ProvideAssistanceData = SEQ(name='ProvideAssistanceData', mode=MODE_TYPE)
@@ -1965,6 +2198,7 @@ class LPP_PDU_Definitions:
     _ProvideAssistanceData_r9_IEs_nr_Multi_RTT_ProvideAssistanceData_r16 = SEQ(name='nr-Multi-RTT-ProvideAssistanceData-r16', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-Multi-RTT-ProvideAssistanceData-r16')), opt=True, group=1)
     _ProvideAssistanceData_r9_IEs_nr_DL_AoD_ProvideAssistanceData_r16 = SEQ(name='nr-DL-AoD-ProvideAssistanceData-r16', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-AoD-ProvideAssistanceData-r16')), opt=True, group=1)
     _ProvideAssistanceData_r9_IEs_nr_DL_TDOA_ProvideAssistanceData_r16 = SEQ(name='nr-DL-TDOA-ProvideAssistanceData-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-TDOA-ProvideAssistanceData-r16')), opt=True, group=1)
+    _ProvideAssistanceData_r9_IEs_bt_ProvideAssistanceData_r18 = SEQ(name='bt-ProvideAssistanceData-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-ProvideAssistanceData-r18')), opt=True, group=2)
     ProvideAssistanceData_r9_IEs._cont = ASN1Dict([
         ('commonIEsProvideAssistanceData', _ProvideAssistanceData_r9_IEs_commonIEsProvideAssistanceData),
         ('a-gnss-ProvideAssistanceData', _ProvideAssistanceData_r9_IEs_a_gnss_ProvideAssistanceData),
@@ -1976,8 +2210,9 @@ class LPP_PDU_Definitions:
         ('nr-Multi-RTT-ProvideAssistanceData-r16', _ProvideAssistanceData_r9_IEs_nr_Multi_RTT_ProvideAssistanceData_r16),
         ('nr-DL-AoD-ProvideAssistanceData-r16', _ProvideAssistanceData_r9_IEs_nr_DL_AoD_ProvideAssistanceData_r16),
         ('nr-DL-TDOA-ProvideAssistanceData-r16', _ProvideAssistanceData_r9_IEs_nr_DL_TDOA_ProvideAssistanceData_r16),
+        ('bt-ProvideAssistanceData-r18', _ProvideAssistanceData_r9_IEs_bt_ProvideAssistanceData_r18),
         ])
-    ProvideAssistanceData_r9_IEs._ext = ['sensor-ProvideAssistanceData-r14', 'tbs-ProvideAssistanceData-r14', 'wlan-ProvideAssistanceData-r14', 'nr-Multi-RTT-ProvideAssistanceData-r16', 'nr-DL-AoD-ProvideAssistanceData-r16', 'nr-DL-TDOA-ProvideAssistanceData-r16']
+    ProvideAssistanceData_r9_IEs._ext = ['sensor-ProvideAssistanceData-r14', 'tbs-ProvideAssistanceData-r14', 'wlan-ProvideAssistanceData-r14', 'nr-Multi-RTT-ProvideAssistanceData-r16', 'nr-DL-AoD-ProvideAssistanceData-r16', 'nr-DL-TDOA-ProvideAssistanceData-r16', 'bt-ProvideAssistanceData-r18']
     
     #-----< RequestLocationInformation >-----#
     RequestLocationInformation = SEQ(name='RequestLocationInformation', mode=MODE_TYPE)
@@ -2683,6 +2918,70 @@ class LPP_PDU_Definitions:
         ])
     HorizontalWithVerticalVelocityAndUncertainty._ext = None
     
+    #-----< Local2dPointWithUncertaintyEllipse-r18 >-----#
+    Local2dPointWithUncertaintyEllipse_r18 = SEQ(name='Local2dPointWithUncertaintyEllipse-r18', mode=MODE_TYPE)
+    _Local2dPointWithUncertaintyEllipse_r18_localOrigin_r18 = SEQ(name='localOrigin-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ReferencePoint-r16')))
+    _Local2dPointWithUncertaintyEllipse_r18_cartesianCoordinatesUnits_r18 = ENUM(name='cartesianCoordinatesUnits-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local2dPointWithUncertaintyEllipse_r18_cartesianCoordinatesUnits_r18._cont = ASN1Dict([('mm', 0), ('cm', 1), ('dm', 2), ('m', 3)])
+    _Local2dPointWithUncertaintyEllipse_r18_cartesianCoordinatesUnits_r18._ext = []
+    _Local2dPointWithUncertaintyEllipse_r18_x_value_r18 = SEQ(name='x-value-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'X-Value-r18')))
+    _Local2dPointWithUncertaintyEllipse_r18_y_value_r18 = SEQ(name='y-value-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Y-Value-r18')))
+    _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMajor_r18 = INT(name='uncertaintySemiMajor-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMajor_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMinor_r18 = INT(name='uncertaintySemiMinor-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMinor_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _Local2dPointWithUncertaintyEllipse_r18_orientationMajorAxis_r18 = INT(name='orientationMajorAxis-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local2dPointWithUncertaintyEllipse_r18_orientationMajorAxis_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=179)], ev=None, er=[])
+    _Local2dPointWithUncertaintyEllipse_r18_confidence_r18 = INT(name='confidence-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local2dPointWithUncertaintyEllipse_r18_confidence_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=100)], ev=None, er=[])
+    Local2dPointWithUncertaintyEllipse_r18._cont = ASN1Dict([
+        ('localOrigin-r18', _Local2dPointWithUncertaintyEllipse_r18_localOrigin_r18),
+        ('cartesianCoordinatesUnits-r18', _Local2dPointWithUncertaintyEllipse_r18_cartesianCoordinatesUnits_r18),
+        ('x-value-r18', _Local2dPointWithUncertaintyEllipse_r18_x_value_r18),
+        ('y-value-r18', _Local2dPointWithUncertaintyEllipse_r18_y_value_r18),
+        ('uncertaintySemiMajor-r18', _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMajor_r18),
+        ('uncertaintySemiMinor-r18', _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMinor_r18),
+        ('orientationMajorAxis-r18', _Local2dPointWithUncertaintyEllipse_r18_orientationMajorAxis_r18),
+        ('confidence-r18', _Local2dPointWithUncertaintyEllipse_r18_confidence_r18),
+        ])
+    Local2dPointWithUncertaintyEllipse_r18._ext = None
+    
+    #-----< Local3dPointWithUncertaintyEllipsoid-r18 >-----#
+    Local3dPointWithUncertaintyEllipsoid_r18 = SEQ(name='Local3dPointWithUncertaintyEllipsoid-r18', mode=MODE_TYPE)
+    _Local3dPointWithUncertaintyEllipsoid_r18_localOrigin_r18 = SEQ(name='localOrigin-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ReferencePoint-r16')))
+    _Local3dPointWithUncertaintyEllipsoid_r18_cartesianCoordinatesUnits_r18 = ENUM(name='cartesianCoordinatesUnits-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_cartesianCoordinatesUnits_r18._cont = ASN1Dict([('mm', 0), ('cm', 1), ('dm', 2), ('m', 3)])
+    _Local3dPointWithUncertaintyEllipsoid_r18_cartesianCoordinatesUnits_r18._ext = []
+    _Local3dPointWithUncertaintyEllipsoid_r18_x_value_r18 = SEQ(name='x-value-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'X-Value-r18')))
+    _Local3dPointWithUncertaintyEllipsoid_r18_y_value_r18 = SEQ(name='y-value-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Y-Value-r18')))
+    _Local3dPointWithUncertaintyEllipsoid_r18_z_value_r18 = SEQ(name='z-value-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Z-Value-r18')))
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMajor_r18 = INT(name='uncertaintySemiMajor-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMajor_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMinor_r18 = INT(name='uncertaintySemiMinor-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMinor_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _Local3dPointWithUncertaintyEllipsoid_r18_orientationMajorAxis_r18 = INT(name='orientationMajorAxis-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_orientationMajorAxis_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=179)], ev=None, er=[])
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintyAltitude_r18 = INT(name='uncertaintyAltitude-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintyAltitude_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _Local3dPointWithUncertaintyEllipsoid_r18_confidence_r18 = INT(name='confidence-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Local3dPointWithUncertaintyEllipsoid_r18_confidence_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=100)], ev=None, er=[])
+    _Local3dPointWithUncertaintyEllipsoid_r18_vConfidence_r18 = INT(name='vConfidence-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _Local3dPointWithUncertaintyEllipsoid_r18_vConfidence_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=100)], ev=None, er=[])
+    Local3dPointWithUncertaintyEllipsoid_r18._cont = ASN1Dict([
+        ('localOrigin-r18', _Local3dPointWithUncertaintyEllipsoid_r18_localOrigin_r18),
+        ('cartesianCoordinatesUnits-r18', _Local3dPointWithUncertaintyEllipsoid_r18_cartesianCoordinatesUnits_r18),
+        ('x-value-r18', _Local3dPointWithUncertaintyEllipsoid_r18_x_value_r18),
+        ('y-value-r18', _Local3dPointWithUncertaintyEllipsoid_r18_y_value_r18),
+        ('z-value-r18', _Local3dPointWithUncertaintyEllipsoid_r18_z_value_r18),
+        ('uncertaintySemiMajor-r18', _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMajor_r18),
+        ('uncertaintySemiMinor-r18', _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMinor_r18),
+        ('orientationMajorAxis-r18', _Local3dPointWithUncertaintyEllipsoid_r18_orientationMajorAxis_r18),
+        ('uncertaintyAltitude-r18', _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintyAltitude_r18),
+        ('confidence-r18', _Local3dPointWithUncertaintyEllipsoid_r18_confidence_r18),
+        ('vConfidence-r18', _Local3dPointWithUncertaintyEllipsoid_r18_vConfidence_r18),
+        ])
+    Local3dPointWithUncertaintyEllipsoid_r18._ext = None
+    
     #-----< LocationCoordinateTypes >-----#
     LocationCoordinateTypes = SEQ(name='LocationCoordinateTypes', mode=MODE_TYPE)
     _LocationCoordinateTypes_ellipsoidPoint = BOOL(name='ellipsoidPoint', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -2696,6 +2995,8 @@ class LPP_PDU_Definitions:
     _LocationCoordinateTypes_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_r15 = BOOL(name='highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _LocationCoordinateTypes_ha_EllipsoidPointWithScalableUncertaintyEllipse_r16 = BOOL(name='ha-EllipsoidPointWithScalableUncertaintyEllipse-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
     _LocationCoordinateTypes_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_r16 = BOOL(name='ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-r16', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _LocationCoordinateTypes_local2dPointWithUncertaintyEllipse_r18 = BOOL(name='local2dPointWithUncertaintyEllipse-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _LocationCoordinateTypes_local3dPointWithUncertaintyEllipsoid_r18 = BOOL(name='local3dPointWithUncertaintyEllipsoid-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
     LocationCoordinateTypes._cont = ASN1Dict([
         ('ellipsoidPoint', _LocationCoordinateTypes_ellipsoidPoint),
         ('ellipsoidPointWithUncertaintyCircle', _LocationCoordinateTypes_ellipsoidPointWithUncertaintyCircle),
@@ -2708,8 +3009,10 @@ class LPP_PDU_Definitions:
         ('highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15', _LocationCoordinateTypes_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_r15),
         ('ha-EllipsoidPointWithScalableUncertaintyEllipse-r16', _LocationCoordinateTypes_ha_EllipsoidPointWithScalableUncertaintyEllipse_r16),
         ('ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-r16', _LocationCoordinateTypes_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_r16),
+        ('local2dPointWithUncertaintyEllipse-r18', _LocationCoordinateTypes_local2dPointWithUncertaintyEllipse_r18),
+        ('local3dPointWithUncertaintyEllipsoid-r18', _LocationCoordinateTypes_local3dPointWithUncertaintyEllipsoid_r18),
         ])
-    LocationCoordinateTypes._ext = ['highAccuracyEllipsoidPointWithUncertaintyEllipse-r15', 'highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15', 'ha-EllipsoidPointWithScalableUncertaintyEllipse-r16', 'ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-r16']
+    LocationCoordinateTypes._ext = ['highAccuracyEllipsoidPointWithUncertaintyEllipse-r15', 'highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15', 'ha-EllipsoidPointWithScalableUncertaintyEllipse-r16', 'ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-r16', 'local2dPointWithUncertaintyEllipse-r18', 'local3dPointWithUncertaintyEllipsoid-r18']
     
     #-----< NCGI-r15 >-----#
     NCGI_r15 = SEQ(name='NCGI-r15', mode=MODE_TYPE)
@@ -2763,6 +3066,28 @@ class LPP_PDU_Definitions:
     UpdateCapabilities_r15 = BIT_STR(name='UpdateCapabilities-r15', mode=MODE_TYPE)
     UpdateCapabilities_r15._cont = ASN1Dict([('primaryCellID-r15', 0)])
     UpdateCapabilities_r15._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    
+    #-----< PeriodicReportingIntervalMsSupport-r18 >-----#
+    PeriodicReportingIntervalMsSupport_r18 = SEQ(name='PeriodicReportingIntervalMsSupport-r18', mode=MODE_TYPE)
+    _PeriodicReportingIntervalMsSupport_r18_minPeriodicReportingIntervalMs_r18 = ENUM(name='minPeriodicReportingIntervalMs-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PeriodicReportingIntervalMsSupport_r18_minPeriodicReportingIntervalMs_r18._cont = ASN1Dict([('ms1', 0), ('ms10', 1), ('ms100', 2)])
+    _PeriodicReportingIntervalMsSupport_r18_minPeriodicReportingIntervalMs_r18._ext = []
+    PeriodicReportingIntervalMsSupport_r18._cont = ASN1Dict([
+        ('minPeriodicReportingIntervalMs-r18', _PeriodicReportingIntervalMsSupport_r18_minPeriodicReportingIntervalMs_r18),
+        ])
+    PeriodicReportingIntervalMsSupport_r18._ext = []
+    
+    #-----< PeriodicReportingIntervalMsSupportPerMode-r18 >-----#
+    PeriodicReportingIntervalMsSupportPerMode_r18 = SEQ(name='PeriodicReportingIntervalMsSupportPerMode-r18', mode=MODE_TYPE)
+    _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs1_Supported_r18 = SEQ(name='minPeriodicReportingIntervalMs1-Supported-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True)
+    _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs10_Supported_r18 = SEQ(name='minPeriodicReportingIntervalMs10-Supported-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True)
+    _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs100_Supported_r18 = SEQ(name='minPeriodicReportingIntervalMs100-Supported-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True)
+    PeriodicReportingIntervalMsSupportPerMode_r18._cont = ASN1Dict([
+        ('minPeriodicReportingIntervalMs1-Supported-r18', _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs1_Supported_r18),
+        ('minPeriodicReportingIntervalMs10-Supported-r18', _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs10_Supported_r18),
+        ('minPeriodicReportingIntervalMs100-Supported-r18', _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs100_Supported_r18),
+        ])
+    PeriodicReportingIntervalMsSupportPerMode_r18._ext = []
     
     #-----< Polygon >-----#
     Polygon = SEQ_OF(name='Polygon', mode=MODE_TYPE)
@@ -2866,21 +3191,31 @@ class LPP_PDU_Definitions:
     CommonIEsRequestCapabilities = SEQ(name='CommonIEsRequestCapabilities', mode=MODE_TYPE)
     _CommonIEsRequestCapabilities_lpp_message_segmentation_req_r14 = BIT_STR(name='lpp-message-segmentation-req-r14', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _CommonIEsRequestCapabilities_lpp_message_segmentation_req_r14._cont = ASN1Dict([('serverToTarget', 0), ('targetToServer', 1)])
+    _CommonIEsRequestCapabilities_remoteUE_IndicationReq_r18 = ENUM(name='remoteUE-IndicationReq-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _CommonIEsRequestCapabilities_remoteUE_IndicationReq_r18._cont = ASN1Dict([('true', 0)])
+    _CommonIEsRequestCapabilities_remoteUE_IndicationReq_r18._ext = None
     CommonIEsRequestCapabilities._cont = ASN1Dict([
         ('lpp-message-segmentation-req-r14', _CommonIEsRequestCapabilities_lpp_message_segmentation_req_r14),
+        ('remoteUE-IndicationReq-r18', _CommonIEsRequestCapabilities_remoteUE_IndicationReq_r18),
         ])
-    CommonIEsRequestCapabilities._ext = ['lpp-message-segmentation-req-r14']
+    CommonIEsRequestCapabilities._ext = ['lpp-message-segmentation-req-r14', 'remoteUE-IndicationReq-r18']
     
     #-----< CommonIEsProvideCapabilities >-----#
     CommonIEsProvideCapabilities = SEQ(name='CommonIEsProvideCapabilities', mode=MODE_TYPE)
     _CommonIEsProvideCapabilities_segmentationInfo_r14 = ENUM(name='segmentationInfo-r14', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SegmentationInfo-r14')), opt=True, group=0)
     _CommonIEsProvideCapabilities_lpp_message_segmentation_r14 = BIT_STR(name='lpp-message-segmentation-r14', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _CommonIEsProvideCapabilities_lpp_message_segmentation_r14._cont = ASN1Dict([('serverToTarget', 0), ('targetToServer', 1)])
+    _CommonIEsProvideCapabilities_remoteUE_Indication_r18 = BOOL(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _CommonIEsProvideCapabilities_locationEstimateAndMeasurementReporting_r18 = ENUM(name='locationEstimateAndMeasurementReporting-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _CommonIEsProvideCapabilities_locationEstimateAndMeasurementReporting_r18._cont = ASN1Dict([('supported', 0)])
+    _CommonIEsProvideCapabilities_locationEstimateAndMeasurementReporting_r18._ext = None
     CommonIEsProvideCapabilities._cont = ASN1Dict([
         ('segmentationInfo-r14', _CommonIEsProvideCapabilities_segmentationInfo_r14),
         ('lpp-message-segmentation-r14', _CommonIEsProvideCapabilities_lpp_message_segmentation_r14),
+        ('remoteUE-Indication-r18', _CommonIEsProvideCapabilities_remoteUE_Indication_r18),
+        ('locationEstimateAndMeasurementReporting-r18', _CommonIEsProvideCapabilities_locationEstimateAndMeasurementReporting_r18),
         ])
-    CommonIEsProvideCapabilities._ext = ['segmentationInfo-r14', 'lpp-message-segmentation-r14']
+    CommonIEsProvideCapabilities._ext = ['segmentationInfo-r14', 'lpp-message-segmentation-r14', 'remoteUE-Indication-r18', 'locationEstimateAndMeasurementReporting-r18']
     
     #-----< CommonIEsRequestAssistanceData >-----#
     CommonIEsRequestAssistanceData = SEQ(name='CommonIEsRequestAssistanceData', mode=MODE_TYPE)
@@ -2920,6 +3255,7 @@ class LPP_PDU_Definitions:
     _CommonIEsRequestLocationInformation_segmentationInfo_r14 = ENUM(name='segmentationInfo-r14', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SegmentationInfo-r14')), opt=True, group=1)
     _CommonIEsRequestLocationInformation_scheduledLocationTime_r17 = SEQ(name='scheduledLocationTime-r17', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTime-r17')), opt=True, group=2)
     _CommonIEsRequestLocationInformation_targetIntegrityRisk_r17 = INT(name='targetIntegrityRisk-r17', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'TargetIntegrityRisk-r17')), opt=True, group=2)
+    _CommonIEsRequestLocationInformation_periodicalReportingExt_r18 = SEQ(name='periodicalReportingExt-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicalReportingCriteriaExt-r18')), opt=True, group=3)
     CommonIEsRequestLocationInformation._cont = ASN1Dict([
         ('locationInformationType', _CommonIEsRequestLocationInformation_locationInformationType),
         ('triggeredReporting', _CommonIEsRequestLocationInformation_triggeredReporting),
@@ -2933,13 +3269,14 @@ class LPP_PDU_Definitions:
         ('segmentationInfo-r14', _CommonIEsRequestLocationInformation_segmentationInfo_r14),
         ('scheduledLocationTime-r17', _CommonIEsRequestLocationInformation_scheduledLocationTime_r17),
         ('targetIntegrityRisk-r17', _CommonIEsRequestLocationInformation_targetIntegrityRisk_r17),
+        ('periodicalReportingExt-r18', _CommonIEsRequestLocationInformation_periodicalReportingExt_r18),
         ])
-    CommonIEsRequestLocationInformation._ext = ['messageSizeLimitNB-r14', 'segmentationInfo-r14', 'scheduledLocationTime-r17', 'targetIntegrityRisk-r17']
+    CommonIEsRequestLocationInformation._ext = ['messageSizeLimitNB-r14', 'segmentationInfo-r14', 'scheduledLocationTime-r17', 'targetIntegrityRisk-r17', 'periodicalReportingExt-r18']
     
     #-----< LocationInformationType >-----#
     LocationInformationType = ENUM(name='LocationInformationType', mode=MODE_TYPE)
-    LocationInformationType._cont = ASN1Dict([('locationEstimateRequired', 0), ('locationMeasurementsRequired', 1), ('locationEstimatePreferred', 2), ('locationMeasurementsPreferred', 3)])
-    LocationInformationType._ext = []
+    LocationInformationType._cont = ASN1Dict([('locationEstimateRequired', 0), ('locationMeasurementsRequired', 1), ('locationEstimatePreferred', 2), ('locationMeasurementsPreferred', 3), ('locationEstimateAndMeasurementsRequired-r18', 4)])
+    LocationInformationType._ext = ['locationEstimateAndMeasurementsRequired-r18']
     
     #-----< PeriodicalReportingCriteria >-----#
     PeriodicalReportingCriteria = SEQ(name='PeriodicalReportingCriteria', mode=MODE_TYPE)
@@ -2954,6 +3291,19 @@ class LPP_PDU_Definitions:
         ('reportingInterval', _PeriodicalReportingCriteria_reportingInterval),
         ])
     PeriodicalReportingCriteria._ext = None
+    
+    #-----< PeriodicalReportingCriteriaExt-r18 >-----#
+    PeriodicalReportingCriteriaExt_r18 = SEQ(name='PeriodicalReportingCriteriaExt-r18', mode=MODE_TYPE)
+    _PeriodicalReportingCriteriaExt_r18_reportingAmount_r18 = ENUM(name='reportingAmount-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), default='ra-Infinity')
+    _PeriodicalReportingCriteriaExt_r18_reportingAmount_r18._cont = ASN1Dict([('ra2', 0), ('ra4', 1), ('ra8', 2), ('ra16', 3), ('ra32', 4), ('ra64', 5), ('ra-Infinity', 6)])
+    _PeriodicalReportingCriteriaExt_r18_reportingAmount_r18._ext = None
+    _PeriodicalReportingCriteriaExt_r18_reportingIntervalMs_r18 = INT(name='reportingIntervalMs-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PeriodicalReportingCriteriaExt_r18_reportingIntervalMs_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=999)], ev=None, er=[])
+    PeriodicalReportingCriteriaExt_r18._cont = ASN1Dict([
+        ('reportingAmount-r18', _PeriodicalReportingCriteriaExt_r18_reportingAmount_r18),
+        ('reportingIntervalMs-r18', _PeriodicalReportingCriteriaExt_r18_reportingIntervalMs_r18),
+        ])
+    PeriodicalReportingCriteriaExt_r18._ext = []
     
     #-----< TriggeredReportingCriteria >-----#
     TriggeredReportingCriteria = SEQ(name='TriggeredReportingCriteria', mode=MODE_TYPE)
@@ -2971,7 +3321,7 @@ class LPP_PDU_Definitions:
     
     #-----< AdditionalInformation >-----#
     AdditionalInformation = ENUM(name='AdditionalInformation', mode=MODE_TYPE)
-    AdditionalInformation._cont = ASN1Dict([('onlyReturnInformationRequested', 0), ('mayReturnAditionalInformation', 1)])
+    AdditionalInformation._cont = ASN1Dict([('onlyReturnInformationRequested', 0), ('mayReturnAdditionalInformation', 1)])
     AdditionalInformation._ext = []
     
     #-----< QoS >-----#
@@ -3201,6 +3551,8 @@ class LPP_PDU_Definitions:
     _LocationCoordinates_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_v1510 = SEQ(name='highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-v1510', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'HighAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15')))
     _LocationCoordinates_ha_EllipsoidPointWithScalableUncertaintyEllipse_v1680 = SEQ(name='ha-EllipsoidPointWithScalableUncertaintyEllipse-v1680', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'HA-EllipsoidPointWithScalableUncertaintyEllipse-r16')))
     _LocationCoordinates_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_v1680 = SEQ(name='ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-v1680', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'HA-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-r16')))
+    _LocationCoordinates_local2dPointWithUncertaintyEllipse_v1800 = SEQ(name='local2dPointWithUncertaintyEllipse-v1800', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Local2dPointWithUncertaintyEllipse-r18')))
+    _LocationCoordinates_local3dPointWithUncertaintyEllipsoid_v1800 = SEQ(name='local3dPointWithUncertaintyEllipsoid-v1800', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Local3dPointWithUncertaintyEllipsoid-r18')))
     LocationCoordinates._cont = ASN1Dict([
         ('ellipsoidPoint', _LocationCoordinates_ellipsoidPoint),
         ('ellipsoidPointWithUncertaintyCircle', _LocationCoordinates_ellipsoidPointWithUncertaintyCircle),
@@ -3213,8 +3565,10 @@ class LPP_PDU_Definitions:
         ('highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-v1510', _LocationCoordinates_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_v1510),
         ('ha-EllipsoidPointWithScalableUncertaintyEllipse-v1680', _LocationCoordinates_ha_EllipsoidPointWithScalableUncertaintyEllipse_v1680),
         ('ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-v1680', _LocationCoordinates_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_v1680),
+        ('local2dPointWithUncertaintyEllipse-v1800', _LocationCoordinates_local2dPointWithUncertaintyEllipse_v1800),
+        ('local3dPointWithUncertaintyEllipsoid-v1800', _LocationCoordinates_local3dPointWithUncertaintyEllipsoid_v1800),
         ])
-    LocationCoordinates._ext = ['highAccuracyEllipsoidPointWithUncertaintyEllipse-v1510', 'highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-v1510', 'ha-EllipsoidPointWithScalableUncertaintyEllipse-v1680', 'ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-v1680']
+    LocationCoordinates._ext = ['highAccuracyEllipsoidPointWithUncertaintyEllipse-v1510', 'highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-v1510', 'ha-EllipsoidPointWithScalableUncertaintyEllipse-v1680', 'ha-EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid-v1680', 'local2dPointWithUncertaintyEllipse-v1800', 'local3dPointWithUncertaintyEllipsoid-v1800']
     
     #-----< Velocity >-----#
     Velocity = CHOICE(name='Velocity', mode=MODE_TYPE)
@@ -3346,6 +3700,20 @@ class LPP_PDU_Definitions:
         ])
     LCS_GCS_TranslationParameter_r16._ext = []
     
+    #-----< LocalOrigin-r18 >-----#
+    LocalOrigin_r18 = SEQ(name='LocalOrigin-r18', mode=MODE_TYPE)
+    _LocalOrigin_r18_coordinateID_r18 = STR_VIS(name='coordinateID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _LocalOrigin_r18_coordinateID_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=256)], ev=None, er=[])
+    _LocalOrigin_r18_point_r18 = SEQ(name='point-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'HighAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15')), opt=True)
+    _LocalOrigin_r18_horizAxesOrientation_r18 = INT(name='horizAxesOrientation-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _LocalOrigin_r18_horizAxesOrientation_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    LocalOrigin_r18._cont = ASN1Dict([
+        ('coordinateID-r18', _LocalOrigin_r18_coordinateID_r18),
+        ('point-r18', _LocalOrigin_r18_point_r18),
+        ('horizAxesOrientation-r18', _LocalOrigin_r18_horizAxesOrientation_r18),
+        ])
+    LocalOrigin_r18._ext = []
+    
     #-----< LOS-NLOS-Indicator-r17 >-----#
     LOS_NLOS_Indicator_r17 = SEQ(name='LOS-NLOS-Indicator-r17', mode=MODE_TYPE)
     _LOS_NLOS_Indicator_r17_indicator_r17 = CHOICE(name='indicator-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT))
@@ -3409,6 +3777,18 @@ class LPP_PDU_Definitions:
     __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k4_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1022)], ev=None, er=[])
     __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k5_r16 = INT(name='k5-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k5_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=511)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus6_r18 = INT(name='kMinus6-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus6_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1046401)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus5_r18 = INT(name='kMinus5-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus5_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=523201)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus4_r18 = INT(name='kMinus4-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus4_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=261601)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus3_r18 = INT(name='kMinus3-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus3_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=130801)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus2_r18 = INT(name='kMinus2-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus2_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65401)], ev=None, er=[])
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus1_r18 = INT(name='kMinus1-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus1_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=32701)], ev=None, er=[])
     _NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16._cont = ASN1Dict([
         ('k0-r16', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k0_r16),
         ('k1-r16', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k1_r16),
@@ -3416,8 +3796,14 @@ class LPP_PDU_Definitions:
         ('k3-r16', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k3_r16),
         ('k4-r16', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k4_r16),
         ('k5-r16', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k5_r16),
+        ('kMinus6-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus6_r18),
+        ('kMinus5-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus5_r18),
+        ('kMinus4-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus4_r18),
+        ('kMinus3-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus3_r18),
+        ('kMinus2-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus2_r18),
+        ('kMinus1-r18', __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus1_r18),
         ])
-    _NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16._ext = []
+    _NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16._ext = ['kMinus6-r18', 'kMinus5-r18', 'kMinus4-r18', 'kMinus3-r18', 'kMinus2-r18', 'kMinus1-r18']
     _NR_AdditionalPath_r16_nr_PathQuality_r16 = SEQ(name='nr-PathQuality-r16', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')), opt=True)
     _NR_AdditionalPath_r16_nr_DL_PRS_RSRPP_r17 = INT(name='nr-DL-PRS-RSRPP-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_AdditionalPath_r16_nr_DL_PRS_RSRPP_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126)], ev=None, er=[])
@@ -3427,6 +3813,19 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-RSRPP-r17', _NR_AdditionalPath_r16_nr_DL_PRS_RSRPP_r17),
         ])
     NR_AdditionalPath_r16._ext = ['nr-DL-PRS-RSRPP-r17']
+    
+    #-----< NR-AggregatedDL-PRS-ResourceInfo-Element-r18 >-----#
+    NR_AggregatedDL_PRS_ResourceInfo_Element_r18 = SEQ(name='NR-AggregatedDL-PRS-ResourceInfo-Element-r18', mode=MODE_TYPE)
+    _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_aggregatedDL_PRS_ID_r18 = INT(name='aggregatedDL-PRS-ID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_aggregatedDL_PRS_ID_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceSetID_r18 = INT(name='nr-DL-PRS-ResourceSetID-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceSetID-r16')), opt=True)
+    _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceID_r18 = INT(name='nr-DL-PRS-ResourceID-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceID-r16')), opt=True)
+    NR_AggregatedDL_PRS_ResourceInfo_Element_r18._cont = ASN1Dict([
+        ('aggregatedDL-PRS-ID-r18', _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_aggregatedDL_PRS_ID_r18),
+        ('nr-DL-PRS-ResourceSetID-r18', _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceSetID_r18),
+        ('nr-DL-PRS-ResourceID-r18', _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceID_r18),
+        ])
+    NR_AggregatedDL_PRS_ResourceInfo_Element_r18._ext = []
     
     #-----< NR-DL-PRS-AssistanceData-r16 >-----#
     NR_DL_PRS_AssistanceData_r16 = SEQ(name='NR-DL-PRS-AssistanceData-r16', mode=MODE_TYPE)
@@ -3439,12 +3838,14 @@ class LPP_PDU_Definitions:
     __NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-SSB-Config-r16')))
     _NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16._cont = __NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16__item_
     _NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=256)], ev=None, er=[])
+    _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AggregationInfo_r18 = SEQ_OF(name='nr-DL-PRS-AggregationInfo-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-AggregationInfo-r18')), opt=True, group=0)
     NR_DL_PRS_AssistanceData_r16._cont = ASN1Dict([
         ('nr-DL-PRS-ReferenceInfo-r16', _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_ReferenceInfo_r16),
         ('nr-DL-PRS-AssistanceDataList-r16', _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AssistanceDataList_r16),
         ('nr-SSB-Config-r16', _NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16),
+        ('nr-DL-PRS-AggregationInfo-r18', _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AggregationInfo_r18),
         ])
-    NR_DL_PRS_AssistanceData_r16._ext = []
+    NR_DL_PRS_AssistanceData_r16._ext = ['nr-DL-PRS-AggregationInfo-r18']
     
     #-----< NR-DL-PRS-AssistanceDataPerFreq-r16 >-----#
     NR_DL_PRS_AssistanceDataPerFreq_r16 = SEQ(name='NR-DL-PRS-AssistanceDataPerFreq-r16', mode=MODE_TYPE)
@@ -3568,6 +3969,33 @@ class LPP_PDU_Definitions:
         ])
     NR_DL_PRS_ExpectedAoD_or_AoA_r17._ext = None
     
+    #-----< NR-DL-PRS-AggregationInfo-r18 >-----#
+    NR_DL_PRS_AggregationInfo_r18 = SEQ_OF(name='NR-DL-PRS-AggregationInfo-r18', mode=MODE_TYPE)
+    _NR_DL_PRS_AggregationInfo_r18__item_ = SEQ_OF(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-linkedDL-PRS-ResourceSetID-PRS-AggregationList-r18')))
+    NR_DL_PRS_AggregationInfo_r18._cont = _NR_DL_PRS_AggregationInfo_r18__item_
+    NR_DL_PRS_AggregationInfo_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=256)], ev=None, er=[])
+    
+    #-----< NR-linkedDL-PRS-ResourceSetID-PRS-AggregationList-r18 >-----#
+    NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18 = SEQ_OF(name='NR-linkedDL-PRS-ResourceSetID-PRS-AggregationList-r18', mode=MODE_TYPE)
+    _NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-AggregationElement-r18')))
+    NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18._cont = _NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18__item_
+    NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
+    #-----< NR-DL-PRS-AggregationElement-r18 >-----#
+    NR_DL_PRS_AggregationElement_r18 = SEQ(name='NR-DL-PRS-AggregationElement-r18', mode=MODE_TYPE)
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_FrequencyLayerIndex_r18 = INT(name='nr-DL-PRS-FrequencyLayerIndex-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_FrequencyLayerIndex_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3)], ev=None, er=[])
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_TRP_Index_r18 = INT(name='nr-DL-PRS-TRP-Index-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_TRP_Index_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63)], ev=None, er=[])
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_ResourceSetIndex_r18 = INT(name='nr-DL-PRS-ResourceSetIndex-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_ResourceSetIndex_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1)], ev=None, er=[])
+    NR_DL_PRS_AggregationElement_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-FrequencyLayerIndex-r18', _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_FrequencyLayerIndex_r18),
+        ('nr-DL-PRS-TRP-Index-r18', _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_TRP_Index_r18),
+        ('nr-DL-PRS-ResourceSetIndex-r18', _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_ResourceSetIndex_r18),
+        ])
+    NR_DL_PRS_AggregationElement_r18._ext = None
+    
     #-----< NR-DL-PRS-BeamInfo-r16 >-----#
     NR_DL_PRS_BeamInfo_r16 = SEQ_OF(name='NR-DL-PRS-BeamInfo-r16', mode=MODE_TYPE)
     _NR_DL_PRS_BeamInfo_r16__item_ = SEQ_OF(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-BeamInfoPerFreqLayer-r16')))
@@ -3624,13 +4052,33 @@ class LPP_PDU_Definitions:
     _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=180)], ev=None, er=[])
     _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_fine_r16 = INT(name='dl-PRS-Elevation-fine-r16', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_fine_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=9)], ev=None, er=[])
+    _DL_PRS_BeamInfoElement_r16_nr_IntegrityBeamInfoBounds_r18 = SEQ(name='nr-IntegrityBeamInfoBounds-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityBeamInfoBounds-r18')), opt=True, group=0)
     DL_PRS_BeamInfoElement_r16._cont = ASN1Dict([
         ('dl-PRS-Azimuth-r16', _DL_PRS_BeamInfoElement_r16_dl_PRS_Azimuth_r16),
         ('dl-PRS-Azimuth-fine-r16', _DL_PRS_BeamInfoElement_r16_dl_PRS_Azimuth_fine_r16),
         ('dl-PRS-Elevation-r16', _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_r16),
         ('dl-PRS-Elevation-fine-r16', _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_fine_r16),
+        ('nr-IntegrityBeamInfoBounds-r18', _DL_PRS_BeamInfoElement_r16_nr_IntegrityBeamInfoBounds_r18),
         ])
-    DL_PRS_BeamInfoElement_r16._ext = []
+    DL_PRS_BeamInfoElement_r16._ext = ['nr-IntegrityBeamInfoBounds-r18']
+    
+    #-----< NR-IntegrityBeamInfoBounds-r18 >-----#
+    NR_IntegrityBeamInfoBounds_r18 = SEQ(name='NR-IntegrityBeamInfoBounds-r18', mode=MODE_TYPE)
+    _NR_IntegrityBeamInfoBounds_r18_meanAzimuth_r18 = INT(name='meanAzimuth-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamInfoBounds_r18_meanAzimuth_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityBeamInfoBounds_r18_stdDevAzimuth_r18 = INT(name='stdDevAzimuth-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamInfoBounds_r18_stdDevAzimuth_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityBeamInfoBounds_r18_meanElevation_r18 = INT(name='meanElevation-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamInfoBounds_r18_meanElevation_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityBeamInfoBounds_r18_stdDevElevation_r18 = INT(name='stdDevElevation-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamInfoBounds_r18_stdDevElevation_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityBeamInfoBounds_r18._cont = ASN1Dict([
+        ('meanAzimuth-r18', _NR_IntegrityBeamInfoBounds_r18_meanAzimuth_r18),
+        ('stdDevAzimuth-r18', _NR_IntegrityBeamInfoBounds_r18_stdDevAzimuth_r18),
+        ('meanElevation-r18', _NR_IntegrityBeamInfoBounds_r18_meanElevation_r18),
+        ('stdDevElevation-r18', _NR_IntegrityBeamInfoBounds_r18_stdDevElevation_r18),
+        ])
+    NR_IntegrityBeamInfoBounds_r18._ext = []
     
     #-----< NR-DL-PRS-ExpectedLOS-NLOS-Assistance-r17 >-----#
     NR_DL_PRS_ExpectedLOS_NLOS_Assistance_r17 = SEQ_OF(name='NR-DL-PRS-ExpectedLOS-NLOS-Assistance-r17', mode=MODE_TYPE)
@@ -3699,8 +4147,8 @@ class LPP_PDU_Definitions:
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_ResourceTimeGap_r16._cont = ASN1Dict([('s1', 0), ('s2', 1), ('s4', 2), ('s8', 3), ('s16', 4), ('s32', 5)])
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_ResourceTimeGap_r16._ext = []
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_NumSymbols_r16 = ENUM(name='dl-PRS-NumSymbols-r16', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _NR_DL_PRS_ResourceSet_r16_dl_PRS_NumSymbols_r16._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
-    _NR_DL_PRS_ResourceSet_r16_dl_PRS_NumSymbols_r16._ext = []
+    _NR_DL_PRS_ResourceSet_r16_dl_PRS_NumSymbols_r16._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3), ('n1-v1800', 4)])
+    _NR_DL_PRS_ResourceSet_r16_dl_PRS_NumSymbols_r16._ext = ['n1-v1800']
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_MutingOption1_r16 = SEQ(name='dl-PRS-MutingOption1-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-MutingOption1-r16')), opt=True)
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_MutingOption2_r16 = SEQ(name='dl-PRS-MutingOption2-r16', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-MutingOption2-r16')), opt=True)
     _NR_DL_PRS_ResourceSet_r16_dl_PRS_ResourcePower_r16 = INT(name='dl-PRS-ResourcePower-r16', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -3793,6 +4241,8 @@ class LPP_PDU_Definitions:
     _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=12)], ev=None, er=[])
     _NR_DL_PRS_Resource_r16_dl_PRS_QCL_Info_r16 = CHOICE(name='dl-PRS-QCL-Info-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-QCL-Info-r16')), opt=True)
     _NR_DL_PRS_Resource_r16_dl_PRS_ResourcePrioritySubset_r17 = SEQ_OF(name='dl-PRS-ResourcePrioritySubset-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-ResourcePrioritySubset-r17')), opt=True, group=0)
+    _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_v1800 = INT(name='dl-PRS-ResourceSymbolOffset-v1800', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_v1800._const_val = ASN1Set(rv=[13], rr=[], ev=None, er=[])
     NR_DL_PRS_Resource_r16._cont = ASN1Dict([
         ('nr-DL-PRS-ResourceID-r16', _NR_DL_PRS_Resource_r16_nr_DL_PRS_ResourceID_r16),
         ('dl-PRS-SequenceID-r16', _NR_DL_PRS_Resource_r16_dl_PRS_SequenceID_r16),
@@ -3801,8 +4251,9 @@ class LPP_PDU_Definitions:
         ('dl-PRS-ResourceSymbolOffset-r16', _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_r16),
         ('dl-PRS-QCL-Info-r16', _NR_DL_PRS_Resource_r16_dl_PRS_QCL_Info_r16),
         ('dl-PRS-ResourcePrioritySubset-r17', _NR_DL_PRS_Resource_r16_dl_PRS_ResourcePrioritySubset_r17),
+        ('dl-PRS-ResourceSymbolOffset-v1800', _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_v1800),
         ])
-    NR_DL_PRS_Resource_r16._ext = ['dl-PRS-ResourcePrioritySubset-r17']
+    NR_DL_PRS_Resource_r16._ext = ['dl-PRS-ResourcePrioritySubset-r17', 'dl-PRS-ResourceSymbolOffset-v1800']
     
     #-----< DL-PRS-QCL-Info-r16 >-----#
     DL_PRS_QCL_Info_r16 = CHOICE(name='DL-PRS-QCL-Info-r16', mode=MODE_TYPE)
@@ -4079,6 +4530,79 @@ class LPP_PDU_Definitions:
         ])
     NR_DL_PRSResourcePriorityItem_r17._ext = []
     
+    #-----< NR-DL-PRS-MeasurementTimeWindowsConfig-r18 >-----#
+    NR_DL_PRS_MeasurementTimeWindowsConfig_r18 = SEQ_OF(name='NR-DL-PRS-MeasurementTimeWindowsConfig-r18', mode=MODE_TYPE)
+    _NR_DL_PRS_MeasurementTimeWindowsConfig_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-MeasurementTimeWindowsConfigElement-r18')))
+    NR_DL_PRS_MeasurementTimeWindowsConfig_r18._cont = _NR_DL_PRS_MeasurementTimeWindowsConfig_r18__item_
+    NR_DL_PRS_MeasurementTimeWindowsConfig_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=2)], ev=None, er=[])
+    
+    #-----< NR-DL-PRS-MeasurementTimeWindowsConfigElement-r18 >-----#
+    NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18 = SEQ(name='NR-DL-PRS-MeasurementTimeWindowsConfigElement-r18', mode=MODE_TYPE)
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_StartSFN_TimeWindow_r18 = INT(name='nr-StartSFN-TimeWindow-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_StartSFN_TimeWindow_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1023)], ev=None, er=[])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18 = CHOICE(name='nr-PeriodicOrOneShotTimeWindow-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_PeriodicityAndSlotOffsetTimeWindow_r18 = CHOICE(name='nr-PeriodicityAndSlotOffsetTimeWindow-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-Periodicity-and-ResourceSetSlotOffset-r16')))
+    __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18 = CHOICE(name='nr-OneShotSlotOffsetTimeWindow-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT))
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs15_r18 = INT(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs15_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=10239)], ev=None, er=[])
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs30_r18 = INT(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs30_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=20479)], ev=None, er=[])
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs60_r18 = INT(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs60_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=40959)], ev=None, er=[])
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs120_r18 = INT(name='scs120-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs120_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=None, er=[])
+    __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18._cont = ASN1Dict([
+        ('scs15-r18', ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs15_r18),
+        ('scs30-r18', ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs30_r18),
+        ('scs60-r18', ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs60_r18),
+        ('scs120-r18', ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs120_r18),
+        ])
+    __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18._ext = None
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18._cont = ASN1Dict([
+        ('nr-PeriodicityAndSlotOffsetTimeWindow-r18', __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_PeriodicityAndSlotOffsetTimeWindow_r18),
+        ('nr-OneShotSlotOffsetTimeWindow-r18', __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18),
+        ])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18._ext = None
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SymbolOffsetTimeWindow_r18 = INT(name='nr-SymbolOffsetTimeWindow-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SymbolOffsetTimeWindow_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_DurationTimeWindow_r18 = ENUM(name='nr-DurationTimeWindow-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_DurationTimeWindow_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6)])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_DurationTimeWindow_r18._ext = []
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_FrequencyLayerIndex_r18 = INT(name='nr-SelectedDL-PRS-FrequencyLayerIndex-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_FrequencyLayerIndex_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3)], ev=None, er=[])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18 = SEQ_OF(name='nr-SelectedDL-PRS-IndexListPerFreq-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-SelectedDL-PRS-IndexPerTRP-r18')))
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18._cont = __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18__item_
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_MeasurementsToPerformInTimeWindow_r18 = BIT_STR(name='nr-MeasurementsToPerformInTimeWindow-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_MeasurementsToPerformInTimeWindow_r18._cont = ASN1Dict([('rstd', 0), ('ueRxTx', 1), ('rsrp', 2), ('rsrpp', 3), ('rscp', 4), ('rscpd', 5)])
+    _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_MeasurementsToPerformInTimeWindow_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18._cont = ASN1Dict([
+        ('nr-StartSFN-TimeWindow-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_StartSFN_TimeWindow_r18),
+        ('nr-PeriodicOrOneShotTimeWindow-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18),
+        ('nr-SymbolOffsetTimeWindow-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SymbolOffsetTimeWindow_r18),
+        ('nr-DurationTimeWindow-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_DurationTimeWindow_r18),
+        ('nr-SelectedDL-PRS-FrequencyLayerIndex-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_FrequencyLayerIndex_r18),
+        ('nr-SelectedDL-PRS-IndexListPerFreq-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18),
+        ('nr-MeasurementsToPerformInTimeWindow-r18', _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_MeasurementsToPerformInTimeWindow_r18),
+        ])
+    NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18._ext = []
+    
+    #-----< NR-SelectedDL-PRS-IndexPerTRP-r18 >-----#
+    NR_SelectedDL_PRS_IndexPerTRP_r18 = SEQ(name='NR-SelectedDL-PRS-IndexPerTRP-r18', mode=MODE_TYPE)
+    _NR_SelectedDL_PRS_IndexPerTRP_r18_nr_SelectedTRP_Index_r18 = INT(name='nr-SelectedTRP-Index-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_SelectedDL_PRS_IndexPerTRP_r18_nr_SelectedTRP_Index_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63)], ev=None, er=[])
+    _NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18 = SEQ_OF(name='dl-SelectedPRS-ResourceSetIndexList-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1)], ev=None, er=[])
+    _NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18._cont = __NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18__item_
+    _NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=2)], ev=None, er=[])
+    NR_SelectedDL_PRS_IndexPerTRP_r18._cont = ASN1Dict([
+        ('nr-SelectedTRP-Index-r18', _NR_SelectedDL_PRS_IndexPerTRP_r18_nr_SelectedTRP_Index_r18),
+        ('dl-SelectedPRS-ResourceSetIndexList-r18', _NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18),
+        ])
+    NR_SelectedDL_PRS_IndexPerTRP_r18._ext = []
+    
     #-----< NR-DL-PRS-ProcessingCapability-r16 >-----#
     NR_DL_PRS_ProcessingCapability_r16 = SEQ(name='NR-DL-PRS-ProcessingCapability-r16', mode=MODE_TYPE)
     _NR_DL_PRS_ProcessingCapability_r16_prs_ProcessingCapabilityBandList_r16 = SEQ_OF(name='prs-ProcessingCapabilityBandList-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -4227,6 +4751,92 @@ class LPP_PDU_Definitions:
     _PRS_ProcessingCapabilityPerBand_r16_prs_MeasurementWithoutMG_r17 = ENUM(name='prs-MeasurementWithoutMG-r17', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
     _PRS_ProcessingCapabilityPerBand_r16_prs_MeasurementWithoutMG_r17._cont = ASN1Dict([('cp', 0), ('symbolDot25', 1), ('symbolDot5', 2), ('slotDot5', 3)])
     _PRS_ProcessingCapabilityPerBand_r16_prs_MeasurementWithoutMG_r17._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18 = SEQ(name='maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Inactive-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs15_r18 = ENUM(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs15_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs15_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs30_r18 = ENUM(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs30_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs30_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs60_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs120_r18 = ENUM(name='scs120-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs120_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs120_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18._cont = ASN1Dict([
+        ('scs15-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs15_r18),
+        ('scs30-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs30_r18),
+        ('scs60-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs60_r18),
+        ('scs120-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs120_r18),
+        ])
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18._ext = []
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18 = SEQ(name='maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Connected-r18', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs15_r18 = ENUM(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs15_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs15_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs30_r18 = ENUM(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs30_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs30_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs60_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs120_r18 = ENUM(name='scs120-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs120_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs120_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18._cont = ASN1Dict([
+        ('scs15-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs15_r18),
+        ('scs30-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs30_r18),
+        ('scs60-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs60_r18),
+        ('scs120-r18', __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs120_r18),
+        ])
+    _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18._ext = []
+    _PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18 = SEQ(name='ppw-maxNumOfOneSymbolPRS-ResProcessedPerSlot-r18', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs15_r18 = ENUM(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs15_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs15_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs30_r18 = ENUM(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs30_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs30_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs60_r18._ext = None
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs120_r18 = ENUM(name='scs120-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs120_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs120_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18._cont = ASN1Dict([
+        ('scs15-r18', __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs15_r18),
+        ('scs30-r18', __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs30_r18),
+        ('scs60-r18', __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs60_r18),
+        ('scs120-r18', __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs120_r18),
+        ])
+    _PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18._ext = []
+    _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntrabandInMG_RRC_Connected_r18 = SEQ(name='prs-BWA-TwoContiguousIntrabandInMG-RRC-Connected-r18', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PRS-BWA-TwoContiguousIntrabandInMG-r18')), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntrabandInMG_RRC_Connected_r18 = SEQ(name='prs-BWA-ThreeContiguousIntrabandInMG-RRC-Connected-r18', mode=MODE_TYPE, tag=(20, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PRS-BWA-ThreeContiguousIntrabandInMG-r18')), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntraband_RRC_IdleAndInactive_r18 = SEQ(name='prs-BWA-TwoContiguousIntraband-RRC-IdleAndInactive-r18', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PRS-BWA-TwoContiguousIntrabandInMG-r18')), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntraband_RRC_IdleAndInactive_r18 = SEQ(name='prs-BWA-ThreeContiguousIntraband-RRC-IdleAndInactive-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PRS-BWA-ThreeContiguousIntrabandInMG-r18')), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_Connected_r18 = ENUM(name='reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-Connected-r18', mode=MODE_TYPE, tag=(23, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_Connected_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_IdleAndInactive_r18 = ENUM(name='reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-IdleAndInactive-r18', mode=MODE_TYPE, tag=(24, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_IdleAndInactive_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_IdleAndInactive_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Inactive_r18 = ENUM(name='dl-PRS-MeasurementWithRxFH-RRC-Inactive-r18', mode=MODE_TYPE, tag=(25, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Inactive_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Inactive_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Idle_r18 = ENUM(name='dl-PRS-MeasurementWithRxFH-RRC-Idle-r18', mode=MODE_TYPE, tag=(26, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Idle_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Idle_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_Connected_r18 = ENUM(name='reducedNumOfSampleForMeasurementWithFH-RRC-Connected-r18', mode=MODE_TYPE, tag=(27, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_Connected_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_IdleAndInactive_r18 = ENUM(name='reducedNumOfSampleForMeasurementWithFH-RRC-IdleAndInactive-r18', mode=MODE_TYPE, tag=(28, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_IdleAndInactive_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_IdleAndInactive_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_supportOfPRS_BWA_WithTwoPFL_Combination_r18 = ENUM(name='supportOfPRS-BWA-WithTwoPFL-Combination-r18', mode=MODE_TYPE, tag=(29, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _PRS_ProcessingCapabilityPerBand_r16_supportOfPRS_BWA_WithTwoPFL_Combination_r18._cont = ASN1Dict([('supported', 0)])
+    _PRS_ProcessingCapabilityPerBand_r16_supportOfPRS_BWA_WithTwoPFL_Combination_r18._ext = None
+    _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Connected_r18 = SEQ(name='dl-PRS-MeasurementWithRxFH-RRC-Connected-r18', mode=MODE_TYPE, tag=(30, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-MeasurementWithRxFH-RRC-Connected-r18')), opt=True, group=3)
     PRS_ProcessingCapabilityPerBand_r16._cont = ASN1Dict([
         ('freqBandIndicatorNR-r16', _PRS_ProcessingCapabilityPerBand_r16_freqBandIndicatorNR_r16),
         ('supportedBandwidthPRS-r16', _PRS_ProcessingCapabilityPerBand_r16_supportedBandwidthPRS_r16),
@@ -4244,8 +4854,23 @@ class LPP_PDU_Definitions:
         ('supportedLowerRxBeamSweepingFactor-FR2-r17', _PRS_ProcessingCapabilityPerBand_r16_supportedLowerRxBeamSweepingFactor_FR2_r17),
         ('supportedDL-PRS-ProcessingSamples-RRC-Inactive-r17', _PRS_ProcessingCapabilityPerBand_r16_supportedDL_PRS_ProcessingSamples_RRC_Inactive_r17),
         ('prs-MeasurementWithoutMG-r17', _PRS_ProcessingCapabilityPerBand_r16_prs_MeasurementWithoutMG_r17),
+        ('maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Inactive-r18', _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18),
+        ('maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18),
+        ('ppw-maxNumOfOneSymbolPRS-ResProcessedPerSlot-r18', _PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18),
+        ('prs-BWA-TwoContiguousIntrabandInMG-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntrabandInMG_RRC_Connected_r18),
+        ('prs-BWA-ThreeContiguousIntrabandInMG-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntrabandInMG_RRC_Connected_r18),
+        ('prs-BWA-TwoContiguousIntraband-RRC-IdleAndInactive-r18', _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntraband_RRC_IdleAndInactive_r18),
+        ('prs-BWA-ThreeContiguousIntraband-RRC-IdleAndInactive-r18', _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntraband_RRC_IdleAndInactive_r18),
+        ('reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_Connected_r18),
+        ('reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-IdleAndInactive-r18', _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_IdleAndInactive_r18),
+        ('dl-PRS-MeasurementWithRxFH-RRC-Inactive-r18', _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Inactive_r18),
+        ('dl-PRS-MeasurementWithRxFH-RRC-Idle-r18', _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Idle_r18),
+        ('reducedNumOfSampleForMeasurementWithFH-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_Connected_r18),
+        ('reducedNumOfSampleForMeasurementWithFH-RRC-IdleAndInactive-r18', _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_IdleAndInactive_r18),
+        ('supportOfPRS-BWA-WithTwoPFL-Combination-r18', _PRS_ProcessingCapabilityPerBand_r16_supportOfPRS_BWA_WithTwoPFL_Combination_r18),
+        ('dl-PRS-MeasurementWithRxFH-RRC-Connected-r18', _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Connected_r18),
         ])
-    PRS_ProcessingCapabilityPerBand_r16._ext = ['supportedDL-PRS-ProcessingSamples-RRC-CONNECTED-r17', 'prs-ProcessingWindowType1A-r17', 'prs-ProcessingWindowType1B-r17', 'prs-ProcessingWindowType2-r17', 'prs-ProcessingCapabilityOutsideMGinPPW-r17', 'dl-PRS-BufferType-RRC-Inactive-r17', 'durationOfPRS-Processing-RRC-Inactive-r17', 'maxNumOfDL-PRS-ResProcessedPerSlot-RRC-Inactive-r17', 'supportedLowerRxBeamSweepingFactor-FR2-r17', 'supportedDL-PRS-ProcessingSamples-RRC-Inactive-r17', 'prs-MeasurementWithoutMG-r17']
+    PRS_ProcessingCapabilityPerBand_r16._ext = ['supportedDL-PRS-ProcessingSamples-RRC-CONNECTED-r17', 'prs-ProcessingWindowType1A-r17', 'prs-ProcessingWindowType1B-r17', 'prs-ProcessingWindowType2-r17', 'prs-ProcessingCapabilityOutsideMGinPPW-r17', 'dl-PRS-BufferType-RRC-Inactive-r17', 'durationOfPRS-Processing-RRC-Inactive-r17', 'maxNumOfDL-PRS-ResProcessedPerSlot-RRC-Inactive-r17', 'supportedLowerRxBeamSweepingFactor-FR2-r17', 'supportedDL-PRS-ProcessingSamples-RRC-Inactive-r17', 'prs-MeasurementWithoutMG-r17', 'maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Inactive-r18', 'maxNumOfOneSymbolPRS-ResProcessedPerSlot-RRC-Connected-r18', 'ppw-maxNumOfOneSymbolPRS-ResProcessedPerSlot-r18', 'prs-BWA-TwoContiguousIntrabandInMG-RRC-Connected-r18', 'prs-BWA-ThreeContiguousIntrabandInMG-RRC-Connected-r18', 'prs-BWA-TwoContiguousIntraband-RRC-IdleAndInactive-r18', 'prs-BWA-ThreeContiguousIntraband-RRC-IdleAndInactive-r18', 'reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-Connected-r18', 'reducedNumOfSampleInMeasurementWithPRS-BWA-RRC-IdleAndInactive-r18', 'dl-PRS-MeasurementWithRxFH-RRC-Inactive-r18', 'dl-PRS-MeasurementWithRxFH-RRC-Idle-r18', 'reducedNumOfSampleForMeasurementWithFH-RRC-Connected-r18', 'reducedNumOfSampleForMeasurementWithFH-RRC-IdleAndInactive-r18', 'supportOfPRS-BWA-WithTwoPFL-Combination-r18', 'dl-PRS-MeasurementWithRxFH-RRC-Connected-r18']
     
     #-----< PRS-ProcessingCapabilityOutsideMGinPPWperType-r17 >-----#
     PRS_ProcessingCapabilityOutsideMGinPPWperType_r17 = SEQ(name='PRS-ProcessingCapabilityOutsideMGinPPWperType-r17', mode=MODE_TYPE)
@@ -4320,6 +4945,187 @@ class LPP_PDU_Definitions:
         ('ppw-maxNumOfDL-Bandwidth-r17', _PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_ppw_maxNumOfDL_Bandwidth_r17),
         ])
     PRS_ProcessingCapabilityOutsideMGinPPWperType_r17._ext = ['ppw-maxNumOfDL-Bandwidth-r17']
+    
+    #-----< PRS-BWA-TwoContiguousIntrabandInMG-r18 >-----#
+    PRS_BWA_TwoContiguousIntrabandInMG_r18 = SEQ(name='PRS-BWA-TwoContiguousIntrabandInMG-r18', mode=MODE_TYPE)
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR1_r18 = ENUM(name='maximumOfTwoAggregatedDL-PRS-Bandwidth-FR1-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR1_r18._cont = ASN1Dict([('mhz10', 0), ('mhz20', 1), ('mhz40', 2), ('mhz50', 3), ('mhz80', 4), ('mhz100', 5), ('mhz160', 6), ('mhz200', 7)])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR1_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR2_r18 = ENUM(name='maximumOfTwoAggregatedDL-PRS-Bandwidth-FR2-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR2_r18._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2), ('mhz800', 3)])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR2_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18 = ENUM(name='maximumOfDL-PRS-BandwidthPerPFL-FR1-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18._cont = ASN1Dict([('mhz5', 0), ('mhz10', 1), ('mhz20', 2), ('mhz40', 3), ('mhz50', 4), ('mhz80', 5), ('mhz100', 6)])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18 = ENUM(name='maximumOfDL-PRS-BandwidthPerPFL-FR2-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3)])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18 = ENUM(name='dl-PRS-BufferTypeOfBWA-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18._cont = ASN1Dict([('type1', 0), ('type2', 1)])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18 = SEQ(name='prs-durationOfTwoPRS-BWA-Processing-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsN_r18 = ENUM(name='prs-durationOfTwoPRS-BWA-ProcessingSymbolsN-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsN_r18._cont = ASN1Dict([('msDot125', 0), ('msDot25', 1), ('msDot5', 2), ('ms1', 3), ('ms2', 4), ('ms4', 5), ('ms6', 6), ('ms8', 7), ('ms12', 8), ('ms16', 9), ('ms20', 10), ('ms25', 11), ('ms30', 12), ('ms32', 13), ('ms35', 14), ('ms40', 15), ('ms45', 16), ('ms50', 17)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsN_r18._ext = None
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsT_r18 = ENUM(name='prs-durationOfTwoPRS-BWA-ProcessingSymbolsT-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsT_r18._cont = ASN1Dict([('ms8', 0), ('ms16', 1), ('ms20', 2), ('ms30', 3), ('ms40', 4), ('ms80', 5), ('ms160', 6), ('ms320', 7), ('ms640', 8), ('ms1280', 9)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsT_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18._cont = ASN1Dict([
+        ('prs-durationOfTwoPRS-BWA-ProcessingSymbolsN-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsN_r18),
+        ('prs-durationOfTwoPRS-BWA-ProcessingSymbolsT-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsT_r18),
+        ])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18 = SEQ(name='maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR1-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18 = ENUM(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18._ext = None
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18 = ENUM(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18._ext = None
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18._cont = ASN1Dict([
+        ('scs15-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18),
+        ('scs30-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18),
+        ('scs60-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18),
+        ])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18 = SEQ(name='maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR2-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18._ext = None
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18 = ENUM(name='scs120-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18._ext = None
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18._cont = ASN1Dict([
+        ('scs60-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18),
+        ('scs120-r18', __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18),
+        ])
+    _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18._ext = None
+    PRS_BWA_TwoContiguousIntrabandInMG_r18._cont = ASN1Dict([
+        ('maximumOfTwoAggregatedDL-PRS-Bandwidth-FR1-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR1_r18),
+        ('maximumOfTwoAggregatedDL-PRS-Bandwidth-FR2-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR2_r18),
+        ('maximumOfDL-PRS-BandwidthPerPFL-FR1-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18),
+        ('maximumOfDL-PRS-BandwidthPerPFL-FR2-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18),
+        ('dl-PRS-BufferTypeOfBWA-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18),
+        ('prs-durationOfTwoPRS-BWA-Processing-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18),
+        ('maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR1-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18),
+        ('maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR2-r18', _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18),
+        ])
+    PRS_BWA_TwoContiguousIntrabandInMG_r18._ext = None
+    
+    #-----< PRS-BWA-ThreeContiguousIntrabandInMG-r18 >-----#
+    PRS_BWA_ThreeContiguousIntrabandInMG_r18 = SEQ(name='PRS-BWA-ThreeContiguousIntrabandInMG-r18', mode=MODE_TYPE)
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR1_r18 = ENUM(name='maximumOfThreeAggregatedDL-PRS-Bandwidth-FR1-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR1_r18._cont = ASN1Dict([('mhz15', 0), ('mhz20', 1), ('mhz30', 2), ('mhz40', 3), ('mhz50', 4), ('mhz60', 5), ('mhz80', 6), ('mhz100', 7), ('mhz120', 8), ('mhz140', 9), ('mhz150', 10), ('mhz180', 11), ('mhz200', 12), ('mhz240', 13), ('mhz300', 14)])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR1_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR2_r18 = ENUM(name='maximumOfThreeAggregatedDL-PRS-Bandwidth-FR2-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR2_r18._cont = ASN1Dict([('mhz150', 0), ('mhz200', 1), ('mhz300', 2), ('mhz400', 3), ('mhz600', 4), ('mhz800', 5), ('mhz1000', 6), ('mhz1200', 7)])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR2_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18 = ENUM(name='maximumOfDL-PRS-BandwidthPerPFL-FR1-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18._cont = ASN1Dict([('mhz5', 0), ('mhz10', 1), ('mhz20', 2), ('mhz40', 3), ('mhz50', 4), ('mhz80', 5), ('mhz100', 6)])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18 = ENUM(name='maximumOfDL-PRS-BandwidthPerPFL-FR2-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3)])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18 = ENUM(name='dl-PRS-BufferTypeOfBWA-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18._cont = ASN1Dict([('type1', 0), ('type2', 1)])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18 = SEQ(name='prs-durationOfThreePRS-BWA-Processing-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsN_r18 = ENUM(name='prs-durationOfThreePRS-BWA-ProcessingSymbolsN-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsN_r18._cont = ASN1Dict([('msDot125', 0), ('msDot25', 1), ('msDot5', 2), ('ms1', 3), ('ms2', 4), ('ms4', 5), ('ms6', 6), ('ms8', 7), ('ms12', 8), ('ms16', 9), ('ms20', 10), ('ms25', 11), ('ms30', 12), ('ms32', 13), ('ms35', 14), ('ms40', 15), ('ms45', 16), ('ms50', 17)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsN_r18._ext = None
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsT_r18 = ENUM(name='prs-durationOfThreePRS-BWA-ProcessingSymbolsT-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsT_r18._cont = ASN1Dict([('ms8', 0), ('ms16', 1), ('ms20', 2), ('ms30', 3), ('ms40', 4), ('ms80', 5), ('ms160', 6), ('ms320', 7), ('ms640', 8), ('ms1280', 9)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsT_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18._cont = ASN1Dict([
+        ('prs-durationOfThreePRS-BWA-ProcessingSymbolsN-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsN_r18),
+        ('prs-durationOfThreePRS-BWA-ProcessingSymbolsT-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsT_r18),
+        ])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18 = SEQ(name='maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR1-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18 = ENUM(name='scs15-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18._ext = None
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18 = ENUM(name='scs30-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18._ext = None
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18._cont = ASN1Dict([
+        ('scs15-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18),
+        ('scs30-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18),
+        ('scs60-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18),
+        ])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18 = SEQ(name='maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR2-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18 = ENUM(name='scs60-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18._ext = None
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18 = ENUM(name='scs120-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6), ('n24', 7), ('n32', 8), ('n48', 9), ('n64', 10)])
+    __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18._ext = None
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18._cont = ASN1Dict([
+        ('scs60-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18),
+        ('scs120-r18', __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18),
+        ])
+    _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18._ext = None
+    PRS_BWA_ThreeContiguousIntrabandInMG_r18._cont = ASN1Dict([
+        ('maximumOfThreeAggregatedDL-PRS-Bandwidth-FR1-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR1_r18),
+        ('maximumOfThreeAggregatedDL-PRS-Bandwidth-FR2-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR2_r18),
+        ('maximumOfDL-PRS-BandwidthPerPFL-FR1-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18),
+        ('maximumOfDL-PRS-BandwidthPerPFL-FR2-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18),
+        ('dl-PRS-BufferTypeOfBWA-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18),
+        ('prs-durationOfThreePRS-BWA-Processing-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18),
+        ('maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR1-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18),
+        ('maxNumOfAggregatedDL-PRS-ResourcePerSlot-FR2-r18', _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18),
+        ])
+    PRS_BWA_ThreeContiguousIntrabandInMG_r18._ext = None
+    
+    #-----< DL-PRS-MeasurementWithRxFH-RRC-Connected-r18 >-----#
+    DL_PRS_MeasurementWithRxFH_RRC_Connected_r18 = SEQ(name='DL-PRS-MeasurementWithRxFH-RRC-Connected-r18', mode=MODE_TYPE)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR1_r18 = ENUM(name='maximumPRS-BandwidthAcrossAllHopsFR1-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR1_r18._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR1_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR2_r18 = ENUM(name='maximumPRS-BandwidthAcrossAllHopsFR2-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR2_r18._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR2_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumFH_Hops_r18 = ENUM(name='maximumFH-Hops-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumFH_Hops_r18._cont = ASN1Dict([('n2', 0), ('n3', 1), ('n4', 2), ('n5', 3), ('n6', 4)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumFH_Hops_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18 = SEQ(name='processingDuration-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingPRS_SymbolsDurationN3_r18 = ENUM(name='processingPRS-SymbolsDurationN3-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingPRS_SymbolsDurationN3_r18._cont = ASN1Dict([('msDot125', 0), ('msDot25', 1), ('msDot5', 2), ('ms1', 3), ('ms2', 4), ('ms4', 5), ('ms6', 6), ('ms8', 7), ('ms12', 8), ('ms16', 9), ('ms20', 10), ('ms25', 11), ('ms30', 12), ('ms32', 13), ('ms35', 14), ('ms40', 15), ('ms45', 16), ('ms50', 17)])
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingPRS_SymbolsDurationN3_r18._ext = None
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingDurationT3_r18 = ENUM(name='processingDurationT3-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingDurationT3_r18._cont = ASN1Dict([('ms8', 0), ('ms16', 1), ('ms20', 2), ('ms30', 3), ('ms40', 4), ('ms80', 5), ('ms160', 6), ('ms320', 7), ('ms640', 8), ('ms1280', 9)])
+    __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingDurationT3_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18._cont = ASN1Dict([
+        ('processingPRS-SymbolsDurationN3-r18', __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingPRS_SymbolsDurationN3_r18),
+        ('processingDurationT3-r18', __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingDurationT3_r18),
+        ])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR1_r18 = ENUM(name='rf-RxRetuneTimeFR1-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR1_r18._cont = ASN1Dict([('n70', 0), ('n140', 1), ('n210', 2)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR1_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR2_r18 = ENUM(name='rf-RxRetuneTimeFR2-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR2_r18._cont = ASN1Dict([('n35', 0), ('n70', 1), ('n140', 2)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR2_r18._ext = None
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_numOfOverlappingPRB_r18 = ENUM(name='numOfOverlappingPRB-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_numOfOverlappingPRB_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3)])
+    _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_numOfOverlappingPRB_r18._ext = None
+    DL_PRS_MeasurementWithRxFH_RRC_Connected_r18._cont = ASN1Dict([
+        ('maximumPRS-BandwidthAcrossAllHopsFR1-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR1_r18),
+        ('maximumPRS-BandwidthAcrossAllHopsFR2-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR2_r18),
+        ('maximumFH-Hops-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumFH_Hops_r18),
+        ('processingDuration-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18),
+        ('rf-RxRetuneTimeFR1-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR1_r18),
+        ('rf-RxRetuneTimeFR2-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR2_r18),
+        ('numOfOverlappingPRB-r18', _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_numOfOverlappingPRB_r18),
+        ])
+    DL_PRS_MeasurementWithRxFH_RRC_Connected_r18._ext = []
     
     #-----< NR-DL-PRS-QCL-ProcessingCapability-r16 >-----#
     NR_DL_PRS_QCL_ProcessingCapability_r16 = SEQ(name='NR-DL-PRS-QCL-ProcessingCapability-r16', mode=MODE_TYPE)
@@ -4487,16 +5293,80 @@ class LPP_PDU_Definitions:
         ])
     DL_PRS_TEG_InfoElement_r17._ext = []
     
+    #-----< NR-IntegrityRiskParameters-r18 >-----#
+    NR_IntegrityRiskParameters_r18 = SEQ(name='NR-IntegrityRiskParameters-r18', mode=MODE_TYPE)
+    _NR_IntegrityRiskParameters_r18_nr_ProbOnsetTRP_Fault_r18 = INT(name='nr-ProbOnsetTRP-Fault-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityRiskParameters_r18_nr_ProbOnsetTRP_Fault_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityRiskParameters_r18_nr_MeanTRP_FaultDuration_r18 = INT(name='nr-MeanTRP-FaultDuration-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityRiskParameters_r18_nr_MeanTRP_FaultDuration_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3600)], ev=None, er=[])
+    NR_IntegrityRiskParameters_r18._cont = ASN1Dict([
+        ('nr-ProbOnsetTRP-Fault-r18', _NR_IntegrityRiskParameters_r18_nr_ProbOnsetTRP_Fault_r18),
+        ('nr-MeanTRP-FaultDuration-r18', _NR_IntegrityRiskParameters_r18_nr_MeanTRP_FaultDuration_r18),
+        ])
+    NR_IntegrityRiskParameters_r18._ext = []
+    
+    #-----< NR-IntegrityServiceAlert-r18 >-----#
+    NR_IntegrityServiceAlert_r18 = SEQ_OF(name='NR-IntegrityServiceAlert-r18', mode=MODE_TYPE)
+    _NR_IntegrityServiceAlert_r18__item_ = SEQ_OF(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TRP-IntegrityServiceAlertPerFreqLayer-r18')))
+    NR_IntegrityServiceAlert_r18._cont = _NR_IntegrityServiceAlert_r18__item_
+    NR_IntegrityServiceAlert_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    
+    #-----< NR-TRP-IntegrityServiceAlertPerFreqLayer-r18 >-----#
+    NR_TRP_IntegrityServiceAlertPerFreqLayer_r18 = SEQ_OF(name='NR-TRP-IntegrityServiceAlertPerFreqLayer-r18', mode=MODE_TYPE)
+    _NR_TRP_IntegrityServiceAlertPerFreqLayer_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TRP-IntegrityServiceAlertElement-r18')))
+    NR_TRP_IntegrityServiceAlertPerFreqLayer_r18._cont = _NR_TRP_IntegrityServiceAlertPerFreqLayer_r18__item_
+    NR_TRP_IntegrityServiceAlertPerFreqLayer_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< NR-TRP-IntegrityServiceAlertElement-r18 >-----#
+    NR_TRP_IntegrityServiceAlertElement_r18 = SEQ(name='NR-TRP-IntegrityServiceAlertElement-r18', mode=MODE_TYPE)
+    _NR_TRP_IntegrityServiceAlertElement_r18_dl_PRS_ID_r18 = INT(name='dl-PRS-ID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_TRP_IntegrityServiceAlertElement_r18_dl_PRS_ID_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_TRP_IntegrityServiceAlertElement_r18_nr_PhysCellID_r18 = INT(name='nr-PhysCellID-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhysCellID-r16')), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_nr_CellGlobalID_r18 = SEQ(name='nr-CellGlobalID-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NCGI-r15')), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_nr_ARFCN_r18 = INT(name='nr-ARFCN-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ARFCN-ValueNR-r15')), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_rtd_DoNotUse_r18 = BOOL(name='rtd-DoNotUse-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_trp_LocationDoNotUse_r18 = BOOL(name='trp-LocationDoNotUse-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_beamInfo_DoNotUse_r18 = BOOL(name='beamInfo-DoNotUse-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_TRP_IntegrityServiceAlertElement_r18_beamAntennaInfo_DoNotUse_r18 = BOOL(name='beamAntennaInfo-DoNotUse-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    NR_TRP_IntegrityServiceAlertElement_r18._cont = ASN1Dict([
+        ('dl-PRS-ID-r18', _NR_TRP_IntegrityServiceAlertElement_r18_dl_PRS_ID_r18),
+        ('nr-PhysCellID-r18', _NR_TRP_IntegrityServiceAlertElement_r18_nr_PhysCellID_r18),
+        ('nr-CellGlobalID-r18', _NR_TRP_IntegrityServiceAlertElement_r18_nr_CellGlobalID_r18),
+        ('nr-ARFCN-r18', _NR_TRP_IntegrityServiceAlertElement_r18_nr_ARFCN_r18),
+        ('rtd-DoNotUse-r18', _NR_TRP_IntegrityServiceAlertElement_r18_rtd_DoNotUse_r18),
+        ('trp-LocationDoNotUse-r18', _NR_TRP_IntegrityServiceAlertElement_r18_trp_LocationDoNotUse_r18),
+        ('beamInfo-DoNotUse-r18', _NR_TRP_IntegrityServiceAlertElement_r18_beamInfo_DoNotUse_r18),
+        ('beamAntennaInfo-DoNotUse-r18', _NR_TRP_IntegrityServiceAlertElement_r18_beamAntennaInfo_DoNotUse_r18),
+        ])
+    NR_TRP_IntegrityServiceAlertElement_r18._ext = []
+    
+    #-----< NR-IntegrityServiceParameters-r18 >-----#
+    NR_IntegrityServiceParameters_r18 = SEQ(name='NR-IntegrityServiceParameters-r18', mode=MODE_TYPE)
+    _NR_IntegrityServiceParameters_r18_ir_Minimum_r18 = INT(name='ir-Minimum-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityServiceParameters_r18_ir_Minimum_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityServiceParameters_r18_ir_Maximum_r18 = INT(name='ir-Maximum-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityServiceParameters_r18_ir_Maximum_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityServiceParameters_r18._cont = ASN1Dict([
+        ('ir-Minimum-r18', _NR_IntegrityServiceParameters_r18_ir_Minimum_r18),
+        ('ir-Maximum-r18', _NR_IntegrityServiceParameters_r18_ir_Maximum_r18),
+        ])
+    NR_IntegrityServiceParameters_r18._ext = []
+    
     #-----< NR-On-Demand-DL-PRS-Configurations-r17 >-----#
     NR_On_Demand_DL_PRS_Configurations_r17 = SEQ(name='NR-On-Demand-DL-PRS-Configurations-r17', mode=MODE_TYPE)
     _NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17 = SEQ_OF(name='on-demand-dl-prs-configuration-list-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'On-Demand-DL-PRS-Configuration-r17')))
     _NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17._cont = __NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17__item_
     _NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18 = SEQ_OF(name='onDemandDL-PRS-AggregationList-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    __NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18__item_ = SEQ_OF(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'OnDemandDL-PRS-AggregationInfo-r18')))
+    _NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18._cont = __NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18__item_
+    _NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     NR_On_Demand_DL_PRS_Configurations_r17._cont = ASN1Dict([
         ('on-demand-dl-prs-configuration-list-r17', _NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17),
+        ('onDemandDL-PRS-AggregationList-r18', _NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18),
         ])
-    NR_On_Demand_DL_PRS_Configurations_r17._ext = []
+    NR_On_Demand_DL_PRS_Configurations_r17._ext = ['onDemandDL-PRS-AggregationList-r18']
     
     #-----< On-Demand-DL-PRS-Configuration-r17 >-----#
     On_Demand_DL_PRS_Configuration_r17 = SEQ(name='On-Demand-DL-PRS-Configuration-r17', mode=MODE_TYPE)
@@ -4519,6 +5389,12 @@ class LPP_PDU_Definitions:
         ])
     DL_PRS_Configuration_ID_r17._ext = []
     
+    #-----< OnDemandDL-PRS-AggregationInfo-r18 >-----#
+    OnDemandDL_PRS_AggregationInfo_r18 = SEQ_OF(name='OnDemandDL-PRS-AggregationInfo-r18', mode=MODE_TYPE)
+    _OnDemandDL_PRS_AggregationInfo_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-Configuration-ID-r17')))
+    OnDemandDL_PRS_AggregationInfo_r18._cont = _OnDemandDL_PRS_AggregationInfo_r18__item_
+    OnDemandDL_PRS_AggregationInfo_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
     #-----< NR-On-Demand-DL-PRS-Information-r17 >-----#
     NR_On_Demand_DL_PRS_Information_r17 = SEQ_OF(name='NR-On-Demand-DL-PRS-Information-r17', mode=MODE_TYPE)
     _NR_On_Demand_DL_PRS_Information_r17__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-On-Demand-DL-PRS-PerFreqLayer-r17')))
@@ -4531,16 +5407,16 @@ class LPP_PDU_Definitions:
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_FrequencyRangeReq_r17._cont = ASN1Dict([('fr1', 0), ('fr2', 1)])
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_FrequencyRangeReq_r17._ext = []
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceSetPeriodicityReq_r17 = ENUM(name='dl-prs-ResourceSetPeriodicityReq-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceSetPeriodicityReq_r17._cont = ASN1Dict([('p4', 0), ('p5', 1), ('p8', 2), ('p10', 3), ('p16', 4), ('p20', 5), ('p32', 6), ('p40', 7), ('p64', 8), ('p80', 9), ('p160', 10), ('p320', 11), ('p640', 12), ('p1280', 13), ('p2560', 14), ('p5120', 15), ('p10240', 16), ('p20480', 17), ('p40960', 18), ('p81920', 19)])
-    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceSetPeriodicityReq_r17._ext = []
+    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceSetPeriodicityReq_r17._cont = ASN1Dict([('p4', 0), ('p5', 1), ('p8', 2), ('p10', 3), ('p16', 4), ('p20', 5), ('p32', 6), ('p40', 7), ('p64', 8), ('p80', 9), ('p160', 10), ('p320', 11), ('p640', 12), ('p1280', 13), ('p2560', 14), ('p5120', 15), ('p10240', 16), ('p20480', 17), ('p40960', 18), ('p81920', 19), ('p128-v1760', 20), ('p256-v1760', 21), ('p512-v1760', 22)])
+    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceSetPeriodicityReq_r17._ext = ['p128-v1760', 'p256-v1760', 'p512-v1760']
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceBandwidthReq_r17 = INT(name='dl-prs-ResourceBandwidthReq-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceBandwidthReq_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=63)], ev=None, er=[])
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceRepetitionFactorReq_r17 = ENUM(name='dl-prs-ResourceRepetitionFactorReq-r17', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceRepetitionFactorReq_r17._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n8', 3), ('n16', 4), ('n32', 5)])
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_ResourceRepetitionFactorReq_r17._ext = []
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_NumSymbolsReq_r17 = ENUM(name='dl-prs-NumSymbolsReq-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_NumSymbolsReq_r17._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
-    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_NumSymbolsReq_r17._ext = []
+    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_NumSymbolsReq_r17._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3), ('n1-v1800', 4)])
+    _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_NumSymbolsReq_r17._ext = ['n1-v1800']
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_CombSizeN_Req_r17 = ENUM(name='dl-prs-CombSizeN-Req-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_CombSizeN_Req_r17._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
     _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_CombSizeN_Req_r17._ext = []
@@ -4612,12 +5488,23 @@ class LPP_PDU_Definitions:
     __NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-Configuration-ID-r17')))
     _NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17._cont = __NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17__item_
     _NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18 = SEQ_OF(name='dl-PRS-AggregationID-PrefList-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    __NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18._cont = __NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18__item_
+    _NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18 = SEQ_OF(name='nr-OnDemandDL-PRS-AggregationReqList-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    __NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18__item_ = SEQ_OF(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-OnDemandDL-PRS-AggregationReqElement-r18')))
+    _NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18._cont = __NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18__item_
+    _NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     NR_On_Demand_DL_PRS_Request_r17._cont = ASN1Dict([
         ('dl-prs-StartTime-and-Duration-r17', _NR_On_Demand_DL_PRS_Request_r17_dl_prs_StartTime_and_Duration_r17),
         ('nr-on-demand-DL-PRS-Information-r17', _NR_On_Demand_DL_PRS_Request_r17_nr_on_demand_DL_PRS_Information_r17),
         ('dl-prs-configuration-id-PrefList-r17', _NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17),
+        ('dl-PRS-AggregationID-PrefList-r18', _NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18),
+        ('nr-OnDemandDL-PRS-AggregationReqList-r18', _NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18),
         ])
-    NR_On_Demand_DL_PRS_Request_r17._ext = []
+    NR_On_Demand_DL_PRS_Request_r17._ext = ['dl-PRS-AggregationID-PrefList-r18', 'nr-OnDemandDL-PRS-AggregationReqList-r18']
     
     #-----< DL-PRS-StartTime-and-Duration-r17 >-----#
     DL_PRS_StartTime_and_Duration_r17 = SEQ(name='DL-PRS-StartTime-and-Duration-r17', mode=MODE_TYPE)
@@ -4642,6 +5529,13 @@ class LPP_PDU_Definitions:
         ])
     DL_PRS_StartTime_and_Duration_r17._ext = []
     
+    #-----< NR-OnDemandDL-PRS-AggregationReqElement-r18 >-----#
+    NR_OnDemandDL_PRS_AggregationReqElement_r18 = SEQ_OF(name='NR-OnDemandDL-PRS-AggregationReqElement-r18', mode=MODE_TYPE)
+    _NR_OnDemandDL_PRS_AggregationReqElement_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    _NR_OnDemandDL_PRS_AggregationReqElement_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    NR_OnDemandDL_PRS_AggregationReqElement_r18._cont = _NR_OnDemandDL_PRS_AggregationReqElement_r18__item_
+    NR_OnDemandDL_PRS_AggregationReqElement_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
     #-----< NR-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17 >-----#
     NR_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17 = SEQ_OF(name='NR-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17', mode=MODE_TYPE)
     _NR_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-Configuration-ID-r17')))
@@ -4662,6 +5556,34 @@ class LPP_PDU_Definitions:
         ])
     NR_On_Demand_DL_PRS_Support_r17._ext = []
     
+    #-----< NR-PeriodicAssistData-r18 >-----#
+    NR_PeriodicAssistData_r18 = SEQ(name='NR-PeriodicAssistData-r18', mode=MODE_TYPE)
+    _NR_PeriodicAssistData_r18_nr_PeriodicPRU_DL_Info_r18 = SEQ(name='nr-PeriodicPRU-DL-Info-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PeriodicControlParam-r18')), opt=True)
+    NR_PeriodicAssistData_r18._cont = ASN1Dict([
+        ('nr-PeriodicPRU-DL-Info-r18', _NR_PeriodicAssistData_r18_nr_PeriodicPRU_DL_Info_r18),
+        ])
+    NR_PeriodicAssistData_r18._ext = []
+    
+    #-----< NR-PeriodicAssistDataReq-r18 >-----#
+    NR_PeriodicAssistDataReq_r18 = SEQ(name='NR-PeriodicAssistDataReq-r18', mode=MODE_TYPE)
+    _NR_PeriodicAssistDataReq_r18_nr_PeriodicPRU_DL_InfoReq_r18 = SEQ(name='nr-PeriodicPRU-DL-InfoReq-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PeriodicControlParam-r18')), opt=True)
+    NR_PeriodicAssistDataReq_r18._cont = ASN1Dict([
+        ('nr-PeriodicPRU-DL-InfoReq-r18', _NR_PeriodicAssistDataReq_r18_nr_PeriodicPRU_DL_InfoReq_r18),
+        ])
+    NR_PeriodicAssistDataReq_r18._ext = []
+    
+    #-----< NR-PeriodicControlParam-r18 >-----#
+    NR_PeriodicControlParam_r18 = SEQ(name='NR-PeriodicControlParam-r18', mode=MODE_TYPE)
+    _NR_PeriodicControlParam_r18_deliveryAmount_r18 = INT(name='deliveryAmount-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_PeriodicControlParam_r18_deliveryAmount_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    _NR_PeriodicControlParam_r18_deliveryInterval_r18 = INT(name='deliveryInterval-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_PeriodicControlParam_r18_deliveryInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=4, ub=81920)], ev=None, er=[])
+    NR_PeriodicControlParam_r18._cont = ASN1Dict([
+        ('deliveryAmount-r18', _NR_PeriodicControlParam_r18_deliveryAmount_r18),
+        ('deliveryInterval-r18', _NR_PeriodicControlParam_r18_deliveryInterval_r18),
+        ])
+    NR_PeriodicControlParam_r18._ext = []
+    
     #-----< NR-PositionCalculationAssistance-r16 >-----#
     NR_PositionCalculationAssistance_r16 = SEQ(name='NR-PositionCalculationAssistance-r16', mode=MODE_TYPE)
     _NR_PositionCalculationAssistance_r16_nr_TRP_LocationInfo_r16 = SEQ_OF(name='nr-TRP-LocationInfo-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TRP-LocationInfo-r16')), opt=True)
@@ -4670,6 +5592,14 @@ class LPP_PDU_Definitions:
     _NR_PositionCalculationAssistance_r16_nr_TRP_BeamAntennaInfo_r17 = SEQ_OF(name='nr-TRP-BeamAntennaInfo-r17', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TRP-BeamAntennaInfo-r17')), opt=True, group=0)
     _NR_PositionCalculationAssistance_r16_nr_DL_PRS_Expected_LOS_NLOS_Assistance_r17 = SEQ_OF(name='nr-DL-PRS-Expected-LOS-NLOS-Assistance-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ExpectedLOS-NLOS-Assistance-r17')), opt=True, group=0)
     _NR_PositionCalculationAssistance_r16_nr_DL_PRS_TRP_TEG_Info_r17 = SEQ_OF(name='nr-DL-PRS-TRP-TEG-Info-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-TRP-TEG-Info-r17')), opt=True, group=0)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceParameters_r18 = SEQ(name='nr-IntegrityServiceParameters-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityServiceParameters-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceAlert_r18 = SEQ_OF(name='nr-IntegrityServiceAlert-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityServiceAlert-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityRiskParameters_r18 = SEQ(name='nr-IntegrityRiskParameters-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityRiskParameters-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_LocationInfo_r18 = SEQ(name='nr-IntegrityParametersTRP-LocationInfo-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersTRP-LocationInfo-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersDL_PRS_BeamInfo_r18 = SEQ(name='nr-IntegrityParametersDL-PRS-BeamInfo-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersDL-PRS-BeamInfo-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersRTD_Info_r18 = SEQ(name='nr-IntegrityParametersRTD-Info-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersRTD-Info-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_BeamAntennaInfo_r18 = SEQ(name='nr-IntegrityParametersTRP-BeamAntennaInfo-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityParametersTRP-BeamAntennaInfo-r18')), opt=True, group=1)
+    _NR_PositionCalculationAssistance_r16_nr_PRU_DL_Info_r18 = SEQ(name='nr-PRU-DL-Info-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PRU-DL-Info-r18')), opt=True, group=1)
     NR_PositionCalculationAssistance_r16._cont = ASN1Dict([
         ('nr-TRP-LocationInfo-r16', _NR_PositionCalculationAssistance_r16_nr_TRP_LocationInfo_r16),
         ('nr-DL-PRS-BeamInfo-r16', _NR_PositionCalculationAssistance_r16_nr_DL_PRS_BeamInfo_r16),
@@ -4677,8 +5607,177 @@ class LPP_PDU_Definitions:
         ('nr-TRP-BeamAntennaInfo-r17', _NR_PositionCalculationAssistance_r16_nr_TRP_BeamAntennaInfo_r17),
         ('nr-DL-PRS-Expected-LOS-NLOS-Assistance-r17', _NR_PositionCalculationAssistance_r16_nr_DL_PRS_Expected_LOS_NLOS_Assistance_r17),
         ('nr-DL-PRS-TRP-TEG-Info-r17', _NR_PositionCalculationAssistance_r16_nr_DL_PRS_TRP_TEG_Info_r17),
+        ('nr-IntegrityServiceParameters-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceParameters_r18),
+        ('nr-IntegrityServiceAlert-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceAlert_r18),
+        ('nr-IntegrityRiskParameters-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityRiskParameters_r18),
+        ('nr-IntegrityParametersTRP-LocationInfo-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_LocationInfo_r18),
+        ('nr-IntegrityParametersDL-PRS-BeamInfo-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersDL_PRS_BeamInfo_r18),
+        ('nr-IntegrityParametersRTD-Info-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersRTD_Info_r18),
+        ('nr-IntegrityParametersTRP-BeamAntennaInfo-r18', _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_BeamAntennaInfo_r18),
+        ('nr-PRU-DL-Info-r18', _NR_PositionCalculationAssistance_r16_nr_PRU_DL_Info_r18),
         ])
-    NR_PositionCalculationAssistance_r16._ext = ['nr-TRP-BeamAntennaInfo-r17', 'nr-DL-PRS-Expected-LOS-NLOS-Assistance-r17', 'nr-DL-PRS-TRP-TEG-Info-r17']
+    NR_PositionCalculationAssistance_r16._ext = ['nr-TRP-BeamAntennaInfo-r17', 'nr-DL-PRS-Expected-LOS-NLOS-Assistance-r17', 'nr-DL-PRS-TRP-TEG-Info-r17', 'nr-IntegrityServiceParameters-r18', 'nr-IntegrityServiceAlert-r18', 'nr-IntegrityRiskParameters-r18', 'nr-IntegrityParametersTRP-LocationInfo-r18', 'nr-IntegrityParametersDL-PRS-BeamInfo-r18', 'nr-IntegrityParametersRTD-Info-r18', 'nr-IntegrityParametersTRP-BeamAntennaInfo-r18', 'nr-PRU-DL-Info-r18']
+    
+    #-----< NR-IntegrityParametersTRP-LocationInfo-r18 >-----#
+    NR_IntegrityParametersTRP_LocationInfo_r18 = SEQ(name='NR-IntegrityParametersTRP-LocationInfo-r18', mode=MODE_TYPE)
+    _NR_IntegrityParametersTRP_LocationInfo_r18_trp_ErrorCorrelationTime_r18 = INT(name='trp-ErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_IntegrityParametersTRP_LocationInfo_r18_trp_ErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceSetARP_ErrorCorrelationTime_r18 = INT(name='dl-PRS-ResourceSetARP-ErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceSetARP_ErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceARP_ErrorCorrelationTime_r18 = INT(name='dl-PRS-ResourceARP-ErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceARP_ErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityParametersTRP_LocationInfo_r18._cont = ASN1Dict([
+        ('trp-ErrorCorrelationTime-r18', _NR_IntegrityParametersTRP_LocationInfo_r18_trp_ErrorCorrelationTime_r18),
+        ('dl-PRS-ResourceSetARP-ErrorCorrelationTime-r18', _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceSetARP_ErrorCorrelationTime_r18),
+        ('dl-PRS-ResourceARP-ErrorCorrelationTime-r18', _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceARP_ErrorCorrelationTime_r18),
+        ])
+    NR_IntegrityParametersTRP_LocationInfo_r18._ext = []
+    
+    #-----< NR-IntegrityParametersDL-PRS-BeamInfo-r18 >-----#
+    NR_IntegrityParametersDL_PRS_BeamInfo_r18 = SEQ(name='NR-IntegrityParametersDL-PRS-BeamInfo-r18', mode=MODE_TYPE)
+    _NR_IntegrityParametersDL_PRS_BeamInfo_r18_dl_PRS_BeamInfoErrorCorrelationTime_r18 = INT(name='dl-PRS-BeamInfoErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityParametersDL_PRS_BeamInfo_r18_dl_PRS_BeamInfoErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityParametersDL_PRS_BeamInfo_r18._cont = ASN1Dict([
+        ('dl-PRS-BeamInfoErrorCorrelationTime-r18', _NR_IntegrityParametersDL_PRS_BeamInfo_r18_dl_PRS_BeamInfoErrorCorrelationTime_r18),
+        ])
+    NR_IntegrityParametersDL_PRS_BeamInfo_r18._ext = []
+    
+    #-----< NR-IntegrityParametersRTD-Info-r18 >-----#
+    NR_IntegrityParametersRTD_Info_r18 = SEQ(name='NR-IntegrityParametersRTD-Info-r18', mode=MODE_TYPE)
+    _NR_IntegrityParametersRTD_Info_r18_rtd_ErrorCorrelationTime_r18 = INT(name='rtd-ErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityParametersRTD_Info_r18_rtd_ErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityParametersRTD_Info_r18._cont = ASN1Dict([
+        ('rtd-ErrorCorrelationTime-r18', _NR_IntegrityParametersRTD_Info_r18_rtd_ErrorCorrelationTime_r18),
+        ])
+    NR_IntegrityParametersRTD_Info_r18._ext = []
+    
+    #-----< NR-IntegrityParametersTRP-BeamAntennaInfo-r18 >-----#
+    NR_IntegrityParametersTRP_BeamAntennaInfo_r18 = SEQ(name='NR-IntegrityParametersTRP-BeamAntennaInfo-r18', mode=MODE_TYPE)
+    _NR_IntegrityParametersTRP_BeamAntennaInfo_r18_trp_BeamAntennaInfoErrorCorrelationTime_r18 = INT(name='trp-BeamAntennaInfoErrorCorrelationTime-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityParametersTRP_BeamAntennaInfo_r18_trp_BeamAntennaInfoErrorCorrelationTime_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    NR_IntegrityParametersTRP_BeamAntennaInfo_r18._cont = ASN1Dict([
+        ('trp-BeamAntennaInfoErrorCorrelationTime-r18', _NR_IntegrityParametersTRP_BeamAntennaInfo_r18_trp_BeamAntennaInfoErrorCorrelationTime_r18),
+        ])
+    NR_IntegrityParametersTRP_BeamAntennaInfo_r18._ext = []
+    
+    #-----< NR-PRU-DL-Info-r18 >-----#
+    NR_PRU_DL_Info_r18 = SEQ(name='NR-PRU-DL-Info-r18', mode=MODE_TYPE)
+    _NR_PRU_DL_Info_r18_nr_PRU_LocationInfo_r18 = CHOICE(name='nr-PRU-LocationInfo-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LocationCoordinates')), opt=True)
+    _NR_PRU_DL_Info_r18_nr_PRU_DL_TDOA_MeasInfo_r18 = SEQ(name='nr-PRU-DL-TDOA-MeasInfo-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-TDOA-SignalMeasurementInformation-r16')), opt=True)
+    _NR_PRU_DL_Info_r18_nr_PRU_DL_AoD_MeasInfo_r18 = SEQ(name='nr-PRU-DL-AoD-MeasInfo-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-AoD-SignalMeasurementInformation-r16')), opt=True)
+    _NR_PRU_DL_Info_r18_nr_PRU_RSCP_MeasInfo_r18 = SEQ_OF(name='nr-PRU-RSCP-MeasInfo-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PRU-RSCP-MeasurementInformation-r18')), opt=True)
+    NR_PRU_DL_Info_r18._cont = ASN1Dict([
+        ('nr-PRU-LocationInfo-r18', _NR_PRU_DL_Info_r18_nr_PRU_LocationInfo_r18),
+        ('nr-PRU-DL-TDOA-MeasInfo-r18', _NR_PRU_DL_Info_r18_nr_PRU_DL_TDOA_MeasInfo_r18),
+        ('nr-PRU-DL-AoD-MeasInfo-r18', _NR_PRU_DL_Info_r18_nr_PRU_DL_AoD_MeasInfo_r18),
+        ('nr-PRU-RSCP-MeasInfo-r18', _NR_PRU_DL_Info_r18_nr_PRU_RSCP_MeasInfo_r18),
+        ])
+    NR_PRU_DL_Info_r18._ext = []
+    
+    #-----< NR-PRU-RSCP-MeasurementInformation-r18 >-----#
+    NR_PRU_RSCP_MeasurementInformation_r18 = SEQ_OF(name='NR-PRU-RSCP-MeasurementInformation-r18', mode=MODE_TYPE)
+    _NR_PRU_RSCP_MeasurementInformation_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PRU-RSCP-MeasElement-r18')))
+    NR_PRU_RSCP_MeasurementInformation_r18._cont = _NR_PRU_RSCP_MeasurementInformation_r18__item_
+    NR_PRU_RSCP_MeasurementInformation_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=256)], ev=None, er=[])
+    
+    #-----< NR-PRU-RSCP-MeasElement-r18 >-----#
+    NR_PRU_RSCP_MeasElement_r18 = SEQ(name='NR-PRU-RSCP-MeasElement-r18', mode=MODE_TYPE)
+    _NR_PRU_RSCP_MeasElement_r18_dl_PRS_ID_r18 = INT(name='dl-PRS-ID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_PRU_RSCP_MeasElement_r18_dl_PRS_ID_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PhysCellID_r18 = INT(name='nr-PhysCellID-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhysCellID-r16')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_CellGlobalID_r18 = SEQ(name='nr-CellGlobalID-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NCGI-r15')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_ARFCN_r18 = INT(name='nr-ARFCN-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ARFCN-ValueNR-r15')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceID_r18 = INT(name='nr-DL-PRS-ResourceID-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceID-r16')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceSetID_r18 = INT(name='nr-DL-PRS-ResourceSetID-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceSetID-r16')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_TimeStamp_r18 = SEQ(name='nr-TimeStamp-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimeStamp-r16')))
+    _NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18 = CHOICE(name='nr-los-nlos-Indicator-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perTRP = SEQ(name='perTRP', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-Indicator-r17')))
+    __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perResource = SEQ(name='perResource', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-Indicator-r17')))
+    _NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18._cont = ASN1Dict([
+        ('perTRP', __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perTRP),
+        ('perResource', __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perResource),
+        ])
+    _NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18._ext = None
+    _NR_PRU_RSCP_MeasElement_r18_nr_RSCP_r18 = INT(name='nr-RSCP-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_RSCP_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_RSRP_Result_r18 = INT(name='nr-DL-PRS-RSRP-Result-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_RSRP_Result_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_FirstPathRSRP_Result_r18 = INT(name='nr-DL-PRS-FirstPathRSRP-Result-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_FirstPathRSRP_Result_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True)
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18 = SEQ_OF(name='nr-PRU-RSCP-AddSampleMeasurements-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCP-AdditionalMeasurements-r18')))
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18._cont = __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18__item_
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18 = SEQ_OF(name='nr-PRU-RSRP-AddSampleMeasurements-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18._cont = __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18__item_
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18 = SEQ_OF(name='nr-PRU-FirstPathRSRP-ResultDiff-AddSampleMeasurements-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18._cont = __NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18__item_
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AdditionalMeasurements_r18 = SEQ_OF(name='nr-PRU-RSCP-AdditionalMeasurements-r18', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PRU-RSCP-AdditionalMeasurements-r18')), opt=True)
+    NR_PRU_RSCP_MeasElement_r18._cont = ASN1Dict([
+        ('dl-PRS-ID-r18', _NR_PRU_RSCP_MeasElement_r18_dl_PRS_ID_r18),
+        ('nr-PhysCellID-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PhysCellID_r18),
+        ('nr-CellGlobalID-r18', _NR_PRU_RSCP_MeasElement_r18_nr_CellGlobalID_r18),
+        ('nr-ARFCN-r18', _NR_PRU_RSCP_MeasElement_r18_nr_ARFCN_r18),
+        ('nr-DL-PRS-ResourceID-r18', _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceID_r18),
+        ('nr-DL-PRS-ResourceSetID-r18', _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceSetID_r18),
+        ('nr-TimeStamp-r18', _NR_PRU_RSCP_MeasElement_r18_nr_TimeStamp_r18),
+        ('nr-los-nlos-Indicator-r18', _NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18),
+        ('nr-RSCP-r18', _NR_PRU_RSCP_MeasElement_r18_nr_RSCP_r18),
+        ('nr-DL-PRS-RSRP-Result-r18', _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_RSRP_Result_r18),
+        ('nr-DL-PRS-FirstPathRSRP-Result-r18', _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_FirstPathRSRP_Result_r18),
+        ('nr-PhaseQuality-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PhaseQuality_r18),
+        ('nr-PRU-RSCP-AddSampleMeasurements-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18),
+        ('nr-PRU-RSRP-AddSampleMeasurements-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18),
+        ('nr-PRU-FirstPathRSRP-ResultDiff-AddSampleMeasurements-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18),
+        ('nr-PRU-RSCP-AdditionalMeasurements-r18', _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AdditionalMeasurements_r18),
+        ])
+    NR_PRU_RSCP_MeasElement_r18._ext = []
+    
+    #-----< NR-PRU-RSCP-AdditionalMeasurements-r18 >-----#
+    NR_PRU_RSCP_AdditionalMeasurements_r18 = SEQ_OF(name='NR-PRU-RSCP-AdditionalMeasurements-r18', mode=MODE_TYPE)
+    _NR_PRU_RSCP_AdditionalMeasurements_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PRU-RSCP-AdditionalMeasurementElement-r18')))
+    NR_PRU_RSCP_AdditionalMeasurements_r18._cont = _NR_PRU_RSCP_AdditionalMeasurements_r18__item_
+    NR_PRU_RSCP_AdditionalMeasurements_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    
+    #-----< NR-PRU-RSCP-AdditionalMeasurementElement-r18 >-----#
+    NR_PRU_RSCP_AdditionalMeasurementElement_r18 = SEQ(name='NR-PRU-RSCP-AdditionalMeasurementElement-r18', mode=MODE_TYPE)
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceID_r18 = INT(name='nr-DL-PRS-ResourceID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceID-r16')), opt=True)
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceSetID_r18 = INT(name='nr-DL-PRS-ResourceSetID-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-ResourceSetID-r16')), opt=True)
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_RSRP_ResultDiff_r18 = INT(name='nr-DL-PRS-RSRP-ResultDiff-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_RSRP_ResultDiff_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_FirstPathRSRP_ResultDiff_r18 = INT(name='nr-DL-PRS-FirstPathRSRP-ResultDiff-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_FirstPathRSRP_ResultDiff_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18 = SEQ_OF(name='nr-PRU-RSCP-AdditionalMeasurementsList-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCP-AdditionalMeasurements-r18')))
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18._cont = __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18__item_
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18 = SEQ_OF(name='nr-PRU-RSRPDiff-AdditionalMeasurementsList-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18._cont = __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18__item_
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18 = SEQ_OF(name='nr-PRU-FirstPathRSRP-ResultDiff-AdditionalMeasurementsList-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18._cont = __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18__item_
+    _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    NR_PRU_RSCP_AdditionalMeasurementElement_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-ResourceID-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceID_r18),
+        ('nr-DL-PRS-ResourceSetID-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceSetID_r18),
+        ('nr-DL-PRS-RSRP-ResultDiff-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_RSRP_ResultDiff_r18),
+        ('nr-DL-PRS-FirstPathRSRP-ResultDiff-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_FirstPathRSRP_ResultDiff_r18),
+        ('nr-PRU-RSCP-AdditionalMeasurementsList-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18),
+        ('nr-PRU-RSRPDiff-AdditionalMeasurementsList-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18),
+        ('nr-PRU-FirstPathRSRP-ResultDiff-AdditionalMeasurementsList-r18', _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18),
+        ])
+    NR_PRU_RSCP_AdditionalMeasurementElement_r18._ext = []
     
     #-----< NR-RTD-Info-r16 >-----#
     NR_RTD_Info_r16 = SEQ(name='NR-RTD-Info-r16', mode=MODE_TYPE)
@@ -4739,6 +5838,7 @@ class LPP_PDU_Definitions:
     _RTD_InfoElement_r16_subframeOffset_r16 = INT(name='subframeOffset-r16', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _RTD_InfoElement_r16_subframeOffset_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1966079)], ev=None, er=[])
     _RTD_InfoElement_r16_rtd_Quality_r16 = SEQ(name='rtd-Quality-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')))
+    _RTD_InfoElement_r16_nr_IntegrityRTD_InfoBounds_r18 = SEQ(name='nr-IntegrityRTD-InfoBounds-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityRTD-InfoBounds-r18')), opt=True, group=0)
     RTD_InfoElement_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _RTD_InfoElement_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _RTD_InfoElement_r16_nr_PhysCellID_r16),
@@ -4746,8 +5846,25 @@ class LPP_PDU_Definitions:
         ('nr-ARFCN-r16', _RTD_InfoElement_r16_nr_ARFCN_r16),
         ('subframeOffset-r16', _RTD_InfoElement_r16_subframeOffset_r16),
         ('rtd-Quality-r16', _RTD_InfoElement_r16_rtd_Quality_r16),
+        ('nr-IntegrityRTD-InfoBounds-r18', _RTD_InfoElement_r16_nr_IntegrityRTD_InfoBounds_r18),
         ])
-    RTD_InfoElement_r16._ext = []
+    RTD_InfoElement_r16._ext = ['nr-IntegrityRTD-InfoBounds-r18']
+    
+    #-----< NR-IntegrityRTD-InfoBounds-r18 >-----#
+    NR_IntegrityRTD_InfoBounds_r18 = SEQ(name='NR-IntegrityRTD-InfoBounds-r18', mode=MODE_TYPE)
+    _NR_IntegrityRTD_InfoBounds_r18_resolution_r18 = ENUM(name='resolution-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityRTD_InfoBounds_r18_resolution_r18._cont = ASN1Dict([('mdot1', 0), ('m1', 1), ('m10', 2), ('m30', 3)])
+    _NR_IntegrityRTD_InfoBounds_r18_resolution_r18._ext = []
+    _NR_IntegrityRTD_InfoBounds_r18_meanRTD_r18 = INT(name='meanRTD-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityRTD_InfoBounds_r18_meanRTD_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityRTD_InfoBounds_r18_stdDevRTD_r18 = INT(name='stdDevRTD-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityRTD_InfoBounds_r18_stdDevRTD_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=31)], ev=None, er=[])
+    NR_IntegrityRTD_InfoBounds_r18._cont = ASN1Dict([
+        ('resolution-r18', _NR_IntegrityRTD_InfoBounds_r18_resolution_r18),
+        ('meanRTD-r18', _NR_IntegrityRTD_InfoBounds_r18_meanRTD_r18),
+        ('stdDevRTD-r18', _NR_IntegrityRTD_InfoBounds_r18_stdDevRTD_r18),
+        ])
+    NR_IntegrityRTD_InfoBounds_r18._ext = []
     
     #-----< NR-SelectedDL-PRS-IndexList-r16 >-----#
     NR_SelectedDL_PRS_IndexList_r16 = SEQ_OF(name='NR-SelectedDL-PRS-IndexList-r16', mode=MODE_TYPE)
@@ -4872,6 +5989,8 @@ class LPP_PDU_Definitions:
         ('scs120-r16', __NR_TimeStamp_r16_nr_Slot_r16_scs120_r16),
         ])
     _NR_TimeStamp_r16_nr_Slot_r16._ext = None
+    _NR_TimeStamp_r16_nr_Symbol_r18 = INT(name='nr-Symbol-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_TimeStamp_r16_nr_Symbol_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
     NR_TimeStamp_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _NR_TimeStamp_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _NR_TimeStamp_r16_nr_PhysCellID_r16),
@@ -4879,8 +5998,9 @@ class LPP_PDU_Definitions:
         ('nr-ARFCN-r16', _NR_TimeStamp_r16_nr_ARFCN_r16),
         ('nr-SFN-r16', _NR_TimeStamp_r16_nr_SFN_r16),
         ('nr-Slot-r16', _NR_TimeStamp_r16_nr_Slot_r16),
+        ('nr-Symbol-r18', _NR_TimeStamp_r16_nr_Symbol_r18),
         ])
-    NR_TimeStamp_r16._ext = []
+    NR_TimeStamp_r16._ext = ['nr-Symbol-r18']
     
     #-----< NR-TimingQuality-r16 >-----#
     NR_TimingQuality_r16 = SEQ(name='NR-TimingQuality-r16', mode=MODE_TYPE)
@@ -4977,13 +6097,27 @@ class LPP_PDU_Definitions:
     _BeamPowerElement_r17_nr_dl_prs_RelativePower_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=30)], ev=None, er=[])
     _BeamPowerElement_r17_nr_dl_prs_RelativePowerFine_r17 = INT(name='nr-dl-prs-RelativePowerFine-r17', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _BeamPowerElement_r17_nr_dl_prs_RelativePowerFine_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=9)], ev=None, er=[])
+    _BeamPowerElement_r17_nr_IntegrityBeamPowerBounds_r18 = SEQ(name='nr-IntegrityBeamPowerBounds-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityBeamPowerBounds-r18')), opt=True, group=0)
     BeamPowerElement_r17._cont = ASN1Dict([
         ('nr-dl-prs-ResourceSetID-r17', _BeamPowerElement_r17_nr_dl_prs_ResourceSetID_r17),
         ('nr-dl-prs-ResourceID-r17', _BeamPowerElement_r17_nr_dl_prs_ResourceID_r17),
         ('nr-dl-prs-RelativePower-r17', _BeamPowerElement_r17_nr_dl_prs_RelativePower_r17),
         ('nr-dl-prs-RelativePowerFine-r17', _BeamPowerElement_r17_nr_dl_prs_RelativePowerFine_r17),
+        ('nr-IntegrityBeamPowerBounds-r18', _BeamPowerElement_r17_nr_IntegrityBeamPowerBounds_r18),
         ])
-    BeamPowerElement_r17._ext = []
+    BeamPowerElement_r17._ext = ['nr-IntegrityBeamPowerBounds-r18']
+    
+    #-----< NR-IntegrityBeamPowerBounds-r18 >-----#
+    NR_IntegrityBeamPowerBounds_r18 = SEQ(name='NR-IntegrityBeamPowerBounds-r18', mode=MODE_TYPE)
+    _NR_IntegrityBeamPowerBounds_r18_meanBeamPower_r18 = INT(name='meanBeamPower-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamPowerBounds_r18_meanBeamPower_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    _NR_IntegrityBeamPowerBounds_r18_stdDevBeamPower_r18 = INT(name='stdDevBeamPower-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityBeamPowerBounds_r18_stdDevBeamPower_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    NR_IntegrityBeamPowerBounds_r18._cont = ASN1Dict([
+        ('meanBeamPower-r18', _NR_IntegrityBeamPowerBounds_r18_meanBeamPower_r18),
+        ('stdDevBeamPower-r18', _NR_IntegrityBeamPowerBounds_r18_stdDevBeamPower_r18),
+        ])
+    NR_IntegrityBeamPowerBounds_r18._ext = []
     
     #-----< NR-TRP-LocationInfo-r16 >-----#
     NR_TRP_LocationInfo_r16 = SEQ_OF(name='NR-TRP-LocationInfo-r16', mode=MODE_TYPE)
@@ -5018,6 +6152,8 @@ class LPP_PDU_Definitions:
     __TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-ResourceSets-TRP-Element-r16')))
     _TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16._cont = __TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16__item_
     _TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=2)], ev=None, er=[])
+    _TRP_LocationInfoElement_r16_trp_LocationCartesian_r18 = SEQ(name='trp-LocationCartesian-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'RelativeCartesianLocation-r18')), opt=True, group=0)
+    _TRP_LocationInfoElement_r16_nr_IntegrityTRP_LocationBounds_r18 = SEQ(name='nr-IntegrityTRP-LocationBounds-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityLocationBounds-r18')), opt=True, group=0)
     TRP_LocationInfoElement_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _TRP_LocationInfoElement_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _TRP_LocationInfoElement_r16_nr_PhysCellID_r16),
@@ -5026,8 +6162,10 @@ class LPP_PDU_Definitions:
         ('associated-DL-PRS-ID-r16', _TRP_LocationInfoElement_r16_associated_DL_PRS_ID_r16),
         ('trp-Location-r16', _TRP_LocationInfoElement_r16_trp_Location_r16),
         ('trp-DL-PRS-ResourceSets-r16', _TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16),
+        ('trp-LocationCartesian-r18', _TRP_LocationInfoElement_r16_trp_LocationCartesian_r18),
+        ('nr-IntegrityTRP-LocationBounds-r18', _TRP_LocationInfoElement_r16_nr_IntegrityTRP_LocationBounds_r18),
         ])
-    TRP_LocationInfoElement_r16._ext = []
+    TRP_LocationInfoElement_r16._ext = ['trp-LocationCartesian-r18', 'nr-IntegrityTRP-LocationBounds-r18']
     
     #-----< DL-PRS-ResourceSets-TRP-Element-r16 >-----#
     DL_PRS_ResourceSets_TRP_Element_r16 = SEQ(name='DL-PRS-ResourceSets-TRP-Element-r16', mode=MODE_TYPE)
@@ -5036,19 +6174,59 @@ class LPP_PDU_Definitions:
     __DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'DL-PRS-Resource-ARP-Element-r16')))
     _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16._cont = __DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16__item_
     _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_ResourceSetARP_Cartesian_r18 = SEQ(name='dl-PRS-ResourceSetARP-Cartesian-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'RelativeCartesianLocation-r18')), opt=True, group=0)
+    _DL_PRS_ResourceSets_TRP_Element_r16_nr_IntegrityDL_PRS_ResourceSetARP_LocationBounds_r18 = SEQ(name='nr-IntegrityDL-PRS-ResourceSetARP-LocationBounds-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityLocationBounds-r18')), opt=True, group=0)
     DL_PRS_ResourceSets_TRP_Element_r16._cont = ASN1Dict([
         ('dl-PRS-ResourceSetARP-r16', _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_ResourceSetARP_r16),
         ('dl-PRS-Resource-ARP-List-r16', _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16),
+        ('dl-PRS-ResourceSetARP-Cartesian-r18', _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_ResourceSetARP_Cartesian_r18),
+        ('nr-IntegrityDL-PRS-ResourceSetARP-LocationBounds-r18', _DL_PRS_ResourceSets_TRP_Element_r16_nr_IntegrityDL_PRS_ResourceSetARP_LocationBounds_r18),
         ])
-    DL_PRS_ResourceSets_TRP_Element_r16._ext = []
+    DL_PRS_ResourceSets_TRP_Element_r16._ext = ['dl-PRS-ResourceSetARP-Cartesian-r18', 'nr-IntegrityDL-PRS-ResourceSetARP-LocationBounds-r18']
     
     #-----< DL-PRS-Resource-ARP-Element-r16 >-----#
     DL_PRS_Resource_ARP_Element_r16 = SEQ(name='DL-PRS-Resource-ARP-Element-r16', mode=MODE_TYPE)
     _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_location_r16 = SEQ(name='dl-PRS-Resource-ARP-location-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'RelativeLocation-r16')), opt=True)
+    _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_locationCartesian_r18 = SEQ(name='dl-PRS-Resource-ARP-locationCartesian-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'RelativeCartesianLocation-r18')), opt=True, group=0)
+    _DL_PRS_Resource_ARP_Element_r16_nr_IntegrityDL_PRS_ResourceARP_LocationBounds_r18 = SEQ(name='nr-IntegrityDL-PRS-ResourceARP-LocationBounds-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-IntegrityLocationBounds-r18')), opt=True, group=0)
     DL_PRS_Resource_ARP_Element_r16._cont = ASN1Dict([
         ('dl-PRS-Resource-ARP-location-r16', _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_location_r16),
+        ('dl-PRS-Resource-ARP-locationCartesian-r18', _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_locationCartesian_r18),
+        ('nr-IntegrityDL-PRS-ResourceARP-LocationBounds-r18', _DL_PRS_Resource_ARP_Element_r16_nr_IntegrityDL_PRS_ResourceARP_LocationBounds_r18),
         ])
-    DL_PRS_Resource_ARP_Element_r16._ext = []
+    DL_PRS_Resource_ARP_Element_r16._ext = ['dl-PRS-Resource-ARP-locationCartesian-r18', 'nr-IntegrityDL-PRS-ResourceARP-LocationBounds-r18']
+    
+    #-----< NR-IntegrityLocationBounds-r18 >-----#
+    NR_IntegrityLocationBounds_r18 = SEQ(name='NR-IntegrityLocationBounds-r18', mode=MODE_TYPE)
+    _NR_IntegrityLocationBounds_r18_units_r18 = ENUM(name='units-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_IntegrityLocationBounds_r18_units_r18._cont = ASN1Dict([('mm', 0), ('cm', 1), ('m', 2)])
+    _NR_IntegrityLocationBounds_r18_units_r18._ext = []
+    _NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18 = SEQ(name='meanLocationErrorBound-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_horizontal_r18 = INT(name='horizontal-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_horizontal_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_vertical_r18 = INT(name='vertical-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_vertical_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18._cont = ASN1Dict([
+        ('horizontal-r18', __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_horizontal_r18),
+        ('vertical-r18', __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_vertical_r18),
+        ])
+    _NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18._ext = None
+    _NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18 = SEQ(name='stdDevLocationErrorBound-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_horizontal_r18 = INT(name='horizontal-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_horizontal_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_vertical_r18 = INT(name='vertical-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_vertical_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18._cont = ASN1Dict([
+        ('horizontal-r18', __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_horizontal_r18),
+        ('vertical-r18', __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_vertical_r18),
+        ])
+    _NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18._ext = None
+    NR_IntegrityLocationBounds_r18._cont = ASN1Dict([
+        ('units-r18', _NR_IntegrityLocationBounds_r18_units_r18),
+        ('meanLocationErrorBound-r18', _NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18),
+        ('stdDevLocationErrorBound-r18', _NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18),
+        ])
+    NR_IntegrityLocationBounds_r18._ext = []
     
     #-----< NR-UE-TEG-Capability-r17 >-----#
     NR_UE_TEG_Capability_r17 = SEQ(name='NR-UE-TEG-Capability-r17', mode=MODE_TYPE)
@@ -5123,6 +6301,24 @@ class LPP_PDU_Definitions:
     _SRS_CapabilityPerBand_r16_olpc_SRS_PosRRC_Inactive_r17 = SEQ(name='olpc-SRS-PosRRC-Inactive-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'OLPC-SRS-Pos-r16')), opt=True, group=0)
     _SRS_CapabilityPerBand_r16_spatialRelationsSRS_PosRRC_Inactive_r17 = SEQ(name='spatialRelationsSRS-PosRRC-Inactive-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialRelationsSRS-Pos-r16')), opt=True, group=0)
     _SRS_CapabilityPerBand_r16_posSRS_SP_RRC_Inactive_InInitialUL_BWP_r17 = SEQ(name='posSRS-SP-RRC-Inactive-InInitialUL-BWP-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-SP-RRC-Inactive-InInitialUL-BWP-r17')), opt=True, group=1)
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveInitialUL_BWP_r18 = ENUM(name='posSRS-Preconfigured-RRC-InactiveInitialUL-BWP-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveInitialUL_BWP_r18._cont = ASN1Dict([('supported', 0)])
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveInitialUL_BWP_r18._ext = None
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveOutsideInitialUL_BWP_r18 = ENUM(name='posSRS-Preconfigured-RRC-InactiveOutsideInitialUL-BWP-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveOutsideInitialUL_BWP_r18._cont = ASN1Dict([('supported', 0)])
+    _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveOutsideInitialUL_BWP_r18._ext = None
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveInitialUL_BWP_r18 = ENUM(name='posSRS-ValidityAreaRRC-InactiveInitialUL-BWP-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveInitialUL_BWP_r18._cont = ASN1Dict([('supported', 0)])
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveInitialUL_BWP_r18._ext = None
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveOutsideInitialUL_BWP_r18 = ENUM(name='posSRS-ValidityAreaRRC-InactiveOutsideInitialUL-BWP-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveOutsideInitialUL_BWP_r18._cont = ASN1Dict([('supported', 0)])
+    _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveOutsideInitialUL_BWP_r18._ext = None
+    _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Connected_r18 = SEQ(name='posSRS-TxFH-RRC-Connected-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-TxFrequencyHoppingRRC-Connected-r18')), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Inactive_r18 = SEQ(name='posSRS-TxFH-RRC-Inactive-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-TxFrequencyHoppingRRC-Inactive-r18')), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_TxFH_WithTimeWindow_r18 = ENUM(name='posSRS-TxFH-WithTimeWindow-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _SRS_CapabilityPerBand_r16_posSRS_TxFH_WithTimeWindow_r18._cont = ASN1Dict([('supported', 0)])
+    _SRS_CapabilityPerBand_r16_posSRS_TxFH_WithTimeWindow_r18._ext = None
+    _SRS_CapabilityPerBand_r16_posSRS_BWA_RRC_Inactive_r18 = SEQ(name='posSRS-BWA-RRC-Inactive-r18', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-BWA-RRC-Inactive-r18')), opt=True, group=2)
     SRS_CapabilityPerBand_r16._cont = ASN1Dict([
         ('freqBandIndicatorNR-r16', _SRS_CapabilityPerBand_r16_freqBandIndicatorNR_r16),
         ('olpc-SRS-Pos-r16', _SRS_CapabilityPerBand_r16_olpc_SRS_Pos_r16),
@@ -5132,8 +6328,16 @@ class LPP_PDU_Definitions:
         ('olpc-SRS-PosRRC-Inactive-r17', _SRS_CapabilityPerBand_r16_olpc_SRS_PosRRC_Inactive_r17),
         ('spatialRelationsSRS-PosRRC-Inactive-r17', _SRS_CapabilityPerBand_r16_spatialRelationsSRS_PosRRC_Inactive_r17),
         ('posSRS-SP-RRC-Inactive-InInitialUL-BWP-r17', _SRS_CapabilityPerBand_r16_posSRS_SP_RRC_Inactive_InInitialUL_BWP_r17),
+        ('posSRS-Preconfigured-RRC-InactiveInitialUL-BWP-r18', _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveInitialUL_BWP_r18),
+        ('posSRS-Preconfigured-RRC-InactiveOutsideInitialUL-BWP-r18', _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveOutsideInitialUL_BWP_r18),
+        ('posSRS-ValidityAreaRRC-InactiveInitialUL-BWP-r18', _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveInitialUL_BWP_r18),
+        ('posSRS-ValidityAreaRRC-InactiveOutsideInitialUL-BWP-r18', _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveOutsideInitialUL_BWP_r18),
+        ('posSRS-TxFH-RRC-Connected-r18', _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Connected_r18),
+        ('posSRS-TxFH-RRC-Inactive-r18', _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Inactive_r18),
+        ('posSRS-TxFH-WithTimeWindow-r18', _SRS_CapabilityPerBand_r16_posSRS_TxFH_WithTimeWindow_r18),
+        ('posSRS-BWA-RRC-Inactive-r18', _SRS_CapabilityPerBand_r16_posSRS_BWA_RRC_Inactive_r18),
         ])
-    SRS_CapabilityPerBand_r16._ext = ['posSRS-RRC-Inactive-InInitialUL-BWP-r17', 'posSRS-RRC-Inactive-OutsideInitialUL-BWP-r17', 'olpc-SRS-PosRRC-Inactive-r17', 'spatialRelationsSRS-PosRRC-Inactive-r17', 'posSRS-SP-RRC-Inactive-InInitialUL-BWP-r17']
+    SRS_CapabilityPerBand_r16._ext = ['posSRS-RRC-Inactive-InInitialUL-BWP-r17', 'posSRS-RRC-Inactive-OutsideInitialUL-BWP-r17', 'olpc-SRS-PosRRC-Inactive-r17', 'spatialRelationsSRS-PosRRC-Inactive-r17', 'posSRS-SP-RRC-Inactive-InInitialUL-BWP-r17', 'posSRS-Preconfigured-RRC-InactiveInitialUL-BWP-r18', 'posSRS-Preconfigured-RRC-InactiveOutsideInitialUL-BWP-r18', 'posSRS-ValidityAreaRRC-InactiveInitialUL-BWP-r18', 'posSRS-ValidityAreaRRC-InactiveOutsideInitialUL-BWP-r18', 'posSRS-TxFH-RRC-Connected-r18', 'posSRS-TxFH-RRC-Inactive-r18', 'posSRS-TxFH-WithTimeWindow-r18', 'posSRS-BWA-RRC-Inactive-r18']
     
     #-----< OLPC-SRS-Pos-r16 >-----#
     OLPC_SRS_Pos_r16 = SEQ(name='OLPC-SRS-Pos-r16', mode=MODE_TYPE)
@@ -5205,6 +6409,8 @@ class LPP_PDU_Definitions:
     _SRS_PosResourcesPerBand_r16_maxNumberSP_SRS_PosResourcesPerBWP_r16 = ENUM(name='maxNumberSP-SRS-PosResourcesPerBWP-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _SRS_PosResourcesPerBand_r16_maxNumberSP_SRS_PosResourcesPerBWP_r16._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
     _SRS_PosResourcesPerBand_r16_maxNumberSP_SRS_PosResourcesPerBWP_r16._ext = None
+    _SRS_PosResourcesPerBand_r16_posSRS_BWA_RRC_Connected_r18 = SEQ(name='posSRS-BWA-RRC-Connected-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-BWA-RRC-Connected-r18')), opt=True, group=0)
+    _SRS_PosResourcesPerBand_r16_posSRS_BWA_IndependentCA_RRC_Connected_r18 = SEQ(name='posSRS-BWA-IndependentCA-RRC-Connected-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PosSRS-BWA-IndependentCA-RRC-Connected-r18')), opt=True, group=0)
     SRS_PosResourcesPerBand_r16._cont = ASN1Dict([
         ('freqBandIndicatorNR-r16', _SRS_PosResourcesPerBand_r16_freqBandIndicatorNR_r16),
         ('maxNumberSRS-PosResourceSetsPerBWP-r16', _SRS_PosResourcesPerBand_r16_maxNumberSRS_PosResourceSetsPerBWP_r16),
@@ -5212,8 +6418,10 @@ class LPP_PDU_Definitions:
         ('maxNumberPeriodicSRS-PosResourcesPerBWP-r16', _SRS_PosResourcesPerBand_r16_maxNumberPeriodicSRS_PosResourcesPerBWP_r16),
         ('maxNumberAP-SRS-PosResourcesPerBWP-r16', _SRS_PosResourcesPerBand_r16_maxNumberAP_SRS_PosResourcesPerBWP_r16),
         ('maxNumberSP-SRS-PosResourcesPerBWP-r16', _SRS_PosResourcesPerBand_r16_maxNumberSP_SRS_PosResourcesPerBWP_r16),
+        ('posSRS-BWA-RRC-Connected-r18', _SRS_PosResourcesPerBand_r16_posSRS_BWA_RRC_Connected_r18),
+        ('posSRS-BWA-IndependentCA-RRC-Connected-r18', _SRS_PosResourcesPerBand_r16_posSRS_BWA_IndependentCA_RRC_Connected_r18),
         ])
-    SRS_PosResourcesPerBand_r16._ext = []
+    SRS_PosResourcesPerBand_r16._ext = ['posSRS-BWA-RRC-Connected-r18', 'posSRS-BWA-IndependentCA-RRC-Connected-r18']
     
     #-----< PosSRS-RRC-Inactive-InInitialUL-BWP-r17 >-----#
     PosSRS_RRC_Inactive_InInitialUL_BWP_r17 = SEQ(name='PosSRS-RRC-Inactive-InInitialUL-BWP-r17', mode=MODE_TYPE)
@@ -5252,10 +6460,10 @@ class LPP_PDU_Definitions:
     #-----< PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17 >-----#
     PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17 = SEQ(name='PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17', mode=MODE_TYPE)
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17 = ENUM(name='maxSRSposBandwidthForEachSCS-withinCC-FR1-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17._cont = ASN1Dict([('bw5', 0), ('bw10', 1), ('bw15', 2), ('bw20', 3), ('bw25', 4), ('bw30', 5), ('bw35', 6), ('bw40', 7), ('bw45', 8), ('bw50', 9), ('bw60', 10), ('bw70', 11), ('bw80', 12), ('bw90', 13), ('bw100', 14)])
+    _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17._cont = ASN1Dict([('mhz5', 0), ('mhz10', 1), ('mhz15', 2), ('mhz20', 3), ('mhz25', 4), ('mhz30', 5), ('mhz35', 6), ('mhz40', 7), ('mhz45', 8), ('mhz50', 9), ('mhz60', 10), ('mhz70', 11), ('mhz80', 12), ('mhz90', 13), ('mhz100', 14)])
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17._ext = None
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17 = ENUM(name='maxSRSposBandwidthForEachSCS-withinCC-FR2-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17._cont = ASN1Dict([('bw50', 0), ('bw100', 1), ('bw200', 2), ('bw400', 3)])
+    _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3)])
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17._ext = None
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17 = ENUM(name='maxNumOfSRSposResourceSets-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4), ('n16', 5)])
@@ -5321,20 +6529,355 @@ class LPP_PDU_Definitions:
         ])
     PosSRS_SP_RRC_Inactive_InInitialUL_BWP_r17._ext = []
     
+    #-----< PosSRS-TxFrequencyHoppingRRC-Connected-r18 >-----#
+    PosSRS_TxFrequencyHoppingRRC_Connected_r18 = SEQ(name='PosSRS-TxFrequencyHoppingRRC-Connected-r18', mode=MODE_TYPE)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18 = ENUM(name='maximumSRS-BandwidthAcrossAllHopsFR1-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18 = ENUM(name='maximumSRS-BandwidthAcrossAllHopsFR2-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumTxFH_Hops_r18 = ENUM(name='maximumTxFH-Hops-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumTxFH_Hops_r18._cont = ASN1Dict([('n2', 0), ('n3', 1), ('n4', 2), ('n5', 3), ('n6', 4)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumTxFH_Hops_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR1_r18 = ENUM(name='rf-TxRetuneTimeFR1-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR1_r18._cont = ASN1Dict([('n70', 0), ('n140', 1), ('n210', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR1_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR2_r18 = ENUM(name='rf-TxRetuneTimeFR2-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR2_r18._cont = ASN1Dict([('n35', 0), ('n70', 1), ('n140', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR2_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18 = ENUM(name='switchTimeBetweenActiveBWP-FrequencyHop-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18._cont = ASN1Dict([('n100', 0), ('n140', 1), ('n200', 2), ('n300', 3), ('n500', 4)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_numOfOverlappingPRB_r18 = ENUM(name='numOfOverlappingPRB-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_numOfOverlappingPRB_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_numOfOverlappingPRB_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourcePeriodic_r18 = ENUM(name='maximumSRS-ResourcePeriodic-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourcePeriodic_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourcePeriodic_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceAperiodic_r18 = ENUM(name='maximumSRS-ResourceAperiodic-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceAperiodic_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceAperiodic_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceSemipersistent_r18 = ENUM(name='maximumSRS-ResourceSemipersistent-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceSemipersistent_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceSemipersistent_r18._ext = None
+    PosSRS_TxFrequencyHoppingRRC_Connected_r18._cont = ASN1Dict([
+        ('maximumSRS-BandwidthAcrossAllHopsFR1-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18),
+        ('maximumSRS-BandwidthAcrossAllHopsFR2-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18),
+        ('maximumTxFH-Hops-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumTxFH_Hops_r18),
+        ('rf-TxRetuneTimeFR1-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR1_r18),
+        ('rf-TxRetuneTimeFR2-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR2_r18),
+        ('switchTimeBetweenActiveBWP-FrequencyHop-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18),
+        ('numOfOverlappingPRB-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_numOfOverlappingPRB_r18),
+        ('maximumSRS-ResourcePeriodic-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourcePeriodic_r18),
+        ('maximumSRS-ResourceAperiodic-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceAperiodic_r18),
+        ('maximumSRS-ResourceSemipersistent-r18', _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceSemipersistent_r18),
+        ])
+    PosSRS_TxFrequencyHoppingRRC_Connected_r18._ext = []
+    
+    #-----< PosSRS-TxFrequencyHoppingRRC-Inactive-r18 >-----#
+    PosSRS_TxFrequencyHoppingRRC_Inactive_r18 = SEQ(name='PosSRS-TxFrequencyHoppingRRC-Inactive-r18', mode=MODE_TYPE)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18 = ENUM(name='maximumSRS-BandwidthAcrossAllHopsFR1-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18 = ENUM(name='maximumSRS-BandwidthAcrossAllHopsFR2-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumTxFH_Hops_r18 = ENUM(name='maximumTxFH-Hops-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumTxFH_Hops_r18._cont = ASN1Dict([('n2', 0), ('n3', 1), ('n4', 2), ('n5', 3), ('n6', 4)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumTxFH_Hops_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR1_r18 = ENUM(name='rf-TxRetuneTimeFR1-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR1_r18._cont = ASN1Dict([('n70', 0), ('n140', 1), ('n210', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR1_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR2_r18 = ENUM(name='rf-TxRetuneTimeFR2-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR2_r18._cont = ASN1Dict([('n35', 0), ('n70', 1), ('n140', 2)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR2_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18 = ENUM(name='switchTimeBetweenActiveBWP-FrequencyHop-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18._cont = ASN1Dict([('n100', 0), ('n140', 1), ('n200', 2), ('n300', 3), ('n500', 4)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_numOfOverlappingPRB_r18 = ENUM(name='numOfOverlappingPRB-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_numOfOverlappingPRB_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_numOfOverlappingPRB_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourcePeriodic_r18 = ENUM(name='maximumSRS-ResourcePeriodic-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourcePeriodic_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourcePeriodic_r18._ext = None
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourceSemipersistent_r18 = ENUM(name='maximumSRS-ResourceSemipersistent-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourceSemipersistent_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourceSemipersistent_r18._ext = None
+    PosSRS_TxFrequencyHoppingRRC_Inactive_r18._cont = ASN1Dict([
+        ('maximumSRS-BandwidthAcrossAllHopsFR1-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18),
+        ('maximumSRS-BandwidthAcrossAllHopsFR2-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18),
+        ('maximumTxFH-Hops-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumTxFH_Hops_r18),
+        ('rf-TxRetuneTimeFR1-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR1_r18),
+        ('rf-TxRetuneTimeFR2-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR2_r18),
+        ('switchTimeBetweenActiveBWP-FrequencyHop-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18),
+        ('numOfOverlappingPRB-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_numOfOverlappingPRB_r18),
+        ('maximumSRS-ResourcePeriodic-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourcePeriodic_r18),
+        ('maximumSRS-ResourceSemipersistent-r18', _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourceSemipersistent_r18),
+        ])
+    PosSRS_TxFrequencyHoppingRRC_Inactive_r18._ext = []
+    
+    #-----< PosSRS-BWA-RRC-Connected-r18 >-----#
+    PosSRS_BWA_RRC_Connected_r18 = SEQ(name='PosSRS-BWA-RRC-Connected-r18', mode=MODE_TYPE)
+    _PosSRS_BWA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18 = ENUM(name='numOfCarriersIntraBandContiguous-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18._cont = ASN1Dict([('two', 0), ('three', 1), ('twoandthree', 2)])
+    _PosSRS_BWA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR1-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18._cont = ASN1Dict([('mhz20', 0), ('mhz40', 1), ('mhz50', 2), ('mhz80', 3), ('mhz100', 4), ('mhz160', 5), ('mhz180', 6), ('mhz190', 7), ('mhz200', 8)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR2-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3), ('mhz600', 4), ('mhz800', 5)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR1-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._cont = ASN1Dict([('mhz80', 0), ('mhz100', 1), ('mhz160', 2), ('mhz200', 3), ('mhz240', 4), ('mhz300', 5)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR2-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz300', 3), ('mhz400', 4), ('mhz600', 5), ('mhz800', 6), ('mhz1000', 7), ('mhz1200', 8)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSet_r18 = ENUM(name='maximumAggregatedResourceSet-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSet_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4), ('n16', 5)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSet_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18 = ENUM(name='maximumAggregatedResourcePeriodic-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18 = ENUM(name='maximumAggregatedResourceAperiodic-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18 = ENUM(name='maximumAggregatedResourceSemi-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18 = ENUM(name='maximumAggregatedResourcePeriodicPerSlot-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n3', 2), ('n4', 3), ('n5', 4), ('n6', 5), ('n8', 6), ('n10', 7), ('n12', 8), ('n14', 9)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18 = ENUM(name='maximumAggregatedResourceAperiodicPerSlot-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n3', 3), ('n4', 4), ('n5', 5), ('n6', 6), ('n8', 7), ('n10', 8), ('n12', 9), ('n14', 10)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18._ext = None
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18 = ENUM(name='maximumAggregatedResourceSemiPerSlot-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n3', 3), ('n4', 4), ('n5', 5), ('n6', 6), ('n8', 7), ('n10', 8), ('n12', 9), ('n14', 10)])
+    _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18._ext = None
+    PosSRS_BWA_RRC_Connected_r18._cont = ASN1Dict([
+        ('numOfCarriersIntraBandContiguous-r18', _PosSRS_BWA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18),
+        ('maximumAggregatedBW-TwoCarriersFR1-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18),
+        ('maximumAggregatedBW-TwoCarriersFR2-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR1-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR2-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18),
+        ('maximumAggregatedResourceSet-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSet_r18),
+        ('maximumAggregatedResourcePeriodic-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18),
+        ('maximumAggregatedResourceAperiodic-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18),
+        ('maximumAggregatedResourceSemi-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18),
+        ('maximumAggregatedResourcePeriodicPerSlot-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18),
+        ('maximumAggregatedResourceAperiodicPerSlot-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18),
+        ('maximumAggregatedResourceSemiPerSlot-r18', _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18),
+        ])
+    PosSRS_BWA_RRC_Connected_r18._ext = []
+    
+    #-----< PosSRS-BWA-IndependentCA-RRC-Connected-r18 >-----#
+    PosSRS_BWA_IndependentCA_RRC_Connected_r18 = SEQ(name='PosSRS-BWA-IndependentCA-RRC-Connected-r18', mode=MODE_TYPE)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18 = ENUM(name='numOfCarriersIntraBandContiguous-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18._cont = ASN1Dict([('two', 0), ('three', 1), ('twoandthree', 2)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR1-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18._cont = ASN1Dict([('mhz20', 0), ('mhz40', 1), ('mhz50', 2), ('mhz80', 3), ('mhz100', 4), ('mhz160', 5), ('mhz180', 6), ('mhz190', 7), ('mhz200', 8)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR2-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3), ('mhz600', 4), ('mhz800', 5)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR1-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._cont = ASN1Dict([('mhz80', 0), ('mhz100', 1), ('mhz160', 2), ('mhz200', 3), ('mhz240', 4), ('mhz300', 5)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR2-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz300', 3), ('mhz400', 4), ('mhz600', 5), ('mhz800', 6), ('mhz1000', 7), ('mhz1200', 8)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSet_r18 = ENUM(name='maximumAggregatedResourceSet-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSet_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4), ('n16', 5)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSet_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18 = ENUM(name='maximumAggregatedResourcePeriodic-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18 = ENUM(name='maximumAggregatedResourceAperiodic-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18 = ENUM(name='maximumAggregatedResourceSemi-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18 = ENUM(name='maximumAggregatedResourcePeriodicPerSlot-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n3', 2), ('n4', 3), ('n5', 4), ('n6', 5), ('n8', 6), ('n10', 7), ('n12', 8), ('n14', 9)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18 = ENUM(name='maximumAggregatedResourceAperiodicPerSlot-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n3', 3), ('n4', 4), ('n5', 5), ('n6', 6), ('n8', 7), ('n10', 8), ('n12', 9), ('n14', 10)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18 = ENUM(name='maximumAggregatedResourceSemiPerSlot-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n3', 3), ('n4', 4), ('n5', 5), ('n6', 6), ('n8', 7), ('n10', 8), ('n12', 9), ('n14', 10)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_guardPeriod_r18 = ENUM(name='guardPeriod-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_guardPeriod_r18._cont = ASN1Dict([('n0', 0), ('n30', 1), ('n100', 2), ('n140', 3), ('n200', 4)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_guardPeriod_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForTwoAggregatedCarriers_r18 = ENUM(name='powerClassForTwoAggregatedCarriers-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForTwoAggregatedCarriers_r18._cont = ASN1Dict([('pc2', 0), ('pc3', 1)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForTwoAggregatedCarriers_r18._ext = None
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForThreeAggregatedCarriers_r18 = ENUM(name='powerClassForThreeAggregatedCarriers-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForThreeAggregatedCarriers_r18._cont = ASN1Dict([('pc2', 0), ('pc3', 1)])
+    _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForThreeAggregatedCarriers_r18._ext = None
+    PosSRS_BWA_IndependentCA_RRC_Connected_r18._cont = ASN1Dict([
+        ('numOfCarriersIntraBandContiguous-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18),
+        ('maximumAggregatedBW-TwoCarriersFR1-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18),
+        ('maximumAggregatedBW-TwoCarriersFR2-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR1-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR2-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18),
+        ('maximumAggregatedResourceSet-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSet_r18),
+        ('maximumAggregatedResourcePeriodic-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18),
+        ('maximumAggregatedResourceAperiodic-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18),
+        ('maximumAggregatedResourceSemi-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18),
+        ('maximumAggregatedResourcePeriodicPerSlot-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18),
+        ('maximumAggregatedResourceAperiodicPerSlot-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18),
+        ('maximumAggregatedResourceSemiPerSlot-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18),
+        ('guardPeriod-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_guardPeriod_r18),
+        ('powerClassForTwoAggregatedCarriers-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForTwoAggregatedCarriers_r18),
+        ('powerClassForThreeAggregatedCarriers-r18', _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForThreeAggregatedCarriers_r18),
+        ])
+    PosSRS_BWA_IndependentCA_RRC_Connected_r18._ext = []
+    
+    #-----< PosSRS-BWA-RRC-Inactive-r18 >-----#
+    PosSRS_BWA_RRC_Inactive_r18 = SEQ(name='PosSRS-BWA-RRC-Inactive-r18', mode=MODE_TYPE)
+    _PosSRS_BWA_RRC_Inactive_r18_numOfCarriersIntraBandContiguous_r18 = ENUM(name='numOfCarriersIntraBandContiguous-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_numOfCarriersIntraBandContiguous_r18._cont = ASN1Dict([('two', 0), ('three', 1), ('twoandthree', 2)])
+    _PosSRS_BWA_RRC_Inactive_r18_numOfCarriersIntraBandContiguous_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR1-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR1_r18._cont = ASN1Dict([('mhz20', 0), ('mhz40', 1), ('mhz50', 2), ('mhz80', 3), ('mhz100', 4), ('mhz160', 5), ('mhz180', 6), ('mhz190', 7), ('mhz200', 8)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR1_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-TwoCarriersFR2-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz400', 3), ('mhz600', 4), ('mhz800', 5)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR2_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR1_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR1-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._cont = ASN1Dict([('mhz80', 0), ('mhz100', 1), ('mhz160', 2), ('mhz200', 3), ('mhz240', 4), ('mhz300', 5)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR1_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR2_r18 = ENUM(name='maximumAggregatedBW-ThreeCarriersFR2-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._cont = ASN1Dict([('mhz50', 0), ('mhz100', 1), ('mhz200', 2), ('mhz300', 3), ('mhz400', 4), ('mhz600', 5), ('mhz800', 6), ('mhz1000', 7), ('mhz1200', 8)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR2_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSet_r18 = ENUM(name='maximumAggregatedResourceSet-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSet_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4), ('n16', 5)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSet_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodic_r18 = ENUM(name='maximumAggregatedResourcePeriodic-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodic_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n16', 4), ('n32', 5), ('n64', 6)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodic_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemi_r18 = ENUM(name='maximumAggregatedResourceSemi-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemi_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n4', 3), ('n8', 4), ('n16', 5), ('n32', 6), ('n64', 7)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemi_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodicPerSlot_r18 = ENUM(name='maximumAggregatedResourcePeriodicPerSlot-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodicPerSlot_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n3', 2), ('n4', 3), ('n5', 4), ('n6', 5), ('n8', 6), ('n10', 7), ('n12', 8), ('n14', 9)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodicPerSlot_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemiPerSlot_r18 = ENUM(name='maximumAggregatedResourceSemiPerSlot-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemiPerSlot_r18._cont = ASN1Dict([('n0', 0), ('n1', 1), ('n2', 2), ('n3', 3), ('n4', 4), ('n5', 5), ('n6', 6), ('n8', 7), ('n10', 8), ('n12', 9), ('n14', 10)])
+    _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemiPerSlot_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_guardPeriod_r18 = ENUM(name='guardPeriod-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _PosSRS_BWA_RRC_Inactive_r18_guardPeriod_r18._cont = ASN1Dict([('n0', 0), ('n30', 1), ('n100', 2), ('n140', 3), ('n200', 4)])
+    _PosSRS_BWA_RRC_Inactive_r18_guardPeriod_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForTwoAggregatedCarriers_r18 = ENUM(name='powerClassForTwoAggregatedCarriers-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForTwoAggregatedCarriers_r18._cont = ASN1Dict([('pc2', 0), ('pc3', 1)])
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForTwoAggregatedCarriers_r18._ext = None
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForThreeAggregatedCarriers_r18 = ENUM(name='powerClassForThreeAggregatedCarriers-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForThreeAggregatedCarriers_r18._cont = ASN1Dict([('pc2', 0), ('pc3', 1)])
+    _PosSRS_BWA_RRC_Inactive_r18_powerClassForThreeAggregatedCarriers_r18._ext = None
+    PosSRS_BWA_RRC_Inactive_r18._cont = ASN1Dict([
+        ('numOfCarriersIntraBandContiguous-r18', _PosSRS_BWA_RRC_Inactive_r18_numOfCarriersIntraBandContiguous_r18),
+        ('maximumAggregatedBW-TwoCarriersFR1-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR1_r18),
+        ('maximumAggregatedBW-TwoCarriersFR2-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR2_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR1-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR1_r18),
+        ('maximumAggregatedBW-ThreeCarriersFR2-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR2_r18),
+        ('maximumAggregatedResourceSet-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSet_r18),
+        ('maximumAggregatedResourcePeriodic-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodic_r18),
+        ('maximumAggregatedResourceSemi-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemi_r18),
+        ('maximumAggregatedResourcePeriodicPerSlot-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodicPerSlot_r18),
+        ('maximumAggregatedResourceSemiPerSlot-r18', _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemiPerSlot_r18),
+        ('guardPeriod-r18', _PosSRS_BWA_RRC_Inactive_r18_guardPeriod_r18),
+        ('powerClassForTwoAggregatedCarriers-r18', _PosSRS_BWA_RRC_Inactive_r18_powerClassForTwoAggregatedCarriers_r18),
+        ('powerClassForThreeAggregatedCarriers-r18', _PosSRS_BWA_RRC_Inactive_r18_powerClassForThreeAggregatedCarriers_r18),
+        ])
+    PosSRS_BWA_RRC_Inactive_r18._ext = []
+    
+    #-----< NR-PhaseQuality-r18 >-----#
+    NR_PhaseQuality_r18 = SEQ(name='NR-PhaseQuality-r18', mode=MODE_TYPE)
+    _NR_PhaseQuality_r18_phaseQualityIndex_r18 = INT(name='phaseQualityIndex-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_PhaseQuality_r18_phaseQualityIndex_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=179)], ev=None, er=[])
+    _NR_PhaseQuality_r18_phaseQualityResolution_r18 = ENUM(name='phaseQualityResolution-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_PhaseQuality_r18_phaseQualityResolution_r18._cont = ASN1Dict([('mdot1', 0), ('m1', 1)])
+    _NR_PhaseQuality_r18_phaseQualityResolution_r18._ext = []
+    NR_PhaseQuality_r18._cont = ASN1Dict([
+        ('phaseQualityIndex-r18', _NR_PhaseQuality_r18_phaseQualityIndex_r18),
+        ('phaseQualityResolution-r18', _NR_PhaseQuality_r18_phaseQualityResolution_r18),
+        ])
+    NR_PhaseQuality_r18._ext = []
+    
     #-----< ReferencePoint-r16 >-----#
     ReferencePoint_r16 = SEQ(name='ReferencePoint-r16', mode=MODE_TYPE)
     _ReferencePoint_r16_referencePointGeographicLocation_r16 = CHOICE(name='referencePointGeographicLocation-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT))
     __ReferencePoint_r16_referencePointGeographicLocation_r16_location3D_r16 = SEQ(name='location3D-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'EllipsoidPointWithAltitudeAndUncertaintyEllipsoid')))
     __ReferencePoint_r16_referencePointGeographicLocation_r16_ha_location3D_r16 = SEQ(name='ha-location3D-r16', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'HighAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid-r15')))
+    __ReferencePoint_r16_referencePointGeographicLocation_r16_localOrigin_v1800 = SEQ(name='localOrigin-v1800', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LocalOrigin-r18')))
     _ReferencePoint_r16_referencePointGeographicLocation_r16._cont = ASN1Dict([
         ('location3D-r16', __ReferencePoint_r16_referencePointGeographicLocation_r16_location3D_r16),
         ('ha-location3D-r16', __ReferencePoint_r16_referencePointGeographicLocation_r16_ha_location3D_r16),
+        ('localOrigin-v1800', __ReferencePoint_r16_referencePointGeographicLocation_r16_localOrigin_v1800),
         ])
-    _ReferencePoint_r16_referencePointGeographicLocation_r16._ext = []
+    _ReferencePoint_r16_referencePointGeographicLocation_r16._ext = ['localOrigin-v1800']
     ReferencePoint_r16._cont = ASN1Dict([
         ('referencePointGeographicLocation-r16', _ReferencePoint_r16_referencePointGeographicLocation_r16),
         ])
     ReferencePoint_r16._ext = []
+    
+    #-----< RelativeCartesianLocation-r18 >-----#
+    RelativeCartesianLocation_r18 = SEQ(name='RelativeCartesianLocation-r18', mode=MODE_TYPE)
+    _RelativeCartesianLocation_r18_cartesianCoordinatesUnits_r18 = ENUM(name='cartesianCoordinatesUnits-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _RelativeCartesianLocation_r18_cartesianCoordinatesUnits_r18._cont = ASN1Dict([('mm', 0), ('cm', 1), ('dm', 2), ('m', 3)])
+    _RelativeCartesianLocation_r18_cartesianCoordinatesUnits_r18._ext = []
+    _RelativeCartesianLocation_r18_x_value_r18 = SEQ(name='x-value-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'X-Value-r18')))
+    _RelativeCartesianLocation_r18_y_value_r18 = SEQ(name='y-value-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Y-Value-r18')))
+    _RelativeCartesianLocation_r18_z_value_r18 = SEQ(name='z-value-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'Z-Value-r18')))
+    _RelativeCartesianLocation_r18_locationUnc_r18 = SEQ(name='locationUnc-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LocationUncertainty-r16')), opt=True)
+    RelativeCartesianLocation_r18._cont = ASN1Dict([
+        ('cartesianCoordinatesUnits-r18', _RelativeCartesianLocation_r18_cartesianCoordinatesUnits_r18),
+        ('x-value-r18', _RelativeCartesianLocation_r18_x_value_r18),
+        ('y-value-r18', _RelativeCartesianLocation_r18_y_value_r18),
+        ('z-value-r18', _RelativeCartesianLocation_r18_z_value_r18),
+        ('locationUnc-r18', _RelativeCartesianLocation_r18_locationUnc_r18),
+        ])
+    RelativeCartesianLocation_r18._ext = []
+    
+    #-----< X-Value-r18 >-----#
+    X_Value_r18 = SEQ(name='X-Value-r18', mode=MODE_TYPE)
+    _X_Value_r18_delta_x_r18 = INT(name='delta-x-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _X_Value_r18_delta_x_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
+    _X_Value_r18_coarse_delta_x_r18 = INT(name='coarse-delta-x-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _X_Value_r18_coarse_delta_x_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=4095)], ev=None, er=[])
+    X_Value_r18._cont = ASN1Dict([
+        ('delta-x-r18', _X_Value_r18_delta_x_r18),
+        ('coarse-delta-x-r18', _X_Value_r18_coarse_delta_x_r18),
+        ])
+    X_Value_r18._ext = []
+    
+    #-----< Y-Value-r18 >-----#
+    Y_Value_r18 = SEQ(name='Y-Value-r18', mode=MODE_TYPE)
+    _Y_Value_r18_delta_y_r18 = INT(name='delta-y-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Y_Value_r18_delta_y_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
+    _Y_Value_r18_coarse_delta_y_r18 = INT(name='coarse-delta-y-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _Y_Value_r18_coarse_delta_y_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=4095)], ev=None, er=[])
+    Y_Value_r18._cont = ASN1Dict([
+        ('delta-y-r18', _Y_Value_r18_delta_y_r18),
+        ('coarse-delta-y-r18', _Y_Value_r18_coarse_delta_y_r18),
+        ])
+    Y_Value_r18._ext = []
+    
+    #-----< Z-Value-r18 >-----#
+    Z_Value_r18 = SEQ(name='Z-Value-r18', mode=MODE_TYPE)
+    _Z_Value_r18_delta_z_r18 = INT(name='delta-z-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Z_Value_r18_delta_z_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
+    _Z_Value_r18_coarse_delta_z_r18 = INT(name='coarse-delta-z-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _Z_Value_r18_coarse_delta_z_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=4095)], ev=None, er=[])
+    Z_Value_r18._cont = ASN1Dict([
+        ('delta-z-r18', _Z_Value_r18_delta_z_r18),
+        ('coarse-delta-z-r18', _Z_Value_r18_coarse_delta_z_r18),
+        ])
+    Z_Value_r18._ext = []
     
     #-----< RelativeLocation-r16 >-----#
     RelativeLocation_r16 = SEQ(name='RelativeLocation-r16', mode=MODE_TYPE)
@@ -6208,6 +7751,7 @@ class LPP_PDU_Definitions:
     _OTDOA_ProvideCapabilities_interRAT_RSTDmeasurement_r15._cont = ASN1Dict([('supported', 0)])
     _OTDOA_ProvideCapabilities_interRAT_RSTDmeasurement_r15._ext = None
     _OTDOA_ProvideCapabilities_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupport-r17')), opt=True)
+    _OTDOA_ProvideCapabilities_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupport-r18')), opt=True)
     OTDOA_ProvideCapabilities._cont = ASN1Dict([
         ('otdoa-Mode', _OTDOA_ProvideCapabilities_otdoa_Mode),
         ('supportedBandListEUTRA', _OTDOA_ProvideCapabilities_supportedBandListEUTRA),
@@ -6231,8 +7775,9 @@ class LPP_PDU_Definitions:
         ('motionMeasurements-r15', _OTDOA_ProvideCapabilities_motionMeasurements_r15),
         ('interRAT-RSTDmeasurement-r15', _OTDOA_ProvideCapabilities_interRAT_RSTDmeasurement_r15),
         ('scheduledLocationRequestSupported-r17', _OTDOA_ProvideCapabilities_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _OTDOA_ProvideCapabilities_periodicReportingIntervalMsSupport_r18),
         ])
-    OTDOA_ProvideCapabilities._ext = ['supportedBandListEUTRA', 'supportedBandListEUTRA-v9a0', 'interFreqRSTDmeasurement-r10', 'additionalNeighbourCellInfoList-r10', 'prs-id-r14', 'tp-separation-via-muting-r14', 'additional-prs-config-r14', 'prs-based-tbs-r14', 'additionalPathsReport-r14', 'densePrsConfig-r14', 'maxSupportedPrsBandwidth-r14', 'prsOccGroup-r14', 'prsFrequencyHopping-r14', 'maxSupportedPrsConfigs-r14', 'periodicalReporting-r14', 'multiPrbNprs-r14', 'idleStateForMeasurements-r14', 'numberOfRXantennas-r14', 'motionMeasurements-r15', 'interRAT-RSTDmeasurement-r15', 'scheduledLocationRequestSupported-r17']
+    OTDOA_ProvideCapabilities._ext = ['supportedBandListEUTRA', 'supportedBandListEUTRA-v9a0', 'interFreqRSTDmeasurement-r10', 'additionalNeighbourCellInfoList-r10', 'prs-id-r14', 'tp-separation-via-muting-r14', 'additional-prs-config-r14', 'prs-based-tbs-r14', 'additionalPathsReport-r14', 'densePrsConfig-r14', 'maxSupportedPrsBandwidth-r14', 'prsOccGroup-r14', 'prsFrequencyHopping-r14', 'maxSupportedPrsConfigs-r14', 'periodicalReporting-r14', 'multiPrbNprs-r14', 'idleStateForMeasurements-r14', 'numberOfRXantennas-r14', 'motionMeasurements-r15', 'interRAT-RSTDmeasurement-r15', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< maxBands >-----#
     maxBands = INT(name='maxBands', mode=MODE_VALUE)
@@ -6330,6 +7875,8 @@ class LPP_PDU_Definitions:
     _GNSS_CommonAssistData_gnss_SSR_CorrectionPoints_r16 = SEQ(name='gnss-SSR-CorrectionPoints-r16', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-CorrectionPoints-r16')), opt=True, group=1)
     _GNSS_CommonAssistData_gnss_Integrity_ServiceParameters_r17 = SEQ(name='gnss-Integrity-ServiceParameters-r17', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceParameters-r17')), opt=True, group=2)
     _GNSS_CommonAssistData_gnss_Integrity_ServiceAlert_r17 = SEQ(name='gnss-Integrity-ServiceAlert-r17', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceAlert-r17')), opt=True, group=2)
+    _GNSS_CommonAssistData_gnss_los_nlos_GridPoints_r18 = SEQ(name='gnss-los-nlos-GridPoints-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-NLOS-GridPoints-r18')), opt=True, group=3)
+    _GNSS_CommonAssistData_gnss_SSR_IOD_Update_r18 = SEQ(name='gnss-SSR-IOD-Update-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-IOD-Update-r18')), opt=True, group=3)
     GNSS_CommonAssistData._cont = ASN1Dict([
         ('gnss-ReferenceTime', _GNSS_CommonAssistData_gnss_ReferenceTime),
         ('gnss-ReferenceLocation', _GNSS_CommonAssistData_gnss_ReferenceLocation),
@@ -6341,8 +7888,10 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-CorrectionPoints-r16', _GNSS_CommonAssistData_gnss_SSR_CorrectionPoints_r16),
         ('gnss-Integrity-ServiceParameters-r17', _GNSS_CommonAssistData_gnss_Integrity_ServiceParameters_r17),
         ('gnss-Integrity-ServiceAlert-r17', _GNSS_CommonAssistData_gnss_Integrity_ServiceAlert_r17),
+        ('gnss-los-nlos-GridPoints-r18', _GNSS_CommonAssistData_gnss_los_nlos_GridPoints_r18),
+        ('gnss-SSR-IOD-Update-r18', _GNSS_CommonAssistData_gnss_SSR_IOD_Update_r18),
         ])
-    GNSS_CommonAssistData._ext = ['gnss-RTK-ReferenceStationInfo-r15', 'gnss-RTK-CommonObservationInfo-r15', 'gnss-RTK-AuxiliaryStationData-r15', 'gnss-SSR-CorrectionPoints-r16', 'gnss-Integrity-ServiceParameters-r17', 'gnss-Integrity-ServiceAlert-r17']
+    GNSS_CommonAssistData._ext = ['gnss-RTK-ReferenceStationInfo-r15', 'gnss-RTK-CommonObservationInfo-r15', 'gnss-RTK-AuxiliaryStationData-r15', 'gnss-SSR-CorrectionPoints-r16', 'gnss-Integrity-ServiceParameters-r17', 'gnss-Integrity-ServiceAlert-r17', 'gnss-los-nlos-GridPoints-r18', 'gnss-SSR-IOD-Update-r18']
     
     #-----< GNSS-GenericAssistData >-----#
     GNSS_GenericAssistData = SEQ_OF(name='GNSS-GenericAssistData', mode=MODE_TYPE)
@@ -6379,6 +7928,11 @@ class LPP_PDU_Definitions:
     _GNSS_GenericAssistDataElement_gnss_SSR_GriddedCorrection_r16 = SEQ(name='gnss-SSR-GriddedCorrection-r16', mode=MODE_TYPE, tag=(24, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-GriddedCorrection-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataElement_navic_DifferentialCorrections_r16 = SEQ(name='navic-DifferentialCorrections-r16', mode=MODE_TYPE, tag=(25, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-DifferentialCorrections-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataElement_navic_GridModel_r16 = SEQ(name='navic-GridModel-r16', mode=MODE_TYPE, tag=(26, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-GridModelParameter-r16')), opt=True, group=2)
+    _GNSS_GenericAssistDataElement_gnss_SSR_OrbitCorrectionsSet2_r17 = SEQ(name='gnss-SSR-OrbitCorrectionsSet2-r17', mode=MODE_TYPE, tag=(27, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-OrbitCorrectionsSet2-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataElement_gnss_SSR_ClockCorrectionsSet2_r17 = SEQ(name='gnss-SSR-ClockCorrectionsSet2-r17', mode=MODE_TYPE, tag=(28, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-ClockCorrectionsSet2-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataElement_gnss_SSR_URA_Set2_r17 = SEQ(name='gnss-SSR-URA-Set2-r17', mode=MODE_TYPE, tag=(29, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-URA-Set2-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataElement_gnss_LOS_NLOS_GriddedIndications_r18 = SEQ(name='gnss-LOS-NLOS-GriddedIndications-r18', mode=MODE_TYPE, tag=(30, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-NLOS-GriddedIndications-r18')), opt=True, group=4)
+    _GNSS_GenericAssistDataElement_gnss_SSR_SatellitePCVResiduals_r18 = SEQ(name='gnss-SSR-SatellitePCVResiduals-r18', mode=MODE_TYPE, tag=(31, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-SatellitePCVResiduals-r18')), opt=True, group=4)
     GNSS_GenericAssistDataElement._cont = ASN1Dict([
         ('gnss-ID', _GNSS_GenericAssistDataElement_gnss_ID),
         ('sbas-ID', _GNSS_GenericAssistDataElement_sbas_ID),
@@ -6407,8 +7961,13 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-GriddedCorrection-r16', _GNSS_GenericAssistDataElement_gnss_SSR_GriddedCorrection_r16),
         ('navic-DifferentialCorrections-r16', _GNSS_GenericAssistDataElement_navic_DifferentialCorrections_r16),
         ('navic-GridModel-r16', _GNSS_GenericAssistDataElement_navic_GridModel_r16),
+        ('gnss-SSR-OrbitCorrectionsSet2-r17', _GNSS_GenericAssistDataElement_gnss_SSR_OrbitCorrectionsSet2_r17),
+        ('gnss-SSR-ClockCorrectionsSet2-r17', _GNSS_GenericAssistDataElement_gnss_SSR_ClockCorrectionsSet2_r17),
+        ('gnss-SSR-URA-Set2-r17', _GNSS_GenericAssistDataElement_gnss_SSR_URA_Set2_r17),
+        ('gnss-LOS-NLOS-GriddedIndications-r18', _GNSS_GenericAssistDataElement_gnss_LOS_NLOS_GriddedIndications_r18),
+        ('gnss-SSR-SatellitePCVResiduals-r18', _GNSS_GenericAssistDataElement_gnss_SSR_SatellitePCVResiduals_r18),
         ])
-    GNSS_GenericAssistDataElement._ext = ['bds-DifferentialCorrections-r12', 'bds-GridModel-r12', 'gnss-RTK-Observations-r15', 'glo-RTK-BiasInformation-r15', 'gnss-RTK-MAC-CorrectionDifferences-r15', 'gnss-RTK-Residuals-r15', 'gnss-RTK-FKP-Gradients-r15', 'gnss-SSR-OrbitCorrections-r15', 'gnss-SSR-ClockCorrections-r15', 'gnss-SSR-CodeBias-r15', 'gnss-SSR-URA-r16', 'gnss-SSR-PhaseBias-r16', 'gnss-SSR-STEC-Correction-r16', 'gnss-SSR-GriddedCorrection-r16', 'navic-DifferentialCorrections-r16', 'navic-GridModel-r16']
+    GNSS_GenericAssistDataElement._ext = ['bds-DifferentialCorrections-r12', 'bds-GridModel-r12', 'gnss-RTK-Observations-r15', 'glo-RTK-BiasInformation-r15', 'gnss-RTK-MAC-CorrectionDifferences-r15', 'gnss-RTK-Residuals-r15', 'gnss-RTK-FKP-Gradients-r15', 'gnss-SSR-OrbitCorrections-r15', 'gnss-SSR-ClockCorrections-r15', 'gnss-SSR-CodeBias-r15', 'gnss-SSR-URA-r16', 'gnss-SSR-PhaseBias-r16', 'gnss-SSR-STEC-Correction-r16', 'gnss-SSR-GriddedCorrection-r16', 'navic-DifferentialCorrections-r16', 'navic-GridModel-r16', 'gnss-SSR-OrbitCorrectionsSet2-r17', 'gnss-SSR-ClockCorrectionsSet2-r17', 'gnss-SSR-URA-Set2-r17', 'gnss-LOS-NLOS-GriddedIndications-r18', 'gnss-SSR-SatellitePCVResiduals-r18']
     
     #-----< GNSS-PeriodicAssistData-r15 >-----#
     GNSS_PeriodicAssistData_r15 = SEQ(name='GNSS-PeriodicAssistData-r15', mode=MODE_TYPE)
@@ -6425,6 +7984,10 @@ class LPP_PDU_Definitions:
     _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicSTEC_Correction_r16 = SEQ(name='gnss-SSR-PeriodicSTEC-Correction-r16', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=0)
     _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicGriddedCorrection_r16 = SEQ(name='gnss-SSR-PeriodicGriddedCorrection-r16', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=0)
     _GNSS_PeriodicAssistData_r15_gnss_Integrity_PeriodicServiceAlert_r17 = SEQ(name='gnss-Integrity-PeriodicServiceAlert-r17', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=1)
+    _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2_r17 = SEQ(name='gnss-SSR-PeriodicOrbitCorrectionsSet2-r17', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicClockCorrectionsSet2_r17 = SEQ(name='gnss-SSR-PeriodicClockCorrectionsSet2-r17', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicURA_Set2_r17 = SEQ(name='gnss-SSR-PeriodicURA-Set2-r17', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicIOD_Update_r18 = SEQ(name='gnss-SSR-PeriodicIOD-Update-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=3)
     GNSS_PeriodicAssistData_r15._cont = ASN1Dict([
         ('gnss-RTK-PeriodicObservations-r15', _GNSS_PeriodicAssistData_r15_gnss_RTK_PeriodicObservations_r15),
         ('glo-RTK-PeriodicBiasInformation-r15', _GNSS_PeriodicAssistData_r15_glo_RTK_PeriodicBiasInformation_r15),
@@ -6439,8 +8002,12 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-PeriodicSTEC-Correction-r16', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicSTEC_Correction_r16),
         ('gnss-SSR-PeriodicGriddedCorrection-r16', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicGriddedCorrection_r16),
         ('gnss-Integrity-PeriodicServiceAlert-r17', _GNSS_PeriodicAssistData_r15_gnss_Integrity_PeriodicServiceAlert_r17),
+        ('gnss-SSR-PeriodicOrbitCorrectionsSet2-r17', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2_r17),
+        ('gnss-SSR-PeriodicClockCorrectionsSet2-r17', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicClockCorrectionsSet2_r17),
+        ('gnss-SSR-PeriodicURA-Set2-r17', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicURA_Set2_r17),
+        ('gnss-SSR-PeriodicIOD-Update-r18', _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicIOD_Update_r18),
         ])
-    GNSS_PeriodicAssistData_r15._ext = ['gnss-SSR-PeriodicURA-r16', 'gnss-SSR-PeriodicPhaseBias-r16', 'gnss-SSR-PeriodicSTEC-Correction-r16', 'gnss-SSR-PeriodicGriddedCorrection-r16', 'gnss-Integrity-PeriodicServiceAlert-r17']
+    GNSS_PeriodicAssistData_r15._ext = ['gnss-SSR-PeriodicURA-r16', 'gnss-SSR-PeriodicPhaseBias-r16', 'gnss-SSR-PeriodicSTEC-Correction-r16', 'gnss-SSR-PeriodicGriddedCorrection-r16', 'gnss-Integrity-PeriodicServiceAlert-r17', 'gnss-SSR-PeriodicOrbitCorrectionsSet2-r17', 'gnss-SSR-PeriodicClockCorrectionsSet2-r17', 'gnss-SSR-PeriodicURA-Set2-r17', 'gnss-SSR-PeriodicIOD-Update-r18']
     
     #-----< GNSS-ReferenceTime >-----#
     GNSS_ReferenceTime = SEQ(name='GNSS-ReferenceTime', mode=MODE_TYPE)
@@ -7042,6 +8609,98 @@ class LPP_PDU_Definitions:
         ('troposphereDoNotUse-r17', _GNSS_Integrity_ServiceAlert_r17_troposphereDoNotUse_r17),
         ])
     GNSS_Integrity_ServiceAlert_r17._ext = []
+    
+    #-----< GNSS-LOS-NLOS-GridPoints-r18 >-----#
+    GNSS_LOS_NLOS_GridPoints_r18 = SEQ(name='GNSS-LOS-NLOS-GridPoints-r18', mode=MODE_TYPE)
+    _GNSS_LOS_NLOS_GridPoints_r18_gridPointsSetID_r18 = INT(name='gridPointsSetID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_LOS_NLOS_GridPoints_r18_gridPointsSetID_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=16383)], ev=None, er=[])
+    _GNSS_LOS_NLOS_GridPoints_r18_horizontalGridPoints_r18 = SEQ(name='horizontalGridPoints-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ArrayOfGridPoints-r18')))
+    _GNSS_LOS_NLOS_GridPoints_r18_referenceAltitudeFine_r18 = INT(name='referenceAltitudeFine-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_LOS_NLOS_GridPoints_r18_referenceAltitudeFine_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=9)], ev=None, er=[])
+    _GNSS_LOS_NLOS_GridPoints_r18_verticalGridPoints_r18 = SEQ(name='verticalGridPoints-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'VerticalGridPoints-r18')), opt=True)
+    GNSS_LOS_NLOS_GridPoints_r18._cont = ASN1Dict([
+        ('gridPointsSetID-r18', _GNSS_LOS_NLOS_GridPoints_r18_gridPointsSetID_r18),
+        ('horizontalGridPoints-r18', _GNSS_LOS_NLOS_GridPoints_r18_horizontalGridPoints_r18),
+        ('referenceAltitudeFine-r18', _GNSS_LOS_NLOS_GridPoints_r18_referenceAltitudeFine_r18),
+        ('verticalGridPoints-r18', _GNSS_LOS_NLOS_GridPoints_r18_verticalGridPoints_r18),
+        ])
+    GNSS_LOS_NLOS_GridPoints_r18._ext = []
+    
+    #-----< ArrayOfGridPoints-r18 >-----#
+    ArrayOfGridPoints_r18 = SEQ(name='ArrayOfGridPoints-r18', mode=MODE_TYPE)
+    _ArrayOfGridPoints_r18_referencePointLatitude_r18 = INT(name='referencePointLatitude-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ArrayOfGridPoints_r18_referencePointLatitude_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-16777216, ub=16777215)], ev=None, er=[])
+    _ArrayOfGridPoints_r18_referencePointLongitude_r18 = INT(name='referencePointLongitude-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ArrayOfGridPoints_r18_referencePointLongitude_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-33554432, ub=33554431)], ev=None, er=[])
+    _ArrayOfGridPoints_r18_numberOfStepsSouth_r18 = INT(name='numberOfStepsSouth-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ArrayOfGridPoints_r18_numberOfStepsSouth_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _ArrayOfGridPoints_r18_numberOfStepsEast_r18 = INT(name='numberOfStepsEast-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ArrayOfGridPoints_r18_numberOfStepsEast_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _ArrayOfGridPoints_r18_stepSouth_r18 = ENUM(name='stepSouth-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialDelta-r18')))
+    _ArrayOfGridPoints_r18_stepEast_r18 = ENUM(name='stepEast-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialDelta-r18')))
+    _ArrayOfGridPoints_r18_bitmaskOfGrids_r18 = CHOICE(name='bitmaskOfGrids-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog16_r18 = BIT_STR(name='bog16-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog16_r18._const_sz = ASN1Set(rv=[16], rr=[], ev=None, er=[])
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog64_r18 = BIT_STR(name='bog64-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog64_r18._const_sz = ASN1Set(rv=[64], rr=[], ev=None, er=[])
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog256_r18 = BIT_STR(name='bog256-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog256_r18._const_sz = ASN1Set(rv=[256], rr=[], ev=None, er=[])
+    _ArrayOfGridPoints_r18_bitmaskOfGrids_r18._cont = ASN1Dict([
+        ('bog16-r18', __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog16_r18),
+        ('bog64-r18', __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog64_r18),
+        ('bog256-r18', __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog256_r18),
+        ])
+    _ArrayOfGridPoints_r18_bitmaskOfGrids_r18._ext = []
+    ArrayOfGridPoints_r18._cont = ASN1Dict([
+        ('referencePointLatitude-r18', _ArrayOfGridPoints_r18_referencePointLatitude_r18),
+        ('referencePointLongitude-r18', _ArrayOfGridPoints_r18_referencePointLongitude_r18),
+        ('numberOfStepsSouth-r18', _ArrayOfGridPoints_r18_numberOfStepsSouth_r18),
+        ('numberOfStepsEast-r18', _ArrayOfGridPoints_r18_numberOfStepsEast_r18),
+        ('stepSouth-r18', _ArrayOfGridPoints_r18_stepSouth_r18),
+        ('stepEast-r18', _ArrayOfGridPoints_r18_stepEast_r18),
+        ('bitmaskOfGrids-r18', _ArrayOfGridPoints_r18_bitmaskOfGrids_r18),
+        ])
+    ArrayOfGridPoints_r18._ext = []
+    
+    #-----< VerticalGridPoints-r18 >-----#
+    VerticalGridPoints_r18 = SEQ(name='VerticalGridPoints-r18', mode=MODE_TYPE)
+    _VerticalGridPoints_r18_referenceAltitudeCoarse_r18 = INT(name='referenceAltitudeCoarse-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _VerticalGridPoints_r18_referenceAltitudeCoarse_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-50, ub=900)], ev=None, er=[])
+    _VerticalGridPoints_r18_numberOfStepsDown_r18 = INT(name='numberOfStepsDown-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _VerticalGridPoints_r18_numberOfStepsDown_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _VerticalGridPoints_r18_stepDown_r18 = ENUM(name='stepDown-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialDelta-r18')))
+    _VerticalGridPoints_r18_upperValidityDeltaAltitude_r18 = ENUM(name='upperValidityDeltaAltitude-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialDelta-r18')), opt=True)
+    _VerticalGridPoints_r18_lowerValidityDeltaAltitude_r18 = ENUM(name='lowerValidityDeltaAltitude-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SpatialDelta-r18')), opt=True)
+    VerticalGridPoints_r18._cont = ASN1Dict([
+        ('referenceAltitudeCoarse-r18', _VerticalGridPoints_r18_referenceAltitudeCoarse_r18),
+        ('numberOfStepsDown-r18', _VerticalGridPoints_r18_numberOfStepsDown_r18),
+        ('stepDown-r18', _VerticalGridPoints_r18_stepDown_r18),
+        ('upperValidityDeltaAltitude-r18', _VerticalGridPoints_r18_upperValidityDeltaAltitude_r18),
+        ('lowerValidityDeltaAltitude-r18', _VerticalGridPoints_r18_lowerValidityDeltaAltitude_r18),
+        ])
+    VerticalGridPoints_r18._ext = []
+    
+    #-----< SpatialDelta-r18 >-----#
+    SpatialDelta_r18 = ENUM(name='SpatialDelta-r18', mode=MODE_TYPE)
+    SpatialDelta_r18._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n3', 2), ('n4', 3), ('n5', 4), ('n10', 5), ('n20', 6), ('n50', 7), ('n100', 8)])
+    SpatialDelta_r18._ext = None
+    
+    #-----< GNSS-SSR-IOD-Update-r18 >-----#
+    GNSS_SSR_IOD_Update_r18 = SEQ(name='GNSS-SSR-IOD-Update-r18', mode=MODE_TYPE)
+    _GNSS_SSR_IOD_Update_r18_epochTime_r18 = SEQ(name='epochTime-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SystemTime')))
+    _GNSS_SSR_IOD_Update_r18_ssrUpdateInterval_r18 = INT(name='ssrUpdateInterval-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_IOD_Update_r18_ssrUpdateInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15)], ev=None, er=[])
+    _GNSS_SSR_IOD_Update_r18_iod_ssr_r18 = INT(name='iod-ssr-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_IOD_Update_r18_iod_ssr_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15)], ev=None, er=[])
+    _GNSS_SSR_IOD_Update_r18_iod_ssr_PCVResiduals_r18 = INT(name='iod-ssr-PCVResiduals-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_IOD_Update_r18_iod_ssr_PCVResiduals_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=64)], ev=None, er=[])
+    GNSS_SSR_IOD_Update_r18._cont = ASN1Dict([
+        ('epochTime-r18', _GNSS_SSR_IOD_Update_r18_epochTime_r18),
+        ('ssrUpdateInterval-r18', _GNSS_SSR_IOD_Update_r18_ssrUpdateInterval_r18),
+        ('iod-ssr-r18', _GNSS_SSR_IOD_Update_r18_iod_ssr_r18),
+        ('iod-ssr-PCVResiduals-r18', _GNSS_SSR_IOD_Update_r18_iod_ssr_PCVResiduals_r18),
+        ])
+    GNSS_SSR_IOD_Update_r18._ext = []
     
     #-----< GNSS-TimeModelList >-----#
     GNSS_TimeModelList = SEQ_OF(name='GNSS-TimeModelList', mode=MODE_TYPE)
@@ -8376,6 +10035,8 @@ class LPP_PDU_Definitions:
     _AlmanacNavIC_AlmanacSet_r16_navic_Almaf0_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
     _AlmanacNavIC_AlmanacSet_r16_navic_Almaf1_r16 = INT(name='navic-Almaf1-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _AlmanacNavIC_AlmanacSet_r16_navic_Almaf1_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
+    _AlmanacNavIC_AlmanacSet_r16_navicL5_i0_r16 = INT(name='navicL5-i0-r16', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _AlmanacNavIC_AlmanacSet_r16_navicL5_i0_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-8388608, ub=8388607)], ev=None, er=[])
     AlmanacNavIC_AlmanacSet_r16._cont = ASN1Dict([
         ('svID-r16', _AlmanacNavIC_AlmanacSet_r16_svID_r16),
         ('navic-AlmToa-r16', _AlmanacNavIC_AlmanacSet_r16_navic_AlmToa_r16),
@@ -8387,8 +10048,9 @@ class LPP_PDU_Definitions:
         ('navic-AlmMo-r16', _AlmanacNavIC_AlmanacSet_r16_navic_AlmMo_r16),
         ('navic-Almaf0-r16', _AlmanacNavIC_AlmanacSet_r16_navic_Almaf0_r16),
         ('navic-Almaf1-r16', _AlmanacNavIC_AlmanacSet_r16_navic_Almaf1_r16),
+        ('navicL5-i0-r16', _AlmanacNavIC_AlmanacSet_r16_navicL5_i0_r16),
         ])
-    AlmanacNavIC_AlmanacSet_r16._ext = []
+    AlmanacNavIC_AlmanacSet_r16._ext = ['navicL5-i0-r16']
     
     #-----< GNSS-UTC-Model >-----#
     GNSS_UTC_Model = CHOICE(name='GNSS-UTC-Model', mode=MODE_TYPE)
@@ -9717,6 +11379,137 @@ class LPP_PDU_Definitions:
         ])
     RegionIgpElement_r16._ext = []
     
+    #-----< GNSS-SSR-OrbitCorrectionsSet2-r17 >-----#
+    GNSS_SSR_OrbitCorrectionsSet2_r17 = SEQ(name='GNSS-SSR-OrbitCorrectionsSet2-r17', mode=MODE_TYPE)
+    _GNSS_SSR_OrbitCorrectionsSet2_r17_refEph_r17 = ENUM(name='refEph-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_OrbitCorrectionsSet2_r17_refEph_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_OrbitCorrectionsSet2_r17_refEph_r17._ext = []
+    _GNSS_SSR_OrbitCorrectionsSet2_r17_gnss_SSR_OrbitCorrections_r17 = SEQ(name='gnss-SSR-OrbitCorrections-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-OrbitCorrections-r15')))
+    GNSS_SSR_OrbitCorrectionsSet2_r17._cont = ASN1Dict([
+        ('refEph-r17', _GNSS_SSR_OrbitCorrectionsSet2_r17_refEph_r17),
+        ('gnss-SSR-OrbitCorrections-r17', _GNSS_SSR_OrbitCorrectionsSet2_r17_gnss_SSR_OrbitCorrections_r17),
+        ])
+    GNSS_SSR_OrbitCorrectionsSet2_r17._ext = []
+    
+    #-----< GNSS-SSR-ClockCorrectionsSet2-r17 >-----#
+    GNSS_SSR_ClockCorrectionsSet2_r17 = SEQ(name='GNSS-SSR-ClockCorrectionsSet2-r17', mode=MODE_TYPE)
+    _GNSS_SSR_ClockCorrectionsSet2_r17_refEph_r17 = ENUM(name='refEph-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_ClockCorrectionsSet2_r17_refEph_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_ClockCorrectionsSet2_r17_refEph_r17._ext = []
+    _GNSS_SSR_ClockCorrectionsSet2_r17_gnss_SSR_ClockCorrections_r17 = SEQ(name='gnss-SSR-ClockCorrections-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-ClockCorrections-r15')))
+    GNSS_SSR_ClockCorrectionsSet2_r17._cont = ASN1Dict([
+        ('refEph-r17', _GNSS_SSR_ClockCorrectionsSet2_r17_refEph_r17),
+        ('gnss-SSR-ClockCorrections-r17', _GNSS_SSR_ClockCorrectionsSet2_r17_gnss_SSR_ClockCorrections_r17),
+        ])
+    GNSS_SSR_ClockCorrectionsSet2_r17._ext = []
+    
+    #-----< GNSS-SSR-URA-Set2-r17 >-----#
+    GNSS_SSR_URA_Set2_r17 = SEQ(name='GNSS-SSR-URA-Set2-r17', mode=MODE_TYPE)
+    _GNSS_SSR_URA_Set2_r17_refEph_r17 = ENUM(name='refEph-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_URA_Set2_r17_refEph_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_URA_Set2_r17_refEph_r17._ext = []
+    _GNSS_SSR_URA_Set2_r17_gnss_SSR_URA_r17 = SEQ(name='gnss-SSR-URA-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-URA-r16')))
+    GNSS_SSR_URA_Set2_r17._cont = ASN1Dict([
+        ('refEph-r17', _GNSS_SSR_URA_Set2_r17_refEph_r17),
+        ('gnss-SSR-URA-r17', _GNSS_SSR_URA_Set2_r17_gnss_SSR_URA_r17),
+        ])
+    GNSS_SSR_URA_Set2_r17._ext = []
+    
+    #-----< GNSS-LOS-NLOS-GriddedIndications-r18 >-----#
+    GNSS_LOS_NLOS_GriddedIndications_r18 = SEQ(name='GNSS-LOS-NLOS-GriddedIndications-r18', mode=MODE_TYPE)
+    _GNSS_LOS_NLOS_GriddedIndications_r18_gridPointsSetID_r18 = INT(name='gridPointsSetID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_LOS_NLOS_GriddedIndications_r18_gridPointsSetID_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=16383)], ev=None, er=[])
+    _GNSS_LOS_NLOS_GriddedIndications_r18_expirationTime_r18 = TIME_UTC(name='expirationTime-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_LOS_NLOS_GriddedIndications_r18_gridList_r18 = SEQ_OF(name='gridList-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GridList-r18')))
+    GNSS_LOS_NLOS_GriddedIndications_r18._cont = ASN1Dict([
+        ('gridPointsSetID-r18', _GNSS_LOS_NLOS_GriddedIndications_r18_gridPointsSetID_r18),
+        ('expirationTime-r18', _GNSS_LOS_NLOS_GriddedIndications_r18_expirationTime_r18),
+        ('gridList-r18', _GNSS_LOS_NLOS_GriddedIndications_r18_gridList_r18),
+        ])
+    GNSS_LOS_NLOS_GriddedIndications_r18._ext = []
+    
+    #-----< GridList-r18 >-----#
+    GridList_r18 = SEQ_OF(name='GridList-r18', mode=MODE_TYPE)
+    _GridList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'GridElement-r18')))
+    GridList_r18._cont = _GridList_r18__item_
+    GridList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=1024)], ev=None, er=[])
+    
+    #-----< GridElement-r18 >-----#
+    GridElement_r18 = SEQ(name='GridElement-r18', mode=MODE_TYPE)
+    _GridElement_r18_gnss_LOS_InfoList_r18 = SEQ_OF(name='gnss-LOS-InfoList-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-InfoList-r18')), opt=True)
+    GridElement_r18._cont = ASN1Dict([
+        ('gnss-LOS-InfoList-r18', _GridElement_r18_gnss_LOS_InfoList_r18),
+        ])
+    GridElement_r18._ext = []
+    
+    #-----< GNSS-LOS-InfoList-r18 >-----#
+    GNSS_LOS_InfoList_r18 = SEQ_OF(name='GNSS-LOS-InfoList-r18', mode=MODE_TYPE)
+    _GNSS_LOS_InfoList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-InfoElement-r18')))
+    GNSS_LOS_InfoList_r18._cont = _GNSS_LOS_InfoList_r18__item_
+    GNSS_LOS_InfoList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< GNSS-LOS-InfoElement-r18 >-----#
+    GNSS_LOS_InfoElement_r18 = SEQ(name='GNSS-LOS-InfoElement-r18', mode=MODE_TYPE)
+    _GNSS_LOS_InfoElement_r18_svID_r18 = SEQ(name='svID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SV-ID')))
+    _GNSS_LOS_InfoElement_r18_los_r18 = ENUM(name='los-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_LOS_InfoElement_r18_los_r18._cont = ASN1Dict([('true', 0), ('false', 1), ('uncertain', 2)])
+    _GNSS_LOS_InfoElement_r18_los_r18._ext = None
+    GNSS_LOS_InfoElement_r18._cont = ASN1Dict([
+        ('svID-r18', _GNSS_LOS_InfoElement_r18_svID_r18),
+        ('los-r18', _GNSS_LOS_InfoElement_r18_los_r18),
+        ])
+    GNSS_LOS_InfoElement_r18._ext = []
+    
+    #-----< GNSS-SSR-SatellitePCVResiduals-r18 >-----#
+    GNSS_SSR_SatellitePCVResiduals_r18 = SEQ(name='GNSS-SSR-SatellitePCVResiduals-r18', mode=MODE_TYPE)
+    _GNSS_SSR_SatellitePCVResiduals_r18_iod_ssr_PCVResiduals_r18 = INT(name='iod-ssr-PCVResiduals-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_SatellitePCVResiduals_r18_iod_ssr_PCVResiduals_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=64)], ev=None, er=[])
+    _GNSS_SSR_SatellitePCVResiduals_r18_ssr_SatellitePCV_List_r18 = SEQ_OF(name='ssr-SatellitePCV-List-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SSR-SatellitePCV-List-r18')))
+    GNSS_SSR_SatellitePCVResiduals_r18._cont = ASN1Dict([
+        ('iod-ssr-PCVResiduals-r18', _GNSS_SSR_SatellitePCVResiduals_r18_iod_ssr_PCVResiduals_r18),
+        ('ssr-SatellitePCV-List-r18', _GNSS_SSR_SatellitePCVResiduals_r18_ssr_SatellitePCV_List_r18),
+        ])
+    GNSS_SSR_SatellitePCVResiduals_r18._ext = []
+    
+    #-----< SSR-SatellitePCV-List-r18 >-----#
+    SSR_SatellitePCV_List_r18 = SEQ_OF(name='SSR-SatellitePCV-List-r18', mode=MODE_TYPE)
+    _SSR_SatellitePCV_List_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'SSR-SatellitePCV-Element-r18')))
+    SSR_SatellitePCV_List_r18._cont = _SSR_SatellitePCV_List_r18__item_
+    SSR_SatellitePCV_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< SSR-SatellitePCV-Element-r18 >-----#
+    SSR_SatellitePCV_Element_r18 = SEQ(name='SSR-SatellitePCV-Element-r18', mode=MODE_TYPE)
+    _SSR_SatellitePCV_Element_r18_svID_r18 = SEQ(name='svID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SV-ID')))
+    _SSR_SatellitePCV_Element_r18_ssr_SatellitePCV_FrequencyList_r18 = SEQ_OF(name='ssr-SatellitePCV-FrequencyList-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SSR-SatellitePCV-FrequencyList-r18')))
+    SSR_SatellitePCV_Element_r18._cont = ASN1Dict([
+        ('svID-r18', _SSR_SatellitePCV_Element_r18_svID_r18),
+        ('ssr-SatellitePCV-FrequencyList-r18', _SSR_SatellitePCV_Element_r18_ssr_SatellitePCV_FrequencyList_r18),
+        ])
+    SSR_SatellitePCV_Element_r18._ext = []
+    
+    #-----< SSR-SatellitePCV-FrequencyList-r18 >-----#
+    SSR_SatellitePCV_FrequencyList_r18 = SEQ_OF(name='SSR-SatellitePCV-FrequencyList-r18', mode=MODE_TYPE)
+    _SSR_SatellitePCV_FrequencyList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'SSR-SatellitePCV-FrequencyElement-r18')))
+    SSR_SatellitePCV_FrequencyList_r18._cont = _SSR_SatellitePCV_FrequencyList_r18__item_
+    SSR_SatellitePCV_FrequencyList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    
+    #-----< SSR-SatellitePCV-FrequencyElement-r18 >-----#
+    SSR_SatellitePCV_FrequencyElement_r18 = SEQ(name='SSR-SatellitePCV-FrequencyElement-r18', mode=MODE_TYPE)
+    _SSR_SatellitePCV_FrequencyElement_r18_frequencyID_r18 = SEQ(name='frequencyID-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-FrequencyID-r15')))
+    _SSR_SatellitePCV_FrequencyElement_r18_phaseCenterVariations_r18 = SEQ_OF(name='phaseCenterVariations-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'SSR-PhaseCenterVariationList-r18')))
+    SSR_SatellitePCV_FrequencyElement_r18._cont = ASN1Dict([
+        ('frequencyID-r18', _SSR_SatellitePCV_FrequencyElement_r18_frequencyID_r18),
+        ('phaseCenterVariations-r18', _SSR_SatellitePCV_FrequencyElement_r18_phaseCenterVariations_r18),
+        ])
+    SSR_SatellitePCV_FrequencyElement_r18._ext = []
+    
+    #-----< SSR-PhaseCenterVariationList-r18 >-----#
+    SSR_PhaseCenterVariationList_r18 = SEQ_OF(name='SSR-PhaseCenterVariationList-r18', mode=MODE_TYPE)
+    _SSR_PhaseCenterVariationList_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    _SSR_PhaseCenterVariationList_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-1024, ub=1023)], ev=None, er=[])
+    SSR_PhaseCenterVariationList_r18._cont = _SSR_PhaseCenterVariationList_r18__item_
+    SSR_PhaseCenterVariationList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    
     #-----< A-GNSS-RequestAssistanceData >-----#
     A_GNSS_RequestAssistanceData = SEQ(name='A-GNSS-RequestAssistanceData', mode=MODE_TYPE)
     _A_GNSS_RequestAssistanceData_gnss_CommonAssistDataReq = SEQ(name='gnss-CommonAssistDataReq', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-CommonAssistDataReq')), opt=True)
@@ -9740,6 +11533,7 @@ class LPP_PDU_Definitions:
     _GNSS_CommonAssistDataReq_gnss_SSR_CorrectionPointsReq_r16 = SEQ(name='gnss-SSR-CorrectionPointsReq-r16', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-CorrectionPointsReq-r16')), opt=True, group=1)
     _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceParametersReq_r17 = SEQ(name='gnss-Integrity-ServiceParametersReq-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceParametersReq-r17')), opt=True, group=2)
     _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceAlertReq_r17 = SEQ(name='gnss-Integrity-ServiceAlertReq-r17', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceAlertReq-r17')), opt=True, group=2)
+    _GNSS_CommonAssistDataReq_gnss_SSR_IOD_UpdateReq_r18 = SEQ(name='gnss-SSR-IOD-UpdateReq-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-IOD-UpdateReq-r18')), opt=True, group=3)
     GNSS_CommonAssistDataReq._cont = ASN1Dict([
         ('gnss-ReferenceTimeReq', _GNSS_CommonAssistDataReq_gnss_ReferenceTimeReq),
         ('gnss-ReferenceLocationReq', _GNSS_CommonAssistDataReq_gnss_ReferenceLocationReq),
@@ -9750,8 +11544,9 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-CorrectionPointsReq-r16', _GNSS_CommonAssistDataReq_gnss_SSR_CorrectionPointsReq_r16),
         ('gnss-Integrity-ServiceParametersReq-r17', _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceParametersReq_r17),
         ('gnss-Integrity-ServiceAlertReq-r17', _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceAlertReq_r17),
+        ('gnss-SSR-IOD-UpdateReq-r18', _GNSS_CommonAssistDataReq_gnss_SSR_IOD_UpdateReq_r18),
         ])
-    GNSS_CommonAssistDataReq._ext = ['gnss-RTK-ReferenceStationInfoReq-r15', 'gnss-RTK-AuxiliaryStationDataReq-r15', 'gnss-SSR-CorrectionPointsReq-r16', 'gnss-Integrity-ServiceParametersReq-r17', 'gnss-Integrity-ServiceAlertReq-r17']
+    GNSS_CommonAssistDataReq._ext = ['gnss-RTK-ReferenceStationInfoReq-r15', 'gnss-RTK-AuxiliaryStationDataReq-r15', 'gnss-SSR-CorrectionPointsReq-r16', 'gnss-Integrity-ServiceParametersReq-r17', 'gnss-Integrity-ServiceAlertReq-r17', 'gnss-SSR-IOD-UpdateReq-r18']
     
     #-----< GNSS-GenericAssistDataReq >-----#
     GNSS_GenericAssistDataReq = SEQ_OF(name='GNSS-GenericAssistDataReq', mode=MODE_TYPE)
@@ -9788,6 +11583,11 @@ class LPP_PDU_Definitions:
     _GNSS_GenericAssistDataReqElement_gnss_SSR_GriddedCorrectionReq_r16 = SEQ(name='gnss-SSR-GriddedCorrectionReq-r16', mode=MODE_TYPE, tag=(24, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-GriddedCorrectionReq-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataReqElement_navic_DifferentialCorrectionsReq_r16 = SEQ(name='navic-DifferentialCorrectionsReq-r16', mode=MODE_TYPE, tag=(25, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-DifferentialCorrectionsReq-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataReqElement_navic_GridModelReq_r16 = SEQ(name='navic-GridModelReq-r16', mode=MODE_TYPE, tag=(26, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-GridModelReq-r16')), opt=True, group=2)
+    _GNSS_GenericAssistDataReqElement_gnss_SSR_OrbitCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-OrbitCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(27, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-OrbitCorrectionsSet2Req-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataReqElement_gnss_SSR_ClockCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-ClockCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(28, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-ClockCorrectionsSet2Req-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataReqElement_gnss_SSR_URA_Set2Req_r17 = SEQ(name='gnss-SSR-URA-Set2Req-r17', mode=MODE_TYPE, tag=(29, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-URA-Set2Req-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataReqElement_gnss_LOS_NLOS_GriddedIndicationsReq_r18 = SEQ(name='gnss-LOS-NLOS-GriddedIndicationsReq-r18', mode=MODE_TYPE, tag=(30, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-NLOS-GriddedIndicationsReq-r18')), opt=True, group=4)
+    _GNSS_GenericAssistDataReqElement_gnss_SSR_SatellitePCVResidualsReq_r18 = SEQ(name='gnss-SSR-SatellitePCVResidualsReq-r18', mode=MODE_TYPE, tag=(31, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-SatellitePCVResidualsReq-r18')), opt=True, group=4)
     GNSS_GenericAssistDataReqElement._cont = ASN1Dict([
         ('gnss-ID', _GNSS_GenericAssistDataReqElement_gnss_ID),
         ('sbas-ID', _GNSS_GenericAssistDataReqElement_sbas_ID),
@@ -9816,8 +11616,13 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-GriddedCorrectionReq-r16', _GNSS_GenericAssistDataReqElement_gnss_SSR_GriddedCorrectionReq_r16),
         ('navic-DifferentialCorrectionsReq-r16', _GNSS_GenericAssistDataReqElement_navic_DifferentialCorrectionsReq_r16),
         ('navic-GridModelReq-r16', _GNSS_GenericAssistDataReqElement_navic_GridModelReq_r16),
+        ('gnss-SSR-OrbitCorrectionsSet2Req-r17', _GNSS_GenericAssistDataReqElement_gnss_SSR_OrbitCorrectionsSet2Req_r17),
+        ('gnss-SSR-ClockCorrectionsSet2Req-r17', _GNSS_GenericAssistDataReqElement_gnss_SSR_ClockCorrectionsSet2Req_r17),
+        ('gnss-SSR-URA-Set2Req-r17', _GNSS_GenericAssistDataReqElement_gnss_SSR_URA_Set2Req_r17),
+        ('gnss-LOS-NLOS-GriddedIndicationsReq-r18', _GNSS_GenericAssistDataReqElement_gnss_LOS_NLOS_GriddedIndicationsReq_r18),
+        ('gnss-SSR-SatellitePCVResidualsReq-r18', _GNSS_GenericAssistDataReqElement_gnss_SSR_SatellitePCVResidualsReq_r18),
         ])
-    GNSS_GenericAssistDataReqElement._ext = ['bds-DifferentialCorrectionsReq-r12', 'bds-GridModelReq-r12', 'gnss-RTK-ObservationsReq-r15', 'glo-RTK-BiasInformationReq-r15', 'gnss-RTK-MAC-CorrectionDifferencesReq-r15', 'gnss-RTK-ResidualsReq-r15', 'gnss-RTK-FKP-GradientsReq-r15', 'gnss-SSR-OrbitCorrectionsReq-r15', 'gnss-SSR-ClockCorrectionsReq-r15', 'gnss-SSR-CodeBiasReq-r15', 'gnss-SSR-URA-Req-r16', 'gnss-SSR-PhaseBiasReq-r16', 'gnss-SSR-STEC-CorrectionReq-r16', 'gnss-SSR-GriddedCorrectionReq-r16', 'navic-DifferentialCorrectionsReq-r16', 'navic-GridModelReq-r16']
+    GNSS_GenericAssistDataReqElement._ext = ['bds-DifferentialCorrectionsReq-r12', 'bds-GridModelReq-r12', 'gnss-RTK-ObservationsReq-r15', 'glo-RTK-BiasInformationReq-r15', 'gnss-RTK-MAC-CorrectionDifferencesReq-r15', 'gnss-RTK-ResidualsReq-r15', 'gnss-RTK-FKP-GradientsReq-r15', 'gnss-SSR-OrbitCorrectionsReq-r15', 'gnss-SSR-ClockCorrectionsReq-r15', 'gnss-SSR-CodeBiasReq-r15', 'gnss-SSR-URA-Req-r16', 'gnss-SSR-PhaseBiasReq-r16', 'gnss-SSR-STEC-CorrectionReq-r16', 'gnss-SSR-GriddedCorrectionReq-r16', 'navic-DifferentialCorrectionsReq-r16', 'navic-GridModelReq-r16', 'gnss-SSR-OrbitCorrectionsSet2Req-r17', 'gnss-SSR-ClockCorrectionsSet2Req-r17', 'gnss-SSR-URA-Set2Req-r17', 'gnss-LOS-NLOS-GriddedIndicationsReq-r18', 'gnss-SSR-SatellitePCVResidualsReq-r18']
     
     #-----< GNSS-PeriodicAssistDataReq-r15 >-----#
     GNSS_PeriodicAssistDataReq_r15 = SEQ(name='GNSS-PeriodicAssistDataReq-r15', mode=MODE_TYPE)
@@ -9834,6 +11639,10 @@ class LPP_PDU_Definitions:
     _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicSTEC_CorrectionReq_r16 = SEQ(name='gnss-SSR-PeriodicSTEC-CorrectionReq-r16', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=0)
     _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicGriddedCorrectionReq_r16 = SEQ(name='gnss-SSR-PeriodicGriddedCorrectionReq-r16', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=0)
     _GNSS_PeriodicAssistDataReq_r15_gnss_Integrity_PeriodicServiceAlertReq_r17 = SEQ(name='gnss-Integrity-PeriodicServiceAlertReq-r17', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=1)
+    _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-PeriodicOrbitCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicClockCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-PeriodicClockCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicURA_Set2Req_r17 = SEQ(name='gnss-SSR-PeriodicURA-Set2Req-r17', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=2)
+    _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicIOD_UpdateReq_r18 = SEQ(name='gnss-SSR-PeriodicIOD-UpdateReq-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-PeriodicControlParam-r15')), opt=True, group=3)
     GNSS_PeriodicAssistDataReq_r15._cont = ASN1Dict([
         ('gnss-RTK-PeriodicObservationsReq-r15', _GNSS_PeriodicAssistDataReq_r15_gnss_RTK_PeriodicObservationsReq_r15),
         ('glo-RTK-PeriodicBiasInformationReq-r15', _GNSS_PeriodicAssistDataReq_r15_glo_RTK_PeriodicBiasInformationReq_r15),
@@ -9848,8 +11657,12 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-PeriodicSTEC-CorrectionReq-r16', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicSTEC_CorrectionReq_r16),
         ('gnss-SSR-PeriodicGriddedCorrectionReq-r16', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicGriddedCorrectionReq_r16),
         ('gnss-Integrity-PeriodicServiceAlertReq-r17', _GNSS_PeriodicAssistDataReq_r15_gnss_Integrity_PeriodicServiceAlertReq_r17),
+        ('gnss-SSR-PeriodicOrbitCorrectionsSet2Req-r17', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2Req_r17),
+        ('gnss-SSR-PeriodicClockCorrectionsSet2Req-r17', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicClockCorrectionsSet2Req_r17),
+        ('gnss-SSR-PeriodicURA-Set2Req-r17', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicURA_Set2Req_r17),
+        ('gnss-SSR-PeriodicIOD-UpdateReq-r18', _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicIOD_UpdateReq_r18),
         ])
-    GNSS_PeriodicAssistDataReq_r15._ext = ['gnss-SSR-PeriodicURA-Req-r16', 'gnss-SSR-PeriodicPhaseBiasReq-r16', 'gnss-SSR-PeriodicSTEC-CorrectionReq-r16', 'gnss-SSR-PeriodicGriddedCorrectionReq-r16', 'gnss-Integrity-PeriodicServiceAlertReq-r17']
+    GNSS_PeriodicAssistDataReq_r15._ext = ['gnss-SSR-PeriodicURA-Req-r16', 'gnss-SSR-PeriodicPhaseBiasReq-r16', 'gnss-SSR-PeriodicSTEC-CorrectionReq-r16', 'gnss-SSR-PeriodicGriddedCorrectionReq-r16', 'gnss-Integrity-PeriodicServiceAlertReq-r17', 'gnss-SSR-PeriodicOrbitCorrectionsSet2Req-r17', 'gnss-SSR-PeriodicClockCorrectionsSet2Req-r17', 'gnss-SSR-PeriodicURA-Set2Req-r17', 'gnss-SSR-PeriodicIOD-UpdateReq-r18']
     
     #-----< GNSS-ReferenceTimeReq >-----#
     GNSS_ReferenceTimeReq = SEQ(name='GNSS-ReferenceTimeReq', mode=MODE_TYPE)
@@ -9933,6 +11746,12 @@ class LPP_PDU_Definitions:
     GNSS_Integrity_ServiceAlertReq_r17._cont = ASN1Dict([
         ])
     GNSS_Integrity_ServiceAlertReq_r17._ext = []
+    
+    #-----< GNSS-SSR-IOD-UpdateReq-r18 >-----#
+    GNSS_SSR_IOD_UpdateReq_r18 = SEQ(name='GNSS-SSR-IOD-UpdateReq-r18', mode=MODE_TYPE)
+    GNSS_SSR_IOD_UpdateReq_r18._cont = ASN1Dict([
+        ])
+    GNSS_SSR_IOD_UpdateReq_r18._ext = []
     
     #-----< GNSS-TimeModelListReq >-----#
     GNSS_TimeModelListReq = SEQ_OF(name='GNSS-TimeModelListReq', mode=MODE_TYPE)
@@ -10285,6 +12104,78 @@ class LPP_PDU_Definitions:
         ])
     NavIC_GridModelReq_r16._ext = []
     
+    #-----< GNSS-SSR-OrbitCorrectionsSet2Req-r17 >-----#
+    GNSS_SSR_OrbitCorrectionsSet2Req_r17 = SEQ(name='GNSS-SSR-OrbitCorrectionsSet2Req-r17', mode=MODE_TYPE)
+    _GNSS_SSR_OrbitCorrectionsSet2Req_r17_refEphReq_r17 = ENUM(name='refEphReq-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_OrbitCorrectionsSet2Req_r17_refEphReq_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_OrbitCorrectionsSet2Req_r17_refEphReq_r17._ext = []
+    _GNSS_SSR_OrbitCorrectionsSet2Req_r17_gnss_SSR_OrbitCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-OrbitCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-OrbitCorrectionsReq-r15')), opt=True)
+    GNSS_SSR_OrbitCorrectionsSet2Req_r17._cont = ASN1Dict([
+        ('refEphReq-r17', _GNSS_SSR_OrbitCorrectionsSet2Req_r17_refEphReq_r17),
+        ('gnss-SSR-OrbitCorrectionsSet2Req-r17', _GNSS_SSR_OrbitCorrectionsSet2Req_r17_gnss_SSR_OrbitCorrectionsSet2Req_r17),
+        ])
+    GNSS_SSR_OrbitCorrectionsSet2Req_r17._ext = []
+    
+    #-----< GNSS-SSR-ClockCorrectionsSet2Req-r17 >-----#
+    GNSS_SSR_ClockCorrectionsSet2Req_r17 = SEQ(name='GNSS-SSR-ClockCorrectionsSet2Req-r17', mode=MODE_TYPE)
+    _GNSS_SSR_ClockCorrectionsSet2Req_r17_refEphReq_r17 = ENUM(name='refEphReq-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_ClockCorrectionsSet2Req_r17_refEphReq_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_ClockCorrectionsSet2Req_r17_refEphReq_r17._ext = []
+    _GNSS_SSR_ClockCorrectionsSet2Req_r17_gnss_SSR_ClockCorrectionsSet2Req_r17 = SEQ(name='gnss-SSR-ClockCorrectionsSet2Req-r17', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-ClockCorrectionsReq-r15')), opt=True)
+    GNSS_SSR_ClockCorrectionsSet2Req_r17._cont = ASN1Dict([
+        ('refEphReq-r17', _GNSS_SSR_ClockCorrectionsSet2Req_r17_refEphReq_r17),
+        ('gnss-SSR-ClockCorrectionsSet2Req-r17', _GNSS_SSR_ClockCorrectionsSet2Req_r17_gnss_SSR_ClockCorrectionsSet2Req_r17),
+        ])
+    GNSS_SSR_ClockCorrectionsSet2Req_r17._ext = []
+    
+    #-----< GNSS-SSR-URA-Set2Req-r17 >-----#
+    GNSS_SSR_URA_Set2Req_r17 = SEQ(name='GNSS-SSR-URA-Set2Req-r17', mode=MODE_TYPE)
+    _GNSS_SSR_URA_Set2Req_r17_refEphReq_r17 = ENUM(name='refEphReq-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_SSR_URA_Set2Req_r17_refEphReq_r17._cont = ASN1Dict([('b1c', 0)])
+    _GNSS_SSR_URA_Set2Req_r17_refEphReq_r17._ext = []
+    GNSS_SSR_URA_Set2Req_r17._cont = ASN1Dict([
+        ('refEphReq-r17', _GNSS_SSR_URA_Set2Req_r17_refEphReq_r17),
+        ])
+    GNSS_SSR_URA_Set2Req_r17._ext = []
+    
+    #-----< GNSS-LOS-NLOS-GriddedIndicationsReq-r18 >-----#
+    GNSS_LOS_NLOS_GriddedIndicationsReq_r18 = SEQ(name='GNSS-LOS-NLOS-GriddedIndicationsReq-r18', mode=MODE_TYPE)
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_gridPointsSetID_Req_r18 = INT(name='gridPointsSetID-Req-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_gridPointsSetID_Req_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=16383)], ev=None, er=[])
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18 = CHOICE(name='relativeLocationInfo-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_inside_r18 = ENUM(name='inside-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_inside_r18._cont = ASN1Dict([('upper-left', 0), ('upper-right', 1), ('lower-left', 2), ('lower-right', 3)])
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_inside_r18._ext = []
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_outside_r18 = ENUM(name='outside-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_outside_r18._cont = ASN1Dict([('north', 0), ('west', 1), ('south', 2), ('east', 3), ('above', 4), ('below', 5)])
+    __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_outside_r18._ext = []
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18._cont = ASN1Dict([
+        ('inside-r18', __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_inside_r18),
+        ('outside-r18', __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_outside_r18),
+        ])
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18._ext = None
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_verticalGridType_r18 = ENUM(name='verticalGridType-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_verticalGridType_r18._cont = ASN1Dict([('ground-level', 0), ('threeD', 1)])
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_verticalGridType_r18._ext = None
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeFine_r18 = INT(name='referenceAltitudeFine-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeFine_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=9)], ev=None, er=[])
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeCoarse_r18 = INT(name='referenceAltitudeCoarse-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeCoarse_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-50, ub=900)], ev=None, er=[])
+    GNSS_LOS_NLOS_GriddedIndicationsReq_r18._cont = ASN1Dict([
+        ('gridPointsSetID-Req-r18', _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_gridPointsSetID_Req_r18),
+        ('relativeLocationInfo-r18', _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18),
+        ('verticalGridType-r18', _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_verticalGridType_r18),
+        ('referenceAltitudeFine-r18', _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeFine_r18),
+        ('referenceAltitudeCoarse-r18', _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeCoarse_r18),
+        ])
+    GNSS_LOS_NLOS_GriddedIndicationsReq_r18._ext = []
+    
+    #-----< GNSS-SSR-SatellitePCVResidualsReq-r18 >-----#
+    GNSS_SSR_SatellitePCVResidualsReq_r18 = SEQ(name='GNSS-SSR-SatellitePCVResidualsReq-r18', mode=MODE_TYPE)
+    GNSS_SSR_SatellitePCVResidualsReq_r18._cont = ASN1Dict([
+        ])
+    GNSS_SSR_SatellitePCVResidualsReq_r18._ext = []
+    
     #-----< A-GNSS-ProvideLocationInformation >-----#
     A_GNSS_ProvideLocationInformation = SEQ(name='A-GNSS-ProvideLocationInformation', mode=MODE_TYPE)
     _A_GNSS_ProvideLocationInformation_gnss_SignalMeasurementInformation = SEQ(name='gnss-SignalMeasurementInformation', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SignalMeasurementInformation')), opt=True)
@@ -10596,6 +12487,7 @@ class LPP_PDU_Definitions:
     _A_GNSS_ProvideCapabilities_periodicAssistanceData_r15._cont = ASN1Dict([('solicited', 0), ('unsolicited', 1)])
     _A_GNSS_ProvideCapabilities_periodicAssistanceData_r15._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _A_GNSS_ProvideCapabilities_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupportPerMode-r17')), opt=True, group=2)
+    _A_GNSS_ProvideCapabilities_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=3)
     A_GNSS_ProvideCapabilities._cont = ASN1Dict([
         ('gnss-SupportList', _A_GNSS_ProvideCapabilities_gnss_SupportList),
         ('assistanceDataSupportList', _A_GNSS_ProvideCapabilities_assistanceDataSupportList),
@@ -10605,8 +12497,9 @@ class LPP_PDU_Definitions:
         ('idleStateForMeasurements-r14', _A_GNSS_ProvideCapabilities_idleStateForMeasurements_r14),
         ('periodicAssistanceData-r15', _A_GNSS_ProvideCapabilities_periodicAssistanceData_r15),
         ('scheduledLocationRequestSupported-r17', _A_GNSS_ProvideCapabilities_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _A_GNSS_ProvideCapabilities_periodicReportingIntervalMsSupport_r18),
         ])
-    A_GNSS_ProvideCapabilities._ext = ['periodicalReportingNotSupported-r14', 'idleStateForMeasurements-r14', 'periodicAssistanceData-r15', 'scheduledLocationRequestSupported-r17']
+    A_GNSS_ProvideCapabilities._ext = ['periodicalReportingNotSupported-r14', 'idleStateForMeasurements-r14', 'periodicAssistanceData-r15', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< GNSS-SupportList >-----#
     GNSS_SupportList = SEQ_OF(name='GNSS-SupportList', mode=MODE_TYPE)
@@ -10671,6 +12564,7 @@ class LPP_PDU_Definitions:
     _GNSS_CommonAssistanceDataSupport_gnss_RTK_AuxiliaryStationDataSupport_r15 = SEQ(name='gnss-RTK-AuxiliaryStationDataSupport-r15', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-RTK-AuxiliaryStationDataSupport-r15')), opt=True, group=0)
     _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceParametersSupport_r17 = SEQ(name='gnss-Integrity-ServiceParametersSupport-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceParametersSupport-r17')), opt=True, group=1)
     _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceAlertSupport_r17 = SEQ(name='gnss-Integrity-ServiceAlertSupport-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-Integrity-ServiceAlertSupport-r17')), opt=True, group=1)
+    _GNSS_CommonAssistanceDataSupport_gnss_SSR_IOD_UpdateSupport_r18 = SEQ(name='gnss-SSR-IOD-UpdateSupport-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-IOD-UpdateSupport-r18')), opt=True, group=2)
     GNSS_CommonAssistanceDataSupport._cont = ASN1Dict([
         ('gnss-ReferenceTimeSupport', _GNSS_CommonAssistanceDataSupport_gnss_ReferenceTimeSupport),
         ('gnss-ReferenceLocationSupport', _GNSS_CommonAssistanceDataSupport_gnss_ReferenceLocationSupport),
@@ -10680,8 +12574,9 @@ class LPP_PDU_Definitions:
         ('gnss-RTK-AuxiliaryStationDataSupport-r15', _GNSS_CommonAssistanceDataSupport_gnss_RTK_AuxiliaryStationDataSupport_r15),
         ('gnss-Integrity-ServiceParametersSupport-r17', _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceParametersSupport_r17),
         ('gnss-Integrity-ServiceAlertSupport-r17', _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceAlertSupport_r17),
+        ('gnss-SSR-IOD-UpdateSupport-r18', _GNSS_CommonAssistanceDataSupport_gnss_SSR_IOD_UpdateSupport_r18),
         ])
-    GNSS_CommonAssistanceDataSupport._ext = ['gnss-RTK-ReferenceStationInfoSupport-r15', 'gnss-RTK-AuxiliaryStationDataSupport-r15', 'gnss-Integrity-ServiceParametersSupport-r17', 'gnss-Integrity-ServiceAlertSupport-r17']
+    GNSS_CommonAssistanceDataSupport._ext = ['gnss-RTK-ReferenceStationInfoSupport-r15', 'gnss-RTK-AuxiliaryStationDataSupport-r15', 'gnss-Integrity-ServiceParametersSupport-r17', 'gnss-Integrity-ServiceAlertSupport-r17', 'gnss-SSR-IOD-UpdateSupport-r18']
     
     #-----< GNSS-ReferenceTimeSupport >-----#
     GNSS_ReferenceTimeSupport = SEQ(name='GNSS-ReferenceTimeSupport', mode=MODE_TYPE)
@@ -10739,6 +12634,12 @@ class LPP_PDU_Definitions:
         ])
     GNSS_Integrity_ServiceAlertSupport_r17._ext = []
     
+    #-----< GNSS-SSR-IOD-UpdateSupport-r18 >-----#
+    GNSS_SSR_IOD_UpdateSupport_r18 = SEQ(name='GNSS-SSR-IOD-UpdateSupport-r18', mode=MODE_TYPE)
+    GNSS_SSR_IOD_UpdateSupport_r18._cont = ASN1Dict([
+        ])
+    GNSS_SSR_IOD_UpdateSupport_r18._ext = []
+    
     #-----< GNSS-GenericAssistanceDataSupport >-----#
     GNSS_GenericAssistanceDataSupport = SEQ_OF(name='GNSS-GenericAssistanceDataSupport', mode=MODE_TYPE)
     _GNSS_GenericAssistanceDataSupport__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-GenericAssistDataSupportElement')))
@@ -10774,6 +12675,11 @@ class LPP_PDU_Definitions:
     _GNSS_GenericAssistDataSupportElement_gnss_SSR_GriddedCorrectionSupport_r16 = SEQ(name='gnss-SSR-GriddedCorrectionSupport-r16', mode=MODE_TYPE, tag=(24, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-GriddedCorrectionSupport-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataSupportElement_navic_DifferentialCorrectionsSupport_r16 = SEQ(name='navic-DifferentialCorrectionsSupport-r16', mode=MODE_TYPE, tag=(25, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-DifferentialCorrectionsSupport-r16')), opt=True, group=2)
     _GNSS_GenericAssistDataSupportElement_navic_GridModelSupport_r16 = SEQ(name='navic-GridModelSupport-r16', mode=MODE_TYPE, tag=(26, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NavIC-GridModelSupport-r16')), opt=True, group=2)
+    _GNSS_GenericAssistDataSupportElement_gnss_SSR_OrbitCorrectionsSet2Support_r17 = SEQ(name='gnss-SSR-OrbitCorrectionsSet2Support-r17', mode=MODE_TYPE, tag=(27, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-OrbitCorrectionsSet2Support-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataSupportElement_gnss_SSR_ClockCorrectionsSet2Support_r17 = SEQ(name='gnss-SSR-ClockCorrectionsSet2Support-r17', mode=MODE_TYPE, tag=(28, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-ClockCorrectionsSet2Support-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataSupportElement_gnss_SSR_URA_Set2Support_r17 = SEQ(name='gnss-SSR-URA-Set2Support-r17', mode=MODE_TYPE, tag=(29, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-URA-Set2Support-r17')), opt=True, group=3)
+    _GNSS_GenericAssistDataSupportElement_gnss_LOS_NLOS_GriddedIndicationsSupport_r18 = SEQ(name='gnss-LOS-NLOS-GriddedIndicationsSupport-r18', mode=MODE_TYPE, tag=(30, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-LOS-NLOS-GriddedIndicationsSupport-r18')), opt=True, group=4)
+    _GNSS_GenericAssistDataSupportElement_gnss_SSR_SatellitePCVResidualsSupport_r18 = SEQ(name='gnss-SSR-SatellitePCVResidualsSupport-r18', mode=MODE_TYPE, tag=(31, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'GNSS-SSR-SatellitePCVResidualsSupport-r18')), opt=True, group=4)
     GNSS_GenericAssistDataSupportElement._cont = ASN1Dict([
         ('gnss-ID', _GNSS_GenericAssistDataSupportElement_gnss_ID),
         ('sbas-ID', _GNSS_GenericAssistDataSupportElement_sbas_ID),
@@ -10802,8 +12708,13 @@ class LPP_PDU_Definitions:
         ('gnss-SSR-GriddedCorrectionSupport-r16', _GNSS_GenericAssistDataSupportElement_gnss_SSR_GriddedCorrectionSupport_r16),
         ('navic-DifferentialCorrectionsSupport-r16', _GNSS_GenericAssistDataSupportElement_navic_DifferentialCorrectionsSupport_r16),
         ('navic-GridModelSupport-r16', _GNSS_GenericAssistDataSupportElement_navic_GridModelSupport_r16),
+        ('gnss-SSR-OrbitCorrectionsSet2Support-r17', _GNSS_GenericAssistDataSupportElement_gnss_SSR_OrbitCorrectionsSet2Support_r17),
+        ('gnss-SSR-ClockCorrectionsSet2Support-r17', _GNSS_GenericAssistDataSupportElement_gnss_SSR_ClockCorrectionsSet2Support_r17),
+        ('gnss-SSR-URA-Set2Support-r17', _GNSS_GenericAssistDataSupportElement_gnss_SSR_URA_Set2Support_r17),
+        ('gnss-LOS-NLOS-GriddedIndicationsSupport-r18', _GNSS_GenericAssistDataSupportElement_gnss_LOS_NLOS_GriddedIndicationsSupport_r18),
+        ('gnss-SSR-SatellitePCVResidualsSupport-r18', _GNSS_GenericAssistDataSupportElement_gnss_SSR_SatellitePCVResidualsSupport_r18),
         ])
-    GNSS_GenericAssistDataSupportElement._ext = ['bds-DifferentialCorrectionsSupport-r12', 'bds-GridModelSupport-r12', 'gnss-RTK-ObservationsSupport-r15', 'glo-RTK-BiasInformationSupport-r15', 'gnss-RTK-MAC-CorrectionDifferencesSupport-r15', 'gnss-RTK-ResidualsSupport-r15', 'gnss-RTK-FKP-GradientsSupport-r15', 'gnss-SSR-OrbitCorrectionsSupport-r15', 'gnss-SSR-ClockCorrectionsSupport-r15', 'gnss-SSR-CodeBiasSupport-r15', 'gnss-SSR-URA-Support-r16', 'gnss-SSR-PhaseBiasSupport-r16', 'gnss-SSR-STEC-CorrectionSupport-r16', 'gnss-SSR-GriddedCorrectionSupport-r16', 'navic-DifferentialCorrectionsSupport-r16', 'navic-GridModelSupport-r16']
+    GNSS_GenericAssistDataSupportElement._ext = ['bds-DifferentialCorrectionsSupport-r12', 'bds-GridModelSupport-r12', 'gnss-RTK-ObservationsSupport-r15', 'glo-RTK-BiasInformationSupport-r15', 'gnss-RTK-MAC-CorrectionDifferencesSupport-r15', 'gnss-RTK-ResidualsSupport-r15', 'gnss-RTK-FKP-GradientsSupport-r15', 'gnss-SSR-OrbitCorrectionsSupport-r15', 'gnss-SSR-ClockCorrectionsSupport-r15', 'gnss-SSR-CodeBiasSupport-r15', 'gnss-SSR-URA-Support-r16', 'gnss-SSR-PhaseBiasSupport-r16', 'gnss-SSR-STEC-CorrectionSupport-r16', 'gnss-SSR-GriddedCorrectionSupport-r16', 'navic-DifferentialCorrectionsSupport-r16', 'navic-GridModelSupport-r16', 'gnss-SSR-OrbitCorrectionsSet2Support-r17', 'gnss-SSR-ClockCorrectionsSet2Support-r17', 'gnss-SSR-URA-Set2Support-r17', 'gnss-LOS-NLOS-GriddedIndicationsSupport-r18', 'gnss-SSR-SatellitePCVResidualsSupport-r18']
     
     #-----< GNSS-TimeModelListSupport >-----#
     GNSS_TimeModelListSupport = SEQ(name='GNSS-TimeModelListSupport', mode=MODE_TYPE)
@@ -10864,7 +12775,7 @@ class LPP_PDU_Definitions:
     #-----< GNSS-AlmanacSupport >-----#
     GNSS_AlmanacSupport = SEQ(name='GNSS-AlmanacSupport', mode=MODE_TYPE)
     _GNSS_AlmanacSupport_almanacModel = BIT_STR(name='almanacModel', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _GNSS_AlmanacSupport_almanacModel._cont = ASN1Dict([('model-1', 0), ('model-2', 1), ('model-3', 2), ('model-4', 3), ('model-5', 4), ('model-6', 5), ('model-7', 6)])
+    _GNSS_AlmanacSupport_almanacModel._cont = ASN1Dict([('model-1', 0), ('model-2', 1), ('model-3', 2), ('model-4', 3), ('model-5', 4), ('model-6', 5), ('model-7', 6), ('model-8-v16e0', 7)])
     _GNSS_AlmanacSupport_almanacModel._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     GNSS_AlmanacSupport._cont = ASN1Dict([
         ('almanacModel', _GNSS_AlmanacSupport_almanacModel),
@@ -11027,6 +12938,36 @@ class LPP_PDU_Definitions:
         ])
     NavIC_GridModelSupport_r16._ext = []
     
+    #-----< GNSS-SSR-OrbitCorrectionsSet2Support-r17 >-----#
+    GNSS_SSR_OrbitCorrectionsSet2Support_r17 = SEQ(name='GNSS-SSR-OrbitCorrectionsSet2Support-r17', mode=MODE_TYPE)
+    GNSS_SSR_OrbitCorrectionsSet2Support_r17._cont = ASN1Dict([
+        ])
+    GNSS_SSR_OrbitCorrectionsSet2Support_r17._ext = []
+    
+    #-----< GNSS-SSR-ClockCorrectionsSet2Support-r17 >-----#
+    GNSS_SSR_ClockCorrectionsSet2Support_r17 = SEQ(name='GNSS-SSR-ClockCorrectionsSet2Support-r17', mode=MODE_TYPE)
+    GNSS_SSR_ClockCorrectionsSet2Support_r17._cont = ASN1Dict([
+        ])
+    GNSS_SSR_ClockCorrectionsSet2Support_r17._ext = []
+    
+    #-----< GNSS-SSR-URA-Set2Support-r17 >-----#
+    GNSS_SSR_URA_Set2Support_r17 = SEQ(name='GNSS-SSR-URA-Set2Support-r17', mode=MODE_TYPE)
+    GNSS_SSR_URA_Set2Support_r17._cont = ASN1Dict([
+        ])
+    GNSS_SSR_URA_Set2Support_r17._ext = []
+    
+    #-----< GNSS-LOS-NLOS-GriddedIndicationsSupport-r18 >-----#
+    GNSS_LOS_NLOS_GriddedIndicationsSupport_r18 = SEQ(name='GNSS-LOS-NLOS-GriddedIndicationsSupport-r18', mode=MODE_TYPE)
+    GNSS_LOS_NLOS_GriddedIndicationsSupport_r18._cont = ASN1Dict([
+        ])
+    GNSS_LOS_NLOS_GriddedIndicationsSupport_r18._ext = []
+    
+    #-----< GNSS-SSR-SatellitePCVResidualsSupport-r18 >-----#
+    GNSS_SSR_SatellitePCVResidualsSupport_r18 = SEQ(name='GNSS-SSR-SatellitePCVResidualsSupport-r18', mode=MODE_TYPE)
+    GNSS_SSR_SatellitePCVResidualsSupport_r18._cont = ASN1Dict([
+        ])
+    GNSS_SSR_SatellitePCVResidualsSupport_r18._ext = []
+    
     #-----< A-GNSS-RequestCapabilities >-----#
     A_GNSS_RequestCapabilities = SEQ(name='A-GNSS-RequestCapabilities', mode=MODE_TYPE)
     _A_GNSS_RequestCapabilities_gnss_SupportListReq = BOOL(name='gnss-SupportListReq', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -11067,13 +13008,17 @@ class LPP_PDU_Definitions:
     _GNSS_TargetDeviceErrorCauses_fineTimeAssistanceMeasurementsNotPossible = NULL(name='fineTimeAssistanceMeasurementsNotPossible', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _GNSS_TargetDeviceErrorCauses_adrMeasurementsNotPossible = NULL(name='adrMeasurementsNotPossible', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _GNSS_TargetDeviceErrorCauses_multiFrequencyMeasurementsNotPossible = NULL(name='multiFrequencyMeasurementsNotPossible', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _GNSS_TargetDeviceErrorCauses_remoteUE_Indication_r18 = ENUM(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _GNSS_TargetDeviceErrorCauses_remoteUE_Indication_r18._cont = ASN1Dict([('true', 0)])
+    _GNSS_TargetDeviceErrorCauses_remoteUE_Indication_r18._ext = None
     GNSS_TargetDeviceErrorCauses._cont = ASN1Dict([
         ('cause', _GNSS_TargetDeviceErrorCauses_cause),
         ('fineTimeAssistanceMeasurementsNotPossible', _GNSS_TargetDeviceErrorCauses_fineTimeAssistanceMeasurementsNotPossible),
         ('adrMeasurementsNotPossible', _GNSS_TargetDeviceErrorCauses_adrMeasurementsNotPossible),
         ('multiFrequencyMeasurementsNotPossible', _GNSS_TargetDeviceErrorCauses_multiFrequencyMeasurementsNotPossible),
+        ('remoteUE-Indication-r18', _GNSS_TargetDeviceErrorCauses_remoteUE_Indication_r18),
         ])
-    GNSS_TargetDeviceErrorCauses._ext = []
+    GNSS_TargetDeviceErrorCauses._ext = ['remoteUE-Indication-r18']
     
     #-----< GNSS-FrequencyID-r15 >-----#
     GNSS_FrequencyID_r15 = SEQ(name='GNSS-FrequencyID-r15', mode=MODE_TYPE)
@@ -11330,6 +13275,7 @@ class LPP_PDU_Definitions:
     _ECID_ProvideCapabilities_idleStateForMeasurements_r14._cont = ASN1Dict([('required', 0)])
     _ECID_ProvideCapabilities_idleStateForMeasurements_r14._ext = None
     _ECID_ProvideCapabilities_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupport-r17')), opt=True, group=2)
+    _ECID_ProvideCapabilities_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupport-r18')), opt=True, group=3)
     ECID_ProvideCapabilities._cont = ASN1Dict([
         ('ecid-MeasSupported', _ECID_ProvideCapabilities_ecid_MeasSupported),
         ('ueRxTxSupTDD-r13', _ECID_ProvideCapabilities_ueRxTxSupTDD_r13),
@@ -11337,8 +13283,9 @@ class LPP_PDU_Definitions:
         ('triggeredReporting-r14', _ECID_ProvideCapabilities_triggeredReporting_r14),
         ('idleStateForMeasurements-r14', _ECID_ProvideCapabilities_idleStateForMeasurements_r14),
         ('scheduledLocationRequestSupported-r17', _ECID_ProvideCapabilities_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _ECID_ProvideCapabilities_periodicReportingIntervalMsSupport_r18),
         ])
-    ECID_ProvideCapabilities._ext = ['ueRxTxSupTDD-r13', 'periodicalReporting-r14', 'triggeredReporting-r14', 'idleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17']
+    ECID_ProvideCapabilities._ext = ['ueRxTxSupTDD-r13', 'periodicalReporting-r14', 'triggeredReporting-r14', 'idleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< ECID-RequestCapabilities >-----#
     ECID_RequestCapabilities = SEQ(name='ECID-RequestCapabilities', mode=MODE_TYPE)
@@ -11458,6 +13405,7 @@ class LPP_PDU_Definitions:
     _TBS_ProvideCapabilities_r13_mbs_IdleStateForMeasurements_r14._cont = ASN1Dict([('required', 0)])
     _TBS_ProvideCapabilities_r13_mbs_IdleStateForMeasurements_r14._ext = None
     _TBS_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupportPerMode-r17')), opt=True, group=1)
+    _TBS_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=2)
     TBS_ProvideCapabilities_r13._cont = ASN1Dict([
         ('tbs-Modes-r13', _TBS_ProvideCapabilities_r13_tbs_Modes_r13),
         ('mbs-AssistanceDataSupportList-r14', _TBS_ProvideCapabilities_r13_mbs_AssistanceDataSupportList_r14),
@@ -11465,8 +13413,9 @@ class LPP_PDU_Definitions:
         ('mbs-ConfigSupport-r14', _TBS_ProvideCapabilities_r13_mbs_ConfigSupport_r14),
         ('mbs-IdleStateForMeasurements-r14', _TBS_ProvideCapabilities_r13_mbs_IdleStateForMeasurements_r14),
         ('scheduledLocationRequestSupported-r17', _TBS_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _TBS_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18),
         ])
-    TBS_ProvideCapabilities_r13._ext = ['mbs-AssistanceDataSupportList-r14', 'periodicalReportingSupported-r14', 'mbs-ConfigSupport-r14', 'mbs-IdleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17']
+    TBS_ProvideCapabilities_r13._ext = ['mbs-AssistanceDataSupportList-r14', 'periodicalReportingSupported-r14', 'mbs-ConfigSupport-r14', 'mbs-IdleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< MBS-AssistanceDataSupportList-r14 >-----#
     MBS_AssistanceDataSupportList_r14 = SEQ(name='MBS-AssistanceDataSupportList-r14', mode=MODE_TYPE)
@@ -11780,6 +13729,7 @@ class LPP_PDU_Definitions:
     _Sensor_ProvideCapabilities_r13_adjustmentSupported_r16._cont = ASN1Dict([('true', 0)])
     _Sensor_ProvideCapabilities_r13_adjustmentSupported_r16._ext = None
     _Sensor_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupportPerMode-r17')), opt=True, group=3)
+    _Sensor_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=4)
     Sensor_ProvideCapabilities_r13._cont = ASN1Dict([
         ('sensor-Modes-r13', _Sensor_ProvideCapabilities_r13_sensor_Modes_r13),
         ('sensor-AssistanceDataSupportList-r14', _Sensor_ProvideCapabilities_r13_sensor_AssistanceDataSupportList_r14),
@@ -11788,8 +13738,9 @@ class LPP_PDU_Definitions:
         ('sensor-MotionInformationSup-r15', _Sensor_ProvideCapabilities_r13_sensor_MotionInformationSup_r15),
         ('adjustmentSupported-r16', _Sensor_ProvideCapabilities_r13_adjustmentSupported_r16),
         ('scheduledLocationRequestSupported-r17', _Sensor_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _Sensor_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18),
         ])
-    Sensor_ProvideCapabilities_r13._ext = ['sensor-AssistanceDataSupportList-r14', 'periodicalReportingSupported-r14', 'idleStateForMeasurements-r14', 'sensor-MotionInformationSup-r15', 'adjustmentSupported-r16', 'scheduledLocationRequestSupported-r17']
+    Sensor_ProvideCapabilities_r13._ext = ['sensor-AssistanceDataSupportList-r14', 'periodicalReportingSupported-r14', 'idleStateForMeasurements-r14', 'sensor-MotionInformationSup-r15', 'adjustmentSupported-r16', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< Sensor-AssistanceDataSupportList-r14 >-----#
     Sensor_AssistanceDataSupportList_r14 = SEQ(name='Sensor-AssistanceDataSupportList-r14', mode=MODE_TYPE)
@@ -12022,6 +13973,7 @@ class LPP_PDU_Definitions:
     _WLAN_ProvideCapabilities_r13_idleStateForMeasurements_r14._cont = ASN1Dict([('required', 0)])
     _WLAN_ProvideCapabilities_r13_idleStateForMeasurements_r14._ext = None
     _WLAN_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupportPerMode-r17')), opt=True, group=1)
+    _WLAN_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=2)
     WLAN_ProvideCapabilities_r13._cont = ASN1Dict([
         ('wlan-Modes-r13', _WLAN_ProvideCapabilities_r13_wlan_Modes_r13),
         ('wlan-MeasSupported-r13', _WLAN_ProvideCapabilities_r13_wlan_MeasSupported_r13),
@@ -12029,8 +13981,9 @@ class LPP_PDU_Definitions:
         ('periodicalReportingSupported-r14', _WLAN_ProvideCapabilities_r13_periodicalReportingSupported_r14),
         ('idleStateForMeasurements-r14', _WLAN_ProvideCapabilities_r13_idleStateForMeasurements_r14),
         ('scheduledLocationRequestSupported-r17', _WLAN_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _WLAN_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18),
         ])
-    WLAN_ProvideCapabilities_r13._ext = ['wlan-AP-AD-Supported-r14', 'periodicalReportingSupported-r14', 'idleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17']
+    WLAN_ProvideCapabilities_r13._ext = ['wlan-AP-AD-Supported-r14', 'periodicalReportingSupported-r14', 'idleStateForMeasurements-r14', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< WLAN-RequestCapabilities-r13 >-----#
     WLAN_RequestCapabilities_r13 = SEQ(name='WLAN-RequestCapabilities-r13', mode=MODE_TYPE)
@@ -12243,21 +14196,57 @@ class LPP_PDU_Definitions:
     BT_ProvideLocationInformation_r13 = SEQ(name='BT-ProvideLocationInformation-r13', mode=MODE_TYPE)
     _BT_ProvideLocationInformation_r13_bt_MeasurementInformation_r13 = SEQ(name='bt-MeasurementInformation-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-MeasurementInformation-r13')), opt=True)
     _BT_ProvideLocationInformation_r13_bt_Error_r13 = CHOICE(name='bt-Error-r13', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-Error-r13')), opt=True)
+    _BT_ProvideLocationInformation_r13_bt_AoA_Config_r18 = SEQ(name='bt-AoA-Config-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-AoA-Config-r18')), opt=True, group=0)
     BT_ProvideLocationInformation_r13._cont = ASN1Dict([
         ('bt-MeasurementInformation-r13', _BT_ProvideLocationInformation_r13_bt_MeasurementInformation_r13),
         ('bt-Error-r13', _BT_ProvideLocationInformation_r13_bt_Error_r13),
+        ('bt-AoA-Config-r18', _BT_ProvideLocationInformation_r13_bt_AoA_Config_r18),
         ])
-    BT_ProvideLocationInformation_r13._ext = []
+    BT_ProvideLocationInformation_r13._ext = ['bt-AoA-Config-r18']
+    
+    #-----< BT-AoA-Config-r18 >-----#
+    BT_AoA_Config_r18 = SEQ(name='BT-AoA-Config-r18', mode=MODE_TYPE)
+    _BT_AoA_Config_r18_bt_Addr_r18 = BIT_STR(name='bt-Addr-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AoA_Config_r18_bt_Addr_r18._const_sz = ASN1Set(rv=[48], rr=[], ev=None, er=[])
+    _BT_AoA_Config_r18_cte_Status_r18 = ENUM(name='cte-Status-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_cte_Status_r18._cont = ASN1Dict([('enabled', 0)])
+    _BT_AoA_Config_r18_cte_Status_r18._ext = None
+    _BT_AoA_Config_r18_primaryAdvInterval_r18 = INT(name='primaryAdvInterval-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_primaryAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=32, ub=16777)], ev=None, er=[])
+    _BT_AoA_Config_r18_secondAdvInterval_r18 = INT(name='secondAdvInterval-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_secondAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=6, ub=65535)], ev=None, er=[])
+    _BT_AoA_Config_r18_tx_Power_r18 = INT(name='tx-Power-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_tx_Power_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-127, ub=20)], ev=None, er=[])
+    _BT_AoA_Config_r18_cte_Length_r18 = INT(name='cte-Length-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_cte_Length_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=20)], ev=None, er=[])
+    _BT_AoA_Config_r18_cte_Count_r18 = INT(name='cte-Count-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_cte_Count_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    _BT_AoA_Config_r18_tx_PHY_M2_r18 = ENUM(name='tx-PHY-M2-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoA_Config_r18_tx_PHY_M2_r18._cont = ASN1Dict([('m2', 0)])
+    _BT_AoA_Config_r18_tx_PHY_M2_r18._ext = None
+    BT_AoA_Config_r18._cont = ASN1Dict([
+        ('bt-Addr-r18', _BT_AoA_Config_r18_bt_Addr_r18),
+        ('cte-Status-r18', _BT_AoA_Config_r18_cte_Status_r18),
+        ('primaryAdvInterval-r18', _BT_AoA_Config_r18_primaryAdvInterval_r18),
+        ('secondAdvInterval-r18', _BT_AoA_Config_r18_secondAdvInterval_r18),
+        ('tx-Power-r18', _BT_AoA_Config_r18_tx_Power_r18),
+        ('cte-Length-r18', _BT_AoA_Config_r18_cte_Length_r18),
+        ('cte-Count-r18', _BT_AoA_Config_r18_cte_Count_r18),
+        ('tx-PHY-M2-r18', _BT_AoA_Config_r18_tx_PHY_M2_r18),
+        ])
+    BT_AoA_Config_r18._ext = []
     
     #-----< BT-MeasurementInformation-r13 >-----#
     BT_MeasurementInformation_r13 = SEQ(name='BT-MeasurementInformation-r13', mode=MODE_TYPE)
     _BT_MeasurementInformation_r13_measurementReferenceTime_r13 = TIME_UTC(name='measurementReferenceTime-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _BT_MeasurementInformation_r13_bt_MeasurementList_r13 = SEQ_OF(name='bt-MeasurementList-r13', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-MeasurementList-r13')), opt=True)
+    _BT_MeasurementInformation_r13_bt_MeasurementList_r18 = SEQ_OF(name='bt-MeasurementList-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-MeasurementList-r18')), opt=True, group=0)
     BT_MeasurementInformation_r13._cont = ASN1Dict([
         ('measurementReferenceTime-r13', _BT_MeasurementInformation_r13_measurementReferenceTime_r13),
         ('bt-MeasurementList-r13', _BT_MeasurementInformation_r13_bt_MeasurementList_r13),
+        ('bt-MeasurementList-r18', _BT_MeasurementInformation_r13_bt_MeasurementList_r18),
         ])
-    BT_MeasurementInformation_r13._ext = []
+    BT_MeasurementInformation_r13._ext = ['bt-MeasurementList-r18']
     
     #-----< BT-MeasurementList-r13 >-----#
     BT_MeasurementList_r13 = SEQ_OF(name='BT-MeasurementList-r13', mode=MODE_TYPE)
@@ -12277,37 +14266,102 @@ class LPP_PDU_Definitions:
         ])
     BT_MeasurementElement_r13._ext = []
     
+    #-----< BT-MeasurementList-r18 >-----#
+    BT_MeasurementList_r18 = SEQ_OF(name='BT-MeasurementList-r18', mode=MODE_TYPE)
+    _BT_MeasurementList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-MeasurementElement-r18')))
+    BT_MeasurementList_r18._cont = _BT_MeasurementList_r18__item_
+    BT_MeasurementList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    
+    #-----< BT-MeasurementElement-r18 >-----#
+    BT_MeasurementElement_r18 = SEQ(name='BT-MeasurementElement-r18', mode=MODE_TYPE)
+    _BT_MeasurementElement_r18_btAddr_r18 = BIT_STR(name='btAddr-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_MeasurementElement_r18_btAddr_r18._const_sz = ASN1Set(rv=[48], rr=[], ev=None, er=[])
+    _BT_MeasurementElement_r18_bt_azimuth_r18 = INT(name='bt-azimuth-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_MeasurementElement_r18_bt_azimuth_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=359)], ev=None, er=[])
+    _BT_MeasurementElement_r18_bt_elevation_r18 = INT(name='bt-elevation-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_MeasurementElement_r18_bt_elevation_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=180)], ev=None, er=[])
+    _BT_MeasurementElement_r18_rssi_r18 = INT(name='rssi-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_MeasurementElement_r18_rssi_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-128, ub=127)], ev=None, er=[])
+    BT_MeasurementElement_r18._cont = ASN1Dict([
+        ('btAddr-r18', _BT_MeasurementElement_r18_btAddr_r18),
+        ('bt-azimuth-r18', _BT_MeasurementElement_r18_bt_azimuth_r18),
+        ('bt-elevation-r18', _BT_MeasurementElement_r18_bt_elevation_r18),
+        ('rssi-r18', _BT_MeasurementElement_r18_rssi_r18),
+        ])
+    BT_MeasurementElement_r18._ext = []
+    
     #-----< BT-RequestLocationInformation-r13 >-----#
     BT_RequestLocationInformation_r13 = SEQ(name='BT-RequestLocationInformation-r13', mode=MODE_TYPE)
     _BT_RequestLocationInformation_r13_requestedMeasurements_r13 = BIT_STR(name='requestedMeasurements-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BT_RequestLocationInformation_r13_requestedMeasurements_r13._cont = ASN1Dict([('rssi', 0)])
+    _BT_RequestLocationInformation_r13_requestedMeasurements_r13._cont = ASN1Dict([('rssi', 0), ('aod-v1800', 1)])
     _BT_RequestLocationInformation_r13_requestedMeasurements_r13._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _BT_RequestLocationInformation_r13_bt_requestedAoA_Config_r18 = BIT_STR(name='bt-requestedAoA-Config-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _BT_RequestLocationInformation_r13_bt_requestedAoA_Config_r18._cont = ASN1Dict([('aoa-advConfig', 0), ('aoa-cteConfig', 1)])
+    _BT_RequestLocationInformation_r13_bt_requestedAoA_Config_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _BT_RequestLocationInformation_r13_bt_suggestedAoA_Config_r18 = SEQ(name='bt-suggestedAoA-Config-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-SuggestedAoA-Config-r18')), opt=True, group=0)
     BT_RequestLocationInformation_r13._cont = ASN1Dict([
         ('requestedMeasurements-r13', _BT_RequestLocationInformation_r13_requestedMeasurements_r13),
+        ('bt-requestedAoA-Config-r18', _BT_RequestLocationInformation_r13_bt_requestedAoA_Config_r18),
+        ('bt-suggestedAoA-Config-r18', _BT_RequestLocationInformation_r13_bt_suggestedAoA_Config_r18),
         ])
-    BT_RequestLocationInformation_r13._ext = []
+    BT_RequestLocationInformation_r13._ext = ['bt-requestedAoA-Config-r18', 'bt-suggestedAoA-Config-r18']
+    
+    #-----< BT-SuggestedAoA-Config-r18 >-----#
+    BT_SuggestedAoA_Config_r18 = SEQ(name='BT-SuggestedAoA-Config-r18', mode=MODE_TYPE)
+    _BT_SuggestedAoA_Config_r18_cte_Status_r18 = ENUM(name='cte-Status-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_cte_Status_r18._cont = ASN1Dict([('enabled', 0), ('disabled', 1)])
+    _BT_SuggestedAoA_Config_r18_cte_Status_r18._ext = None
+    _BT_SuggestedAoA_Config_r18_primaryAdvInterval_r18 = INT(name='primaryAdvInterval-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_primaryAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=32, ub=16777)], ev=None, er=[])
+    _BT_SuggestedAoA_Config_r18_secondAdvInterval_r18 = INT(name='secondAdvInterval-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_secondAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=6, ub=65535)], ev=None, er=[])
+    _BT_SuggestedAoA_Config_r18_tx_Power_r18 = INT(name='tx-Power-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_tx_Power_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-127, ub=20)], ev=None, er=[])
+    _BT_SuggestedAoA_Config_r18_cte_Length_r18 = INT(name='cte-Length-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_cte_Length_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=20)], ev=None, er=[])
+    _BT_SuggestedAoA_Config_r18_cte_Count_r18 = INT(name='cte-Count-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_cte_Count_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    _BT_SuggestedAoA_Config_r18_tx_PHY_M2_r18 = ENUM(name='tx-PHY-M2-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_SuggestedAoA_Config_r18_tx_PHY_M2_r18._cont = ASN1Dict([('m2', 0)])
+    _BT_SuggestedAoA_Config_r18_tx_PHY_M2_r18._ext = None
+    BT_SuggestedAoA_Config_r18._cont = ASN1Dict([
+        ('cte-Status-r18', _BT_SuggestedAoA_Config_r18_cte_Status_r18),
+        ('primaryAdvInterval-r18', _BT_SuggestedAoA_Config_r18_primaryAdvInterval_r18),
+        ('secondAdvInterval-r18', _BT_SuggestedAoA_Config_r18_secondAdvInterval_r18),
+        ('tx-Power-r18', _BT_SuggestedAoA_Config_r18_tx_Power_r18),
+        ('cte-Length-r18', _BT_SuggestedAoA_Config_r18_cte_Length_r18),
+        ('cte-Count-r18', _BT_SuggestedAoA_Config_r18_cte_Count_r18),
+        ('tx-PHY-M2-r18', _BT_SuggestedAoA_Config_r18_tx_PHY_M2_r18),
+        ])
+    BT_SuggestedAoA_Config_r18._ext = []
     
     #-----< BT-ProvideCapabilities-r13 >-----#
     BT_ProvideCapabilities_r13 = SEQ(name='BT-ProvideCapabilities-r13', mode=MODE_TYPE)
     _BT_ProvideCapabilities_r13_bt_Modes_r13 = BIT_STR(name='bt-Modes-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BT_ProvideCapabilities_r13_bt_Modes_r13._cont = ASN1Dict([('standalone', 0), ('ue-assisted', 1)])
+    _BT_ProvideCapabilities_r13_bt_Modes_r13._cont = ASN1Dict([('standalone', 0), ('ue-assisted', 1), ('ue-based-v1810', 2)])
     _BT_ProvideCapabilities_r13_bt_Modes_r13._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _BT_ProvideCapabilities_r13_bt_MeasSupported_r13 = BIT_STR(name='bt-MeasSupported-r13', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BT_ProvideCapabilities_r13_bt_MeasSupported_r13._cont = ASN1Dict([('rssi-r13', 0)])
+    _BT_ProvideCapabilities_r13_bt_MeasSupported_r13._cont = ASN1Dict([('rssi-r13', 0), ('aod-v1800', 1)])
     _BT_ProvideCapabilities_r13_bt_MeasSupported_r13._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _BT_ProvideCapabilities_r13_idleStateForMeasurements_r14 = ENUM(name='idleStateForMeasurements-r14', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _BT_ProvideCapabilities_r13_idleStateForMeasurements_r14._cont = ASN1Dict([('required', 0)])
     _BT_ProvideCapabilities_r13_idleStateForMeasurements_r14._ext = None
     _BT_ProvideCapabilities_r13_periodicalReportingSupported_r14 = SEQ(name='periodicalReportingSupported-r14', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True, group=0)
     _BT_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupportPerMode-r17')), opt=True, group=1)
+    _BT_ProvideCapabilities_r13_bt_AoA_r18 = ENUM(name='bt-AoA-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _BT_ProvideCapabilities_r13_bt_AoA_r18._cont = ASN1Dict([('request-only', 0), ('suggestion', 1)])
+    _BT_ProvideCapabilities_r13_bt_AoA_r18._ext = None
+    _BT_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=2)
     BT_ProvideCapabilities_r13._cont = ASN1Dict([
         ('bt-Modes-r13', _BT_ProvideCapabilities_r13_bt_Modes_r13),
         ('bt-MeasSupported-r13', _BT_ProvideCapabilities_r13_bt_MeasSupported_r13),
         ('idleStateForMeasurements-r14', _BT_ProvideCapabilities_r13_idleStateForMeasurements_r14),
         ('periodicalReportingSupported-r14', _BT_ProvideCapabilities_r13_periodicalReportingSupported_r14),
         ('scheduledLocationRequestSupported-r17', _BT_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17),
+        ('bt-AoA-r18', _BT_ProvideCapabilities_r13_bt_AoA_r18),
+        ('periodicReportingIntervalMsSupport-r18', _BT_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18),
         ])
-    BT_ProvideCapabilities_r13._ext = ['idleStateForMeasurements-r14', 'periodicalReportingSupported-r14', 'scheduledLocationRequestSupported-r17']
+    BT_ProvideCapabilities_r13._ext = ['idleStateForMeasurements-r14', 'periodicalReportingSupported-r14', 'scheduledLocationRequestSupported-r17', 'bt-AoA-r18', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< BT-RequestCapabilities-r13 >-----#
     BT_RequestCapabilities_r13 = SEQ(name='BT-RequestCapabilities-r13', mode=MODE_TYPE)
@@ -12328,8 +14382,8 @@ class LPP_PDU_Definitions:
     #-----< BT-LocationServerErrorCauses-r13 >-----#
     BT_LocationServerErrorCauses_r13 = SEQ(name='BT-LocationServerErrorCauses-r13', mode=MODE_TYPE)
     _BT_LocationServerErrorCauses_r13_cause_r13 = ENUM(name='cause-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BT_LocationServerErrorCauses_r13_cause_r13._cont = ASN1Dict([('undefined', 0)])
-    _BT_LocationServerErrorCauses_r13_cause_r13._ext = []
+    _BT_LocationServerErrorCauses_r13_cause_r13._cont = ASN1Dict([('undefined', 0), ('assistanceDataNotSupportedByServer-v1810', 1), ('assistanceDataSupportedButCurrentlyNotAvailableByServer-v1810', 2), ('notAllrequestedAssistanceDataAvailableByServer-v1810', 3)])
+    _BT_LocationServerErrorCauses_r13_cause_r13._ext = ['assistanceDataNotSupportedByServer-v1810', 'assistanceDataSupportedButCurrentlyNotAvailableByServer-v1810', 'notAllrequestedAssistanceDataAvailableByServer-v1810']
     BT_LocationServerErrorCauses_r13._cont = ASN1Dict([
         ('cause-r13', _BT_LocationServerErrorCauses_r13_cause_r13),
         ])
@@ -12338,14 +14392,200 @@ class LPP_PDU_Definitions:
     #-----< BT-TargetDeviceErrorCauses-r13 >-----#
     BT_TargetDeviceErrorCauses_r13 = SEQ(name='BT-TargetDeviceErrorCauses-r13', mode=MODE_TYPE)
     _BT_TargetDeviceErrorCauses_r13_cause_r13 = ENUM(name='cause-r13', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BT_TargetDeviceErrorCauses_r13_cause_r13._cont = ASN1Dict([('undefined', 0), ('requestedMeasurementsNotAvailable', 1), ('notAllrequestedMeasurementsPossible', 2)])
-    _BT_TargetDeviceErrorCauses_r13_cause_r13._ext = []
+    _BT_TargetDeviceErrorCauses_r13_cause_r13._cont = ASN1Dict([('undefined', 0), ('requestedMeasurementsNotAvailable', 1), ('notAllrequestedMeasurementsPossible', 2), ('assistanceDataMissing-v1810', 3)])
+    _BT_TargetDeviceErrorCauses_r13_cause_r13._ext = ['assistanceDataMissing-v1810']
     _BT_TargetDeviceErrorCauses_r13_bt_Beacon_rssiMeasurementNotPossible_r13 = NULL(name='bt-Beacon-rssiMeasurementNotPossible-r13', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     BT_TargetDeviceErrorCauses_r13._cont = ASN1Dict([
         ('cause-r13', _BT_TargetDeviceErrorCauses_r13_cause_r13),
         ('bt-Beacon-rssiMeasurementNotPossible-r13', _BT_TargetDeviceErrorCauses_r13_bt_Beacon_rssiMeasurementNotPossible_r13),
         ])
     BT_TargetDeviceErrorCauses_r13._ext = []
+    
+    #-----< BT-ProvideAssistanceData-r18 >-----#
+    BT_ProvideAssistanceData_r18 = SEQ(name='BT-ProvideAssistanceData-r18', mode=MODE_TYPE)
+    _BT_ProvideAssistanceData_r18_bt_BeaconInfo_r18 = SEQ(name='bt-BeaconInfo-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-BeaconInfo-r18')))
+    _BT_ProvideAssistanceData_r18_bt_Error_r18 = CHOICE(name='bt-Error-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-Error-r13')), opt=True)
+    BT_ProvideAssistanceData_r18._cont = ASN1Dict([
+        ('bt-BeaconInfo-r18', _BT_ProvideAssistanceData_r18_bt_BeaconInfo_r18),
+        ('bt-Error-r18', _BT_ProvideAssistanceData_r18_bt_Error_r18),
+        ])
+    BT_ProvideAssistanceData_r18._ext = []
+    
+    #-----< BT-BeaconInfo-r18 >-----#
+    BT_BeaconInfo_r18 = SEQ(name='BT-BeaconInfo-r18', mode=MODE_TYPE)
+    _BT_BeaconInfo_r18_referencePoint_r18 = SEQ(name='referencePoint-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ReferencePoint-r16')))
+    _BT_BeaconInfo_r18_bt_BeaconInfoList_r18 = SEQ_OF(name='bt-BeaconInfoList-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __BT_BeaconInfo_r18_bt_BeaconInfoList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-BeaconInfoElement-r18')))
+    _BT_BeaconInfo_r18_bt_BeaconInfoList_r18._cont = __BT_BeaconInfo_r18_bt_BeaconInfoList_r18__item_
+    _BT_BeaconInfo_r18_bt_BeaconInfoList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    BT_BeaconInfo_r18._cont = ASN1Dict([
+        ('referencePoint-r18', _BT_BeaconInfo_r18_referencePoint_r18),
+        ('bt-BeaconInfoList-r18', _BT_BeaconInfo_r18_bt_BeaconInfoList_r18),
+        ])
+    BT_BeaconInfo_r18._ext = []
+    
+    #-----< BT-BeaconInfoElement-r18 >-----#
+    BT_BeaconInfoElement_r18 = SEQ(name='BT-BeaconInfoElement-r18', mode=MODE_TYPE)
+    _BT_BeaconInfoElement_r18_bt_Addr_r18 = BIT_STR(name='bt-Addr-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_BeaconInfoElement_r18_bt_Addr_r18._const_sz = ASN1Set(rv=[48], rr=[], ev=None, er=[])
+    _BT_BeaconInfoElement_r18_bt_BeaconLocation_r18 = SEQ(name='bt-BeaconLocation-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'RelativeLocation-r16')), opt=True)
+    _BT_BeaconInfoElement_r18_bt_LCS_GCS_TranslationParameter_r18 = SEQ(name='bt-LCS-GCS-TranslationParameter-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LCS-GCS-TranslationParameter-r16')), opt=True)
+    _BT_BeaconInfoElement_r18_bt_antArrayConfig_r18 = CHOICE(name='bt-antArrayConfig-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-AntArrayConfig-r18')), opt=True)
+    _BT_BeaconInfoElement_r18_bt_antElementList_r18 = SEQ_OF(name='bt-antElementList-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __BT_BeaconInfoElement_r18_bt_antElementList_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-AntElement-r18')))
+    _BT_BeaconInfoElement_r18_bt_antElementList_r18._cont = __BT_BeaconInfoElement_r18_bt_antElementList_r18__item_
+    _BT_BeaconInfoElement_r18_bt_antElementList_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=74)], ev=None, er=[])
+    _BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18 = SEQ_OF(name='bt-antSwitchingPattern-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    __BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-AntSwitchElement-r18')))
+    _BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18._cont = __BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18__item_
+    _BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=74)], ev=None, er=[])
+    _BT_BeaconInfoElement_r18_bt_AoD_TransmConfig_r18 = SEQ(name='bt-AoD-TransmConfig-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-AoD-TransmConfig-r18')), opt=True)
+    BT_BeaconInfoElement_r18._cont = ASN1Dict([
+        ('bt-Addr-r18', _BT_BeaconInfoElement_r18_bt_Addr_r18),
+        ('bt-BeaconLocation-r18', _BT_BeaconInfoElement_r18_bt_BeaconLocation_r18),
+        ('bt-LCS-GCS-TranslationParameter-r18', _BT_BeaconInfoElement_r18_bt_LCS_GCS_TranslationParameter_r18),
+        ('bt-antArrayConfig-r18', _BT_BeaconInfoElement_r18_bt_antArrayConfig_r18),
+        ('bt-antElementList-r18', _BT_BeaconInfoElement_r18_bt_antElementList_r18),
+        ('bt-antSwitchingPattern-r18', _BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18),
+        ('bt-AoD-TransmConfig-r18', _BT_BeaconInfoElement_r18_bt_AoD_TransmConfig_r18),
+        ])
+    BT_BeaconInfoElement_r18._ext = []
+    
+    #-----< BT-AntArrayConfig-r18 >-----#
+    BT_AntArrayConfig_r18 = CHOICE(name='BT-AntArrayConfig-r18', mode=MODE_TYPE)
+    _BT_AntArrayConfig_r18_bt_UniformLinearArray_r18 = SEQ(name='bt-UniformLinearArray-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-UniformLinearArray-r18')))
+    _BT_AntArrayConfig_r18_bt_UniformRectangularArray_r18 = SEQ(name='bt-UniformRectangularArray-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-UniformRectangularArray-r18')))
+    _BT_AntArrayConfig_r18_bt_UniformCircularArray_r18 = SEQ(name='bt-UniformCircularArray-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-UniformCircularArray-r18')))
+    _BT_AntArrayConfig_r18_bt_GenericArray_r18 = SEQ_OF(name='bt-GenericArray-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-GenericArray-r18')))
+    BT_AntArrayConfig_r18._cont = ASN1Dict([
+        ('bt-UniformLinearArray-r18', _BT_AntArrayConfig_r18_bt_UniformLinearArray_r18),
+        ('bt-UniformRectangularArray-r18', _BT_AntArrayConfig_r18_bt_UniformRectangularArray_r18),
+        ('bt-UniformCircularArray-r18', _BT_AntArrayConfig_r18_bt_UniformCircularArray_r18),
+        ('bt-GenericArray-r18', _BT_AntArrayConfig_r18_bt_GenericArray_r18),
+        ])
+    BT_AntArrayConfig_r18._ext = None
+    
+    #-----< BT-AntElement-r18 >-----#
+    BT_AntElement_r18 = SEQ(name='BT-AntElement-r18', mode=MODE_TYPE)
+    _BT_AntElement_r18_polarization_r18 = ENUM(name='polarization-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AntElement_r18_polarization_r18._cont = ASN1Dict([('m45', 0), ('zero', 1), ('p45', 2), ('p90', 3), ('circ', 4)])
+    _BT_AntElement_r18_polarization_r18._ext = None
+    BT_AntElement_r18._cont = ASN1Dict([
+        ('polarization-r18', _BT_AntElement_r18_polarization_r18),
+        ])
+    BT_AntElement_r18._ext = []
+    
+    #-----< BT-AntSwitchElement-r18 >-----#
+    BT_AntSwitchElement_r18 = SEQ(name='BT-AntSwitchElement-r18', mode=MODE_TYPE)
+    _BT_AntSwitchElement_r18_antElementIndexShort_r18 = INT(name='antElementIndexShort-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AntSwitchElement_r18_antElementIndexShort_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    _BT_AntSwitchElement_r18_antElementIndexOffset_r18 = ENUM(name='antElementIndexOffset-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AntSwitchElement_r18_antElementIndexOffset_r18._cont = ASN1Dict([('o16', 0), ('o32', 1), ('o48', 2), ('o64', 3)])
+    _BT_AntSwitchElement_r18_antElementIndexOffset_r18._ext = None
+    BT_AntSwitchElement_r18._cont = ASN1Dict([
+        ('antElementIndexShort-r18', _BT_AntSwitchElement_r18_antElementIndexShort_r18),
+        ('antElementIndexOffset-r18', _BT_AntSwitchElement_r18_antElementIndexOffset_r18),
+        ])
+    BT_AntSwitchElement_r18._ext = []
+    
+    #-----< BT-AoD-TransmConfig-r18 >-----#
+    BT_AoD_TransmConfig_r18 = SEQ(name='BT-AoD-TransmConfig-r18', mode=MODE_TYPE)
+    _BT_AoD_TransmConfig_r18_primaryAdvInterval_r18 = INT(name='primaryAdvInterval-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AoD_TransmConfig_r18_primaryAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=32, ub=16777)], ev=None, er=[])
+    _BT_AoD_TransmConfig_r18_secondAdvInterval_r18 = INT(name='secondAdvInterval-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AoD_TransmConfig_r18_secondAdvInterval_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=6, ub=65535)], ev=None, er=[])
+    _BT_AoD_TransmConfig_r18_cte_Length_r18 = INT(name='cte-Length-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AoD_TransmConfig_r18_cte_Length_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=20)], ev=None, er=[])
+    _BT_AoD_TransmConfig_r18_cte_Count_r18 = INT(name='cte-Count-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_AoD_TransmConfig_r18_cte_Count_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    _BT_AoD_TransmConfig_r18_cte_Type2us_r18 = ENUM(name='cte-Type2us-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoD_TransmConfig_r18_cte_Type2us_r18._cont = ASN1Dict([('true', 0)])
+    _BT_AoD_TransmConfig_r18_cte_Type2us_r18._ext = None
+    _BT_AoD_TransmConfig_r18_tx_PHY_M2_r18 = ENUM(name='tx-PHY-M2-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_AoD_TransmConfig_r18_tx_PHY_M2_r18._cont = ASN1Dict([('true', 0)])
+    _BT_AoD_TransmConfig_r18_tx_PHY_M2_r18._ext = None
+    BT_AoD_TransmConfig_r18._cont = ASN1Dict([
+        ('primaryAdvInterval-r18', _BT_AoD_TransmConfig_r18_primaryAdvInterval_r18),
+        ('secondAdvInterval-r18', _BT_AoD_TransmConfig_r18_secondAdvInterval_r18),
+        ('cte-Length-r18', _BT_AoD_TransmConfig_r18_cte_Length_r18),
+        ('cte-Count-r18', _BT_AoD_TransmConfig_r18_cte_Count_r18),
+        ('cte-Type2us-r18', _BT_AoD_TransmConfig_r18_cte_Type2us_r18),
+        ('tx-PHY-M2-r18', _BT_AoD_TransmConfig_r18_tx_PHY_M2_r18),
+        ])
+    BT_AoD_TransmConfig_r18._ext = []
+    
+    #-----< BT-UniformLinearArray-r18 >-----#
+    BT_UniformLinearArray_r18 = SEQ(name='BT-UniformLinearArray-r18', mode=MODE_TYPE)
+    _BT_UniformLinearArray_r18_bt_NoElements_r18 = INT(name='bt-NoElements-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformLinearArray_r18_bt_NoElements_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=74)], ev=None, er=[])
+    _BT_UniformLinearArray_r18_bt_InterElementDist_r18 = INT(name='bt-InterElementDist-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformLinearArray_r18_bt_InterElementDist_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=30, ub=130)], ev=None, er=[])
+    BT_UniformLinearArray_r18._cont = ASN1Dict([
+        ('bt-NoElements-r18', _BT_UniformLinearArray_r18_bt_NoElements_r18),
+        ('bt-InterElementDist-r18', _BT_UniformLinearArray_r18_bt_InterElementDist_r18),
+        ])
+    BT_UniformLinearArray_r18._ext = None
+    
+    #-----< BT-UniformRectangularArray-r18 >-----#
+    BT_UniformRectangularArray_r18 = SEQ(name='BT-UniformRectangularArray-r18', mode=MODE_TYPE)
+    _BT_UniformRectangularArray_r18_bt_NoElementsY_r18 = INT(name='bt-NoElementsY-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformRectangularArray_r18_bt_NoElementsY_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=74)], ev=None, er=[])
+    _BT_UniformRectangularArray_r18_bt_NoElementsZ_r18 = INT(name='bt-NoElementsZ-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformRectangularArray_r18_bt_NoElementsZ_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=74)], ev=None, er=[])
+    _BT_UniformRectangularArray_r18_bt_InterElementDistY_r18 = INT(name='bt-InterElementDistY-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformRectangularArray_r18_bt_InterElementDistY_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=30, ub=135)], ev=None, er=[])
+    _BT_UniformRectangularArray_r18_bt_InterElementDistZ_r18 = INT(name='bt-InterElementDistZ-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformRectangularArray_r18_bt_InterElementDistZ_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=30, ub=135)], ev=None, er=[])
+    BT_UniformRectangularArray_r18._cont = ASN1Dict([
+        ('bt-NoElementsY-r18', _BT_UniformRectangularArray_r18_bt_NoElementsY_r18),
+        ('bt-NoElementsZ-r18', _BT_UniformRectangularArray_r18_bt_NoElementsZ_r18),
+        ('bt-InterElementDistY-r18', _BT_UniformRectangularArray_r18_bt_InterElementDistY_r18),
+        ('bt-InterElementDistZ-r18', _BT_UniformRectangularArray_r18_bt_InterElementDistZ_r18),
+        ])
+    BT_UniformRectangularArray_r18._ext = None
+    
+    #-----< BT-UniformCircularArray-r18 >-----#
+    BT_UniformCircularArray_r18 = SEQ(name='BT-UniformCircularArray-r18', mode=MODE_TYPE)
+    _BT_UniformCircularArray_r18_bt_NoElements_r18 = INT(name='bt-NoElements-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformCircularArray_r18_bt_NoElements_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=74)], ev=None, er=[])
+    _BT_UniformCircularArray_r18_bt_InterElementDist_r18 = INT(name='bt-InterElementDist-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_UniformCircularArray_r18_bt_InterElementDist_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=30, ub=130)], ev=None, er=[])
+    BT_UniformCircularArray_r18._cont = ASN1Dict([
+        ('bt-NoElements-r18', _BT_UniformCircularArray_r18_bt_NoElements_r18),
+        ('bt-InterElementDist-r18', _BT_UniformCircularArray_r18_bt_InterElementDist_r18),
+        ])
+    BT_UniformCircularArray_r18._ext = None
+    
+    #-----< BT-GenericArray-r18 >-----#
+    BT_GenericArray_r18 = SEQ_OF(name='BT-GenericArray-r18', mode=MODE_TYPE)
+    _BT_GenericArray_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'BT-ULA-GenericAntElement-r18')))
+    BT_GenericArray_r18._cont = _BT_GenericArray_r18__item_
+    BT_GenericArray_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=74)], ev=None, er=[])
+    
+    #-----< BT-ULA-GenericAntElement-r18 >-----#
+    BT_ULA_GenericAntElement_r18 = SEQ(name='BT-ULA-GenericAntElement-r18', mode=MODE_TYPE)
+    _BT_ULA_GenericAntElement_r18_deltaY_r18 = INT(name='deltaY-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_ULA_GenericAntElement_r18_deltaY_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-135, ub=135)], ev=None, er=[])
+    _BT_ULA_GenericAntElement_r18_deltaX_r18 = INT(name='deltaX-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_ULA_GenericAntElement_r18_deltaX_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-135, ub=135)], ev=None, er=[])
+    _BT_ULA_GenericAntElement_r18_deltaZ_r18 = INT(name='deltaZ-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _BT_ULA_GenericAntElement_r18_deltaZ_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-135, ub=135)], ev=None, er=[])
+    BT_ULA_GenericAntElement_r18._cont = ASN1Dict([
+        ('deltaY-r18', _BT_ULA_GenericAntElement_r18_deltaY_r18),
+        ('deltaX-r18', _BT_ULA_GenericAntElement_r18_deltaX_r18),
+        ('deltaZ-r18', _BT_ULA_GenericAntElement_r18_deltaZ_r18),
+        ])
+    BT_ULA_GenericAntElement_r18._ext = None
+    
+    #-----< BT-RequestAssistanceData-r18 >-----#
+    BT_RequestAssistanceData_r18 = SEQ(name='BT-RequestAssistanceData-r18', mode=MODE_TYPE)
+    _BT_RequestAssistanceData_r18_requestedAD_r18 = BIT_STR(name='requestedAD-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _BT_RequestAssistanceData_r18_requestedAD_r18._cont = ASN1Dict([('beacon-location', 0), ('beacon-antConfig', 1), ('beacon-transmConfig', 2)])
+    _BT_RequestAssistanceData_r18_requestedAD_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    BT_RequestAssistanceData_r18._cont = ASN1Dict([
+        ('requestedAD-r18', _BT_RequestAssistanceData_r18_requestedAD_r18),
+        ])
+    BT_RequestAssistanceData_r18._ext = []
     
     #-----< NR-UL-ProvideCapabilities-r16 >-----#
     NR_UL_ProvideCapabilities_r16 = SEQ(name='NR-UL-ProvideCapabilities-r16', mode=MODE_TYPE)
@@ -12490,14 +14730,16 @@ class LPP_PDU_Definitions:
     _NR_ECID_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17._cont = ASN1Dict([('supported', 0)])
     _NR_ECID_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17._ext = None
     _NR_ECID_ProvideCapabilities_r16_scheduledLocationRequestSupported_r17 = SEQ(name='scheduledLocationRequestSupported-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'ScheduledLocationTimeSupport-r17')), opt=True, group=0)
+    _NR_ECID_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupport-r18')), opt=True, group=1)
     NR_ECID_ProvideCapabilities_r16._cont = ASN1Dict([
         ('nr-ECID-MeasSupported-r16', _NR_ECID_ProvideCapabilities_r16_nr_ECID_MeasSupported_r16),
         ('periodicalReporting-r16', _NR_ECID_ProvideCapabilities_r16_periodicalReporting_r16),
         ('triggeredReporting-r16', _NR_ECID_ProvideCapabilities_r16_triggeredReporting_r16),
         ('ten-ms-unit-ResponseTime-r17', _NR_ECID_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17),
         ('scheduledLocationRequestSupported-r17', _NR_ECID_ProvideCapabilities_r16_scheduledLocationRequestSupported_r17),
+        ('periodicReportingIntervalMsSupport-r18', _NR_ECID_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18),
         ])
-    NR_ECID_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'scheduledLocationRequestSupported-r17']
+    NR_ECID_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'scheduledLocationRequestSupported-r17', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< NR-ECID-RequestCapabilities-r16 >-----#
     NR_ECID_RequestCapabilities_r16 = SEQ(name='NR-ECID-RequestCapabilities-r16', mode=MODE_TYPE)
@@ -12534,14 +14776,18 @@ class LPP_PDU_Definitions:
     _NR_ECID_TargetDeviceErrorCauses_r16_ss_RSRQMeasurementNotPossible_r16 = NULL(name='ss-RSRQMeasurementNotPossible-r16', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRPMeasurementNotPossible_r16 = NULL(name='csi-RSRPMeasurementNotPossible-r16', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRQMeasurementNotPossible_r16 = NULL(name='csi-RSRQMeasurementNotPossible-r16', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_ECID_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18 = ENUM(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_ECID_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._cont = ASN1Dict([('true', 0)])
+    _NR_ECID_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._ext = None
     NR_ECID_TargetDeviceErrorCauses_r16._cont = ASN1Dict([
         ('cause-r16', _NR_ECID_TargetDeviceErrorCauses_r16_cause_r16),
         ('ss-RSRPMeasurementNotPossible-r16', _NR_ECID_TargetDeviceErrorCauses_r16_ss_RSRPMeasurementNotPossible_r16),
         ('ss-RSRQMeasurementNotPossible-r16', _NR_ECID_TargetDeviceErrorCauses_r16_ss_RSRQMeasurementNotPossible_r16),
         ('csi-RSRPMeasurementNotPossible-r16', _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRPMeasurementNotPossible_r16),
         ('csi-RSRQMeasurementNotPossible-r16', _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRQMeasurementNotPossible_r16),
+        ('remoteUE-Indication-r18', _NR_ECID_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18),
         ])
-    NR_ECID_TargetDeviceErrorCauses_r16._ext = []
+    NR_ECID_TargetDeviceErrorCauses_r16._ext = ['remoteUE-Indication-r18']
     
     #-----< NR-DL-TDOA-ProvideAssistanceData-r16 >-----#
     NR_DL_TDOA_ProvideAssistanceData_r16 = SEQ(name='NR-DL-TDOA-ProvideAssistanceData-r16', mode=MODE_TYPE)
@@ -12552,6 +14798,7 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_r17 = SEQ(name='nr-On-Demand-DL-PRS-Configurations-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-On-Demand-DL-PRS-Configurations-r17')), opt=True, group=0)
     _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17 = SEQ_OF(name='nr-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17')), opt=True, group=0)
     _NR_DL_TDOA_ProvideAssistanceData_r16_assistanceDataValidityArea_r17 = SEQ_OF(name='assistanceDataValidityArea-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'AreaID-CellList-r17')), opt=True, group=0)
+    _NR_DL_TDOA_ProvideAssistanceData_r16_nr_PeriodicAssistData_r18 = SEQ(name='nr-PeriodicAssistData-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PeriodicAssistData-r18')), opt=True, group=1)
     NR_DL_TDOA_ProvideAssistanceData_r16._cont = ASN1Dict([
         ('nr-DL-PRS-AssistanceData-r16', _NR_DL_TDOA_ProvideAssistanceData_r16_nr_DL_PRS_AssistanceData_r16),
         ('nr-SelectedDL-PRS-IndexList-r16', _NR_DL_TDOA_ProvideAssistanceData_r16_nr_SelectedDL_PRS_IndexList_r16),
@@ -12560,8 +14807,9 @@ class LPP_PDU_Definitions:
         ('nr-On-Demand-DL-PRS-Configurations-r17', _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_r17),
         ('nr-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17', _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17),
         ('assistanceDataValidityArea-r17', _NR_DL_TDOA_ProvideAssistanceData_r16_assistanceDataValidityArea_r17),
+        ('nr-PeriodicAssistData-r18', _NR_DL_TDOA_ProvideAssistanceData_r16_nr_PeriodicAssistData_r18),
         ])
-    NR_DL_TDOA_ProvideAssistanceData_r16._ext = ['nr-On-Demand-DL-PRS-Configurations-r17', 'nr-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17', 'assistanceDataValidityArea-r17']
+    NR_DL_TDOA_ProvideAssistanceData_r16._ext = ['nr-On-Demand-DL-PRS-Configurations-r17', 'nr-On-Demand-DL-PRS-Configurations-Selected-IndexList-r17', 'assistanceDataValidityArea-r17', 'nr-PeriodicAssistData-r18']
     
     #-----< NR-DL-TDOA-RequestAssistanceData-r16 >-----#
     NR_DL_TDOA_RequestAssistanceData_r16 = SEQ(name='NR-DL-TDOA-RequestAssistanceData-r16', mode=MODE_TYPE)
@@ -12570,7 +14818,7 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_AdType_r16._cont = ASN1Dict([('dl-prs', 0), ('posCalc', 1)])
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_AdType_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17 = BIT_STR(name='nr-PosCalcAssistanceRequest-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
-    _NR_DL_TDOA_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._cont = ASN1Dict([('trpLoc', 0), ('beamInfo', 1), ('rtdInfo', 2), ('losNlosInfo', 3), ('trpTEG-Info', 4)])
+    _NR_DL_TDOA_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._cont = ASN1Dict([('trpLoc', 0), ('beamInfo', 1), ('rtdInfo', 2), ('losNlosInfo', 3), ('trpTEG-Info', 4), ('nr-IntegrityBounds-r18', 5), ('pruInfo-r18', 6)])
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_on_demand_DL_PRS_Request_r17 = SEQ(name='nr-on-demand-DL-PRS-Request-r17', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-On-Demand-DL-PRS-Request-r17')), opt=True, group=0)
     _NR_DL_TDOA_RequestAssistanceData_r16_nr_DL_PRS_ExpectedAoD_or_AoA_Request_r17 = ENUM(name='nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
@@ -12579,6 +14827,10 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17 = ENUM(name='pre-configured-AssistanceDataRequest-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_TDOA_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17._cont = ASN1Dict([('true', 0)])
     _NR_DL_TDOA_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17._ext = None
+    _NR_DL_TDOA_RequestAssistanceData_r16_nr_PeriodicAssistDataReq_r18 = SEQ(name='nr-PeriodicAssistDataReq-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PeriodicAssistDataReq-r18')), opt=True, group=1)
+    _NR_DL_TDOA_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18 = BIT_STR(name='nr-IntegrityAssistanceRequest-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18._cont = ASN1Dict([('serviceParameters', 0), ('serviceAlert', 1), ('riskParameters', 2), ('integrityParaTRP-Loc', 3), ('integrityParaBeamInfo', 4), ('integrityParaRTD-Info', 5)])
+    _NR_DL_TDOA_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     NR_DL_TDOA_RequestAssistanceData_r16._cont = ASN1Dict([
         ('nr-PhysCellID-r16', _NR_DL_TDOA_RequestAssistanceData_r16_nr_PhysCellID_r16),
         ('nr-AdType-r16', _NR_DL_TDOA_RequestAssistanceData_r16_nr_AdType_r16),
@@ -12586,8 +14838,10 @@ class LPP_PDU_Definitions:
         ('nr-on-demand-DL-PRS-Request-r17', _NR_DL_TDOA_RequestAssistanceData_r16_nr_on_demand_DL_PRS_Request_r17),
         ('nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', _NR_DL_TDOA_RequestAssistanceData_r16_nr_DL_PRS_ExpectedAoD_or_AoA_Request_r17),
         ('pre-configured-AssistanceDataRequest-r17', _NR_DL_TDOA_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17),
+        ('nr-PeriodicAssistDataReq-r18', _NR_DL_TDOA_RequestAssistanceData_r16_nr_PeriodicAssistDataReq_r18),
+        ('nr-IntegrityAssistanceRequest-r18', _NR_DL_TDOA_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18),
         ])
-    NR_DL_TDOA_RequestAssistanceData_r16._ext = ['nr-PosCalcAssistanceRequest-r17', 'nr-on-demand-DL-PRS-Request-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', 'pre-configured-AssistanceDataRequest-r17']
+    NR_DL_TDOA_RequestAssistanceData_r16._ext = ['nr-PosCalcAssistanceRequest-r17', 'nr-on-demand-DL-PRS-Request-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', 'pre-configured-AssistanceDataRequest-r17', 'nr-PeriodicAssistDataReq-r18', 'nr-IntegrityAssistanceRequest-r18']
     
     #-----< NR-DL-TDOA-ProvideLocationInformation-r16 >-----#
     NR_DL_TDOA_ProvideLocationInformation_r16 = SEQ(name='NR-DL-TDOA-ProvideLocationInformation-r16', mode=MODE_TYPE)
@@ -12652,6 +14906,18 @@ class LPP_PDU_Definitions:
     __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k4_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=123129)], ev=None, er=[])
     __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k5_r16 = INT(name='k5-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k5_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61565)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus6_r18 = INT(name='kMinus6-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus6_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126083073)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus5_r18 = INT(name='kMinus5-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus5_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63041537)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus4_r18 = INT(name='kMinus4-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus4_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=31520769)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus3_r18 = INT(name='kMinus3-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus3_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15760385)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus2_r18 = INT(name='kMinus2-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus2_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=7880193)], ev=None, er=[])
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus1_r18 = INT(name='kMinus1-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus1_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3940097)], ev=None, er=[])
     _NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16._cont = ASN1Dict([
         ('k0-r16', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k0_r16),
         ('k1-r16', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k1_r16),
@@ -12659,8 +14925,14 @@ class LPP_PDU_Definitions:
         ('k3-r16', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k3_r16),
         ('k4-r16', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k4_r16),
         ('k5-r16', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k5_r16),
+        ('kMinus6-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus6_r18),
+        ('kMinus5-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus5_r18),
+        ('kMinus4-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus4_r18),
+        ('kMinus3-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus3_r18),
+        ('kMinus2-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus2_r18),
+        ('kMinus1-r18', __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus1_r18),
         ])
-    _NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16._ext = []
+    _NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16._ext = ['kMinus6-r18', 'kMinus5-r18', 'kMinus4-r18', 'kMinus3-r18', 'kMinus2-r18', 'kMinus1-r18']
     _NR_DL_TDOA_MeasElement_r16_nr_AdditionalPathList_r16 = SEQ_OF(name='nr-AdditionalPathList-r16', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathList-r16')), opt=True)
     _NR_DL_TDOA_MeasElement_r16_nr_TimingQuality_r16 = SEQ(name='nr-TimingQuality-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')))
     _NR_DL_TDOA_MeasElement_r16_nr_DL_PRS_RSRP_Result_r16 = INT(name='nr-DL-PRS-RSRP-Result-r16', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
@@ -12680,6 +14952,23 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_MeasElement_r16_nr_los_nlos_Indicator_r17._ext = None
     _NR_DL_TDOA_MeasElement_r16_nr_AdditionalPathListExt_r17 = SEQ_OF(name='nr-AdditionalPathListExt-r17', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathListExt-r17')), opt=True, group=0)
     _NR_DL_TDOA_MeasElement_r16_nr_DL_TDOA_AdditionalMeasurementsExt_r17 = SEQ_OF(name='nr-DL-TDOA-AdditionalMeasurementsExt-r17', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-TDOA-AdditionalMeasurementsExt-r17')), opt=True, group=0)
+    _NR_DL_TDOA_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18 = ENUM(name='nr-MeasBasedOnAggregatedResources-r18', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18._cont = ASN1Dict([('true', 0)])
+    _NR_DL_TDOA_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18._ext = None
+    _NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18 = SEQ_OF(name='nr-AggregatedDL-PRS-ResourceInfo-List-r18', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AggregatedDL-PRS-ResourceInfo-Element-r18')))
+    _NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._cont = __NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_
+    _NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_r18 = INT(name='nr-RSCPD-r18', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_DL_TDOA_MeasElement_r16_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(20, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True, group=1)
+    _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18 = SEQ_OF(name='nr-RSCPD-AddMeasurementSamples-r18', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCPD-AdditionalMeasurementSamplesElement-r18')))
+    _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18._cont = __NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18__item_
+    _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_DL_TDOA_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_DL_TDOA_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
     NR_DL_TDOA_MeasElement_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _NR_DL_TDOA_MeasElement_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _NR_DL_TDOA_MeasElement_r16_nr_PhysCellID_r16),
@@ -12698,8 +14987,14 @@ class LPP_PDU_Definitions:
         ('nr-los-nlos-Indicator-r17', _NR_DL_TDOA_MeasElement_r16_nr_los_nlos_Indicator_r17),
         ('nr-AdditionalPathListExt-r17', _NR_DL_TDOA_MeasElement_r16_nr_AdditionalPathListExt_r17),
         ('nr-DL-TDOA-AdditionalMeasurementsExt-r17', _NR_DL_TDOA_MeasElement_r16_nr_DL_TDOA_AdditionalMeasurementsExt_r17),
+        ('nr-MeasBasedOnAggregatedResources-r18', _NR_DL_TDOA_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18),
+        ('nr-AggregatedDL-PRS-ResourceInfo-List-r18', _NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18),
+        ('nr-RSCPD-r18', _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_r18),
+        ('nr-PhaseQuality-r18', _NR_DL_TDOA_MeasElement_r16_nr_PhaseQuality_r18),
+        ('nr-RSCPD-AddMeasurementSamples-r18', _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_DL_TDOA_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
         ])
-    NR_DL_TDOA_MeasElement_r16._ext = ['nr-UE-Rx-TEG-ID-r17', 'nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-AdditionalPathListExt-r17', 'nr-DL-TDOA-AdditionalMeasurementsExt-r17']
+    NR_DL_TDOA_MeasElement_r16._ext = ['nr-UE-Rx-TEG-ID-r17', 'nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-AdditionalPathListExt-r17', 'nr-DL-TDOA-AdditionalMeasurementsExt-r17', 'nr-MeasBasedOnAggregatedResources-r18', 'nr-AggregatedDL-PRS-ResourceInfo-List-r18', 'nr-RSCPD-r18', 'nr-PhaseQuality-r18', 'nr-RSCPD-AddMeasurementSamples-r18', 'nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18']
     
     #-----< NR-DL-TDOA-AdditionalMeasurements-r16 >-----#
     NR_DL_TDOA_AdditionalMeasurements_r16 = SEQ_OF(name='NR-DL-TDOA-AdditionalMeasurements-r16', mode=MODE_TYPE)
@@ -12731,6 +15026,18 @@ class LPP_PDU_Definitions:
     __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k4_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=511)], ev=None, er=[])
     __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k5_r16 = INT(name='k5-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k5_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus6_r18 = INT(name='kMinus6-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus6_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=524224)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus5_r18 = INT(name='kMinus5-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus5_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=262112)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus4_r18 = INT(name='kMinus4-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus4_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=131056)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus3_r18 = INT(name='kMinus3-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus3_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65528)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus2_r18 = INT(name='kMinus2-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus2_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=32764)], ev=None, er=[])
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus1_r18 = INT(name='kMinus1-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus1_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=16382)], ev=None, er=[])
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16._cont = ASN1Dict([
         ('k0-r16', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k0_r16),
         ('k1-r16', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k1_r16),
@@ -12738,8 +15045,14 @@ class LPP_PDU_Definitions:
         ('k3-r16', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k3_r16),
         ('k4-r16', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k4_r16),
         ('k5-r16', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k5_r16),
+        ('kMinus6-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus6_r18),
+        ('kMinus5-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus5_r18),
+        ('kMinus4-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus4_r18),
+        ('kMinus3-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus3_r18),
+        ('kMinus2-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus2_r18),
+        ('kMinus1-r18', __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus1_r18),
         ])
-    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16._ext = []
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16._ext = ['kMinus6-r18', 'kMinus5-r18', 'kMinus4-r18', 'kMinus3-r18', 'kMinus2-r18', 'kMinus1-r18']
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_TimingQuality_r16 = SEQ(name='nr-TimingQuality-r16', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')))
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_RSRP_ResultDiff_r16 = INT(name='nr-DL-PRS-RSRP-ResultDiff-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_RSRP_ResultDiff_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
@@ -12750,6 +15063,23 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17 = SEQ(name='nr-los-nlos-IndicatorPerResource-r17', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-Indicator-r17')), opt=True, group=0)
     _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17 = SEQ_OF(name='nr-AdditionalPathListExt-r17', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathListExt-r17')), opt=True, group=0)
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18 = ENUM(name='nr-MeasBasedOnAggregatedResources-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18._cont = ASN1Dict([('true', 0)])
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18._ext = None
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18 = SEQ_OF(name='nr-AggregatedDL-PRS-ResourceInfo-List-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AggregatedDL-PRS-ResourceInfo-Element-r18')))
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._cont = __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_r18 = INT(name='nr-RSCPD-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True, group=1)
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18 = SEQ_OF(name='nr-RSCPD-AdditionalMeasurementsAddSamples-r18', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCPD-AdditionalMeasurementSamplesElement-r18')))
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18._cont = __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18__item_
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
     NR_DL_TDOA_AdditionalMeasurementElement_r16._cont = ASN1Dict([
         ('nr-DL-PRS-ResourceID-r16', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_ResourceID_r16),
         ('nr-DL-PRS-ResourceSetID-r16', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_ResourceSetID_r16),
@@ -12762,8 +15092,27 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17),
         ('nr-los-nlos-IndicatorPerResource-r17', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17),
         ('nr-AdditionalPathListExt-r17', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17),
+        ('nr-MeasBasedOnAggregatedResources-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18),
+        ('nr-AggregatedDL-PRS-ResourceInfo-List-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18),
+        ('nr-RSCPD-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_r18),
+        ('nr-PhaseQuality-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18),
+        ('nr-RSCPD-AdditionalMeasurementsAddSamples-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
         ])
-    NR_DL_TDOA_AdditionalMeasurementElement_r16._ext = ['nr-UE-Rx-TEG-ID-r17', 'nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', 'nr-los-nlos-IndicatorPerResource-r17', 'nr-AdditionalPathListExt-r17']
+    NR_DL_TDOA_AdditionalMeasurementElement_r16._ext = ['nr-UE-Rx-TEG-ID-r17', 'nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', 'nr-los-nlos-IndicatorPerResource-r17', 'nr-AdditionalPathListExt-r17', 'nr-MeasBasedOnAggregatedResources-r18', 'nr-AggregatedDL-PRS-ResourceInfo-List-r18', 'nr-RSCPD-r18', 'nr-PhaseQuality-r18', 'nr-RSCPD-AdditionalMeasurementsAddSamples-r18', 'nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18']
+    
+    #-----< NR-RSCPD-AdditionalMeasurementSamplesElement-r18 >-----#
+    NR_RSCPD_AdditionalMeasurementSamplesElement_r18 = SEQ(name='NR-RSCPD-AdditionalMeasurementSamplesElement-r18', mode=MODE_TYPE)
+    _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_RSCPD_r18 = INT(name='nr-RSCPD-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_RSCPD_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True)
+    _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_TimeStamp_r18 = SEQ(name='nr-TimeStamp-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimeStamp-r16')), opt=True)
+    NR_RSCPD_AdditionalMeasurementSamplesElement_r18._cont = ASN1Dict([
+        ('nr-RSCPD-r18', _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_RSCPD_r18),
+        ('nr-PhaseQuality-r18', _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_PhaseQuality_r18),
+        ('nr-TimeStamp-r18', _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_TimeStamp_r18),
+        ])
+    NR_RSCPD_AdditionalMeasurementSamplesElement_r18._ext = []
     
     #-----< NR-DL-TDOA-LocationInformation-r16 >-----#
     NR_DL_TDOA_LocationInformation_r16 = SEQ(name='NR-DL-TDOA-LocationInformation-r16', mode=MODE_TYPE)
@@ -12790,7 +15139,7 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RstdMeasurementInfoRequest_r16._cont = ASN1Dict([('true', 0)])
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RstdMeasurementInfoRequest_r16._ext = None
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_RequestedMeasurements_r16 = BIT_STR(name='nr-RequestedMeasurements-r16', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _NR_DL_TDOA_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._cont = ASN1Dict([('prsrsrpReq', 0), ('firstPathRsrpReq-r17', 1)])
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._cont = ASN1Dict([('prsrsrpReq', 0), ('firstPathRsrpReq-r17', 1), ('dl-PRS-RSCPD-Request-r18', 2)])
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_AssistanceAvailability_r16 = BOOL(name='nr-AssistanceAvailability-r16', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_TDOA_ReportConfig_r16 = SEQ(name='nr-DL-TDOA-ReportConfig-r16', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-TDOA-ReportConfig-r16')), opt=True)
@@ -12817,6 +15166,33 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_RequestLocationInformation_r16_multiMeasInSameReport_r17 = ENUM(name='multiMeasInSameReport-r17', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_TDOA_RequestLocationInformation_r16_multiMeasInSameReport_r17._cont = ASN1Dict([('requested', 0)])
     _NR_DL_TDOA_RequestLocationInformation_r16_multiMeasInSameReport_r17._ext = None
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18 = SEQ(name='nr-DL-PRS-JointMeasurementRequest-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18 = SEQ_OF(name='nr-DL-PRS-JointMeasurementRequestedPFL-List-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3)], ev=None, er=[])
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18._cont = ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-JointMeasurementRequestedPFL-List-r18', __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18),
+        ])
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18._ext = None
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18 = SEQ(name='nr-DL-PRS-RxHoppingRequest-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18 = CHOICE(name='nr-DL-PRS-RxHoppingTotalBandwidth-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1 = ENUM(name='fr1', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._ext = None
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2 = ENUM(name='fr2', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._ext = None
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._cont = ASN1Dict([
+        ('fr1', ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1),
+        ('fr2', ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2),
+        ])
+    __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._ext = None
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-RxHoppingTotalBandwidth-r18', __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18),
+        ])
+    _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._ext = None
     NR_DL_TDOA_RequestLocationInformation_r16._cont = ASN1Dict([
         ('nr-DL-PRS-RstdMeasurementInfoRequest-r16', _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RstdMeasurementInfoRequest_r16),
         ('nr-RequestedMeasurements-r16', _NR_DL_TDOA_RequestLocationInformation_r16_nr_RequestedMeasurements_r16),
@@ -12828,13 +15204,15 @@ class LPP_PDU_Definitions:
         ('additionalPathsExt-r17', _NR_DL_TDOA_RequestLocationInformation_r16_additionalPathsExt_r17),
         ('additionalPathsDL-PRS-RSRP-Request-r17', _NR_DL_TDOA_RequestLocationInformation_r16_additionalPathsDL_PRS_RSRP_Request_r17),
         ('multiMeasInSameReport-r17', _NR_DL_TDOA_RequestLocationInformation_r16_multiMeasInSameReport_r17),
+        ('nr-DL-PRS-JointMeasurementRequest-r18', _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18),
+        ('nr-DL-PRS-RxHoppingRequest-r18', _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18),
         ])
-    NR_DL_TDOA_RequestLocationInformation_r16._ext = ['nr-UE-RxTEG-Request-r17', 'nr-los-nlos-IndicatorRequest-r17', 'additionalPathsExt-r17', 'additionalPathsDL-PRS-RSRP-Request-r17', 'multiMeasInSameReport-r17']
+    NR_DL_TDOA_RequestLocationInformation_r16._ext = ['nr-UE-RxTEG-Request-r17', 'nr-los-nlos-IndicatorRequest-r17', 'additionalPathsExt-r17', 'additionalPathsDL-PRS-RSRP-Request-r17', 'multiMeasInSameReport-r17', 'nr-DL-PRS-JointMeasurementRequest-r18', 'nr-DL-PRS-RxHoppingRequest-r18']
     
     #-----< NR-DL-TDOA-ReportConfig-r16 >-----#
     NR_DL_TDOA_ReportConfig_r16 = SEQ(name='NR-DL-TDOA-ReportConfig-r16', mode=MODE_TYPE)
-    _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRPPair_r16 = INT(name='maxDL-PRS-RSTD-MeasurementsPerTRPPair-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRPPair_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
+    _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRP_Pair_r16 = INT(name='maxDL-PRS-RSTD-MeasurementsPerTRP-Pair-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRP_Pair_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=4)], ev=None, er=[])
     _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactor_r16 = INT(name='timingReportingGranularityFactor-r16', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactor_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=5)], ev=None, er=[])
     _NR_DL_TDOA_ReportConfig_r16_measureSameDL_PRS_ResourceWithDifferentRxTEGs_r17 = ENUM(name='measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
@@ -12846,14 +15224,19 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17 = ENUM(name='lowerRxBeamSweepingFactor-FR2-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_TDOA_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17._cont = ASN1Dict([('requested', 0)])
     _NR_DL_TDOA_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17._ext = None
+    _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactorExt_r18 = INT(name='timingReportingGranularityFactorExt-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactorExt_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-6, ub=-1)], ev=None, er=[])
+    _NR_DL_TDOA_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18 = SEQ_OF(name='nr-DL-PRS-MeasurementTimeWindowsConfig-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-MeasurementTimeWindowsConfig-r18')), opt=True, group=1)
     NR_DL_TDOA_ReportConfig_r16._cont = ASN1Dict([
-        ('maxDL-PRS-RSTD-MeasurementsPerTRPPair-r16', _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRPPair_r16),
+        ('maxDL-PRS-RSTD-MeasurementsPerTRP-Pair-r16', _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRP_Pair_r16),
         ('timingReportingGranularityFactor-r16', _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactor_r16),
         ('measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', _NR_DL_TDOA_ReportConfig_r16_measureSameDL_PRS_ResourceWithDifferentRxTEGs_r17),
         ('reducedDL-PRS-ProcessingSamples-r17', _NR_DL_TDOA_ReportConfig_r16_reducedDL_PRS_ProcessingSamples_r17),
         ('lowerRxBeamSweepingFactor-FR2-r17', _NR_DL_TDOA_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17),
+        ('timingReportingGranularityFactorExt-r18', _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactorExt_r18),
+        ('nr-DL-PRS-MeasurementTimeWindowsConfig-r18', _NR_DL_TDOA_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18),
         ])
-    NR_DL_TDOA_ReportConfig_r16._ext = ['measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'lowerRxBeamSweepingFactor-FR2-r17']
+    NR_DL_TDOA_ReportConfig_r16._ext = ['measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'lowerRxBeamSweepingFactor-FR2-r17', 'timingReportingGranularityFactorExt-r18', 'nr-DL-PRS-MeasurementTimeWindowsConfig-r18']
     
     #-----< NR-DL-TDOA-ProvideCapabilities-r16 >-----#
     NR_DL_TDOA_ProvideCapabilities_r16 = SEQ(name='NR-DL-TDOA-ProvideCapabilities-r16', mode=MODE_TYPE)
@@ -12868,7 +15251,7 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_ProvideCapabilities_r16_periodicalReporting_r16 = SEQ(name='periodicalReporting-r16', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True)
     _NR_DL_TDOA_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17 = SEQ(name='ten-ms-unit-ResponseTime-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True, group=0)
     _NR_DL_TDOA_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17 = BIT_STR(name='nr-PosCalcAssistanceSupport-r17', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
-    _NR_DL_TDOA_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._cont = ASN1Dict([('trpLocSup', 0), ('beamInfoSup', 1), ('rtdInfoSup', 2), ('trpTEG-InfoSup', 3)])
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._cont = ASN1Dict([('trpLocSup', 0), ('beamInfoSup', 1), ('rtdInfoSup', 2), ('trpTEG-InfoSup', 3), ('nr-IntegritySup-r18', 4), ('pruInfoSup-r18', 5)])
     _NR_DL_TDOA_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_TDOA_ProvideCapabilities_r16_nr_los_nlos_AssistanceDataSupport_r17 = SEQ(name='nr-los-nlos-AssistanceDataSupport-r17', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     __NR_DL_TDOA_ProvideCapabilities_r16_nr_los_nlos_AssistanceDataSupport_r17_type_r17 = ENUM(name='type-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-IndicatorType2-r17')))
@@ -12910,6 +15293,20 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_ProvideCapabilities_r16_posMeasGapSupport_r17 = ENUM(name='posMeasGapSupport-r17', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
     _NR_DL_TDOA_ProvideCapabilities_r16_posMeasGapSupport_r17._cont = ASN1Dict([('supported', 0)])
     _NR_DL_TDOA_ProvideCapabilities_r16_posMeasGapSupport_r17._ext = None
+    _NR_DL_TDOA_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17 = ENUM(name='multiLocationEstimateInSameMeasReport-r17', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _NR_DL_TDOA_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17._cont = ASN1Dict([('supported', 0)])
+    _NR_DL_TDOA_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17._ext = None
+    _NR_DL_TDOA_ProvideCapabilities_r16_locationCoordinateTypes_r18 = SEQ(name='locationCoordinateTypes-r18', mode=MODE_TYPE, tag=(20, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LocationCoordinateTypes')), opt=True, group=3)
+    _NR_DL_TDOA_ProvideCapabilities_r16_periodicAssistanceData_r18 = BIT_STR(name='periodicAssistanceData-r18', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _NR_DL_TDOA_ProvideCapabilities_r16_periodicAssistanceData_r18._cont = ASN1Dict([('solicited', 0), ('unsolicited', 1)])
+    _NR_DL_TDOA_ProvideCapabilities_r16_periodicAssistanceData_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18 = BIT_STR(name='nr-IntegrityAssistanceSupport-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18._cont = ASN1Dict([('serviceParametersSup', 0), ('serviceAlertSup', 1), ('riskParametersSup', 2), ('integrityParaTRP-LocSup', 3), ('integrityParaBeamInfoSup', 4), ('integrityParaRTD-InfoSup', 5)])
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_OnDemandPRS_ForBWA_Support_r18 = ENUM(name='nr-DL-TDOA-OnDemandPRS-ForBWA-Support-r18', mode=MODE_TYPE, tag=(23, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_OnDemandPRS_ForBWA_Support_r18._cont = ASN1Dict([('supported', 0)])
+    _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_OnDemandPRS_ForBWA_Support_r18._ext = None
+    _NR_DL_TDOA_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(24, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=3)
     NR_DL_TDOA_ProvideCapabilities_r16._cont = ASN1Dict([
         ('nr-DL-TDOA-Mode-r16', _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_Mode_r16),
         ('nr-DL-TDOA-PRS-Capability-r16', _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_PRS_Capability_r16),
@@ -12930,8 +15327,14 @@ class LPP_PDU_Definitions:
         ('multiMeasInSameMeasReport-r17', _NR_DL_TDOA_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17),
         ('mg-ActivationRequest-r17', _NR_DL_TDOA_ProvideCapabilities_r16_mg_ActivationRequest_r17),
         ('posMeasGapSupport-r17', _NR_DL_TDOA_ProvideCapabilities_r16_posMeasGapSupport_r17),
+        ('multiLocationEstimateInSameMeasReport-r17', _NR_DL_TDOA_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17),
+        ('locationCoordinateTypes-r18', _NR_DL_TDOA_ProvideCapabilities_r16_locationCoordinateTypes_r18),
+        ('periodicAssistanceData-r18', _NR_DL_TDOA_ProvideCapabilities_r16_periodicAssistanceData_r18),
+        ('nr-IntegrityAssistanceSupport-r18', _NR_DL_TDOA_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18),
+        ('nr-DL-TDOA-OnDemandPRS-ForBWA-Support-r18', _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_OnDemandPRS_ForBWA_Support_r18),
+        ('periodicReportingIntervalMsSupport-r18', _NR_DL_TDOA_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18),
         ])
-    NR_DL_TDOA_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-PosCalcAssistanceSupport-r17', 'nr-los-nlos-AssistanceDataSupport-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'nr-DL-TDOA-On-Demand-DL-PRS-Support-r17', 'nr-los-nlos-IndicatorSupport-r17', 'additionalPathsExtSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17']
+    NR_DL_TDOA_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-PosCalcAssistanceSupport-r17', 'nr-los-nlos-AssistanceDataSupport-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'nr-DL-TDOA-On-Demand-DL-PRS-Support-r17', 'nr-los-nlos-IndicatorSupport-r17', 'additionalPathsExtSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17', 'multiLocationEstimateInSameMeasReport-r17', 'locationCoordinateTypes-r18', 'periodicAssistanceData-r18', 'nr-IntegrityAssistanceSupport-r18', 'nr-DL-TDOA-OnDemandPRS-ForBWA-Support-r18', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< NR-DL-TDOA-MeasurementCapability-r16 >-----#
     NR_DL_TDOA_MeasurementCapability_r16 = SEQ(name='NR-DL-TDOA-MeasurementCapability-r16', mode=MODE_TYPE)
@@ -12969,12 +15372,60 @@ class LPP_PDU_Definitions:
     _DL_TDOA_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17 = ENUM(name='dl-PRS-MeasRRC-Inactive-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _DL_TDOA_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17._cont = ASN1Dict([('supported', 0)])
     _DL_TDOA_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18 = ENUM(name='supportOfDL-PRS-BWA-RRC-Connected-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18 = ENUM(name='supportOfDL-PRS-BWA-RRC-Inactive-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Idle_r18 = ENUM(name='supportOfDL-PRS-BWA-RRC-Idle-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Idle_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Idle_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Connected_r18 = ENUM(name='nr-DL-PRS-RSCPD-RRC-Connected-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Connected_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_assocSingleRSTD_WithUpToNsampleRSCPD_r18 = ENUM(name='assocSingleRSTD-WithUpToNsampleRSCPD-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_assocSingleRSTD_WithUpToNsampleRSCPD_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_assocSingleRSTD_WithUpToNsampleRSCPD_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_MeasurementRRC_Idle_r18 = ENUM(name='nr-DL-PRS-RSCPD-MeasurementRRC-Idle-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_MeasurementRRC_Idle_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_MeasurementRRC_Idle_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfUE_basedCarrierPhasePositioning_r18 = ENUM(name='supportOfUE-basedCarrierPhasePositioning-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfUE_basedCarrierPhasePositioning_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfUE_basedCarrierPhasePositioning_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCPD_r18 = ENUM(name='supportOfSymbolTimeStampForRSCPD-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCPD_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCPD_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18 = ENUM(name='supportOfFinerTimingReportGranularityForPRS-Meas-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18._cont = ASN1Dict([('minus1', 0), ('minus2', 1), ('minus3', 2), ('minus4', 3), ('minus5', 4), ('minus6', 5)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18 = BIT_STR(name='supportOfMeasurementsInTimeWindow-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18._cont = ASN1Dict([('rstd', 0), ('rsrp', 1), ('rsrpp', 2), ('rscpd', 3)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfPRS_MeasurementRRC_Idle_r18 = ENUM(name='supportOfPRS-MeasurementRRC-Idle-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfPRS_MeasurementRRC_Idle_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_supportOfPRS_MeasurementRRC_Idle_r18._ext = None
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Inactive_r18 = ENUM(name='nr-DL-PRS-RSCPD-RRC-Inactive-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Inactive_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Inactive_r18._ext = None
     DL_TDOA_MeasCapabilityPerBand_r17._cont = ASN1Dict([
         ('freqBandIndicatorNR-r17', _DL_TDOA_MeasCapabilityPerBand_r17_freqBandIndicatorNR_r17),
         ('supportOfDL-PRS-FirstPathRSRP-r17', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_FirstPathRSRP_r17),
         ('dl-PRS-MeasRRC-Inactive-r17', _DL_TDOA_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17),
+        ('supportOfDL-PRS-BWA-RRC-Connected-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18),
+        ('supportOfDL-PRS-BWA-RRC-Inactive-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18),
+        ('supportOfDL-PRS-BWA-RRC-Idle-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Idle_r18),
+        ('nr-DL-PRS-RSCPD-RRC-Connected-r18', _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Connected_r18),
+        ('assocSingleRSTD-WithUpToNsampleRSCPD-r18', _DL_TDOA_MeasCapabilityPerBand_r17_assocSingleRSTD_WithUpToNsampleRSCPD_r18),
+        ('nr-DL-PRS-RSCPD-MeasurementRRC-Idle-r18', _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_MeasurementRRC_Idle_r18),
+        ('supportOfUE-basedCarrierPhasePositioning-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfUE_basedCarrierPhasePositioning_r18),
+        ('supportOfSymbolTimeStampForRSCPD-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCPD_r18),
+        ('supportOfFinerTimingReportGranularityForPRS-Meas-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18),
+        ('supportOfMeasurementsInTimeWindow-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18),
+        ('supportOfPRS-MeasurementRRC-Idle-r18', _DL_TDOA_MeasCapabilityPerBand_r17_supportOfPRS_MeasurementRRC_Idle_r18),
+        ('nr-DL-PRS-RSCPD-RRC-Inactive-r18', _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Inactive_r18),
         ])
-    DL_TDOA_MeasCapabilityPerBand_r17._ext = []
+    DL_TDOA_MeasCapabilityPerBand_r17._ext = ['supportOfDL-PRS-BWA-RRC-Connected-r18', 'supportOfDL-PRS-BWA-RRC-Inactive-r18', 'supportOfDL-PRS-BWA-RRC-Idle-r18', 'nr-DL-PRS-RSCPD-RRC-Connected-r18', 'assocSingleRSTD-WithUpToNsampleRSCPD-r18', 'nr-DL-PRS-RSCPD-MeasurementRRC-Idle-r18', 'supportOfUE-basedCarrierPhasePositioning-r18', 'supportOfSymbolTimeStampForRSCPD-r18', 'supportOfFinerTimingReportGranularityForPRS-Meas-r18', 'supportOfMeasurementsInTimeWindow-r18', 'supportOfPRS-MeasurementRRC-Idle-r18', 'nr-DL-PRS-RSCPD-RRC-Inactive-r18']
     
     #-----< NR-DL-TDOA-RequestCapabilities-r16 >-----#
     NR_DL_TDOA_RequestCapabilities_r16 = SEQ(name='NR-DL-TDOA-RequestCapabilities-r16', mode=MODE_TYPE)
@@ -13007,10 +15458,14 @@ class LPP_PDU_Definitions:
     _NR_DL_TDOA_TargetDeviceErrorCauses_r16_cause_r16 = ENUM(name='cause-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _NR_DL_TDOA_TargetDeviceErrorCauses_r16_cause_r16._cont = ASN1Dict([('undefined', 0), ('assistance-data-missing', 1), ('unableToMeasureAnyTRP', 2), ('attemptedButUnableToMeasureSomeNeighbourTRPs', 3), ('thereWereNotEnoughSignalsReceivedForUeBasedDL-TDOA', 4), ('locationCalculationAssistanceDataMissing', 5)])
     _NR_DL_TDOA_TargetDeviceErrorCauses_r16_cause_r16._ext = []
+    _NR_DL_TDOA_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18 = ENUM(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_DL_TDOA_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._cont = ASN1Dict([('true', 0)])
+    _NR_DL_TDOA_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._ext = None
     NR_DL_TDOA_TargetDeviceErrorCauses_r16._cont = ASN1Dict([
         ('cause-r16', _NR_DL_TDOA_TargetDeviceErrorCauses_r16_cause_r16),
+        ('remoteUE-Indication-r18', _NR_DL_TDOA_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18),
         ])
-    NR_DL_TDOA_TargetDeviceErrorCauses_r16._ext = []
+    NR_DL_TDOA_TargetDeviceErrorCauses_r16._ext = ['remoteUE-Indication-r18']
     
     #-----< NR-DL-AoD-ProvideAssistanceData-r16 >-----#
     NR_DL_AoD_ProvideAssistanceData_r16 = SEQ(name='NR-DL-AoD-ProvideAssistanceData-r16', mode=MODE_TYPE)
@@ -13041,7 +15496,7 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_RequestAssistanceData_r16_nr_AdType_r16._cont = ASN1Dict([('dl-prs', 0), ('posCalc', 1)])
     _NR_DL_AoD_RequestAssistanceData_r16_nr_AdType_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_AoD_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17 = BIT_STR(name='nr-PosCalcAssistanceRequest-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
-    _NR_DL_AoD_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._cont = ASN1Dict([('trpLoc', 0), ('beamInfo', 1), ('rtdInfo', 2), ('beamAntInfo', 3), ('losNlosInfo', 4)])
+    _NR_DL_AoD_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._cont = ASN1Dict([('trpLoc', 0), ('beamInfo', 1), ('rtdInfo', 2), ('beamAntInfo', 3), ('losNlosInfo', 4), ('nr-IntegrityBounds-r18', 5)])
     _NR_DL_AoD_RequestAssistanceData_r16_nr_PosCalcAssistanceRequest_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_AoD_RequestAssistanceData_r16_nr_DL_PRS_ExpectedAoD_or_AoA_Request_r17 = ENUM(name='nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_AoD_RequestAssistanceData_r16_nr_DL_PRS_ExpectedAoD_or_AoA_Request_r17._cont = ASN1Dict([('eAoD', 0), ('eAoA', 1)])
@@ -13053,6 +15508,9 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17 = ENUM(name='pre-configured-AssistanceDataRequest-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_AoD_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17._cont = ASN1Dict([('true', 0)])
     _NR_DL_AoD_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17._ext = None
+    _NR_DL_AoD_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18 = BIT_STR(name='nr-IntegrityAssistanceRequest-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_DL_AoD_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18._cont = ASN1Dict([('serviceParameters', 0), ('serviceAlert', 1), ('riskParameters', 2), ('integrityParaTRP-Loc', 3), ('integrityParaBeamInfo', 4), ('integrityParaRTD-Info', 5), ('integrityBeamAntInfo', 6)])
+    _NR_DL_AoD_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     NR_DL_AoD_RequestAssistanceData_r16._cont = ASN1Dict([
         ('nr-PhysCellID-r16', _NR_DL_AoD_RequestAssistanceData_r16_nr_PhysCellID_r16),
         ('nr-AdType-r16', _NR_DL_AoD_RequestAssistanceData_r16_nr_AdType_r16),
@@ -13061,8 +15519,9 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-BeamInfoRequest-r17', _NR_DL_AoD_RequestAssistanceData_r16_nr_DL_PRS_BeamInfoRequest_r17),
         ('nr-on-demand-DL-PRS-Request-r17', _NR_DL_AoD_RequestAssistanceData_r16_nr_on_demand_DL_PRS_Request_r17),
         ('pre-configured-AssistanceDataRequest-r17', _NR_DL_AoD_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17),
+        ('nr-IntegrityAssistanceRequest-r18', _NR_DL_AoD_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18),
         ])
-    NR_DL_AoD_RequestAssistanceData_r16._ext = ['nr-PosCalcAssistanceRequest-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', 'nr-DL-PRS-BeamInfoRequest-r17', 'nr-on-demand-DL-PRS-Request-r17', 'pre-configured-AssistanceDataRequest-r17']
+    NR_DL_AoD_RequestAssistanceData_r16._ext = ['nr-PosCalcAssistanceRequest-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Request-r17', 'nr-DL-PRS-BeamInfoRequest-r17', 'nr-on-demand-DL-PRS-Request-r17', 'pre-configured-AssistanceDataRequest-r17', 'nr-IntegrityAssistanceRequest-r18']
     
     #-----< NR-DL-AoD-ProvideLocationInformation-r16 >-----#
     NR_DL_AoD_ProvideLocationInformation_r16 = SEQ(name='NR-DL-AoD-ProvideLocationInformation-r16', mode=MODE_TYPE)
@@ -13126,6 +15585,9 @@ class LPP_PDU_Definitions:
         ])
     _NR_DL_AoD_MeasElement_r16_nr_los_nlos_Indicator_r17._ext = None
     _NR_DL_AoD_MeasElement_r16_nr_DL_AoD_AdditionalMeasurementsExt_r17 = SEQ_OF(name='nr-DL-AoD-AdditionalMeasurementsExt-r17', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-AoD-AdditionalMeasurementsExt-r17')), opt=True, group=0)
+    _NR_DL_AoD_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_DL_AoD_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_DL_AoD_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
     NR_DL_AoD_MeasElement_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _NR_DL_AoD_MeasElement_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _NR_DL_AoD_MeasElement_r16_nr_PhysCellID_r16),
@@ -13140,8 +15602,9 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-FirstPathRSRP-Result-r17', _NR_DL_AoD_MeasElement_r16_nr_DL_PRS_FirstPathRSRP_Result_r17),
         ('nr-los-nlos-Indicator-r17', _NR_DL_AoD_MeasElement_r16_nr_los_nlos_Indicator_r17),
         ('nr-DL-AoD-AdditionalMeasurementsExt-r17', _NR_DL_AoD_MeasElement_r16_nr_DL_AoD_AdditionalMeasurementsExt_r17),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_DL_AoD_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
         ])
-    NR_DL_AoD_MeasElement_r16._ext = ['nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-DL-AoD-AdditionalMeasurementsExt-r17']
+    NR_DL_AoD_MeasElement_r16._ext = ['nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-DL-AoD-AdditionalMeasurementsExt-r17', 'nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18']
     
     #-----< NR-DL-AoD-AdditionalMeasurements-r16 >-----#
     NR_DL_AoD_AdditionalMeasurements_r16 = SEQ_OF(name='NR-DL-AoD-AdditionalMeasurements-r16', mode=MODE_TYPE)
@@ -13185,6 +15648,9 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17 = INT(name='nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
     _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_los_nlos_IndicatorPerResource_r17 = SEQ(name='nr-los-nlos-IndicatorPerResource-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-Indicator-r17')), opt=True)
+    _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
     NR_DL_AoD_AdditionalMeasurementElement_r17._cont = ASN1Dict([
         ('nr-DL-PRS-ResourceID-r17', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_ResourceID_r17),
         ('nr-DL-PRS-ResourceSetID-r17', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_ResourceSetID_r17),
@@ -13193,8 +15659,9 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-RxBeamIndex-r17', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_RxBeamIndex_r17),
         ('nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17),
         ('nr-los-nlos-IndicatorPerResource-r17', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_los_nlos_IndicatorPerResource_r17),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
         ])
-    NR_DL_AoD_AdditionalMeasurementElement_r17._ext = []
+    NR_DL_AoD_AdditionalMeasurementElement_r17._ext = ['nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18']
     
     #-----< NR-DL-AoD-LocationInformation-r16 >-----#
     NR_DL_AoD_LocationInformation_r16 = SEQ(name='NR-DL-AoD-LocationInformation-r16', mode=MODE_TYPE)
@@ -13222,12 +15689,30 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_RequestLocationInformation_r16_multiMeasInSameReport_r17 = ENUM(name='multiMeasInSameReport-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_AoD_RequestLocationInformation_r16_multiMeasInSameReport_r17._cont = ASN1Dict([('requested', 0)])
     _NR_DL_AoD_RequestLocationInformation_r16_multiMeasInSameReport_r17._ext = None
+    _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18 = SEQ(name='nr-DL-PRS-RxHoppingRequest-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18 = CHOICE(name='nr-DL-PRS-RxHoppingTotalBandwidth-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1 = ENUM(name='fr1', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._ext = None
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2 = ENUM(name='fr2', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._ext = None
+    __NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._cont = ASN1Dict([
+        ('fr1', ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1),
+        ('fr2', ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2),
+        ])
+    __NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._ext = None
+    _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-RxHoppingTotalBandwidth-r18', __NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18),
+        ])
+    _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._ext = None
     NR_DL_AoD_RequestLocationInformation_r16._cont = ASN1Dict([
         ('nr-AssistanceAvailability-r16', _NR_DL_AoD_RequestLocationInformation_r16_nr_AssistanceAvailability_r16),
         ('nr-DL-AoD-ReportConfig-r16', _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_AoD_ReportConfig_r16),
         ('multiMeasInSameReport-r17', _NR_DL_AoD_RequestLocationInformation_r16_multiMeasInSameReport_r17),
+        ('nr-DL-PRS-RxHoppingRequest-r18', _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18),
         ])
-    NR_DL_AoD_RequestLocationInformation_r16._ext = ['multiMeasInSameReport-r17']
+    NR_DL_AoD_RequestLocationInformation_r16._ext = ['multiMeasInSameReport-r17', 'nr-DL-PRS-RxHoppingRequest-r18']
     
     #-----< NR-DL-AoD-ReportConfig-r16 >-----#
     NR_DL_AoD_ReportConfig_r16 = SEQ(name='NR-DL-AoD-ReportConfig-r16', mode=MODE_TYPE)
@@ -13251,6 +15736,7 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17 = ENUM(name='lowerRxBeamSweepingFactor-FR2-r17', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_DL_AoD_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17._cont = ASN1Dict([('requested', 0)])
     _NR_DL_AoD_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17._ext = None
+    _NR_DL_AoD_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18 = SEQ_OF(name='nr-DL-PRS-MeasurementTimeWindowsConfig-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-MeasurementTimeWindowsConfig-r18')), opt=True, group=1)
     NR_DL_AoD_ReportConfig_r16._cont = ASN1Dict([
         ('maxDL-PRS-RSRP-MeasurementsPerTRP-r16', _NR_DL_AoD_ReportConfig_r16_maxDL_PRS_RSRP_MeasurementsPerTRP_r16),
         ('maxDL-PRS-RSRP-MeasurementsPerTRP-r17', _NR_DL_AoD_ReportConfig_r16_maxDL_PRS_RSRP_MeasurementsPerTRP_r17),
@@ -13258,8 +15744,9 @@ class LPP_PDU_Definitions:
         ('nr-los-nlos-IndicatorRequest-r17', _NR_DL_AoD_ReportConfig_r16_nr_los_nlos_IndicatorRequest_r17),
         ('reducedDL-PRS-ProcessingSamples-r17', _NR_DL_AoD_ReportConfig_r16_reducedDL_PRS_ProcessingSamples_r17),
         ('lowerRxBeamSweepingFactor-FR2-r17', _NR_DL_AoD_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17),
+        ('nr-DL-PRS-MeasurementTimeWindowsConfig-r18', _NR_DL_AoD_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18),
         ])
-    NR_DL_AoD_ReportConfig_r16._ext = ['maxDL-PRS-RSRP-MeasurementsPerTRP-r17', 'maxDL-PRS-RSRPP-MeasurementsPerTRP-r17', 'nr-los-nlos-IndicatorRequest-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'lowerRxBeamSweepingFactor-FR2-r17']
+    NR_DL_AoD_ReportConfig_r16._ext = ['maxDL-PRS-RSRP-MeasurementsPerTRP-r17', 'maxDL-PRS-RSRPP-MeasurementsPerTRP-r17', 'nr-los-nlos-IndicatorRequest-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'lowerRxBeamSweepingFactor-FR2-r17', 'nr-DL-PRS-MeasurementTimeWindowsConfig-r18']
     
     #-----< NR-DL-AoD-ProvideCapabilities-r16 >-----#
     NR_DL_AoD_ProvideCapabilities_r16 = SEQ(name='NR-DL-AoD-ProvideCapabilities-r16', mode=MODE_TYPE)
@@ -13271,7 +15758,7 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_ProvideCapabilities_r16_periodicalReporting_r16 = SEQ(name='periodicalReporting-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True)
     _NR_DL_AoD_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17 = SEQ(name='ten-ms-unit-ResponseTime-r17', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PositioningModes')), opt=True, group=0)
     _NR_DL_AoD_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17 = BIT_STR(name='nr-PosCalcAssistanceSupport-r17', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
-    _NR_DL_AoD_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._cont = ASN1Dict([('trpLocSup', 0), ('beamInfoSup', 1), ('rtdInfoSup', 2), ('beamAntInfoSup', 3)])
+    _NR_DL_AoD_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._cont = ASN1Dict([('trpLocSup', 0), ('beamInfoSup', 1), ('rtdInfoSup', 2), ('beamAntInfoSup', 3), ('nr-IntegrityBoundsSup-r18', 4)])
     _NR_DL_AoD_ProvideCapabilities_r16_nr_PosCalcAssistanceSupport_r17._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_DL_AoD_ProvideCapabilities_r16_nr_los_nlos_AssistanceDataSupport_r17 = SEQ(name='nr-los-nlos-AssistanceDataSupport-r17', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     __NR_DL_AoD_ProvideCapabilities_r16_nr_los_nlos_AssistanceDataSupport_r17_type_r17 = ENUM(name='type-r17', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-IndicatorType2-r17')))
@@ -13316,6 +15803,14 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_ProvideCapabilities_r16_posMeasGapSupport_r17 = ENUM(name='posMeasGapSupport-r17', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
     _NR_DL_AoD_ProvideCapabilities_r16_posMeasGapSupport_r17._cont = ASN1Dict([('supported', 0)])
     _NR_DL_AoD_ProvideCapabilities_r16_posMeasGapSupport_r17._ext = None
+    _NR_DL_AoD_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17 = ENUM(name='multiLocationEstimateInSameMeasReport-r17', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _NR_DL_AoD_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17._cont = ASN1Dict([('supported', 0)])
+    _NR_DL_AoD_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17._ext = None
+    _NR_DL_AoD_ProvideCapabilities_r16_locationCoordinateTypes_r18 = SEQ(name='locationCoordinateTypes-r18', mode=MODE_TYPE, tag=(20, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LocationCoordinateTypes')), opt=True, group=3)
+    _NR_DL_AoD_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18 = BIT_STR(name='nr-IntegrityAssistanceSupport-r18', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=3)
+    _NR_DL_AoD_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18._cont = ASN1Dict([('serviceParametersSup', 0), ('serviceAlertSup', 1), ('riskParametersSup', 2), ('integrityParaTRP-LocSup', 3), ('integrityParaBeamInfoSup', 4), ('integrityParaRTD-InfoSup', 5), ('integrityBeamAntInfoSup', 6)])
+    _NR_DL_AoD_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _NR_DL_AoD_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupportPerMode-r18')), opt=True, group=3)
     NR_DL_AoD_ProvideCapabilities_r16._cont = ASN1Dict([
         ('nr-DL-AoD-Mode-r16', _NR_DL_AoD_ProvideCapabilities_r16_nr_DL_AoD_Mode_r16),
         ('nr-DL-AoD-PRS-Capability-r16', _NR_DL_AoD_ProvideCapabilities_r16_nr_DL_AoD_PRS_Capability_r16),
@@ -13336,8 +15831,12 @@ class LPP_PDU_Definitions:
         ('multiMeasInSameMeasReport-r17', _NR_DL_AoD_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17),
         ('mg-ActivationRequest-r17', _NR_DL_AoD_ProvideCapabilities_r16_mg_ActivationRequest_r17),
         ('posMeasGapSupport-r17', _NR_DL_AoD_ProvideCapabilities_r16_posMeasGapSupport_r17),
+        ('multiLocationEstimateInSameMeasReport-r17', _NR_DL_AoD_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17),
+        ('locationCoordinateTypes-r18', _NR_DL_AoD_ProvideCapabilities_r16_locationCoordinateTypes_r18),
+        ('nr-IntegrityAssistanceSupport-r18', _NR_DL_AoD_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18),
+        ('periodicReportingIntervalMsSupport-r18', _NR_DL_AoD_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18),
         ])
-    NR_DL_AoD_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-PosCalcAssistanceSupport-r17', 'nr-los-nlos-AssistanceDataSupport-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'dl-PRS-ResourcePrioritySubset-Sup-r17', 'nr-DL-PRS-BeamInfoSup-r17', 'nr-DL-AoD-On-Demand-DL-PRS-Support-r17', 'nr-los-nlos-IndicatorSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17']
+    NR_DL_AoD_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-PosCalcAssistanceSupport-r17', 'nr-los-nlos-AssistanceDataSupport-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'dl-PRS-ResourcePrioritySubset-Sup-r17', 'nr-DL-PRS-BeamInfoSup-r17', 'nr-DL-AoD-On-Demand-DL-PRS-Support-r17', 'nr-los-nlos-IndicatorSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17', 'multiLocationEstimateInSameMeasReport-r17', 'locationCoordinateTypes-r18', 'nr-IntegrityAssistanceSupport-r18', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< NR-DL-AoD-MeasurementCapability-r16 >-----#
     NR_DL_AoD_MeasurementCapability_r16 = SEQ(name='NR-DL-AoD-MeasurementCapability-r16', mode=MODE_TYPE)
@@ -13379,14 +15878,22 @@ class LPP_PDU_Definitions:
     _DL_AoD_MeasCapabilityPerBand_r16_dl_PRS_MeasRRC_Inactive_r17 = ENUM(name='dl-PRS-MeasRRC-Inactive-r17', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _DL_AoD_MeasCapabilityPerBand_r16_dl_PRS_MeasRRC_Inactive_r17._cont = ASN1Dict([('supported', 0)])
     _DL_AoD_MeasCapabilityPerBand_r16_dl_PRS_MeasRRC_Inactive_r17._ext = None
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfMeasurementsInTimeWindow_r18 = BIT_STR(name='supportOfMeasurementsInTimeWindow-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfMeasurementsInTimeWindow_r18._cont = ASN1Dict([('rsrp', 0), ('rsrpp', 1)])
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfMeasurementsInTimeWindow_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfPRS_MeasurementRRC_Idle_r18 = ENUM(name='supportOfPRS-MeasurementRRC-Idle-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfPRS_MeasurementRRC_Idle_r18._cont = ASN1Dict([('supported', 0)])
+    _DL_AoD_MeasCapabilityPerBand_r16_supportOfPRS_MeasurementRRC_Idle_r18._ext = None
     DL_AoD_MeasCapabilityPerBand_r16._cont = ASN1Dict([
         ('freqBandIndicatorNR-r16', _DL_AoD_MeasCapabilityPerBand_r16_freqBandIndicatorNR_r16),
         ('simul-NR-DL-AoD-DL-TDOA-r16', _DL_AoD_MeasCapabilityPerBand_r16_simul_NR_DL_AoD_DL_TDOA_r16),
         ('simul-NR-DL-AoD-Multi-RTT-r16', _DL_AoD_MeasCapabilityPerBand_r16_simul_NR_DL_AoD_Multi_RTT_r16),
         ('maxDL-PRS-FirstPathRSRP-MeasPerTRP-r17', _DL_AoD_MeasCapabilityPerBand_r16_maxDL_PRS_FirstPathRSRP_MeasPerTRP_r17),
         ('dl-PRS-MeasRRC-Inactive-r17', _DL_AoD_MeasCapabilityPerBand_r16_dl_PRS_MeasRRC_Inactive_r17),
+        ('supportOfMeasurementsInTimeWindow-r18', _DL_AoD_MeasCapabilityPerBand_r16_supportOfMeasurementsInTimeWindow_r18),
+        ('supportOfPRS-MeasurementRRC-Idle-r18', _DL_AoD_MeasCapabilityPerBand_r16_supportOfPRS_MeasurementRRC_Idle_r18),
         ])
-    DL_AoD_MeasCapabilityPerBand_r16._ext = ['maxDL-PRS-FirstPathRSRP-MeasPerTRP-r17', 'dl-PRS-MeasRRC-Inactive-r17']
+    DL_AoD_MeasCapabilityPerBand_r16._ext = ['maxDL-PRS-FirstPathRSRP-MeasPerTRP-r17', 'dl-PRS-MeasRRC-Inactive-r17', 'supportOfMeasurementsInTimeWindow-r18', 'supportOfPRS-MeasurementRRC-Idle-r18']
     
     #-----< NR-DL-AoD-RequestCapabilities-r16 >-----#
     NR_DL_AoD_RequestCapabilities_r16 = SEQ(name='NR-DL-AoD-RequestCapabilities-r16', mode=MODE_TYPE)
@@ -13419,10 +15926,14 @@ class LPP_PDU_Definitions:
     _NR_DL_AoD_TargetDeviceErrorCauses_r16_cause_r16 = ENUM(name='cause-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _NR_DL_AoD_TargetDeviceErrorCauses_r16_cause_r16._cont = ASN1Dict([('undefined', 0), ('assistance-data-missing', 1), ('unableToMeasureAnyTRP', 2), ('attemptedButUnableToMeasureSomeNeighbourTRPs', 3), ('thereWereNotEnoughSignalsReceivedForUeBasedDL-AoD', 4), ('locationCalculationAssistanceDataMissing', 5)])
     _NR_DL_AoD_TargetDeviceErrorCauses_r16_cause_r16._ext = []
+    _NR_DL_AoD_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18 = ENUM(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_DL_AoD_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._cont = ASN1Dict([('true', 0)])
+    _NR_DL_AoD_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._ext = None
     NR_DL_AoD_TargetDeviceErrorCauses_r16._cont = ASN1Dict([
         ('cause-r16', _NR_DL_AoD_TargetDeviceErrorCauses_r16_cause_r16),
+        ('remoteUE-Indication-r18', _NR_DL_AoD_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18),
         ])
-    NR_DL_AoD_TargetDeviceErrorCauses_r16._ext = []
+    NR_DL_AoD_TargetDeviceErrorCauses_r16._ext = ['remoteUE-Indication-r18']
     
     #-----< NR-Multi-RTT-ProvideAssistanceData-r16 >-----#
     NR_Multi_RTT_ProvideAssistanceData_r16 = SEQ(name='NR-Multi-RTT-ProvideAssistanceData-r16', mode=MODE_TYPE)
@@ -13530,6 +16041,18 @@ class LPP_PDU_Definitions:
     __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k4_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=123129)], ev=None, er=[])
     __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k5_r16 = INT(name='k5-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k5_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61565)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus6_r18 = INT(name='kMinus6-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus6_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126083073)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus5_r18 = INT(name='kMinus5-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus5_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63041537)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus4_r18 = INT(name='kMinus4-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus4_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=31520769)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus3_r18 = INT(name='kMinus3-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus3_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15760385)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus2_r18 = INT(name='kMinus2-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus2_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=7880193)], ev=None, er=[])
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus1_r18 = INT(name='kMinus1-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus1_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3940097)], ev=None, er=[])
     _NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16._cont = ASN1Dict([
         ('k0-r16', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k0_r16),
         ('k1-r16', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k1_r16),
@@ -13537,8 +16060,14 @@ class LPP_PDU_Definitions:
         ('k3-r16', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k3_r16),
         ('k4-r16', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k4_r16),
         ('k5-r16', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k5_r16),
+        ('kMinus6-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus6_r18),
+        ('kMinus5-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus5_r18),
+        ('kMinus4-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus4_r18),
+        ('kMinus3-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus3_r18),
+        ('kMinus2-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus2_r18),
+        ('kMinus1-r18', __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus1_r18),
         ])
-    _NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16._ext = []
+    _NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16._ext = ['kMinus6-r18', 'kMinus5-r18', 'kMinus4-r18', 'kMinus3-r18', 'kMinus2-r18', 'kMinus1-r18']
     _NR_Multi_RTT_MeasElement_r16_nr_AdditionalPathList_r16 = SEQ_OF(name='nr-AdditionalPathList-r16', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathList-r16')), opt=True)
     _NR_Multi_RTT_MeasElement_r16_nr_TimeStamp_r16 = SEQ(name='nr-TimeStamp-r16', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimeStamp-r16')))
     _NR_Multi_RTT_MeasElement_r16_nr_TimingQuality_r16 = SEQ(name='nr-TimingQuality-r16', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')))
@@ -13558,6 +16087,24 @@ class LPP_PDU_Definitions:
     _NR_Multi_RTT_MeasElement_r16_nr_los_nlos_Indicator_r17._ext = None
     _NR_Multi_RTT_MeasElement_r16_nr_AdditionalPathListExt_r17 = SEQ_OF(name='nr-AdditionalPathListExt-r17', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathListExt-r17')), opt=True, group=0)
     _NR_Multi_RTT_MeasElement_r16_nr_Multi_RTT_AdditionalMeasurementsExt_r17 = SEQ_OF(name='nr-Multi-RTT-AdditionalMeasurementsExt-r17', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-Multi-RTT-AdditionalMeasurementsExt-r17')), opt=True, group=0)
+    _NR_Multi_RTT_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18 = ENUM(name='nr-MeasBasedOnAggregatedResources-r18', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18._cont = ASN1Dict([('true', 0)])
+    _NR_Multi_RTT_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18._ext = None
+    _NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18 = SEQ_OF(name='nr-AggregatedDL-PRS-ResourceInfo-List-r18', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AggregatedDL-PRS-ResourceInfo-Element-r18')))
+    _NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._cont = __NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_
+    _NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_Multi_RTT_MeasElement_r16_nr_RSCP_r18 = INT(name='nr-RSCP-r18', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_MeasElement_r16_nr_RSCP_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_Multi_RTT_MeasElement_r16_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(20, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True, group=1)
+    _NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18 = SEQ_OF(name='nr-RSCP-AddSampleMeasurements-r18', mode=MODE_TYPE, tag=(21, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCP-AdditionalMeasurements-r18')))
+    _NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18._cont = __NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18__item_
+    _NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_Multi_RTT_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(22, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_Multi_RTT_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
+    _NR_Multi_RTT_MeasElement_r16_nr_NTN_UE_RxTxMeasurements_r18 = SEQ(name='nr-NTN-UE-RxTxMeasurements-r18', mode=MODE_TYPE, tag=(23, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-NTN-UE-RxTxMeasurements-r18')), opt=True, group=1)
     NR_Multi_RTT_MeasElement_r16._cont = ASN1Dict([
         ('dl-PRS-ID-r16', _NR_Multi_RTT_MeasElement_r16_dl_PRS_ID_r16),
         ('nr-PhysCellID-r16', _NR_Multi_RTT_MeasElement_r16_nr_PhysCellID_r16),
@@ -13576,8 +16123,15 @@ class LPP_PDU_Definitions:
         ('nr-los-nlos-Indicator-r17', _NR_Multi_RTT_MeasElement_r16_nr_los_nlos_Indicator_r17),
         ('nr-AdditionalPathListExt-r17', _NR_Multi_RTT_MeasElement_r16_nr_AdditionalPathListExt_r17),
         ('nr-Multi-RTT-AdditionalMeasurementsExt-r17', _NR_Multi_RTT_MeasElement_r16_nr_Multi_RTT_AdditionalMeasurementsExt_r17),
+        ('nr-MeasBasedOnAggregatedResources-r18', _NR_Multi_RTT_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18),
+        ('nr-AggregatedDL-PRS-ResourceInfo-List-r18', _NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18),
+        ('nr-RSCP-r18', _NR_Multi_RTT_MeasElement_r16_nr_RSCP_r18),
+        ('nr-PhaseQuality-r18', _NR_Multi_RTT_MeasElement_r16_nr_PhaseQuality_r18),
+        ('nr-RSCP-AddSampleMeasurements-r18', _NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_Multi_RTT_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
+        ('nr-NTN-UE-RxTxMeasurements-r18', _NR_Multi_RTT_MeasElement_r16_nr_NTN_UE_RxTxMeasurements_r18),
         ])
-    NR_Multi_RTT_MeasElement_r16._ext = ['nr-UE-RxTx-TEG-Info-r17', 'nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-AdditionalPathListExt-r17', 'nr-Multi-RTT-AdditionalMeasurementsExt-r17']
+    NR_Multi_RTT_MeasElement_r16._ext = ['nr-UE-RxTx-TEG-Info-r17', 'nr-DL-PRS-FirstPathRSRP-Result-r17', 'nr-los-nlos-Indicator-r17', 'nr-AdditionalPathListExt-r17', 'nr-Multi-RTT-AdditionalMeasurementsExt-r17', 'nr-MeasBasedOnAggregatedResources-r18', 'nr-AggregatedDL-PRS-ResourceInfo-List-r18', 'nr-RSCP-r18', 'nr-PhaseQuality-r18', 'nr-RSCP-AddSampleMeasurements-r18', 'nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', 'nr-NTN-UE-RxTxMeasurements-r18']
     
     #-----< NR-Multi-RTT-AdditionalMeasurements-r16 >-----#
     NR_Multi_RTT_AdditionalMeasurements_r16 = SEQ_OF(name='NR-Multi-RTT-AdditionalMeasurements-r16', mode=MODE_TYPE)
@@ -13610,6 +16164,18 @@ class LPP_PDU_Definitions:
     __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k4_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=511)], ev=None, er=[])
     __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k5_r16 = INT(name='k5-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k5_r16._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus6_r18 = INT(name='kMinus6-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus6_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=524224)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus5_r18 = INT(name='kMinus5-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus5_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=262112)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus4_r18 = INT(name='kMinus4-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus4_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=131056)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus3_r18 = INT(name='kMinus3-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus3_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65528)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus2_r18 = INT(name='kMinus2-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus2_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=32764)], ev=None, er=[])
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus1_r18 = INT(name='kMinus1-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus1_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=16382)], ev=None, er=[])
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16._cont = ASN1Dict([
         ('k0-r16', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k0_r16),
         ('k1-r16', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k1_r16),
@@ -13617,8 +16183,14 @@ class LPP_PDU_Definitions:
         ('k3-r16', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k3_r16),
         ('k4-r16', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k4_r16),
         ('k5-r16', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k5_r16),
+        ('kMinus6-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus6_r18),
+        ('kMinus5-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus5_r18),
+        ('kMinus4-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus4_r18),
+        ('kMinus3-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus3_r18),
+        ('kMinus2-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus2_r18),
+        ('kMinus1-r18', __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus1_r18),
         ])
-    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16._ext = []
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16._ext = ['kMinus6-r18', 'kMinus5-r18', 'kMinus4-r18', 'kMinus3-r18', 'kMinus2-r18', 'kMinus1-r18']
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_TimingQuality_r16 = SEQ(name='nr-TimingQuality-r16', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimingQuality-r16')))
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AdditionalPathList_r16 = SEQ_OF(name='nr-AdditionalPathList-r16', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathList-r16')), opt=True)
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_TimeStamp_r16 = SEQ(name='nr-TimeStamp-r16', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimeStamp-r16')))
@@ -13627,6 +16199,24 @@ class LPP_PDU_Definitions:
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61)], ev=None, er=[])
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17 = SEQ(name='nr-los-nlos-IndicatorPerResource-r17', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'LOS-NLOS-Indicator-r17')), opt=True, group=0)
     _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17 = SEQ_OF(name='nr-AdditionalPathListExt-r17', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AdditionalPathListExt-r17')), opt=True, group=0)
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18 = ENUM(name='nr-MeasBasedOnAggregatedResources-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18._cont = ASN1Dict([('true', 0)])
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18._ext = None
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18 = SEQ_OF(name='nr-AggregatedDL-PRS-ResourceInfo-List-r18', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-AggregatedDL-PRS-ResourceInfo-Element-r18')))
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._cont = __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_r18 = INT(name='nr-RSCP-r18', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True, group=1)
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18 = SEQ_OF(name='nr-RSCP-AdditionalMeasurementsAddSample-r18', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-RSCP-AdditionalMeasurements-r18')))
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18._cont = __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18__item_
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18 = ENUM(name='nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._cont = ASN1Dict([('singleHop', 0), ('multipleHop', 1)])
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18._ext = None
+    _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_NTN_UE_RxTxMeasurements_r18 = SEQ(name='nr-NTN-UE-RxTxMeasurements-r18', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-NTN-UE-RxTxMeasurements-r18')), opt=True, group=1)
     NR_Multi_RTT_AdditionalMeasurementElement_r16._cont = ASN1Dict([
         ('nr-DL-PRS-ResourceID-r16', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_DL_PRS_ResourceID_r16),
         ('nr-DL-PRS-ResourceSetID-r16', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_DL_PRS_ResourceSetID_r16),
@@ -13639,8 +16229,15 @@ class LPP_PDU_Definitions:
         ('nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17),
         ('nr-los-nlos-IndicatorPerResource-r17', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17),
         ('nr-AdditionalPathListExt-r17', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17),
+        ('nr-MeasBasedOnAggregatedResources-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18),
+        ('nr-AggregatedDL-PRS-ResourceInfo-List-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18),
+        ('nr-RSCP-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_r18),
+        ('nr-PhaseQuality-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18),
+        ('nr-RSCP-AdditionalMeasurementsAddSample-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18),
+        ('nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18),
+        ('nr-NTN-UE-RxTxMeasurements-r18', _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_NTN_UE_RxTxMeasurements_r18),
         ])
-    NR_Multi_RTT_AdditionalMeasurementElement_r16._ext = ['nr-UE-RxTx-TEG-Info-r17', 'nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', 'nr-los-nlos-IndicatorPerResource-r17', 'nr-AdditionalPathListExt-r17']
+    NR_Multi_RTT_AdditionalMeasurementElement_r16._ext = ['nr-UE-RxTx-TEG-Info-r17', 'nr-DL-PRS-FirstPathRSRP-ResultDiff-r17', 'nr-los-nlos-IndicatorPerResource-r17', 'nr-AdditionalPathListExt-r17', 'nr-MeasBasedOnAggregatedResources-r18', 'nr-AggregatedDL-PRS-ResourceInfo-List-r18', 'nr-RSCP-r18', 'nr-PhaseQuality-r18', 'nr-RSCP-AdditionalMeasurementsAddSample-r18', 'nr-ReportDL-PRS-MeasBasedOnSingleOrMultiHopRx-r18', 'nr-NTN-UE-RxTxMeasurements-r18']
     
     #-----< NR-SRS-TxTEG-Element-r17 >-----#
     NR_SRS_TxTEG_Element_r17 = SEQ(name='NR-SRS-TxTEG-Element-r17', mode=MODE_TYPE)
@@ -13705,13 +16302,38 @@ class LPP_PDU_Definitions:
         ])
     NR_UE_RxTx_TEG_Info_r17._ext = []
     
+    #-----< NR-RSCP-AdditionalMeasurements-r18 >-----#
+    NR_RSCP_AdditionalMeasurements_r18 = SEQ(name='NR-RSCP-AdditionalMeasurements-r18', mode=MODE_TYPE)
+    _NR_RSCP_AdditionalMeasurements_r18_nr_RSCP_r18 = INT(name='nr-RSCP-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _NR_RSCP_AdditionalMeasurements_r18_nr_RSCP_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _NR_RSCP_AdditionalMeasurements_r18_nr_PhaseQuality_r18 = SEQ(name='nr-PhaseQuality-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-PhaseQuality-r18')), opt=True)
+    _NR_RSCP_AdditionalMeasurements_r18_nr_TimeStamp_r18 = SEQ(name='nr-TimeStamp-r18', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-TimeStamp-r16')), opt=True)
+    NR_RSCP_AdditionalMeasurements_r18._cont = ASN1Dict([
+        ('nr-RSCP-r18', _NR_RSCP_AdditionalMeasurements_r18_nr_RSCP_r18),
+        ('nr-PhaseQuality-r18', _NR_RSCP_AdditionalMeasurements_r18_nr_PhaseQuality_r18),
+        ('nr-TimeStamp-r18', _NR_RSCP_AdditionalMeasurements_r18_nr_TimeStamp_r18),
+        ])
+    NR_RSCP_AdditionalMeasurements_r18._ext = []
+    
+    #-----< NR-NTN-UE-RxTxMeasurements-r18 >-----#
+    NR_NTN_UE_RxTxMeasurements_r18 = SEQ(name='NR-NTN-UE-RxTxMeasurements-r18', mode=MODE_TYPE)
+    _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_UE_RxTxTimeDiffSubframeOffset_r18 = INT(name='nr-NTN-UE-RxTxTimeDiffSubframeOffset-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_UE_RxTxTimeDiffSubframeOffset_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=542)], ev=None, er=[])
+    _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_DL_TimingDrift_r18 = INT(name='nr-NTN-DL-TimingDrift-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_DL_TimingDrift_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-265, ub=265)], ev=None, er=[])
+    NR_NTN_UE_RxTxMeasurements_r18._cont = ASN1Dict([
+        ('nr-NTN-UE-RxTxTimeDiffSubframeOffset-r18', _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_UE_RxTxTimeDiffSubframeOffset_r18),
+        ('nr-NTN-DL-TimingDrift-r18', _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_DL_TimingDrift_r18),
+        ])
+    NR_NTN_UE_RxTxMeasurements_r18._ext = None
+    
     #-----< NR-Multi-RTT-RequestLocationInformation-r16 >-----#
     NR_Multi_RTT_RequestLocationInformation_r16 = SEQ(name='NR-Multi-RTT-RequestLocationInformation-r16', mode=MODE_TYPE)
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_UE_RxTxTimeDiffMeasurementInfoRequest_r16 = ENUM(name='nr-UE-RxTxTimeDiffMeasurementInfoRequest-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_UE_RxTxTimeDiffMeasurementInfoRequest_r16._cont = ASN1Dict([('true', 0)])
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_UE_RxTxTimeDiffMeasurementInfoRequest_r16._ext = None
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16 = BIT_STR(name='nr-RequestedMeasurements-r16', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._cont = ASN1Dict([('prsrsrpReq', 0), ('firstPathRsrpReq-r17', 1)])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._cont = ASN1Dict([('prsrsrpReq', 0), ('firstPathRsrpReq-r17', 1), ('dl-PRS-RSCP-Request-r18', 2)])
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_AssistanceAvailability_r16 = BOOL(name='nr-AssistanceAvailability-r16', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _NR_Multi_RTT_RequestLocationInformation_r16_nr_Multi_RTT_ReportConfig_r16 = SEQ(name='nr-Multi-RTT-ReportConfig-r16', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-Multi-RTT-ReportConfig-r16')))
@@ -13750,6 +16372,39 @@ class LPP_PDU_Definitions:
     _NR_Multi_RTT_RequestLocationInformation_r16_lowerRxBeamSweepingFactor_FR2_r17 = ENUM(name='lowerRxBeamSweepingFactor-FR2-r17', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
     _NR_Multi_RTT_RequestLocationInformation_r16_lowerRxBeamSweepingFactor_FR2_r17._cont = ASN1Dict([('requested', 0)])
     _NR_Multi_RTT_RequestLocationInformation_r16_lowerRxBeamSweepingFactor_FR2_r17._ext = None
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18 = SEQ(name='nr-DL-PRS-RxHoppingRequest-r18', mode=MODE_TYPE, tag=(14, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18 = CHOICE(name='nr-DL-PRS-RxHoppingTotalBandwidth-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), opt=True)
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1 = ENUM(name='fr1', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._cont = ASN1Dict([('mhz40', 0), ('mhz50', 1), ('mhz80', 2), ('mhz100', 3)])
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1._ext = None
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2 = ENUM(name='fr2', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._cont = ASN1Dict([('mhz100', 0), ('mhz200', 1), ('mhz400', 2)])
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2._ext = None
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._cont = ASN1Dict([
+        ('fr1', ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1),
+        ('fr2', ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2),
+        ])
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18._ext = None
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-RxHoppingTotalBandwidth-r18', __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18),
+        ])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18._ext = None
+    _NR_Multi_RTT_RequestLocationInformation_r16_timingReportingGranularityFactorExt_r18 = INT(name='timingReportingGranularityFactorExt-r18', mode=MODE_TYPE, tag=(15, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    _NR_Multi_RTT_RequestLocationInformation_r16_timingReportingGranularityFactorExt_r18._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-6, ub=-1)], ev=None, er=[])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18 = SEQ(name='nr-DL-PRS-JointMeasurementRequest-r18', mode=MODE_TYPE, tag=(16, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18 = SEQ_OF(name='nr-DL-PRS-JointMeasurementRequestedPFL-List-r18', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_ = INT(name='_item_', mode=MODE_TYPE)
+    ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3)], ev=None, er=[])
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18._cont = ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_
+    __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18._cont = ASN1Dict([
+        ('nr-DL-PRS-JointMeasurementRequestedPFL-List-r18', __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18),
+        ])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18._ext = None
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18 = SEQ_OF(name='nr-DL-PRS-MeasurementTimeWindowsConfig-r18', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'NR-DL-PRS-MeasurementTimeWindowsConfig-r18')), opt=True, group=1)
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_NTN_UE_RxTxMeasurementsRequest_r18 = ENUM(name='nr-NTN-UE-RxTxMeasurementsRequest-r18', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_NTN_UE_RxTxMeasurementsRequest_r18._cont = ASN1Dict([('requested', 0)])
+    _NR_Multi_RTT_RequestLocationInformation_r16_nr_NTN_UE_RxTxMeasurementsRequest_r18._ext = None
     NR_Multi_RTT_RequestLocationInformation_r16._cont = ASN1Dict([
         ('nr-UE-RxTxTimeDiffMeasurementInfoRequest-r16', _NR_Multi_RTT_RequestLocationInformation_r16_nr_UE_RxTxTimeDiffMeasurementInfoRequest_r16),
         ('nr-RequestedMeasurements-r16', _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16),
@@ -13765,8 +16420,13 @@ class LPP_PDU_Definitions:
         ('additionalPathsDL-PRS-RSRP-Request-r17', _NR_Multi_RTT_RequestLocationInformation_r16_additionalPathsDL_PRS_RSRP_Request_r17),
         ('multiMeasInSameReport-r17', _NR_Multi_RTT_RequestLocationInformation_r16_multiMeasInSameReport_r17),
         ('lowerRxBeamSweepingFactor-FR2-r17', _NR_Multi_RTT_RequestLocationInformation_r16_lowerRxBeamSweepingFactor_FR2_r17),
+        ('nr-DL-PRS-RxHoppingRequest-r18', _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18),
+        ('timingReportingGranularityFactorExt-r18', _NR_Multi_RTT_RequestLocationInformation_r16_timingReportingGranularityFactorExt_r18),
+        ('nr-DL-PRS-JointMeasurementRequest-r18', _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18),
+        ('nr-DL-PRS-MeasurementTimeWindowsConfig-r18', _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18),
+        ('nr-NTN-UE-RxTxMeasurementsRequest-r18', _NR_Multi_RTT_RequestLocationInformation_r16_nr_NTN_UE_RxTxMeasurementsRequest_r18),
         ])
-    NR_Multi_RTT_RequestLocationInformation_r16._ext = ['nr-UE-RxTxTEG-Request-r17', 'measureSameDL-PRS-ResourceWithDifferentRxTxTEGs-r17', 'measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'nr-los-nlos-IndicatorRequest-r17', 'additionalPathsExt-r17', 'additionalPathsDL-PRS-RSRP-Request-r17', 'multiMeasInSameReport-r17', 'lowerRxBeamSweepingFactor-FR2-r17']
+    NR_Multi_RTT_RequestLocationInformation_r16._ext = ['nr-UE-RxTxTEG-Request-r17', 'measureSameDL-PRS-ResourceWithDifferentRxTxTEGs-r17', 'measureSameDL-PRS-ResourceWithDifferentRxTEGs-r17', 'reducedDL-PRS-ProcessingSamples-r17', 'nr-los-nlos-IndicatorRequest-r17', 'additionalPathsExt-r17', 'additionalPathsDL-PRS-RSRP-Request-r17', 'multiMeasInSameReport-r17', 'lowerRxBeamSweepingFactor-FR2-r17', 'nr-DL-PRS-RxHoppingRequest-r18', 'timingReportingGranularityFactorExt-r18', 'nr-DL-PRS-JointMeasurementRequest-r18', 'nr-DL-PRS-MeasurementTimeWindowsConfig-r18', 'nr-NTN-UE-RxTxMeasurementsRequest-r18']
     
     #-----< NR-Multi-RTT-ReportConfig-r16 >-----#
     NR_Multi_RTT_ReportConfig_r16 = SEQ(name='NR-Multi-RTT-ReportConfig-r16', mode=MODE_TYPE)
@@ -13831,6 +16491,10 @@ class LPP_PDU_Definitions:
     _NR_Multi_RTT_ProvideCapabilities_r16_posMeasGapSupport_r17 = ENUM(name='posMeasGapSupport-r17', mode=MODE_TYPE, tag=(17, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=1)
     _NR_Multi_RTT_ProvideCapabilities_r16_posMeasGapSupport_r17._cont = ASN1Dict([('supported', 0)])
     _NR_Multi_RTT_ProvideCapabilities_r16_posMeasGapSupport_r17._ext = None
+    _NR_Multi_RTT_ProvideCapabilities_r16_nr_MultiRTT_OnDemandPRS_ForBWA_Support_r18 = ENUM(name='nr-MultiRTT-OnDemandPRS-ForBWA-Support-r18', mode=MODE_TYPE, tag=(18, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=2)
+    _NR_Multi_RTT_ProvideCapabilities_r16_nr_MultiRTT_OnDemandPRS_ForBWA_Support_r18._cont = ASN1Dict([('supported', 0)])
+    _NR_Multi_RTT_ProvideCapabilities_r16_nr_MultiRTT_OnDemandPRS_ForBWA_Support_r18._ext = None
+    _NR_Multi_RTT_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18 = SEQ(name='periodicReportingIntervalMsSupport-r18', mode=MODE_TYPE, tag=(19, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('LPP-PDU-Definitions', 'PeriodicReportingIntervalMsSupport-r18')), opt=True, group=2)
     NR_Multi_RTT_ProvideCapabilities_r16._cont = ASN1Dict([
         ('nr-Multi-RTT-PRS-Capability-r16', _NR_Multi_RTT_ProvideCapabilities_r16_nr_Multi_RTT_PRS_Capability_r16),
         ('nr-Multi-RTT-MeasurementCapability-r16', _NR_Multi_RTT_ProvideCapabilities_r16_nr_Multi_RTT_MeasurementCapability_r16),
@@ -13850,8 +16514,10 @@ class LPP_PDU_Definitions:
         ('multiMeasInSameMeasReport-r17', _NR_Multi_RTT_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17),
         ('mg-ActivationRequest-r17', _NR_Multi_RTT_ProvideCapabilities_r16_mg_ActivationRequest_r17),
         ('posMeasGapSupport-r17', _NR_Multi_RTT_ProvideCapabilities_r16_posMeasGapSupport_r17),
+        ('nr-MultiRTT-OnDemandPRS-ForBWA-Support-r18', _NR_Multi_RTT_ProvideCapabilities_r16_nr_MultiRTT_OnDemandPRS_ForBWA_Support_r18),
+        ('periodicReportingIntervalMsSupport-r18', _NR_Multi_RTT_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18),
         ])
-    NR_Multi_RTT_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'nr-Multi-RTT-On-Demand-DL-PRS-Support-r17', 'nr-UE-RxTx-TEG-ID-ReportingSupport-r17', 'nr-los-nlos-IndicatorSupport-r17', 'additionalPathsExtSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17']
+    NR_Multi_RTT_ProvideCapabilities_r16._ext = ['ten-ms-unit-ResponseTime-r17', 'nr-DL-PRS-ExpectedAoD-or-AoA-Sup-r17', 'nr-Multi-RTT-On-Demand-DL-PRS-Support-r17', 'nr-UE-RxTx-TEG-ID-ReportingSupport-r17', 'nr-los-nlos-IndicatorSupport-r17', 'additionalPathsExtSupport-r17', 'scheduledLocationRequestSupported-r17', 'nr-dl-prs-AssistanceDataValidity-r17', 'multiMeasInSameMeasReport-r17', 'mg-ActivationRequest-r17', 'posMeasGapSupport-r17', 'nr-MultiRTT-OnDemandPRS-ForBWA-Support-r18', 'periodicReportingIntervalMsSupport-r18']
     
     #-----< NR-Multi-RTT-MeasurementCapability-r16 >-----#
     NR_Multi_RTT_MeasurementCapability_r16 = SEQ(name='NR-Multi-RTT-MeasurementCapability-r16', mode=MODE_TYPE)
@@ -13897,12 +16563,48 @@ class LPP_PDU_Definitions:
     _Multi_RTT_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17 = ENUM(name='dl-PRS-MeasRRC-Inactive-r17', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _Multi_RTT_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17._cont = ASN1Dict([('supported', 0)])
     _Multi_RTT_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18 = ENUM(name='supportOfDL-PRS-BWA-RRC-Connected-r18', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18 = ENUM(name='supportOfDL-PRS-BWA-RRC-Inactive-r18', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_NTN_MeasAndReport_r18 = ENUM(name='nr-NTN-MeasAndReport-r18', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_NTN_MeasAndReport_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_NTN_MeasAndReport_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Connected_r18 = ENUM(name='nr-DL-PRS-RSCP-RRC-Connected-r18', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Connected_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Connected_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Inactive_r18 = ENUM(name='nr-DL-PRS-RSCP-RRC-Inactive-r18', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Inactive_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Inactive_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_assocSingleRx_Tx_WithUpToNsampleRSCP_r18 = ENUM(name='assocSingleRx-Tx-WithUpToNsampleRSCP-r18', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_assocSingleRx_Tx_WithUpToNsampleRSCP_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_assocSingleRx_Tx_WithUpToNsampleRSCP_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCP_r18 = ENUM(name='supportOfSymbolTimeStampForRSCP-r18', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCP_r18._cont = ASN1Dict([('supported', 0)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCP_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18 = ENUM(name='supportOfFinerTimingReportGranularityForPRS-Meas-r18', mode=MODE_TYPE, tag=(10, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18._cont = ASN1Dict([('minus1', 0), ('minus2', 1), ('minus3', 2), ('minus4', 3), ('minus5', 4), ('minus6', 5)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18._ext = None
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18 = BIT_STR(name='supportOfMeasurementsInTimeWindow-r18', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18._cont = ASN1Dict([('rx-tx', 0), ('rsrp', 1), ('rsrpp', 2), ('rscp', 3)])
+    _Multi_RTT_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
     Multi_RTT_MeasCapabilityPerBand_r17._cont = ASN1Dict([
         ('freqBandIndicatorNR-r17', _Multi_RTT_MeasCapabilityPerBand_r17_freqBandIndicatorNR_r17),
         ('supportOfDL-PRS-FirstPathRSRP-r17', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_FirstPathRSRP_r17),
         ('dl-PRS-MeasRRC-Inactive-r17', _Multi_RTT_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17),
+        ('supportOfDL-PRS-BWA-RRC-Connected-r18', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18),
+        ('supportOfDL-PRS-BWA-RRC-Inactive-r18', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18),
+        ('nr-NTN-MeasAndReport-r18', _Multi_RTT_MeasCapabilityPerBand_r17_nr_NTN_MeasAndReport_r18),
+        ('nr-DL-PRS-RSCP-RRC-Connected-r18', _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Connected_r18),
+        ('nr-DL-PRS-RSCP-RRC-Inactive-r18', _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Inactive_r18),
+        ('assocSingleRx-Tx-WithUpToNsampleRSCP-r18', _Multi_RTT_MeasCapabilityPerBand_r17_assocSingleRx_Tx_WithUpToNsampleRSCP_r18),
+        ('supportOfSymbolTimeStampForRSCP-r18', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCP_r18),
+        ('supportOfFinerTimingReportGranularityForPRS-Meas-r18', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18),
+        ('supportOfMeasurementsInTimeWindow-r18', _Multi_RTT_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18),
         ])
-    Multi_RTT_MeasCapabilityPerBand_r17._ext = []
+    Multi_RTT_MeasCapabilityPerBand_r17._ext = ['supportOfDL-PRS-BWA-RRC-Connected-r18', 'supportOfDL-PRS-BWA-RRC-Inactive-r18', 'nr-NTN-MeasAndReport-r18', 'nr-DL-PRS-RSCP-RRC-Connected-r18', 'nr-DL-PRS-RSCP-RRC-Inactive-r18', 'assocSingleRx-Tx-WithUpToNsampleRSCP-r18', 'supportOfSymbolTimeStampForRSCP-r18', 'supportOfFinerTimingReportGranularityForPRS-Meas-r18', 'supportOfMeasurementsInTimeWindow-r18']
     
     #-----< NR-Multi-RTT-RequestCapabilities-r16 >-----#
     NR_Multi_RTT_RequestCapabilities_r16 = SEQ(name='NR-Multi-RTT-RequestCapabilities-r16', mode=MODE_TYPE)
@@ -13935,10 +16637,14 @@ class LPP_PDU_Definitions:
     _NR_Multi_RTT_TargetDeviceErrorCauses_r16_cause_r16 = ENUM(name='cause-r16', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _NR_Multi_RTT_TargetDeviceErrorCauses_r16_cause_r16._cont = ASN1Dict([('undefined', 0), ('dl-assistance-data-missing', 1), ('unableToMeasureAnyTRP', 2), ('attemptedButUnableToMeasureSomeNeighbourTRPs', 3), ('ul-srs-configuration-missing', 4), ('unableToTransmit-ul-srs', 5)])
     _NR_Multi_RTT_TargetDeviceErrorCauses_r16_cause_r16._ext = []
+    _NR_Multi_RTT_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18 = ENUM(name='remoteUE-Indication-r18', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True, group=0)
+    _NR_Multi_RTT_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._cont = ASN1Dict([('true', 0)])
+    _NR_Multi_RTT_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18._ext = None
     NR_Multi_RTT_TargetDeviceErrorCauses_r16._cont = ASN1Dict([
         ('cause-r16', _NR_Multi_RTT_TargetDeviceErrorCauses_r16_cause_r16),
+        ('remoteUE-Indication-r18', _NR_Multi_RTT_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18),
         ])
-    NR_Multi_RTT_TargetDeviceErrorCauses_r16._ext = []
+    NR_Multi_RTT_TargetDeviceErrorCauses_r16._ext = ['remoteUE-Indication-r18']
     
     #-----< maxEARFCN >-----#
     maxEARFCN = INT(name='maxEARFCN', mode=MODE_VALUE)
@@ -13979,6 +16685,14 @@ class LPP_PDU_Definitions:
     #-----< maxBT-Beacon-r13 >-----#
     maxBT_Beacon_r13 = INT(name='maxBT-Beacon-r13', mode=MODE_VALUE)
     maxBT_Beacon_r13._val = 32
+    
+    #-----< maxBT-BeaconAntElt-r18 >-----#
+    maxBT_BeaconAntElt_r18 = INT(name='maxBT-BeaconAntElt-r18', mode=MODE_VALUE)
+    maxBT_BeaconAntElt_r18._val = 74
+    
+    #-----< maxBT-BeaconAD-r18 >-----#
+    maxBT_BeaconAD_r18 = INT(name='maxBT-BeaconAD-r18', mode=MODE_VALUE)
+    maxBT_BeaconAD_r18._val = 64
     
     #-----< nrMaxBands-r16 >-----#
     nrMaxBands_r16 = INT(name='nrMaxBands-r16', mode=MODE_VALUE)
@@ -14112,6 +16826,18 @@ class LPP_PDU_Definitions:
     maxMeasInstances_r17 = INT(name='maxMeasInstances-r17', mode=MODE_VALUE)
     maxMeasInstances_r17._val = 32
     
+    #-----< nrMaxNumPRS-BandWidthAggregation-r18 >-----#
+    nrMaxNumPRS_BandWidthAggregation_r18 = INT(name='nrMaxNumPRS-BandWidthAggregation-r18', mode=MODE_VALUE)
+    nrMaxNumPRS_BandWidthAggregation_r18._val = 256
+    
+    #-----< nrNumOfSamples-r18 >-----#
+    nrNumOfSamples_r18 = INT(name='nrNumOfSamples-r18', mode=MODE_VALUE)
+    nrNumOfSamples_r18._val = 4
+    
+    #-----< nrNumOfSamples-1-r18 >-----#
+    nrNumOfSamples_1_r18 = INT(name='nrNumOfSamples-1-r18', mode=MODE_VALUE)
+    nrNumOfSamples_1_r18._val = 3
+    
     _all_ = [
         _LPP_Message_transactionID,
         _LPP_Message_endTransaction,
@@ -14211,6 +16937,7 @@ class LPP_PDU_Definitions:
         _RequestAssistanceData_r9_IEs_nr_Multi_RTT_RequestAssistanceData_r16,
         _RequestAssistanceData_r9_IEs_nr_DL_AoD_RequestAssistanceData_r16,
         _RequestAssistanceData_r9_IEs_nr_DL_TDOA_RequestAssistanceData_r16,
+        _RequestAssistanceData_r9_IEs_bt_RequestAssistanceData_r18,
         RequestAssistanceData_r9_IEs,
         ___ProvideAssistanceData_criticalExtensions_c1_provideAssistanceData_r9,
         ___ProvideAssistanceData_criticalExtensions_c1_spare3,
@@ -14230,6 +16957,7 @@ class LPP_PDU_Definitions:
         _ProvideAssistanceData_r9_IEs_nr_Multi_RTT_ProvideAssistanceData_r16,
         _ProvideAssistanceData_r9_IEs_nr_DL_AoD_ProvideAssistanceData_r16,
         _ProvideAssistanceData_r9_IEs_nr_DL_TDOA_ProvideAssistanceData_r16,
+        _ProvideAssistanceData_r9_IEs_bt_ProvideAssistanceData_r18,
         ProvideAssistanceData_r9_IEs,
         ___RequestLocationInformation_criticalExtensions_c1_requestLocationInformation_r9,
         ___RequestLocationInformation_criticalExtensions_c1_spare3,
@@ -14438,6 +17166,27 @@ class LPP_PDU_Definitions:
         _HorizontalWithVerticalVelocityAndUncertainty_horizontalUncertaintySpeed,
         _HorizontalWithVerticalVelocityAndUncertainty_verticalUncertaintySpeed,
         HorizontalWithVerticalVelocityAndUncertainty,
+        _Local2dPointWithUncertaintyEllipse_r18_localOrigin_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_cartesianCoordinatesUnits_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_x_value_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_y_value_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMajor_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_uncertaintySemiMinor_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_orientationMajorAxis_r18,
+        _Local2dPointWithUncertaintyEllipse_r18_confidence_r18,
+        Local2dPointWithUncertaintyEllipse_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_localOrigin_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_cartesianCoordinatesUnits_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_x_value_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_y_value_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_z_value_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMajor_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintySemiMinor_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_orientationMajorAxis_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_uncertaintyAltitude_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_confidence_r18,
+        _Local3dPointWithUncertaintyEllipsoid_r18_vConfidence_r18,
+        Local3dPointWithUncertaintyEllipsoid_r18,
         _LocationCoordinateTypes_ellipsoidPoint,
         _LocationCoordinateTypes_ellipsoidPointWithUncertaintyCircle,
         _LocationCoordinateTypes_ellipsoidPointWithUncertaintyEllipse,
@@ -14449,6 +17198,8 @@ class LPP_PDU_Definitions:
         _LocationCoordinateTypes_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_r15,
         _LocationCoordinateTypes_ha_EllipsoidPointWithScalableUncertaintyEllipse_r16,
         _LocationCoordinateTypes_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_r16,
+        _LocationCoordinateTypes_local2dPointWithUncertaintyEllipse_r18,
+        _LocationCoordinateTypes_local3dPointWithUncertaintyEllipsoid_r18,
         LocationCoordinateTypes,
         __NCGI_r15_mcc_r15__item_,
         _NCGI_r15_mcc_r15,
@@ -14464,6 +17215,12 @@ class LPP_PDU_Definitions:
         _PeriodicSessionID_r15_periodicSessionNumber_r15,
         PeriodicSessionID_r15,
         UpdateCapabilities_r15,
+        _PeriodicReportingIntervalMsSupport_r18_minPeriodicReportingIntervalMs_r18,
+        PeriodicReportingIntervalMsSupport_r18,
+        _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs1_Supported_r18,
+        _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs10_Supported_r18,
+        _PeriodicReportingIntervalMsSupportPerMode_r18_minPeriodicReportingIntervalMs100_Supported_r18,
+        PeriodicReportingIntervalMsSupportPerMode_r18,
         _Polygon__item_,
         Polygon,
         _PolygonPoints_latitudeSign,
@@ -14493,9 +17250,12 @@ class LPP_PDU_Definitions:
         _VelocityTypes_horizontalWithVerticalVelocityAndUncertainty,
         VelocityTypes,
         _CommonIEsRequestCapabilities_lpp_message_segmentation_req_r14,
+        _CommonIEsRequestCapabilities_remoteUE_IndicationReq_r18,
         CommonIEsRequestCapabilities,
         _CommonIEsProvideCapabilities_segmentationInfo_r14,
         _CommonIEsProvideCapabilities_lpp_message_segmentation_r14,
+        _CommonIEsProvideCapabilities_remoteUE_Indication_r18,
+        _CommonIEsProvideCapabilities_locationEstimateAndMeasurementReporting_r18,
         CommonIEsProvideCapabilities,
         _CommonIEsRequestAssistanceData_primaryCellID,
         _CommonIEsRequestAssistanceData_segmentationInfo_r14,
@@ -14517,11 +17277,15 @@ class LPP_PDU_Definitions:
         _CommonIEsRequestLocationInformation_segmentationInfo_r14,
         _CommonIEsRequestLocationInformation_scheduledLocationTime_r17,
         _CommonIEsRequestLocationInformation_targetIntegrityRisk_r17,
+        _CommonIEsRequestLocationInformation_periodicalReportingExt_r18,
         CommonIEsRequestLocationInformation,
         LocationInformationType,
         _PeriodicalReportingCriteria_reportingAmount,
         _PeriodicalReportingCriteria_reportingInterval,
         PeriodicalReportingCriteria,
+        _PeriodicalReportingCriteriaExt_r18_reportingAmount_r18,
+        _PeriodicalReportingCriteriaExt_r18_reportingIntervalMs_r18,
+        PeriodicalReportingCriteriaExt_r18,
         _TriggeredReportingCriteria_cellChange,
         _TriggeredReportingCriteria_reportingDuration,
         TriggeredReportingCriteria,
@@ -14602,6 +17366,8 @@ class LPP_PDU_Definitions:
         _LocationCoordinates_highAccuracyEllipsoidPointWithAltitudeAndUncertaintyEllipsoid_v1510,
         _LocationCoordinates_ha_EllipsoidPointWithScalableUncertaintyEllipse_v1680,
         _LocationCoordinates_ha_EllipsoidPointWithAltitudeAndScalableUncertaintyEllipsoid_v1680,
+        _LocationCoordinates_local2dPointWithUncertaintyEllipse_v1800,
+        _LocationCoordinates_local3dPointWithUncertaintyEllipsoid_v1800,
         LocationCoordinates,
         _Velocity_horizontalVelocity,
         _Velocity_horizontalWithVerticalVelocity,
@@ -14639,6 +17405,10 @@ class LPP_PDU_Definitions:
         _LCS_GCS_TranslationParameter_r16_gamma_r16,
         _LCS_GCS_TranslationParameter_r16_gamma_fine_r16,
         LCS_GCS_TranslationParameter_r16,
+        _LocalOrigin_r18_coordinateID_r18,
+        _LocalOrigin_r18_point_r18,
+        _LocalOrigin_r18_horizAxesOrientation_r18,
+        LocalOrigin_r18,
         __LOS_NLOS_Indicator_r17_indicator_r17_soft_r17,
         __LOS_NLOS_Indicator_r17_indicator_r17_hard_r17,
         _LOS_NLOS_Indicator_r17_indicator_r17,
@@ -14657,15 +17427,26 @@ class LPP_PDU_Definitions:
         __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k3_r16,
         __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k4_r16,
         __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_k5_r16,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus6_r18,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus5_r18,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus4_r18,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus3_r18,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus2_r18,
+        __NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16_kMinus1_r18,
         _NR_AdditionalPath_r16_nr_RelativeTimeDifference_r16,
         _NR_AdditionalPath_r16_nr_PathQuality_r16,
         _NR_AdditionalPath_r16_nr_DL_PRS_RSRPP_r17,
         NR_AdditionalPath_r16,
+        _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_aggregatedDL_PRS_ID_r18,
+        _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceSetID_r18,
+        _NR_AggregatedDL_PRS_ResourceInfo_Element_r18_nr_DL_PRS_ResourceID_r18,
+        NR_AggregatedDL_PRS_ResourceInfo_Element_r18,
         _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_ReferenceInfo_r16,
         __NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AssistanceDataList_r16__item_,
         _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AssistanceDataList_r16,
         __NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16__item_,
         _NR_DL_PRS_AssistanceData_r16_nr_SSB_Config_r16,
+        _NR_DL_PRS_AssistanceData_r16_nr_DL_PRS_AggregationInfo_r18,
         NR_DL_PRS_AssistanceData_r16,
         _NR_DL_PRS_AssistanceDataPerFreq_r16_nr_DL_PRS_PositioningFrequencyLayer_r16,
         __NR_DL_PRS_AssistanceDataPerFreq_r16_nr_DL_PRS_AssistanceDataPerFreq_r16__item_,
@@ -14703,6 +17484,14 @@ class LPP_PDU_Definitions:
         __NR_DL_PRS_ExpectedAoD_or_AoA_r17_expectedAoA_r17_expectedDL_ZenithAoA_Unc_r17,
         _NR_DL_PRS_ExpectedAoD_or_AoA_r17_expectedAoA_r17,
         NR_DL_PRS_ExpectedAoD_or_AoA_r17,
+        _NR_DL_PRS_AggregationInfo_r18__item_,
+        NR_DL_PRS_AggregationInfo_r18,
+        _NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18__item_,
+        NR_linkedDL_PRS_ResourceSetID_PRS_AggregationList_r18,
+        _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_FrequencyLayerIndex_r18,
+        _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_TRP_Index_r18,
+        _NR_DL_PRS_AggregationElement_r18_nr_DL_PRS_ResourceSetIndex_r18,
+        NR_DL_PRS_AggregationElement_r18,
         _NR_DL_PRS_BeamInfo_r16__item_,
         NR_DL_PRS_BeamInfo_r16,
         _NR_DL_PRS_BeamInfoPerFreqLayer_r16__item_,
@@ -14723,7 +17512,13 @@ class LPP_PDU_Definitions:
         _DL_PRS_BeamInfoElement_r16_dl_PRS_Azimuth_fine_r16,
         _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_r16,
         _DL_PRS_BeamInfoElement_r16_dl_PRS_Elevation_fine_r16,
+        _DL_PRS_BeamInfoElement_r16_nr_IntegrityBeamInfoBounds_r18,
         DL_PRS_BeamInfoElement_r16,
+        _NR_IntegrityBeamInfoBounds_r18_meanAzimuth_r18,
+        _NR_IntegrityBeamInfoBounds_r18_stdDevAzimuth_r18,
+        _NR_IntegrityBeamInfoBounds_r18_meanElevation_r18,
+        _NR_IntegrityBeamInfoBounds_r18_stdDevElevation_r18,
+        NR_IntegrityBeamInfoBounds_r18,
         _NR_DL_PRS_ExpectedLOS_NLOS_Assistance_r17__item_,
         NR_DL_PRS_ExpectedLOS_NLOS_Assistance_r17,
         _NR_DL_PRS_ExpectedLOS_NLOS_AssistancePerFreqLayer_r17__item_,
@@ -14776,6 +17571,7 @@ class LPP_PDU_Definitions:
         _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_r16,
         _NR_DL_PRS_Resource_r16_dl_PRS_QCL_Info_r16,
         _NR_DL_PRS_Resource_r16_dl_PRS_ResourcePrioritySubset_r17,
+        _NR_DL_PRS_Resource_r16_dl_PRS_ResourceSymbolOffset_v1800,
         NR_DL_PRS_Resource_r16,
         __DL_PRS_QCL_Info_r16_ssb_r16_pci_r16,
         __DL_PRS_QCL_Info_r16_ssb_r16_ssb_Index_r16,
@@ -14863,6 +17659,27 @@ class LPP_PDU_Definitions:
         _NR_DL_PRSResourcePriorityItem_r17_nr_DL_PRS_PrioResourceSetID_r17,
         _NR_DL_PRSResourcePriorityItem_r17_nr_DL_PRS_PrioResourceID_r17,
         NR_DL_PRSResourcePriorityItem_r17,
+        _NR_DL_PRS_MeasurementTimeWindowsConfig_r18__item_,
+        NR_DL_PRS_MeasurementTimeWindowsConfig_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_StartSFN_TimeWindow_r18,
+        __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_PeriodicityAndSlotOffsetTimeWindow_r18,
+        ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs15_r18,
+        ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs30_r18,
+        ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs60_r18,
+        ___NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18_scs120_r18,
+        __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18_nr_OneShotSlotOffsetTimeWindow_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_PeriodicOrOneShotTimeWindow_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SymbolOffsetTimeWindow_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_DurationTimeWindow_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_FrequencyLayerIndex_r18,
+        __NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18__item_,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_SelectedDL_PRS_IndexListPerFreq_r18,
+        _NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18_nr_MeasurementsToPerformInTimeWindow_r18,
+        NR_DL_PRS_MeasurementTimeWindowsConfigElement_r18,
+        _NR_SelectedDL_PRS_IndexPerTRP_r18_nr_SelectedTRP_Index_r18,
+        __NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18__item_,
+        _NR_SelectedDL_PRS_IndexPerTRP_r18_dl_SelectedPRS_ResourceSetIndexList_r18,
+        NR_SelectedDL_PRS_IndexPerTRP_r18,
         __NR_DL_PRS_ProcessingCapability_r16_prs_ProcessingCapabilityBandList_r16__item_,
         _NR_DL_PRS_ProcessingCapability_r16_prs_ProcessingCapabilityBandList_r16,
         _NR_DL_PRS_ProcessingCapability_r16_maxSupportedFreqLayers_r16,
@@ -14904,6 +17721,33 @@ class LPP_PDU_Definitions:
         _PRS_ProcessingCapabilityPerBand_r16_supportedLowerRxBeamSweepingFactor_FR2_r17,
         _PRS_ProcessingCapabilityPerBand_r16_supportedDL_PRS_ProcessingSamples_RRC_Inactive_r17,
         _PRS_ProcessingCapabilityPerBand_r16_prs_MeasurementWithoutMG_r17,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs15_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs30_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs60_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18_scs120_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Inactive_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs15_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs30_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs60_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18_scs120_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_maxNumOfOneSymbolPRS_ResProcessedPerSlot_RRC_Connected_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs15_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs30_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs60_r18,
+        __PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18_scs120_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_ppw_maxNumOfOneSymbolPRS_ResProcessedPerSlot_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntrabandInMG_RRC_Connected_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntrabandInMG_RRC_Connected_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_TwoContiguousIntraband_RRC_IdleAndInactive_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_prs_BWA_ThreeContiguousIntraband_RRC_IdleAndInactive_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_Connected_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleInMeasurementWithPRS_BWA_RRC_IdleAndInactive_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Inactive_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Idle_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_Connected_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_reducedNumOfSampleForMeasurementWithFH_RRC_IdleAndInactive_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_supportOfPRS_BWA_WithTwoPFL_Combination_r18,
+        _PRS_ProcessingCapabilityPerBand_r16_dl_PRS_MeasurementWithRxFH_RRC_Connected_r18,
         PRS_ProcessingCapabilityPerBand_r16,
         _PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_prsProcessingType_r17,
         _PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_ppw_dl_PRS_BufferType_r17,
@@ -14922,6 +17766,48 @@ class LPP_PDU_Definitions:
         __PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_ppw_maxNumOfDL_Bandwidth_r17_fr2,
         _PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_ppw_maxNumOfDL_Bandwidth_r17,
         PRS_ProcessingCapabilityOutsideMGinPPWperType_r17,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR1_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfTwoAggregatedDL_PRS_Bandwidth_FR2_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsN_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18_prs_durationOfTwoPRS_BWA_ProcessingSymbolsT_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_prs_durationOfTwoPRS_BWA_Processing_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18,
+        __PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18,
+        _PRS_BWA_TwoContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18,
+        PRS_BWA_TwoContiguousIntrabandInMG_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR1_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfThreeAggregatedDL_PRS_Bandwidth_FR2_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR1_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maximumOfDL_PRS_BandwidthPerPFL_FR2_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_dl_PRS_BufferTypeOfBWA_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsN_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18_prs_durationOfThreePRS_BWA_ProcessingSymbolsT_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_prs_durationOfThreePRS_BWA_Processing_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs15_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs30_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18_scs60_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR1_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs60_r18,
+        __PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18_scs120_r18,
+        _PRS_BWA_ThreeContiguousIntrabandInMG_r18_maxNumOfAggregatedDL_PRS_ResourcePerSlot_FR2_r18,
+        PRS_BWA_ThreeContiguousIntrabandInMG_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR1_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumPRS_BandwidthAcrossAllHopsFR2_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_maximumFH_Hops_r18,
+        __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingPRS_SymbolsDurationN3_r18,
+        __DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18_processingDurationT3_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_processingDuration_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR1_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_rf_RxRetuneTimeFR2_r18,
+        _DL_PRS_MeasurementWithRxFH_RRC_Connected_r18_numOfOverlappingPRB_r18,
+        DL_PRS_MeasurementWithRxFH_RRC_Connected_r18,
         __NR_DL_PRS_QCL_ProcessingCapability_r16_dl_PRS_QCL_ProcessingCapabilityBandList_r16__item_,
         _NR_DL_PRS_QCL_ProcessingCapability_r16_dl_PRS_QCL_ProcessingCapabilityBandList_r16,
         NR_DL_PRS_QCL_ProcessingCapability_r16,
@@ -14969,8 +17855,29 @@ class LPP_PDU_Definitions:
         DL_PRS_TEG_InfoPerResourceSet_r17,
         _DL_PRS_TEG_InfoElement_r17_dl_prs_trp_Tx_TEG_ID_r17,
         DL_PRS_TEG_InfoElement_r17,
+        _NR_IntegrityRiskParameters_r18_nr_ProbOnsetTRP_Fault_r18,
+        _NR_IntegrityRiskParameters_r18_nr_MeanTRP_FaultDuration_r18,
+        NR_IntegrityRiskParameters_r18,
+        _NR_IntegrityServiceAlert_r18__item_,
+        NR_IntegrityServiceAlert_r18,
+        _NR_TRP_IntegrityServiceAlertPerFreqLayer_r18__item_,
+        NR_TRP_IntegrityServiceAlertPerFreqLayer_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_dl_PRS_ID_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_nr_PhysCellID_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_nr_CellGlobalID_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_nr_ARFCN_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_rtd_DoNotUse_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_trp_LocationDoNotUse_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_beamInfo_DoNotUse_r18,
+        _NR_TRP_IntegrityServiceAlertElement_r18_beamAntennaInfo_DoNotUse_r18,
+        NR_TRP_IntegrityServiceAlertElement_r18,
+        _NR_IntegrityServiceParameters_r18_ir_Minimum_r18,
+        _NR_IntegrityServiceParameters_r18_ir_Maximum_r18,
+        NR_IntegrityServiceParameters_r18,
         __NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17__item_,
         _NR_On_Demand_DL_PRS_Configurations_r17_on_demand_dl_prs_configuration_list_r17,
+        __NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18__item_,
+        _NR_On_Demand_DL_PRS_Configurations_r17_onDemandDL_PRS_AggregationList_r18,
         NR_On_Demand_DL_PRS_Configurations_r17,
         _On_Demand_DL_PRS_Configuration_r17_dl_prs_configuration_id_r17,
         _On_Demand_DL_PRS_Configuration_r17_nr_DL_PRS_PositioningFrequencyLayer_r17,
@@ -14978,6 +17885,8 @@ class LPP_PDU_Definitions:
         On_Demand_DL_PRS_Configuration_r17,
         _DL_PRS_Configuration_ID_r17_nr_dl_prs_configuration_id_r17,
         DL_PRS_Configuration_ID_r17,
+        _OnDemandDL_PRS_AggregationInfo_r18__item_,
+        OnDemandDL_PRS_AggregationInfo_r18,
         _NR_On_Demand_DL_PRS_Information_r17__item_,
         NR_On_Demand_DL_PRS_Information_r17,
         _NR_On_Demand_DL_PRS_PerFreqLayer_r17_dl_prs_FrequencyRangeReq_r17,
@@ -15008,6 +17917,10 @@ class LPP_PDU_Definitions:
         _NR_On_Demand_DL_PRS_Request_r17_nr_on_demand_DL_PRS_Information_r17,
         __NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17__item_,
         _NR_On_Demand_DL_PRS_Request_r17_dl_prs_configuration_id_PrefList_r17,
+        __NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18__item_,
+        _NR_On_Demand_DL_PRS_Request_r17_dl_PRS_AggregationID_PrefList_r18,
+        __NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18__item_,
+        _NR_On_Demand_DL_PRS_Request_r17_nr_OnDemandDL_PRS_AggregationReqList_r18,
         NR_On_Demand_DL_PRS_Request_r17,
         _DL_PRS_StartTime_and_Duration_r17_dl_prs_start_time_r17,
         __DL_PRS_StartTime_and_Duration_r17_dl_prs_duration_r17_seconds_r17,
@@ -15015,18 +17928,87 @@ class LPP_PDU_Definitions:
         __DL_PRS_StartTime_and_Duration_r17_dl_prs_duration_r17_hours_r17,
         _DL_PRS_StartTime_and_Duration_r17_dl_prs_duration_r17,
         DL_PRS_StartTime_and_Duration_r17,
+        _NR_OnDemandDL_PRS_AggregationReqElement_r18__item_,
+        NR_OnDemandDL_PRS_AggregationReqElement_r18,
         _NR_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17__item_,
         NR_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17,
         _NR_On_Demand_DL_PRS_Support_r17_nr_on_demand_DL_PRS_InformationSup_r17,
         _NR_On_Demand_DL_PRS_Support_r17_nr_on_demand_DL_PRS_ConfigurationsSup_r17,
         NR_On_Demand_DL_PRS_Support_r17,
+        _NR_PeriodicAssistData_r18_nr_PeriodicPRU_DL_Info_r18,
+        NR_PeriodicAssistData_r18,
+        _NR_PeriodicAssistDataReq_r18_nr_PeriodicPRU_DL_InfoReq_r18,
+        NR_PeriodicAssistDataReq_r18,
+        _NR_PeriodicControlParam_r18_deliveryAmount_r18,
+        _NR_PeriodicControlParam_r18_deliveryInterval_r18,
+        NR_PeriodicControlParam_r18,
         _NR_PositionCalculationAssistance_r16_nr_TRP_LocationInfo_r16,
         _NR_PositionCalculationAssistance_r16_nr_DL_PRS_BeamInfo_r16,
         _NR_PositionCalculationAssistance_r16_nr_RTD_Info_r16,
         _NR_PositionCalculationAssistance_r16_nr_TRP_BeamAntennaInfo_r17,
         _NR_PositionCalculationAssistance_r16_nr_DL_PRS_Expected_LOS_NLOS_Assistance_r17,
         _NR_PositionCalculationAssistance_r16_nr_DL_PRS_TRP_TEG_Info_r17,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceParameters_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityServiceAlert_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityRiskParameters_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_LocationInfo_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersDL_PRS_BeamInfo_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersRTD_Info_r18,
+        _NR_PositionCalculationAssistance_r16_nr_IntegrityParametersTRP_BeamAntennaInfo_r18,
+        _NR_PositionCalculationAssistance_r16_nr_PRU_DL_Info_r18,
         NR_PositionCalculationAssistance_r16,
+        _NR_IntegrityParametersTRP_LocationInfo_r18_trp_ErrorCorrelationTime_r18,
+        _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceSetARP_ErrorCorrelationTime_r18,
+        _NR_IntegrityParametersTRP_LocationInfo_r18_dl_PRS_ResourceARP_ErrorCorrelationTime_r18,
+        NR_IntegrityParametersTRP_LocationInfo_r18,
+        _NR_IntegrityParametersDL_PRS_BeamInfo_r18_dl_PRS_BeamInfoErrorCorrelationTime_r18,
+        NR_IntegrityParametersDL_PRS_BeamInfo_r18,
+        _NR_IntegrityParametersRTD_Info_r18_rtd_ErrorCorrelationTime_r18,
+        NR_IntegrityParametersRTD_Info_r18,
+        _NR_IntegrityParametersTRP_BeamAntennaInfo_r18_trp_BeamAntennaInfoErrorCorrelationTime_r18,
+        NR_IntegrityParametersTRP_BeamAntennaInfo_r18,
+        _NR_PRU_DL_Info_r18_nr_PRU_LocationInfo_r18,
+        _NR_PRU_DL_Info_r18_nr_PRU_DL_TDOA_MeasInfo_r18,
+        _NR_PRU_DL_Info_r18_nr_PRU_DL_AoD_MeasInfo_r18,
+        _NR_PRU_DL_Info_r18_nr_PRU_RSCP_MeasInfo_r18,
+        NR_PRU_DL_Info_r18,
+        _NR_PRU_RSCP_MeasurementInformation_r18__item_,
+        NR_PRU_RSCP_MeasurementInformation_r18,
+        _NR_PRU_RSCP_MeasElement_r18_dl_PRS_ID_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PhysCellID_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_CellGlobalID_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_ARFCN_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceID_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_ResourceSetID_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_TimeStamp_r18,
+        __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perTRP,
+        __NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18_perResource,
+        _NR_PRU_RSCP_MeasElement_r18_nr_los_nlos_Indicator_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_RSCP_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_RSRP_Result_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_DL_PRS_FirstPathRSRP_Result_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PhaseQuality_r18,
+        __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18__item_,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AddSampleMeasurements_r18,
+        __NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18__item_,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSRP_AddSampleMeasurements_r18,
+        __NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18__item_,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AddSampleMeasurements_r18,
+        _NR_PRU_RSCP_MeasElement_r18_nr_PRU_RSCP_AdditionalMeasurements_r18,
+        NR_PRU_RSCP_MeasElement_r18,
+        _NR_PRU_RSCP_AdditionalMeasurements_r18__item_,
+        NR_PRU_RSCP_AdditionalMeasurements_r18,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceID_r18,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_ResourceSetID_r18,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_RSRP_ResultDiff_r18,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_DL_PRS_FirstPathRSRP_ResultDiff_r18,
+        __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18__item_,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSCP_AdditionalMeasurementsList_r18,
+        __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18__item_,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_RSRPDiff_AdditionalMeasurementsList_r18,
+        __NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18__item_,
+        _NR_PRU_RSCP_AdditionalMeasurementElement_r18_nr_PRU_FirstPathRSRP_ResultDiff_AdditionalMeasurementsList_r18,
+        NR_PRU_RSCP_AdditionalMeasurementElement_r18,
         _NR_RTD_Info_r16_referenceTRP_RTD_Info_r16,
         _NR_RTD_Info_r16_rtd_InfoList_r16,
         NR_RTD_Info_r16,
@@ -15049,7 +18031,12 @@ class LPP_PDU_Definitions:
         _RTD_InfoElement_r16_nr_ARFCN_r16,
         _RTD_InfoElement_r16_subframeOffset_r16,
         _RTD_InfoElement_r16_rtd_Quality_r16,
+        _RTD_InfoElement_r16_nr_IntegrityRTD_InfoBounds_r18,
         RTD_InfoElement_r16,
+        _NR_IntegrityRTD_InfoBounds_r18_resolution_r18,
+        _NR_IntegrityRTD_InfoBounds_r18_meanRTD_r18,
+        _NR_IntegrityRTD_InfoBounds_r18_stdDevRTD_r18,
+        NR_IntegrityRTD_InfoBounds_r18,
         _NR_SelectedDL_PRS_IndexList_r16__item_,
         NR_SelectedDL_PRS_IndexList_r16,
         _NR_SelectedDL_PRS_PerFreq_r16_nr_SelectedDL_PRS_FrequencyLayerIndex_r16,
@@ -15088,6 +18075,7 @@ class LPP_PDU_Definitions:
         __NR_TimeStamp_r16_nr_Slot_r16_scs60_r16,
         __NR_TimeStamp_r16_nr_Slot_r16_scs120_r16,
         _NR_TimeStamp_r16_nr_Slot_r16,
+        _NR_TimeStamp_r16_nr_Symbol_r18,
         NR_TimeStamp_r16,
         _NR_TimingQuality_r16_timingQualityValue_r16,
         _NR_TimingQuality_r16_timingQualityResolution_r16,
@@ -15120,7 +18108,11 @@ class LPP_PDU_Definitions:
         _BeamPowerElement_r17_nr_dl_prs_ResourceID_r17,
         _BeamPowerElement_r17_nr_dl_prs_RelativePower_r17,
         _BeamPowerElement_r17_nr_dl_prs_RelativePowerFine_r17,
+        _BeamPowerElement_r17_nr_IntegrityBeamPowerBounds_r18,
         BeamPowerElement_r17,
+        _NR_IntegrityBeamPowerBounds_r18_meanBeamPower_r18,
+        _NR_IntegrityBeamPowerBounds_r18_stdDevBeamPower_r18,
+        NR_IntegrityBeamPowerBounds_r18,
         _NR_TRP_LocationInfo_r16__item_,
         NR_TRP_LocationInfo_r16,
         _NR_TRP_LocationInfoPerFreqLayer_r16_referencePoint_r16,
@@ -15135,13 +18127,27 @@ class LPP_PDU_Definitions:
         _TRP_LocationInfoElement_r16_trp_Location_r16,
         __TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16__item_,
         _TRP_LocationInfoElement_r16_trp_DL_PRS_ResourceSets_r16,
+        _TRP_LocationInfoElement_r16_trp_LocationCartesian_r18,
+        _TRP_LocationInfoElement_r16_nr_IntegrityTRP_LocationBounds_r18,
         TRP_LocationInfoElement_r16,
         _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_ResourceSetARP_r16,
         __DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16__item_,
         _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_Resource_ARP_List_r16,
+        _DL_PRS_ResourceSets_TRP_Element_r16_dl_PRS_ResourceSetARP_Cartesian_r18,
+        _DL_PRS_ResourceSets_TRP_Element_r16_nr_IntegrityDL_PRS_ResourceSetARP_LocationBounds_r18,
         DL_PRS_ResourceSets_TRP_Element_r16,
         _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_location_r16,
+        _DL_PRS_Resource_ARP_Element_r16_dl_PRS_Resource_ARP_locationCartesian_r18,
+        _DL_PRS_Resource_ARP_Element_r16_nr_IntegrityDL_PRS_ResourceARP_LocationBounds_r18,
         DL_PRS_Resource_ARP_Element_r16,
+        _NR_IntegrityLocationBounds_r18_units_r18,
+        __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_horizontal_r18,
+        __NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18_vertical_r18,
+        _NR_IntegrityLocationBounds_r18_meanLocationErrorBound_r18,
+        __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_horizontal_r18,
+        __NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18_vertical_r18,
+        _NR_IntegrityLocationBounds_r18_stdDevLocationErrorBound_r18,
+        NR_IntegrityLocationBounds_r18,
         __NR_UE_TEG_Capability_r17_nr_UE_TEG_ID_CapabilityBandList_r17__item_,
         _NR_UE_TEG_Capability_r17_nr_UE_TEG_ID_CapabilityBandList_r17,
         NR_UE_TEG_Capability_r17,
@@ -15167,6 +18173,14 @@ class LPP_PDU_Definitions:
         _SRS_CapabilityPerBand_r16_olpc_SRS_PosRRC_Inactive_r17,
         _SRS_CapabilityPerBand_r16_spatialRelationsSRS_PosRRC_Inactive_r17,
         _SRS_CapabilityPerBand_r16_posSRS_SP_RRC_Inactive_InInitialUL_BWP_r17,
+        _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveInitialUL_BWP_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_Preconfigured_RRC_InactiveOutsideInitialUL_BWP_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveInitialUL_BWP_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_ValidityAreaRRC_InactiveOutsideInitialUL_BWP_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Connected_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_TxFH_RRC_Inactive_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_TxFH_WithTimeWindow_r18,
+        _SRS_CapabilityPerBand_r16_posSRS_BWA_RRC_Inactive_r18,
         SRS_CapabilityPerBand_r16,
         _OLPC_SRS_Pos_r16_olpc_SRS_PosBasedOnPRS_Serving_r16,
         _OLPC_SRS_Pos_r16_olpc_SRS_PosBasedOnSSB_Neigh_r16,
@@ -15186,6 +18200,8 @@ class LPP_PDU_Definitions:
         _SRS_PosResourcesPerBand_r16_maxNumberPeriodicSRS_PosResourcesPerBWP_r16,
         _SRS_PosResourcesPerBand_r16_maxNumberAP_SRS_PosResourcesPerBWP_r16,
         _SRS_PosResourcesPerBand_r16_maxNumberSP_SRS_PosResourcesPerBWP_r16,
+        _SRS_PosResourcesPerBand_r16_posSRS_BWA_RRC_Connected_r18,
+        _SRS_PosResourcesPerBand_r16_posSRS_BWA_IndependentCA_RRC_Connected_r18,
         SRS_PosResourcesPerBand_r16,
         _PosSRS_RRC_Inactive_InInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17,
         _PosSRS_RRC_Inactive_InInitialUL_BWP_r17_maxNumOfPeriodicAndSemiPersistentSRSposResources_r17,
@@ -15212,10 +18228,93 @@ class LPP_PDU_Definitions:
         _PosSRS_SP_RRC_Inactive_InInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResources_r17,
         _PosSRS_SP_RRC_Inactive_InInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17,
         PosSRS_SP_RRC_Inactive_InInitialUL_BWP_r17,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumTxFH_Hops_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR1_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_rf_TxRetuneTimeFR2_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_numOfOverlappingPRB_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourcePeriodic_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceAperiodic_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Connected_r18_maximumSRS_ResourceSemipersistent_r18,
+        PosSRS_TxFrequencyHoppingRRC_Connected_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR1_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_BandwidthAcrossAllHopsFR2_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumTxFH_Hops_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR1_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_rf_TxRetuneTimeFR2_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_switchTimeBetweenActiveBWP_FrequencyHop_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_numOfOverlappingPRB_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourcePeriodic_r18,
+        _PosSRS_TxFrequencyHoppingRRC_Inactive_r18_maximumSRS_ResourceSemipersistent_r18,
+        PosSRS_TxFrequencyHoppingRRC_Inactive_r18,
+        _PosSRS_BWA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSet_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18,
+        _PosSRS_BWA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18,
+        PosSRS_BWA_RRC_Connected_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_numOfCarriersIntraBandContiguous_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR1_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_TwoCarriersFR2_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR1_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedBW_ThreeCarriersFR2_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSet_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodic_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodic_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemi_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourcePeriodicPerSlot_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceAperiodicPerSlot_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_maximumAggregatedResourceSemiPerSlot_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_guardPeriod_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForTwoAggregatedCarriers_r18,
+        _PosSRS_BWA_IndependentCA_RRC_Connected_r18_powerClassForThreeAggregatedCarriers_r18,
+        PosSRS_BWA_IndependentCA_RRC_Connected_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_numOfCarriersIntraBandContiguous_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR1_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_TwoCarriersFR2_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR1_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedBW_ThreeCarriersFR2_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSet_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodic_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemi_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourcePeriodicPerSlot_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_maximumAggregatedResourceSemiPerSlot_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_guardPeriod_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_powerClassForTwoAggregatedCarriers_r18,
+        _PosSRS_BWA_RRC_Inactive_r18_powerClassForThreeAggregatedCarriers_r18,
+        PosSRS_BWA_RRC_Inactive_r18,
+        _NR_PhaseQuality_r18_phaseQualityIndex_r18,
+        _NR_PhaseQuality_r18_phaseQualityResolution_r18,
+        NR_PhaseQuality_r18,
         __ReferencePoint_r16_referencePointGeographicLocation_r16_location3D_r16,
         __ReferencePoint_r16_referencePointGeographicLocation_r16_ha_location3D_r16,
+        __ReferencePoint_r16_referencePointGeographicLocation_r16_localOrigin_v1800,
         _ReferencePoint_r16_referencePointGeographicLocation_r16,
         ReferencePoint_r16,
+        _RelativeCartesianLocation_r18_cartesianCoordinatesUnits_r18,
+        _RelativeCartesianLocation_r18_x_value_r18,
+        _RelativeCartesianLocation_r18_y_value_r18,
+        _RelativeCartesianLocation_r18_z_value_r18,
+        _RelativeCartesianLocation_r18_locationUnc_r18,
+        RelativeCartesianLocation_r18,
+        _X_Value_r18_delta_x_r18,
+        _X_Value_r18_coarse_delta_x_r18,
+        X_Value_r18,
+        _Y_Value_r18_delta_y_r18,
+        _Y_Value_r18_coarse_delta_y_r18,
+        Y_Value_r18,
+        _Z_Value_r18_delta_z_r18,
+        _Z_Value_r18_coarse_delta_z_r18,
+        Z_Value_r18,
         _RelativeLocation_r16_milli_arc_second_units_r16,
         _RelativeLocation_r16_height_units_r16,
         _RelativeLocation_r16_delta_latitude_r16,
@@ -15487,6 +18586,7 @@ class LPP_PDU_Definitions:
         _OTDOA_ProvideCapabilities_motionMeasurements_r15,
         _OTDOA_ProvideCapabilities_interRAT_RSTDmeasurement_r15,
         _OTDOA_ProvideCapabilities_scheduledLocationRequestSupported_r17,
+        _OTDOA_ProvideCapabilities_periodicReportingIntervalMsSupport_r18,
         OTDOA_ProvideCapabilities,
         maxBands,
         _SupportedBandEUTRA_bandEUTRA,
@@ -15519,6 +18619,8 @@ class LPP_PDU_Definitions:
         _GNSS_CommonAssistData_gnss_SSR_CorrectionPoints_r16,
         _GNSS_CommonAssistData_gnss_Integrity_ServiceParameters_r17,
         _GNSS_CommonAssistData_gnss_Integrity_ServiceAlert_r17,
+        _GNSS_CommonAssistData_gnss_los_nlos_GridPoints_r18,
+        _GNSS_CommonAssistData_gnss_SSR_IOD_Update_r18,
         GNSS_CommonAssistData,
         _GNSS_GenericAssistData__item_,
         GNSS_GenericAssistData,
@@ -15549,6 +18651,11 @@ class LPP_PDU_Definitions:
         _GNSS_GenericAssistDataElement_gnss_SSR_GriddedCorrection_r16,
         _GNSS_GenericAssistDataElement_navic_DifferentialCorrections_r16,
         _GNSS_GenericAssistDataElement_navic_GridModel_r16,
+        _GNSS_GenericAssistDataElement_gnss_SSR_OrbitCorrectionsSet2_r17,
+        _GNSS_GenericAssistDataElement_gnss_SSR_ClockCorrectionsSet2_r17,
+        _GNSS_GenericAssistDataElement_gnss_SSR_URA_Set2_r17,
+        _GNSS_GenericAssistDataElement_gnss_LOS_NLOS_GriddedIndications_r18,
+        _GNSS_GenericAssistDataElement_gnss_SSR_SatellitePCVResiduals_r18,
         GNSS_GenericAssistDataElement,
         _GNSS_PeriodicAssistData_r15_gnss_RTK_PeriodicObservations_r15,
         _GNSS_PeriodicAssistData_r15_glo_RTK_PeriodicBiasInformation_r15,
@@ -15563,6 +18670,10 @@ class LPP_PDU_Definitions:
         _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicSTEC_Correction_r16,
         _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicGriddedCorrection_r16,
         _GNSS_PeriodicAssistData_r15_gnss_Integrity_PeriodicServiceAlert_r17,
+        _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2_r17,
+        _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicClockCorrectionsSet2_r17,
+        _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicURA_Set2_r17,
+        _GNSS_PeriodicAssistData_r15_gnss_SSR_PeriodicIOD_Update_r18,
         GNSS_PeriodicAssistData_r15,
         _GNSS_ReferenceTime_gnss_SystemTime,
         _GNSS_ReferenceTime_referenceTimeUnc,
@@ -15744,6 +18855,34 @@ class LPP_PDU_Definitions:
         _GNSS_Integrity_ServiceAlert_r17_ionosphereDoNotUse_r17,
         _GNSS_Integrity_ServiceAlert_r17_troposphereDoNotUse_r17,
         GNSS_Integrity_ServiceAlert_r17,
+        _GNSS_LOS_NLOS_GridPoints_r18_gridPointsSetID_r18,
+        _GNSS_LOS_NLOS_GridPoints_r18_horizontalGridPoints_r18,
+        _GNSS_LOS_NLOS_GridPoints_r18_referenceAltitudeFine_r18,
+        _GNSS_LOS_NLOS_GridPoints_r18_verticalGridPoints_r18,
+        GNSS_LOS_NLOS_GridPoints_r18,
+        _ArrayOfGridPoints_r18_referencePointLatitude_r18,
+        _ArrayOfGridPoints_r18_referencePointLongitude_r18,
+        _ArrayOfGridPoints_r18_numberOfStepsSouth_r18,
+        _ArrayOfGridPoints_r18_numberOfStepsEast_r18,
+        _ArrayOfGridPoints_r18_stepSouth_r18,
+        _ArrayOfGridPoints_r18_stepEast_r18,
+        __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog16_r18,
+        __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog64_r18,
+        __ArrayOfGridPoints_r18_bitmaskOfGrids_r18_bog256_r18,
+        _ArrayOfGridPoints_r18_bitmaskOfGrids_r18,
+        ArrayOfGridPoints_r18,
+        _VerticalGridPoints_r18_referenceAltitudeCoarse_r18,
+        _VerticalGridPoints_r18_numberOfStepsDown_r18,
+        _VerticalGridPoints_r18_stepDown_r18,
+        _VerticalGridPoints_r18_upperValidityDeltaAltitude_r18,
+        _VerticalGridPoints_r18_lowerValidityDeltaAltitude_r18,
+        VerticalGridPoints_r18,
+        SpatialDelta_r18,
+        _GNSS_SSR_IOD_Update_r18_epochTime_r18,
+        _GNSS_SSR_IOD_Update_r18_ssrUpdateInterval_r18,
+        _GNSS_SSR_IOD_Update_r18_iod_ssr_r18,
+        _GNSS_SSR_IOD_Update_r18_iod_ssr_PCVResiduals_r18,
+        GNSS_SSR_IOD_Update_r18,
         _GNSS_TimeModelList__item_,
         GNSS_TimeModelList,
         _GNSS_TimeModelElement_gnss_TimeModelRefTime,
@@ -16169,6 +19308,7 @@ class LPP_PDU_Definitions:
         _AlmanacNavIC_AlmanacSet_r16_navic_AlmMo_r16,
         _AlmanacNavIC_AlmanacSet_r16_navic_Almaf0_r16,
         _AlmanacNavIC_AlmanacSet_r16_navic_Almaf1_r16,
+        _AlmanacNavIC_AlmanacSet_r16_navicL5_i0_r16,
         AlmanacNavIC_AlmanacSet_r16,
         _GNSS_UTC_Model_utcModel1,
         _GNSS_UTC_Model_utcModel2,
@@ -16581,6 +19721,43 @@ class LPP_PDU_Definitions:
         _RegionIgpElement_r16_givei15_r16,
         _RegionIgpElement_r16_givd15_r16,
         RegionIgpElement_r16,
+        _GNSS_SSR_OrbitCorrectionsSet2_r17_refEph_r17,
+        _GNSS_SSR_OrbitCorrectionsSet2_r17_gnss_SSR_OrbitCorrections_r17,
+        GNSS_SSR_OrbitCorrectionsSet2_r17,
+        _GNSS_SSR_ClockCorrectionsSet2_r17_refEph_r17,
+        _GNSS_SSR_ClockCorrectionsSet2_r17_gnss_SSR_ClockCorrections_r17,
+        GNSS_SSR_ClockCorrectionsSet2_r17,
+        _GNSS_SSR_URA_Set2_r17_refEph_r17,
+        _GNSS_SSR_URA_Set2_r17_gnss_SSR_URA_r17,
+        GNSS_SSR_URA_Set2_r17,
+        _GNSS_LOS_NLOS_GriddedIndications_r18_gridPointsSetID_r18,
+        _GNSS_LOS_NLOS_GriddedIndications_r18_expirationTime_r18,
+        _GNSS_LOS_NLOS_GriddedIndications_r18_gridList_r18,
+        GNSS_LOS_NLOS_GriddedIndications_r18,
+        _GridList_r18__item_,
+        GridList_r18,
+        _GridElement_r18_gnss_LOS_InfoList_r18,
+        GridElement_r18,
+        _GNSS_LOS_InfoList_r18__item_,
+        GNSS_LOS_InfoList_r18,
+        _GNSS_LOS_InfoElement_r18_svID_r18,
+        _GNSS_LOS_InfoElement_r18_los_r18,
+        GNSS_LOS_InfoElement_r18,
+        _GNSS_SSR_SatellitePCVResiduals_r18_iod_ssr_PCVResiduals_r18,
+        _GNSS_SSR_SatellitePCVResiduals_r18_ssr_SatellitePCV_List_r18,
+        GNSS_SSR_SatellitePCVResiduals_r18,
+        _SSR_SatellitePCV_List_r18__item_,
+        SSR_SatellitePCV_List_r18,
+        _SSR_SatellitePCV_Element_r18_svID_r18,
+        _SSR_SatellitePCV_Element_r18_ssr_SatellitePCV_FrequencyList_r18,
+        SSR_SatellitePCV_Element_r18,
+        _SSR_SatellitePCV_FrequencyList_r18__item_,
+        SSR_SatellitePCV_FrequencyList_r18,
+        _SSR_SatellitePCV_FrequencyElement_r18_frequencyID_r18,
+        _SSR_SatellitePCV_FrequencyElement_r18_phaseCenterVariations_r18,
+        SSR_SatellitePCV_FrequencyElement_r18,
+        _SSR_PhaseCenterVariationList_r18__item_,
+        SSR_PhaseCenterVariationList_r18,
         _A_GNSS_RequestAssistanceData_gnss_CommonAssistDataReq,
         _A_GNSS_RequestAssistanceData_gnss_GenericAssistDataReq,
         _A_GNSS_RequestAssistanceData_gnss_PeriodicAssistDataReq_r15,
@@ -16594,6 +19771,7 @@ class LPP_PDU_Definitions:
         _GNSS_CommonAssistDataReq_gnss_SSR_CorrectionPointsReq_r16,
         _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceParametersReq_r17,
         _GNSS_CommonAssistDataReq_gnss_Integrity_ServiceAlertReq_r17,
+        _GNSS_CommonAssistDataReq_gnss_SSR_IOD_UpdateReq_r18,
         GNSS_CommonAssistDataReq,
         _GNSS_GenericAssistDataReq__item_,
         GNSS_GenericAssistDataReq,
@@ -16624,6 +19802,11 @@ class LPP_PDU_Definitions:
         _GNSS_GenericAssistDataReqElement_gnss_SSR_GriddedCorrectionReq_r16,
         _GNSS_GenericAssistDataReqElement_navic_DifferentialCorrectionsReq_r16,
         _GNSS_GenericAssistDataReqElement_navic_GridModelReq_r16,
+        _GNSS_GenericAssistDataReqElement_gnss_SSR_OrbitCorrectionsSet2Req_r17,
+        _GNSS_GenericAssistDataReqElement_gnss_SSR_ClockCorrectionsSet2Req_r17,
+        _GNSS_GenericAssistDataReqElement_gnss_SSR_URA_Set2Req_r17,
+        _GNSS_GenericAssistDataReqElement_gnss_LOS_NLOS_GriddedIndicationsReq_r18,
+        _GNSS_GenericAssistDataReqElement_gnss_SSR_SatellitePCVResidualsReq_r18,
         GNSS_GenericAssistDataReqElement,
         _GNSS_PeriodicAssistDataReq_r15_gnss_RTK_PeriodicObservationsReq_r15,
         _GNSS_PeriodicAssistDataReq_r15_glo_RTK_PeriodicBiasInformationReq_r15,
@@ -16638,6 +19821,10 @@ class LPP_PDU_Definitions:
         _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicSTEC_CorrectionReq_r16,
         _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicGriddedCorrectionReq_r16,
         _GNSS_PeriodicAssistDataReq_r15_gnss_Integrity_PeriodicServiceAlertReq_r17,
+        _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicOrbitCorrectionsSet2Req_r17,
+        _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicClockCorrectionsSet2Req_r17,
+        _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicURA_Set2Req_r17,
+        _GNSS_PeriodicAssistDataReq_r15_gnss_SSR_PeriodicIOD_UpdateReq_r18,
         GNSS_PeriodicAssistDataReq_r15,
         __GNSS_ReferenceTimeReq_gnss_TimeReqPrefList__item_,
         _GNSS_ReferenceTimeReq_gnss_TimeReqPrefList,
@@ -16661,6 +19848,7 @@ class LPP_PDU_Definitions:
         GNSS_SSR_CorrectionPointsReq_r16,
         GNSS_Integrity_ServiceParametersReq_r17,
         GNSS_Integrity_ServiceAlertReq_r17,
+        GNSS_SSR_IOD_UpdateReq_r18,
         _GNSS_TimeModelListReq__item_,
         GNSS_TimeModelListReq,
         _GNSS_TimeModelElementReq_gnss_TO_IDsReq,
@@ -16757,6 +19945,23 @@ class LPP_PDU_Definitions:
         _NavIC_DifferentialCorrectionsReq_r16_dgnss_SignalsReq_r16,
         NavIC_DifferentialCorrectionsReq_r16,
         NavIC_GridModelReq_r16,
+        _GNSS_SSR_OrbitCorrectionsSet2Req_r17_refEphReq_r17,
+        _GNSS_SSR_OrbitCorrectionsSet2Req_r17_gnss_SSR_OrbitCorrectionsSet2Req_r17,
+        GNSS_SSR_OrbitCorrectionsSet2Req_r17,
+        _GNSS_SSR_ClockCorrectionsSet2Req_r17_refEphReq_r17,
+        _GNSS_SSR_ClockCorrectionsSet2Req_r17_gnss_SSR_ClockCorrectionsSet2Req_r17,
+        GNSS_SSR_ClockCorrectionsSet2Req_r17,
+        _GNSS_SSR_URA_Set2Req_r17_refEphReq_r17,
+        GNSS_SSR_URA_Set2Req_r17,
+        _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_gridPointsSetID_Req_r18,
+        __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_inside_r18,
+        __GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18_outside_r18,
+        _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_relativeLocationInfo_r18,
+        _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_verticalGridType_r18,
+        _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeFine_r18,
+        _GNSS_LOS_NLOS_GriddedIndicationsReq_r18_referenceAltitudeCoarse_r18,
+        GNSS_LOS_NLOS_GriddedIndicationsReq_r18,
+        GNSS_SSR_SatellitePCVResidualsReq_r18,
         _A_GNSS_ProvideLocationInformation_gnss_SignalMeasurementInformation,
         _A_GNSS_ProvideLocationInformation_gnss_LocationInformation,
         _A_GNSS_ProvideLocationInformation_gnss_Error,
@@ -16854,6 +20059,7 @@ class LPP_PDU_Definitions:
         _A_GNSS_ProvideCapabilities_idleStateForMeasurements_r14,
         _A_GNSS_ProvideCapabilities_periodicAssistanceData_r15,
         _A_GNSS_ProvideCapabilities_scheduledLocationRequestSupported_r17,
+        _A_GNSS_ProvideCapabilities_periodicReportingIntervalMsSupport_r18,
         A_GNSS_ProvideCapabilities,
         _GNSS_SupportList__item_,
         GNSS_SupportList,
@@ -16881,6 +20087,7 @@ class LPP_PDU_Definitions:
         _GNSS_CommonAssistanceDataSupport_gnss_RTK_AuxiliaryStationDataSupport_r15,
         _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceParametersSupport_r17,
         _GNSS_CommonAssistanceDataSupport_gnss_Integrity_ServiceAlertSupport_r17,
+        _GNSS_CommonAssistanceDataSupport_gnss_SSR_IOD_UpdateSupport_r18,
         GNSS_CommonAssistanceDataSupport,
         _GNSS_ReferenceTimeSupport_gnss_SystemTime,
         _GNSS_ReferenceTimeSupport_fta_Support,
@@ -16893,6 +20100,7 @@ class LPP_PDU_Definitions:
         GNSS_RTK_AuxiliaryStationDataSupport_r15,
         GNSS_Integrity_ServiceParametersSupport_r17,
         GNSS_Integrity_ServiceAlertSupport_r17,
+        GNSS_SSR_IOD_UpdateSupport_r18,
         _GNSS_GenericAssistanceDataSupport__item_,
         GNSS_GenericAssistanceDataSupport,
         _GNSS_GenericAssistDataSupportElement_gnss_ID,
@@ -16922,6 +20130,11 @@ class LPP_PDU_Definitions:
         _GNSS_GenericAssistDataSupportElement_gnss_SSR_GriddedCorrectionSupport_r16,
         _GNSS_GenericAssistDataSupportElement_navic_DifferentialCorrectionsSupport_r16,
         _GNSS_GenericAssistDataSupportElement_navic_GridModelSupport_r16,
+        _GNSS_GenericAssistDataSupportElement_gnss_SSR_OrbitCorrectionsSet2Support_r17,
+        _GNSS_GenericAssistDataSupportElement_gnss_SSR_ClockCorrectionsSet2Support_r17,
+        _GNSS_GenericAssistDataSupportElement_gnss_SSR_URA_Set2Support_r17,
+        _GNSS_GenericAssistDataSupportElement_gnss_LOS_NLOS_GriddedIndicationsSupport_r18,
+        _GNSS_GenericAssistDataSupportElement_gnss_SSR_SatellitePCVResidualsSupport_r18,
         GNSS_GenericAssistDataSupportElement,
         GNSS_TimeModelListSupport,
         _GNSS_DifferentialCorrectionsSupport_gnssSignalIDs,
@@ -16971,6 +20184,11 @@ class LPP_PDU_Definitions:
         _NavIC_DifferentialCorrectionsSupport_r16_gnssSignalIDs_r16,
         NavIC_DifferentialCorrectionsSupport_r16,
         NavIC_GridModelSupport_r16,
+        GNSS_SSR_OrbitCorrectionsSet2Support_r17,
+        GNSS_SSR_ClockCorrectionsSet2Support_r17,
+        GNSS_SSR_URA_Set2Support_r17,
+        GNSS_LOS_NLOS_GriddedIndicationsSupport_r18,
+        GNSS_SSR_SatellitePCVResidualsSupport_r18,
         _A_GNSS_RequestCapabilities_gnss_SupportListReq,
         _A_GNSS_RequestCapabilities_assistanceDataSupportListReq,
         _A_GNSS_RequestCapabilities_locationVelocityTypesReq,
@@ -16984,6 +20202,7 @@ class LPP_PDU_Definitions:
         _GNSS_TargetDeviceErrorCauses_fineTimeAssistanceMeasurementsNotPossible,
         _GNSS_TargetDeviceErrorCauses_adrMeasurementsNotPossible,
         _GNSS_TargetDeviceErrorCauses_multiFrequencyMeasurementsNotPossible,
+        _GNSS_TargetDeviceErrorCauses_remoteUE_Indication_r18,
         GNSS_TargetDeviceErrorCauses,
         _GNSS_FrequencyID_r15_gnss_FrequencyID_r15,
         GNSS_FrequencyID_r15,
@@ -17054,6 +20273,7 @@ class LPP_PDU_Definitions:
         _ECID_ProvideCapabilities_triggeredReporting_r14,
         _ECID_ProvideCapabilities_idleStateForMeasurements_r14,
         _ECID_ProvideCapabilities_scheduledLocationRequestSupported_r17,
+        _ECID_ProvideCapabilities_periodicReportingIntervalMsSupport_r18,
         ECID_ProvideCapabilities,
         ECID_RequestCapabilities,
         _ECID_Error_locationServerErrorCauses,
@@ -17091,6 +20311,7 @@ class LPP_PDU_Definitions:
         _TBS_ProvideCapabilities_r13_mbs_ConfigSupport_r14,
         _TBS_ProvideCapabilities_r13_mbs_IdleStateForMeasurements_r14,
         _TBS_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17,
+        _TBS_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18,
         TBS_ProvideCapabilities_r13,
         _MBS_AssistanceDataSupportList_r14_mbs_AcquisitionAssistanceDataSupport_r14,
         _MBS_AssistanceDataSupportList_r14_mbs_AlmanacAssistanceDataSupport_r14,
@@ -17183,6 +20404,7 @@ class LPP_PDU_Definitions:
         _Sensor_ProvideCapabilities_r13_sensor_MotionInformationSup_r15,
         _Sensor_ProvideCapabilities_r13_adjustmentSupported_r16,
         _Sensor_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17,
+        _Sensor_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18,
         Sensor_ProvideCapabilities_r13,
         _Sensor_AssistanceDataSupportList_r14_validityPeriodSupported_v1520,
         _Sensor_AssistanceDataSupportList_r14_validityAreaSupported_v1520,
@@ -17248,6 +20470,7 @@ class LPP_PDU_Definitions:
         _WLAN_ProvideCapabilities_r13_periodicalReportingSupported_r14,
         _WLAN_ProvideCapabilities_r13_idleStateForMeasurements_r14,
         _WLAN_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17,
+        _WLAN_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18,
         WLAN_ProvideCapabilities_r13,
         WLAN_RequestCapabilities_r13,
         _WLAN_Error_r13_locationServerErrorCauses_r13,
@@ -17322,22 +20545,52 @@ class LPP_PDU_Definitions:
         WLAN_RequestAssistanceData_r14,
         _BT_ProvideLocationInformation_r13_bt_MeasurementInformation_r13,
         _BT_ProvideLocationInformation_r13_bt_Error_r13,
+        _BT_ProvideLocationInformation_r13_bt_AoA_Config_r18,
         BT_ProvideLocationInformation_r13,
+        _BT_AoA_Config_r18_bt_Addr_r18,
+        _BT_AoA_Config_r18_cte_Status_r18,
+        _BT_AoA_Config_r18_primaryAdvInterval_r18,
+        _BT_AoA_Config_r18_secondAdvInterval_r18,
+        _BT_AoA_Config_r18_tx_Power_r18,
+        _BT_AoA_Config_r18_cte_Length_r18,
+        _BT_AoA_Config_r18_cte_Count_r18,
+        _BT_AoA_Config_r18_tx_PHY_M2_r18,
+        BT_AoA_Config_r18,
         _BT_MeasurementInformation_r13_measurementReferenceTime_r13,
         _BT_MeasurementInformation_r13_bt_MeasurementList_r13,
+        _BT_MeasurementInformation_r13_bt_MeasurementList_r18,
         BT_MeasurementInformation_r13,
         _BT_MeasurementList_r13__item_,
         BT_MeasurementList_r13,
         _BT_MeasurementElement_r13_btAddr_r13,
         _BT_MeasurementElement_r13_rssi_r13,
         BT_MeasurementElement_r13,
+        _BT_MeasurementList_r18__item_,
+        BT_MeasurementList_r18,
+        _BT_MeasurementElement_r18_btAddr_r18,
+        _BT_MeasurementElement_r18_bt_azimuth_r18,
+        _BT_MeasurementElement_r18_bt_elevation_r18,
+        _BT_MeasurementElement_r18_rssi_r18,
+        BT_MeasurementElement_r18,
         _BT_RequestLocationInformation_r13_requestedMeasurements_r13,
+        _BT_RequestLocationInformation_r13_bt_requestedAoA_Config_r18,
+        _BT_RequestLocationInformation_r13_bt_suggestedAoA_Config_r18,
         BT_RequestLocationInformation_r13,
+        _BT_SuggestedAoA_Config_r18_cte_Status_r18,
+        _BT_SuggestedAoA_Config_r18_primaryAdvInterval_r18,
+        _BT_SuggestedAoA_Config_r18_secondAdvInterval_r18,
+        _BT_SuggestedAoA_Config_r18_tx_Power_r18,
+        _BT_SuggestedAoA_Config_r18_cte_Length_r18,
+        _BT_SuggestedAoA_Config_r18_cte_Count_r18,
+        _BT_SuggestedAoA_Config_r18_tx_PHY_M2_r18,
+        BT_SuggestedAoA_Config_r18,
         _BT_ProvideCapabilities_r13_bt_Modes_r13,
         _BT_ProvideCapabilities_r13_bt_MeasSupported_r13,
         _BT_ProvideCapabilities_r13_idleStateForMeasurements_r14,
         _BT_ProvideCapabilities_r13_periodicalReportingSupported_r14,
         _BT_ProvideCapabilities_r13_scheduledLocationRequestSupported_r17,
+        _BT_ProvideCapabilities_r13_bt_AoA_r18,
+        _BT_ProvideCapabilities_r13_periodicReportingIntervalMsSupport_r18,
         BT_ProvideCapabilities_r13,
         BT_RequestCapabilities_r13,
         _BT_Error_r13_locationServerErrorCauses_r13,
@@ -17348,6 +20601,59 @@ class LPP_PDU_Definitions:
         _BT_TargetDeviceErrorCauses_r13_cause_r13,
         _BT_TargetDeviceErrorCauses_r13_bt_Beacon_rssiMeasurementNotPossible_r13,
         BT_TargetDeviceErrorCauses_r13,
+        _BT_ProvideAssistanceData_r18_bt_BeaconInfo_r18,
+        _BT_ProvideAssistanceData_r18_bt_Error_r18,
+        BT_ProvideAssistanceData_r18,
+        _BT_BeaconInfo_r18_referencePoint_r18,
+        __BT_BeaconInfo_r18_bt_BeaconInfoList_r18__item_,
+        _BT_BeaconInfo_r18_bt_BeaconInfoList_r18,
+        BT_BeaconInfo_r18,
+        _BT_BeaconInfoElement_r18_bt_Addr_r18,
+        _BT_BeaconInfoElement_r18_bt_BeaconLocation_r18,
+        _BT_BeaconInfoElement_r18_bt_LCS_GCS_TranslationParameter_r18,
+        _BT_BeaconInfoElement_r18_bt_antArrayConfig_r18,
+        __BT_BeaconInfoElement_r18_bt_antElementList_r18__item_,
+        _BT_BeaconInfoElement_r18_bt_antElementList_r18,
+        __BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18__item_,
+        _BT_BeaconInfoElement_r18_bt_antSwitchingPattern_r18,
+        _BT_BeaconInfoElement_r18_bt_AoD_TransmConfig_r18,
+        BT_BeaconInfoElement_r18,
+        _BT_AntArrayConfig_r18_bt_UniformLinearArray_r18,
+        _BT_AntArrayConfig_r18_bt_UniformRectangularArray_r18,
+        _BT_AntArrayConfig_r18_bt_UniformCircularArray_r18,
+        _BT_AntArrayConfig_r18_bt_GenericArray_r18,
+        BT_AntArrayConfig_r18,
+        _BT_AntElement_r18_polarization_r18,
+        BT_AntElement_r18,
+        _BT_AntSwitchElement_r18_antElementIndexShort_r18,
+        _BT_AntSwitchElement_r18_antElementIndexOffset_r18,
+        BT_AntSwitchElement_r18,
+        _BT_AoD_TransmConfig_r18_primaryAdvInterval_r18,
+        _BT_AoD_TransmConfig_r18_secondAdvInterval_r18,
+        _BT_AoD_TransmConfig_r18_cte_Length_r18,
+        _BT_AoD_TransmConfig_r18_cte_Count_r18,
+        _BT_AoD_TransmConfig_r18_cte_Type2us_r18,
+        _BT_AoD_TransmConfig_r18_tx_PHY_M2_r18,
+        BT_AoD_TransmConfig_r18,
+        _BT_UniformLinearArray_r18_bt_NoElements_r18,
+        _BT_UniformLinearArray_r18_bt_InterElementDist_r18,
+        BT_UniformLinearArray_r18,
+        _BT_UniformRectangularArray_r18_bt_NoElementsY_r18,
+        _BT_UniformRectangularArray_r18_bt_NoElementsZ_r18,
+        _BT_UniformRectangularArray_r18_bt_InterElementDistY_r18,
+        _BT_UniformRectangularArray_r18_bt_InterElementDistZ_r18,
+        BT_UniformRectangularArray_r18,
+        _BT_UniformCircularArray_r18_bt_NoElements_r18,
+        _BT_UniformCircularArray_r18_bt_InterElementDist_r18,
+        BT_UniformCircularArray_r18,
+        _BT_GenericArray_r18__item_,
+        BT_GenericArray_r18,
+        _BT_ULA_GenericAntElement_r18_deltaY_r18,
+        _BT_ULA_GenericAntElement_r18_deltaX_r18,
+        _BT_ULA_GenericAntElement_r18_deltaZ_r18,
+        BT_ULA_GenericAntElement_r18,
+        _BT_RequestAssistanceData_r18_requestedAD_r18,
+        BT_RequestAssistanceData_r18,
         _NR_UL_ProvideCapabilities_r16_nr_UL_SRS_Capability_r16,
         _NR_UL_ProvideCapabilities_r16_nr_UE_TEG_Capability_r17,
         NR_UL_ProvideCapabilities_r16,
@@ -17391,6 +20697,7 @@ class LPP_PDU_Definitions:
         _NR_ECID_ProvideCapabilities_r16_triggeredReporting_r16,
         _NR_ECID_ProvideCapabilities_r16_ten_ms_unit_ResponseTime_r17,
         _NR_ECID_ProvideCapabilities_r16_scheduledLocationRequestSupported_r17,
+        _NR_ECID_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18,
         NR_ECID_ProvideCapabilities_r16,
         NR_ECID_RequestCapabilities_r16,
         _NR_ECID_Error_r16_locationServerErrorCauses_r16,
@@ -17403,6 +20710,7 @@ class LPP_PDU_Definitions:
         _NR_ECID_TargetDeviceErrorCauses_r16_ss_RSRQMeasurementNotPossible_r16,
         _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRPMeasurementNotPossible_r16,
         _NR_ECID_TargetDeviceErrorCauses_r16_csi_RSRQMeasurementNotPossible_r16,
+        _NR_ECID_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18,
         NR_ECID_TargetDeviceErrorCauses_r16,
         _NR_DL_TDOA_ProvideAssistanceData_r16_nr_DL_PRS_AssistanceData_r16,
         _NR_DL_TDOA_ProvideAssistanceData_r16_nr_SelectedDL_PRS_IndexList_r16,
@@ -17411,6 +20719,7 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_r17,
         _NR_DL_TDOA_ProvideAssistanceData_r16_nr_On_Demand_DL_PRS_Configurations_Selected_IndexList_r17,
         _NR_DL_TDOA_ProvideAssistanceData_r16_assistanceDataValidityArea_r17,
+        _NR_DL_TDOA_ProvideAssistanceData_r16_nr_PeriodicAssistData_r18,
         NR_DL_TDOA_ProvideAssistanceData_r16,
         _NR_DL_TDOA_RequestAssistanceData_r16_nr_PhysCellID_r16,
         _NR_DL_TDOA_RequestAssistanceData_r16_nr_AdType_r16,
@@ -17418,6 +20727,8 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_RequestAssistanceData_r16_nr_on_demand_DL_PRS_Request_r17,
         _NR_DL_TDOA_RequestAssistanceData_r16_nr_DL_PRS_ExpectedAoD_or_AoA_Request_r17,
         _NR_DL_TDOA_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17,
+        _NR_DL_TDOA_RequestAssistanceData_r16_nr_PeriodicAssistDataReq_r18,
+        _NR_DL_TDOA_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18,
         NR_DL_TDOA_RequestAssistanceData_r16,
         _NR_DL_TDOA_ProvideLocationInformation_r16_nr_DL_TDOA_SignalMeasurementInformation_r16,
         _NR_DL_TDOA_ProvideLocationInformation_r16_nr_dl_tdoa_LocationInformation_r16,
@@ -17446,6 +20757,12 @@ class LPP_PDU_Definitions:
         __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k3_r16,
         __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k4_r16,
         __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_k5_r16,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus6_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus5_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus4_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus3_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus2_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16_kMinus1_r18,
         _NR_DL_TDOA_MeasElement_r16_nr_RSTD_r16,
         _NR_DL_TDOA_MeasElement_r16_nr_AdditionalPathList_r16,
         _NR_DL_TDOA_MeasElement_r16_nr_TimingQuality_r16,
@@ -17458,6 +20775,14 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_MeasElement_r16_nr_los_nlos_Indicator_r17,
         _NR_DL_TDOA_MeasElement_r16_nr_AdditionalPathListExt_r17,
         _NR_DL_TDOA_MeasElement_r16_nr_DL_TDOA_AdditionalMeasurementsExt_r17,
+        _NR_DL_TDOA_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_,
+        _NR_DL_TDOA_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18,
+        _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_r18,
+        _NR_DL_TDOA_MeasElement_r16_nr_PhaseQuality_r18,
+        __NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18__item_,
+        _NR_DL_TDOA_MeasElement_r16_nr_RSCPD_AddMeasurementSamples_r18,
+        _NR_DL_TDOA_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
         NR_DL_TDOA_MeasElement_r16,
         _NR_DL_TDOA_AdditionalMeasurements_r16__item_,
         NR_DL_TDOA_AdditionalMeasurements_r16,
@@ -17472,6 +20797,12 @@ class LPP_PDU_Definitions:
         __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k3_r16,
         __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k4_r16,
         __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_k5_r16,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus6_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus5_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus4_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus3_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus2_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16_kMinus1_r18,
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSTD_ResultDiff_r16,
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_TimingQuality_r16,
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_RSRP_ResultDiff_r16,
@@ -17480,7 +20811,19 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17,
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17,
         _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_r18,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18,
+        __NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18__item_,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_RSCPD_AdditionalMeasurementsAddSamples_r18,
+        _NR_DL_TDOA_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
         NR_DL_TDOA_AdditionalMeasurementElement_r16,
+        _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_RSCPD_r18,
+        _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_PhaseQuality_r18,
+        _NR_RSCPD_AdditionalMeasurementSamplesElement_r18_nr_TimeStamp_r18,
+        NR_RSCPD_AdditionalMeasurementSamplesElement_r18,
         __NR_DL_TDOA_LocationInformation_r16_measurementReferenceTime_r16_systemFrameNumber_r16,
         __NR_DL_TDOA_LocationInformation_r16_measurementReferenceTime_r16_utc_time_r16,
         _NR_DL_TDOA_LocationInformation_r16_measurementReferenceTime_r16,
@@ -17499,12 +20842,21 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_RequestLocationInformation_r16_additionalPathsExt_r17,
         _NR_DL_TDOA_RequestLocationInformation_r16_additionalPathsDL_PRS_RSRP_Request_r17,
         _NR_DL_TDOA_RequestLocationInformation_r16_multiMeasInSameReport_r17,
+        ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_,
+        __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18,
+        _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18,
+        ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1,
+        ___NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2,
+        __NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18,
+        _NR_DL_TDOA_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18,
         NR_DL_TDOA_RequestLocationInformation_r16,
-        _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRPPair_r16,
+        _NR_DL_TDOA_ReportConfig_r16_maxDL_PRS_RSTD_MeasurementsPerTRP_Pair_r16,
         _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactor_r16,
         _NR_DL_TDOA_ReportConfig_r16_measureSameDL_PRS_ResourceWithDifferentRxTEGs_r17,
         _NR_DL_TDOA_ReportConfig_r16_reducedDL_PRS_ProcessingSamples_r17,
         _NR_DL_TDOA_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17,
+        _NR_DL_TDOA_ReportConfig_r16_timingReportingGranularityFactorExt_r18,
+        _NR_DL_TDOA_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18,
         NR_DL_TDOA_ReportConfig_r16,
         _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_Mode_r16,
         _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_PRS_Capability_r16,
@@ -17530,6 +20882,12 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17,
         _NR_DL_TDOA_ProvideCapabilities_r16_mg_ActivationRequest_r17,
         _NR_DL_TDOA_ProvideCapabilities_r16_posMeasGapSupport_r17,
+        _NR_DL_TDOA_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17,
+        _NR_DL_TDOA_ProvideCapabilities_r16_locationCoordinateTypes_r18,
+        _NR_DL_TDOA_ProvideCapabilities_r16_periodicAssistanceData_r18,
+        _NR_DL_TDOA_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18,
+        _NR_DL_TDOA_ProvideCapabilities_r16_nr_DL_TDOA_OnDemandPRS_ForBWA_Support_r18,
+        _NR_DL_TDOA_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18,
         NR_DL_TDOA_ProvideCapabilities_r16,
         _NR_DL_TDOA_MeasurementCapability_r16_dl_RSTD_MeasurementPerPairOfTRP_FR1_r16,
         _NR_DL_TDOA_MeasurementCapability_r16_dl_RSTD_MeasurementPerPairOfTRP_FR2_r16,
@@ -17542,6 +20900,18 @@ class LPP_PDU_Definitions:
         _DL_TDOA_MeasCapabilityPerBand_r17_freqBandIndicatorNR_r17,
         _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_FirstPathRSRP_r17,
         _DL_TDOA_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Idle_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Connected_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_assocSingleRSTD_WithUpToNsampleRSCPD_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_MeasurementRRC_Idle_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfUE_basedCarrierPhasePositioning_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCPD_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_supportOfPRS_MeasurementRRC_Idle_r18,
+        _DL_TDOA_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCPD_RRC_Inactive_r18,
         DL_TDOA_MeasCapabilityPerBand_r17,
         NR_DL_TDOA_RequestCapabilities_r16,
         _NR_DL_TDOA_Error_r16_locationServerErrorCauses_r16,
@@ -17550,6 +20920,7 @@ class LPP_PDU_Definitions:
         _NR_DL_TDOA_LocationServerErrorCauses_r16_cause_r16,
         NR_DL_TDOA_LocationServerErrorCauses_r16,
         _NR_DL_TDOA_TargetDeviceErrorCauses_r16_cause_r16,
+        _NR_DL_TDOA_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18,
         NR_DL_TDOA_TargetDeviceErrorCauses_r16,
         _NR_DL_AoD_ProvideAssistanceData_r16_nr_DL_PRS_AssistanceData_r16,
         _NR_DL_AoD_ProvideAssistanceData_r16_nr_SelectedDL_PRS_IndexList_r16,
@@ -17567,6 +20938,7 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_RequestAssistanceData_r16_nr_DL_PRS_BeamInfoRequest_r17,
         _NR_DL_AoD_RequestAssistanceData_r16_nr_on_demand_DL_PRS_Request_r17,
         _NR_DL_AoD_RequestAssistanceData_r16_pre_configured_AssistanceDataRequest_r17,
+        _NR_DL_AoD_RequestAssistanceData_r16_nr_IntegrityAssistanceRequest_r18,
         NR_DL_AoD_RequestAssistanceData_r16,
         _NR_DL_AoD_ProvideLocationInformation_r16_nr_DL_AoD_SignalMeasurementInformation_r16,
         _NR_DL_AoD_ProvideLocationInformation_r16_nr_dl_AoD_LocationInformation_r16,
@@ -17595,6 +20967,7 @@ class LPP_PDU_Definitions:
         __NR_DL_AoD_MeasElement_r16_nr_los_nlos_Indicator_r17_perResource_r17,
         _NR_DL_AoD_MeasElement_r16_nr_los_nlos_Indicator_r17,
         _NR_DL_AoD_MeasElement_r16_nr_DL_AoD_AdditionalMeasurementsExt_r17,
+        _NR_DL_AoD_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
         NR_DL_AoD_MeasElement_r16,
         _NR_DL_AoD_AdditionalMeasurements_r16__item_,
         NR_DL_AoD_AdditionalMeasurements_r16,
@@ -17613,6 +20986,7 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_RxBeamIndex_r17,
         _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17,
         _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_los_nlos_IndicatorPerResource_r17,
+        _NR_DL_AoD_AdditionalMeasurementElement_r17_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
         NR_DL_AoD_AdditionalMeasurementElement_r17,
         __NR_DL_AoD_LocationInformation_r16_measurementReferenceTime_r16_sfn_time_r16,
         __NR_DL_AoD_LocationInformation_r16_measurementReferenceTime_r16_utc_time_r16,
@@ -17623,6 +20997,10 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_RequestLocationInformation_r16_nr_AssistanceAvailability_r16,
         _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_AoD_ReportConfig_r16,
         _NR_DL_AoD_RequestLocationInformation_r16_multiMeasInSameReport_r17,
+        ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1,
+        ___NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2,
+        __NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18,
+        _NR_DL_AoD_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18,
         NR_DL_AoD_RequestLocationInformation_r16,
         _NR_DL_AoD_ReportConfig_r16_maxDL_PRS_RSRP_MeasurementsPerTRP_r16,
         _NR_DL_AoD_ReportConfig_r16_maxDL_PRS_RSRP_MeasurementsPerTRP_r17,
@@ -17632,6 +21010,7 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_ReportConfig_r16_nr_los_nlos_IndicatorRequest_r17,
         _NR_DL_AoD_ReportConfig_r16_reducedDL_PRS_ProcessingSamples_r17,
         _NR_DL_AoD_ReportConfig_r16_lowerRxBeamSweepingFactor_FR2_r17,
+        _NR_DL_AoD_ReportConfig_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18,
         NR_DL_AoD_ReportConfig_r16,
         _NR_DL_AoD_ProvideCapabilities_r16_nr_DL_AoD_Mode_r16,
         _NR_DL_AoD_ProvideCapabilities_r16_nr_DL_AoD_PRS_Capability_r16,
@@ -17657,6 +21036,10 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17,
         _NR_DL_AoD_ProvideCapabilities_r16_mg_ActivationRequest_r17,
         _NR_DL_AoD_ProvideCapabilities_r16_posMeasGapSupport_r17,
+        _NR_DL_AoD_ProvideCapabilities_r16_multiLocationEstimateInSameMeasReport_r17,
+        _NR_DL_AoD_ProvideCapabilities_r16_locationCoordinateTypes_r18,
+        _NR_DL_AoD_ProvideCapabilities_r16_nr_IntegrityAssistanceSupport_r18,
+        _NR_DL_AoD_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18,
         NR_DL_AoD_ProvideCapabilities_r16,
         _NR_DL_AoD_MeasurementCapability_r16_maxDL_PRS_RSRP_MeasurementFR1_r16,
         _NR_DL_AoD_MeasurementCapability_r16_maxDL_PRS_RSRP_MeasurementFR2_r16,
@@ -17670,6 +21053,8 @@ class LPP_PDU_Definitions:
         _DL_AoD_MeasCapabilityPerBand_r16_simul_NR_DL_AoD_Multi_RTT_r16,
         _DL_AoD_MeasCapabilityPerBand_r16_maxDL_PRS_FirstPathRSRP_MeasPerTRP_r17,
         _DL_AoD_MeasCapabilityPerBand_r16_dl_PRS_MeasRRC_Inactive_r17,
+        _DL_AoD_MeasCapabilityPerBand_r16_supportOfMeasurementsInTimeWindow_r18,
+        _DL_AoD_MeasCapabilityPerBand_r16_supportOfPRS_MeasurementRRC_Idle_r18,
         DL_AoD_MeasCapabilityPerBand_r16,
         NR_DL_AoD_RequestCapabilities_r16,
         _NR_DL_AoD_Error_r16_locationServerErrorCauses_r16,
@@ -17678,6 +21063,7 @@ class LPP_PDU_Definitions:
         _NR_DL_AoD_LocationServerErrorCauses_r16_cause_r16,
         NR_DL_AoD_LocationServerErrorCauses_r16,
         _NR_DL_AoD_TargetDeviceErrorCauses_r16_cause_r16,
+        _NR_DL_AoD_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18,
         NR_DL_AoD_TargetDeviceErrorCauses_r16,
         _NR_Multi_RTT_ProvideAssistanceData_r16_nr_DL_PRS_AssistanceData_r16,
         _NR_Multi_RTT_ProvideAssistanceData_r16_nr_SelectedDL_PRS_IndexList_r16,
@@ -17719,6 +21105,12 @@ class LPP_PDU_Definitions:
         __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k3_r16,
         __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k4_r16,
         __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_k5_r16,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus6_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus5_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus4_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus3_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus2_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16_kMinus1_r18,
         _NR_Multi_RTT_MeasElement_r16_nr_UE_RxTxTimeDiff_r16,
         _NR_Multi_RTT_MeasElement_r16_nr_AdditionalPathList_r16,
         _NR_Multi_RTT_MeasElement_r16_nr_TimeStamp_r16,
@@ -17732,6 +21124,15 @@ class LPP_PDU_Definitions:
         _NR_Multi_RTT_MeasElement_r16_nr_los_nlos_Indicator_r17,
         _NR_Multi_RTT_MeasElement_r16_nr_AdditionalPathListExt_r17,
         _NR_Multi_RTT_MeasElement_r16_nr_Multi_RTT_AdditionalMeasurementsExt_r17,
+        _NR_Multi_RTT_MeasElement_r16_nr_MeasBasedOnAggregatedResources_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_,
+        _NR_Multi_RTT_MeasElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18,
+        _NR_Multi_RTT_MeasElement_r16_nr_RSCP_r18,
+        _NR_Multi_RTT_MeasElement_r16_nr_PhaseQuality_r18,
+        __NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18__item_,
+        _NR_Multi_RTT_MeasElement_r16_nr_RSCP_AddSampleMeasurements_r18,
+        _NR_Multi_RTT_MeasElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
+        _NR_Multi_RTT_MeasElement_r16_nr_NTN_UE_RxTxMeasurements_r18,
         NR_Multi_RTT_MeasElement_r16,
         _NR_Multi_RTT_AdditionalMeasurements_r16__item_,
         NR_Multi_RTT_AdditionalMeasurements_r16,
@@ -17746,6 +21147,12 @@ class LPP_PDU_Definitions:
         __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k3_r16,
         __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k4_r16,
         __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_k5_r16,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus6_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus5_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus4_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus3_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus2_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16_kMinus1_r18,
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_UE_RxTxTimeDiffAdditional_r16,
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_TimingQuality_r16,
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AdditionalPathList_r16,
@@ -17754,6 +21161,15 @@ class LPP_PDU_Definitions:
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_DL_PRS_FirstPathRSRP_ResultDiff_r17,
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_los_nlos_IndicatorPerResource_r17,
         _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AdditionalPathListExt_r17,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_MeasBasedOnAggregatedResources_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18__item_,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_AggregatedDL_PRS_ResourceInfo_List_r18,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_r18,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_PhaseQuality_r18,
+        __NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18__item_,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_RSCP_AdditionalMeasurementsAddSample_r18,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_ReportDL_PRS_MeasBasedOnSingleOrMultiHopRx_r18,
+        _NR_Multi_RTT_AdditionalMeasurementElement_r16_nr_NTN_UE_RxTxMeasurements_r18,
         NR_Multi_RTT_AdditionalMeasurementElement_r16,
         _NR_SRS_TxTEG_Element_r17_nr_TimeStamp_r17,
         _NR_SRS_TxTEG_Element_r17_nr_UE_Tx_TEG_ID_r17,
@@ -17772,6 +21188,13 @@ class LPP_PDU_Definitions:
         __NR_UE_RxTx_TEG_Info_r17_case3_r17_nr_UE_Tx_TEG_Index_r17,
         _NR_UE_RxTx_TEG_Info_r17_case3_r17,
         NR_UE_RxTx_TEG_Info_r17,
+        _NR_RSCP_AdditionalMeasurements_r18_nr_RSCP_r18,
+        _NR_RSCP_AdditionalMeasurements_r18_nr_PhaseQuality_r18,
+        _NR_RSCP_AdditionalMeasurements_r18_nr_TimeStamp_r18,
+        NR_RSCP_AdditionalMeasurements_r18,
+        _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_UE_RxTxTimeDiffSubframeOffset_r18,
+        _NR_NTN_UE_RxTxMeasurements_r18_nr_NTN_DL_TimingDrift_r18,
+        NR_NTN_UE_RxTxMeasurements_r18,
         _NR_Multi_RTT_RequestLocationInformation_r16_nr_UE_RxTxTimeDiffMeasurementInfoRequest_r16,
         _NR_Multi_RTT_RequestLocationInformation_r16_nr_RequestedMeasurements_r16,
         _NR_Multi_RTT_RequestLocationInformation_r16_nr_AssistanceAvailability_r16,
@@ -17788,6 +21211,16 @@ class LPP_PDU_Definitions:
         _NR_Multi_RTT_RequestLocationInformation_r16_additionalPathsDL_PRS_RSRP_Request_r17,
         _NR_Multi_RTT_RequestLocationInformation_r16_multiMeasInSameReport_r17,
         _NR_Multi_RTT_RequestLocationInformation_r16_lowerRxBeamSweepingFactor_FR2_r17,
+        ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr1,
+        ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18_fr2,
+        __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18_nr_DL_PRS_RxHoppingTotalBandwidth_r18,
+        _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_RxHoppingRequest_r18,
+        _NR_Multi_RTT_RequestLocationInformation_r16_timingReportingGranularityFactorExt_r18,
+        ___NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18__item_,
+        __NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18_nr_DL_PRS_JointMeasurementRequestedPFL_List_r18,
+        _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_JointMeasurementRequest_r18,
+        _NR_Multi_RTT_RequestLocationInformation_r16_nr_DL_PRS_MeasurementTimeWindowsConfig_r18,
+        _NR_Multi_RTT_RequestLocationInformation_r16_nr_NTN_UE_RxTxMeasurementsRequest_r18,
         NR_Multi_RTT_RequestLocationInformation_r16,
         _NR_Multi_RTT_ReportConfig_r16_maxDL_PRS_RxTxTimeDiffMeasPerTRP_r16,
         _NR_Multi_RTT_ReportConfig_r16_timingReportingGranularityFactor_r16,
@@ -17813,6 +21246,8 @@ class LPP_PDU_Definitions:
         _NR_Multi_RTT_ProvideCapabilities_r16_multiMeasInSameMeasReport_r17,
         _NR_Multi_RTT_ProvideCapabilities_r16_mg_ActivationRequest_r17,
         _NR_Multi_RTT_ProvideCapabilities_r16_posMeasGapSupport_r17,
+        _NR_Multi_RTT_ProvideCapabilities_r16_nr_MultiRTT_OnDemandPRS_ForBWA_Support_r18,
+        _NR_Multi_RTT_ProvideCapabilities_r16_periodicReportingIntervalMsSupport_r18,
         NR_Multi_RTT_ProvideCapabilities_r16,
         _NR_Multi_RTT_MeasurementCapability_r16_maxNrOfRx_TX_MeasFR1_r16,
         _NR_Multi_RTT_MeasurementCapability_r16_maxNrOfRx_TX_MeasFR2_r16,
@@ -17827,6 +21262,15 @@ class LPP_PDU_Definitions:
         _Multi_RTT_MeasCapabilityPerBand_r17_freqBandIndicatorNR_r17,
         _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_FirstPathRSRP_r17,
         _Multi_RTT_MeasCapabilityPerBand_r17_dl_PRS_MeasRRC_Inactive_r17,
+        _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Connected_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_supportOfDL_PRS_BWA_RRC_Inactive_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_nr_NTN_MeasAndReport_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Connected_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_nr_DL_PRS_RSCP_RRC_Inactive_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_assocSingleRx_Tx_WithUpToNsampleRSCP_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_supportOfSymbolTimeStampForRSCP_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_supportOfFinerTimingReportGranularityForPRS_Meas_r18,
+        _Multi_RTT_MeasCapabilityPerBand_r17_supportOfMeasurementsInTimeWindow_r18,
         Multi_RTT_MeasCapabilityPerBand_r17,
         NR_Multi_RTT_RequestCapabilities_r16,
         _NR_Multi_RTT_Error_r16_locationServerErrorCauses_r16,
@@ -17835,6 +21279,7 @@ class LPP_PDU_Definitions:
         _NR_Multi_RTT_LocationServerErrorCauses_r16_cause_r16,
         NR_Multi_RTT_LocationServerErrorCauses_r16,
         _NR_Multi_RTT_TargetDeviceErrorCauses_r16_cause_r16,
+        _NR_Multi_RTT_TargetDeviceErrorCauses_r16_remoteUE_Indication_r18,
         NR_Multi_RTT_TargetDeviceErrorCauses_r16,
         maxEARFCN,
         maxEARFCN_Plus1,
@@ -17846,6 +21291,8 @@ class LPP_PDU_Definitions:
         maxWLAN_AP_r14,
         maxWLAN_DataSets_r14,
         maxBT_Beacon_r13,
+        maxBT_BeaconAntElt_r18,
+        maxBT_BeaconAD_r18,
         nrMaxBands_r16,
         nrMaxFreqLayers_r16,
         nrMaxFreqLayers_1_r16,
@@ -17879,6 +21326,9 @@ class LPP_PDU_Definitions:
         maxCellIDsPerArea_r17,
         maxNrOfAreas_r17,
         maxMeasInstances_r17,
+        nrMaxNumPRS_BandWidthAggregation_r18,
+        nrNumOfSamples_r18,
+        nrNumOfSamples_1_r18,
     ]
 
 init_modules(LPP_Broadcast_Definitions, LPP_PDU_Definitions)

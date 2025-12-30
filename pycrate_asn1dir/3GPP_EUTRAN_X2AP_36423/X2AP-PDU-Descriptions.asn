@@ -131,7 +131,9 @@ FROM X2AP-CommonDataTypes
 	UERadioCapabilityIDMappingRequest,
 	UERadioCapabilityIDMappingResponse,
 	AccessAndMobilityIndication,
-	CPC-cancel
+	CPC-cancel,
+	RachIndication
+
 
 
 
@@ -198,7 +200,8 @@ FROM X2AP-PDU-Contents
 	id-f1CTrafficTransfer,
 	id-UERadioCapabilityIDMapping,
 	id-accessAndMobilityIndication,
-	id-CPC-cancel
+	id-CPC-cancel,
+	id-rachIndication
 
 
 
@@ -284,15 +287,15 @@ X2AP-ELEMENTARY-PROCEDURES-CLASS-1 X2AP-ELEMENTARY-PROCEDURE ::= {
 	x2Removal												|
 	retrieveUEContext										|
 	sgNBAdditionPreparation									|
-	meNBinitiatedSgNBModificationPreparation					|
+	meNBinitiatedSgNBModificationPreparation				|
 	sgNBinitiatedSgNBModification							|
-	meNBinitiatedSgNBRelease									|
-	sgNBinitiatedSgNBRelease									|
+	meNBinitiatedSgNBRelease								|
+	sgNBinitiatedSgNBRelease								|
 	sgNBChange												|
 	endcX2Setup												|
 	endcConfigurationUpdate									|
 	endcCellActivation										|
-	endcPartialReset											|
+	endcPartialReset										|
 	eUTRANRCellResourceCoordination							|
 	endcX2Removal											|
 	endcresourceStatusReportingInitiation					|
@@ -316,10 +319,10 @@ X2AP-ELEMENTARY-PROCEDURES-CLASS-2 X2AP-ELEMENTARY-PROCEDURE ::= {
 	meNBinitiatedSeNBRelease				|
 	seNBCounterCheck						|
 	sgNBReconfigurationCompletion			|
-	sgNBCounterCheck							|
+	sgNBCounterCheck						|
 	rRCTransfer								|
 	secondaryRATDataUsageReport				|
-	sgNBActivityNotification					|
+	sgNBActivityNotification				|
 	dataForwardingAddressIndication			|
 	gNBStatusIndication						|
 	endcConfigurationTransfer				|
@@ -332,7 +335,8 @@ X2AP-ELEMENTARY-PROCEDURES-CLASS-2 X2AP-ELEMENTARY-PROCEDURE ::= {
 	cellTrafficTrace						|
 	f1CTrafficTransfer						|
 	accessAndMobilityIndication				|
-	cPC-cancel								,
+	cPC-cancel								|
+	rachIndication							,
 	...
 
 }
@@ -750,5 +754,11 @@ cPC-cancel X2AP-ELEMENTARY-PROCEDURE ::= {
 	CRITICALITY				ignore
 }
 
+
+rachIndication X2AP-ELEMENTARY-PROCEDURE ::= {
+	INITIATING MESSAGE		RachIndication
+	PROCEDURE CODE			id-rachIndication
+	CRITICALITY				ignore
+}
 
 END

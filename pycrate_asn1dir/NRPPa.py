@@ -145,6 +145,7 @@ class NRPPA_Constants:
         'id-pRSConfigurationExchange',
         'id-measurementPreconfiguration',
         'id-measurementActivation',
+        'id-sRSInformationReservationNotification',
         'maxNrOfErrors',
         'maxCellinRANnode',
         'maxIndexesReport',
@@ -196,6 +197,16 @@ class NRPPA_Constants:
         'maxnoAzimuthAngles',
         'maxnoElevationAngles',
         'maxnoPRSTRPs',
+        'maxnoVACell',
+        'maxnoaggregatedPosSRS-Resources',
+        'maxnoaggregatedPosSRS-ResourceSets',
+        'maxnoAggPosPRSResourceSets',
+        'maxnoofTimeWindowSRS',
+        'maxnoofTimeWindowMeas',
+        'maxnoPreconfiguredSRS',
+        'maxnoofHopsMinusOne',
+        'maxnoAggCombinations',
+        'maxnoAggregatedPosSRSCombinations',
         'id-Cause',
         'id-CriticalityDiagnostics',
         'id-LMF-UE-Measurement-ID',
@@ -301,6 +312,66 @@ class NRPPA_Constants:
         'id-UETxTimingErrorMargin',
         'id-MeasurementPeriodicityNR-AoA',
         'id-SRSTransmissionStatus',
+        'id-nrofSymbolsExtended',
+        'id-repetitionFactorExtended',
+        'id-StartRBHopping',
+        'id-StartRBIndex',
+        'id-transmissionCombn8',
+        'id-ExtendedResourceSymbolOffset',
+        'id-NewNRCGI',
+        'id-Mobile-TRP-LocationInformation',
+        'id-Mobile-IAB-MT-UE-ID',
+        'id-MobileAccessPointLocation',
+        'id-CommonTAParameters',
+        'id-UE-Rx-Tx-Time-Diff',
+        'id-SCS-480',
+        'id-SCS-960',
+        'id-Bandwidth-Aggregation-Request-Indication',
+        'id-PosSRSResourceSet-Aggregation-List',
+        'id-TimingReportingGranularityFactorExtended',
+        'id-TimeWindowInformation-SRS-List',
+        'id-TimeWindowInformation-Measurement-List',
+        'id-UL-RSCPMeas',
+        'id-SymbolIndex',
+        'id-PosValidityAreaCellList',
+        'id-SRSReservationType',
+        'id-PRSBWAggregationRequestInfoList',
+        'id-AggregatedPosSRSResourceID-List',
+        'id-AggregatedPRSResourceSetList',
+        'id-TRPPhaseQuality',
+        'id-NewCellIdentity',
+        'id-ValidityAreaSpecificSRSInformation',
+        'id-RequestedSRSPreconfigurationCharacteristics-List',
+        'id-SRSPreconfiguration-List',
+        'id-SRSInformation',
+        'id-TxHoppingConfiguration',
+        'id-MeasuredFrequencyHops',
+        'id-ReportingGranularitykminus1',
+        'id-ReportingGranularitykminus2',
+        'id-ReportingGranularitykminus3',
+        'id-ReportingGranularitykminus4',
+        'id-ReportingGranularitykminus5',
+        'id-ReportingGranularitykminus6',
+        'id-ReportingGranularitykminus1AdditionalPath',
+        'id-ReportingGranularitykminus2AdditionalPath',
+        'id-ReportingGranularitykminus3AdditionalPath',
+        'id-ReportingGranularitykminus4AdditionalPath',
+        'id-ReportingGranularitykminus5AdditionalPath',
+        'id-ReportingGranularitykminus6AdditionalPath',
+        'id-MeasuredResultsAssociatedInfoList',
+        'id-PointA',
+        'id-NR-PCI',
+        'id-SCS-SpecificCarrier',
+        'id-MeasBasedOnAggregatedResources',
+        'id-UEReportingInterval-milliseconds',
+        'id-Remote-UE-Indication-Request',
+        'id-Remote-UE-Indication',
+        'id-Remote-UE-Status',
+        'id-LocalOrigin',
+        'id-PreconfiguredSRSInformation',
+        'id-DL-reference-signal-UERxTx-TD',
+        'id-SRSPosPeriodicConfigHyperSFNIndex',
+        'id-ValidityAreaSpecificSRSInformationExtended',
         ]
     _type_ = [
         ]
@@ -329,6 +400,7 @@ class NRPPA_Constants:
         'id-pRSConfigurationExchange',
         'id-measurementPreconfiguration',
         'id-measurementActivation',
+        'id-sRSInformationReservationNotification',
         'maxNrOfErrors',
         'maxCellinRANnode',
         'maxIndexesReport',
@@ -380,6 +452,16 @@ class NRPPA_Constants:
         'maxnoAzimuthAngles',
         'maxnoElevationAngles',
         'maxnoPRSTRPs',
+        'maxnoVACell',
+        'maxnoaggregatedPosSRS-Resources',
+        'maxnoaggregatedPosSRS-ResourceSets',
+        'maxnoAggPosPRSResourceSets',
+        'maxnoofTimeWindowSRS',
+        'maxnoofTimeWindowMeas',
+        'maxnoPreconfiguredSRS',
+        'maxnoofHopsMinusOne',
+        'maxnoAggCombinations',
+        'maxnoAggregatedPosSRSCombinations',
         'id-Cause',
         'id-CriticalityDiagnostics',
         'id-LMF-UE-Measurement-ID',
@@ -485,6 +567,66 @@ class NRPPA_Constants:
         'id-UETxTimingErrorMargin',
         'id-MeasurementPeriodicityNR-AoA',
         'id-SRSTransmissionStatus',
+        'id-nrofSymbolsExtended',
+        'id-repetitionFactorExtended',
+        'id-StartRBHopping',
+        'id-StartRBIndex',
+        'id-transmissionCombn8',
+        'id-ExtendedResourceSymbolOffset',
+        'id-NewNRCGI',
+        'id-Mobile-TRP-LocationInformation',
+        'id-Mobile-IAB-MT-UE-ID',
+        'id-MobileAccessPointLocation',
+        'id-CommonTAParameters',
+        'id-UE-Rx-Tx-Time-Diff',
+        'id-SCS-480',
+        'id-SCS-960',
+        'id-Bandwidth-Aggregation-Request-Indication',
+        'id-PosSRSResourceSet-Aggregation-List',
+        'id-TimingReportingGranularityFactorExtended',
+        'id-TimeWindowInformation-SRS-List',
+        'id-TimeWindowInformation-Measurement-List',
+        'id-UL-RSCPMeas',
+        'id-SymbolIndex',
+        'id-PosValidityAreaCellList',
+        'id-SRSReservationType',
+        'id-PRSBWAggregationRequestInfoList',
+        'id-AggregatedPosSRSResourceID-List',
+        'id-AggregatedPRSResourceSetList',
+        'id-TRPPhaseQuality',
+        'id-NewCellIdentity',
+        'id-ValidityAreaSpecificSRSInformation',
+        'id-RequestedSRSPreconfigurationCharacteristics-List',
+        'id-SRSPreconfiguration-List',
+        'id-SRSInformation',
+        'id-TxHoppingConfiguration',
+        'id-MeasuredFrequencyHops',
+        'id-ReportingGranularitykminus1',
+        'id-ReportingGranularitykminus2',
+        'id-ReportingGranularitykminus3',
+        'id-ReportingGranularitykminus4',
+        'id-ReportingGranularitykminus5',
+        'id-ReportingGranularitykminus6',
+        'id-ReportingGranularitykminus1AdditionalPath',
+        'id-ReportingGranularitykminus2AdditionalPath',
+        'id-ReportingGranularitykminus3AdditionalPath',
+        'id-ReportingGranularitykminus4AdditionalPath',
+        'id-ReportingGranularitykminus5AdditionalPath',
+        'id-ReportingGranularitykminus6AdditionalPath',
+        'id-MeasuredResultsAssociatedInfoList',
+        'id-PointA',
+        'id-NR-PCI',
+        'id-SCS-SpecificCarrier',
+        'id-MeasBasedOnAggregatedResources',
+        'id-UEReportingInterval-milliseconds',
+        'id-Remote-UE-Indication-Request',
+        'id-Remote-UE-Indication',
+        'id-Remote-UE-Status',
+        'id-LocalOrigin',
+        'id-PreconfiguredSRSInformation',
+        'id-DL-reference-signal-UERxTx-TD',
+        'id-SRSPosPeriodicConfigHyperSFNIndex',
+        'id-ValidityAreaSpecificSRSInformationExtended',
         ]
     _class_ = [
         ]
@@ -578,6 +720,10 @@ class NRPPA_Constants:
     #-----< id-measurementActivation >-----#
     id_measurementActivation = INT(name='id-measurementActivation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProcedureCode')))
     id_measurementActivation._val = 21
+    
+    #-----< id-sRSInformationReservationNotification >-----#
+    id_sRSInformationReservationNotification = INT(name='id-sRSInformationReservationNotification', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProcedureCode')))
+    id_sRSInformationReservationNotification._val = 22
     
     #-----< maxNrOfErrors >-----#
     maxNrOfErrors = INT(name='maxNrOfErrors', mode=MODE_VALUE)
@@ -782,6 +928,46 @@ class NRPPA_Constants:
     #-----< maxnoPRSTRPs >-----#
     maxnoPRSTRPs = INT(name='maxnoPRSTRPs', mode=MODE_VALUE)
     maxnoPRSTRPs._val = 256
+    
+    #-----< maxnoVACell >-----#
+    maxnoVACell = INT(name='maxnoVACell', mode=MODE_VALUE)
+    maxnoVACell._val = 32
+    
+    #-----< maxnoaggregatedPosSRS-Resources >-----#
+    maxnoaggregatedPosSRS_Resources = INT(name='maxnoaggregatedPosSRS-Resources', mode=MODE_VALUE)
+    maxnoaggregatedPosSRS_Resources._val = 3
+    
+    #-----< maxnoaggregatedPosSRS-ResourceSets >-----#
+    maxnoaggregatedPosSRS_ResourceSets = INT(name='maxnoaggregatedPosSRS-ResourceSets', mode=MODE_VALUE)
+    maxnoaggregatedPosSRS_ResourceSets._val = 3
+    
+    #-----< maxnoAggPosPRSResourceSets >-----#
+    maxnoAggPosPRSResourceSets = INT(name='maxnoAggPosPRSResourceSets', mode=MODE_VALUE)
+    maxnoAggPosPRSResourceSets._val = 3
+    
+    #-----< maxnoofTimeWindowSRS >-----#
+    maxnoofTimeWindowSRS = INT(name='maxnoofTimeWindowSRS', mode=MODE_VALUE)
+    maxnoofTimeWindowSRS._val = 16
+    
+    #-----< maxnoofTimeWindowMeas >-----#
+    maxnoofTimeWindowMeas = INT(name='maxnoofTimeWindowMeas', mode=MODE_VALUE)
+    maxnoofTimeWindowMeas._val = 16
+    
+    #-----< maxnoPreconfiguredSRS >-----#
+    maxnoPreconfiguredSRS = INT(name='maxnoPreconfiguredSRS', mode=MODE_VALUE)
+    maxnoPreconfiguredSRS._val = 16
+    
+    #-----< maxnoofHopsMinusOne >-----#
+    maxnoofHopsMinusOne = INT(name='maxnoofHopsMinusOne', mode=MODE_VALUE)
+    maxnoofHopsMinusOne._val = 5
+    
+    #-----< maxnoAggCombinations >-----#
+    maxnoAggCombinations = INT(name='maxnoAggCombinations', mode=MODE_VALUE)
+    maxnoAggCombinations._val = 2
+    
+    #-----< maxnoAggregatedPosSRSCombinations >-----#
+    maxnoAggregatedPosSRSCombinations = INT(name='maxnoAggregatedPosSRSCombinations', mode=MODE_VALUE)
+    maxnoAggregatedPosSRSCombinations._val = 32
     
     #-----< id-Cause >-----#
     id_Cause = INT(name='id-Cause', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
@@ -1203,6 +1389,246 @@ class NRPPA_Constants:
     id_SRSTransmissionStatus = INT(name='id-SRSTransmissionStatus', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
     id_SRSTransmissionStatus._val = 106
     
+    #-----< id-nrofSymbolsExtended >-----#
+    id_nrofSymbolsExtended = INT(name='id-nrofSymbolsExtended', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_nrofSymbolsExtended._val = 107
+    
+    #-----< id-repetitionFactorExtended >-----#
+    id_repetitionFactorExtended = INT(name='id-repetitionFactorExtended', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_repetitionFactorExtended._val = 108
+    
+    #-----< id-StartRBHopping >-----#
+    id_StartRBHopping = INT(name='id-StartRBHopping', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_StartRBHopping._val = 109
+    
+    #-----< id-StartRBIndex >-----#
+    id_StartRBIndex = INT(name='id-StartRBIndex', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_StartRBIndex._val = 110
+    
+    #-----< id-transmissionCombn8 >-----#
+    id_transmissionCombn8 = INT(name='id-transmissionCombn8', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_transmissionCombn8._val = 111
+    
+    #-----< id-ExtendedResourceSymbolOffset >-----#
+    id_ExtendedResourceSymbolOffset = INT(name='id-ExtendedResourceSymbolOffset', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ExtendedResourceSymbolOffset._val = 112
+    
+    #-----< id-NewNRCGI >-----#
+    id_NewNRCGI = INT(name='id-NewNRCGI', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_NewNRCGI._val = 113
+    
+    #-----< id-Mobile-TRP-LocationInformation >-----#
+    id_Mobile_TRP_LocationInformation = INT(name='id-Mobile-TRP-LocationInformation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Mobile_TRP_LocationInformation._val = 114
+    
+    #-----< id-Mobile-IAB-MT-UE-ID >-----#
+    id_Mobile_IAB_MT_UE_ID = INT(name='id-Mobile-IAB-MT-UE-ID', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Mobile_IAB_MT_UE_ID._val = 115
+    
+    #-----< id-MobileAccessPointLocation >-----#
+    id_MobileAccessPointLocation = INT(name='id-MobileAccessPointLocation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_MobileAccessPointLocation._val = 116
+    
+    #-----< id-CommonTAParameters >-----#
+    id_CommonTAParameters = INT(name='id-CommonTAParameters', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_CommonTAParameters._val = 117
+    
+    #-----< id-UE-Rx-Tx-Time-Diff >-----#
+    id_UE_Rx_Tx_Time_Diff = INT(name='id-UE-Rx-Tx-Time-Diff', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_UE_Rx_Tx_Time_Diff._val = 118
+    
+    #-----< id-SCS-480 >-----#
+    id_SCS_480 = INT(name='id-SCS-480', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SCS_480._val = 119
+    
+    #-----< id-SCS-960 >-----#
+    id_SCS_960 = INT(name='id-SCS-960', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SCS_960._val = 120
+    
+    #-----< id-Bandwidth-Aggregation-Request-Indication >-----#
+    id_Bandwidth_Aggregation_Request_Indication = INT(name='id-Bandwidth-Aggregation-Request-Indication', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Bandwidth_Aggregation_Request_Indication._val = 121
+    
+    #-----< id-PosSRSResourceSet-Aggregation-List >-----#
+    id_PosSRSResourceSet_Aggregation_List = INT(name='id-PosSRSResourceSet-Aggregation-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PosSRSResourceSet_Aggregation_List._val = 122
+    
+    #-----< id-TimingReportingGranularityFactorExtended >-----#
+    id_TimingReportingGranularityFactorExtended = INT(name='id-TimingReportingGranularityFactorExtended', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_TimingReportingGranularityFactorExtended._val = 123
+    
+    #-----< id-TimeWindowInformation-SRS-List >-----#
+    id_TimeWindowInformation_SRS_List = INT(name='id-TimeWindowInformation-SRS-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_TimeWindowInformation_SRS_List._val = 124
+    
+    #-----< id-TimeWindowInformation-Measurement-List >-----#
+    id_TimeWindowInformation_Measurement_List = INT(name='id-TimeWindowInformation-Measurement-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_TimeWindowInformation_Measurement_List._val = 125
+    
+    #-----< id-UL-RSCPMeas >-----#
+    id_UL_RSCPMeas = INT(name='id-UL-RSCPMeas', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_UL_RSCPMeas._val = 126
+    
+    #-----< id-SymbolIndex >-----#
+    id_SymbolIndex = INT(name='id-SymbolIndex', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SymbolIndex._val = 127
+    
+    #-----< id-PosValidityAreaCellList >-----#
+    id_PosValidityAreaCellList = INT(name='id-PosValidityAreaCellList', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PosValidityAreaCellList._val = 128
+    
+    #-----< id-SRSReservationType >-----#
+    id_SRSReservationType = INT(name='id-SRSReservationType', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SRSReservationType._val = 129
+    
+    #-----< id-PRSBWAggregationRequestInfoList >-----#
+    id_PRSBWAggregationRequestInfoList = INT(name='id-PRSBWAggregationRequestInfoList', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PRSBWAggregationRequestInfoList._val = 130
+    
+    #-----< id-AggregatedPosSRSResourceID-List >-----#
+    id_AggregatedPosSRSResourceID_List = INT(name='id-AggregatedPosSRSResourceID-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_AggregatedPosSRSResourceID_List._val = 131
+    
+    #-----< id-AggregatedPRSResourceSetList >-----#
+    id_AggregatedPRSResourceSetList = INT(name='id-AggregatedPRSResourceSetList', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_AggregatedPRSResourceSetList._val = 132
+    
+    #-----< id-TRPPhaseQuality >-----#
+    id_TRPPhaseQuality = INT(name='id-TRPPhaseQuality', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_TRPPhaseQuality._val = 133
+    
+    #-----< id-NewCellIdentity >-----#
+    id_NewCellIdentity = INT(name='id-NewCellIdentity', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_NewCellIdentity._val = 134
+    
+    #-----< id-ValidityAreaSpecificSRSInformation >-----#
+    id_ValidityAreaSpecificSRSInformation = INT(name='id-ValidityAreaSpecificSRSInformation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ValidityAreaSpecificSRSInformation._val = 135
+    
+    #-----< id-RequestedSRSPreconfigurationCharacteristics-List >-----#
+    id_RequestedSRSPreconfigurationCharacteristics_List = INT(name='id-RequestedSRSPreconfigurationCharacteristics-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_RequestedSRSPreconfigurationCharacteristics_List._val = 136
+    
+    #-----< id-SRSPreconfiguration-List >-----#
+    id_SRSPreconfiguration_List = INT(name='id-SRSPreconfiguration-List', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SRSPreconfiguration_List._val = 137
+    
+    #-----< id-SRSInformation >-----#
+    id_SRSInformation = INT(name='id-SRSInformation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SRSInformation._val = 138
+    
+    #-----< id-TxHoppingConfiguration >-----#
+    id_TxHoppingConfiguration = INT(name='id-TxHoppingConfiguration', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_TxHoppingConfiguration._val = 139
+    
+    #-----< id-MeasuredFrequencyHops >-----#
+    id_MeasuredFrequencyHops = INT(name='id-MeasuredFrequencyHops', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_MeasuredFrequencyHops._val = 140
+    
+    #-----< id-ReportingGranularitykminus1 >-----#
+    id_ReportingGranularitykminus1 = INT(name='id-ReportingGranularitykminus1', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus1._val = 141
+    
+    #-----< id-ReportingGranularitykminus2 >-----#
+    id_ReportingGranularitykminus2 = INT(name='id-ReportingGranularitykminus2', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus2._val = 142
+    
+    #-----< id-ReportingGranularitykminus3 >-----#
+    id_ReportingGranularitykminus3 = INT(name='id-ReportingGranularitykminus3', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus3._val = 143
+    
+    #-----< id-ReportingGranularitykminus4 >-----#
+    id_ReportingGranularitykminus4 = INT(name='id-ReportingGranularitykminus4', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus4._val = 144
+    
+    #-----< id-ReportingGranularitykminus5 >-----#
+    id_ReportingGranularitykminus5 = INT(name='id-ReportingGranularitykminus5', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus5._val = 145
+    
+    #-----< id-ReportingGranularitykminus6 >-----#
+    id_ReportingGranularitykminus6 = INT(name='id-ReportingGranularitykminus6', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus6._val = 146
+    
+    #-----< id-ReportingGranularitykminus1AdditionalPath >-----#
+    id_ReportingGranularitykminus1AdditionalPath = INT(name='id-ReportingGranularitykminus1AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus1AdditionalPath._val = 147
+    
+    #-----< id-ReportingGranularitykminus2AdditionalPath >-----#
+    id_ReportingGranularitykminus2AdditionalPath = INT(name='id-ReportingGranularitykminus2AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus2AdditionalPath._val = 148
+    
+    #-----< id-ReportingGranularitykminus3AdditionalPath >-----#
+    id_ReportingGranularitykminus3AdditionalPath = INT(name='id-ReportingGranularitykminus3AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus3AdditionalPath._val = 149
+    
+    #-----< id-ReportingGranularitykminus4AdditionalPath >-----#
+    id_ReportingGranularitykminus4AdditionalPath = INT(name='id-ReportingGranularitykminus4AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus4AdditionalPath._val = 150
+    
+    #-----< id-ReportingGranularitykminus5AdditionalPath >-----#
+    id_ReportingGranularitykminus5AdditionalPath = INT(name='id-ReportingGranularitykminus5AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus5AdditionalPath._val = 151
+    
+    #-----< id-ReportingGranularitykminus6AdditionalPath >-----#
+    id_ReportingGranularitykminus6AdditionalPath = INT(name='id-ReportingGranularitykminus6AdditionalPath', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ReportingGranularitykminus6AdditionalPath._val = 152
+    
+    #-----< id-MeasuredResultsAssociatedInfoList >-----#
+    id_MeasuredResultsAssociatedInfoList = INT(name='id-MeasuredResultsAssociatedInfoList', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_MeasuredResultsAssociatedInfoList._val = 153
+    
+    #-----< id-PointA >-----#
+    id_PointA = INT(name='id-PointA', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PointA._val = 154
+    
+    #-----< id-NR-PCI >-----#
+    id_NR_PCI = INT(name='id-NR-PCI', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_NR_PCI._val = 155
+    
+    #-----< id-SCS-SpecificCarrier >-----#
+    id_SCS_SpecificCarrier = INT(name='id-SCS-SpecificCarrier', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SCS_SpecificCarrier._val = 156
+    
+    #-----< id-MeasBasedOnAggregatedResources >-----#
+    id_MeasBasedOnAggregatedResources = INT(name='id-MeasBasedOnAggregatedResources', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_MeasBasedOnAggregatedResources._val = 157
+    
+    #-----< id-UEReportingInterval-milliseconds >-----#
+    id_UEReportingInterval_milliseconds = INT(name='id-UEReportingInterval-milliseconds', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_UEReportingInterval_milliseconds._val = 158
+    
+    #-----< id-Remote-UE-Indication-Request >-----#
+    id_Remote_UE_Indication_Request = INT(name='id-Remote-UE-Indication-Request', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Remote_UE_Indication_Request._val = 159
+    
+    #-----< id-Remote-UE-Indication >-----#
+    id_Remote_UE_Indication = INT(name='id-Remote-UE-Indication', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Remote_UE_Indication._val = 160
+    
+    #-----< id-Remote-UE-Status >-----#
+    id_Remote_UE_Status = INT(name='id-Remote-UE-Status', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_Remote_UE_Status._val = 161
+    
+    #-----< id-LocalOrigin >-----#
+    id_LocalOrigin = INT(name='id-LocalOrigin', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_LocalOrigin._val = 162
+    
+    #-----< id-PreconfiguredSRSInformation >-----#
+    id_PreconfiguredSRSInformation = INT(name='id-PreconfiguredSRSInformation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_PreconfiguredSRSInformation._val = 163
+    
+    #-----< id-DL-reference-signal-UERxTx-TD >-----#
+    id_DL_reference_signal_UERxTx_TD = INT(name='id-DL-reference-signal-UERxTx-TD', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_DL_reference_signal_UERxTx_TD._val = 164
+    
+    #-----< id-SRSPosPeriodicConfigHyperSFNIndex >-----#
+    id_SRSPosPeriodicConfigHyperSFNIndex = INT(name='id-SRSPosPeriodicConfigHyperSFNIndex', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_SRSPosPeriodicConfigHyperSFNIndex._val = 165
+    
+    #-----< id-ValidityAreaSpecificSRSInformationExtended >-----#
+    id_ValidityAreaSpecificSRSInformationExtended = INT(name='id-ValidityAreaSpecificSRSInformationExtended', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-CommonDataTypes', 'ProtocolIE-ID')))
+    id_ValidityAreaSpecificSRSInformationExtended._val = 166
+    
     _all_ = [
         id_errorIndication,
         id_privateMessage,
@@ -1226,6 +1652,7 @@ class NRPPA_Constants:
         id_pRSConfigurationExchange,
         id_measurementPreconfiguration,
         id_measurementActivation,
+        id_sRSInformationReservationNotification,
         maxNrOfErrors,
         maxCellinRANnode,
         maxIndexesReport,
@@ -1277,6 +1704,16 @@ class NRPPA_Constants:
         maxnoAzimuthAngles,
         maxnoElevationAngles,
         maxnoPRSTRPs,
+        maxnoVACell,
+        maxnoaggregatedPosSRS_Resources,
+        maxnoaggregatedPosSRS_ResourceSets,
+        maxnoAggPosPRSResourceSets,
+        maxnoofTimeWindowSRS,
+        maxnoofTimeWindowMeas,
+        maxnoPreconfiguredSRS,
+        maxnoofHopsMinusOne,
+        maxnoAggCombinations,
+        maxnoAggregatedPosSRSCombinations,
         id_Cause,
         id_CriticalityDiagnostics,
         id_LMF_UE_Measurement_ID,
@@ -1382,6 +1819,66 @@ class NRPPA_Constants:
         id_UETxTimingErrorMargin,
         id_MeasurementPeriodicityNR_AoA,
         id_SRSTransmissionStatus,
+        id_nrofSymbolsExtended,
+        id_repetitionFactorExtended,
+        id_StartRBHopping,
+        id_StartRBIndex,
+        id_transmissionCombn8,
+        id_ExtendedResourceSymbolOffset,
+        id_NewNRCGI,
+        id_Mobile_TRP_LocationInformation,
+        id_Mobile_IAB_MT_UE_ID,
+        id_MobileAccessPointLocation,
+        id_CommonTAParameters,
+        id_UE_Rx_Tx_Time_Diff,
+        id_SCS_480,
+        id_SCS_960,
+        id_Bandwidth_Aggregation_Request_Indication,
+        id_PosSRSResourceSet_Aggregation_List,
+        id_TimingReportingGranularityFactorExtended,
+        id_TimeWindowInformation_SRS_List,
+        id_TimeWindowInformation_Measurement_List,
+        id_UL_RSCPMeas,
+        id_SymbolIndex,
+        id_PosValidityAreaCellList,
+        id_SRSReservationType,
+        id_PRSBWAggregationRequestInfoList,
+        id_AggregatedPosSRSResourceID_List,
+        id_AggregatedPRSResourceSetList,
+        id_TRPPhaseQuality,
+        id_NewCellIdentity,
+        id_ValidityAreaSpecificSRSInformation,
+        id_RequestedSRSPreconfigurationCharacteristics_List,
+        id_SRSPreconfiguration_List,
+        id_SRSInformation,
+        id_TxHoppingConfiguration,
+        id_MeasuredFrequencyHops,
+        id_ReportingGranularitykminus1,
+        id_ReportingGranularitykminus2,
+        id_ReportingGranularitykminus3,
+        id_ReportingGranularitykminus4,
+        id_ReportingGranularitykminus5,
+        id_ReportingGranularitykminus6,
+        id_ReportingGranularitykminus1AdditionalPath,
+        id_ReportingGranularitykminus2AdditionalPath,
+        id_ReportingGranularitykminus3AdditionalPath,
+        id_ReportingGranularitykminus4AdditionalPath,
+        id_ReportingGranularitykminus5AdditionalPath,
+        id_ReportingGranularitykminus6AdditionalPath,
+        id_MeasuredResultsAssociatedInfoList,
+        id_PointA,
+        id_NR_PCI,
+        id_SCS_SpecificCarrier,
+        id_MeasBasedOnAggregatedResources,
+        id_UEReportingInterval_milliseconds,
+        id_Remote_UE_Indication_Request,
+        id_Remote_UE_Indication,
+        id_Remote_UE_Status,
+        id_LocalOrigin,
+        id_PreconfiguredSRSInformation,
+        id_DL_reference_signal_UERxTx_TD,
+        id_SRSPosPeriodicConfigHyperSFNIndex,
+        id_ValidityAreaSpecificSRSInformationExtended,
     ]
 
 class NRPPA_Containers:
@@ -1529,6 +2026,15 @@ class NRPPA_IEs:
         'AdditionalPathList',
         'AdditionalPathListItem',
         'AdditionalPathListItem-ExtIEs',
+        'AggregatedPosSRSResourceID-List',
+        'AggregatedPosSRSResourceID-Item',
+        'AggregatedPosSRSResourceID-Item-ExtIEs',
+        'AggregatedPRSResourceSetList',
+        'AggregatedPRSResourceSet-Item',
+        'AggregatedPRSResourceSet-Item-ExtIEs',
+        'DL-PRS-ResourceSet-List',
+        'DL-PRS-ResourceSet-Item',
+        'DL-PRS-ResourceSet-Item-ExtIEs',
         'ExtendedAdditionalPathList',
         'ExtendedAdditionalPathList-Item',
         'ExtendedAdditionalPathList-Item-ExtIEs',
@@ -1560,6 +2066,7 @@ class NRPPA_IEs:
         'AssistanceInformationMetaData-ExtIEs',
         'BandwidthSRS',
         'BandwidthSRS-ExtIEs',
+        'Bandwidth-Aggregation-Request-Indication',
         'BCCH',
         'Broadcast',
         'BroadcastPeriodicity',
@@ -1582,6 +2089,8 @@ class NRPPA_IEs:
         'CriticalityDiagnostics-ExtIEs',
         'CriticalityDiagnostics-IE-List',
         'CriticalityDiagnostics-IE-List-ExtIEs',
+        'CommonTAParameters',
+        'CommonTAParameters-ExtIEs',
         'DL-Bandwidth-EUTRA',
         'DL-PRS',
         'DL-PRS-ExtIEs',
@@ -1597,6 +2106,7 @@ class NRPPA_IEs:
         'DLPRSResourceARP-ExtIEs',
         'DL-PRSResourceARPLocation',
         'DL-PRSResourceARPLocation-ExtIEs',
+        'DL-reference-signal-UERxTx-TD',
         'E-CID-MeasurementResult',
         'E-CID-MeasurementResult-ExtIEs',
         'EUTRACellIdentifier',
@@ -1615,11 +2125,14 @@ class NRPPA_IEs:
         'LCS-to-GCS-TranslationItem',
         'LCS-to-GCS-TranslationItem-ExtIEs',
         'LocationUncertainty',
+        'LocalOrigin',
+        'LocalOrigin-ExtIEs',
         'LocationUncertainty-ExtIEs',
         'LoS-NLoSIndicatorHard',
         'LoS-NLoSIndicatorSoft',
         'LoS-NLoSInformation',
         'LoS-NLoSInformation-ExtIEs',
+        'MeasBasedOnAggregatedResources',
         'Measurement-ID',
         'MeasurementAmount',
         'MeasurementBeamInfoRequest',
@@ -1636,13 +2149,20 @@ class NRPPA_IEs:
         'MeasurementTimeOccasion',
         'MeasurementCharacteristicsRequestIndicator',
         'MeasuredResults',
+        'MeasuredResultsAssociatedInfoList',
+        'MeasuredResultsAssociatedInfoItem',
+        'MeasuredResultsAssociatedInfoItem-ExtIEs',
         'MeasuredResultsValue',
         'MeasuredResultsValue-ExtensionIE',
+        'Mobile-TRP-LocationInformation',
+        'Mobile-TRP-LocationInformation-ExtIEs',
+        'Mobile-IAB-MT-UE-ID',
         'MultipleULAoA',
         'MultipleULAoA-ExtIEs',
         'MultipleULAoA-List',
         'MultipleULAoA-Item',
         'MultipleULAoA-Item-ExtIEs',
+        'MeasuredFrequencyHops',
         'NarrowBandIndex',
         'NG-RANAccessPointPosition',
         'NG-RANAccessPointPosition-ExtIEs',
@@ -1654,6 +2174,7 @@ class NRPPA_IEs:
         'NG-RANCell-ExtensionIE',
         'NR-ARFCN',
         'NRCellIdentifier',
+        'NrofSymbolsExtended',
         'NR-PCI',
         'NR-PRS-Beam-Information',
         'NR-PRS-Beam-Information-IEs',
@@ -1700,6 +2221,12 @@ class NRPPA_IEs:
         'PosSIB-Segments',
         'PosSIB-Segments-ExtIEs',
         'PosSIB-Type',
+        'PRSBWAggregationRequestInfoList',
+        'PRSBWAggregationRequestInfo-Item',
+        'PRSBWAggregationRequestInfo-Item-ExtIEs',
+        'DL-PRSBWAggregationRequestInfo-List',
+        'DL-PRSBWAggregationRequestInfo-Item',
+        'DL-PRSBWAggregationRequestInfo-Item-ExtIEs',
         'PosSRSResource-List',
         'PosSRSResource-Item',
         'PosSRSResource-Item-ExtIEs',
@@ -1708,6 +2235,12 @@ class NRPPA_IEs:
         'PosSRSResourceIDPerSet-List',
         'PosSRSResourceSet-Item',
         'PosSRSResourceSet-Item-ExtIEs',
+        'PosSRSResourceSet-Aggregation-List',
+        'PosSRSResourceSet-Aggregation-Item',
+        'PosSRSResourceSet-Aggregation-Item-ExtIEs',
+        'Combined-PosSRSResourceSet-List',
+        'Combined-PosSRSResourceSet-Item',
+        'Combined-PosSRSResourceSet-Item-ExtIEs',
         'PosResourceSetType',
         'PosResourceSetType-ExtIEs',
         'PosResourceSetTypePeriodic',
@@ -1744,6 +2277,7 @@ class NRPPA_IEs:
         'PRSResource-List',
         'PRSResource-Item',
         'PRSResource-Item-ExtIEs',
+        'ExtendedResourceSymbolOffset',
         'PRSResource-QCLInfo',
         'PRSResource-QCLInfo-ExtIEs',
         'PRSResource-QCLSourceSSB',
@@ -1774,6 +2308,10 @@ class NRPPA_IEs:
         'PRSTransmissionTRPList',
         'PRSTransmissionTRPItem',
         'PRSTransmissionTRPItem-ExtIEs',
+        'PosValidityAreaCellList',
+        'PosValidityAreaCell-Item',
+        'PosValidityAreaCell-Item-ExtIEs',
+        'PointA',
         'ReferenceSignal',
         'ReferenceSignal-ExtensionIE',
         'ReferencePoint',
@@ -1785,7 +2323,23 @@ class NRPPA_IEs:
         'RelativeCartesianLocation-ExtIEs',
         'RelativePathDelay',
         'RelativePathDelay-ExtIEs',
+        'Remote-UE-Indication-Request',
+        'Remote-UE-Indication',
+        'Remote-UE-Status',
+        'RepetitionFactorExtended',
         'ReportCharacteristics',
+        'ReportingGranularitykminus1',
+        'ReportingGranularitykminus2',
+        'ReportingGranularitykminus3',
+        'ReportingGranularitykminus4',
+        'ReportingGranularitykminus5',
+        'ReportingGranularitykminus6',
+        'ReportingGranularitykminus1AdditionalPath',
+        'ReportingGranularitykminus2AdditionalPath',
+        'ReportingGranularitykminus3AdditionalPath',
+        'ReportingGranularitykminus4AdditionalPath',
+        'ReportingGranularitykminus5AdditionalPath',
+        'ReportingGranularitykminus6AdditionalPath',
         'RequestedDLPRSTransmissionCharacteristics',
         'RequestedDLPRSTransmissionCharacteristics-ExtIEs',
         'RequestedDLPRSResourceSet-List',
@@ -1796,6 +2350,11 @@ class NRPPA_IEs:
         'RequestedDLPRSResource-Item-ExtIEs',
         'RequestedSRSTransmissionCharacteristics',
         'RequestedSRSTransmissionCharacteristics-ExtIEs',
+        'ResourceMapping',
+        'ResourceMapping-ExtIEs',
+        'RequestedSRSPreconfigurationCharacteristics-List',
+        'RequestedSRSPreconfigurationCharacteristics-Item',
+        'RequestedSRSPreconfigurationCharacteristics-Item-ExtIEs',
         'SRSResourceSet-Item',
         'SRSResourceSet-Item-ExtIEs',
         'RequestType',
@@ -1869,6 +2428,8 @@ class NRPPA_IEs:
         'ResultUTRAN-Item-ExtIEs',
         'RSSI',
         'RxTxTimingErrorMargin',
+        'SCS-480',
+        'SCS-960',
         'SCS-SpecificCarrier',
         'SCS-SpecificCarrier-ExtIEs',
         'Search-window-information',
@@ -1876,6 +2437,17 @@ class NRPPA_IEs:
         'RelativeTime1900',
         'SFNInitialisationTime-EUTRA',
         'SlotNumber',
+        'SlotOffsetForRemainingHopsList',
+        'SlotOffsetForRemainingHopsItem',
+        'SlotOffsetForRemainingHopsItem-ExtIEs',
+        'SlotOffsetRemainingHops',
+        'SlotOffsetRemainingHops-ExtIEs',
+        'SlotOffsetRemainingHopsAperiodic',
+        'SlotOffsetRemainingHopsAperiodic-ExtIEs',
+        'SlotOffsetRemainingHopsSemiPersistent',
+        'SlotOffsetRemainingHopsSemiPersistent-ExtIEs',
+        'SlotOffsetRemainingHopsPeriodic',
+        'SlotOffsetRemainingHopsSemiPeriodic-ExtIEs',
         'SpatialDirectionInformation',
         'SpatialDirectionInformation-ExtIEs',
         'SpatialRelationInfo',
@@ -1899,6 +2471,7 @@ class NRPPA_IEs:
         'SRSConfiguration-ExtIEs',
         'SrsFrequency',
         'SRSPortIndex',
+        'SRSPosPeriodicConfigHyperSFNIndex',
         'SRSPosResourceID',
         'SRSResource',
         'SRSResource-ExtIEs',
@@ -1927,11 +2500,20 @@ class NRPPA_IEs:
         'SSBBurstPosition-ExtIEs',
         'SSB-Index',
         'SSID',
+        'StartRBIndex',
+        'StartRBIndex-ExtIEs',
+        'StartRBHopping',
         'StartTimeAndDuration',
         'StartTimeAndDuration-ExtIEs',
+        'SymbolIndex',
         'SystemFrameNumber',
         'SystemInformation',
         'SystemInformation-ExtIEs',
+        'SRSReservationType',
+        'SRSPreconfiguration-List',
+        'SRSPreconfiguration-Item',
+        'SRSPreconfiguration-Item-ExtIEs',
+        'SRSPeriodicity',
         'TAC',
         'TDD-Config-EUTRA-Item',
         'TDD-Config-EUTRA-Item-Item-ExtIEs',
@@ -1948,10 +2530,29 @@ class NRPPA_IEs:
         'TimeStamp-ExtIEs',
         'TimeStampSlotIndex',
         'TimeStampSlotIndex-ExtIEs',
+        'TimeWindowDurationMeasurement',
+        'TimeWindowDurationMeasurement-ExtIEs',
+        'TimeWindowDurationSRS',
+        'TimeWindowDurationSRS-ExtIEs',
+        'TimeWindowPeriodicityMeasurement',
+        'TimeWindowPeriodicitySRS',
+        'TimeWindowStartSRS',
+        'TimeWindowStartSRS-ExtIEs',
+        'TimingReportingGranularityFactorExtended',
+        'TimeWindowInformation-Measurement-List',
+        'TimeWindowInformation-Measurement-Item',
+        'TimeWindowInformation-Measurement-Item-ExtIEs',
+        'TimeWindowInformation-SRS-List',
+        'TimeWindowInformation-SRS-Item',
+        'TimeWindowInformation-SRS-Item-ExtIEs',
+        'TimeWindowStart',
+        'TimeWindowStart-ExtIEs',
         'TP-ID-EUTRA',
         'TP-Type-EUTRA',
         'TransmissionComb',
         'TransmissionComb-ExtIEs',
+        'TransmissionCombn8',
+        'TransmissionCombn8-ExtIEs',
         'TransmissionCombPos',
         'TransmissionCombPos-ExtIEs',
         'TRPBeamAntennaInformation',
@@ -1970,7 +2571,7 @@ class NRPPA_IEs:
         'TRPMeasurementQuantities',
         'TRPMeasurementQuantitiesList-Item',
         'TRPMeasurementQuantitiesList-Item-ExtIEs',
-        'TRPMeasurementQuantities-Item',
+        'TRPMeasurementType',
         'TrpMeasurementResult',
         'TrpMeasurementResultItem',
         'TrpMeasurementResultItem-ExtIEs',
@@ -1982,6 +2583,8 @@ class NRPPA_IEs:
         'TrpMeasurementTimingQuality-ExtIEs',
         'TrpMeasurementAngleQuality',
         'TrpMeasurementAngleQuality-ExtIEs',
+        'TRPPhaseQuality',
+        'TRPPhaseQuality-ExtIEs',
         'TRP-MeasurementRequestList',
         'TRP-MeasurementRequestItem',
         'TRP-MeasurementRequestItem-ExtIEs',
@@ -2031,10 +2634,14 @@ class NRPPA_IEs:
         'DLPRSResource-Item-ExtIEs',
         'TRPType',
         'TypeOfError',
+        'TxHoppingConfiguration',
+        'TxHoppingConfiguration-ExtIEs',
         'UARFCN',
         'UE-Measurement-ID',
         'UEReportingInformation',
         'UEReportingInformation-ExtIEs',
+        'UEReportingInterval-milliseconds',
+        'UE-Rx-Tx-Time-Diff',
         'UE-TEG-ReportingPeriodicity',
         'UETxTEGAssociationList',
         'UETxTEGAssociationItem',
@@ -2048,6 +2655,8 @@ class NRPPA_IEs:
         'UL-AoA-ExtIEs',
         'UL-RTOAMeasurement',
         'UL-RTOAMeasurement-ExtIEs',
+        'UL-RSCPMeas',
+        'UL-RSCPMeas-ExtIEs',
         'ULRTOAMeas',
         'ULRTOAMeas-ExtIEs',
         'UL-SRS-RSRP',
@@ -2060,6 +2669,10 @@ class NRPPA_IEs:
         'ValueRSRQ-EUTRA',
         'ValueRSRP-NR',
         'ValueRSRQ-NR',
+        'ValidityAreaSpecificSRSInformation',
+        'ValidityAreaSpecificSRSInformation-ExtIEs',
+        'ValidityAreaSpecificSRSInformationExtended',
+        'ValidityAreaSpecificSRSInformationExtended-ExtIEs',
         'WLANMeasurementQuantities',
         'WLANMeasurementQuantities-ItemIEs',
         'WLANMeasurementQuantities-Item',
@@ -2082,6 +2695,12 @@ class NRPPA_IEs:
         'ActiveULBWP',
         'AdditionalPathList',
         'AdditionalPathListItem',
+        'AggregatedPosSRSResourceID-List',
+        'AggregatedPosSRSResourceID-Item',
+        'AggregatedPRSResourceSetList',
+        'AggregatedPRSResourceSet-Item',
+        'DL-PRS-ResourceSet-List',
+        'DL-PRS-ResourceSet-Item',
         'ExtendedAdditionalPathList',
         'ExtendedAdditionalPathList-Item',
         'AoA-AssistanceInfo',
@@ -2100,6 +2719,7 @@ class NRPPA_IEs:
         'AssistanceInformationFailureList',
         'AssistanceInformationMetaData',
         'BandwidthSRS',
+        'Bandwidth-Aggregation-Request-Indication',
         'BCCH',
         'Broadcast',
         'BroadcastPeriodicity',
@@ -2116,6 +2736,7 @@ class NRPPA_IEs:
         'CPLength-EUTRA',
         'CriticalityDiagnostics',
         'CriticalityDiagnostics-IE-List',
+        'CommonTAParameters',
         'DL-Bandwidth-EUTRA',
         'DL-PRS',
         'DL-PRSMutingPattern',
@@ -2124,6 +2745,7 @@ class NRPPA_IEs:
         'DL-PRSResourceSetARPLocation',
         'DLPRSResourceARP',
         'DL-PRSResourceARPLocation',
+        'DL-reference-signal-UERxTx-TD',
         'E-CID-MeasurementResult',
         'EUTRACellIdentifier',
         'EARFCN',
@@ -2136,9 +2758,11 @@ class NRPPA_IEs:
         'LCS-to-GCS-Translation',
         'LCS-to-GCS-TranslationItem',
         'LocationUncertainty',
+        'LocalOrigin',
         'LoS-NLoSIndicatorHard',
         'LoS-NLoSIndicatorSoft',
         'LoS-NLoSInformation',
+        'MeasBasedOnAggregatedResources',
         'Measurement-ID',
         'MeasurementAmount',
         'MeasurementBeamInfoRequest',
@@ -2152,10 +2776,15 @@ class NRPPA_IEs:
         'MeasurementTimeOccasion',
         'MeasurementCharacteristicsRequestIndicator',
         'MeasuredResults',
+        'MeasuredResultsAssociatedInfoList',
+        'MeasuredResultsAssociatedInfoItem',
         'MeasuredResultsValue',
+        'Mobile-TRP-LocationInformation',
+        'Mobile-IAB-MT-UE-ID',
         'MultipleULAoA',
         'MultipleULAoA-List',
         'MultipleULAoA-Item',
+        'MeasuredFrequencyHops',
         'NarrowBandIndex',
         'NG-RANAccessPointPosition',
         'NGRANHighAccuracyAccessPointPosition',
@@ -2163,6 +2792,7 @@ class NRPPA_IEs:
         'NG-RANCell',
         'NR-ARFCN',
         'NRCellIdentifier',
+        'NrofSymbolsExtended',
         'NR-PCI',
         'NR-PRS-Beam-Information',
         'NR-PRS-Beam-InformationItem',
@@ -2197,12 +2827,20 @@ class NRPPA_IEs:
         'PosSIBs',
         'PosSIB-Segments',
         'PosSIB-Type',
+        'PRSBWAggregationRequestInfoList',
+        'PRSBWAggregationRequestInfo-Item',
+        'DL-PRSBWAggregationRequestInfo-List',
+        'DL-PRSBWAggregationRequestInfo-Item',
         'PosSRSResource-List',
         'PosSRSResource-Item',
         'PosSRSResourceID-List',
         'PosSRSResourceSet-List',
         'PosSRSResourceIDPerSet-List',
         'PosSRSResourceSet-Item',
+        'PosSRSResourceSet-Aggregation-List',
+        'PosSRSResourceSet-Aggregation-Item',
+        'Combined-PosSRSResourceSet-List',
+        'Combined-PosSRSResourceSet-Item',
         'PosResourceSetType',
         'PosResourceSetTypePeriodic',
         'PosResourceSetTypeSemi-persistent',
@@ -2225,6 +2863,7 @@ class NRPPA_IEs:
         'PRSMutingOption2',
         'PRSResource-List',
         'PRSResource-Item',
+        'ExtendedResourceSymbolOffset',
         'PRSResource-QCLInfo',
         'PRSResource-QCLSourceSSB',
         'PRSResource-QCLSourcePRS',
@@ -2244,19 +2883,41 @@ class NRPPA_IEs:
         'PRSTRPItem',
         'PRSTransmissionTRPList',
         'PRSTransmissionTRPItem',
+        'PosValidityAreaCellList',
+        'PosValidityAreaCell-Item',
+        'PointA',
         'ReferenceSignal',
         'ReferencePoint',
         'CoordinateID',
         'RelativeGeodeticLocation',
         'RelativeCartesianLocation',
         'RelativePathDelay',
+        'Remote-UE-Indication-Request',
+        'Remote-UE-Indication',
+        'Remote-UE-Status',
+        'RepetitionFactorExtended',
         'ReportCharacteristics',
+        'ReportingGranularitykminus1',
+        'ReportingGranularitykminus2',
+        'ReportingGranularitykminus3',
+        'ReportingGranularitykminus4',
+        'ReportingGranularitykminus5',
+        'ReportingGranularitykminus6',
+        'ReportingGranularitykminus1AdditionalPath',
+        'ReportingGranularitykminus2AdditionalPath',
+        'ReportingGranularitykminus3AdditionalPath',
+        'ReportingGranularitykminus4AdditionalPath',
+        'ReportingGranularitykminus5AdditionalPath',
+        'ReportingGranularitykminus6AdditionalPath',
         'RequestedDLPRSTransmissionCharacteristics',
         'RequestedDLPRSResourceSet-List',
         'RequestedDLPRSResourceSet-Item',
         'RequestedDLPRSResource-List',
         'RequestedDLPRSResource-Item',
         'RequestedSRSTransmissionCharacteristics',
+        'ResourceMapping',
+        'RequestedSRSPreconfigurationCharacteristics-List',
+        'RequestedSRSPreconfigurationCharacteristics-Item',
         'SRSResourceSet-Item',
         'RequestType',
         'ResourceSetType',
@@ -2302,11 +2963,19 @@ class NRPPA_IEs:
         'ResultUTRAN-Item',
         'RSSI',
         'RxTxTimingErrorMargin',
+        'SCS-480',
+        'SCS-960',
         'SCS-SpecificCarrier',
         'Search-window-information',
         'RelativeTime1900',
         'SFNInitialisationTime-EUTRA',
         'SlotNumber',
+        'SlotOffsetForRemainingHopsList',
+        'SlotOffsetForRemainingHopsItem',
+        'SlotOffsetRemainingHops',
+        'SlotOffsetRemainingHopsAperiodic',
+        'SlotOffsetRemainingHopsSemiPersistent',
+        'SlotOffsetRemainingHopsPeriodic',
         'SpatialDirectionInformation',
         'SpatialRelationInfo',
         'SpatialRelationforResourceID',
@@ -2321,6 +2990,7 @@ class NRPPA_IEs:
         'SRSConfiguration',
         'SrsFrequency',
         'SRSPortIndex',
+        'SRSPosPeriodicConfigHyperSFNIndex',
         'SRSPosResourceID',
         'SRSResource',
         'SRSResourceID',
@@ -2341,9 +3011,16 @@ class NRPPA_IEs:
         'SSBBurstPosition',
         'SSB-Index',
         'SSID',
+        'StartRBIndex',
+        'StartRBHopping',
         'StartTimeAndDuration',
+        'SymbolIndex',
         'SystemFrameNumber',
         'SystemInformation',
+        'SRSReservationType',
+        'SRSPreconfiguration-List',
+        'SRSPreconfiguration-Item',
+        'SRSPeriodicity',
         'TAC',
         'TDD-Config-EUTRA-Item',
         'TRPTEGInformation',
@@ -2353,9 +3030,21 @@ class NRPPA_IEs:
         'TF-Configuration',
         'TimeStamp',
         'TimeStampSlotIndex',
+        'TimeWindowDurationMeasurement',
+        'TimeWindowDurationSRS',
+        'TimeWindowPeriodicityMeasurement',
+        'TimeWindowPeriodicitySRS',
+        'TimeWindowStartSRS',
+        'TimingReportingGranularityFactorExtended',
+        'TimeWindowInformation-Measurement-List',
+        'TimeWindowInformation-Measurement-Item',
+        'TimeWindowInformation-SRS-List',
+        'TimeWindowInformation-SRS-Item',
+        'TimeWindowStart',
         'TP-ID-EUTRA',
         'TP-Type-EUTRA',
         'TransmissionComb',
+        'TransmissionCombn8',
         'TransmissionCombPos',
         'TRPBeamAntennaInformation',
         'Choice-TRP-Beam-Antenna-Info-Item',
@@ -2366,13 +3055,14 @@ class NRPPA_IEs:
         'TRP-Beam-Power-Item',
         'TRPMeasurementQuantities',
         'TRPMeasurementQuantitiesList-Item',
-        'TRPMeasurementQuantities-Item',
+        'TRPMeasurementType',
         'TrpMeasurementResult',
         'TrpMeasurementResultItem',
         'TrpMeasuredResultsValue',
         'TrpMeasurementQuality',
         'TrpMeasurementTimingQuality',
         'TrpMeasurementAngleQuality',
+        'TRPPhaseQuality',
         'TRP-MeasurementRequestList',
         'TRP-MeasurementRequestItem',
         'TRP-MeasurementResponseList',
@@ -2403,9 +3093,12 @@ class NRPPA_IEs:
         'DLPRSResourceID-Item',
         'TRPType',
         'TypeOfError',
+        'TxHoppingConfiguration',
         'UARFCN',
         'UE-Measurement-ID',
         'UEReportingInformation',
+        'UEReportingInterval-milliseconds',
+        'UE-Rx-Tx-Time-Diff',
         'UE-TEG-ReportingPeriodicity',
         'UETxTEGAssociationList',
         'UETxTEGAssociationItem',
@@ -2415,6 +3108,7 @@ class NRPPA_IEs:
         'UTRA-RSCP',
         'UL-AoA',
         'UL-RTOAMeasurement',
+        'UL-RSCPMeas',
         'ULRTOAMeas',
         'UL-SRS-RSRP',
         'UL-SRS-RSRPP',
@@ -2425,6 +3119,8 @@ class NRPPA_IEs:
         'ValueRSRQ-EUTRA',
         'ValueRSRP-NR',
         'ValueRSRQ-NR',
+        'ValidityAreaSpecificSRSInformation',
+        'ValidityAreaSpecificSRSInformationExtended',
         'WLANMeasurementQuantities',
         'WLANMeasurementQuantities-Item',
         'WLANMeasurementQuantitiesValue',
@@ -2442,6 +3138,9 @@ class NRPPA_IEs:
         'AbortTransmission-ExtIEs',
         'ActiveULBWP-ExtIEs',
         'AdditionalPathListItem-ExtIEs',
+        'AggregatedPosSRSResourceID-Item-ExtIEs',
+        'AggregatedPRSResourceSet-Item-ExtIEs',
+        'DL-PRS-ResourceSet-Item-ExtIEs',
         'ExtendedAdditionalPathList-Item-ExtIEs',
         'AoA-AssistanceInfo-ExtIEs',
         'AngleMeasurementType-ExtIEs',
@@ -2461,6 +3160,7 @@ class NRPPA_IEs:
         'CGI-NR-ExtIEs',
         'CriticalityDiagnostics-ExtIEs',
         'CriticalityDiagnostics-IE-List-ExtIEs',
+        'CommonTAParameters-ExtIEs',
         'DL-PRS-ExtIEs',
         'DL-PRSMutingPattern-ExtIEs',
         'DLPRSResourceCoordinates-ExtIEs',
@@ -2474,12 +3174,15 @@ class NRPPA_IEs:
         'GNBRxTxTimeDiffMeas-ExtIEs',
         'LCS-to-GCS-Translation-ExtIEs',
         'LCS-to-GCS-TranslationItem-ExtIEs',
+        'LocalOrigin-ExtIEs',
         'LocationUncertainty-ExtIEs',
         'LoS-NLoSInformation-ExtIEs',
         'MeasurementBeamInfo-ExtIEs',
         'MeasurementQuantities-ItemIEs',
         'MeasurementQuantitiesValue-ExtIEs',
+        'MeasuredResultsAssociatedInfoItem-ExtIEs',
         'MeasuredResultsValue-ExtensionIE',
+        'Mobile-TRP-LocationInformation-ExtIEs',
         'MultipleULAoA-ExtIEs',
         'MultipleULAoA-Item-ExtIEs',
         'NG-RANAccessPointPosition-ExtIEs',
@@ -2498,8 +3201,12 @@ class NRPPA_IEs:
         'PathlossReferenceSignal-ExtensionIE',
         'PosSIBs-ExtIEs',
         'PosSIB-Segments-ExtIEs',
+        'PRSBWAggregationRequestInfo-Item-ExtIEs',
+        'DL-PRSBWAggregationRequestInfo-Item-ExtIEs',
         'PosSRSResource-Item-ExtIEs',
         'PosSRSResourceSet-Item-ExtIEs',
+        'PosSRSResourceSet-Aggregation-Item-ExtIEs',
+        'Combined-PosSRSResourceSet-Item-ExtIEs',
         'PosResourceSetType-ExtIEs',
         'PosResourceSetTypePeriodic-ExtIEs',
         'PosResourceSetTypeSemi-persistent-ExtIEs',
@@ -2525,6 +3232,7 @@ class NRPPA_IEs:
         'PRSTransmissionOffPerResourceSet-Item-ExtIEs',
         'PRSTRPItem-ExtIEs',
         'PRSTransmissionTRPItem-ExtIEs',
+        'PosValidityAreaCell-Item-ExtIEs',
         'ReferenceSignal-ExtensionIE',
         'ReferencePoint-ExtIEs',
         'RelativeGeodeticLocation-ExtIEs',
@@ -2534,6 +3242,8 @@ class NRPPA_IEs:
         'RequestedDLPRSResourceSet-Item-ExtIEs',
         'RequestedDLPRSResource-Item-ExtIEs',
         'RequestedSRSTransmissionCharacteristics-ExtIEs',
+        'ResourceMapping-ExtIEs',
+        'RequestedSRSPreconfigurationCharacteristics-Item-ExtIEs',
         'SRSResourceSet-Item-ExtIEs',
         'ResourceSetType-ExtIEs',
         'ResourceSetTypePeriodic-ExtIEs',
@@ -2564,6 +3274,11 @@ class NRPPA_IEs:
         'ResultUTRAN-Item-ExtIEs',
         'SCS-SpecificCarrier-ExtIEs',
         'Search-window-information-ExtIEs',
+        'SlotOffsetForRemainingHopsItem-ExtIEs',
+        'SlotOffsetRemainingHops-ExtIEs',
+        'SlotOffsetRemainingHopsAperiodic-ExtIEs',
+        'SlotOffsetRemainingHopsSemiPersistent-ExtIEs',
+        'SlotOffsetRemainingHopsSemiPeriodic-ExtIEs',
         'SpatialDirectionInformation-ExtIEs',
         'SpatialRelationInfo-ExtIEs',
         'SpatialRelationforResourceIDItem-ExtIEs',
@@ -2581,8 +3296,10 @@ class NRPPA_IEs:
         'SSBInfoItem-ExtIEs',
         'SSB-ExtIEs',
         'SSBBurstPosition-ExtIEs',
+        'StartRBIndex-ExtIEs',
         'StartTimeAndDuration-ExtIEs',
         'SystemInformation-ExtIEs',
+        'SRSPreconfiguration-Item-ExtIEs',
         'TDD-Config-EUTRA-Item-Item-ExtIEs',
         'TRPTEGInformation-ExtIEs',
         'RxTxTEG-ExtIEs',
@@ -2590,7 +3307,14 @@ class NRPPA_IEs:
         'TF-Configuration-ExtIEs',
         'TimeStamp-ExtIEs',
         'TimeStampSlotIndex-ExtIEs',
+        'TimeWindowDurationMeasurement-ExtIEs',
+        'TimeWindowDurationSRS-ExtIEs',
+        'TimeWindowStartSRS-ExtIEs',
+        'TimeWindowInformation-Measurement-Item-ExtIEs',
+        'TimeWindowInformation-SRS-Item-ExtIEs',
+        'TimeWindowStart-ExtIEs',
         'TransmissionComb-ExtIEs',
+        'TransmissionCombn8-ExtIEs',
         'TransmissionCombPos-ExtIEs',
         'TRPBeamAntennaInformation-ExtIEs',
         'Choice-TRP-Beam-Info-Item-ExtIEs',
@@ -2604,6 +3328,7 @@ class NRPPA_IEs:
         'TrpMeasurementQuality-ExtIEs',
         'TrpMeasurementTimingQuality-ExtIEs',
         'TrpMeasurementAngleQuality-ExtIEs',
+        'TRPPhaseQuality-ExtIEs',
         'TRP-MeasurementRequestItem-ExtIEs',
         'TRP-MeasurementResponseItem-ExtIEs',
         'TRP-MeasurementUpdateItem-ExtIEs',
@@ -2623,13 +3348,17 @@ class NRPPA_IEs:
         'TRP-Tx-TEGInformation-ExtIEs',
         'TRPTEGItem-ExtIEs',
         'DLPRSResource-Item-ExtIEs',
+        'TxHoppingConfiguration-ExtIEs',
         'UEReportingInformation-ExtIEs',
         'UETxTEGAssociationItem-ExtIEs',
         'SRSResourceID-Item-ExtIEs',
         'UL-AoA-ExtIEs',
         'UL-RTOAMeasurement-ExtIEs',
+        'UL-RSCPMeas-ExtIEs',
         'ULRTOAMeas-ExtIEs',
         'UL-SRS-RSRPP-ExtIEs',
+        'ValidityAreaSpecificSRSInformation-ExtIEs',
+        'ValidityAreaSpecificSRSInformationExtended-ExtIEs',
         'WLANMeasurementQuantities-ItemIEs',
         'WLANMeasurementQuantitiesValue-ExtIEs',
         'WLANMeasurementResult-Item-ExtIEs',
@@ -2641,6 +3370,9 @@ class NRPPA_IEs:
         'AbortTransmission-ExtIEs',
         'ActiveULBWP-ExtIEs',
         'AdditionalPathListItem-ExtIEs',
+        'AggregatedPosSRSResourceID-Item-ExtIEs',
+        'AggregatedPRSResourceSet-Item-ExtIEs',
+        'DL-PRS-ResourceSet-Item-ExtIEs',
         'ExtendedAdditionalPathList-Item-ExtIEs',
         'AoA-AssistanceInfo-ExtIEs',
         'AngleMeasurementType-ExtIEs',
@@ -2660,6 +3392,7 @@ class NRPPA_IEs:
         'CGI-NR-ExtIEs',
         'CriticalityDiagnostics-ExtIEs',
         'CriticalityDiagnostics-IE-List-ExtIEs',
+        'CommonTAParameters-ExtIEs',
         'DL-PRS-ExtIEs',
         'DL-PRSMutingPattern-ExtIEs',
         'DLPRSResourceCoordinates-ExtIEs',
@@ -2673,12 +3406,15 @@ class NRPPA_IEs:
         'GNBRxTxTimeDiffMeas-ExtIEs',
         'LCS-to-GCS-Translation-ExtIEs',
         'LCS-to-GCS-TranslationItem-ExtIEs',
+        'LocalOrigin-ExtIEs',
         'LocationUncertainty-ExtIEs',
         'LoS-NLoSInformation-ExtIEs',
         'MeasurementBeamInfo-ExtIEs',
         'MeasurementQuantities-ItemIEs',
         'MeasurementQuantitiesValue-ExtIEs',
+        'MeasuredResultsAssociatedInfoItem-ExtIEs',
         'MeasuredResultsValue-ExtensionIE',
+        'Mobile-TRP-LocationInformation-ExtIEs',
         'MultipleULAoA-ExtIEs',
         'MultipleULAoA-Item-ExtIEs',
         'NG-RANAccessPointPosition-ExtIEs',
@@ -2697,8 +3433,12 @@ class NRPPA_IEs:
         'PathlossReferenceSignal-ExtensionIE',
         'PosSIBs-ExtIEs',
         'PosSIB-Segments-ExtIEs',
+        'PRSBWAggregationRequestInfo-Item-ExtIEs',
+        'DL-PRSBWAggregationRequestInfo-Item-ExtIEs',
         'PosSRSResource-Item-ExtIEs',
         'PosSRSResourceSet-Item-ExtIEs',
+        'PosSRSResourceSet-Aggregation-Item-ExtIEs',
+        'Combined-PosSRSResourceSet-Item-ExtIEs',
         'PosResourceSetType-ExtIEs',
         'PosResourceSetTypePeriodic-ExtIEs',
         'PosResourceSetTypeSemi-persistent-ExtIEs',
@@ -2724,6 +3464,7 @@ class NRPPA_IEs:
         'PRSTransmissionOffPerResourceSet-Item-ExtIEs',
         'PRSTRPItem-ExtIEs',
         'PRSTransmissionTRPItem-ExtIEs',
+        'PosValidityAreaCell-Item-ExtIEs',
         'ReferenceSignal-ExtensionIE',
         'ReferencePoint-ExtIEs',
         'RelativeGeodeticLocation-ExtIEs',
@@ -2733,6 +3474,8 @@ class NRPPA_IEs:
         'RequestedDLPRSResourceSet-Item-ExtIEs',
         'RequestedDLPRSResource-Item-ExtIEs',
         'RequestedSRSTransmissionCharacteristics-ExtIEs',
+        'ResourceMapping-ExtIEs',
+        'RequestedSRSPreconfigurationCharacteristics-Item-ExtIEs',
         'SRSResourceSet-Item-ExtIEs',
         'ResourceSetType-ExtIEs',
         'ResourceSetTypePeriodic-ExtIEs',
@@ -2763,6 +3506,11 @@ class NRPPA_IEs:
         'ResultUTRAN-Item-ExtIEs',
         'SCS-SpecificCarrier-ExtIEs',
         'Search-window-information-ExtIEs',
+        'SlotOffsetForRemainingHopsItem-ExtIEs',
+        'SlotOffsetRemainingHops-ExtIEs',
+        'SlotOffsetRemainingHopsAperiodic-ExtIEs',
+        'SlotOffsetRemainingHopsSemiPersistent-ExtIEs',
+        'SlotOffsetRemainingHopsSemiPeriodic-ExtIEs',
         'SpatialDirectionInformation-ExtIEs',
         'SpatialRelationInfo-ExtIEs',
         'SpatialRelationforResourceIDItem-ExtIEs',
@@ -2780,8 +3528,10 @@ class NRPPA_IEs:
         'SSBInfoItem-ExtIEs',
         'SSB-ExtIEs',
         'SSBBurstPosition-ExtIEs',
+        'StartRBIndex-ExtIEs',
         'StartTimeAndDuration-ExtIEs',
         'SystemInformation-ExtIEs',
+        'SRSPreconfiguration-Item-ExtIEs',
         'TDD-Config-EUTRA-Item-Item-ExtIEs',
         'TRPTEGInformation-ExtIEs',
         'RxTxTEG-ExtIEs',
@@ -2789,7 +3539,14 @@ class NRPPA_IEs:
         'TF-Configuration-ExtIEs',
         'TimeStamp-ExtIEs',
         'TimeStampSlotIndex-ExtIEs',
+        'TimeWindowDurationMeasurement-ExtIEs',
+        'TimeWindowDurationSRS-ExtIEs',
+        'TimeWindowStartSRS-ExtIEs',
+        'TimeWindowInformation-Measurement-Item-ExtIEs',
+        'TimeWindowInformation-SRS-Item-ExtIEs',
+        'TimeWindowStart-ExtIEs',
         'TransmissionComb-ExtIEs',
+        'TransmissionCombn8-ExtIEs',
         'TransmissionCombPos-ExtIEs',
         'TRPBeamAntennaInformation-ExtIEs',
         'Choice-TRP-Beam-Info-Item-ExtIEs',
@@ -2803,6 +3560,7 @@ class NRPPA_IEs:
         'TrpMeasurementQuality-ExtIEs',
         'TrpMeasurementTimingQuality-ExtIEs',
         'TrpMeasurementAngleQuality-ExtIEs',
+        'TRPPhaseQuality-ExtIEs',
         'TRP-MeasurementRequestItem-ExtIEs',
         'TRP-MeasurementResponseItem-ExtIEs',
         'TRP-MeasurementUpdateItem-ExtIEs',
@@ -2822,13 +3580,17 @@ class NRPPA_IEs:
         'TRP-Tx-TEGInformation-ExtIEs',
         'TRPTEGItem-ExtIEs',
         'DLPRSResource-Item-ExtIEs',
+        'TxHoppingConfiguration-ExtIEs',
         'UEReportingInformation-ExtIEs',
         'UETxTEGAssociationItem-ExtIEs',
         'SRSResourceID-Item-ExtIEs',
         'UL-AoA-ExtIEs',
         'UL-RTOAMeasurement-ExtIEs',
+        'UL-RSCPMeas-ExtIEs',
         'ULRTOAMeas-ExtIEs',
         'UL-SRS-RSRPP-ExtIEs',
+        'ValidityAreaSpecificSRSInformation-ExtIEs',
+        'ValidityAreaSpecificSRSInformationExtended-ExtIEs',
         'WLANMeasurementQuantities-ItemIEs',
         'WLANMeasurementQuantitiesValue-ExtIEs',
         'WLANMeasurementResult-Item-ExtIEs',
@@ -2844,20 +3606,17 @@ class NRPPA_IEs:
     _AbortTransmission_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __AbortTransmission_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___AbortTransmission_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___AbortTransmission_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____AbortTransmission_choice_extension_id_tab_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    ___AbortTransmission_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Value', ____AbortTransmission_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __AbortTransmission_choice_extension_id._const_tab = ___AbortTransmission_choice_extension_id_tab
     __AbortTransmission_choice_extension_id._const_tab_at = None
     __AbortTransmission_choice_extension_id._const_tab_id = 'id'
     __AbortTransmission_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___AbortTransmission_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___AbortTransmission_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __AbortTransmission_choice_extension_criticality._const_tab = ___AbortTransmission_choice_extension_criticality_tab
+    __AbortTransmission_choice_extension_criticality._const_tab = ___AbortTransmission_choice_extension_id_tab
     __AbortTransmission_choice_extension_criticality._const_tab_at = ('..', 'id')
     __AbortTransmission_choice_extension_criticality._const_tab_id = 'criticality'
     __AbortTransmission_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___AbortTransmission_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___AbortTransmission_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __AbortTransmission_choice_extension_value._const_tab = ___AbortTransmission_choice_extension_value_tab
+    __AbortTransmission_choice_extension_value._const_tab = ___AbortTransmission_choice_extension_id_tab
     __AbortTransmission_choice_extension_value._const_tab_at = ('..', 'id')
     __AbortTransmission_choice_extension_value._const_tab_id = 'Value'
     _AbortTransmission_choice_extension._cont = ASN1Dict([
@@ -2875,15 +3634,16 @@ class NRPPA_IEs:
     
     #-----< AbortTransmission-ExtIEs >-----#
     AbortTransmission_ExtIEs = CLASS(name='AbortTransmission-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    AbortTransmission_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _AbortTransmission_ExtIEs_val_Value_0 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    AbortTransmission_ExtIEs._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Value', _AbortTransmission_ExtIEs_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< ActiveULBWP >-----#
     ActiveULBWP = SEQ(name='ActiveULBWP', mode=MODE_TYPE)
     _ActiveULBWP_locationAndBandwidth = INT(name='locationAndBandwidth', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _ActiveULBWP_locationAndBandwidth._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=37949)], ev=[], er=[])
     _ActiveULBWP_subcarrierSpacing = ENUM(name='subcarrierSpacing', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _ActiveULBWP_subcarrierSpacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz60', 2), ('kHz120', 3)])
-    _ActiveULBWP_subcarrierSpacing._ext = []
+    _ActiveULBWP_subcarrierSpacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz60', 2), ('kHz120', 3), ('kHz480', 4), ('kHz960', 5)])
+    _ActiveULBWP_subcarrierSpacing._ext = ['kHz480', 'kHz960']
     _ActiveULBWP_cyclicPrefix = ENUM(name='cyclicPrefix', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _ActiveULBWP_cyclicPrefix._cont = ASN1Dict([('normal', 0), ('extended', 1)])
     _ActiveULBWP_cyclicPrefix._ext = None
@@ -2984,6 +3744,150 @@ class NRPPA_IEs:
     _AdditionalPathListItem_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MultipleULAoA')))
     _AdditionalPathListItem_ExtIEs_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-SRS-RSRPP')))
     AdditionalPathListItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 74), ('criticality', 'ignore'), ('Extension', _AdditionalPathListItem_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 96), ('criticality', 'ignore'), ('Extension', _AdditionalPathListItem_ExtIEs_val_Extension_1), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< AggregatedPosSRSResourceID-List >-----#
+    AggregatedPosSRSResourceID_List = SEQ_OF(name='AggregatedPosSRSResourceID-List', mode=MODE_TYPE)
+    _AggregatedPosSRSResourceID_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPosSRSResourceID-Item')))
+    AggregatedPosSRSResourceID_List._cont = _AggregatedPosSRSResourceID_List__item_
+    AggregatedPosSRSResourceID_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
+    #-----< AggregatedPosSRSResourceID-Item >-----#
+    AggregatedPosSRSResourceID_Item = SEQ(name='AggregatedPosSRSResourceID-Item', mode=MODE_TYPE)
+    _AggregatedPosSRSResourceID_Item_sRSPosResource_ID = INT(name='sRSPosResource-ID', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSPosResourceID')))
+    _AggregatedPosSRSResourceID_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __AggregatedPosSRSResourceID_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PointA')))
+    _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-SpecificCarrier')))
+    _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_2 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NR-PCI')))
+    ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 154), ('criticality', 'ignore'), ('Extension', _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 156), ('criticality', 'ignore'), ('Extension', _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'mandatory')]), dict([('id', 155), ('criticality', 'ignore'), ('Extension', _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id._const_tab = ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id._const_tab_at = None
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality._const_tab = ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue._const_tab = ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __AggregatedPosSRSResourceID_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id),
+        ('criticality', ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue),
+        ])
+    __AggregatedPosSRSResourceID_Item_iE_Extensions__item_._ext = None
+    _AggregatedPosSRSResourceID_Item_iE_Extensions._cont = __AggregatedPosSRSResourceID_Item_iE_Extensions__item_
+    _AggregatedPosSRSResourceID_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    AggregatedPosSRSResourceID_Item._cont = ASN1Dict([
+        ('sRSPosResource-ID', _AggregatedPosSRSResourceID_Item_sRSPosResource_ID),
+        ('iE-Extensions', _AggregatedPosSRSResourceID_Item_iE_Extensions),
+        ])
+    AggregatedPosSRSResourceID_Item._ext = []
+    
+    #-----< AggregatedPosSRSResourceID-Item-ExtIEs >-----#
+    AggregatedPosSRSResourceID_Item_ExtIEs = CLASS(name='AggregatedPosSRSResourceID-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PointA')))
+    _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-SpecificCarrier')))
+    _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_2 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NR-PCI')))
+    AggregatedPosSRSResourceID_Item_ExtIEs._val = ASN1Set(rv=[dict([('id', 154), ('criticality', 'ignore'), ('Extension', _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_0), ('presence', 'mandatory')]), dict([('id', 156), ('criticality', 'ignore'), ('Extension', _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_1), ('presence', 'mandatory')]), dict([('id', 155), ('criticality', 'ignore'), ('Extension', _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_2), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< AggregatedPRSResourceSetList >-----#
+    AggregatedPRSResourceSetList = SEQ_OF(name='AggregatedPRSResourceSetList', mode=MODE_TYPE)
+    _AggregatedPRSResourceSetList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPRSResourceSet-Item')))
+    AggregatedPRSResourceSetList._cont = _AggregatedPRSResourceSetList__item_
+    AggregatedPRSResourceSetList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=2)], ev=None, er=[])
+    
+    #-----< AggregatedPRSResourceSet-Item >-----#
+    AggregatedPRSResourceSet_Item = SEQ(name='AggregatedPRSResourceSet-Item', mode=MODE_TYPE)
+    _AggregatedPRSResourceSet_Item_dl_PRS_ResourceSet_List = SEQ_OF(name='dl-PRS-ResourceSet-List', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'DL-PRS-ResourceSet-List')))
+    _AggregatedPRSResourceSet_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __AggregatedPRSResourceSet_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id._const_tab = ____AggregatedPRSResourceSet_Item_iE_Extensions__item__id_tab
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id._const_tab_at = None
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality._const_tab = ____AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality_tab
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab = ____AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue_tab
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __AggregatedPRSResourceSet_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id),
+        ('criticality', ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue),
+        ])
+    __AggregatedPRSResourceSet_Item_iE_Extensions__item_._ext = None
+    _AggregatedPRSResourceSet_Item_iE_Extensions._cont = __AggregatedPRSResourceSet_Item_iE_Extensions__item_
+    _AggregatedPRSResourceSet_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    AggregatedPRSResourceSet_Item._cont = ASN1Dict([
+        ('dl-PRS-ResourceSet-List', _AggregatedPRSResourceSet_Item_dl_PRS_ResourceSet_List),
+        ('iE-Extensions', _AggregatedPRSResourceSet_Item_iE_Extensions),
+        ])
+    AggregatedPRSResourceSet_Item._ext = []
+    
+    #-----< AggregatedPRSResourceSet-Item-ExtIEs >-----#
+    AggregatedPRSResourceSet_Item_ExtIEs = CLASS(name='AggregatedPRSResourceSet-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    AggregatedPRSResourceSet_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< DL-PRS-ResourceSet-List >-----#
+    DL_PRS_ResourceSet_List = SEQ_OF(name='DL-PRS-ResourceSet-List', mode=MODE_TYPE)
+    _DL_PRS_ResourceSet_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'DL-PRS-ResourceSet-Item')))
+    DL_PRS_ResourceSet_List._cont = _DL_PRS_ResourceSet_List__item_
+    DL_PRS_ResourceSet_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=3)], ev=None, er=[])
+    
+    #-----< DL-PRS-ResourceSet-Item >-----#
+    DL_PRS_ResourceSet_Item = SEQ(name='DL-PRS-ResourceSet-Item', mode=MODE_TYPE)
+    _DL_PRS_ResourceSet_Item_dl_prs_ResourceSetIndex = INT(name='dl-prs-ResourceSetIndex', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _DL_PRS_ResourceSet_Item_dl_prs_ResourceSetIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _DL_PRS_ResourceSet_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __DL_PRS_ResourceSet_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id._const_tab = ____DL_PRS_ResourceSet_Item_iE_Extensions__item__id_tab
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id._const_tab_at = None
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality._const_tab = ____DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality_tab
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue._const_tab = ____DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue_tab
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __DL_PRS_ResourceSet_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id),
+        ('criticality', ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue),
+        ])
+    __DL_PRS_ResourceSet_Item_iE_Extensions__item_._ext = None
+    _DL_PRS_ResourceSet_Item_iE_Extensions._cont = __DL_PRS_ResourceSet_Item_iE_Extensions__item_
+    _DL_PRS_ResourceSet_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    DL_PRS_ResourceSet_Item._cont = ASN1Dict([
+        ('dl-prs-ResourceSetIndex', _DL_PRS_ResourceSet_Item_dl_prs_ResourceSetIndex),
+        ('iE-Extensions', _DL_PRS_ResourceSet_Item_iE_Extensions),
+        ])
+    DL_PRS_ResourceSet_Item._ext = []
+    
+    #-----< DL-PRS-ResourceSet-Item-ExtIEs >-----#
+    DL_PRS_ResourceSet_Item_ExtIEs = CLASS(name='DL-PRS-ResourceSet-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    DL_PRS_ResourceSet_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< ExtendedAdditionalPathList >-----#
     ExtendedAdditionalPathList = SEQ_OF(name='ExtendedAdditionalPathList', mode=MODE_TYPE)
@@ -3535,11 +4439,11 @@ class NRPPA_IEs:
     #-----< BandwidthSRS >-----#
     BandwidthSRS = CHOICE(name='BandwidthSRS', mode=MODE_TYPE)
     _BandwidthSRS_fR1 = ENUM(name='fR1', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BandwidthSRS_fR1._cont = ASN1Dict([('mHz5', 0), ('mHz10', 1), ('mHz20', 2), ('mHz40', 3), ('mHz50', 4), ('mHz80', 5), ('mHz100', 6)])
-    _BandwidthSRS_fR1._ext = []
+    _BandwidthSRS_fR1._cont = ASN1Dict([('mHz5', 0), ('mHz10', 1), ('mHz20', 2), ('mHz40', 3), ('mHz50', 4), ('mHz80', 5), ('mHz100', 6), ('mHz160', 7), ('mHz200', 8), ('mHz15', 9), ('mHz25', 10), ('mHz30', 11), ('mHz60', 12), ('mHz35', 13), ('mHz45', 14), ('mHz70', 15), ('mHz90', 16)])
+    _BandwidthSRS_fR1._ext = ['mHz160', 'mHz200', 'mHz15', 'mHz25', 'mHz30', 'mHz60', 'mHz35', 'mHz45', 'mHz70', 'mHz90']
     _BandwidthSRS_fR2 = ENUM(name='fR2', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _BandwidthSRS_fR2._cont = ASN1Dict([('mHz50', 0), ('mHz100', 1), ('mHz200', 2), ('mHz400', 3)])
-    _BandwidthSRS_fR2._ext = []
+    _BandwidthSRS_fR2._cont = ASN1Dict([('mHz50', 0), ('mHz100', 1), ('mHz200', 2), ('mHz400', 3), ('mHz600', 4), ('mhz800', 5), ('mHz1600', 6), ('mHz2000', 7)])
+    _BandwidthSRS_fR2._ext = ['mHz600', 'mhz800', 'mHz1600', 'mHz2000']
     _BandwidthSRS_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __BandwidthSRS_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___BandwidthSRS_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
@@ -3575,6 +4479,11 @@ class NRPPA_IEs:
     #-----< BandwidthSRS-ExtIEs >-----#
     BandwidthSRS_ExtIEs = CLASS(name='BandwidthSRS-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
     BandwidthSRS_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< Bandwidth-Aggregation-Request-Indication >-----#
+    Bandwidth_Aggregation_Request_Indication = ENUM(name='Bandwidth-Aggregation-Request-Indication', mode=MODE_TYPE)
+    Bandwidth_Aggregation_Request_Indication._cont = ASN1Dict([('true', 0)])
+    Bandwidth_Aggregation_Request_Indication._ext = []
     
     #-----< BCCH >-----#
     BCCH = INT(name='BCCH', mode=MODE_TYPE)
@@ -3894,6 +4803,49 @@ class NRPPA_IEs:
     CriticalityDiagnostics_IE_List_ExtIEs = CLASS(name='CriticalityDiagnostics-IE-List-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     CriticalityDiagnostics_IE_List_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
+    #-----< CommonTAParameters >-----#
+    CommonTAParameters = SEQ(name='CommonTAParameters', mode=MODE_TYPE)
+    _CommonTAParameters_epochTime = OCT_STR(name='epochTime', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _CommonTAParameters_taInfo = OCT_STR(name='taInfo', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _CommonTAParameters_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __CommonTAParameters_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___CommonTAParameters_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____CommonTAParameters_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____CommonTAParameters_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CommonTAParameters_iE_Extensions__item__id._const_tab = ____CommonTAParameters_iE_Extensions__item__id_tab
+    ___CommonTAParameters_iE_Extensions__item__id._const_tab_at = None
+    ___CommonTAParameters_iE_Extensions__item__id._const_tab_id = 'id'
+    ___CommonTAParameters_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____CommonTAParameters_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____CommonTAParameters_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CommonTAParameters_iE_Extensions__item__criticality._const_tab = ____CommonTAParameters_iE_Extensions__item__criticality_tab
+    ___CommonTAParameters_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___CommonTAParameters_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___CommonTAParameters_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____CommonTAParameters_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____CommonTAParameters_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___CommonTAParameters_iE_Extensions__item__extensionValue._const_tab = ____CommonTAParameters_iE_Extensions__item__extensionValue_tab
+    ___CommonTAParameters_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___CommonTAParameters_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __CommonTAParameters_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___CommonTAParameters_iE_Extensions__item__id),
+        ('criticality', ___CommonTAParameters_iE_Extensions__item__criticality),
+        ('extensionValue', ___CommonTAParameters_iE_Extensions__item__extensionValue),
+        ])
+    __CommonTAParameters_iE_Extensions__item_._ext = None
+    _CommonTAParameters_iE_Extensions._cont = __CommonTAParameters_iE_Extensions__item_
+    _CommonTAParameters_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    CommonTAParameters._cont = ASN1Dict([
+        ('epochTime', _CommonTAParameters_epochTime),
+        ('taInfo', _CommonTAParameters_taInfo),
+        ('iE-Extensions', _CommonTAParameters_iE_Extensions),
+        ])
+    CommonTAParameters._ext = []
+    
+    #-----< CommonTAParameters-ExtIEs >-----#
+    CommonTAParameters_ExtIEs = CLASS(name='CommonTAParameters-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    CommonTAParameters_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
     #-----< DL-Bandwidth-EUTRA >-----#
     DL_Bandwidth_EUTRA = ENUM(name='DL-Bandwidth-EUTRA', mode=MODE_TYPE)
     DL_Bandwidth_EUTRA._cont = ASN1Dict([('bw6', 0), ('bw15', 1), ('bw25', 2), ('bw50', 3), ('bw75', 4), ('bw100', 5)])
@@ -3901,8 +4853,7 @@ class NRPPA_IEs:
     
     #-----< DL-PRS >-----#
     DL_PRS = SEQ(name='DL-PRS', mode=MODE_TYPE)
-    _DL_PRS_prsid = INT(name='prsid', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _DL_PRS_prsid._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
+    _DL_PRS_prsid = INT(name='prsid', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-ID')))
     _DL_PRS_dl_PRSResourceSetID = INT(name='dl-PRSResourceSetID', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-Resource-Set-ID')))
     _DL_PRS_dl_PRSResourceID = INT(name='dl-PRSResourceID', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-Resource-ID')), opt=True)
     _DL_PRS_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
@@ -4214,6 +5165,11 @@ class NRPPA_IEs:
     DL_PRSResourceARPLocation_ExtIEs = CLASS(name='DL-PRSResourceARPLocation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
     DL_PRSResourceARPLocation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
+    #-----< DL-reference-signal-UERxTx-TD >-----#
+    DL_reference_signal_UERxTx_TD = ENUM(name='DL-reference-signal-UERxTx-TD', mode=MODE_TYPE)
+    DL_reference_signal_UERxTx_TD._cont = ASN1Dict([('csirs', 0), ('prs', 1)])
+    DL_reference_signal_UERxTx_TD._ext = []
+    
     #-----< E-CID-MeasurementResult >-----#
     E_CID_MeasurementResult = SEQ(name='E-CID-MeasurementResult', mode=MODE_TYPE)
     _E_CID_MeasurementResult_servingCell_ID = SEQ(name='servingCell-ID', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'NG-RAN-CGI')))
@@ -4225,7 +5181,9 @@ class NRPPA_IEs:
     ___E_CID_MeasurementResult_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____E_CID_MeasurementResult_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'GeographicalCoordinates')))
-    ____E_CID_MeasurementResult_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 37), ('criticality', 'ignore'), ('Extension', _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredResultsAssociatedInfoList')))
+    ____E_CID_MeasurementResult_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 37), ('criticality', 'ignore'), ('Extension', _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 116), ('criticality', 'ignore'), ('Extension', _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Extension', _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___E_CID_MeasurementResult_iE_Extensions__item__id._const_tab = ____E_CID_MeasurementResult_iE_Extensions__item__id_tab
     ___E_CID_MeasurementResult_iE_Extensions__item__id._const_tab_at = None
     ___E_CID_MeasurementResult_iE_Extensions__item__id._const_tab_id = 'id'
@@ -4257,7 +5215,9 @@ class NRPPA_IEs:
     #-----< E-CID-MeasurementResult-ExtIEs >-----#
     E_CID_MeasurementResult_ExtIEs = CLASS(name='E-CID-MeasurementResult-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _E_CID_MeasurementResult_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'GeographicalCoordinates')))
-    E_CID_MeasurementResult_ExtIEs._val = ASN1Set(rv=[dict([('id', 37), ('criticality', 'ignore'), ('Extension', _E_CID_MeasurementResult_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _E_CID_MeasurementResult_ExtIEs_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    _E_CID_MeasurementResult_ExtIEs_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredResultsAssociatedInfoList')))
+    E_CID_MeasurementResult_ExtIEs._val = ASN1Set(rv=[dict([('id', 37), ('criticality', 'ignore'), ('Extension', _E_CID_MeasurementResult_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 116), ('criticality', 'ignore'), ('Extension', _E_CID_MeasurementResult_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 153), ('criticality', 'ignore'), ('Extension', _E_CID_MeasurementResult_ExtIEs_val_Extension_2), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< EUTRACellIdentifier >-----#
     EUTRACellIdentifier = BIT_STR(name='EUTRACellIdentifier', mode=MODE_TYPE)
@@ -4376,20 +5336,22 @@ class NRPPA_IEs:
     _GNBRxTxTimeDiffMeas_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __GNBRxTxTimeDiffMeas_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___GNBRxTxTimeDiffMeas_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___GNBRxTxTimeDiffMeas_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1')))
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2')))
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3')))
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4')))
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5')))
+    ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6')))
+    ___GNBRxTxTimeDiffMeas_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 141), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 142), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 143), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 144), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 145), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 146), ('criticality', 'ignore'), ('Value', ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __GNBRxTxTimeDiffMeas_choice_extension_id._const_tab = ___GNBRxTxTimeDiffMeas_choice_extension_id_tab
     __GNBRxTxTimeDiffMeas_choice_extension_id._const_tab_at = None
     __GNBRxTxTimeDiffMeas_choice_extension_id._const_tab_id = 'id'
     __GNBRxTxTimeDiffMeas_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___GNBRxTxTimeDiffMeas_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___GNBRxTxTimeDiffMeas_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __GNBRxTxTimeDiffMeas_choice_extension_criticality._const_tab = ___GNBRxTxTimeDiffMeas_choice_extension_criticality_tab
+    __GNBRxTxTimeDiffMeas_choice_extension_criticality._const_tab = ___GNBRxTxTimeDiffMeas_choice_extension_id_tab
     __GNBRxTxTimeDiffMeas_choice_extension_criticality._const_tab_at = ('..', 'id')
     __GNBRxTxTimeDiffMeas_choice_extension_criticality._const_tab_id = 'criticality'
     __GNBRxTxTimeDiffMeas_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___GNBRxTxTimeDiffMeas_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___GNBRxTxTimeDiffMeas_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __GNBRxTxTimeDiffMeas_choice_extension_value._const_tab = ___GNBRxTxTimeDiffMeas_choice_extension_value_tab
+    __GNBRxTxTimeDiffMeas_choice_extension_value._const_tab = ___GNBRxTxTimeDiffMeas_choice_extension_id_tab
     __GNBRxTxTimeDiffMeas_choice_extension_value._const_tab_at = ('..', 'id')
     __GNBRxTxTimeDiffMeas_choice_extension_value._const_tab_id = 'Value'
     _GNBRxTxTimeDiffMeas_choice_extension._cont = ASN1Dict([
@@ -4411,7 +5373,13 @@ class NRPPA_IEs:
     
     #-----< GNBRxTxTimeDiffMeas-ExtIEs >-----#
     GNBRxTxTimeDiffMeas_ExtIEs = CLASS(name='GNBRxTxTimeDiffMeas-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    GNBRxTxTimeDiffMeas_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1')))
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2')))
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3')))
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4')))
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5')))
+    _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6')))
+    GNBRxTxTimeDiffMeas_ExtIEs._val = ASN1Set(rv=[dict([('id', 141), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 142), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 143), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 144), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 145), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 146), ('criticality', 'ignore'), ('Value', _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< HESSID >-----#
     HESSID = OCT_STR(name='HESSID', mode=MODE_TYPE)
@@ -4569,6 +5537,52 @@ class NRPPA_IEs:
         ])
     LocationUncertainty._ext = []
     
+    #-----< LocalOrigin >-----#
+    LocalOrigin = SEQ(name='LocalOrigin', mode=MODE_TYPE)
+    _LocalOrigin_relativeCoordinateID = INT(name='relativeCoordinateID', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'CoordinateID')))
+    _LocalOrigin_horizontalAxesOrientation = INT(name='horizontalAxesOrientation', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _LocalOrigin_horizontalAxesOrientation._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _LocalOrigin_referencePointCoordinateHA = SEQ(name='referencePointCoordinateHA', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'NGRANHighAccuracyAccessPointPosition')), opt=True)
+    _LocalOrigin_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __LocalOrigin_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___LocalOrigin_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____LocalOrigin_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____LocalOrigin_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___LocalOrigin_iE_Extensions__item__id._const_tab = ____LocalOrigin_iE_Extensions__item__id_tab
+    ___LocalOrigin_iE_Extensions__item__id._const_tab_at = None
+    ___LocalOrigin_iE_Extensions__item__id._const_tab_id = 'id'
+    ___LocalOrigin_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____LocalOrigin_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____LocalOrigin_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___LocalOrigin_iE_Extensions__item__criticality._const_tab = ____LocalOrigin_iE_Extensions__item__criticality_tab
+    ___LocalOrigin_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___LocalOrigin_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___LocalOrigin_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____LocalOrigin_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____LocalOrigin_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___LocalOrigin_iE_Extensions__item__extensionValue._const_tab = ____LocalOrigin_iE_Extensions__item__extensionValue_tab
+    ___LocalOrigin_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___LocalOrigin_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __LocalOrigin_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___LocalOrigin_iE_Extensions__item__id),
+        ('criticality', ___LocalOrigin_iE_Extensions__item__criticality),
+        ('extensionValue', ___LocalOrigin_iE_Extensions__item__extensionValue),
+        ])
+    __LocalOrigin_iE_Extensions__item_._ext = None
+    _LocalOrigin_iE_Extensions._cont = __LocalOrigin_iE_Extensions__item_
+    _LocalOrigin_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    LocalOrigin._cont = ASN1Dict([
+        ('relativeCoordinateID', _LocalOrigin_relativeCoordinateID),
+        ('horizontalAxesOrientation', _LocalOrigin_horizontalAxesOrientation),
+        ('referencePointCoordinateHA', _LocalOrigin_referencePointCoordinateHA),
+        ('iE-Extensions', _LocalOrigin_iE_Extensions),
+        ])
+    LocalOrigin._ext = []
+    
+    #-----< LocalOrigin-ExtIEs >-----#
+    LocalOrigin_ExtIEs = CLASS(name='LocalOrigin-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    LocalOrigin_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
     #-----< LocationUncertainty-ExtIEs >-----#
     LocationUncertainty_ExtIEs = CLASS(name='LocationUncertainty-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     LocationUncertainty_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
@@ -4621,6 +5635,11 @@ class NRPPA_IEs:
     #-----< LoS-NLoSInformation-ExtIEs >-----#
     LoS_NLoSInformation_ExtIEs = CLASS(name='LoS-NLoSInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
     LoS_NLoSInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< MeasBasedOnAggregatedResources >-----#
+    MeasBasedOnAggregatedResources = ENUM(name='MeasBasedOnAggregatedResources', mode=MODE_TYPE)
+    MeasBasedOnAggregatedResources._cont = ASN1Dict([('true', 0)])
+    MeasBasedOnAggregatedResources._ext = []
     
     #-----< Measurement-ID >-----#
     Measurement_ID = INT(name='Measurement-ID', mode=MODE_TYPE)
@@ -4771,8 +5790,8 @@ class NRPPA_IEs:
     
     #-----< MeasurementQuantitiesValue >-----#
     MeasurementQuantitiesValue = ENUM(name='MeasurementQuantitiesValue', mode=MODE_TYPE)
-    MeasurementQuantitiesValue._cont = ASN1Dict([('cell-ID', 0), ('angleOfArrival', 1), ('timingAdvanceType1', 2), ('timingAdvanceType2', 3), ('rSRP', 4), ('rSRQ', 5), ('sS-RSRP', 6), ('sS-RSRQ', 7), ('cSI-RSRP', 8), ('cSI-RSRQ', 9), ('angleOfArrivalNR', 10), ('timingAdvanceNR', 11)])
-    MeasurementQuantitiesValue._ext = ['sS-RSRP', 'sS-RSRQ', 'cSI-RSRP', 'cSI-RSRQ', 'angleOfArrivalNR', 'timingAdvanceNR']
+    MeasurementQuantitiesValue._cont = ASN1Dict([('cell-ID', 0), ('angleOfArrival', 1), ('timingAdvanceType1', 2), ('timingAdvanceType2', 3), ('rSRP', 4), ('rSRQ', 5), ('sS-RSRP', 6), ('sS-RSRQ', 7), ('cSI-RSRP', 8), ('cSI-RSRQ', 9), ('angleOfArrivalNR', 10), ('timingAdvanceNR', 11), ('uE-Rx-Tx-Time-Diff', 12)])
+    MeasurementQuantitiesValue._ext = ['sS-RSRP', 'sS-RSRQ', 'cSI-RSRP', 'cSI-RSRQ', 'angleOfArrivalNR', 'timingAdvanceNR', 'uE-Rx-Tx-Time-Diff']
     
     #-----< MeasurementTimeOccasion >-----#
     MeasurementTimeOccasion = ENUM(name='MeasurementTimeOccasion', mode=MODE_TYPE)
@@ -4788,6 +5807,53 @@ class NRPPA_IEs:
     _MeasuredResults__item_ = CHOICE(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredResultsValue')))
     MeasuredResults._cont = _MeasuredResults__item_
     MeasuredResults._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< MeasuredResultsAssociatedInfoList >-----#
+    MeasuredResultsAssociatedInfoList = SEQ_OF(name='MeasuredResultsAssociatedInfoList', mode=MODE_TYPE)
+    _MeasuredResultsAssociatedInfoList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredResultsAssociatedInfoItem')))
+    MeasuredResultsAssociatedInfoList._cont = _MeasuredResultsAssociatedInfoList__item_
+    MeasuredResultsAssociatedInfoList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=64)], ev=None, er=[])
+    
+    #-----< MeasuredResultsAssociatedInfoItem >-----#
+    MeasuredResultsAssociatedInfoItem = SEQ(name='MeasuredResultsAssociatedInfoItem', mode=MODE_TYPE)
+    _MeasuredResultsAssociatedInfoItem_timeStamp = SEQ(name='timeStamp', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeStamp')), opt=True)
+    _MeasuredResultsAssociatedInfoItem_measurementQuality = CHOICE(name='measurementQuality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TrpMeasurementQuality')), opt=True)
+    _MeasuredResultsAssociatedInfoItem_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __MeasuredResultsAssociatedInfoItem_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    _____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'DL-reference-signal-UERxTx-TD')))
+    ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 164), ('criticality', 'ignore'), ('Extension', _____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id._const_tab = ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id._const_tab_at = None
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id._const_tab_id = 'id'
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality._const_tab = ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue._const_tab = ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __MeasuredResultsAssociatedInfoItem_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id),
+        ('criticality', ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality),
+        ('extensionValue', ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue),
+        ])
+    __MeasuredResultsAssociatedInfoItem_iE_Extensions__item_._ext = None
+    _MeasuredResultsAssociatedInfoItem_iE_Extensions._cont = __MeasuredResultsAssociatedInfoItem_iE_Extensions__item_
+    _MeasuredResultsAssociatedInfoItem_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    MeasuredResultsAssociatedInfoItem._cont = ASN1Dict([
+        ('timeStamp', _MeasuredResultsAssociatedInfoItem_timeStamp),
+        ('measurementQuality', _MeasuredResultsAssociatedInfoItem_measurementQuality),
+        ('iE-Extensions', _MeasuredResultsAssociatedInfoItem_iE_Extensions),
+        ])
+    MeasuredResultsAssociatedInfoItem._ext = []
+    
+    #-----< MeasuredResultsAssociatedInfoItem-ExtIEs >-----#
+    MeasuredResultsAssociatedInfoItem_ExtIEs = CLASS(name='MeasuredResultsAssociatedInfoItem-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    _MeasuredResultsAssociatedInfoItem_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'DL-reference-signal-UERxTx-TD')))
+    MeasuredResultsAssociatedInfoItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 164), ('criticality', 'ignore'), ('Extension', _MeasuredResultsAssociatedInfoItem_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< MeasuredResultsValue >-----#
     MeasuredResultsValue = CHOICE(name='MeasuredResultsValue', mode=MODE_TYPE)
@@ -4808,7 +5874,8 @@ class NRPPA_IEs:
     ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_3 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ResultCSI-RSRQ')))
     ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-AoA')))
     ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NR-TADV')))
-    ___MeasuredResultsValue_choice_Extension_id_tab._val = ASN1Set(rv=[dict([('id', 32), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 33), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 34), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 35), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 94), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
+    ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_6 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-Rx-Tx-Time-Diff')))
+    ___MeasuredResultsValue_choice_Extension_id_tab._val = ASN1Set(rv=[dict([('id', 32), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 33), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 34), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 35), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 94), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_5), ('presence', 'mandatory')]), dict([('id', 118), ('criticality', 'ignore'), ('Value', ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_6), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __MeasuredResultsValue_choice_Extension_id._const_tab = ___MeasuredResultsValue_choice_Extension_id_tab
     __MeasuredResultsValue_choice_Extension_id._const_tab_at = None
     __MeasuredResultsValue_choice_Extension_id._const_tab_id = 'id'
@@ -4844,7 +5911,56 @@ class NRPPA_IEs:
     _MeasuredResultsValue_ExtensionIE_val_Value_3 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ResultCSI-RSRQ')))
     _MeasuredResultsValue_ExtensionIE_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-AoA')))
     _MeasuredResultsValue_ExtensionIE_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NR-TADV')))
-    MeasuredResultsValue_ExtensionIE._val = ASN1Set(rv=[dict([('id', 32), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_0), ('presence', 'mandatory')]), dict([('id', 33), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_1), ('presence', 'mandatory')]), dict([('id', 34), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_2), ('presence', 'mandatory')]), dict([('id', 35), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_3), ('presence', 'mandatory')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_4), ('presence', 'mandatory')]), dict([('id', 94), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    _MeasuredResultsValue_ExtensionIE_val_Value_6 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-Rx-Tx-Time-Diff')))
+    MeasuredResultsValue_ExtensionIE._val = ASN1Set(rv=[dict([('id', 32), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_0), ('presence', 'mandatory')]), dict([('id', 33), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_1), ('presence', 'mandatory')]), dict([('id', 34), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_2), ('presence', 'mandatory')]), dict([('id', 35), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_3), ('presence', 'mandatory')]), dict([('id', 36), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_4), ('presence', 'mandatory')]), dict([('id', 94), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_5), ('presence', 'mandatory')]), dict([('id', 118), ('criticality', 'ignore'), ('Value', _MeasuredResultsValue_ExtensionIE_val_Value_6), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    
+    #-----< Mobile-TRP-LocationInformation >-----#
+    Mobile_TRP_LocationInformation = SEQ(name='Mobile-TRP-LocationInformation', mode=MODE_TYPE)
+    _Mobile_TRP_LocationInformation_location_Information = OCT_STR(name='location-Information', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Mobile_TRP_LocationInformation_velocity_Information = OCT_STR(name='velocity-Information', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _Mobile_TRP_LocationInformation_location_time_stamp = SEQ(name='location-time-stamp', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeStamp')), opt=True)
+    _Mobile_TRP_LocationInformation_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __Mobile_TRP_LocationInformation_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__id._const_tab = ____Mobile_TRP_LocationInformation_iE_Extensions__item__id_tab
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__id._const_tab_at = None
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__id._const_tab_id = 'id'
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality._const_tab = ____Mobile_TRP_LocationInformation_iE_Extensions__item__criticality_tab
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue._const_tab = ____Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue_tab
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __Mobile_TRP_LocationInformation_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___Mobile_TRP_LocationInformation_iE_Extensions__item__id),
+        ('criticality', ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality),
+        ('extensionValue', ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue),
+        ])
+    __Mobile_TRP_LocationInformation_iE_Extensions__item_._ext = None
+    _Mobile_TRP_LocationInformation_iE_Extensions._cont = __Mobile_TRP_LocationInformation_iE_Extensions__item_
+    _Mobile_TRP_LocationInformation_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    Mobile_TRP_LocationInformation._cont = ASN1Dict([
+        ('location-Information', _Mobile_TRP_LocationInformation_location_Information),
+        ('velocity-Information', _Mobile_TRP_LocationInformation_velocity_Information),
+        ('location-time-stamp', _Mobile_TRP_LocationInformation_location_time_stamp),
+        ('iE-Extensions', _Mobile_TRP_LocationInformation_iE_Extensions),
+        ])
+    Mobile_TRP_LocationInformation._ext = []
+    
+    #-----< Mobile-TRP-LocationInformation-ExtIEs >-----#
+    Mobile_TRP_LocationInformation_ExtIEs = CLASS(name='Mobile-TRP-LocationInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    Mobile_TRP_LocationInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< Mobile-IAB-MT-UE-ID >-----#
+    Mobile_IAB_MT_UE_ID = OCT_STR(name='Mobile-IAB-MT-UE-ID', mode=MODE_TYPE)
     
     #-----< MultipleULAoA >-----#
     MultipleULAoA = SEQ(name='MultipleULAoA', mode=MODE_TYPE)
@@ -4932,6 +6048,11 @@ class NRPPA_IEs:
     #-----< MultipleULAoA-Item-ExtIEs >-----#
     MultipleULAoA_Item_ExtIEs = CLASS(name='MultipleULAoA-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
     MultipleULAoA_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< MeasuredFrequencyHops >-----#
+    MeasuredFrequencyHops = ENUM(name='MeasuredFrequencyHops', mode=MODE_TYPE)
+    MeasuredFrequencyHops._cont = ASN1Dict([('singleHop', 0), ('multiHop', 1)])
+    MeasuredFrequencyHops._ext = []
     
     #-----< NarrowBandIndex >-----#
     NarrowBandIndex = INT(name='NarrowBandIndex', mode=MODE_TYPE)
@@ -5164,6 +6285,11 @@ class NRPPA_IEs:
     #-----< NRCellIdentifier >-----#
     NRCellIdentifier = BIT_STR(name='NRCellIdentifier', mode=MODE_TYPE)
     NRCellIdentifier._const_sz = ASN1Set(rv=[36], rr=[], ev=None, er=[])
+    
+    #-----< NrofSymbolsExtended >-----#
+    NrofSymbolsExtended = ENUM(name='NrofSymbolsExtended', mode=MODE_TYPE)
+    NrofSymbolsExtended._cont = ASN1Dict([('n8', 0), ('n10', 1), ('n12', 2), ('n14', 3)])
+    NrofSymbolsExtended._ext = []
     
     #-----< NR-PCI >-----#
     NR_PCI = INT(name='NR-PCI', mode=MODE_TYPE)
@@ -5829,8 +6955,103 @@ class NRPPA_IEs:
     
     #-----< PosSIB-Type >-----#
     PosSIB_Type = ENUM(name='PosSIB-Type', mode=MODE_TYPE)
-    PosSIB_Type._cont = ASN1Dict([('posSibType1-1', 0), ('posSibType1-2', 1), ('posSibType1-3', 2), ('posSibType1-4', 3), ('posSibType1-5', 4), ('posSibType1-6', 5), ('posSibType1-7', 6), ('posSibType1-8', 7), ('posSibType2-1', 8), ('posSibType2-2', 9), ('posSibType2-3', 10), ('posSibType2-4', 11), ('posSibType2-5', 12), ('posSibType2-6', 13), ('posSibType2-7', 14), ('posSibType2-8', 15), ('posSibType2-9', 16), ('posSibType2-10', 17), ('posSibType2-11', 18), ('posSibType2-12', 19), ('posSibType2-13', 20), ('posSibType2-14', 21), ('posSibType2-15', 22), ('posSibType2-16', 23), ('posSibType2-17', 24), ('posSibType2-18', 25), ('posSibType2-19', 26), ('posSibType2-20', 27), ('posSibType2-21', 28), ('posSibType2-22', 29), ('posSibType2-23', 30), ('posSibType2-24', 31), ('posSibType2-25', 32), ('posSibType3-1', 33), ('posSibType4-1', 34), ('posSibType5-1', 35), ('posSibType6-1', 36), ('posSibType6-2', 37), ('posSibType6-3', 38), ('posSibType1-9', 39), ('posSibType1-10', 40), ('posSibType6-4', 41), ('posSibType6-5', 42), ('posSibType6-6', 43)])
-    PosSIB_Type._ext = ['posSibType1-9', 'posSibType1-10', 'posSibType6-4', 'posSibType6-5', 'posSibType6-6']
+    PosSIB_Type._cont = ASN1Dict([('posSibType1-1', 0), ('posSibType1-2', 1), ('posSibType1-3', 2), ('posSibType1-4', 3), ('posSibType1-5', 4), ('posSibType1-6', 5), ('posSibType1-7', 6), ('posSibType1-8', 7), ('posSibType2-1', 8), ('posSibType2-2', 9), ('posSibType2-3', 10), ('posSibType2-4', 11), ('posSibType2-5', 12), ('posSibType2-6', 13), ('posSibType2-7', 14), ('posSibType2-8', 15), ('posSibType2-9', 16), ('posSibType2-10', 17), ('posSibType2-11', 18), ('posSibType2-12', 19), ('posSibType2-13', 20), ('posSibType2-14', 21), ('posSibType2-15', 22), ('posSibType2-16', 23), ('posSibType2-17', 24), ('posSibType2-18', 25), ('posSibType2-19', 26), ('posSibType2-20', 27), ('posSibType2-21', 28), ('posSibType2-22', 29), ('posSibType2-23', 30), ('posSibType2-24', 31), ('posSibType2-25', 32), ('posSibType3-1', 33), ('posSibType4-1', 34), ('posSibType5-1', 35), ('posSibType6-1', 36), ('posSibType6-2', 37), ('posSibType6-3', 38), ('posSibType1-9', 39), ('posSibType1-10', 40), ('posSibType6-4', 41), ('posSibType6-5', 42), ('posSibType6-6', 43), ('posSibType1-11', 44), ('posSibType1-12', 45), ('posSibType2-17a', 46), ('posSibType2-18a', 47), ('posSibType2-20a', 48), ('posSibType2-26', 49), ('posSibType2-27', 50), ('posSibType6-7', 51), ('posSibType7-1', 52), ('posSibType7-2', 53), ('posSibType7-3', 54), ('posSibType7-4', 55)])
+    PosSIB_Type._ext = ['posSibType1-9', 'posSibType1-10', 'posSibType6-4', 'posSibType6-5', 'posSibType6-6', 'posSibType1-11', 'posSibType1-12', 'posSibType2-17a', 'posSibType2-18a', 'posSibType2-20a', 'posSibType2-26', 'posSibType2-27', 'posSibType6-7', 'posSibType7-1', 'posSibType7-2', 'posSibType7-3', 'posSibType7-4']
+    
+    #-----< PRSBWAggregationRequestInfoList >-----#
+    PRSBWAggregationRequestInfoList = SEQ_OF(name='PRSBWAggregationRequestInfoList', mode=MODE_TYPE)
+    _PRSBWAggregationRequestInfoList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PRSBWAggregationRequestInfo-Item')))
+    PRSBWAggregationRequestInfoList._cont = _PRSBWAggregationRequestInfoList__item_
+    PRSBWAggregationRequestInfoList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=2)], ev=None, er=[])
+    
+    #-----< PRSBWAggregationRequestInfo-Item >-----#
+    PRSBWAggregationRequestInfo_Item = SEQ(name='PRSBWAggregationRequestInfo-Item', mode=MODE_TYPE)
+    _PRSBWAggregationRequestInfo_Item_dl_PRSBWAggregationRequestInfo_List = SEQ_OF(name='dl-PRSBWAggregationRequestInfo-List', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'DL-PRSBWAggregationRequestInfo-List')))
+    _PRSBWAggregationRequestInfo_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __PRSBWAggregationRequestInfo_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab = ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab_at = None
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab = ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab = ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __PRSBWAggregationRequestInfo_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id),
+        ('criticality', ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue),
+        ])
+    __PRSBWAggregationRequestInfo_Item_iE_Extensions__item_._ext = None
+    _PRSBWAggregationRequestInfo_Item_iE_Extensions._cont = __PRSBWAggregationRequestInfo_Item_iE_Extensions__item_
+    _PRSBWAggregationRequestInfo_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    PRSBWAggregationRequestInfo_Item._cont = ASN1Dict([
+        ('dl-PRSBWAggregationRequestInfo-List', _PRSBWAggregationRequestInfo_Item_dl_PRSBWAggregationRequestInfo_List),
+        ('iE-Extensions', _PRSBWAggregationRequestInfo_Item_iE_Extensions),
+        ])
+    PRSBWAggregationRequestInfo_Item._ext = []
+    
+    #-----< PRSBWAggregationRequestInfo-Item-ExtIEs >-----#
+    PRSBWAggregationRequestInfo_Item_ExtIEs = CLASS(name='PRSBWAggregationRequestInfo-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    PRSBWAggregationRequestInfo_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< DL-PRSBWAggregationRequestInfo-List >-----#
+    DL_PRSBWAggregationRequestInfo_List = SEQ_OF(name='DL-PRSBWAggregationRequestInfo-List', mode=MODE_TYPE)
+    _DL_PRSBWAggregationRequestInfo_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'DL-PRSBWAggregationRequestInfo-Item')))
+    DL_PRSBWAggregationRequestInfo_List._cont = _DL_PRSBWAggregationRequestInfo_List__item_
+    DL_PRSBWAggregationRequestInfo_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
+    #-----< DL-PRSBWAggregationRequestInfo-Item >-----#
+    DL_PRSBWAggregationRequestInfo_Item = SEQ(name='DL-PRSBWAggregationRequestInfo-Item', mode=MODE_TYPE)
+    _DL_PRSBWAggregationRequestInfo_Item_dl_prs_ResourceSetIndex = INT(name='dl-prs-ResourceSetIndex', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _DL_PRSBWAggregationRequestInfo_Item_dl_prs_ResourceSetIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=8)], ev=None, er=[])
+    _DL_PRSBWAggregationRequestInfo_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab = ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab_at = None
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab = ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab = ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id),
+        ('criticality', ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue),
+        ])
+    __DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item_._ext = None
+    _DL_PRSBWAggregationRequestInfo_Item_iE_Extensions._cont = __DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item_
+    _DL_PRSBWAggregationRequestInfo_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    DL_PRSBWAggregationRequestInfo_Item._cont = ASN1Dict([
+        ('dl-prs-ResourceSetIndex', _DL_PRSBWAggregationRequestInfo_Item_dl_prs_ResourceSetIndex),
+        ('iE-Extensions', _DL_PRSBWAggregationRequestInfo_Item_iE_Extensions),
+        ])
+    DL_PRSBWAggregationRequestInfo_Item._ext = []
+    
+    #-----< DL-PRSBWAggregationRequestInfo-Item-ExtIEs >-----#
+    DL_PRSBWAggregationRequestInfo_Item_ExtIEs = CLASS(name='DL-PRSBWAggregationRequestInfo-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    DL_PRSBWAggregationRequestInfo_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< PosSRSResource-List >-----#
     PosSRSResource_List = SEQ_OF(name='PosSRSResource-List', mode=MODE_TYPE)
@@ -5862,20 +7083,17 @@ class NRPPA_IEs:
     __PosSRSResource_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___PosSRSResource_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____PosSRSResource_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PosSRSResource_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____PosSRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TxHoppingConfiguration')))
+    ____PosSRSResource_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 139), ('criticality', 'ignore'), ('Extension', _____PosSRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PosSRSResource_Item_iE_Extensions__item__id._const_tab = ____PosSRSResource_Item_iE_Extensions__item__id_tab
     ___PosSRSResource_Item_iE_Extensions__item__id._const_tab_at = None
     ___PosSRSResource_Item_iE_Extensions__item__id._const_tab_id = 'id'
     ___PosSRSResource_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____PosSRSResource_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PosSRSResource_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PosSRSResource_Item_iE_Extensions__item__criticality._const_tab = ____PosSRSResource_Item_iE_Extensions__item__criticality_tab
+    ___PosSRSResource_Item_iE_Extensions__item__criticality._const_tab = ____PosSRSResource_Item_iE_Extensions__item__id_tab
     ___PosSRSResource_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___PosSRSResource_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___PosSRSResource_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____PosSRSResource_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PosSRSResource_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PosSRSResource_Item_iE_Extensions__item__extensionValue._const_tab = ____PosSRSResource_Item_iE_Extensions__item__extensionValue_tab
+    ___PosSRSResource_Item_iE_Extensions__item__extensionValue._const_tab = ____PosSRSResource_Item_iE_Extensions__item__id_tab
     ___PosSRSResource_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___PosSRSResource_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __PosSRSResource_Item_iE_Extensions__item_._cont = ASN1Dict([
@@ -5903,7 +7121,8 @@ class NRPPA_IEs:
     
     #-----< PosSRSResource-Item-ExtIEs >-----#
     PosSRSResource_Item_ExtIEs = CLASS(name='PosSRSResource-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    PosSRSResource_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _PosSRSResource_Item_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TxHoppingConfiguration')))
+    PosSRSResource_Item_ExtIEs._val = ASN1Set(rv=[dict([('id', 139), ('criticality', 'ignore'), ('Extension', _PosSRSResource_Item_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< PosSRSResourceID-List >-----#
     PosSRSResourceID_List = SEQ_OF(name='PosSRSResourceID-List', mode=MODE_TYPE)
@@ -5968,6 +7187,109 @@ class NRPPA_IEs:
     #-----< PosSRSResourceSet-Item-ExtIEs >-----#
     PosSRSResourceSet_Item_ExtIEs = CLASS(name='PosSRSResourceSet-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     PosSRSResourceSet_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< PosSRSResourceSet-Aggregation-List >-----#
+    PosSRSResourceSet_Aggregation_List = SEQ_OF(name='PosSRSResourceSet-Aggregation-List', mode=MODE_TYPE)
+    _PosSRSResourceSet_Aggregation_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-Item')))
+    PosSRSResourceSet_Aggregation_List._cont = _PosSRSResourceSet_Aggregation_List__item_
+    PosSRSResourceSet_Aggregation_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    
+    #-----< PosSRSResourceSet-Aggregation-Item >-----#
+    PosSRSResourceSet_Aggregation_Item = SEQ(name='PosSRSResourceSet-Aggregation-Item', mode=MODE_TYPE)
+    _PosSRSResourceSet_Aggregation_Item_combined_posSRSResourceSet_List = SEQ_OF(name='combined-posSRSResourceSet-List', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'Combined-PosSRSResourceSet-List')))
+    _PosSRSResourceSet_Aggregation_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __PosSRSResourceSet_Aggregation_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id._const_tab = ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id_tab
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id._const_tab_at = None
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality._const_tab = ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality_tab
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue._const_tab = ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue_tab
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __PosSRSResourceSet_Aggregation_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id),
+        ('criticality', ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue),
+        ])
+    __PosSRSResourceSet_Aggregation_Item_iE_Extensions__item_._ext = None
+    _PosSRSResourceSet_Aggregation_Item_iE_Extensions._cont = __PosSRSResourceSet_Aggregation_Item_iE_Extensions__item_
+    _PosSRSResourceSet_Aggregation_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    PosSRSResourceSet_Aggregation_Item._cont = ASN1Dict([
+        ('combined-posSRSResourceSet-List', _PosSRSResourceSet_Aggregation_Item_combined_posSRSResourceSet_List),
+        ('iE-Extensions', _PosSRSResourceSet_Aggregation_Item_iE_Extensions),
+        ])
+    PosSRSResourceSet_Aggregation_Item._ext = []
+    
+    #-----< PosSRSResourceSet-Aggregation-Item-ExtIEs >-----#
+    PosSRSResourceSet_Aggregation_Item_ExtIEs = CLASS(name='PosSRSResourceSet-Aggregation-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    PosSRSResourceSet_Aggregation_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< Combined-PosSRSResourceSet-List >-----#
+    Combined_PosSRSResourceSet_List = SEQ_OF(name='Combined-PosSRSResourceSet-List', mode=MODE_TYPE)
+    _Combined_PosSRSResourceSet_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Combined-PosSRSResourceSet-Item')))
+    Combined_PosSRSResourceSet_List._cont = _Combined_PosSRSResourceSet_List__item_
+    Combined_PosSRSResourceSet_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=3)], ev=None, er=[])
+    
+    #-----< Combined-PosSRSResourceSet-Item >-----#
+    Combined_PosSRSResourceSet_Item = SEQ(name='Combined-PosSRSResourceSet-Item', mode=MODE_TYPE)
+    _Combined_PosSRSResourceSet_Item_pointA = INT(name='pointA', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Combined_PosSRSResourceSet_Item_pointA._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3279165)], ev=None, er=[])
+    _Combined_PosSRSResourceSet_Item_pCI_NR = INT(name='pCI-NR', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _Combined_PosSRSResourceSet_Item_pCI_NR._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1007)], ev=None, er=[])
+    _Combined_PosSRSResourceSet_Item_possrsResourceSetID = INT(name='possrsResourceSetID', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _Combined_PosSRSResourceSet_Item_possrsResourceSetID._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15)], ev=None, er=[])
+    _Combined_PosSRSResourceSet_Item_scs_specificCarrier = SEQ(name='scs-specificCarrier', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SCS-SpecificCarrier')))
+    _Combined_PosSRSResourceSet_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __Combined_PosSRSResourceSet_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id._const_tab = ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__id_tab
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id._const_tab_at = None
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality._const_tab = ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality_tab
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab = ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue_tab
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __Combined_PosSRSResourceSet_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id),
+        ('criticality', ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue),
+        ])
+    __Combined_PosSRSResourceSet_Item_iE_Extensions__item_._ext = None
+    _Combined_PosSRSResourceSet_Item_iE_Extensions._cont = __Combined_PosSRSResourceSet_Item_iE_Extensions__item_
+    _Combined_PosSRSResourceSet_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    Combined_PosSRSResourceSet_Item._cont = ASN1Dict([
+        ('pointA', _Combined_PosSRSResourceSet_Item_pointA),
+        ('pCI-NR', _Combined_PosSRSResourceSet_Item_pCI_NR),
+        ('possrsResourceSetID', _Combined_PosSRSResourceSet_Item_possrsResourceSetID),
+        ('scs-specificCarrier', _Combined_PosSRSResourceSet_Item_scs_specificCarrier),
+        ('iE-Extensions', _Combined_PosSRSResourceSet_Item_iE_Extensions),
+        ])
+    Combined_PosSRSResourceSet_Item._ext = []
+    
+    #-----< Combined-PosSRSResourceSet-Item-ExtIEs >-----#
+    Combined_PosSRSResourceSet_Item_ExtIEs = CLASS(name='Combined-PosSRSResourceSet-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    Combined_PosSRSResourceSet_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< PosResourceSetType >-----#
     PosResourceSetType = CHOICE(name='PosResourceSetType', mode=MODE_TYPE)
@@ -6199,12 +7521,9 @@ class NRPPA_IEs:
     
     #-----< PRSInformationPos >-----#
     PRSInformationPos = SEQ(name='PRSInformationPos', mode=MODE_TYPE)
-    _PRSInformationPos_pRS_IDPos = INT(name='pRS-IDPos', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _PRSInformationPos_pRS_IDPos._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=255)], ev=None, er=[])
-    _PRSInformationPos_pRS_Resource_Set_IDPos = INT(name='pRS-Resource-Set-IDPos', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _PRSInformationPos_pRS_Resource_Set_IDPos._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=7)], ev=None, er=[])
-    _PRSInformationPos_pRS_Resource_IDPos = INT(name='pRS-Resource-IDPos', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _PRSInformationPos_pRS_Resource_IDPos._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63)], ev=None, er=[])
+    _PRSInformationPos_pRS_IDPos = INT(name='pRS-IDPos', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-ID')))
+    _PRSInformationPos_pRS_Resource_Set_IDPos = INT(name='pRS-Resource-Set-IDPos', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-Resource-Set-ID')))
+    _PRSInformationPos_pRS_Resource_IDPos = INT(name='pRS-Resource-IDPos', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRS-Resource-ID')), opt=True)
     _PRSInformationPos_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
     __PRSInformationPos_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___PRSInformationPos_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
@@ -6257,20 +7576,17 @@ class NRPPA_IEs:
     __PRSConfiguration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___PRSConfiguration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____PRSConfiguration_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSConfiguration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____PRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPRSResourceSetList')))
+    ____PRSConfiguration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 132), ('criticality', 'ignore'), ('Extension', _____PRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PRSConfiguration_iE_Extensions__item__id._const_tab = ____PRSConfiguration_iE_Extensions__item__id_tab
     ___PRSConfiguration_iE_Extensions__item__id._const_tab_at = None
     ___PRSConfiguration_iE_Extensions__item__id._const_tab_id = 'id'
     ___PRSConfiguration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____PRSConfiguration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSConfiguration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PRSConfiguration_iE_Extensions__item__criticality._const_tab = ____PRSConfiguration_iE_Extensions__item__criticality_tab
+    ___PRSConfiguration_iE_Extensions__item__criticality._const_tab = ____PRSConfiguration_iE_Extensions__item__id_tab
     ___PRSConfiguration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___PRSConfiguration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___PRSConfiguration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____PRSConfiguration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSConfiguration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PRSConfiguration_iE_Extensions__item__extensionValue._const_tab = ____PRSConfiguration_iE_Extensions__item__extensionValue_tab
+    ___PRSConfiguration_iE_Extensions__item__extensionValue._const_tab = ____PRSConfiguration_iE_Extensions__item__id_tab
     ___PRSConfiguration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___PRSConfiguration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __PRSConfiguration_iE_Extensions__item_._cont = ASN1Dict([
@@ -6289,7 +7605,8 @@ class NRPPA_IEs:
     
     #-----< PRSConfiguration-ExtIEs >-----#
     PRSConfiguration_ExtIEs = CLASS(name='PRSConfiguration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    PRSConfiguration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _PRSConfiguration_ExtIEs_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPRSResourceSetList')))
+    PRSConfiguration_ExtIEs._val = ASN1Set(rv=[dict([('id', 132), ('criticality', 'ignore'), ('Extension', _PRSConfiguration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< PRS-ConfigurationIndex-EUTRA >-----#
     PRS_ConfigurationIndex_EUTRA = INT(name='PRS-ConfigurationIndex-EUTRA', mode=MODE_TYPE)
@@ -6626,20 +7943,17 @@ class NRPPA_IEs:
     __PRSResource_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___PRSResource_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____PRSResource_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSResource_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____PRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ExtendedResourceSymbolOffset')))
+    ____PRSResource_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 112), ('criticality', 'ignore'), ('Extension', _____PRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PRSResource_Item_iE_Extensions__item__id._const_tab = ____PRSResource_Item_iE_Extensions__item__id_tab
     ___PRSResource_Item_iE_Extensions__item__id._const_tab_at = None
     ___PRSResource_Item_iE_Extensions__item__id._const_tab_id = 'id'
     ___PRSResource_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____PRSResource_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSResource_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PRSResource_Item_iE_Extensions__item__criticality._const_tab = ____PRSResource_Item_iE_Extensions__item__criticality_tab
+    ___PRSResource_Item_iE_Extensions__item__criticality._const_tab = ____PRSResource_Item_iE_Extensions__item__id_tab
     ___PRSResource_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___PRSResource_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___PRSResource_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____PRSResource_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____PRSResource_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___PRSResource_Item_iE_Extensions__item__extensionValue._const_tab = ____PRSResource_Item_iE_Extensions__item__extensionValue_tab
+    ___PRSResource_Item_iE_Extensions__item__extensionValue._const_tab = ____PRSResource_Item_iE_Extensions__item__id_tab
     ___PRSResource_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___PRSResource_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __PRSResource_Item_iE_Extensions__item_._cont = ASN1Dict([
@@ -6663,7 +7977,12 @@ class NRPPA_IEs:
     
     #-----< PRSResource-Item-ExtIEs >-----#
     PRSResource_Item_ExtIEs = CLASS(name='PRSResource-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    PRSResource_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _PRSResource_Item_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ExtendedResourceSymbolOffset')))
+    PRSResource_Item_ExtIEs._val = ASN1Set(rv=[dict([('id', 112), ('criticality', 'ignore'), ('Extension', _PRSResource_Item_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< ExtendedResourceSymbolOffset >-----#
+    ExtendedResourceSymbolOffset = INT(name='ExtendedResourceSymbolOffset', mode=MODE_TYPE)
+    ExtendedResourceSymbolOffset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=[], er=[])
     
     #-----< PRSResource-QCLInfo >-----#
     PRSResource_QCLInfo = CHOICE(name='PRSResource-QCLInfo', mode=MODE_TYPE)
@@ -6817,8 +8136,8 @@ class NRPPA_IEs:
     _PRSResourceSet_Item_cPType._cont = ASN1Dict([('normal', 0), ('extended', 1)])
     _PRSResourceSet_Item_cPType._ext = []
     _PRSResourceSet_Item_resourceSetPeriodicity = ENUM(name='resourceSetPeriodicity', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _PRSResourceSet_Item_resourceSetPeriodicity._cont = ASN1Dict([('n4', 0), ('n5', 1), ('n8', 2), ('n10', 3), ('n16', 4), ('n20', 5), ('n32', 6), ('n40', 7), ('n64', 8), ('n80', 9), ('n160', 10), ('n320', 11), ('n640', 12), ('n1280', 13), ('n2560', 14), ('n5120', 15), ('n10240', 16), ('n20480', 17), ('n40960', 18), ('n81920', 19)])
-    _PRSResourceSet_Item_resourceSetPeriodicity._ext = []
+    _PRSResourceSet_Item_resourceSetPeriodicity._cont = ASN1Dict([('n4', 0), ('n5', 1), ('n8', 2), ('n10', 3), ('n16', 4), ('n20', 5), ('n32', 6), ('n40', 7), ('n64', 8), ('n80', 9), ('n160', 10), ('n320', 11), ('n640', 12), ('n1280', 13), ('n2560', 14), ('n5120', 15), ('n10240', 16), ('n20480', 17), ('n40960', 18), ('n81920', 19), ('n128', 20), ('n256', 21), ('n512', 22)])
+    _PRSResourceSet_Item_resourceSetPeriodicity._ext = ['n128', 'n256', 'n512']
     _PRSResourceSet_Item_resourceSetSlotOffset = INT(name='resourceSetSlotOffset', mode=MODE_TYPE, tag=(8, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _PRSResourceSet_Item_resourceSetSlotOffset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=[], er=[])
     _PRSResourceSet_Item_resourceRepetitionFactor = ENUM(name='resourceRepetitionFactor', mode=MODE_TYPE, tag=(9, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -6828,8 +8147,8 @@ class NRPPA_IEs:
     _PRSResourceSet_Item_resourceTimeGap._cont = ASN1Dict([('tg1', 0), ('tg2', 1), ('tg4', 2), ('tg8', 3), ('tg16', 4), ('tg32', 5)])
     _PRSResourceSet_Item_resourceTimeGap._ext = []
     _PRSResourceSet_Item_resourceNumberofSymbols = ENUM(name='resourceNumberofSymbols', mode=MODE_TYPE, tag=(11, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _PRSResourceSet_Item_resourceNumberofSymbols._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
-    _PRSResourceSet_Item_resourceNumberofSymbols._ext = []
+    _PRSResourceSet_Item_resourceNumberofSymbols._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3), ('n1', 4)])
+    _PRSResourceSet_Item_resourceNumberofSymbols._ext = ['n1']
     _PRSResourceSet_Item_pRSMuting = SEQ(name='pRSMuting', mode=MODE_TYPE, tag=(12, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PRSMuting')), opt=True)
     _PRSResourceSet_Item_pRSResourceTransmitPower = INT(name='pRSResourceTransmitPower', mode=MODE_TYPE, tag=(13, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _PRSResourceSet_Item_pRSResourceTransmitPower._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-60, ub=50)], ev=None, er=[])
@@ -7221,6 +8540,59 @@ class NRPPA_IEs:
     PRSTransmissionTRPItem_ExtIEs = CLASS(name='PRSTransmissionTRPItem-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     PRSTransmissionTRPItem_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
+    #-----< PosValidityAreaCellList >-----#
+    PosValidityAreaCellList = SEQ_OF(name='PosValidityAreaCellList', mode=MODE_TYPE)
+    _PosValidityAreaCellList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCell-Item')))
+    PosValidityAreaCellList._cont = _PosValidityAreaCellList__item_
+    PosValidityAreaCellList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    
+    #-----< PosValidityAreaCell-Item >-----#
+    PosValidityAreaCell_Item = SEQ(name='PosValidityAreaCell-Item', mode=MODE_TYPE)
+    _PosValidityAreaCell_Item_nR_CGI = SEQ(name='nR-CGI', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'CGI-NR')))
+    _PosValidityAreaCell_Item_nR_PCI = INT(name='nR-PCI', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'NR-PCI')), opt=True)
+    _PosValidityAreaCell_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __PosValidityAreaCell_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___PosValidityAreaCell_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosValidityAreaCell_Item_iE_Extensions__item__id._const_tab = ____PosValidityAreaCell_Item_iE_Extensions__item__id_tab
+    ___PosValidityAreaCell_Item_iE_Extensions__item__id._const_tab_at = None
+    ___PosValidityAreaCell_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___PosValidityAreaCell_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosValidityAreaCell_Item_iE_Extensions__item__criticality._const_tab = ____PosValidityAreaCell_Item_iE_Extensions__item__criticality_tab
+    ___PosValidityAreaCell_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___PosValidityAreaCell_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____PosValidityAreaCell_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue._const_tab = ____PosValidityAreaCell_Item_iE_Extensions__item__extensionValue_tab
+    ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __PosValidityAreaCell_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___PosValidityAreaCell_Item_iE_Extensions__item__id),
+        ('criticality', ___PosValidityAreaCell_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue),
+        ])
+    __PosValidityAreaCell_Item_iE_Extensions__item_._ext = None
+    _PosValidityAreaCell_Item_iE_Extensions._cont = __PosValidityAreaCell_Item_iE_Extensions__item_
+    _PosValidityAreaCell_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    PosValidityAreaCell_Item._cont = ASN1Dict([
+        ('nR-CGI', _PosValidityAreaCell_Item_nR_CGI),
+        ('nR-PCI', _PosValidityAreaCell_Item_nR_PCI),
+        ('iE-Extensions', _PosValidityAreaCell_Item_iE_Extensions),
+        ])
+    PosValidityAreaCell_Item._ext = []
+    
+    #-----< PosValidityAreaCell-Item-ExtIEs >-----#
+    PosValidityAreaCell_Item_ExtIEs = CLASS(name='PosValidityAreaCell-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    PosValidityAreaCell_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< PointA >-----#
+    PointA = INT(name='PointA', mode=MODE_TYPE)
+    PointA._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3279165)], ev=None, er=[])
+    
     #-----< ReferenceSignal >-----#
     ReferenceSignal = CHOICE(name='ReferenceSignal', mode=MODE_TYPE)
     _ReferenceSignal_nZP_CSI_RS = INT(name='nZP-CSI-RS', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'NZP-CSI-RS-ResourceID')))
@@ -7275,20 +8647,17 @@ class NRPPA_IEs:
     _ReferencePoint_choice_Extension = SEQ(name='choice-Extension', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __ReferencePoint_choice_Extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___ReferencePoint_choice_Extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ReferencePoint_choice_Extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____ReferencePoint_choice_Extension_id_tab_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'LocalOrigin')))
+    ___ReferencePoint_choice_Extension_id_tab._val = ASN1Set(rv=[dict([('id', 162), ('criticality', 'ignore'), ('Value', ____ReferencePoint_choice_Extension_id_tab_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __ReferencePoint_choice_Extension_id._const_tab = ___ReferencePoint_choice_Extension_id_tab
     __ReferencePoint_choice_Extension_id._const_tab_at = None
     __ReferencePoint_choice_Extension_id._const_tab_id = 'id'
     __ReferencePoint_choice_Extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___ReferencePoint_choice_Extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ReferencePoint_choice_Extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __ReferencePoint_choice_Extension_criticality._const_tab = ___ReferencePoint_choice_Extension_criticality_tab
+    __ReferencePoint_choice_Extension_criticality._const_tab = ___ReferencePoint_choice_Extension_id_tab
     __ReferencePoint_choice_Extension_criticality._const_tab_at = ('..', 'id')
     __ReferencePoint_choice_Extension_criticality._const_tab_id = 'criticality'
     __ReferencePoint_choice_Extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___ReferencePoint_choice_Extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ReferencePoint_choice_Extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __ReferencePoint_choice_Extension_value._const_tab = ___ReferencePoint_choice_Extension_value_tab
+    __ReferencePoint_choice_Extension_value._const_tab = ___ReferencePoint_choice_Extension_id_tab
     __ReferencePoint_choice_Extension_value._const_tab_at = ('..', 'id')
     __ReferencePoint_choice_Extension_value._const_tab_id = 'Value'
     _ReferencePoint_choice_Extension._cont = ASN1Dict([
@@ -7307,7 +8676,8 @@ class NRPPA_IEs:
     
     #-----< ReferencePoint-ExtIEs >-----#
     ReferencePoint_ExtIEs = CLASS(name='ReferencePoint-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ReferencePoint_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _ReferencePoint_ExtIEs_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'LocalOrigin')))
+    ReferencePoint_ExtIEs._val = ASN1Set(rv=[dict([('id', 162), ('criticality', 'ignore'), ('Value', _ReferencePoint_ExtIEs_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< CoordinateID >-----#
     CoordinateID = INT(name='CoordinateID', mode=MODE_TYPE)
@@ -7442,20 +8812,22 @@ class NRPPA_IEs:
     _RelativePathDelay_choice_Extension = SEQ(name='choice-Extension', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __RelativePathDelay_choice_Extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___RelativePathDelay_choice_Extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___RelativePathDelay_choice_Extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1AdditionalPath')))
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2AdditionalPath')))
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3AdditionalPath')))
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4AdditionalPath')))
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5AdditionalPath')))
+    ____RelativePathDelay_choice_Extension_id_tab_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6AdditionalPath')))
+    ___RelativePathDelay_choice_Extension_id_tab._val = ASN1Set(rv=[dict([('id', 147), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 148), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 149), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 150), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 151), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 152), ('criticality', 'ignore'), ('Value', ____RelativePathDelay_choice_Extension_id_tab_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __RelativePathDelay_choice_Extension_id._const_tab = ___RelativePathDelay_choice_Extension_id_tab
     __RelativePathDelay_choice_Extension_id._const_tab_at = None
     __RelativePathDelay_choice_Extension_id._const_tab_id = 'id'
     __RelativePathDelay_choice_Extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___RelativePathDelay_choice_Extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___RelativePathDelay_choice_Extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __RelativePathDelay_choice_Extension_criticality._const_tab = ___RelativePathDelay_choice_Extension_criticality_tab
+    __RelativePathDelay_choice_Extension_criticality._const_tab = ___RelativePathDelay_choice_Extension_id_tab
     __RelativePathDelay_choice_Extension_criticality._const_tab_at = ('..', 'id')
     __RelativePathDelay_choice_Extension_criticality._const_tab_id = 'criticality'
     __RelativePathDelay_choice_Extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___RelativePathDelay_choice_Extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___RelativePathDelay_choice_Extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __RelativePathDelay_choice_Extension_value._const_tab = ___RelativePathDelay_choice_Extension_value_tab
+    __RelativePathDelay_choice_Extension_value._const_tab = ___RelativePathDelay_choice_Extension_id_tab
     __RelativePathDelay_choice_Extension_value._const_tab_at = ('..', 'id')
     __RelativePathDelay_choice_Extension_value._const_tab_id = 'Value'
     _RelativePathDelay_choice_Extension._cont = ASN1Dict([
@@ -7477,12 +8849,86 @@ class NRPPA_IEs:
     
     #-----< RelativePathDelay-ExtIEs >-----#
     RelativePathDelay_ExtIEs = CLASS(name='RelativePathDelay-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    RelativePathDelay_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _RelativePathDelay_ExtIEs_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1AdditionalPath')))
+    _RelativePathDelay_ExtIEs_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2AdditionalPath')))
+    _RelativePathDelay_ExtIEs_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3AdditionalPath')))
+    _RelativePathDelay_ExtIEs_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4AdditionalPath')))
+    _RelativePathDelay_ExtIEs_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5AdditionalPath')))
+    _RelativePathDelay_ExtIEs_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6AdditionalPath')))
+    RelativePathDelay_ExtIEs._val = ASN1Set(rv=[dict([('id', 147), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 148), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 149), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 150), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 151), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 152), ('criticality', 'ignore'), ('Value', _RelativePathDelay_ExtIEs_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    
+    #-----< Remote-UE-Indication-Request >-----#
+    Remote_UE_Indication_Request = ENUM(name='Remote-UE-Indication-Request', mode=MODE_TYPE)
+    Remote_UE_Indication_Request._cont = ASN1Dict([('true', 0)])
+    Remote_UE_Indication_Request._ext = []
+    
+    #-----< Remote-UE-Indication >-----#
+    Remote_UE_Indication = ENUM(name='Remote-UE-Indication', mode=MODE_TYPE)
+    Remote_UE_Indication._cont = ASN1Dict([('l2-u2n-remote-ue', 0)])
+    Remote_UE_Indication._ext = []
+    
+    #-----< Remote-UE-Status >-----#
+    Remote_UE_Status = ENUM(name='Remote-UE-Status', mode=MODE_TYPE)
+    Remote_UE_Status._cont = ASN1Dict([('l2-u2n-remote-ue', 0), ('no', 1)])
+    Remote_UE_Status._ext = []
+    
+    #-----< RepetitionFactorExtended >-----#
+    RepetitionFactorExtended = ENUM(name='RepetitionFactorExtended', mode=MODE_TYPE)
+    RepetitionFactorExtended._cont = ASN1Dict([('n3', 0), ('n5', 1), ('n6', 2), ('n7', 3), ('n8', 4), ('n10', 5), ('n12', 6), ('n14', 7)])
+    RepetitionFactorExtended._ext = []
     
     #-----< ReportCharacteristics >-----#
     ReportCharacteristics = ENUM(name='ReportCharacteristics', mode=MODE_TYPE)
     ReportCharacteristics._cont = ASN1Dict([('onDemand', 0), ('periodic', 1)])
     ReportCharacteristics._ext = []
+    
+    #-----< ReportingGranularitykminus1 >-----#
+    ReportingGranularitykminus1 = INT(name='ReportingGranularitykminus1', mode=MODE_TYPE)
+    ReportingGranularitykminus1._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3940097)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus2 >-----#
+    ReportingGranularitykminus2 = INT(name='ReportingGranularitykminus2', mode=MODE_TYPE)
+    ReportingGranularitykminus2._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=7880193)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus3 >-----#
+    ReportingGranularitykminus3 = INT(name='ReportingGranularitykminus3', mode=MODE_TYPE)
+    ReportingGranularitykminus3._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15760385)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus4 >-----#
+    ReportingGranularitykminus4 = INT(name='ReportingGranularitykminus4', mode=MODE_TYPE)
+    ReportingGranularitykminus4._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=31520769)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus5 >-----#
+    ReportingGranularitykminus5 = INT(name='ReportingGranularitykminus5', mode=MODE_TYPE)
+    ReportingGranularitykminus5._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63041537)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus6 >-----#
+    ReportingGranularitykminus6 = INT(name='ReportingGranularitykminus6', mode=MODE_TYPE)
+    ReportingGranularitykminus6._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=126083073)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus1AdditionalPath >-----#
+    ReportingGranularitykminus1AdditionalPath = INT(name='ReportingGranularitykminus1AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus1AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=32701)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus2AdditionalPath >-----#
+    ReportingGranularitykminus2AdditionalPath = INT(name='ReportingGranularitykminus2AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus2AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65401)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus3AdditionalPath >-----#
+    ReportingGranularitykminus3AdditionalPath = INT(name='ReportingGranularitykminus3AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus3AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=130801)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus4AdditionalPath >-----#
+    ReportingGranularitykminus4AdditionalPath = INT(name='ReportingGranularitykminus4AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus4AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=261601)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus5AdditionalPath >-----#
+    ReportingGranularitykminus5AdditionalPath = INT(name='ReportingGranularitykminus5AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus5AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=523201)], ev=None, er=[])
+    
+    #-----< ReportingGranularitykminus6AdditionalPath >-----#
+    ReportingGranularitykminus6AdditionalPath = INT(name='ReportingGranularitykminus6AdditionalPath', mode=MODE_TYPE)
+    ReportingGranularitykminus6AdditionalPath._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1046401)], ev=None, er=[])
     
     #-----< RequestedDLPRSTransmissionCharacteristics >-----#
     RequestedDLPRSTransmissionCharacteristics = SEQ(name='RequestedDLPRSTransmissionCharacteristics', mode=MODE_TYPE)
@@ -7494,20 +8940,17 @@ class NRPPA_IEs:
     __RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PRSBWAggregationRequestInfoList')))
+    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 130), ('criticality', 'ignore'), ('Extension', _____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab = ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab_at = None
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab_id = 'id'
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality._const_tab = ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality_tab
+    ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality._const_tab = ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue._const_tab = ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue_tab
+    ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue._const_tab = ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item_._cont = ASN1Dict([
@@ -7528,7 +8971,8 @@ class NRPPA_IEs:
     
     #-----< RequestedDLPRSTransmissionCharacteristics-ExtIEs >-----#
     RequestedDLPRSTransmissionCharacteristics_ExtIEs = CLASS(name='RequestedDLPRSTransmissionCharacteristics-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    RequestedDLPRSTransmissionCharacteristics_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _RequestedDLPRSTransmissionCharacteristics_ExtIEs_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PRSBWAggregationRequestInfoList')))
+    RequestedDLPRSTransmissionCharacteristics_ExtIEs._val = ASN1Set(rv=[dict([('id', 130), ('criticality', 'ignore'), ('Extension', _RequestedDLPRSTransmissionCharacteristics_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< RequestedDLPRSResourceSet-List >-----#
     RequestedDLPRSResourceSet_List = SEQ_OF(name='RequestedDLPRSResourceSet-List', mode=MODE_TYPE)
@@ -7544,14 +8988,14 @@ class NRPPA_IEs:
     _RequestedDLPRSResourceSet_Item_combSize._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
     _RequestedDLPRSResourceSet_Item_combSize._ext = []
     _RequestedDLPRSResourceSet_Item_resourceSetPeriodicity = ENUM(name='resourceSetPeriodicity', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _RequestedDLPRSResourceSet_Item_resourceSetPeriodicity._cont = ASN1Dict([('n4', 0), ('n5', 1), ('n8', 2), ('n10', 3), ('n16', 4), ('n20', 5), ('n32', 6), ('n40', 7), ('n64', 8), ('n80', 9), ('n160', 10), ('n320', 11), ('n640', 12), ('n1280', 13), ('n2560', 14), ('n5120', 15), ('n10240', 16), ('n20480', 17), ('n40960', 18), ('n81920', 19)])
-    _RequestedDLPRSResourceSet_Item_resourceSetPeriodicity._ext = []
+    _RequestedDLPRSResourceSet_Item_resourceSetPeriodicity._cont = ASN1Dict([('n4', 0), ('n5', 1), ('n8', 2), ('n10', 3), ('n16', 4), ('n20', 5), ('n32', 6), ('n40', 7), ('n64', 8), ('n80', 9), ('n160', 10), ('n320', 11), ('n640', 12), ('n1280', 13), ('n2560', 14), ('n5120', 15), ('n10240', 16), ('n20480', 17), ('n40960', 18), ('n81920', 19), ('n128', 20), ('n256', 21), ('n512', 22)])
+    _RequestedDLPRSResourceSet_Item_resourceSetPeriodicity._ext = ['n128', 'n256', 'n512']
     _RequestedDLPRSResourceSet_Item_resourceRepetitionFactor = ENUM(name='resourceRepetitionFactor', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _RequestedDLPRSResourceSet_Item_resourceRepetitionFactor._cont = ASN1Dict([('rf1', 0), ('rf2', 1), ('rf4', 2), ('rf6', 3), ('rf8', 4), ('rf16', 5), ('rf32', 6)])
     _RequestedDLPRSResourceSet_Item_resourceRepetitionFactor._ext = []
     _RequestedDLPRSResourceSet_Item_resourceNumberofSymbols = ENUM(name='resourceNumberofSymbols', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
-    _RequestedDLPRSResourceSet_Item_resourceNumberofSymbols._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3)])
-    _RequestedDLPRSResourceSet_Item_resourceNumberofSymbols._ext = []
+    _RequestedDLPRSResourceSet_Item_resourceNumberofSymbols._cont = ASN1Dict([('n2', 0), ('n4', 1), ('n6', 2), ('n12', 3), ('n1', 4)])
+    _RequestedDLPRSResourceSet_Item_resourceNumberofSymbols._ext = ['n1']
     _RequestedDLPRSResourceSet_Item_requestedDLPRSResource_List = SEQ_OF(name='requestedDLPRSResource-List', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'RequestedDLPRSResource-List')), opt=True)
     _RequestedDLPRSResourceSet_Item_resourceSetStartTimeAndDuration = SEQ(name='resourceSetStartTimeAndDuration', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'StartTimeAndDuration')), opt=True)
     _RequestedDLPRSResourceSet_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(7, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
@@ -7663,7 +9107,11 @@ class NRPPA_IEs:
     ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SrsFrequency')))
-    ____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 61), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Bandwidth-Aggregation-Request-Indication')))
+    _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCellList')))
+    _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ValidityAreaSpecificSRSInformation')))
+    _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_4 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ValidityAreaSpecificSRSInformationExtended')))
+    ____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 61), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 121), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 128), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')]), dict([('id', 135), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_3), ('presence', 'optional')]), dict([('id', 166), ('criticality', 'ignore'), ('Extension', _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_4), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab = ____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab
     ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab_at = None
     ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id._const_tab_id = 'id'
@@ -7696,7 +9144,104 @@ class NRPPA_IEs:
     #-----< RequestedSRSTransmissionCharacteristics-ExtIEs >-----#
     RequestedSRSTransmissionCharacteristics_ExtIEs = CLASS(name='RequestedSRSTransmissionCharacteristics-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SrsFrequency')))
-    RequestedSRSTransmissionCharacteristics_ExtIEs._val = ASN1Set(rv=[dict([('id', 61), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Bandwidth-Aggregation-Request-Indication')))
+    _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCellList')))
+    _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ValidityAreaSpecificSRSInformation')))
+    _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_4 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ValidityAreaSpecificSRSInformationExtended')))
+    RequestedSRSTransmissionCharacteristics_ExtIEs._val = ASN1Set(rv=[dict([('id', 61), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 121), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 128), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_2), ('presence', 'optional')]), dict([('id', 135), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_3), ('presence', 'optional')]), dict([('id', 166), ('criticality', 'ignore'), ('Extension', _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_4), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< ResourceMapping >-----#
+    ResourceMapping = SEQ(name='ResourceMapping', mode=MODE_TYPE)
+    _ResourceMapping_startPosition = INT(name='startPosition', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ResourceMapping_startPosition._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _ResourceMapping_nrofSumbols = ENUM(name='nrofSumbols', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _ResourceMapping_nrofSumbols._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4)])
+    _ResourceMapping_nrofSumbols._ext = None
+    _ResourceMapping_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __ResourceMapping_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___ResourceMapping_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____ResourceMapping_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ResourceMapping_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ResourceMapping_iE_Extensions__item__id._const_tab = ____ResourceMapping_iE_Extensions__item__id_tab
+    ___ResourceMapping_iE_Extensions__item__id._const_tab_at = None
+    ___ResourceMapping_iE_Extensions__item__id._const_tab_id = 'id'
+    ___ResourceMapping_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____ResourceMapping_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ResourceMapping_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ResourceMapping_iE_Extensions__item__criticality._const_tab = ____ResourceMapping_iE_Extensions__item__criticality_tab
+    ___ResourceMapping_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___ResourceMapping_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___ResourceMapping_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____ResourceMapping_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ResourceMapping_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ResourceMapping_iE_Extensions__item__extensionValue._const_tab = ____ResourceMapping_iE_Extensions__item__extensionValue_tab
+    ___ResourceMapping_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___ResourceMapping_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __ResourceMapping_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___ResourceMapping_iE_Extensions__item__id),
+        ('criticality', ___ResourceMapping_iE_Extensions__item__criticality),
+        ('extensionValue', ___ResourceMapping_iE_Extensions__item__extensionValue),
+        ])
+    __ResourceMapping_iE_Extensions__item_._ext = None
+    _ResourceMapping_iE_Extensions._cont = __ResourceMapping_iE_Extensions__item_
+    _ResourceMapping_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    ResourceMapping._cont = ASN1Dict([
+        ('startPosition', _ResourceMapping_startPosition),
+        ('nrofSumbols', _ResourceMapping_nrofSumbols),
+        ('iE-Extensions', _ResourceMapping_iE_Extensions),
+        ])
+    ResourceMapping._ext = []
+    
+    #-----< ResourceMapping-ExtIEs >-----#
+    ResourceMapping_ExtIEs = CLASS(name='ResourceMapping-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ResourceMapping_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< RequestedSRSPreconfigurationCharacteristics-List >-----#
+    RequestedSRSPreconfigurationCharacteristics_List = SEQ_OF(name='RequestedSRSPreconfigurationCharacteristics-List', mode=MODE_TYPE)
+    _RequestedSRSPreconfigurationCharacteristics_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSPreconfigurationCharacteristics-Item')))
+    RequestedSRSPreconfigurationCharacteristics_List._cont = _RequestedSRSPreconfigurationCharacteristics_List__item_
+    RequestedSRSPreconfigurationCharacteristics_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    
+    #-----< RequestedSRSPreconfigurationCharacteristics-Item >-----#
+    RequestedSRSPreconfigurationCharacteristics_Item = SEQ(name='RequestedSRSPreconfigurationCharacteristics-Item', mode=MODE_TYPE)
+    _RequestedSRSPreconfigurationCharacteristics_Item_requestedSRSTransmissionCharacteristics = SEQ(name='requestedSRSTransmissionCharacteristics', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSTransmissionCharacteristics')))
+    _RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id._const_tab = ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id_tab
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id._const_tab_at = None
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality._const_tab = ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality_tab
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue._const_tab = ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue_tab
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id),
+        ('criticality', ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue),
+        ])
+    __RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item_._ext = None
+    _RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions._cont = __RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item_
+    _RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    RequestedSRSPreconfigurationCharacteristics_Item._cont = ASN1Dict([
+        ('requestedSRSTransmissionCharacteristics', _RequestedSRSPreconfigurationCharacteristics_Item_requestedSRSTransmissionCharacteristics),
+        ('iE-Extensions', _RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions),
+        ])
+    RequestedSRSPreconfigurationCharacteristics_Item._ext = []
+    
+    #-----< RequestedSRSPreconfigurationCharacteristics-Item-ExtIEs >-----#
+    RequestedSRSPreconfigurationCharacteristics_Item_ExtIEs = CLASS(name='RequestedSRSPreconfigurationCharacteristics-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    RequestedSRSPreconfigurationCharacteristics_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< SRSResourceSet-Item >-----#
     SRSResourceSet_Item = SEQ(name='SRSResourceSet-Item', mode=MODE_TYPE)
@@ -8143,29 +9688,24 @@ class NRPPA_IEs:
     
     #-----< ResourceTypePeriodicPos >-----#
     ResourceTypePeriodicPos = SEQ(name='ResourceTypePeriodicPos', mode=MODE_TYPE)
-    _ResourceTypePeriodicPos_periodicity = ENUM(name='periodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _ResourceTypePeriodicPos_periodicity._cont = ASN1Dict([('slot1', 0), ('slot2', 1), ('slot4', 2), ('slot5', 3), ('slot8', 4), ('slot10', 5), ('slot16', 6), ('slot20', 7), ('slot32', 8), ('slot40', 9), ('slot64', 10), ('slot80', 11), ('slot160', 12), ('slot320', 13), ('slot640', 14), ('slot1280', 15), ('slot2560', 16), ('slot5120', 17), ('slot10240', 18), ('slot40960', 19), ('slot81920', 20), ('slot128', 21), ('slot256', 22), ('slot512', 23), ('slot20480', 24)])
-    _ResourceTypePeriodicPos_periodicity._ext = ['slot128', 'slot256', 'slot512', 'slot20480']
+    _ResourceTypePeriodicPos_sRSPeriodicity = ENUM(name='sRSPeriodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSPeriodicity')))
     _ResourceTypePeriodicPos_offset = INT(name='offset', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _ResourceTypePeriodicPos_offset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=[], er=[])
     _ResourceTypePeriodicPos_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
     __ResourceTypePeriodicPos_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___ResourceTypePeriodicPos_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____ResourceTypePeriodicPos_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPosPeriodicConfigHyperSFNIndex')))
+    ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 165), ('criticality', 'ignore'), ('Extension', _____ResourceTypePeriodicPos_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___ResourceTypePeriodicPos_iE_Extensions__item__id._const_tab = ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab
     ___ResourceTypePeriodicPos_iE_Extensions__item__id._const_tab_at = None
     ___ResourceTypePeriodicPos_iE_Extensions__item__id._const_tab_id = 'id'
     ___ResourceTypePeriodicPos_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____ResourceTypePeriodicPos_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypePeriodicPos_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___ResourceTypePeriodicPos_iE_Extensions__item__criticality._const_tab = ____ResourceTypePeriodicPos_iE_Extensions__item__criticality_tab
+    ___ResourceTypePeriodicPos_iE_Extensions__item__criticality._const_tab = ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab
     ___ResourceTypePeriodicPos_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___ResourceTypePeriodicPos_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____ResourceTypePeriodicPos_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypePeriodicPos_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue._const_tab = ____ResourceTypePeriodicPos_iE_Extensions__item__extensionValue_tab
+    ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue._const_tab = ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab
     ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __ResourceTypePeriodicPos_iE_Extensions__item_._cont = ASN1Dict([
@@ -8177,7 +9717,7 @@ class NRPPA_IEs:
     _ResourceTypePeriodicPos_iE_Extensions._cont = __ResourceTypePeriodicPos_iE_Extensions__item_
     _ResourceTypePeriodicPos_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
     ResourceTypePeriodicPos._cont = ASN1Dict([
-        ('periodicity', _ResourceTypePeriodicPos_periodicity),
+        ('sRSPeriodicity', _ResourceTypePeriodicPos_sRSPeriodicity),
         ('offset', _ResourceTypePeriodicPos_offset),
         ('iE-Extensions', _ResourceTypePeriodicPos_iE_Extensions),
         ])
@@ -8185,33 +9725,29 @@ class NRPPA_IEs:
     
     #-----< ResourceTypePeriodicPos-ExtIEs >-----#
     ResourceTypePeriodicPos_ExtIEs = CLASS(name='ResourceTypePeriodicPos-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ResourceTypePeriodicPos_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _ResourceTypePeriodicPos_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPosPeriodicConfigHyperSFNIndex')))
+    ResourceTypePeriodicPos_ExtIEs._val = ASN1Set(rv=[dict([('id', 165), ('criticality', 'ignore'), ('Extension', _ResourceTypePeriodicPos_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< ResourceTypeSemi-persistentPos >-----#
     ResourceTypeSemi_persistentPos = SEQ(name='ResourceTypeSemi-persistentPos', mode=MODE_TYPE)
-    _ResourceTypeSemi_persistentPos_periodicity = ENUM(name='periodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _ResourceTypeSemi_persistentPos_periodicity._cont = ASN1Dict([('slot1', 0), ('slot2', 1), ('slot4', 2), ('slot5', 3), ('slot8', 4), ('slot10', 5), ('slot16', 6), ('slot20', 7), ('slot32', 8), ('slot40', 9), ('slot64', 10), ('slot80', 11), ('slot160', 12), ('slot320', 13), ('slot640', 14), ('slot1280', 15), ('slot2560', 16), ('slot5120', 17), ('slot10240', 18), ('slot40960', 19), ('slot81920', 20), ('slot128', 21), ('slot256', 22), ('slot512', 23), ('slot20480', 24)])
-    _ResourceTypeSemi_persistentPos_periodicity._ext = ['slot128', 'slot256', 'slot512', 'slot20480']
+    _ResourceTypeSemi_persistentPos_sRSPeriodicity = ENUM(name='sRSPeriodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSPeriodicity')))
     _ResourceTypeSemi_persistentPos_offset = INT(name='offset', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _ResourceTypeSemi_persistentPos_offset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=[], er=[])
     _ResourceTypeSemi_persistentPos_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
     __ResourceTypeSemi_persistentPos_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPosPeriodicConfigHyperSFNIndex')))
+    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 165), ('criticality', 'ignore'), ('Extension', _____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__id._const_tab = ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__id._const_tab_at = None
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__id._const_tab_id = 'id'
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality._const_tab = ____ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality_tab
+    ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality._const_tab = ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue._const_tab = ____ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue_tab
+    ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue._const_tab = ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __ResourceTypeSemi_persistentPos_iE_Extensions__item_._cont = ASN1Dict([
@@ -8223,7 +9759,7 @@ class NRPPA_IEs:
     _ResourceTypeSemi_persistentPos_iE_Extensions._cont = __ResourceTypeSemi_persistentPos_iE_Extensions__item_
     _ResourceTypeSemi_persistentPos_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
     ResourceTypeSemi_persistentPos._cont = ASN1Dict([
-        ('periodicity', _ResourceTypeSemi_persistentPos_periodicity),
+        ('sRSPeriodicity', _ResourceTypeSemi_persistentPos_sRSPeriodicity),
         ('offset', _ResourceTypeSemi_persistentPos_offset),
         ('iE-Extensions', _ResourceTypeSemi_persistentPos_iE_Extensions),
         ])
@@ -8231,7 +9767,8 @@ class NRPPA_IEs:
     
     #-----< ResourceTypeSemi-persistentPos-ExtIEs >-----#
     ResourceTypeSemi_persistentPos_ExtIEs = CLASS(name='ResourceTypeSemi-persistentPos-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ResourceTypeSemi_persistentPos_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _ResourceTypeSemi_persistentPos_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPosPeriodicConfigHyperSFNIndex')))
+    ResourceTypeSemi_persistentPos_ExtIEs._val = ASN1Set(rv=[dict([('id', 165), ('criticality', 'ignore'), ('Extension', _ResourceTypeSemi_persistentPos_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< ResourceTypeAperiodicPos >-----#
     ResourceTypeAperiodicPos = SEQ(name='ResourceTypeAperiodicPos', mode=MODE_TYPE)
@@ -9079,13 +10616,21 @@ class NRPPA_IEs:
     RxTxTimingErrorMargin._cont = ASN1Dict([('tc0dot5', 0), ('tc1', 1), ('tc2', 2), ('tc4', 3), ('tc8', 4), ('tc12', 5), ('tc16', 6), ('tc20', 7), ('tc24', 8), ('tc32', 9), ('tc40', 10), ('tc48', 11), ('tc64', 12), ('tc80', 13), ('tc96', 14), ('tc128', 15)])
     RxTxTimingErrorMargin._ext = []
     
+    #-----< SCS-480 >-----#
+    SCS_480 = INT(name='SCS-480', mode=MODE_TYPE)
+    SCS_480._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=319)], ev=None, er=[])
+    
+    #-----< SCS-960 >-----#
+    SCS_960 = INT(name='SCS-960', mode=MODE_TYPE)
+    SCS_960._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=639)], ev=None, er=[])
+    
     #-----< SCS-SpecificCarrier >-----#
     SCS_SpecificCarrier = SEQ(name='SCS-SpecificCarrier', mode=MODE_TYPE)
     _SCS_SpecificCarrier_offsetToCarrier = INT(name='offsetToCarrier', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _SCS_SpecificCarrier_offsetToCarrier._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=2199)], ev=[], er=[])
     _SCS_SpecificCarrier_subcarrierSpacing = ENUM(name='subcarrierSpacing', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _SCS_SpecificCarrier_subcarrierSpacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz60', 2), ('kHz120', 3)])
-    _SCS_SpecificCarrier_subcarrierSpacing._ext = []
+    _SCS_SpecificCarrier_subcarrierSpacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz60', 2), ('kHz120', 3), ('kHz480', 4), ('kHz960', 5)])
+    _SCS_SpecificCarrier_subcarrierSpacing._ext = ['kHz480', 'kHz960']
     _SCS_SpecificCarrier_carrierBandwidth = INT(name='carrierBandwidth', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _SCS_SpecificCarrier_carrierBandwidth._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=275)], ev=[], er=[])
     _SCS_SpecificCarrier_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
@@ -9184,6 +10729,234 @@ class NRPPA_IEs:
     #-----< SlotNumber >-----#
     SlotNumber = INT(name='SlotNumber', mode=MODE_TYPE)
     SlotNumber._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=79)], ev=None, er=[])
+    
+    #-----< SlotOffsetForRemainingHopsList >-----#
+    SlotOffsetForRemainingHopsList = SEQ_OF(name='SlotOffsetForRemainingHopsList', mode=MODE_TYPE)
+    _SlotOffsetForRemainingHopsList__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetForRemainingHopsItem')))
+    SlotOffsetForRemainingHopsList._cont = _SlotOffsetForRemainingHopsList__item_
+    SlotOffsetForRemainingHopsList._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=5)], ev=None, er=[])
+    
+    #-----< SlotOffsetForRemainingHopsItem >-----#
+    SlotOffsetForRemainingHopsItem = SEQ(name='SlotOffsetForRemainingHopsItem', mode=MODE_TYPE)
+    _SlotOffsetForRemainingHopsItem_slotOffsetRemainingHops = CHOICE(name='slotOffsetRemainingHops', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetRemainingHops')))
+    _SlotOffsetForRemainingHopsItem_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __SlotOffsetForRemainingHopsItem_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id._const_tab = ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__id_tab
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id._const_tab_at = None
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id._const_tab_id = 'id'
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality._const_tab = ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality_tab
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue._const_tab = ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue_tab
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __SlotOffsetForRemainingHopsItem_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id),
+        ('criticality', ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality),
+        ('extensionValue', ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue),
+        ])
+    __SlotOffsetForRemainingHopsItem_iE_Extensions__item_._ext = None
+    _SlotOffsetForRemainingHopsItem_iE_Extensions._cont = __SlotOffsetForRemainingHopsItem_iE_Extensions__item_
+    _SlotOffsetForRemainingHopsItem_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    SlotOffsetForRemainingHopsItem._cont = ASN1Dict([
+        ('slotOffsetRemainingHops', _SlotOffsetForRemainingHopsItem_slotOffsetRemainingHops),
+        ('iE-Extensions', _SlotOffsetForRemainingHopsItem_iE_Extensions),
+        ])
+    SlotOffsetForRemainingHopsItem._ext = []
+    
+    #-----< SlotOffsetForRemainingHopsItem-ExtIEs >-----#
+    SlotOffsetForRemainingHopsItem_ExtIEs = CLASS(name='SlotOffsetForRemainingHopsItem-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    SlotOffsetForRemainingHopsItem_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SlotOffsetRemainingHops >-----#
+    SlotOffsetRemainingHops = CHOICE(name='SlotOffsetRemainingHops', mode=MODE_TYPE)
+    _SlotOffsetRemainingHops_aperiodic = SEQ(name='aperiodic', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetRemainingHopsAperiodic')))
+    _SlotOffsetRemainingHops_semi_persistent = SEQ(name='semi-persistent', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetRemainingHopsSemiPersistent')))
+    _SlotOffsetRemainingHops_periodic = SEQ(name='periodic', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetRemainingHopsPeriodic')))
+    _SlotOffsetRemainingHops_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
+    __SlotOffsetRemainingHops_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
+    ___SlotOffsetRemainingHops_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___SlotOffsetRemainingHops_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __SlotOffsetRemainingHops_choice_extension_id._const_tab = ___SlotOffsetRemainingHops_choice_extension_id_tab
+    __SlotOffsetRemainingHops_choice_extension_id._const_tab_at = None
+    __SlotOffsetRemainingHops_choice_extension_id._const_tab_id = 'id'
+    __SlotOffsetRemainingHops_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
+    ___SlotOffsetRemainingHops_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___SlotOffsetRemainingHops_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __SlotOffsetRemainingHops_choice_extension_criticality._const_tab = ___SlotOffsetRemainingHops_choice_extension_criticality_tab
+    __SlotOffsetRemainingHops_choice_extension_criticality._const_tab_at = ('..', 'id')
+    __SlotOffsetRemainingHops_choice_extension_criticality._const_tab_id = 'criticality'
+    __SlotOffsetRemainingHops_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
+    ___SlotOffsetRemainingHops_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___SlotOffsetRemainingHops_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __SlotOffsetRemainingHops_choice_extension_value._const_tab = ___SlotOffsetRemainingHops_choice_extension_value_tab
+    __SlotOffsetRemainingHops_choice_extension_value._const_tab_at = ('..', 'id')
+    __SlotOffsetRemainingHops_choice_extension_value._const_tab_id = 'Value'
+    _SlotOffsetRemainingHops_choice_extension._cont = ASN1Dict([
+        ('id', __SlotOffsetRemainingHops_choice_extension_id),
+        ('criticality', __SlotOffsetRemainingHops_choice_extension_criticality),
+        ('value', __SlotOffsetRemainingHops_choice_extension_value),
+        ])
+    _SlotOffsetRemainingHops_choice_extension._ext = None
+    SlotOffsetRemainingHops._cont = ASN1Dict([
+        ('aperiodic', _SlotOffsetRemainingHops_aperiodic),
+        ('semi-persistent', _SlotOffsetRemainingHops_semi_persistent),
+        ('periodic', _SlotOffsetRemainingHops_periodic),
+        ('choice-extension', _SlotOffsetRemainingHops_choice_extension),
+        ])
+    SlotOffsetRemainingHops._ext = None
+    
+    #-----< SlotOffsetRemainingHops-ExtIEs >-----#
+    SlotOffsetRemainingHops_ExtIEs = CLASS(name='SlotOffsetRemainingHops-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    SlotOffsetRemainingHops_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SlotOffsetRemainingHopsAperiodic >-----#
+    SlotOffsetRemainingHopsAperiodic = SEQ(name='SlotOffsetRemainingHopsAperiodic', mode=MODE_TYPE)
+    _SlotOffsetRemainingHopsAperiodic_slotOffset = INT(name='slotOffset', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _SlotOffsetRemainingHopsAperiodic_slotOffset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
+    _SlotOffsetRemainingHopsAperiodic_startPosition = INT(name='startPosition', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _SlotOffsetRemainingHopsAperiodic_startPosition._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _SlotOffsetRemainingHopsAperiodic_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __SlotOffsetRemainingHopsAperiodic_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id._const_tab = ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id_tab
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id._const_tab_at = None
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id._const_tab_id = 'id'
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality._const_tab = ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality_tab
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue._const_tab = ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue_tab
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __SlotOffsetRemainingHopsAperiodic_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id),
+        ('criticality', ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality),
+        ('extensionValue', ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue),
+        ])
+    __SlotOffsetRemainingHopsAperiodic_iE_Extensions__item_._ext = None
+    _SlotOffsetRemainingHopsAperiodic_iE_Extensions._cont = __SlotOffsetRemainingHopsAperiodic_iE_Extensions__item_
+    _SlotOffsetRemainingHopsAperiodic_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    SlotOffsetRemainingHopsAperiodic._cont = ASN1Dict([
+        ('slotOffset', _SlotOffsetRemainingHopsAperiodic_slotOffset),
+        ('startPosition', _SlotOffsetRemainingHopsAperiodic_startPosition),
+        ('iE-Extensions', _SlotOffsetRemainingHopsAperiodic_iE_Extensions),
+        ])
+    SlotOffsetRemainingHopsAperiodic._ext = []
+    
+    #-----< SlotOffsetRemainingHopsAperiodic-ExtIEs >-----#
+    SlotOffsetRemainingHopsAperiodic_ExtIEs = CLASS(name='SlotOffsetRemainingHopsAperiodic-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    SlotOffsetRemainingHopsAperiodic_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SlotOffsetRemainingHopsSemiPersistent >-----#
+    SlotOffsetRemainingHopsSemiPersistent = SEQ(name='SlotOffsetRemainingHopsSemiPersistent', mode=MODE_TYPE)
+    _SlotOffsetRemainingHopsSemiPersistent_sRSperiodicity = ENUM(name='sRSperiodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSPeriodicity')))
+    _SlotOffsetRemainingHopsSemiPersistent_offset = INT(name='offset', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _SlotOffsetRemainingHopsSemiPersistent_offset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=[], er=[])
+    _SlotOffsetRemainingHopsSemiPersistent_startPosition = INT(name='startPosition', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _SlotOffsetRemainingHopsSemiPersistent_startPosition._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _SlotOffsetRemainingHopsSemiPersistent_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id._const_tab = ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id_tab
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id._const_tab_at = None
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id._const_tab_id = 'id'
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality._const_tab = ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality_tab
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue._const_tab = ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue_tab
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id),
+        ('criticality', ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality),
+        ('extensionValue', ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue),
+        ])
+    __SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item_._ext = None
+    _SlotOffsetRemainingHopsSemiPersistent_iE_Extensions._cont = __SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item_
+    _SlotOffsetRemainingHopsSemiPersistent_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    SlotOffsetRemainingHopsSemiPersistent._cont = ASN1Dict([
+        ('sRSperiodicity', _SlotOffsetRemainingHopsSemiPersistent_sRSperiodicity),
+        ('offset', _SlotOffsetRemainingHopsSemiPersistent_offset),
+        ('startPosition', _SlotOffsetRemainingHopsSemiPersistent_startPosition),
+        ('iE-Extensions', _SlotOffsetRemainingHopsSemiPersistent_iE_Extensions),
+        ])
+    SlotOffsetRemainingHopsSemiPersistent._ext = []
+    
+    #-----< SlotOffsetRemainingHopsSemiPersistent-ExtIEs >-----#
+    SlotOffsetRemainingHopsSemiPersistent_ExtIEs = CLASS(name='SlotOffsetRemainingHopsSemiPersistent-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    SlotOffsetRemainingHopsSemiPersistent_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SlotOffsetRemainingHopsPeriodic >-----#
+    SlotOffsetRemainingHopsPeriodic = SEQ(name='SlotOffsetRemainingHopsPeriodic', mode=MODE_TYPE)
+    _SlotOffsetRemainingHopsPeriodic_sRSperiodicity = ENUM(name='sRSperiodicity', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSPeriodicity')))
+    _SlotOffsetRemainingHopsPeriodic_offset = INT(name='offset', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _SlotOffsetRemainingHopsPeriodic_offset._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=81919)], ev=[], er=[])
+    _SlotOffsetRemainingHopsPeriodic_startPosition = INT(name='startPosition', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _SlotOffsetRemainingHopsPeriodic_startPosition._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _SlotOffsetRemainingHopsPeriodic_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __SlotOffsetRemainingHopsPeriodic_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id._const_tab = ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id_tab
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id._const_tab_at = None
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id._const_tab_id = 'id'
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality._const_tab = ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality_tab
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue._const_tab = ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue_tab
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __SlotOffsetRemainingHopsPeriodic_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id),
+        ('criticality', ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality),
+        ('extensionValue', ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue),
+        ])
+    __SlotOffsetRemainingHopsPeriodic_iE_Extensions__item_._ext = None
+    _SlotOffsetRemainingHopsPeriodic_iE_Extensions._cont = __SlotOffsetRemainingHopsPeriodic_iE_Extensions__item_
+    _SlotOffsetRemainingHopsPeriodic_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    SlotOffsetRemainingHopsPeriodic._cont = ASN1Dict([
+        ('sRSperiodicity', _SlotOffsetRemainingHopsPeriodic_sRSperiodicity),
+        ('offset', _SlotOffsetRemainingHopsPeriodic_offset),
+        ('startPosition', _SlotOffsetRemainingHopsPeriodic_startPosition),
+        ('iE-Extensions', _SlotOffsetRemainingHopsPeriodic_iE_Extensions),
+        ])
+    SlotOffsetRemainingHopsPeriodic._ext = []
+    
+    #-----< SlotOffsetRemainingHopsSemiPeriodic-ExtIEs >-----#
+    SlotOffsetRemainingHopsSemiPeriodic_ExtIEs = CLASS(name='SlotOffsetRemainingHopsSemiPeriodic-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    SlotOffsetRemainingHopsSemiPeriodic_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< SpatialDirectionInformation >-----#
     SpatialDirectionInformation = SEQ(name='SpatialDirectionInformation', mode=MODE_TYPE)
@@ -9551,20 +11324,17 @@ class NRPPA_IEs:
     __SRSConfiguration_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___SRSConfiguration_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____SRSConfiguration_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSConfiguration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____SRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    ____SRSConfiguration_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Extension', _____SRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___SRSConfiguration_iE_Extensions__item__id._const_tab = ____SRSConfiguration_iE_Extensions__item__id_tab
     ___SRSConfiguration_iE_Extensions__item__id._const_tab_at = None
     ___SRSConfiguration_iE_Extensions__item__id._const_tab_id = 'id'
     ___SRSConfiguration_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____SRSConfiguration_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSConfiguration_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___SRSConfiguration_iE_Extensions__item__criticality._const_tab = ____SRSConfiguration_iE_Extensions__item__criticality_tab
+    ___SRSConfiguration_iE_Extensions__item__criticality._const_tab = ____SRSConfiguration_iE_Extensions__item__id_tab
     ___SRSConfiguration_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___SRSConfiguration_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___SRSConfiguration_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____SRSConfiguration_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSConfiguration_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___SRSConfiguration_iE_Extensions__item__extensionValue._const_tab = ____SRSConfiguration_iE_Extensions__item__extensionValue_tab
+    ___SRSConfiguration_iE_Extensions__item__extensionValue._const_tab = ____SRSConfiguration_iE_Extensions__item__id_tab
     ___SRSConfiguration_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___SRSConfiguration_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __SRSConfiguration_iE_Extensions__item_._cont = ASN1Dict([
@@ -9583,7 +11353,8 @@ class NRPPA_IEs:
     
     #-----< SRSConfiguration-ExtIEs >-----#
     SRSConfiguration_ExtIEs = CLASS(name='SRSConfiguration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    SRSConfiguration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _SRSConfiguration_ExtIEs_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    SRSConfiguration_ExtIEs._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Extension', _SRSConfiguration_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< SrsFrequency >-----#
     SrsFrequency = INT(name='SrsFrequency', mode=MODE_TYPE)
@@ -9593,6 +11364,11 @@ class NRPPA_IEs:
     SRSPortIndex = ENUM(name='SRSPortIndex', mode=MODE_TYPE)
     SRSPortIndex._cont = ASN1Dict([('id1000', 0), ('id1001', 1), ('id1002', 2), ('id1003', 3)])
     SRSPortIndex._ext = []
+    
+    #-----< SRSPosPeriodicConfigHyperSFNIndex >-----#
+    SRSPosPeriodicConfigHyperSFNIndex = ENUM(name='SRSPosPeriodicConfigHyperSFNIndex', mode=MODE_TYPE)
+    SRSPosPeriodicConfigHyperSFNIndex._cont = ASN1Dict([('even0', 0), ('odd1', 1)])
+    SRSPosPeriodicConfigHyperSFNIndex._ext = None
     
     #-----< SRSPosResourceID >-----#
     SRSPosResourceID = INT(name='SRSPosResourceID', mode=MODE_TYPE)
@@ -9633,20 +11409,20 @@ class NRPPA_IEs:
     __SRSResource_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___SRSResource_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____SRSResource_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSResource_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____SRSResource_iE_Extensions__item__id_tab_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NrofSymbolsExtended')))
+    _____SRSResource_iE_Extensions__item__id_tab_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RepetitionFactorExtended')))
+    _____SRSResource_iE_Extensions__item__id_tab_val_Extension_2 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'StartRBHopping')))
+    _____SRSResource_iE_Extensions__item__id_tab_val_Extension_3 = CHOICE(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'StartRBIndex')))
+    ____SRSResource_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 107), ('criticality', 'ignore'), ('Extension', _____SRSResource_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 108), ('criticality', 'ignore'), ('Extension', _____SRSResource_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 109), ('criticality', 'ignore'), ('Extension', _____SRSResource_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')]), dict([('id', 110), ('criticality', 'ignore'), ('Extension', _____SRSResource_iE_Extensions__item__id_tab_val_Extension_3), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___SRSResource_iE_Extensions__item__id._const_tab = ____SRSResource_iE_Extensions__item__id_tab
     ___SRSResource_iE_Extensions__item__id._const_tab_at = None
     ___SRSResource_iE_Extensions__item__id._const_tab_id = 'id'
     ___SRSResource_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____SRSResource_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSResource_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___SRSResource_iE_Extensions__item__criticality._const_tab = ____SRSResource_iE_Extensions__item__criticality_tab
+    ___SRSResource_iE_Extensions__item__criticality._const_tab = ____SRSResource_iE_Extensions__item__id_tab
     ___SRSResource_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___SRSResource_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___SRSResource_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____SRSResource_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____SRSResource_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___SRSResource_iE_Extensions__item__extensionValue._const_tab = ____SRSResource_iE_Extensions__item__extensionValue_tab
+    ___SRSResource_iE_Extensions__item__extensionValue._const_tab = ____SRSResource_iE_Extensions__item__id_tab
     ___SRSResource_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___SRSResource_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __SRSResource_iE_Extensions__item_._cont = ASN1Dict([
@@ -9678,7 +11454,11 @@ class NRPPA_IEs:
     
     #-----< SRSResource-ExtIEs >-----#
     SRSResource_ExtIEs = CLASS(name='SRSResource-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    SRSResource_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _SRSResource_ExtIEs_val_Extension_0 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'NrofSymbolsExtended')))
+    _SRSResource_ExtIEs_val_Extension_1 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RepetitionFactorExtended')))
+    _SRSResource_ExtIEs_val_Extension_2 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'StartRBHopping')))
+    _SRSResource_ExtIEs_val_Extension_3 = CHOICE(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'StartRBIndex')))
+    SRSResource_ExtIEs._val = ASN1Set(rv=[dict([('id', 107), ('criticality', 'ignore'), ('Extension', _SRSResource_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 108), ('criticality', 'ignore'), ('Extension', _SRSResource_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 109), ('criticality', 'ignore'), ('Extension', _SRSResource_ExtIEs_val_Extension_2), ('presence', 'optional')]), dict([('id', 110), ('criticality', 'ignore'), ('Extension', _SRSResource_ExtIEs_val_Extension_3), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< SRSResourceID >-----#
     SRSResourceID = INT(name='SRSResourceID', mode=MODE_TYPE)
@@ -9704,8 +11484,8 @@ class NRPPA_IEs:
     
     #-----< SRSResourceSet >-----#
     SRSResourceSet = SEQ(name='SRSResourceSet', mode=MODE_TYPE)
-    _SRSResourceSet_sRSResourceSetID = INT(name='sRSResourceSetID', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _SRSResourceSet_sRSResourceSetID._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15)], ev=None, er=[])
+    _SRSResourceSet_sRSResourceSetID1 = INT(name='sRSResourceSetID1', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _SRSResourceSet_sRSResourceSetID1._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=15)], ev=None, er=[])
     _SRSResourceSet_sRSResourceID_List = SEQ_OF(name='sRSResourceID-List', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSResourceID-List')))
     _SRSResourceSet_resourceSetType = CHOICE(name='resourceSetType', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'ResourceSetType')))
     _SRSResourceSet_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
@@ -9737,7 +11517,7 @@ class NRPPA_IEs:
     _SRSResourceSet_iE_Extensions._cont = __SRSResourceSet_iE_Extensions__item_
     _SRSResourceSet_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
     SRSResourceSet._cont = ASN1Dict([
-        ('sRSResourceSetID', _SRSResourceSet_sRSResourceSetID),
+        ('sRSResourceSetID1', _SRSResourceSet_sRSResourceSetID1),
         ('sRSResourceID-List', _SRSResourceSet_sRSResourceID_List),
         ('resourceSetType', _SRSResourceSet_resourceSetType),
         ('iE-Extensions', _SRSResourceSet_iE_Extensions),
@@ -9852,8 +11632,8 @@ class NRPPA_IEs:
     
     #-----< SRSTransmissionStatus >-----#
     SRSTransmissionStatus = ENUM(name='SRSTransmissionStatus', mode=MODE_TYPE)
-    SRSTransmissionStatus._cont = ASN1Dict([('stopped', 0)])
-    SRSTransmissionStatus._ext = []
+    SRSTransmissionStatus._cont = ASN1Dict([('stopped', 0), ('area-specific-SRS-activated', 1)])
+    SRSTransmissionStatus._ext = ['area-specific-SRS-activated']
     
     #-----< PosSRSInfo >-----#
     PosSRSInfo = SEQ(name='PosSRSInfo', mode=MODE_TYPE)
@@ -10048,6 +11828,53 @@ class NRPPA_IEs:
     SSID = OCT_STR(name='SSID', mode=MODE_TYPE)
     SSID._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=32)], ev=None, er=[])
     
+    #-----< StartRBIndex >-----#
+    StartRBIndex = CHOICE(name='StartRBIndex', mode=MODE_TYPE)
+    _StartRBIndex_freqScalingFactor2 = INT(name='freqScalingFactor2', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _StartRBIndex_freqScalingFactor2._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=1)], ev=None, er=[])
+    _StartRBIndex_freqScalingFactor4 = INT(name='freqScalingFactor4', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _StartRBIndex_freqScalingFactor4._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3)], ev=None, er=[])
+    _StartRBIndex_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
+    __StartRBIndex_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
+    ___StartRBIndex_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___StartRBIndex_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __StartRBIndex_choice_extension_id._const_tab = ___StartRBIndex_choice_extension_id_tab
+    __StartRBIndex_choice_extension_id._const_tab_at = None
+    __StartRBIndex_choice_extension_id._const_tab_id = 'id'
+    __StartRBIndex_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
+    ___StartRBIndex_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___StartRBIndex_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __StartRBIndex_choice_extension_criticality._const_tab = ___StartRBIndex_choice_extension_criticality_tab
+    __StartRBIndex_choice_extension_criticality._const_tab_at = ('..', 'id')
+    __StartRBIndex_choice_extension_criticality._const_tab_id = 'criticality'
+    __StartRBIndex_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
+    ___StartRBIndex_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___StartRBIndex_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __StartRBIndex_choice_extension_value._const_tab = ___StartRBIndex_choice_extension_value_tab
+    __StartRBIndex_choice_extension_value._const_tab_at = ('..', 'id')
+    __StartRBIndex_choice_extension_value._const_tab_id = 'Value'
+    _StartRBIndex_choice_extension._cont = ASN1Dict([
+        ('id', __StartRBIndex_choice_extension_id),
+        ('criticality', __StartRBIndex_choice_extension_criticality),
+        ('value', __StartRBIndex_choice_extension_value),
+        ])
+    _StartRBIndex_choice_extension._ext = None
+    StartRBIndex._cont = ASN1Dict([
+        ('freqScalingFactor2', _StartRBIndex_freqScalingFactor2),
+        ('freqScalingFactor4', _StartRBIndex_freqScalingFactor4),
+        ('choice-extension', _StartRBIndex_choice_extension),
+        ])
+    StartRBIndex._ext = None
+    
+    #-----< StartRBIndex-ExtIEs >-----#
+    StartRBIndex_ExtIEs = CLASS(name='StartRBIndex-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    StartRBIndex_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< StartRBHopping >-----#
+    StartRBHopping = ENUM(name='StartRBHopping', mode=MODE_TYPE)
+    StartRBHopping._cont = ASN1Dict([('enable', 0)])
+    StartRBHopping._ext = None
+    
     #-----< StartTimeAndDuration >-----#
     StartTimeAndDuration = SEQ(name='StartTimeAndDuration', mode=MODE_TYPE)
     _StartTimeAndDuration_startTime = BIT_STR(name='startTime', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'RelativeTime1900')), opt=True)
@@ -10091,6 +11918,10 @@ class NRPPA_IEs:
     #-----< StartTimeAndDuration-ExtIEs >-----#
     StartTimeAndDuration_ExtIEs = CLASS(name='StartTimeAndDuration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     StartTimeAndDuration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SymbolIndex >-----#
+    SymbolIndex = INT(name='SymbolIndex', mode=MODE_TYPE)
+    SymbolIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
     
     #-----< SystemFrameNumber >-----#
     SystemFrameNumber = INT(name='SystemFrameNumber', mode=MODE_TYPE)
@@ -10141,6 +11972,65 @@ class NRPPA_IEs:
     #-----< SystemInformation-ExtIEs >-----#
     SystemInformation_ExtIEs = CLASS(name='SystemInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     SystemInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SRSReservationType >-----#
+    SRSReservationType = ENUM(name='SRSReservationType', mode=MODE_TYPE)
+    SRSReservationType._cont = ASN1Dict([('reserve', 0), ('release', 1)])
+    SRSReservationType._ext = []
+    
+    #-----< SRSPreconfiguration-List >-----#
+    SRSPreconfiguration_List = SEQ_OF(name='SRSPreconfiguration-List', mode=MODE_TYPE)
+    _SRSPreconfiguration_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPreconfiguration-Item')))
+    SRSPreconfiguration_List._cont = _SRSPreconfiguration_List__item_
+    SRSPreconfiguration_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    
+    #-----< SRSPreconfiguration-Item >-----#
+    SRSPreconfiguration_Item = SEQ(name='SRSPreconfiguration-Item', mode=MODE_TYPE)
+    _SRSPreconfiguration_Item_sRSConfiguration = SEQ(name='sRSConfiguration', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SRSConfiguration')))
+    _SRSPreconfiguration_Item_posValidityAreaCellList = SEQ_OF(name='posValidityAreaCellList', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCellList')))
+    _SRSPreconfiguration_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __SRSPreconfiguration_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___SRSPreconfiguration_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SRSPreconfiguration_Item_iE_Extensions__item__id._const_tab = ____SRSPreconfiguration_Item_iE_Extensions__item__id_tab
+    ___SRSPreconfiguration_Item_iE_Extensions__item__id._const_tab_at = None
+    ___SRSPreconfiguration_Item_iE_Extensions__item__id._const_tab_id = 'id'
+    ___SRSPreconfiguration_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SRSPreconfiguration_Item_iE_Extensions__item__criticality._const_tab = ____SRSPreconfiguration_Item_iE_Extensions__item__criticality_tab
+    ___SRSPreconfiguration_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___SRSPreconfiguration_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____SRSPreconfiguration_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue._const_tab = ____SRSPreconfiguration_Item_iE_Extensions__item__extensionValue_tab
+    ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __SRSPreconfiguration_Item_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___SRSPreconfiguration_Item_iE_Extensions__item__id),
+        ('criticality', ___SRSPreconfiguration_Item_iE_Extensions__item__criticality),
+        ('extensionValue', ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue),
+        ])
+    __SRSPreconfiguration_Item_iE_Extensions__item_._ext = None
+    _SRSPreconfiguration_Item_iE_Extensions._cont = __SRSPreconfiguration_Item_iE_Extensions__item_
+    _SRSPreconfiguration_Item_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    SRSPreconfiguration_Item._cont = ASN1Dict([
+        ('sRSConfiguration', _SRSPreconfiguration_Item_sRSConfiguration),
+        ('posValidityAreaCellList', _SRSPreconfiguration_Item_posValidityAreaCellList),
+        ('iE-Extensions', _SRSPreconfiguration_Item_iE_Extensions),
+        ])
+    SRSPreconfiguration_Item._ext = []
+    
+    #-----< SRSPreconfiguration-Item-ExtIEs >-----#
+    SRSPreconfiguration_Item_ExtIEs = CLASS(name='SRSPreconfiguration-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    SRSPreconfiguration_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< SRSPeriodicity >-----#
+    SRSPeriodicity = ENUM(name='SRSPeriodicity', mode=MODE_TYPE)
+    SRSPeriodicity._cont = ASN1Dict([('slot1', 0), ('slot2', 1), ('slot4', 2), ('slot5', 3), ('slot8', 4), ('slot10', 5), ('slot16', 6), ('slot20', 7), ('slot32', 8), ('slot40', 9), ('slot64', 10), ('slot80', 11), ('slot160', 12), ('slot320', 13), ('slot640', 14), ('slot1280', 15), ('slot2560', 16), ('slot5120', 17), ('slot10240', 18), ('slot40960', 19), ('slot81920', 20), ('slot128', 21), ('slot256', 22), ('slot512', 23), ('slot20480', 24)])
+    SRSPeriodicity._ext = ['slot128', 'slot256', 'slot512', 'slot20480']
     
     #-----< TAC >-----#
     TAC = OCT_STR(name='TAC', mode=MODE_TYPE)
@@ -10325,8 +12215,8 @@ class NRPPA_IEs:
     _TF_Configuration_sSB_frequency = INT(name='sSB-frequency', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _TF_Configuration_sSB_frequency._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3279165)], ev=None, er=[])
     _TF_Configuration_sSB_subcarrier_spacing = ENUM(name='sSB-subcarrier-spacing', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
-    _TF_Configuration_sSB_subcarrier_spacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz120', 2), ('kHz240', 3), ('kHz60', 4)])
-    _TF_Configuration_sSB_subcarrier_spacing._ext = ['kHz60']
+    _TF_Configuration_sSB_subcarrier_spacing._cont = ASN1Dict([('kHz15', 0), ('kHz30', 1), ('kHz120', 2), ('kHz240', 3), ('kHz60', 4), ('kHz480', 5), ('kHz960', 6)])
+    _TF_Configuration_sSB_subcarrier_spacing._ext = ['kHz60', 'kHz480', 'kHz960']
     _TF_Configuration_sSB_Transmit_power = INT(name='sSB-Transmit-power', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
     _TF_Configuration_sSB_Transmit_power._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-60, ub=50)], ev=None, er=[])
     _TF_Configuration_sSB_periodicity = ENUM(name='sSB-periodicity', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -10392,20 +12282,17 @@ class NRPPA_IEs:
     __TimeStamp_iE_Extension__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___TimeStamp_iE_Extension__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____TimeStamp_iE_Extension__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TimeStamp_iE_Extension__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____TimeStamp_iE_Extension__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SymbolIndex')))
+    ____TimeStamp_iE_Extension__item__id_tab._val = ASN1Set(rv=[dict([('id', 127), ('criticality', 'ignore'), ('Extension', _____TimeStamp_iE_Extension__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___TimeStamp_iE_Extension__item__id._const_tab = ____TimeStamp_iE_Extension__item__id_tab
     ___TimeStamp_iE_Extension__item__id._const_tab_at = None
     ___TimeStamp_iE_Extension__item__id._const_tab_id = 'id'
     ___TimeStamp_iE_Extension__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____TimeStamp_iE_Extension__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TimeStamp_iE_Extension__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TimeStamp_iE_Extension__item__criticality._const_tab = ____TimeStamp_iE_Extension__item__criticality_tab
+    ___TimeStamp_iE_Extension__item__criticality._const_tab = ____TimeStamp_iE_Extension__item__id_tab
     ___TimeStamp_iE_Extension__item__criticality._const_tab_at = ('..', 'id')
     ___TimeStamp_iE_Extension__item__criticality._const_tab_id = 'criticality'
     ___TimeStamp_iE_Extension__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____TimeStamp_iE_Extension__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TimeStamp_iE_Extension__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TimeStamp_iE_Extension__item__extensionValue._const_tab = ____TimeStamp_iE_Extension__item__extensionValue_tab
+    ___TimeStamp_iE_Extension__item__extensionValue._const_tab = ____TimeStamp_iE_Extension__item__id_tab
     ___TimeStamp_iE_Extension__item__extensionValue._const_tab_at = ('..', 'id')
     ___TimeStamp_iE_Extension__item__extensionValue._const_tab_id = 'Extension'
     __TimeStamp_iE_Extension__item_._cont = ASN1Dict([
@@ -10426,7 +12313,8 @@ class NRPPA_IEs:
     
     #-----< TimeStamp-ExtIEs >-----#
     TimeStamp_ExtIEs = CLASS(name='TimeStamp-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    TimeStamp_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TimeStamp_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SymbolIndex')))
+    TimeStamp_ExtIEs._val = ASN1Set(rv=[dict([('id', 127), ('criticality', 'ignore'), ('Extension', _TimeStamp_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< TimeStampSlotIndex >-----#
     TimeStampSlotIndex = CHOICE(name='TimeStampSlotIndex', mode=MODE_TYPE)
@@ -10441,20 +12329,18 @@ class NRPPA_IEs:
     _TimeStampSlotIndex_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __TimeStampSlotIndex_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___TimeStampSlotIndex_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TimeStampSlotIndex_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-480')))
+    ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-960')))
+    ___TimeStampSlotIndex_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 119), ('criticality', 'reject'), ('Value', ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 120), ('criticality', 'reject'), ('Value', ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __TimeStampSlotIndex_choice_extension_id._const_tab = ___TimeStampSlotIndex_choice_extension_id_tab
     __TimeStampSlotIndex_choice_extension_id._const_tab_at = None
     __TimeStampSlotIndex_choice_extension_id._const_tab_id = 'id'
     __TimeStampSlotIndex_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___TimeStampSlotIndex_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TimeStampSlotIndex_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TimeStampSlotIndex_choice_extension_criticality._const_tab = ___TimeStampSlotIndex_choice_extension_criticality_tab
+    __TimeStampSlotIndex_choice_extension_criticality._const_tab = ___TimeStampSlotIndex_choice_extension_id_tab
     __TimeStampSlotIndex_choice_extension_criticality._const_tab_at = ('..', 'id')
     __TimeStampSlotIndex_choice_extension_criticality._const_tab_id = 'criticality'
     __TimeStampSlotIndex_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___TimeStampSlotIndex_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TimeStampSlotIndex_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TimeStampSlotIndex_choice_extension_value._const_tab = ___TimeStampSlotIndex_choice_extension_value_tab
+    __TimeStampSlotIndex_choice_extension_value._const_tab = ___TimeStampSlotIndex_choice_extension_id_tab
     __TimeStampSlotIndex_choice_extension_value._const_tab_at = ('..', 'id')
     __TimeStampSlotIndex_choice_extension_value._const_tab_id = 'Value'
     _TimeStampSlotIndex_choice_extension._cont = ASN1Dict([
@@ -10474,7 +12360,309 @@ class NRPPA_IEs:
     
     #-----< TimeStampSlotIndex-ExtIEs >-----#
     TimeStampSlotIndex_ExtIEs = CLASS(name='TimeStampSlotIndex-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    TimeStampSlotIndex_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TimeStampSlotIndex_ExtIEs_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-480')))
+    _TimeStampSlotIndex_ExtIEs_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SCS-960')))
+    TimeStampSlotIndex_ExtIEs._val = ASN1Set(rv=[dict([('id', 119), ('criticality', 'reject'), ('Value', _TimeStampSlotIndex_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 120), ('criticality', 'reject'), ('Value', _TimeStampSlotIndex_ExtIEs_val_Value_1), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    
+    #-----< TimeWindowDurationMeasurement >-----#
+    TimeWindowDurationMeasurement = CHOICE(name='TimeWindowDurationMeasurement', mode=MODE_TYPE)
+    _TimeWindowDurationMeasurement_durationSlots = ENUM(name='durationSlots', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowDurationMeasurement_durationSlots._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6)])
+    _TimeWindowDurationMeasurement_durationSlots._ext = []
+    _TimeWindowDurationMeasurement_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
+    __TimeWindowDurationMeasurement_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
+    ___TimeWindowDurationMeasurement_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationMeasurement_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationMeasurement_choice_extension_id._const_tab = ___TimeWindowDurationMeasurement_choice_extension_id_tab
+    __TimeWindowDurationMeasurement_choice_extension_id._const_tab_at = None
+    __TimeWindowDurationMeasurement_choice_extension_id._const_tab_id = 'id'
+    __TimeWindowDurationMeasurement_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
+    ___TimeWindowDurationMeasurement_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationMeasurement_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationMeasurement_choice_extension_criticality._const_tab = ___TimeWindowDurationMeasurement_choice_extension_criticality_tab
+    __TimeWindowDurationMeasurement_choice_extension_criticality._const_tab_at = ('..', 'id')
+    __TimeWindowDurationMeasurement_choice_extension_criticality._const_tab_id = 'criticality'
+    __TimeWindowDurationMeasurement_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
+    ___TimeWindowDurationMeasurement_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationMeasurement_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationMeasurement_choice_extension_value._const_tab = ___TimeWindowDurationMeasurement_choice_extension_value_tab
+    __TimeWindowDurationMeasurement_choice_extension_value._const_tab_at = ('..', 'id')
+    __TimeWindowDurationMeasurement_choice_extension_value._const_tab_id = 'Value'
+    _TimeWindowDurationMeasurement_choice_extension._cont = ASN1Dict([
+        ('id', __TimeWindowDurationMeasurement_choice_extension_id),
+        ('criticality', __TimeWindowDurationMeasurement_choice_extension_criticality),
+        ('value', __TimeWindowDurationMeasurement_choice_extension_value),
+        ])
+    _TimeWindowDurationMeasurement_choice_extension._ext = None
+    TimeWindowDurationMeasurement._cont = ASN1Dict([
+        ('durationSlots', _TimeWindowDurationMeasurement_durationSlots),
+        ('choice-extension', _TimeWindowDurationMeasurement_choice_extension),
+        ])
+    TimeWindowDurationMeasurement._ext = None
+    
+    #-----< TimeWindowDurationMeasurement-ExtIEs >-----#
+    TimeWindowDurationMeasurement_ExtIEs = CLASS(name='TimeWindowDurationMeasurement-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    TimeWindowDurationMeasurement_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TimeWindowDurationSRS >-----#
+    TimeWindowDurationSRS = CHOICE(name='TimeWindowDurationSRS', mode=MODE_TYPE)
+    _TimeWindowDurationSRS_durationSymbols = ENUM(name='durationSymbols', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowDurationSRS_durationSymbols._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n8', 3), ('n12', 4)])
+    _TimeWindowDurationSRS_durationSymbols._ext = []
+    _TimeWindowDurationSRS_durationSlots = ENUM(name='durationSlots', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowDurationSRS_durationSlots._cont = ASN1Dict([('n1', 0), ('n2', 1), ('n4', 2), ('n6', 3), ('n8', 4), ('n12', 5), ('n16', 6)])
+    _TimeWindowDurationSRS_durationSlots._ext = []
+    _TimeWindowDurationSRS_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
+    __TimeWindowDurationSRS_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
+    ___TimeWindowDurationSRS_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationSRS_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationSRS_choice_extension_id._const_tab = ___TimeWindowDurationSRS_choice_extension_id_tab
+    __TimeWindowDurationSRS_choice_extension_id._const_tab_at = None
+    __TimeWindowDurationSRS_choice_extension_id._const_tab_id = 'id'
+    __TimeWindowDurationSRS_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
+    ___TimeWindowDurationSRS_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationSRS_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationSRS_choice_extension_criticality._const_tab = ___TimeWindowDurationSRS_choice_extension_criticality_tab
+    __TimeWindowDurationSRS_choice_extension_criticality._const_tab_at = ('..', 'id')
+    __TimeWindowDurationSRS_choice_extension_criticality._const_tab_id = 'criticality'
+    __TimeWindowDurationSRS_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
+    ___TimeWindowDurationSRS_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    ___TimeWindowDurationSRS_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    __TimeWindowDurationSRS_choice_extension_value._const_tab = ___TimeWindowDurationSRS_choice_extension_value_tab
+    __TimeWindowDurationSRS_choice_extension_value._const_tab_at = ('..', 'id')
+    __TimeWindowDurationSRS_choice_extension_value._const_tab_id = 'Value'
+    _TimeWindowDurationSRS_choice_extension._cont = ASN1Dict([
+        ('id', __TimeWindowDurationSRS_choice_extension_id),
+        ('criticality', __TimeWindowDurationSRS_choice_extension_criticality),
+        ('value', __TimeWindowDurationSRS_choice_extension_value),
+        ])
+    _TimeWindowDurationSRS_choice_extension._ext = None
+    TimeWindowDurationSRS._cont = ASN1Dict([
+        ('durationSymbols', _TimeWindowDurationSRS_durationSymbols),
+        ('durationSlots', _TimeWindowDurationSRS_durationSlots),
+        ('choice-extension', _TimeWindowDurationSRS_choice_extension),
+        ])
+    TimeWindowDurationSRS._ext = None
+    
+    #-----< TimeWindowDurationSRS-ExtIEs >-----#
+    TimeWindowDurationSRS_ExtIEs = CLASS(name='TimeWindowDurationSRS-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    TimeWindowDurationSRS_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TimeWindowPeriodicityMeasurement >-----#
+    TimeWindowPeriodicityMeasurement = ENUM(name='TimeWindowPeriodicityMeasurement', mode=MODE_TYPE)
+    TimeWindowPeriodicityMeasurement._cont = ASN1Dict([('ms160', 0), ('ms320', 1), ('ms640', 2), ('ms1280', 3), ('ms2560', 4), ('ms5120', 5), ('ms10240', 6), ('ms20480', 7), ('ms40960', 8), ('ms61440', 9), ('ms81920', 10), ('ms368640', 11), ('ms737280', 12), ('ms1843200', 13)])
+    TimeWindowPeriodicityMeasurement._ext = []
+    
+    #-----< TimeWindowPeriodicitySRS >-----#
+    TimeWindowPeriodicitySRS = ENUM(name='TimeWindowPeriodicitySRS', mode=MODE_TYPE)
+    TimeWindowPeriodicitySRS._cont = ASN1Dict([('ms0dot125', 0), ('ms0dot25', 1), ('ms0dot5', 2), ('ms0dot625', 3), ('ms1', 4), ('ms1dot25', 5), ('ms2', 6), ('ms2dot5', 7), ('ms4', 8), ('ms5', 9), ('ms8', 10), ('ms10', 11), ('ms16', 12), ('ms20', 13), ('ms32', 14), ('ms40', 15), ('ms64', 16), ('ms80', 17), ('ms160', 18), ('ms320', 19), ('ms640', 20), ('ms1280', 21), ('ms2560', 22), ('ms5120', 23), ('ms10240', 24)])
+    TimeWindowPeriodicitySRS._ext = []
+    
+    #-----< TimeWindowStartSRS >-----#
+    TimeWindowStartSRS = SEQ(name='TimeWindowStartSRS', mode=MODE_TYPE)
+    _TimeWindowStartSRS_systemFrameNumber = INT(name='systemFrameNumber', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SystemFrameNumber')))
+    _TimeWindowStartSRS_slotNumber = INT(name='slotNumber', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotNumber')))
+    _TimeWindowStartSRS_symbolIndex = INT(name='symbolIndex', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowStartSRS_symbolIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _TimeWindowStartSRS_iE_Extension = SEQ_OF(name='iE-Extension', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TimeWindowStartSRS_iE_Extension__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TimeWindowStartSRS_iE_Extension__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TimeWindowStartSRS_iE_Extension__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStartSRS_iE_Extension__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStartSRS_iE_Extension__item__id._const_tab = ____TimeWindowStartSRS_iE_Extension__item__id_tab
+    ___TimeWindowStartSRS_iE_Extension__item__id._const_tab_at = None
+    ___TimeWindowStartSRS_iE_Extension__item__id._const_tab_id = 'id'
+    ___TimeWindowStartSRS_iE_Extension__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TimeWindowStartSRS_iE_Extension__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStartSRS_iE_Extension__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStartSRS_iE_Extension__item__criticality._const_tab = ____TimeWindowStartSRS_iE_Extension__item__criticality_tab
+    ___TimeWindowStartSRS_iE_Extension__item__criticality._const_tab_at = ('..', 'id')
+    ___TimeWindowStartSRS_iE_Extension__item__criticality._const_tab_id = 'criticality'
+    ___TimeWindowStartSRS_iE_Extension__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TimeWindowStartSRS_iE_Extension__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStartSRS_iE_Extension__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStartSRS_iE_Extension__item__extensionValue._const_tab = ____TimeWindowStartSRS_iE_Extension__item__extensionValue_tab
+    ___TimeWindowStartSRS_iE_Extension__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TimeWindowStartSRS_iE_Extension__item__extensionValue._const_tab_id = 'Extension'
+    __TimeWindowStartSRS_iE_Extension__item_._cont = ASN1Dict([
+        ('id', ___TimeWindowStartSRS_iE_Extension__item__id),
+        ('criticality', ___TimeWindowStartSRS_iE_Extension__item__criticality),
+        ('extensionValue', ___TimeWindowStartSRS_iE_Extension__item__extensionValue),
+        ])
+    __TimeWindowStartSRS_iE_Extension__item_._ext = None
+    _TimeWindowStartSRS_iE_Extension._cont = __TimeWindowStartSRS_iE_Extension__item_
+    _TimeWindowStartSRS_iE_Extension._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TimeWindowStartSRS._cont = ASN1Dict([
+        ('systemFrameNumber', _TimeWindowStartSRS_systemFrameNumber),
+        ('slotNumber', _TimeWindowStartSRS_slotNumber),
+        ('symbolIndex', _TimeWindowStartSRS_symbolIndex),
+        ('iE-Extension', _TimeWindowStartSRS_iE_Extension),
+        ])
+    TimeWindowStartSRS._ext = []
+    
+    #-----< TimeWindowStartSRS-ExtIEs >-----#
+    TimeWindowStartSRS_ExtIEs = CLASS(name='TimeWindowStartSRS-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TimeWindowStartSRS_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TimingReportingGranularityFactorExtended >-----#
+    TimingReportingGranularityFactorExtended = INT(name='TimingReportingGranularityFactorExtended', mode=MODE_TYPE)
+    TimingReportingGranularityFactorExtended._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=-6, ub=-1)], ev=[], er=[])
+    
+    #-----< TimeWindowInformation-Measurement-List >-----#
+    TimeWindowInformation_Measurement_List = SEQ_OF(name='TimeWindowInformation-Measurement-List', mode=MODE_TYPE)
+    _TimeWindowInformation_Measurement_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-Measurement-Item')))
+    TimeWindowInformation_Measurement_List._cont = _TimeWindowInformation_Measurement_List__item_
+    TimeWindowInformation_Measurement_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    
+    #-----< TimeWindowInformation-Measurement-Item >-----#
+    TimeWindowInformation_Measurement_Item = SEQ(name='TimeWindowInformation-Measurement-Item', mode=MODE_TYPE)
+    _TimeWindowInformation_Measurement_Item_timeWindowDurationMeasurement = CHOICE(name='timeWindowDurationMeasurement', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowDurationMeasurement')))
+    _TimeWindowInformation_Measurement_Item_timeWindowType = ENUM(name='timeWindowType', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowInformation_Measurement_Item_timeWindowType._cont = ASN1Dict([('single', 0), ('periodic', 1)])
+    _TimeWindowInformation_Measurement_Item_timeWindowType._ext = []
+    _TimeWindowInformation_Measurement_Item_timeWindowPeriodicityMeasurement = ENUM(name='timeWindowPeriodicityMeasurement', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowPeriodicityMeasurement')), opt=True)
+    _TimeWindowInformation_Measurement_Item_timeWindowStart = SEQ(name='timeWindowStart', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowStart')))
+    _TimeWindowInformation_Measurement_Item_iE_Extension = SEQ_OF(name='iE-Extension', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TimeWindowInformation_Measurement_Item_iE_Extension__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id._const_tab = ____TimeWindowInformation_Measurement_Item_iE_Extension__item__id_tab
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id._const_tab_at = None
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id._const_tab_id = 'id'
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality._const_tab = ____TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality_tab
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality._const_tab_at = ('..', 'id')
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality._const_tab_id = 'criticality'
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue._const_tab = ____TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue_tab
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue._const_tab_id = 'Extension'
+    __TimeWindowInformation_Measurement_Item_iE_Extension__item_._cont = ASN1Dict([
+        ('id', ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id),
+        ('criticality', ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality),
+        ('extensionValue', ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue),
+        ])
+    __TimeWindowInformation_Measurement_Item_iE_Extension__item_._ext = None
+    _TimeWindowInformation_Measurement_Item_iE_Extension._cont = __TimeWindowInformation_Measurement_Item_iE_Extension__item_
+    _TimeWindowInformation_Measurement_Item_iE_Extension._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TimeWindowInformation_Measurement_Item._cont = ASN1Dict([
+        ('timeWindowDurationMeasurement', _TimeWindowInformation_Measurement_Item_timeWindowDurationMeasurement),
+        ('timeWindowType', _TimeWindowInformation_Measurement_Item_timeWindowType),
+        ('timeWindowPeriodicityMeasurement', _TimeWindowInformation_Measurement_Item_timeWindowPeriodicityMeasurement),
+        ('timeWindowStart', _TimeWindowInformation_Measurement_Item_timeWindowStart),
+        ('iE-Extension', _TimeWindowInformation_Measurement_Item_iE_Extension),
+        ])
+    TimeWindowInformation_Measurement_Item._ext = []
+    
+    #-----< TimeWindowInformation-Measurement-Item-ExtIEs >-----#
+    TimeWindowInformation_Measurement_Item_ExtIEs = CLASS(name='TimeWindowInformation-Measurement-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TimeWindowInformation_Measurement_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TimeWindowInformation-SRS-List >-----#
+    TimeWindowInformation_SRS_List = SEQ_OF(name='TimeWindowInformation-SRS-List', mode=MODE_TYPE)
+    _TimeWindowInformation_SRS_List__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-SRS-Item')))
+    TimeWindowInformation_SRS_List._cont = _TimeWindowInformation_SRS_List__item_
+    TimeWindowInformation_SRS_List._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=16)], ev=None, er=[])
+    
+    #-----< TimeWindowInformation-SRS-Item >-----#
+    TimeWindowInformation_SRS_Item = SEQ(name='TimeWindowInformation-SRS-Item', mode=MODE_TYPE)
+    _TimeWindowInformation_SRS_Item_timeWindowStartSRS = SEQ(name='timeWindowStartSRS', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowStartSRS')))
+    _TimeWindowInformation_SRS_Item_timeWindowDurationSRS = CHOICE(name='timeWindowDurationSRS', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowDurationSRS')))
+    _TimeWindowInformation_SRS_Item_timeWindowType = ENUM(name='timeWindowType', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowInformation_SRS_Item_timeWindowType._cont = ASN1Dict([('single', 0), ('periodic', 1)])
+    _TimeWindowInformation_SRS_Item_timeWindowType._ext = []
+    _TimeWindowInformation_SRS_Item_timeWindowPeriodicitySRS = ENUM(name='timeWindowPeriodicitySRS', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowPeriodicitySRS')), opt=True)
+    _TimeWindowInformation_SRS_Item_iE_Extension = SEQ_OF(name='iE-Extension', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TimeWindowInformation_SRS_Item_iE_Extension__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__id._const_tab = ____TimeWindowInformation_SRS_Item_iE_Extension__item__id_tab
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__id._const_tab_at = None
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__id._const_tab_id = 'id'
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality._const_tab = ____TimeWindowInformation_SRS_Item_iE_Extension__item__criticality_tab
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality._const_tab_at = ('..', 'id')
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality._const_tab_id = 'criticality'
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue._const_tab = ____TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue_tab
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue._const_tab_id = 'Extension'
+    __TimeWindowInformation_SRS_Item_iE_Extension__item_._cont = ASN1Dict([
+        ('id', ___TimeWindowInformation_SRS_Item_iE_Extension__item__id),
+        ('criticality', ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality),
+        ('extensionValue', ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue),
+        ])
+    __TimeWindowInformation_SRS_Item_iE_Extension__item_._ext = None
+    _TimeWindowInformation_SRS_Item_iE_Extension._cont = __TimeWindowInformation_SRS_Item_iE_Extension__item_
+    _TimeWindowInformation_SRS_Item_iE_Extension._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TimeWindowInformation_SRS_Item._cont = ASN1Dict([
+        ('timeWindowStartSRS', _TimeWindowInformation_SRS_Item_timeWindowStartSRS),
+        ('timeWindowDurationSRS', _TimeWindowInformation_SRS_Item_timeWindowDurationSRS),
+        ('timeWindowType', _TimeWindowInformation_SRS_Item_timeWindowType),
+        ('timeWindowPeriodicitySRS', _TimeWindowInformation_SRS_Item_timeWindowPeriodicitySRS),
+        ('iE-Extension', _TimeWindowInformation_SRS_Item_iE_Extension),
+        ])
+    TimeWindowInformation_SRS_Item._ext = []
+    
+    #-----< TimeWindowInformation-SRS-Item-ExtIEs >-----#
+    TimeWindowInformation_SRS_Item_ExtIEs = CLASS(name='TimeWindowInformation-SRS-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TimeWindowInformation_SRS_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TimeWindowStart >-----#
+    TimeWindowStart = SEQ(name='TimeWindowStart', mode=MODE_TYPE)
+    _TimeWindowStart_systemFrameNumber = INT(name='systemFrameNumber', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SystemFrameNumber')))
+    _TimeWindowStart_slotNumber = INT(name='slotNumber', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotNumber')))
+    _TimeWindowStart_symbolIndex = INT(name='symbolIndex', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TimeWindowStart_symbolIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=13)], ev=None, er=[])
+    _TimeWindowStart_iE_Extension = SEQ_OF(name='iE-Extension', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TimeWindowStart_iE_Extension__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TimeWindowStart_iE_Extension__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TimeWindowStart_iE_Extension__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStart_iE_Extension__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStart_iE_Extension__item__id._const_tab = ____TimeWindowStart_iE_Extension__item__id_tab
+    ___TimeWindowStart_iE_Extension__item__id._const_tab_at = None
+    ___TimeWindowStart_iE_Extension__item__id._const_tab_id = 'id'
+    ___TimeWindowStart_iE_Extension__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TimeWindowStart_iE_Extension__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStart_iE_Extension__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStart_iE_Extension__item__criticality._const_tab = ____TimeWindowStart_iE_Extension__item__criticality_tab
+    ___TimeWindowStart_iE_Extension__item__criticality._const_tab_at = ('..', 'id')
+    ___TimeWindowStart_iE_Extension__item__criticality._const_tab_id = 'criticality'
+    ___TimeWindowStart_iE_Extension__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TimeWindowStart_iE_Extension__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TimeWindowStart_iE_Extension__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TimeWindowStart_iE_Extension__item__extensionValue._const_tab = ____TimeWindowStart_iE_Extension__item__extensionValue_tab
+    ___TimeWindowStart_iE_Extension__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TimeWindowStart_iE_Extension__item__extensionValue._const_tab_id = 'Extension'
+    __TimeWindowStart_iE_Extension__item_._cont = ASN1Dict([
+        ('id', ___TimeWindowStart_iE_Extension__item__id),
+        ('criticality', ___TimeWindowStart_iE_Extension__item__criticality),
+        ('extensionValue', ___TimeWindowStart_iE_Extension__item__extensionValue),
+        ])
+    __TimeWindowStart_iE_Extension__item_._ext = None
+    _TimeWindowStart_iE_Extension._cont = __TimeWindowStart_iE_Extension__item_
+    _TimeWindowStart_iE_Extension._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TimeWindowStart._cont = ASN1Dict([
+        ('systemFrameNumber', _TimeWindowStart_systemFrameNumber),
+        ('slotNumber', _TimeWindowStart_slotNumber),
+        ('symbolIndex', _TimeWindowStart_symbolIndex),
+        ('iE-Extension', _TimeWindowStart_iE_Extension),
+        ])
+    TimeWindowStart._ext = []
+    
+    #-----< TimeWindowStart-ExtIEs >-----#
+    TimeWindowStart_ExtIEs = CLASS(name='TimeWindowStart-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TimeWindowStart_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< TP-ID-EUTRA >-----#
     TP_ID_EUTRA = INT(name='TP-ID-EUTRA', mode=MODE_TYPE)
@@ -10510,20 +12698,17 @@ class NRPPA_IEs:
     _TransmissionComb_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __TransmissionComb_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___TransmissionComb_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TransmissionComb_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____TransmissionComb_choice_extension_id_tab_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TransmissionCombn8')))
+    ___TransmissionComb_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', ____TransmissionComb_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __TransmissionComb_choice_extension_id._const_tab = ___TransmissionComb_choice_extension_id_tab
     __TransmissionComb_choice_extension_id._const_tab_at = None
     __TransmissionComb_choice_extension_id._const_tab_id = 'id'
     __TransmissionComb_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___TransmissionComb_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TransmissionComb_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TransmissionComb_choice_extension_criticality._const_tab = ___TransmissionComb_choice_extension_criticality_tab
+    __TransmissionComb_choice_extension_criticality._const_tab = ___TransmissionComb_choice_extension_id_tab
     __TransmissionComb_choice_extension_criticality._const_tab_at = ('..', 'id')
     __TransmissionComb_choice_extension_criticality._const_tab_id = 'criticality'
     __TransmissionComb_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___TransmissionComb_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TransmissionComb_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TransmissionComb_choice_extension_value._const_tab = ___TransmissionComb_choice_extension_value_tab
+    __TransmissionComb_choice_extension_value._const_tab = ___TransmissionComb_choice_extension_id_tab
     __TransmissionComb_choice_extension_value._const_tab_at = ('..', 'id')
     __TransmissionComb_choice_extension_value._const_tab_id = 'Value'
     _TransmissionComb_choice_extension._cont = ASN1Dict([
@@ -10541,7 +12726,53 @@ class NRPPA_IEs:
     
     #-----< TransmissionComb-ExtIEs >-----#
     TransmissionComb_ExtIEs = CLASS(name='TransmissionComb-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    TransmissionComb_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TransmissionComb_ExtIEs_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TransmissionCombn8')))
+    TransmissionComb_ExtIEs._val = ASN1Set(rv=[dict([('id', 111), ('criticality', 'reject'), ('Value', _TransmissionComb_ExtIEs_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    
+    #-----< TransmissionCombn8 >-----#
+    TransmissionCombn8 = SEQ(name='TransmissionCombn8', mode=MODE_TYPE)
+    _TransmissionCombn8_combOffset_n8 = INT(name='combOffset-n8', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TransmissionCombn8_combOffset_n8._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=7)], ev=None, er=[])
+    _TransmissionCombn8_cyclicShift_n8 = INT(name='cyclicShift-n8', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TransmissionCombn8_cyclicShift_n8._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=5)], ev=None, er=[])
+    _TransmissionCombn8_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TransmissionCombn8_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TransmissionCombn8_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TransmissionCombn8_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TransmissionCombn8_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TransmissionCombn8_iE_Extensions__item__id._const_tab = ____TransmissionCombn8_iE_Extensions__item__id_tab
+    ___TransmissionCombn8_iE_Extensions__item__id._const_tab_at = None
+    ___TransmissionCombn8_iE_Extensions__item__id._const_tab_id = 'id'
+    ___TransmissionCombn8_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TransmissionCombn8_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TransmissionCombn8_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TransmissionCombn8_iE_Extensions__item__criticality._const_tab = ____TransmissionCombn8_iE_Extensions__item__criticality_tab
+    ___TransmissionCombn8_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___TransmissionCombn8_iE_Extensions__item__criticality._const_tab_id = 'criticality'
+    ___TransmissionCombn8_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TransmissionCombn8_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TransmissionCombn8_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TransmissionCombn8_iE_Extensions__item__extensionValue._const_tab = ____TransmissionCombn8_iE_Extensions__item__extensionValue_tab
+    ___TransmissionCombn8_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TransmissionCombn8_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
+    __TransmissionCombn8_iE_Extensions__item_._cont = ASN1Dict([
+        ('id', ___TransmissionCombn8_iE_Extensions__item__id),
+        ('criticality', ___TransmissionCombn8_iE_Extensions__item__criticality),
+        ('extensionValue', ___TransmissionCombn8_iE_Extensions__item__extensionValue),
+        ])
+    __TransmissionCombn8_iE_Extensions__item_._ext = None
+    _TransmissionCombn8_iE_Extensions._cont = __TransmissionCombn8_iE_Extensions__item_
+    _TransmissionCombn8_iE_Extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TransmissionCombn8._cont = ASN1Dict([
+        ('combOffset-n8', _TransmissionCombn8_combOffset_n8),
+        ('cyclicShift-n8', _TransmissionCombn8_cyclicShift_n8),
+        ('iE-Extensions', _TransmissionCombn8_iE_Extensions),
+        ])
+    TransmissionCombn8._ext = None
+    
+    #-----< TransmissionCombn8-ExtIEs >-----#
+    TransmissionCombn8_ExtIEs = CLASS(name='TransmissionCombn8-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TransmissionCombn8_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< TransmissionCombPos >-----#
     TransmissionCombPos = CHOICE(name='TransmissionCombPos', mode=MODE_TYPE)
@@ -10901,27 +13132,24 @@ class NRPPA_IEs:
     
     #-----< TRPMeasurementQuantitiesList-Item >-----#
     TRPMeasurementQuantitiesList_Item = SEQ(name='TRPMeasurementQuantitiesList-Item', mode=MODE_TYPE)
-    _TRPMeasurementQuantitiesList_Item_tRPMeasurementQuantities_Item = ENUM(name='tRPMeasurementQuantities-Item', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TRPMeasurementQuantities-Item')))
+    _TRPMeasurementQuantitiesList_Item_tRPMeasurementQuantities_Item = ENUM(name='tRPMeasurementQuantities-Item', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TRPMeasurementType')))
     _TRPMeasurementQuantitiesList_Item_timingReportingGranularityFactor = INT(name='timingReportingGranularityFactor', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
     _TRPMeasurementQuantitiesList_Item_timingReportingGranularityFactor._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=5)], ev=None, er=[])
     _TRPMeasurementQuantitiesList_Item_iE_Extensions = SEQ_OF(name='iE-Extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
     __TRPMeasurementQuantitiesList_Item_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimingReportingGranularityFactorExtended')))
+    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 123), ('criticality', 'ignore'), ('Extension', _____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id._const_tab = ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id._const_tab_at = None
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id._const_tab_id = 'id'
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality._const_tab = ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality_tab
+    ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality._const_tab = ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue._const_tab = ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue_tab
+    ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue._const_tab = ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __TRPMeasurementQuantitiesList_Item_iE_Extensions__item_._cont = ASN1Dict([
@@ -10941,12 +13169,13 @@ class NRPPA_IEs:
     
     #-----< TRPMeasurementQuantitiesList-Item-ExtIEs >-----#
     TRPMeasurementQuantitiesList_Item_ExtIEs = CLASS(name='TRPMeasurementQuantitiesList-Item-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    TRPMeasurementQuantitiesList_Item_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TRPMeasurementQuantitiesList_Item_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimingReportingGranularityFactorExtended')))
+    TRPMeasurementQuantitiesList_Item_ExtIEs._val = ASN1Set(rv=[dict([('id', 123), ('criticality', 'ignore'), ('Extension', _TRPMeasurementQuantitiesList_Item_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
-    #-----< TRPMeasurementQuantities-Item >-----#
-    TRPMeasurementQuantities_Item = ENUM(name='TRPMeasurementQuantities-Item', mode=MODE_TYPE)
-    TRPMeasurementQuantities_Item._cont = ASN1Dict([('gNB-RxTxTimeDiff', 0), ('uL-SRS-RSRP', 1), ('uL-AoA', 2), ('uL-RTOA', 3), ('multiple-UL-AoA', 4), ('uL-SRS-RSRPP', 5)])
-    TRPMeasurementQuantities_Item._ext = ['multiple-UL-AoA', 'uL-SRS-RSRPP']
+    #-----< TRPMeasurementType >-----#
+    TRPMeasurementType = ENUM(name='TRPMeasurementType', mode=MODE_TYPE)
+    TRPMeasurementType._cont = ASN1Dict([('gNB-RxTxTimeDiff', 0), ('uL-SRS-RSRP', 1), ('uL-AoA', 2), ('uL-RTOA', 3), ('multiple-UL-AoA', 4), ('uL-SRS-RSRPP', 5), ('ul-RSCP', 6)])
+    TRPMeasurementType._ext = ['multiple-UL-AoA', 'uL-SRS-RSRPP', 'ul-RSCP']
     
     #-----< TrpMeasurementResult >-----#
     TrpMeasurementResult = SEQ_OF(name='TrpMeasurementResult', mode=MODE_TYPE)
@@ -10967,7 +13196,11 @@ class NRPPA_IEs:
     _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSResourcetype')))
     _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_1 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ARP-ID')))
     _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_2 = CHOICE(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'LoS-NLoSInformation')))
-    ____TrpMeasurementResultItem_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 76), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 79), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 80), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_4 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredFrequencyHops')))
+    _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_5 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPosSRSResourceID-List')))
+    _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_6 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasBasedOnAggregatedResources')))
+    ____TrpMeasurementResultItem_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 76), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 79), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 80), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')]), dict([('id', 114), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_3), ('presence', 'optional')]), dict([('id', 140), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_4), ('presence', 'optional')]), dict([('id', 131), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_5), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'ignore'), ('Extension', _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_6), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___TrpMeasurementResultItem_iE_Extensions__item__id._const_tab = ____TrpMeasurementResultItem_iE_Extensions__item__id_tab
     ___TrpMeasurementResultItem_iE_Extensions__item__id._const_tab_at = None
     ___TrpMeasurementResultItem_iE_Extensions__item__id._const_tab_id = 'id'
@@ -11001,7 +13234,11 @@ class NRPPA_IEs:
     _TrpMeasurementResultItem_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSResourcetype')))
     _TrpMeasurementResultItem_ExtIEs_val_Extension_1 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ARP-ID')))
     _TrpMeasurementResultItem_ExtIEs_val_Extension_2 = CHOICE(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'LoS-NLoSInformation')))
-    TrpMeasurementResultItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 76), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 79), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 80), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_2), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _TrpMeasurementResultItem_ExtIEs_val_Extension_3 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    _TrpMeasurementResultItem_ExtIEs_val_Extension_4 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasuredFrequencyHops')))
+    _TrpMeasurementResultItem_ExtIEs_val_Extension_5 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'AggregatedPosSRSResourceID-List')))
+    _TrpMeasurementResultItem_ExtIEs_val_Extension_6 = ENUM(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasBasedOnAggregatedResources')))
+    TrpMeasurementResultItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 76), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 79), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 80), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_2), ('presence', 'optional')]), dict([('id', 114), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_3), ('presence', 'optional')]), dict([('id', 140), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_4), ('presence', 'optional')]), dict([('id', 131), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_5), ('presence', 'optional')]), dict([('id', 157), ('criticality', 'ignore'), ('Extension', _TrpMeasurementResultItem_ExtIEs_val_Extension_6), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< TrpMeasuredResultsValue >-----#
     TrpMeasuredResultsValue = CHOICE(name='TrpMeasuredResultsValue', mode=MODE_TYPE)
@@ -11015,7 +13252,8 @@ class NRPPA_IEs:
     ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ZoA')))
     ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MultipleULAoA')))
     ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_2 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-SRS-RSRPP')))
-    ___TrpMeasuredResultsValue_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 71), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 74), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 75), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
+    ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_3 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-RSCPMeas')))
+    ___TrpMeasuredResultsValue_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 71), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 74), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 75), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 126), ('criticality', 'reject'), ('Value', ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_3), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __TrpMeasuredResultsValue_choice_extension_id._const_tab = ___TrpMeasuredResultsValue_choice_extension_id_tab
     __TrpMeasuredResultsValue_choice_extension_id._const_tab_at = None
     __TrpMeasuredResultsValue_choice_extension_id._const_tab_id = 'id'
@@ -11047,7 +13285,8 @@ class NRPPA_IEs:
     _TrpMeasuredResultsValue_ExtIEs_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ZoA')))
     _TrpMeasuredResultsValue_ExtIEs_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MultipleULAoA')))
     _TrpMeasuredResultsValue_ExtIEs_val_Value_2 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-SRS-RSRPP')))
-    TrpMeasuredResultsValue_ExtIEs._val = ASN1Set(rv=[dict([('id', 71), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 74), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 75), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_2), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    _TrpMeasuredResultsValue_ExtIEs_val_Value_3 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UL-RSCPMeas')))
+    TrpMeasuredResultsValue_ExtIEs._val = ASN1Set(rv=[dict([('id', 71), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 74), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 75), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 126), ('criticality', 'reject'), ('Value', _TrpMeasuredResultsValue_ExtIEs_val_Value_3), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< TrpMeasurementQuality >-----#
     TrpMeasurementQuality = CHOICE(name='TrpMeasurementQuality', mode=MODE_TYPE)
@@ -11056,20 +13295,17 @@ class NRPPA_IEs:
     _TrpMeasurementQuality_choice_Extension = SEQ(name='choice-Extension', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __TrpMeasurementQuality_choice_Extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___TrpMeasurementQuality_choice_Extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TrpMeasurementQuality_choice_Extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____TrpMeasurementQuality_choice_Extension_id_tab_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPPhaseQuality')))
+    ___TrpMeasurementQuality_choice_Extension_id_tab._val = ASN1Set(rv=[dict([('id', 133), ('criticality', 'ignore'), ('Value', ____TrpMeasurementQuality_choice_Extension_id_tab_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __TrpMeasurementQuality_choice_Extension_id._const_tab = ___TrpMeasurementQuality_choice_Extension_id_tab
     __TrpMeasurementQuality_choice_Extension_id._const_tab_at = None
     __TrpMeasurementQuality_choice_Extension_id._const_tab_id = 'id'
     __TrpMeasurementQuality_choice_Extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___TrpMeasurementQuality_choice_Extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TrpMeasurementQuality_choice_Extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TrpMeasurementQuality_choice_Extension_criticality._const_tab = ___TrpMeasurementQuality_choice_Extension_criticality_tab
+    __TrpMeasurementQuality_choice_Extension_criticality._const_tab = ___TrpMeasurementQuality_choice_Extension_id_tab
     __TrpMeasurementQuality_choice_Extension_criticality._const_tab_at = ('..', 'id')
     __TrpMeasurementQuality_choice_Extension_criticality._const_tab_id = 'criticality'
     __TrpMeasurementQuality_choice_Extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___TrpMeasurementQuality_choice_Extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___TrpMeasurementQuality_choice_Extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __TrpMeasurementQuality_choice_Extension_value._const_tab = ___TrpMeasurementQuality_choice_Extension_value_tab
+    __TrpMeasurementQuality_choice_Extension_value._const_tab = ___TrpMeasurementQuality_choice_Extension_id_tab
     __TrpMeasurementQuality_choice_Extension_value._const_tab_at = ('..', 'id')
     __TrpMeasurementQuality_choice_Extension_value._const_tab_id = 'Value'
     _TrpMeasurementQuality_choice_Extension._cont = ASN1Dict([
@@ -11087,7 +13323,8 @@ class NRPPA_IEs:
     
     #-----< TrpMeasurementQuality-ExtIEs >-----#
     TrpMeasurementQuality_ExtIEs = CLASS(name='TrpMeasurementQuality-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    TrpMeasurementQuality_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TrpMeasurementQuality_ExtIEs_val_Value_0 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPPhaseQuality')))
+    TrpMeasurementQuality_ExtIEs._val = ASN1Set(rv=[dict([('id', 133), ('criticality', 'ignore'), ('Value', _TrpMeasurementQuality_ExtIEs_val_Value_0), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< TrpMeasurementTimingQuality >-----#
     TrpMeasurementTimingQuality = SEQ(name='TrpMeasurementTimingQuality', mode=MODE_TYPE)
@@ -11183,6 +13420,52 @@ class NRPPA_IEs:
     #-----< TrpMeasurementAngleQuality-ExtIEs >-----#
     TrpMeasurementAngleQuality_ExtIEs = CLASS(name='TrpMeasurementAngleQuality-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     TrpMeasurementAngleQuality_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< TRPPhaseQuality >-----#
+    TRPPhaseQuality = SEQ(name='TRPPhaseQuality', mode=MODE_TYPE)
+    _TRPPhaseQuality_phaseQualityIndex = INT(name='phaseQualityIndex', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TRPPhaseQuality_phaseQualityIndex._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=179)], ev=None, er=[])
+    _TRPPhaseQuality_resolution = ENUM(name='resolution', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TRPPhaseQuality_resolution._cont = ASN1Dict([('deg0dot1', 0), ('deg1', 1)])
+    _TRPPhaseQuality_resolution._ext = []
+    _TRPPhaseQuality_iE_extensions = SEQ_OF(name='iE-extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TRPPhaseQuality_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TRPPhaseQuality_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TRPPhaseQuality_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TRPPhaseQuality_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TRPPhaseQuality_iE_extensions__item__id._const_tab = ____TRPPhaseQuality_iE_extensions__item__id_tab
+    ___TRPPhaseQuality_iE_extensions__item__id._const_tab_at = None
+    ___TRPPhaseQuality_iE_extensions__item__id._const_tab_id = 'id'
+    ___TRPPhaseQuality_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TRPPhaseQuality_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TRPPhaseQuality_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TRPPhaseQuality_iE_extensions__item__criticality._const_tab = ____TRPPhaseQuality_iE_extensions__item__criticality_tab
+    ___TRPPhaseQuality_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___TRPPhaseQuality_iE_extensions__item__criticality._const_tab_id = 'criticality'
+    ___TRPPhaseQuality_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TRPPhaseQuality_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TRPPhaseQuality_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TRPPhaseQuality_iE_extensions__item__extensionValue._const_tab = ____TRPPhaseQuality_iE_extensions__item__extensionValue_tab
+    ___TRPPhaseQuality_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TRPPhaseQuality_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
+    __TRPPhaseQuality_iE_extensions__item_._cont = ASN1Dict([
+        ('id', ___TRPPhaseQuality_iE_extensions__item__id),
+        ('criticality', ___TRPPhaseQuality_iE_extensions__item__criticality),
+        ('extensionValue', ___TRPPhaseQuality_iE_extensions__item__extensionValue),
+        ])
+    __TRPPhaseQuality_iE_extensions__item_._ext = None
+    _TRPPhaseQuality_iE_extensions._cont = __TRPPhaseQuality_iE_extensions__item_
+    _TRPPhaseQuality_iE_extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TRPPhaseQuality._cont = ASN1Dict([
+        ('phaseQualityIndex', _TRPPhaseQuality_phaseQualityIndex),
+        ('resolution', _TRPPhaseQuality_resolution),
+        ('iE-extensions', _TRPPhaseQuality_iE_extensions),
+        ])
+    TRPPhaseQuality._ext = []
+    
+    #-----< TRPPhaseQuality-ExtIEs >-----#
+    TRPPhaseQuality_ExtIEs = CLASS(name='TRPPhaseQuality-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TRPPhaseQuality_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< TRP-MeasurementRequestList >-----#
     TRP_MeasurementRequestList = SEQ_OF(name='TRP-MeasurementRequestList', mode=MODE_TYPE)
@@ -11385,20 +13668,17 @@ class NRPPA_IEs:
     __TRPInformation_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___TRPInformation_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____TRPInformation_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPInformation_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____TRPInformation_iE_Extensions__item__id_tab_val_Extension_0 = OCT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-IAB-MT-UE-ID')))
+    ____TRPInformation_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 115), ('criticality', 'reject'), ('Extension', _____TRPInformation_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___TRPInformation_iE_Extensions__item__id._const_tab = ____TRPInformation_iE_Extensions__item__id_tab
     ___TRPInformation_iE_Extensions__item__id._const_tab_at = None
     ___TRPInformation_iE_Extensions__item__id._const_tab_id = 'id'
     ___TRPInformation_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____TRPInformation_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPInformation_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TRPInformation_iE_Extensions__item__criticality._const_tab = ____TRPInformation_iE_Extensions__item__criticality_tab
+    ___TRPInformation_iE_Extensions__item__criticality._const_tab = ____TRPInformation_iE_Extensions__item__id_tab
     ___TRPInformation_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___TRPInformation_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___TRPInformation_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____TRPInformation_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____TRPInformation_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___TRPInformation_iE_Extensions__item__extensionValue._const_tab = ____TRPInformation_iE_Extensions__item__extensionValue_tab
+    ___TRPInformation_iE_Extensions__item__extensionValue._const_tab = ____TRPInformation_iE_Extensions__item__id_tab
     ___TRPInformation_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___TRPInformation_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __TRPInformation_iE_Extensions__item_._cont = ASN1Dict([
@@ -11418,7 +13698,8 @@ class NRPPA_IEs:
     
     #-----< TRPInformation-ExtIEs >-----#
     TRPInformation_ExtIEs = CLASS(name='TRPInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    TRPInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _TRPInformation_ExtIEs_val_Extension_0 = OCT_STR(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-IAB-MT-UE-ID')))
+    TRPInformation_ExtIEs._val = ASN1Set(rv=[dict([('id', 115), ('criticality', 'reject'), ('Extension', _TRPInformation_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< TRPInformationTypeResponseList >-----#
     TRPInformationTypeResponseList = SEQ_OF(name='TRPInformationTypeResponseList', mode=MODE_TYPE)
@@ -11445,7 +13726,9 @@ class NRPPA_IEs:
     ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'OnDemandPRS-Info')))
     ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPTxTEGAssociation')))
     ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_3 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPBeamAntennaInformation')))
-    ___TRPInformationTypeResponseItem_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 62), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 68), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 84), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 93), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_3), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
+    ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_5 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CommonTAParameters')))
+    ___TRPInformationTypeResponseItem_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 62), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 68), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 84), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 93), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 114), ('criticality', 'ignore'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 117), ('criticality', 'reject'), ('Value', ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __TRPInformationTypeResponseItem_choice_extension_id._const_tab = ___TRPInformationTypeResponseItem_choice_extension_id_tab
     __TRPInformationTypeResponseItem_choice_extension_id._const_tab_at = None
     __TRPInformationTypeResponseItem_choice_extension_id._const_tab_id = 'id'
@@ -11482,7 +13765,9 @@ class NRPPA_IEs:
     _TRPInformationTypeResponseItem_ExtIEs_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'OnDemandPRS-Info')))
     _TRPInformationTypeResponseItem_ExtIEs_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPTxTEGAssociation')))
     _TRPInformationTypeResponseItem_ExtIEs_val_Value_3 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRPBeamAntennaInformation')))
-    TRPInformationTypeResponseItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 62), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 68), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 84), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 93), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_3), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
+    _TRPInformationTypeResponseItem_ExtIEs_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Mobile-TRP-LocationInformation')))
+    _TRPInformationTypeResponseItem_ExtIEs_val_Value_5 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CommonTAParameters')))
+    TRPInformationTypeResponseItem_ExtIEs._val = ASN1Set(rv=[dict([('id', 62), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 68), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 84), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 93), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 114), ('criticality', 'ignore'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 117), ('criticality', 'reject'), ('Value', _TRPInformationTypeResponseItem_ExtIEs_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< TRPInformationTypeListTRPReq >-----#
     TRPInformationTypeListTRPReq = SEQ_OF(name='TRPInformationTypeListTRPReq', mode=MODE_TYPE)
@@ -11518,8 +13803,8 @@ class NRPPA_IEs:
     
     #-----< TRPInformationTypeItem >-----#
     TRPInformationTypeItem = ENUM(name='TRPInformationTypeItem', mode=MODE_TYPE)
-    TRPInformationTypeItem._cont = ASN1Dict([('nrPCI', 0), ('nG-RAN-CGI', 1), ('arfcn', 2), ('pRSConfig', 3), ('sSBInfo', 4), ('sFNInitTime', 5), ('spatialDirectInfo', 6), ('geoCoord', 7), ('trp-type', 8), ('ondemandPRSInfo', 9), ('trpTxTeg', 10), ('beam-antenna-info', 11)])
-    TRPInformationTypeItem._ext = ['trp-type', 'ondemandPRSInfo', 'trpTxTeg', 'beam-antenna-info']
+    TRPInformationTypeItem._cont = ASN1Dict([('nrPCI', 0), ('nG-RAN-CGI', 1), ('arfcn', 2), ('pRSConfig', 3), ('sSBInfo', 4), ('sFNInitTime', 5), ('spatialDirectInfo', 6), ('geoCoord', 7), ('trp-type', 8), ('ondemandPRSInfo', 9), ('trpTxTeg', 10), ('beam-antenna-info', 11), ('mobile-trp-location-info', 12), ('commonTA', 13)])
+    TRPInformationTypeItem._ext = ['trp-type', 'ondemandPRSInfo', 'trpTxTeg', 'beam-antenna-info', 'mobile-trp-location-info', 'commonTA']
     
     #-----< TRPList >-----#
     TRPList = SEQ_OF(name='TRPList', mode=MODE_TYPE)
@@ -12058,13 +14343,61 @@ class NRPPA_IEs:
     
     #-----< TRPType >-----#
     TRPType = ENUM(name='TRPType', mode=MODE_TYPE)
-    TRPType._cont = ASN1Dict([('prsOnlyTP', 0), ('srsOnlyRP', 1), ('tp', 2), ('rp', 3), ('trp', 4)])
-    TRPType._ext = []
+    TRPType._cont = ASN1Dict([('prsOnlyTP', 0), ('srsOnlyRP', 1), ('tp', 2), ('rp', 3), ('trp', 4), ('mobile-trp', 5)])
+    TRPType._ext = ['mobile-trp']
     
     #-----< TypeOfError >-----#
     TypeOfError = ENUM(name='TypeOfError', mode=MODE_TYPE)
     TypeOfError._cont = ASN1Dict([('not-understood', 0), ('missing', 1)])
     TypeOfError._ext = []
+    
+    #-----< TxHoppingConfiguration >-----#
+    TxHoppingConfiguration = SEQ(name='TxHoppingConfiguration', mode=MODE_TYPE)
+    _TxHoppingConfiguration_overlapValue = ENUM(name='overlapValue', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TxHoppingConfiguration_overlapValue._cont = ASN1Dict([('rb0', 0), ('rb1', 1), ('rb2', 2), ('rb4', 3)])
+    _TxHoppingConfiguration_overlapValue._ext = None
+    _TxHoppingConfiguration_numberOfHops = INT(name='numberOfHops', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _TxHoppingConfiguration_numberOfHops._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=2, ub=6)], ev=None, er=[])
+    _TxHoppingConfiguration_slotOffsetForRemainingHopsList = SEQ_OF(name='slotOffsetForRemainingHopsList', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'SlotOffsetForRemainingHopsList')))
+    _TxHoppingConfiguration_iE_extensions = SEQ_OF(name='iE-extensions', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __TxHoppingConfiguration_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___TxHoppingConfiguration_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____TxHoppingConfiguration_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TxHoppingConfiguration_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TxHoppingConfiguration_iE_extensions__item__id._const_tab = ____TxHoppingConfiguration_iE_extensions__item__id_tab
+    ___TxHoppingConfiguration_iE_extensions__item__id._const_tab_at = None
+    ___TxHoppingConfiguration_iE_extensions__item__id._const_tab_id = 'id'
+    ___TxHoppingConfiguration_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____TxHoppingConfiguration_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TxHoppingConfiguration_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TxHoppingConfiguration_iE_extensions__item__criticality._const_tab = ____TxHoppingConfiguration_iE_extensions__item__criticality_tab
+    ___TxHoppingConfiguration_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___TxHoppingConfiguration_iE_extensions__item__criticality._const_tab_id = 'criticality'
+    ___TxHoppingConfiguration_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____TxHoppingConfiguration_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____TxHoppingConfiguration_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___TxHoppingConfiguration_iE_extensions__item__extensionValue._const_tab = ____TxHoppingConfiguration_iE_extensions__item__extensionValue_tab
+    ___TxHoppingConfiguration_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___TxHoppingConfiguration_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
+    __TxHoppingConfiguration_iE_extensions__item_._cont = ASN1Dict([
+        ('id', ___TxHoppingConfiguration_iE_extensions__item__id),
+        ('criticality', ___TxHoppingConfiguration_iE_extensions__item__criticality),
+        ('extensionValue', ___TxHoppingConfiguration_iE_extensions__item__extensionValue),
+        ])
+    __TxHoppingConfiguration_iE_extensions__item_._ext = None
+    _TxHoppingConfiguration_iE_extensions._cont = __TxHoppingConfiguration_iE_extensions__item_
+    _TxHoppingConfiguration_iE_extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    TxHoppingConfiguration._cont = ASN1Dict([
+        ('overlapValue', _TxHoppingConfiguration_overlapValue),
+        ('numberOfHops', _TxHoppingConfiguration_numberOfHops),
+        ('slotOffsetForRemainingHopsList', _TxHoppingConfiguration_slotOffsetForRemainingHopsList),
+        ('iE-extensions', _TxHoppingConfiguration_iE_extensions),
+        ])
+    TxHoppingConfiguration._ext = []
+    
+    #-----< TxHoppingConfiguration-ExtIEs >-----#
+    TxHoppingConfiguration_ExtIEs = CLASS(name='TxHoppingConfiguration-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    TxHoppingConfiguration_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< UARFCN >-----#
     UARFCN = INT(name='UARFCN', mode=MODE_TYPE)
@@ -12086,20 +14419,17 @@ class NRPPA_IEs:
     __UEReportingInformation_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___UEReportingInformation_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____UEReportingInformation_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____UEReportingInformation_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____UEReportingInformation_iE_extensions__item__id_tab_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UEReportingInterval-milliseconds')))
+    ____UEReportingInformation_iE_extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 158), ('criticality', 'ignore'), ('Extension', _____UEReportingInformation_iE_extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___UEReportingInformation_iE_extensions__item__id._const_tab = ____UEReportingInformation_iE_extensions__item__id_tab
     ___UEReportingInformation_iE_extensions__item__id._const_tab_at = None
     ___UEReportingInformation_iE_extensions__item__id._const_tab_id = 'id'
     ___UEReportingInformation_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____UEReportingInformation_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____UEReportingInformation_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___UEReportingInformation_iE_extensions__item__criticality._const_tab = ____UEReportingInformation_iE_extensions__item__criticality_tab
+    ___UEReportingInformation_iE_extensions__item__criticality._const_tab = ____UEReportingInformation_iE_extensions__item__id_tab
     ___UEReportingInformation_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
     ___UEReportingInformation_iE_extensions__item__criticality._const_tab_id = 'criticality'
     ___UEReportingInformation_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____UEReportingInformation_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____UEReportingInformation_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___UEReportingInformation_iE_extensions__item__extensionValue._const_tab = ____UEReportingInformation_iE_extensions__item__extensionValue_tab
+    ___UEReportingInformation_iE_extensions__item__extensionValue._const_tab = ____UEReportingInformation_iE_extensions__item__id_tab
     ___UEReportingInformation_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___UEReportingInformation_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
     __UEReportingInformation_iE_extensions__item_._cont = ASN1Dict([
@@ -12119,7 +14449,16 @@ class NRPPA_IEs:
     
     #-----< UEReportingInformation-ExtIEs >-----#
     UEReportingInformation_ExtIEs = CLASS(name='UEReportingInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    UEReportingInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _UEReportingInformation_ExtIEs_val_Extension_0 = INT(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UEReportingInterval-milliseconds')))
+    UEReportingInformation_ExtIEs._val = ASN1Set(rv=[dict([('id', 158), ('criticality', 'ignore'), ('Extension', _UEReportingInformation_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
+    #-----< UEReportingInterval-milliseconds >-----#
+    UEReportingInterval_milliseconds = INT(name='UEReportingInterval-milliseconds', mode=MODE_TYPE)
+    UEReportingInterval_milliseconds._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=999)], ev=None, er=[])
+    
+    #-----< UE-Rx-Tx-Time-Diff >-----#
+    UE_Rx_Tx_Time_Diff = INT(name='UE-Rx-Tx-Time-Diff', mode=MODE_TYPE)
+    UE_Rx_Tx_Time_Diff._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=61565)], ev=None, er=[])
     
     #-----< UE-TEG-ReportingPeriodicity >-----#
     UE_TEG_ReportingPeriodicity = ENUM(name='UE-TEG-ReportingPeriodicity', mode=MODE_TYPE)
@@ -12322,6 +14661,48 @@ class NRPPA_IEs:
     _UL_RTOAMeasurement_ExtIEs_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TRP-Rx-TEGInformation')))
     UL_RTOAMeasurement_ExtIEs._val = ASN1Set(rv=[dict([('id', 77), ('criticality', 'ignore'), ('Extension', _UL_RTOAMeasurement_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 86), ('criticality', 'ignore'), ('Extension', _UL_RTOAMeasurement_ExtIEs_val_Extension_1), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
+    #-----< UL-RSCPMeas >-----#
+    UL_RSCPMeas = SEQ(name='UL-RSCPMeas', mode=MODE_TYPE)
+    _UL_RSCPMeas_uLRSCP = INT(name='uLRSCP', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
+    _UL_RSCPMeas_uLRSCP._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=3599)], ev=None, er=[])
+    _UL_RSCPMeas_iE_extensions = SEQ_OF(name='iE-extensions', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __UL_RSCPMeas_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___UL_RSCPMeas_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____UL_RSCPMeas_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____UL_RSCPMeas_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___UL_RSCPMeas_iE_extensions__item__id._const_tab = ____UL_RSCPMeas_iE_extensions__item__id_tab
+    ___UL_RSCPMeas_iE_extensions__item__id._const_tab_at = None
+    ___UL_RSCPMeas_iE_extensions__item__id._const_tab_id = 'id'
+    ___UL_RSCPMeas_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____UL_RSCPMeas_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____UL_RSCPMeas_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___UL_RSCPMeas_iE_extensions__item__criticality._const_tab = ____UL_RSCPMeas_iE_extensions__item__criticality_tab
+    ___UL_RSCPMeas_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___UL_RSCPMeas_iE_extensions__item__criticality._const_tab_id = 'criticality'
+    ___UL_RSCPMeas_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____UL_RSCPMeas_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____UL_RSCPMeas_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___UL_RSCPMeas_iE_extensions__item__extensionValue._const_tab = ____UL_RSCPMeas_iE_extensions__item__extensionValue_tab
+    ___UL_RSCPMeas_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___UL_RSCPMeas_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
+    __UL_RSCPMeas_iE_extensions__item_._cont = ASN1Dict([
+        ('id', ___UL_RSCPMeas_iE_extensions__item__id),
+        ('criticality', ___UL_RSCPMeas_iE_extensions__item__criticality),
+        ('extensionValue', ___UL_RSCPMeas_iE_extensions__item__extensionValue),
+        ])
+    __UL_RSCPMeas_iE_extensions__item_._ext = None
+    _UL_RSCPMeas_iE_extensions._cont = __UL_RSCPMeas_iE_extensions__item_
+    _UL_RSCPMeas_iE_extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    UL_RSCPMeas._cont = ASN1Dict([
+        ('uLRSCP', _UL_RSCPMeas_uLRSCP),
+        ('iE-extensions', _UL_RSCPMeas_iE_extensions),
+        ])
+    UL_RSCPMeas._ext = []
+    
+    #-----< UL-RSCPMeas-ExtIEs >-----#
+    UL_RSCPMeas_ExtIEs = CLASS(name='UL-RSCPMeas-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    UL_RSCPMeas_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
     #-----< ULRTOAMeas >-----#
     ULRTOAMeas = CHOICE(name='ULRTOAMeas', mode=MODE_TYPE)
     _ULRTOAMeas_k0 = INT(name='k0', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT))
@@ -12339,20 +14720,22 @@ class NRPPA_IEs:
     _ULRTOAMeas_choice_extension = SEQ(name='choice-extension', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Single-Container')))
     __ULRTOAMeas_choice_extension_id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
     ___ULRTOAMeas_choice_extension_id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ULRTOAMeas_choice_extension_id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1')))
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2')))
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3')))
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4')))
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5')))
+    ____ULRTOAMeas_choice_extension_id_tab_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6')))
+    ___ULRTOAMeas_choice_extension_id_tab._val = ASN1Set(rv=[dict([('id', 141), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 142), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 143), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 144), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_3), ('presence', 'mandatory')]), dict([('id', 145), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 146), ('criticality', 'ignore'), ('Value', ____ULRTOAMeas_choice_extension_id_tab_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=None, er=[])
     __ULRTOAMeas_choice_extension_id._const_tab = ___ULRTOAMeas_choice_extension_id_tab
     __ULRTOAMeas_choice_extension_id._const_tab_at = None
     __ULRTOAMeas_choice_extension_id._const_tab_id = 'id'
     __ULRTOAMeas_choice_extension_criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
-    ___ULRTOAMeas_choice_extension_criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ULRTOAMeas_choice_extension_criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __ULRTOAMeas_choice_extension_criticality._const_tab = ___ULRTOAMeas_choice_extension_criticality_tab
+    __ULRTOAMeas_choice_extension_criticality._const_tab = ___ULRTOAMeas_choice_extension_id_tab
     __ULRTOAMeas_choice_extension_criticality._const_tab_at = ('..', 'id')
     __ULRTOAMeas_choice_extension_criticality._const_tab_id = 'criticality'
     __ULRTOAMeas_choice_extension_value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
-    ___ULRTOAMeas_choice_extension_value_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ___ULRTOAMeas_choice_extension_value_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    __ULRTOAMeas_choice_extension_value._const_tab = ___ULRTOAMeas_choice_extension_value_tab
+    __ULRTOAMeas_choice_extension_value._const_tab = ___ULRTOAMeas_choice_extension_id_tab
     __ULRTOAMeas_choice_extension_value._const_tab_at = ('..', 'id')
     __ULRTOAMeas_choice_extension_value._const_tab_id = 'Value'
     _ULRTOAMeas_choice_extension._cont = ASN1Dict([
@@ -12374,7 +14757,13 @@ class NRPPA_IEs:
     
     #-----< ULRTOAMeas-ExtIEs >-----#
     ULRTOAMeas_ExtIEs = CLASS(name='ULRTOAMeas-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
-    ULRTOAMeas_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _ULRTOAMeas_ExtIEs_val_Value_0 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus1')))
+    _ULRTOAMeas_ExtIEs_val_Value_1 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus2')))
+    _ULRTOAMeas_ExtIEs_val_Value_2 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus3')))
+    _ULRTOAMeas_ExtIEs_val_Value_3 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus4')))
+    _ULRTOAMeas_ExtIEs_val_Value_4 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus5')))
+    _ULRTOAMeas_ExtIEs_val_Value_5 = INT(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'ReportingGranularitykminus6')))
+    ULRTOAMeas_ExtIEs._val = ASN1Set(rv=[dict([('id', 141), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 142), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 143), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 144), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_3), ('presence', 'mandatory')]), dict([('id', 145), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 146), ('criticality', 'ignore'), ('Value', _ULRTOAMeas_ExtIEs_val_Value_5), ('presence', 'mandatory')])], rr=[], ev=[], er=[])
     
     #-----< UL-SRS-RSRP >-----#
     UL_SRS_RSRP = INT(name='UL-SRS-RSRP', mode=MODE_TYPE)
@@ -12451,6 +14840,103 @@ class NRPPA_IEs:
     #-----< ValueRSRQ-NR >-----#
     ValueRSRQ_NR = INT(name='ValueRSRQ-NR', mode=MODE_TYPE)
     ValueRSRQ_NR._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=127)], ev=None, er=[])
+    
+    #-----< ValidityAreaSpecificSRSInformation >-----#
+    ValidityAreaSpecificSRSInformation = SEQ(name='ValidityAreaSpecificSRSInformation', mode=MODE_TYPE)
+    _ValidityAreaSpecificSRSInformation_transmissionCombPos = CHOICE(name='transmissionCombPos', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'TransmissionCombPos')), opt=True)
+    _ValidityAreaSpecificSRSInformation_resourceMapping = SEQ(name='resourceMapping', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'ResourceMapping')), opt=True)
+    _ValidityAreaSpecificSRSInformation_freqDomainShift = INT(name='freqDomainShift', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _ValidityAreaSpecificSRSInformation_freqDomainShift._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=268)], ev=None, er=[])
+    _ValidityAreaSpecificSRSInformation_c_SRS = INT(name='c-SRS', mode=MODE_TYPE, tag=(3, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _ValidityAreaSpecificSRSInformation_c_SRS._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=63)], ev=None, er=[])
+    _ValidityAreaSpecificSRSInformation_resourceTypePos = CHOICE(name='resourceTypePos', mode=MODE_TYPE, tag=(4, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'ResourceTypePos')), opt=True)
+    _ValidityAreaSpecificSRSInformation_sequenceIDPos = INT(name='sequenceIDPos', mode=MODE_TYPE, tag=(5, TAG_CONTEXT_SPEC, TAG_IMPLICIT), opt=True)
+    _ValidityAreaSpecificSRSInformation_sequenceIDPos._const_val = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65535)], ev=None, er=[])
+    _ValidityAreaSpecificSRSInformation_iE_extensions = SEQ_OF(name='iE-extensions', mode=MODE_TYPE, tag=(6, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __ValidityAreaSpecificSRSInformation_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id._const_tab = ____ValidityAreaSpecificSRSInformation_iE_extensions__item__id_tab
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id._const_tab_at = None
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id._const_tab_id = 'id'
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality._const_tab = ____ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality_tab
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality._const_tab_id = 'criticality'
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue._const_tab = ____ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue_tab
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
+    __ValidityAreaSpecificSRSInformation_iE_extensions__item_._cont = ASN1Dict([
+        ('id', ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id),
+        ('criticality', ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality),
+        ('extensionValue', ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue),
+        ])
+    __ValidityAreaSpecificSRSInformation_iE_extensions__item_._ext = None
+    _ValidityAreaSpecificSRSInformation_iE_extensions._cont = __ValidityAreaSpecificSRSInformation_iE_extensions__item_
+    _ValidityAreaSpecificSRSInformation_iE_extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    ValidityAreaSpecificSRSInformation._cont = ASN1Dict([
+        ('transmissionCombPos', _ValidityAreaSpecificSRSInformation_transmissionCombPos),
+        ('resourceMapping', _ValidityAreaSpecificSRSInformation_resourceMapping),
+        ('freqDomainShift', _ValidityAreaSpecificSRSInformation_freqDomainShift),
+        ('c-SRS', _ValidityAreaSpecificSRSInformation_c_SRS),
+        ('resourceTypePos', _ValidityAreaSpecificSRSInformation_resourceTypePos),
+        ('sequenceIDPos', _ValidityAreaSpecificSRSInformation_sequenceIDPos),
+        ('iE-extensions', _ValidityAreaSpecificSRSInformation_iE_extensions),
+        ])
+    ValidityAreaSpecificSRSInformation._ext = []
+    
+    #-----< ValidityAreaSpecificSRSInformation-ExtIEs >-----#
+    ValidityAreaSpecificSRSInformation_ExtIEs = CLASS(name='ValidityAreaSpecificSRSInformation-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ValidityAreaSpecificSRSInformation_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    
+    #-----< ValidityAreaSpecificSRSInformationExtended >-----#
+    ValidityAreaSpecificSRSInformationExtended = SEQ(name='ValidityAreaSpecificSRSInformationExtended', mode=MODE_TYPE)
+    _ValidityAreaSpecificSRSInformationExtended_posSRSResource_List = SEQ_OF(name='posSRSResource-List', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResource-List')), opt=True)
+    _ValidityAreaSpecificSRSInformationExtended_posSRSResourceSet_List = SEQ_OF(name='posSRSResourceSet-List', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-List')), opt=True)
+    _ValidityAreaSpecificSRSInformationExtended_iE_extensions = SEQ_OF(name='iE-extensions', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionContainer')), opt=True)
+    __ValidityAreaSpecificSRSInformationExtended_iE_extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id._const_tab = ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id_tab
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id._const_tab_at = None
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id._const_tab_id = 'id'
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality._const_tab = ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality_tab
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality._const_tab_at = ('..', 'id')
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality._const_tab_id = 'criticality'
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue._const_tab = ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue_tab
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue._const_tab_at = ('..', 'id')
+    ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue._const_tab_id = 'Extension'
+    __ValidityAreaSpecificSRSInformationExtended_iE_extensions__item_._cont = ASN1Dict([
+        ('id', ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id),
+        ('criticality', ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality),
+        ('extensionValue', ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue),
+        ])
+    __ValidityAreaSpecificSRSInformationExtended_iE_extensions__item_._ext = None
+    _ValidityAreaSpecificSRSInformationExtended_iE_extensions._cont = __ValidityAreaSpecificSRSInformationExtended_iE_extensions__item_
+    _ValidityAreaSpecificSRSInformationExtended_iE_extensions._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=1, ub=65535)], ev=None, er=[])
+    ValidityAreaSpecificSRSInformationExtended._cont = ASN1Dict([
+        ('posSRSResource-List', _ValidityAreaSpecificSRSInformationExtended_posSRSResource_List),
+        ('posSRSResourceSet-List', _ValidityAreaSpecificSRSInformationExtended_posSRSResourceSet_List),
+        ('iE-extensions', _ValidityAreaSpecificSRSInformationExtended_iE_extensions),
+        ])
+    ValidityAreaSpecificSRSInformationExtended._ext = []
+    
+    #-----< ValidityAreaSpecificSRSInformationExtended-ExtIEs >-----#
+    ValidityAreaSpecificSRSInformationExtended_ExtIEs = CLASS(name='ValidityAreaSpecificSRSInformationExtended-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
+    ValidityAreaSpecificSRSInformationExtended_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
     
     #-----< WLANMeasurementQuantities >-----#
     WLANMeasurementQuantities = SEQ_OF(name='WLANMeasurementQuantities', mode=MODE_TYPE)
@@ -12667,14 +15153,14 @@ class NRPPA_IEs:
         _AbortTransmission_deactivateSRSResourceSetID,
         _AbortTransmission_releaseALL,
         ___AbortTransmission_choice_extension_id_tab,
+        ____AbortTransmission_choice_extension_id_tab_val_Value_0,
         __AbortTransmission_choice_extension_id,
-        ___AbortTransmission_choice_extension_criticality_tab,
         __AbortTransmission_choice_extension_criticality,
-        ___AbortTransmission_choice_extension_value_tab,
         __AbortTransmission_choice_extension_value,
         _AbortTransmission_choice_extension,
         AbortTransmission,
         AbortTransmission_ExtIEs,
+        _AbortTransmission_ExtIEs_val_Value_0,
         _ActiveULBWP_locationAndBandwidth,
         _ActiveULBWP_subcarrierSpacing,
         _ActiveULBWP_cyclicPrefix,
@@ -12707,6 +15193,49 @@ class NRPPA_IEs:
         AdditionalPathListItem_ExtIEs,
         _AdditionalPathListItem_ExtIEs_val_Extension_0,
         _AdditionalPathListItem_ExtIEs_val_Extension_1,
+        _AggregatedPosSRSResourceID_List__item_,
+        AggregatedPosSRSResourceID_List,
+        _AggregatedPosSRSResourceID_Item_sRSPosResource_ID,
+        ____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab,
+        _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_0,
+        _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_1,
+        _____AggregatedPosSRSResourceID_Item_iE_Extensions__item__id_tab_val_Extension_2,
+        ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__id,
+        ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__criticality,
+        ___AggregatedPosSRSResourceID_Item_iE_Extensions__item__extensionValue,
+        __AggregatedPosSRSResourceID_Item_iE_Extensions__item_,
+        _AggregatedPosSRSResourceID_Item_iE_Extensions,
+        AggregatedPosSRSResourceID_Item,
+        AggregatedPosSRSResourceID_Item_ExtIEs,
+        _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_0,
+        _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_1,
+        _AggregatedPosSRSResourceID_Item_ExtIEs_val_Extension_2,
+        _AggregatedPRSResourceSetList__item_,
+        AggregatedPRSResourceSetList,
+        _AggregatedPRSResourceSet_Item_dl_PRS_ResourceSet_List,
+        ____AggregatedPRSResourceSet_Item_iE_Extensions__item__id_tab,
+        ___AggregatedPRSResourceSet_Item_iE_Extensions__item__id,
+        ____AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality_tab,
+        ___AggregatedPRSResourceSet_Item_iE_Extensions__item__criticality,
+        ____AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue_tab,
+        ___AggregatedPRSResourceSet_Item_iE_Extensions__item__extensionValue,
+        __AggregatedPRSResourceSet_Item_iE_Extensions__item_,
+        _AggregatedPRSResourceSet_Item_iE_Extensions,
+        AggregatedPRSResourceSet_Item,
+        AggregatedPRSResourceSet_Item_ExtIEs,
+        _DL_PRS_ResourceSet_List__item_,
+        DL_PRS_ResourceSet_List,
+        _DL_PRS_ResourceSet_Item_dl_prs_ResourceSetIndex,
+        ____DL_PRS_ResourceSet_Item_iE_Extensions__item__id_tab,
+        ___DL_PRS_ResourceSet_Item_iE_Extensions__item__id,
+        ____DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality_tab,
+        ___DL_PRS_ResourceSet_Item_iE_Extensions__item__criticality,
+        ____DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue_tab,
+        ___DL_PRS_ResourceSet_Item_iE_Extensions__item__extensionValue,
+        __DL_PRS_ResourceSet_Item_iE_Extensions__item_,
+        _DL_PRS_ResourceSet_Item_iE_Extensions,
+        DL_PRS_ResourceSet_Item,
+        DL_PRS_ResourceSet_Item_ExtIEs,
         _ExtendedAdditionalPathList__item_,
         ExtendedAdditionalPathList,
         _ExtendedAdditionalPathList_Item_relativeTimeOfPath,
@@ -12870,6 +15399,7 @@ class NRPPA_IEs:
         _BandwidthSRS_choice_extension,
         BandwidthSRS,
         BandwidthSRS_ExtIEs,
+        Bandwidth_Aggregation_Request_Indication,
         BCCH,
         Broadcast,
         BroadcastPeriodicity,
@@ -12958,6 +15488,18 @@ class NRPPA_IEs:
         _CriticalityDiagnostics_IE_List__item_,
         CriticalityDiagnostics_IE_List,
         CriticalityDiagnostics_IE_List_ExtIEs,
+        _CommonTAParameters_epochTime,
+        _CommonTAParameters_taInfo,
+        ____CommonTAParameters_iE_Extensions__item__id_tab,
+        ___CommonTAParameters_iE_Extensions__item__id,
+        ____CommonTAParameters_iE_Extensions__item__criticality_tab,
+        ___CommonTAParameters_iE_Extensions__item__criticality,
+        ____CommonTAParameters_iE_Extensions__item__extensionValue_tab,
+        ___CommonTAParameters_iE_Extensions__item__extensionValue,
+        __CommonTAParameters_iE_Extensions__item_,
+        _CommonTAParameters_iE_Extensions,
+        CommonTAParameters,
+        CommonTAParameters_ExtIEs,
         DL_Bandwidth_EUTRA,
         _DL_PRS_prsid,
         _DL_PRS_dl_PRSResourceSetID,
@@ -13047,12 +15589,15 @@ class NRPPA_IEs:
         _DL_PRSResourceARPLocation_choice_Extension,
         DL_PRSResourceARPLocation,
         DL_PRSResourceARPLocation_ExtIEs,
+        DL_reference_signal_UERxTx_TD,
         _E_CID_MeasurementResult_servingCell_ID,
         _E_CID_MeasurementResult_servingCellTAC,
         _E_CID_MeasurementResult_nG_RANAccessPointPosition,
         _E_CID_MeasurementResult_measuredResults,
         ____E_CID_MeasurementResult_iE_Extensions__item__id_tab,
         _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_0,
+        _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_1,
+        _____E_CID_MeasurementResult_iE_Extensions__item__id_tab_val_Extension_2,
         ___E_CID_MeasurementResult_iE_Extensions__item__id,
         ___E_CID_MeasurementResult_iE_Extensions__item__criticality,
         ___E_CID_MeasurementResult_iE_Extensions__item__extensionValue,
@@ -13061,6 +15606,8 @@ class NRPPA_IEs:
         E_CID_MeasurementResult,
         E_CID_MeasurementResult_ExtIEs,
         _E_CID_MeasurementResult_ExtIEs_val_Extension_0,
+        _E_CID_MeasurementResult_ExtIEs_val_Extension_1,
+        _E_CID_MeasurementResult_ExtIEs_val_Extension_2,
         EUTRACellIdentifier,
         EARFCN,
         Expected_Value_AoA,
@@ -13098,14 +15645,24 @@ class NRPPA_IEs:
         _GNBRxTxTimeDiffMeas_k4,
         _GNBRxTxTimeDiffMeas_k5,
         ___GNBRxTxTimeDiffMeas_choice_extension_id_tab,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_0,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_1,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_2,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_3,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_4,
+        ____GNBRxTxTimeDiffMeas_choice_extension_id_tab_val_Value_5,
         __GNBRxTxTimeDiffMeas_choice_extension_id,
-        ___GNBRxTxTimeDiffMeas_choice_extension_criticality_tab,
         __GNBRxTxTimeDiffMeas_choice_extension_criticality,
-        ___GNBRxTxTimeDiffMeas_choice_extension_value_tab,
         __GNBRxTxTimeDiffMeas_choice_extension_value,
         _GNBRxTxTimeDiffMeas_choice_extension,
         GNBRxTxTimeDiffMeas,
         GNBRxTxTimeDiffMeas_ExtIEs,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_0,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_1,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_2,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_3,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_4,
+        _GNBRxTxTimeDiffMeas_ExtIEs_val_Value_5,
         HESSID,
         _LCS_to_GCS_Translation_alpha,
         _LCS_to_GCS_Translation_beta,
@@ -13149,6 +15706,19 @@ class NRPPA_IEs:
         __LocationUncertainty_iE_Extensions__item_,
         _LocationUncertainty_iE_Extensions,
         LocationUncertainty,
+        _LocalOrigin_relativeCoordinateID,
+        _LocalOrigin_horizontalAxesOrientation,
+        _LocalOrigin_referencePointCoordinateHA,
+        ____LocalOrigin_iE_Extensions__item__id_tab,
+        ___LocalOrigin_iE_Extensions__item__id,
+        ____LocalOrigin_iE_Extensions__item__criticality_tab,
+        ___LocalOrigin_iE_Extensions__item__criticality,
+        ____LocalOrigin_iE_Extensions__item__extensionValue_tab,
+        ___LocalOrigin_iE_Extensions__item__extensionValue,
+        __LocalOrigin_iE_Extensions__item_,
+        _LocalOrigin_iE_Extensions,
+        LocalOrigin,
+        LocalOrigin_ExtIEs,
         LocationUncertainty_ExtIEs,
         LoS_NLoSIndicatorHard,
         LoS_NLoSIndicatorSoft,
@@ -13163,6 +15733,7 @@ class NRPPA_IEs:
         _LoS_NLoSInformation_choice_Extension,
         LoS_NLoSInformation,
         LoS_NLoSInformation_ExtIEs,
+        MeasBasedOnAggregatedResources,
         Measurement_ID,
         MeasurementAmount,
         MeasurementBeamInfoRequest,
@@ -13207,6 +15778,20 @@ class NRPPA_IEs:
         MeasurementCharacteristicsRequestIndicator,
         _MeasuredResults__item_,
         MeasuredResults,
+        _MeasuredResultsAssociatedInfoList__item_,
+        MeasuredResultsAssociatedInfoList,
+        _MeasuredResultsAssociatedInfoItem_timeStamp,
+        _MeasuredResultsAssociatedInfoItem_measurementQuality,
+        ____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab,
+        _____MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id_tab_val_Extension_0,
+        ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__id,
+        ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__criticality,
+        ___MeasuredResultsAssociatedInfoItem_iE_Extensions__item__extensionValue,
+        __MeasuredResultsAssociatedInfoItem_iE_Extensions__item_,
+        _MeasuredResultsAssociatedInfoItem_iE_Extensions,
+        MeasuredResultsAssociatedInfoItem,
+        MeasuredResultsAssociatedInfoItem_ExtIEs,
+        _MeasuredResultsAssociatedInfoItem_ExtIEs_val_Extension_0,
         _MeasuredResultsValue_valueAngleOfArrival_EUTRA,
         _MeasuredResultsValue_valueTimingAdvanceType1_EUTRA,
         _MeasuredResultsValue_valueTimingAdvanceType2_EUTRA,
@@ -13219,6 +15804,7 @@ class NRPPA_IEs:
         ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_3,
         ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_4,
         ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_5,
+        ____MeasuredResultsValue_choice_Extension_id_tab_val_Value_6,
         __MeasuredResultsValue_choice_Extension_id,
         __MeasuredResultsValue_choice_Extension_criticality,
         __MeasuredResultsValue_choice_Extension_value,
@@ -13231,6 +15817,21 @@ class NRPPA_IEs:
         _MeasuredResultsValue_ExtensionIE_val_Value_3,
         _MeasuredResultsValue_ExtensionIE_val_Value_4,
         _MeasuredResultsValue_ExtensionIE_val_Value_5,
+        _MeasuredResultsValue_ExtensionIE_val_Value_6,
+        _Mobile_TRP_LocationInformation_location_Information,
+        _Mobile_TRP_LocationInformation_velocity_Information,
+        _Mobile_TRP_LocationInformation_location_time_stamp,
+        ____Mobile_TRP_LocationInformation_iE_Extensions__item__id_tab,
+        ___Mobile_TRP_LocationInformation_iE_Extensions__item__id,
+        ____Mobile_TRP_LocationInformation_iE_Extensions__item__criticality_tab,
+        ___Mobile_TRP_LocationInformation_iE_Extensions__item__criticality,
+        ____Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue_tab,
+        ___Mobile_TRP_LocationInformation_iE_Extensions__item__extensionValue,
+        __Mobile_TRP_LocationInformation_iE_Extensions__item_,
+        _Mobile_TRP_LocationInformation_iE_Extensions,
+        Mobile_TRP_LocationInformation,
+        Mobile_TRP_LocationInformation_ExtIEs,
+        Mobile_IAB_MT_UE_ID,
         _MultipleULAoA_multipleULAoA,
         ____MultipleULAoA_iE_Extensions__item__id_tab,
         ___MultipleULAoA_iE_Extensions__item__id,
@@ -13255,6 +15856,7 @@ class NRPPA_IEs:
         _MultipleULAoA_Item_choice_extension,
         MultipleULAoA_Item,
         MultipleULAoA_Item_ExtIEs,
+        MeasuredFrequencyHops,
         NarrowBandIndex,
         _NG_RANAccessPointPosition_latitudeSign,
         _NG_RANAccessPointPosition_latitude,
@@ -13320,6 +15922,7 @@ class NRPPA_IEs:
         NG_RANCell_ExtensionIE,
         NR_ARFCN,
         NRCellIdentifier,
+        NrofSymbolsExtended,
         NR_PCI,
         __NR_PRS_Beam_Information_nR_PRS_Beam_InformationList__item_,
         _NR_PRS_Beam_Information_nR_PRS_Beam_InformationList,
@@ -13515,6 +16118,32 @@ class NRPPA_IEs:
         PosSIB_Segments,
         PosSIB_Segments_ExtIEs,
         PosSIB_Type,
+        _PRSBWAggregationRequestInfoList__item_,
+        PRSBWAggregationRequestInfoList,
+        _PRSBWAggregationRequestInfo_Item_dl_PRSBWAggregationRequestInfo_List,
+        ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab,
+        ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id,
+        ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab,
+        ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality,
+        ____PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab,
+        ___PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue,
+        __PRSBWAggregationRequestInfo_Item_iE_Extensions__item_,
+        _PRSBWAggregationRequestInfo_Item_iE_Extensions,
+        PRSBWAggregationRequestInfo_Item,
+        PRSBWAggregationRequestInfo_Item_ExtIEs,
+        _DL_PRSBWAggregationRequestInfo_List__item_,
+        DL_PRSBWAggregationRequestInfo_List,
+        _DL_PRSBWAggregationRequestInfo_Item_dl_prs_ResourceSetIndex,
+        ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id_tab,
+        ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__id,
+        ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality_tab,
+        ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__criticality,
+        ____DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue_tab,
+        ___DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item__extensionValue,
+        __DL_PRSBWAggregationRequestInfo_Item_iE_Extensions__item_,
+        _DL_PRSBWAggregationRequestInfo_Item_iE_Extensions,
+        DL_PRSBWAggregationRequestInfo_Item,
+        DL_PRSBWAggregationRequestInfo_Item_ExtIEs,
         _PosSRSResource_List__item_,
         PosSRSResource_List,
         _PosSRSResource_Item_srs_PosResourceId,
@@ -13528,15 +16157,15 @@ class NRPPA_IEs:
         _PosSRSResource_Item_sequenceId,
         _PosSRSResource_Item_spatialRelationPos,
         ____PosSRSResource_Item_iE_Extensions__item__id_tab,
+        _____PosSRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0,
         ___PosSRSResource_Item_iE_Extensions__item__id,
-        ____PosSRSResource_Item_iE_Extensions__item__criticality_tab,
         ___PosSRSResource_Item_iE_Extensions__item__criticality,
-        ____PosSRSResource_Item_iE_Extensions__item__extensionValue_tab,
         ___PosSRSResource_Item_iE_Extensions__item__extensionValue,
         __PosSRSResource_Item_iE_Extensions__item_,
         _PosSRSResource_Item_iE_Extensions,
         PosSRSResource_Item,
         PosSRSResource_Item_ExtIEs,
+        _PosSRSResource_Item_ExtIEs_val_Extension_0,
         _PosSRSResourceID_List__item_,
         PosSRSResourceID_List,
         _PosSRSResourceSet_List__item_,
@@ -13556,6 +16185,35 @@ class NRPPA_IEs:
         _PosSRSResourceSet_Item_iE_Extensions,
         PosSRSResourceSet_Item,
         PosSRSResourceSet_Item_ExtIEs,
+        _PosSRSResourceSet_Aggregation_List__item_,
+        PosSRSResourceSet_Aggregation_List,
+        _PosSRSResourceSet_Aggregation_Item_combined_posSRSResourceSet_List,
+        ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id_tab,
+        ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__id,
+        ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality_tab,
+        ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__criticality,
+        ____PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue_tab,
+        ___PosSRSResourceSet_Aggregation_Item_iE_Extensions__item__extensionValue,
+        __PosSRSResourceSet_Aggregation_Item_iE_Extensions__item_,
+        _PosSRSResourceSet_Aggregation_Item_iE_Extensions,
+        PosSRSResourceSet_Aggregation_Item,
+        PosSRSResourceSet_Aggregation_Item_ExtIEs,
+        _Combined_PosSRSResourceSet_List__item_,
+        Combined_PosSRSResourceSet_List,
+        _Combined_PosSRSResourceSet_Item_pointA,
+        _Combined_PosSRSResourceSet_Item_pCI_NR,
+        _Combined_PosSRSResourceSet_Item_possrsResourceSetID,
+        _Combined_PosSRSResourceSet_Item_scs_specificCarrier,
+        ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__id_tab,
+        ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__id,
+        ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality_tab,
+        ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__criticality,
+        ____Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue_tab,
+        ___Combined_PosSRSResourceSet_Item_iE_Extensions__item__extensionValue,
+        __Combined_PosSRSResourceSet_Item_iE_Extensions__item_,
+        _Combined_PosSRSResourceSet_Item_iE_Extensions,
+        Combined_PosSRSResourceSet_Item,
+        Combined_PosSRSResourceSet_Item_ExtIEs,
         _PosResourceSetType_periodic,
         _PosResourceSetType_semi_persistent,
         _PosResourceSetType_aperiodic,
@@ -13633,15 +16291,15 @@ class NRPPA_IEs:
         PRSConfigRequestType,
         _PRSConfiguration_pRSResourceSet_List,
         ____PRSConfiguration_iE_Extensions__item__id_tab,
+        _____PRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0,
         ___PRSConfiguration_iE_Extensions__item__id,
-        ____PRSConfiguration_iE_Extensions__item__criticality_tab,
         ___PRSConfiguration_iE_Extensions__item__criticality,
-        ____PRSConfiguration_iE_Extensions__item__extensionValue_tab,
         ___PRSConfiguration_iE_Extensions__item__extensionValue,
         __PRSConfiguration_iE_Extensions__item_,
         _PRSConfiguration_iE_Extensions,
         PRSConfiguration,
         PRSConfiguration_ExtIEs,
+        _PRSConfiguration_ExtIEs_val_Extension_0,
         PRS_ConfigurationIndex_EUTRA,
         PRS_ID_EUTRA,
         _PRSMutingConfiguration_EUTRA_two,
@@ -13737,15 +16395,16 @@ class NRPPA_IEs:
         _PRSResource_Item_resourceSymbolOffset,
         _PRSResource_Item_qCLInfo,
         ____PRSResource_Item_iE_Extensions__item__id_tab,
+        _____PRSResource_Item_iE_Extensions__item__id_tab_val_Extension_0,
         ___PRSResource_Item_iE_Extensions__item__id,
-        ____PRSResource_Item_iE_Extensions__item__criticality_tab,
         ___PRSResource_Item_iE_Extensions__item__criticality,
-        ____PRSResource_Item_iE_Extensions__item__extensionValue_tab,
         ___PRSResource_Item_iE_Extensions__item__extensionValue,
         __PRSResource_Item_iE_Extensions__item_,
         _PRSResource_Item_iE_Extensions,
         PRSResource_Item,
         PRSResource_Item_ExtIEs,
+        _PRSResource_Item_ExtIEs_val_Extension_0,
+        ExtendedResourceSymbolOffset,
         _PRSResource_QCLInfo_qCLSourceSSB,
         _PRSResource_QCLInfo_qCLSourcePRS,
         ___PRSResource_QCLInfo_choice_Extension_id_tab,
@@ -13902,6 +16561,21 @@ class NRPPA_IEs:
         _PRSTransmissionTRPItem_iE_Extensions,
         PRSTransmissionTRPItem,
         PRSTransmissionTRPItem_ExtIEs,
+        _PosValidityAreaCellList__item_,
+        PosValidityAreaCellList,
+        _PosValidityAreaCell_Item_nR_CGI,
+        _PosValidityAreaCell_Item_nR_PCI,
+        ____PosValidityAreaCell_Item_iE_Extensions__item__id_tab,
+        ___PosValidityAreaCell_Item_iE_Extensions__item__id,
+        ____PosValidityAreaCell_Item_iE_Extensions__item__criticality_tab,
+        ___PosValidityAreaCell_Item_iE_Extensions__item__criticality,
+        ____PosValidityAreaCell_Item_iE_Extensions__item__extensionValue_tab,
+        ___PosValidityAreaCell_Item_iE_Extensions__item__extensionValue,
+        __PosValidityAreaCell_Item_iE_Extensions__item_,
+        _PosValidityAreaCell_Item_iE_Extensions,
+        PosValidityAreaCell_Item,
+        PosValidityAreaCell_Item_ExtIEs,
+        PointA,
         _ReferenceSignal_nZP_CSI_RS,
         _ReferenceSignal_sSB,
         _ReferenceSignal_sRS,
@@ -13920,14 +16594,14 @@ class NRPPA_IEs:
         _ReferencePoint_referencePointCoordinate,
         _ReferencePoint_referencePointCoordinateHA,
         ___ReferencePoint_choice_Extension_id_tab,
+        ____ReferencePoint_choice_Extension_id_tab_val_Value_0,
         __ReferencePoint_choice_Extension_id,
-        ___ReferencePoint_choice_Extension_criticality_tab,
         __ReferencePoint_choice_Extension_criticality,
-        ___ReferencePoint_choice_Extension_value_tab,
         __ReferencePoint_choice_Extension_value,
         _ReferencePoint_choice_Extension,
         ReferencePoint,
         ReferencePoint_ExtIEs,
+        _ReferencePoint_ExtIEs_val_Value_0,
         CoordinateID,
         _RelativeGeodeticLocation_milli_Arc_SecondUnits,
         _RelativeGeodeticLocation_heightUnits,
@@ -13967,28 +16641,54 @@ class NRPPA_IEs:
         _RelativePathDelay_k4,
         _RelativePathDelay_k5,
         ___RelativePathDelay_choice_Extension_id_tab,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_0,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_1,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_2,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_3,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_4,
+        ____RelativePathDelay_choice_Extension_id_tab_val_Value_5,
         __RelativePathDelay_choice_Extension_id,
-        ___RelativePathDelay_choice_Extension_criticality_tab,
         __RelativePathDelay_choice_Extension_criticality,
-        ___RelativePathDelay_choice_Extension_value_tab,
         __RelativePathDelay_choice_Extension_value,
         _RelativePathDelay_choice_Extension,
         RelativePathDelay,
         RelativePathDelay_ExtIEs,
+        _RelativePathDelay_ExtIEs_val_Value_0,
+        _RelativePathDelay_ExtIEs_val_Value_1,
+        _RelativePathDelay_ExtIEs_val_Value_2,
+        _RelativePathDelay_ExtIEs_val_Value_3,
+        _RelativePathDelay_ExtIEs_val_Value_4,
+        _RelativePathDelay_ExtIEs_val_Value_5,
+        Remote_UE_Indication_Request,
+        Remote_UE_Indication,
+        Remote_UE_Status,
+        RepetitionFactorExtended,
         ReportCharacteristics,
+        ReportingGranularitykminus1,
+        ReportingGranularitykminus2,
+        ReportingGranularitykminus3,
+        ReportingGranularitykminus4,
+        ReportingGranularitykminus5,
+        ReportingGranularitykminus6,
+        ReportingGranularitykminus1AdditionalPath,
+        ReportingGranularitykminus2AdditionalPath,
+        ReportingGranularitykminus3AdditionalPath,
+        ReportingGranularitykminus4AdditionalPath,
+        ReportingGranularitykminus5AdditionalPath,
+        ReportingGranularitykminus6AdditionalPath,
         _RequestedDLPRSTransmissionCharacteristics_requestedDLPRSResourceSet_List,
         _RequestedDLPRSTransmissionCharacteristics_numberofFrequencyLayers,
         _RequestedDLPRSTransmissionCharacteristics_startTimeAndDuration,
         ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab,
+        _____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0,
         ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__id,
-        ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality_tab,
         ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__criticality,
-        ____RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue_tab,
         ___RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item__extensionValue,
         __RequestedDLPRSTransmissionCharacteristics_iE_Extensions__item_,
         _RequestedDLPRSTransmissionCharacteristics_iE_Extensions,
         RequestedDLPRSTransmissionCharacteristics,
         RequestedDLPRSTransmissionCharacteristics_ExtIEs,
+        _RequestedDLPRSTransmissionCharacteristics_ExtIEs_val_Extension_0,
         _RequestedDLPRSResourceSet_List__item_,
         RequestedDLPRSResourceSet_List,
         _RequestedDLPRSResourceSet_Item_pRSbandwidth,
@@ -14029,6 +16729,10 @@ class NRPPA_IEs:
         _RequestedSRSTransmissionCharacteristics_sSBInformation,
         ____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab,
         _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_0,
+        _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_1,
+        _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_2,
+        _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_3,
+        _____RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id_tab_val_Extension_4,
         ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__id,
         ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__criticality,
         ___RequestedSRSTransmissionCharacteristics_iE_Extensions__item__extensionValue,
@@ -14037,6 +16741,35 @@ class NRPPA_IEs:
         RequestedSRSTransmissionCharacteristics,
         RequestedSRSTransmissionCharacteristics_ExtIEs,
         _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_0,
+        _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_1,
+        _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_2,
+        _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_3,
+        _RequestedSRSTransmissionCharacteristics_ExtIEs_val_Extension_4,
+        _ResourceMapping_startPosition,
+        _ResourceMapping_nrofSumbols,
+        ____ResourceMapping_iE_Extensions__item__id_tab,
+        ___ResourceMapping_iE_Extensions__item__id,
+        ____ResourceMapping_iE_Extensions__item__criticality_tab,
+        ___ResourceMapping_iE_Extensions__item__criticality,
+        ____ResourceMapping_iE_Extensions__item__extensionValue_tab,
+        ___ResourceMapping_iE_Extensions__item__extensionValue,
+        __ResourceMapping_iE_Extensions__item_,
+        _ResourceMapping_iE_Extensions,
+        ResourceMapping,
+        ResourceMapping_ExtIEs,
+        _RequestedSRSPreconfigurationCharacteristics_List__item_,
+        RequestedSRSPreconfigurationCharacteristics_List,
+        _RequestedSRSPreconfigurationCharacteristics_Item_requestedSRSTransmissionCharacteristics,
+        ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id_tab,
+        ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__id,
+        ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality_tab,
+        ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__criticality,
+        ____RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue_tab,
+        ___RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item__extensionValue,
+        __RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions__item_,
+        _RequestedSRSPreconfigurationCharacteristics_Item_iE_Extensions,
+        RequestedSRSPreconfigurationCharacteristics_Item,
+        RequestedSRSPreconfigurationCharacteristics_Item_ExtIEs,
         _SRSResourceSet_Item_numberOfSRSResourcePerSet,
         _SRSResourceSet_Item_periodicityList,
         _SRSResourceSet_Item_spatialRelationInformation,
@@ -14157,30 +16890,30 @@ class NRPPA_IEs:
         _ResourceTypePos_choice_extension,
         ResourceTypePos,
         ResourceTypePos_ExtIEs,
-        _ResourceTypePeriodicPos_periodicity,
+        _ResourceTypePeriodicPos_sRSPeriodicity,
         _ResourceTypePeriodicPos_offset,
         ____ResourceTypePeriodicPos_iE_Extensions__item__id_tab,
+        _____ResourceTypePeriodicPos_iE_Extensions__item__id_tab_val_Extension_0,
         ___ResourceTypePeriodicPos_iE_Extensions__item__id,
-        ____ResourceTypePeriodicPos_iE_Extensions__item__criticality_tab,
         ___ResourceTypePeriodicPos_iE_Extensions__item__criticality,
-        ____ResourceTypePeriodicPos_iE_Extensions__item__extensionValue_tab,
         ___ResourceTypePeriodicPos_iE_Extensions__item__extensionValue,
         __ResourceTypePeriodicPos_iE_Extensions__item_,
         _ResourceTypePeriodicPos_iE_Extensions,
         ResourceTypePeriodicPos,
         ResourceTypePeriodicPos_ExtIEs,
-        _ResourceTypeSemi_persistentPos_periodicity,
+        _ResourceTypePeriodicPos_ExtIEs_val_Extension_0,
+        _ResourceTypeSemi_persistentPos_sRSPeriodicity,
         _ResourceTypeSemi_persistentPos_offset,
         ____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab,
+        _____ResourceTypeSemi_persistentPos_iE_Extensions__item__id_tab_val_Extension_0,
         ___ResourceTypeSemi_persistentPos_iE_Extensions__item__id,
-        ____ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality_tab,
         ___ResourceTypeSemi_persistentPos_iE_Extensions__item__criticality,
-        ____ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue_tab,
         ___ResourceTypeSemi_persistentPos_iE_Extensions__item__extensionValue,
         __ResourceTypeSemi_persistentPos_iE_Extensions__item_,
         _ResourceTypeSemi_persistentPos_iE_Extensions,
         ResourceTypeSemi_persistentPos,
         ResourceTypeSemi_persistentPos_ExtIEs,
+        _ResourceTypeSemi_persistentPos_ExtIEs_val_Extension_0,
         _ResourceTypeAperiodicPos_slotOffset,
         ____ResourceTypeAperiodicPos_iE_Extensions__item__id_tab,
         ___ResourceTypeAperiodicPos_iE_Extensions__item__id,
@@ -14431,6 +17164,8 @@ class NRPPA_IEs:
         ResultUTRAN_Item_ExtIEs,
         RSSI,
         RxTxTimingErrorMargin,
+        SCS_480,
+        SCS_960,
         _SCS_SpecificCarrier_offsetToCarrier,
         _SCS_SpecificCarrier_subcarrierSpacing,
         _SCS_SpecificCarrier_carrierBandwidth,
@@ -14459,6 +17194,69 @@ class NRPPA_IEs:
         RelativeTime1900,
         SFNInitialisationTime_EUTRA,
         SlotNumber,
+        _SlotOffsetForRemainingHopsList__item_,
+        SlotOffsetForRemainingHopsList,
+        _SlotOffsetForRemainingHopsItem_slotOffsetRemainingHops,
+        ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__id_tab,
+        ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__id,
+        ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality_tab,
+        ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__criticality,
+        ____SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue_tab,
+        ___SlotOffsetForRemainingHopsItem_iE_Extensions__item__extensionValue,
+        __SlotOffsetForRemainingHopsItem_iE_Extensions__item_,
+        _SlotOffsetForRemainingHopsItem_iE_Extensions,
+        SlotOffsetForRemainingHopsItem,
+        SlotOffsetForRemainingHopsItem_ExtIEs,
+        _SlotOffsetRemainingHops_aperiodic,
+        _SlotOffsetRemainingHops_semi_persistent,
+        _SlotOffsetRemainingHops_periodic,
+        ___SlotOffsetRemainingHops_choice_extension_id_tab,
+        __SlotOffsetRemainingHops_choice_extension_id,
+        ___SlotOffsetRemainingHops_choice_extension_criticality_tab,
+        __SlotOffsetRemainingHops_choice_extension_criticality,
+        ___SlotOffsetRemainingHops_choice_extension_value_tab,
+        __SlotOffsetRemainingHops_choice_extension_value,
+        _SlotOffsetRemainingHops_choice_extension,
+        SlotOffsetRemainingHops,
+        SlotOffsetRemainingHops_ExtIEs,
+        _SlotOffsetRemainingHopsAperiodic_slotOffset,
+        _SlotOffsetRemainingHopsAperiodic_startPosition,
+        ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id_tab,
+        ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__id,
+        ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality_tab,
+        ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__criticality,
+        ____SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue_tab,
+        ___SlotOffsetRemainingHopsAperiodic_iE_Extensions__item__extensionValue,
+        __SlotOffsetRemainingHopsAperiodic_iE_Extensions__item_,
+        _SlotOffsetRemainingHopsAperiodic_iE_Extensions,
+        SlotOffsetRemainingHopsAperiodic,
+        SlotOffsetRemainingHopsAperiodic_ExtIEs,
+        _SlotOffsetRemainingHopsSemiPersistent_sRSperiodicity,
+        _SlotOffsetRemainingHopsSemiPersistent_offset,
+        _SlotOffsetRemainingHopsSemiPersistent_startPosition,
+        ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id_tab,
+        ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__id,
+        ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality_tab,
+        ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__criticality,
+        ____SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue_tab,
+        ___SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item__extensionValue,
+        __SlotOffsetRemainingHopsSemiPersistent_iE_Extensions__item_,
+        _SlotOffsetRemainingHopsSemiPersistent_iE_Extensions,
+        SlotOffsetRemainingHopsSemiPersistent,
+        SlotOffsetRemainingHopsSemiPersistent_ExtIEs,
+        _SlotOffsetRemainingHopsPeriodic_sRSperiodicity,
+        _SlotOffsetRemainingHopsPeriodic_offset,
+        _SlotOffsetRemainingHopsPeriodic_startPosition,
+        ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id_tab,
+        ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__id,
+        ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality_tab,
+        ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__criticality,
+        ____SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue_tab,
+        ___SlotOffsetRemainingHopsPeriodic_iE_Extensions__item__extensionValue,
+        __SlotOffsetRemainingHopsPeriodic_iE_Extensions__item_,
+        _SlotOffsetRemainingHopsPeriodic_iE_Extensions,
+        SlotOffsetRemainingHopsPeriodic,
+        SlotOffsetRemainingHopsSemiPeriodic_ExtIEs,
         _SpatialDirectionInformation_nR_PRS_Beam_Information,
         ____SpatialDirectionInformation_iE_Extensions__item__id_tab,
         ___SpatialDirectionInformation_iE_Extensions__item__id,
@@ -14561,17 +17359,18 @@ class NRPPA_IEs:
         SRSCarrier_List_Item_ExtIEs,
         _SRSConfiguration_sRSCarrier_List,
         ____SRSConfiguration_iE_Extensions__item__id_tab,
+        _____SRSConfiguration_iE_Extensions__item__id_tab_val_Extension_0,
         ___SRSConfiguration_iE_Extensions__item__id,
-        ____SRSConfiguration_iE_Extensions__item__criticality_tab,
         ___SRSConfiguration_iE_Extensions__item__criticality,
-        ____SRSConfiguration_iE_Extensions__item__extensionValue_tab,
         ___SRSConfiguration_iE_Extensions__item__extensionValue,
         __SRSConfiguration_iE_Extensions__item_,
         _SRSConfiguration_iE_Extensions,
         SRSConfiguration,
         SRSConfiguration_ExtIEs,
+        _SRSConfiguration_ExtIEs_val_Extension_0,
         SrsFrequency,
         SRSPortIndex,
+        SRSPosPeriodicConfigHyperSFNIndex,
         SRSPosResourceID,
         _SRSResource_sRSResourceID,
         _SRSResource_nrofSRS_Ports,
@@ -14588,15 +17387,21 @@ class NRPPA_IEs:
         _SRSResource_resourceType,
         _SRSResource_sequenceId,
         ____SRSResource_iE_Extensions__item__id_tab,
+        _____SRSResource_iE_Extensions__item__id_tab_val_Extension_0,
+        _____SRSResource_iE_Extensions__item__id_tab_val_Extension_1,
+        _____SRSResource_iE_Extensions__item__id_tab_val_Extension_2,
+        _____SRSResource_iE_Extensions__item__id_tab_val_Extension_3,
         ___SRSResource_iE_Extensions__item__id,
-        ____SRSResource_iE_Extensions__item__criticality_tab,
         ___SRSResource_iE_Extensions__item__criticality,
-        ____SRSResource_iE_Extensions__item__extensionValue_tab,
         ___SRSResource_iE_Extensions__item__extensionValue,
         __SRSResource_iE_Extensions__item_,
         _SRSResource_iE_Extensions,
         SRSResource,
         SRSResource_ExtIEs,
+        _SRSResource_ExtIEs_val_Extension_0,
+        _SRSResource_ExtIEs_val_Extension_1,
+        _SRSResource_ExtIEs_val_Extension_2,
+        _SRSResource_ExtIEs_val_Extension_3,
         SRSResourceID,
         _SRSResource_List__item_,
         SRSResource_List,
@@ -14604,7 +17409,7 @@ class NRPPA_IEs:
         SRSResourceSet_List,
         _SRSResourceID_List__item_,
         SRSResourceID_List,
-        _SRSResourceSet_sRSResourceSetID,
+        _SRSResourceSet_sRSResourceSetID1,
         _SRSResourceSet_sRSResourceID_List,
         _SRSResourceSet_resourceSetType,
         ____SRSResourceSet_iE_Extensions__item__id_tab,
@@ -14698,6 +17503,18 @@ class NRPPA_IEs:
         SSBBurstPosition_ExtIEs,
         SSB_Index,
         SSID,
+        _StartRBIndex_freqScalingFactor2,
+        _StartRBIndex_freqScalingFactor4,
+        ___StartRBIndex_choice_extension_id_tab,
+        __StartRBIndex_choice_extension_id,
+        ___StartRBIndex_choice_extension_criticality_tab,
+        __StartRBIndex_choice_extension_criticality,
+        ___StartRBIndex_choice_extension_value_tab,
+        __StartRBIndex_choice_extension_value,
+        _StartRBIndex_choice_extension,
+        StartRBIndex,
+        StartRBIndex_ExtIEs,
+        StartRBHopping,
         _StartTimeAndDuration_startTime,
         _StartTimeAndDuration_duration,
         ____StartTimeAndDuration_iE_Extensions__item__id_tab,
@@ -14710,6 +17527,7 @@ class NRPPA_IEs:
         _StartTimeAndDuration_iE_Extensions,
         StartTimeAndDuration,
         StartTimeAndDuration_ExtIEs,
+        SymbolIndex,
         SystemFrameNumber,
         __SystemInformation__item__broadcastPeriodicity,
         __SystemInformation__item__posSIBs,
@@ -14724,6 +17542,22 @@ class NRPPA_IEs:
         _SystemInformation__item_,
         SystemInformation,
         SystemInformation_ExtIEs,
+        SRSReservationType,
+        _SRSPreconfiguration_List__item_,
+        SRSPreconfiguration_List,
+        _SRSPreconfiguration_Item_sRSConfiguration,
+        _SRSPreconfiguration_Item_posValidityAreaCellList,
+        ____SRSPreconfiguration_Item_iE_Extensions__item__id_tab,
+        ___SRSPreconfiguration_Item_iE_Extensions__item__id,
+        ____SRSPreconfiguration_Item_iE_Extensions__item__criticality_tab,
+        ___SRSPreconfiguration_Item_iE_Extensions__item__criticality,
+        ____SRSPreconfiguration_Item_iE_Extensions__item__extensionValue_tab,
+        ___SRSPreconfiguration_Item_iE_Extensions__item__extensionValue,
+        __SRSPreconfiguration_Item_iE_Extensions__item_,
+        _SRSPreconfiguration_Item_iE_Extensions,
+        SRSPreconfiguration_Item,
+        SRSPreconfiguration_Item_ExtIEs,
+        SRSPeriodicity,
         TAC,
         _TDD_Config_EUTRA_Item_subframeAssignment,
         ____TDD_Config_EUTRA_Item_iE_Extensions__item__id_tab,
@@ -14794,28 +17628,112 @@ class NRPPA_IEs:
         _TimeStamp_slotIndex,
         _TimeStamp_measurementTime,
         ____TimeStamp_iE_Extension__item__id_tab,
+        _____TimeStamp_iE_Extension__item__id_tab_val_Extension_0,
         ___TimeStamp_iE_Extension__item__id,
-        ____TimeStamp_iE_Extension__item__criticality_tab,
         ___TimeStamp_iE_Extension__item__criticality,
-        ____TimeStamp_iE_Extension__item__extensionValue_tab,
         ___TimeStamp_iE_Extension__item__extensionValue,
         __TimeStamp_iE_Extension__item_,
         _TimeStamp_iE_Extension,
         TimeStamp,
         TimeStamp_ExtIEs,
+        _TimeStamp_ExtIEs_val_Extension_0,
         _TimeStampSlotIndex_sCS_15,
         _TimeStampSlotIndex_sCS_30,
         _TimeStampSlotIndex_sCS_60,
         _TimeStampSlotIndex_sCS_120,
         ___TimeStampSlotIndex_choice_extension_id_tab,
+        ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_0,
+        ____TimeStampSlotIndex_choice_extension_id_tab_val_Value_1,
         __TimeStampSlotIndex_choice_extension_id,
-        ___TimeStampSlotIndex_choice_extension_criticality_tab,
         __TimeStampSlotIndex_choice_extension_criticality,
-        ___TimeStampSlotIndex_choice_extension_value_tab,
         __TimeStampSlotIndex_choice_extension_value,
         _TimeStampSlotIndex_choice_extension,
         TimeStampSlotIndex,
         TimeStampSlotIndex_ExtIEs,
+        _TimeStampSlotIndex_ExtIEs_val_Value_0,
+        _TimeStampSlotIndex_ExtIEs_val_Value_1,
+        _TimeWindowDurationMeasurement_durationSlots,
+        ___TimeWindowDurationMeasurement_choice_extension_id_tab,
+        __TimeWindowDurationMeasurement_choice_extension_id,
+        ___TimeWindowDurationMeasurement_choice_extension_criticality_tab,
+        __TimeWindowDurationMeasurement_choice_extension_criticality,
+        ___TimeWindowDurationMeasurement_choice_extension_value_tab,
+        __TimeWindowDurationMeasurement_choice_extension_value,
+        _TimeWindowDurationMeasurement_choice_extension,
+        TimeWindowDurationMeasurement,
+        TimeWindowDurationMeasurement_ExtIEs,
+        _TimeWindowDurationSRS_durationSymbols,
+        _TimeWindowDurationSRS_durationSlots,
+        ___TimeWindowDurationSRS_choice_extension_id_tab,
+        __TimeWindowDurationSRS_choice_extension_id,
+        ___TimeWindowDurationSRS_choice_extension_criticality_tab,
+        __TimeWindowDurationSRS_choice_extension_criticality,
+        ___TimeWindowDurationSRS_choice_extension_value_tab,
+        __TimeWindowDurationSRS_choice_extension_value,
+        _TimeWindowDurationSRS_choice_extension,
+        TimeWindowDurationSRS,
+        TimeWindowDurationSRS_ExtIEs,
+        TimeWindowPeriodicityMeasurement,
+        TimeWindowPeriodicitySRS,
+        _TimeWindowStartSRS_systemFrameNumber,
+        _TimeWindowStartSRS_slotNumber,
+        _TimeWindowStartSRS_symbolIndex,
+        ____TimeWindowStartSRS_iE_Extension__item__id_tab,
+        ___TimeWindowStartSRS_iE_Extension__item__id,
+        ____TimeWindowStartSRS_iE_Extension__item__criticality_tab,
+        ___TimeWindowStartSRS_iE_Extension__item__criticality,
+        ____TimeWindowStartSRS_iE_Extension__item__extensionValue_tab,
+        ___TimeWindowStartSRS_iE_Extension__item__extensionValue,
+        __TimeWindowStartSRS_iE_Extension__item_,
+        _TimeWindowStartSRS_iE_Extension,
+        TimeWindowStartSRS,
+        TimeWindowStartSRS_ExtIEs,
+        TimingReportingGranularityFactorExtended,
+        _TimeWindowInformation_Measurement_List__item_,
+        TimeWindowInformation_Measurement_List,
+        _TimeWindowInformation_Measurement_Item_timeWindowDurationMeasurement,
+        _TimeWindowInformation_Measurement_Item_timeWindowType,
+        _TimeWindowInformation_Measurement_Item_timeWindowPeriodicityMeasurement,
+        _TimeWindowInformation_Measurement_Item_timeWindowStart,
+        ____TimeWindowInformation_Measurement_Item_iE_Extension__item__id_tab,
+        ___TimeWindowInformation_Measurement_Item_iE_Extension__item__id,
+        ____TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality_tab,
+        ___TimeWindowInformation_Measurement_Item_iE_Extension__item__criticality,
+        ____TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue_tab,
+        ___TimeWindowInformation_Measurement_Item_iE_Extension__item__extensionValue,
+        __TimeWindowInformation_Measurement_Item_iE_Extension__item_,
+        _TimeWindowInformation_Measurement_Item_iE_Extension,
+        TimeWindowInformation_Measurement_Item,
+        TimeWindowInformation_Measurement_Item_ExtIEs,
+        _TimeWindowInformation_SRS_List__item_,
+        TimeWindowInformation_SRS_List,
+        _TimeWindowInformation_SRS_Item_timeWindowStartSRS,
+        _TimeWindowInformation_SRS_Item_timeWindowDurationSRS,
+        _TimeWindowInformation_SRS_Item_timeWindowType,
+        _TimeWindowInformation_SRS_Item_timeWindowPeriodicitySRS,
+        ____TimeWindowInformation_SRS_Item_iE_Extension__item__id_tab,
+        ___TimeWindowInformation_SRS_Item_iE_Extension__item__id,
+        ____TimeWindowInformation_SRS_Item_iE_Extension__item__criticality_tab,
+        ___TimeWindowInformation_SRS_Item_iE_Extension__item__criticality,
+        ____TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue_tab,
+        ___TimeWindowInformation_SRS_Item_iE_Extension__item__extensionValue,
+        __TimeWindowInformation_SRS_Item_iE_Extension__item_,
+        _TimeWindowInformation_SRS_Item_iE_Extension,
+        TimeWindowInformation_SRS_Item,
+        TimeWindowInformation_SRS_Item_ExtIEs,
+        _TimeWindowStart_systemFrameNumber,
+        _TimeWindowStart_slotNumber,
+        _TimeWindowStart_symbolIndex,
+        ____TimeWindowStart_iE_Extension__item__id_tab,
+        ___TimeWindowStart_iE_Extension__item__id,
+        ____TimeWindowStart_iE_Extension__item__criticality_tab,
+        ___TimeWindowStart_iE_Extension__item__criticality,
+        ____TimeWindowStart_iE_Extension__item__extensionValue_tab,
+        ___TimeWindowStart_iE_Extension__item__extensionValue,
+        __TimeWindowStart_iE_Extension__item_,
+        _TimeWindowStart_iE_Extension,
+        TimeWindowStart,
+        TimeWindowStart_ExtIEs,
         TP_ID_EUTRA,
         TP_Type_EUTRA,
         __TransmissionComb_n2_combOffset_n2,
@@ -14825,14 +17743,26 @@ class NRPPA_IEs:
         __TransmissionComb_n4_cyclicShift_n4,
         _TransmissionComb_n4,
         ___TransmissionComb_choice_extension_id_tab,
+        ____TransmissionComb_choice_extension_id_tab_val_Value_0,
         __TransmissionComb_choice_extension_id,
-        ___TransmissionComb_choice_extension_criticality_tab,
         __TransmissionComb_choice_extension_criticality,
-        ___TransmissionComb_choice_extension_value_tab,
         __TransmissionComb_choice_extension_value,
         _TransmissionComb_choice_extension,
         TransmissionComb,
         TransmissionComb_ExtIEs,
+        _TransmissionComb_ExtIEs_val_Value_0,
+        _TransmissionCombn8_combOffset_n8,
+        _TransmissionCombn8_cyclicShift_n8,
+        ____TransmissionCombn8_iE_Extensions__item__id_tab,
+        ___TransmissionCombn8_iE_Extensions__item__id,
+        ____TransmissionCombn8_iE_Extensions__item__criticality_tab,
+        ___TransmissionCombn8_iE_Extensions__item__criticality,
+        ____TransmissionCombn8_iE_Extensions__item__extensionValue_tab,
+        ___TransmissionCombn8_iE_Extensions__item__extensionValue,
+        __TransmissionCombn8_iE_Extensions__item_,
+        _TransmissionCombn8_iE_Extensions,
+        TransmissionCombn8,
+        TransmissionCombn8_ExtIEs,
         __TransmissionCombPos_n2_combOffset_n2,
         __TransmissionCombPos_n2_cyclicShift_n2,
         _TransmissionCombPos_n2,
@@ -14935,16 +17865,16 @@ class NRPPA_IEs:
         _TRPMeasurementQuantitiesList_Item_tRPMeasurementQuantities_Item,
         _TRPMeasurementQuantitiesList_Item_timingReportingGranularityFactor,
         ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab,
+        _____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id_tab_val_Extension_0,
         ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__id,
-        ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality_tab,
         ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__criticality,
-        ____TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue_tab,
         ___TRPMeasurementQuantitiesList_Item_iE_Extensions__item__extensionValue,
         __TRPMeasurementQuantitiesList_Item_iE_Extensions__item_,
         _TRPMeasurementQuantitiesList_Item_iE_Extensions,
         TRPMeasurementQuantitiesList_Item,
         TRPMeasurementQuantitiesList_Item_ExtIEs,
-        TRPMeasurementQuantities_Item,
+        _TRPMeasurementQuantitiesList_Item_ExtIEs_val_Extension_0,
+        TRPMeasurementType,
         _TrpMeasurementResult__item_,
         TrpMeasurementResult,
         _TrpMeasurementResultItem_measuredResultsValue,
@@ -14955,6 +17885,10 @@ class NRPPA_IEs:
         _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_0,
         _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_1,
         _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_2,
+        _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_3,
+        _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_4,
+        _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_5,
+        _____TrpMeasurementResultItem_iE_Extensions__item__id_tab_val_Extension_6,
         ___TrpMeasurementResultItem_iE_Extensions__item__id,
         ___TrpMeasurementResultItem_iE_Extensions__item__criticality,
         ___TrpMeasurementResultItem_iE_Extensions__item__extensionValue,
@@ -14965,6 +17899,10 @@ class NRPPA_IEs:
         _TrpMeasurementResultItem_ExtIEs_val_Extension_0,
         _TrpMeasurementResultItem_ExtIEs_val_Extension_1,
         _TrpMeasurementResultItem_ExtIEs_val_Extension_2,
+        _TrpMeasurementResultItem_ExtIEs_val_Extension_3,
+        _TrpMeasurementResultItem_ExtIEs_val_Extension_4,
+        _TrpMeasurementResultItem_ExtIEs_val_Extension_5,
+        _TrpMeasurementResultItem_ExtIEs_val_Extension_6,
         _TrpMeasuredResultsValue_uL_AngleOfArrival,
         _TrpMeasuredResultsValue_uL_SRS_RSRP,
         _TrpMeasuredResultsValue_uL_RTOA,
@@ -14973,6 +17911,7 @@ class NRPPA_IEs:
         ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_0,
         ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_1,
         ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_2,
+        ____TrpMeasuredResultsValue_choice_extension_id_tab_val_Value_3,
         __TrpMeasuredResultsValue_choice_extension_id,
         __TrpMeasuredResultsValue_choice_extension_criticality,
         __TrpMeasuredResultsValue_choice_extension_value,
@@ -14982,17 +17921,18 @@ class NRPPA_IEs:
         _TrpMeasuredResultsValue_ExtIEs_val_Value_0,
         _TrpMeasuredResultsValue_ExtIEs_val_Value_1,
         _TrpMeasuredResultsValue_ExtIEs_val_Value_2,
+        _TrpMeasuredResultsValue_ExtIEs_val_Value_3,
         _TrpMeasurementQuality_timingMeasQuality,
         _TrpMeasurementQuality_angleMeasQuality,
         ___TrpMeasurementQuality_choice_Extension_id_tab,
+        ____TrpMeasurementQuality_choice_Extension_id_tab_val_Value_0,
         __TrpMeasurementQuality_choice_Extension_id,
-        ___TrpMeasurementQuality_choice_Extension_criticality_tab,
         __TrpMeasurementQuality_choice_Extension_criticality,
-        ___TrpMeasurementQuality_choice_Extension_value_tab,
         __TrpMeasurementQuality_choice_Extension_value,
         _TrpMeasurementQuality_choice_Extension,
         TrpMeasurementQuality,
         TrpMeasurementQuality_ExtIEs,
+        _TrpMeasurementQuality_ExtIEs_val_Value_0,
         _TrpMeasurementTimingQuality_measurementQuality,
         _TrpMeasurementTimingQuality_resolution,
         ____TrpMeasurementTimingQuality_iE_extensions__item__id_tab,
@@ -15018,6 +17958,18 @@ class NRPPA_IEs:
         _TrpMeasurementAngleQuality_iE_extensions,
         TrpMeasurementAngleQuality,
         TrpMeasurementAngleQuality_ExtIEs,
+        _TRPPhaseQuality_phaseQualityIndex,
+        _TRPPhaseQuality_resolution,
+        ____TRPPhaseQuality_iE_extensions__item__id_tab,
+        ___TRPPhaseQuality_iE_extensions__item__id,
+        ____TRPPhaseQuality_iE_extensions__item__criticality_tab,
+        ___TRPPhaseQuality_iE_extensions__item__criticality,
+        ____TRPPhaseQuality_iE_extensions__item__extensionValue_tab,
+        ___TRPPhaseQuality_iE_extensions__item__extensionValue,
+        __TRPPhaseQuality_iE_extensions__item_,
+        _TRPPhaseQuality_iE_extensions,
+        TRPPhaseQuality,
+        TRPPhaseQuality_ExtIEs,
         _TRP_MeasurementRequestList__item_,
         TRP_MeasurementRequestList,
         _TRP_MeasurementRequestItem_tRP_ID,
@@ -15083,15 +18035,15 @@ class NRPPA_IEs:
         _TRPInformation_tRP_ID,
         _TRPInformation_tRPInformationTypeResponseList,
         ____TRPInformation_iE_Extensions__item__id_tab,
+        _____TRPInformation_iE_Extensions__item__id_tab_val_Extension_0,
         ___TRPInformation_iE_Extensions__item__id,
-        ____TRPInformation_iE_Extensions__item__criticality_tab,
         ___TRPInformation_iE_Extensions__item__criticality,
-        ____TRPInformation_iE_Extensions__item__extensionValue_tab,
         ___TRPInformation_iE_Extensions__item__extensionValue,
         __TRPInformation_iE_Extensions__item_,
         _TRPInformation_iE_Extensions,
         TRPInformation,
         TRPInformation_ExtIEs,
+        _TRPInformation_ExtIEs_val_Extension_0,
         _TRPInformationTypeResponseList__item_,
         TRPInformationTypeResponseList,
         _TRPInformationTypeResponseItem_pCI_NR,
@@ -15107,6 +18059,8 @@ class NRPPA_IEs:
         ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_1,
         ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_2,
         ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_3,
+        ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_4,
+        ____TRPInformationTypeResponseItem_choice_extension_id_tab_val_Value_5,
         __TRPInformationTypeResponseItem_choice_extension_id,
         __TRPInformationTypeResponseItem_choice_extension_criticality,
         __TRPInformationTypeResponseItem_choice_extension_value,
@@ -15117,6 +18071,8 @@ class NRPPA_IEs:
         _TRPInformationTypeResponseItem_ExtIEs_val_Value_1,
         _TRPInformationTypeResponseItem_ExtIEs_val_Value_2,
         _TRPInformationTypeResponseItem_ExtIEs_val_Value_3,
+        _TRPInformationTypeResponseItem_ExtIEs_val_Value_4,
+        _TRPInformationTypeResponseItem_ExtIEs_val_Value_5,
         ___TRPInformationTypeListTRPReq__item__id_tab,
         ____TRPInformationTypeListTRPReq__item__id_tab_val_Value_0,
         __TRPInformationTypeListTRPReq__item__id,
@@ -15278,20 +18234,35 @@ class NRPPA_IEs:
         DLPRSResource_Item_ExtIEs,
         TRPType,
         TypeOfError,
+        _TxHoppingConfiguration_overlapValue,
+        _TxHoppingConfiguration_numberOfHops,
+        _TxHoppingConfiguration_slotOffsetForRemainingHopsList,
+        ____TxHoppingConfiguration_iE_extensions__item__id_tab,
+        ___TxHoppingConfiguration_iE_extensions__item__id,
+        ____TxHoppingConfiguration_iE_extensions__item__criticality_tab,
+        ___TxHoppingConfiguration_iE_extensions__item__criticality,
+        ____TxHoppingConfiguration_iE_extensions__item__extensionValue_tab,
+        ___TxHoppingConfiguration_iE_extensions__item__extensionValue,
+        __TxHoppingConfiguration_iE_extensions__item_,
+        _TxHoppingConfiguration_iE_extensions,
+        TxHoppingConfiguration,
+        TxHoppingConfiguration_ExtIEs,
         UARFCN,
         UE_Measurement_ID,
         _UEReportingInformation_reportingAmount,
         _UEReportingInformation_reportingInterval,
         ____UEReportingInformation_iE_extensions__item__id_tab,
+        _____UEReportingInformation_iE_extensions__item__id_tab_val_Extension_0,
         ___UEReportingInformation_iE_extensions__item__id,
-        ____UEReportingInformation_iE_extensions__item__criticality_tab,
         ___UEReportingInformation_iE_extensions__item__criticality,
-        ____UEReportingInformation_iE_extensions__item__extensionValue_tab,
         ___UEReportingInformation_iE_extensions__item__extensionValue,
         __UEReportingInformation_iE_extensions__item_,
         _UEReportingInformation_iE_extensions,
         UEReportingInformation,
         UEReportingInformation_ExtIEs,
+        _UEReportingInformation_ExtIEs_val_Extension_0,
+        UEReportingInterval_milliseconds,
+        UE_Rx_Tx_Time_Diff,
         UE_TEG_ReportingPeriodicity,
         _UETxTEGAssociationList__item_,
         UETxTEGAssociationList,
@@ -15350,6 +18321,17 @@ class NRPPA_IEs:
         UL_RTOAMeasurement_ExtIEs,
         _UL_RTOAMeasurement_ExtIEs_val_Extension_0,
         _UL_RTOAMeasurement_ExtIEs_val_Extension_1,
+        _UL_RSCPMeas_uLRSCP,
+        ____UL_RSCPMeas_iE_extensions__item__id_tab,
+        ___UL_RSCPMeas_iE_extensions__item__id,
+        ____UL_RSCPMeas_iE_extensions__item__criticality_tab,
+        ___UL_RSCPMeas_iE_extensions__item__criticality,
+        ____UL_RSCPMeas_iE_extensions__item__extensionValue_tab,
+        ___UL_RSCPMeas_iE_extensions__item__extensionValue,
+        __UL_RSCPMeas_iE_extensions__item_,
+        _UL_RSCPMeas_iE_extensions,
+        UL_RSCPMeas,
+        UL_RSCPMeas_ExtIEs,
         _ULRTOAMeas_k0,
         _ULRTOAMeas_k1,
         _ULRTOAMeas_k2,
@@ -15357,14 +18339,24 @@ class NRPPA_IEs:
         _ULRTOAMeas_k4,
         _ULRTOAMeas_k5,
         ___ULRTOAMeas_choice_extension_id_tab,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_0,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_1,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_2,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_3,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_4,
+        ____ULRTOAMeas_choice_extension_id_tab_val_Value_5,
         __ULRTOAMeas_choice_extension_id,
-        ___ULRTOAMeas_choice_extension_criticality_tab,
         __ULRTOAMeas_choice_extension_criticality,
-        ___ULRTOAMeas_choice_extension_value_tab,
         __ULRTOAMeas_choice_extension_value,
         _ULRTOAMeas_choice_extension,
         ULRTOAMeas,
         ULRTOAMeas_ExtIEs,
+        _ULRTOAMeas_ExtIEs_val_Value_0,
+        _ULRTOAMeas_ExtIEs_val_Value_1,
+        _ULRTOAMeas_ExtIEs_val_Value_2,
+        _ULRTOAMeas_ExtIEs_val_Value_3,
+        _ULRTOAMeas_ExtIEs_val_Value_4,
+        _ULRTOAMeas_ExtIEs_val_Value_5,
         UL_SRS_RSRP,
         _UL_SRS_RSRPP_firstPathRSRPP,
         ____UL_SRS_RSRPP_iE_extensions__item__id_tab,
@@ -15385,6 +18377,34 @@ class NRPPA_IEs:
         ValueRSRQ_EUTRA,
         ValueRSRP_NR,
         ValueRSRQ_NR,
+        _ValidityAreaSpecificSRSInformation_transmissionCombPos,
+        _ValidityAreaSpecificSRSInformation_resourceMapping,
+        _ValidityAreaSpecificSRSInformation_freqDomainShift,
+        _ValidityAreaSpecificSRSInformation_c_SRS,
+        _ValidityAreaSpecificSRSInformation_resourceTypePos,
+        _ValidityAreaSpecificSRSInformation_sequenceIDPos,
+        ____ValidityAreaSpecificSRSInformation_iE_extensions__item__id_tab,
+        ___ValidityAreaSpecificSRSInformation_iE_extensions__item__id,
+        ____ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality_tab,
+        ___ValidityAreaSpecificSRSInformation_iE_extensions__item__criticality,
+        ____ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue_tab,
+        ___ValidityAreaSpecificSRSInformation_iE_extensions__item__extensionValue,
+        __ValidityAreaSpecificSRSInformation_iE_extensions__item_,
+        _ValidityAreaSpecificSRSInformation_iE_extensions,
+        ValidityAreaSpecificSRSInformation,
+        ValidityAreaSpecificSRSInformation_ExtIEs,
+        _ValidityAreaSpecificSRSInformationExtended_posSRSResource_List,
+        _ValidityAreaSpecificSRSInformationExtended_posSRSResourceSet_List,
+        ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id_tab,
+        ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__id,
+        ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality_tab,
+        ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__criticality,
+        ____ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue_tab,
+        ___ValidityAreaSpecificSRSInformationExtended_iE_extensions__item__extensionValue,
+        __ValidityAreaSpecificSRSInformationExtended_iE_extensions__item_,
+        _ValidityAreaSpecificSRSInformationExtended_iE_extensions,
+        ValidityAreaSpecificSRSInformationExtended,
+        ValidityAreaSpecificSRSInformationExtended_ExtIEs,
         ___WLANMeasurementQuantities__item__id_tab,
         ____WLANMeasurementQuantities__item__id_tab_val_Value_0,
         __WLANMeasurementQuantities__item__id,
@@ -15539,6 +18559,8 @@ class NRPPA_PDU_Contents:
         'MeasurementPreconfigurationRefuse-IEs',
         'MeasurementActivation',
         'MeasurementActivation-IEs',
+        'SRSInformationReservationNotification',
+        'SRSInformationReservationNotification-IEs',
         ]
     _type_ = [
         'E-CIDMeasurementInitiationRequest',
@@ -15584,6 +18606,7 @@ class NRPPA_PDU_Contents:
         'MeasurementPreconfigurationConfirm',
         'MeasurementPreconfigurationRefuse',
         'MeasurementActivation',
+        'SRSInformationReservationNotification',
         ]
     _set_ = [
         'E-CIDMeasurementInitiationRequest-IEs',
@@ -15629,6 +18652,7 @@ class NRPPA_PDU_Contents:
         'MeasurementPreconfigurationConfirm-IEs',
         'MeasurementPreconfigurationRefuse-IEs',
         'MeasurementActivation-IEs',
+        'SRSInformationReservationNotification-IEs',
         ]
     _val_ = [
         ]
@@ -15676,6 +18700,7 @@ class NRPPA_PDU_Contents:
         'MeasurementPreconfigurationConfirm-IEs',
         'MeasurementPreconfigurationRefuse-IEs',
         'MeasurementActivation-IEs',
+        'SRSInformationReservationNotification-IEs',
         ]
     _param_ = [
         ]
@@ -16300,7 +19325,10 @@ class NRPPA_PDU_Contents:
     _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UEReportingInformation')))
     _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_2 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-TEG-Info-Request')))
     _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_3 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-TEG-ReportingPeriodicity')))
-    ____PositioningInformationRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 12), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 73), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 90), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 99), ('criticality', 'reject'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'conditional')])], rr=[], ev=None, er=[])
+    _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_4 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-SRS-List')))
+    _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_5 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSPreconfigurationCharacteristics-List')))
+    _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_6 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Indication-Request')))
+    ____PositioningInformationRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 12), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 73), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 90), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 99), ('criticality', 'reject'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'conditional')]), dict([('id', 124), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 136), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 159), ('criticality', 'ignore'), ('Value', _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PositioningInformationRequest_protocolIEs__item__id._const_tab = ____PositioningInformationRequest_protocolIEs__item__id_tab
     ___PositioningInformationRequest_protocolIEs__item__id._const_tab_at = None
     ___PositioningInformationRequest_protocolIEs__item__id._const_tab_id = 'id'
@@ -16331,7 +19359,10 @@ class NRPPA_PDU_Contents:
     _PositioningInformationRequest_IEs_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UEReportingInformation')))
     _PositioningInformationRequest_IEs_val_Value_2 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-TEG-Info-Request')))
     _PositioningInformationRequest_IEs_val_Value_3 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UE-TEG-ReportingPeriodicity')))
-    PositioningInformationRequest_IEs._val = ASN1Set(rv=[dict([('id', 12), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 73), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 90), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 99), ('criticality', 'reject'), ('Value', _PositioningInformationRequest_IEs_val_Value_3), ('presence', 'conditional')])], rr=[], ev=[], er=[])
+    _PositioningInformationRequest_IEs_val_Value_4 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-SRS-List')))
+    _PositioningInformationRequest_IEs_val_Value_5 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSPreconfigurationCharacteristics-List')))
+    _PositioningInformationRequest_IEs_val_Value_6 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Indication-Request')))
+    PositioningInformationRequest_IEs._val = ASN1Set(rv=[dict([('id', 12), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 73), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 90), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 99), ('criticality', 'reject'), ('Value', _PositioningInformationRequest_IEs_val_Value_3), ('presence', 'conditional')]), dict([('id', 124), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 136), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 159), ('criticality', 'ignore'), ('Value', _PositioningInformationRequest_IEs_val_Value_6), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< PositioningInformationResponse >-----#
     PositioningInformationResponse = SEQ(name='PositioningInformationResponse', mode=MODE_TYPE)
@@ -16343,7 +19374,11 @@ class NRPPA_PDU_Contents:
     _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_1 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RelativeTime1900')))
     _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_2 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CriticalityDiagnostics')))
     _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_3 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UETxTEGAssociationList')))
-    ____PositioningInformationResponse_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 1), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CGI-NR')))
+    _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_5 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCellList')))
+    _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_6 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPreconfiguration-List')))
+    _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_7 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Indication')))
+    ____PositioningInformationResponse_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 1), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')]), dict([('id', 113), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 128), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 137), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 160), ('criticality', 'ignore'), ('Value', _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PositioningInformationResponse_protocolIEs__item__id._const_tab = ____PositioningInformationResponse_protocolIEs__item__id_tab
     ___PositioningInformationResponse_protocolIEs__item__id._const_tab_at = None
     ___PositioningInformationResponse_protocolIEs__item__id._const_tab_id = 'id'
@@ -16374,7 +19409,11 @@ class NRPPA_PDU_Contents:
     _PositioningInformationResponse_IEs_val_Value_1 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RelativeTime1900')))
     _PositioningInformationResponse_IEs_val_Value_2 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CriticalityDiagnostics')))
     _PositioningInformationResponse_IEs_val_Value_3 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UETxTEGAssociationList')))
-    PositioningInformationResponse_IEs._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 1), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_3), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _PositioningInformationResponse_IEs_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CGI-NR')))
+    _PositioningInformationResponse_IEs_val_Value_5 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosValidityAreaCellList')))
+    _PositioningInformationResponse_IEs_val_Value_6 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSPreconfiguration-List')))
+    _PositioningInformationResponse_IEs_val_Value_7 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Indication')))
+    PositioningInformationResponse_IEs._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 1), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_3), ('presence', 'optional')]), dict([('id', 113), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 128), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 137), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 160), ('criticality', 'ignore'), ('Value', _PositioningInformationResponse_IEs_val_Value_7), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< PositioningInformationFailure >-----#
     PositioningInformationFailure = SEQ(name='PositioningInformationFailure', mode=MODE_TYPE)
@@ -16425,7 +19464,9 @@ class NRPPA_PDU_Contents:
     _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_1 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RelativeTime1900')))
     _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UETxTEGAssociationList')))
     _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_3 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSTransmissionStatus')))
-    ____PositioningInformationUpdate_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 106), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CGI-NR')))
+    _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_5 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Status')))
+    ____PositioningInformationUpdate_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')]), dict([('id', 106), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_3), ('presence', 'optional')]), dict([('id', 134), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_4), ('presence', 'optional')]), dict([('id', 161), ('criticality', 'ignore'), ('Value', _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___PositioningInformationUpdate_protocolIEs__item__id._const_tab = ____PositioningInformationUpdate_protocolIEs__item__id_tab
     ___PositioningInformationUpdate_protocolIEs__item__id._const_tab_at = None
     ___PositioningInformationUpdate_protocolIEs__item__id._const_tab_id = 'id'
@@ -16456,7 +19497,9 @@ class NRPPA_PDU_Contents:
     _PositioningInformationUpdate_IEs_val_Value_1 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RelativeTime1900')))
     _PositioningInformationUpdate_IEs_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'UETxTEGAssociationList')))
     _PositioningInformationUpdate_IEs_val_Value_3 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSTransmissionStatus')))
-    PositioningInformationUpdate_IEs._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 106), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_3), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _PositioningInformationUpdate_IEs_val_Value_4 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'CGI-NR')))
+    _PositioningInformationUpdate_IEs_val_Value_5 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'Remote-UE-Status')))
+    PositioningInformationUpdate_IEs._val = ASN1Set(rv=[dict([('id', 26), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_0), ('presence', 'optional')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 81), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_2), ('presence', 'optional')]), dict([('id', 106), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_3), ('presence', 'optional')]), dict([('id', 134), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_4), ('presence', 'optional')]), dict([('id', 161), ('criticality', 'ignore'), ('Value', _PositioningInformationUpdate_IEs_val_Value_5), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< MeasurementRequest >-----#
     MeasurementRequest = SEQ(name='MeasurementRequest', mode=MODE_TYPE)
@@ -16479,7 +19522,8 @@ class NRPPA_PDU_Contents:
     _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_12 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementCharacteristicsRequestIndicator')))
     _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_13 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementTimeOccasion')))
     _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_14 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementAmount')))
-    ____MeasurementRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 39), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 41), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 3), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 4), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'conditional')]), dict([('id', 52), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 26), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 31), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 49), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 50), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 64), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'conditional')]), dict([('id', 72), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 92), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 91), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 95), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_15 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-Measurement-List')))
+    ____MeasurementRequest_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 39), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 41), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_1), ('presence', 'mandatory')]), dict([('id', 3), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_2), ('presence', 'mandatory')]), dict([('id', 4), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_3), ('presence', 'conditional')]), dict([('id', 52), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_4), ('presence', 'mandatory')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_5), ('presence', 'optional')]), dict([('id', 26), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_6), ('presence', 'optional')]), dict([('id', 31), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_7), ('presence', 'optional')]), dict([('id', 49), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_8), ('presence', 'optional')]), dict([('id', 50), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_9), ('presence', 'optional')]), dict([('id', 64), ('criticality', 'reject'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_10), ('presence', 'conditional')]), dict([('id', 72), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_11), ('presence', 'optional')]), dict([('id', 92), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_12), ('presence', 'optional')]), dict([('id', 91), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_13), ('presence', 'optional')]), dict([('id', 95), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_14), ('presence', 'optional')]), dict([('id', 125), ('criticality', 'ignore'), ('Value', _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_15), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___MeasurementRequest_protocolIEs__item__id._const_tab = ____MeasurementRequest_protocolIEs__item__id_tab
     ___MeasurementRequest_protocolIEs__item__id._const_tab_at = None
     ___MeasurementRequest_protocolIEs__item__id._const_tab_id = 'id'
@@ -16521,7 +19565,8 @@ class NRPPA_PDU_Contents:
     _MeasurementRequest_IEs_val_Value_12 = BIT_STR(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementCharacteristicsRequestIndicator')))
     _MeasurementRequest_IEs_val_Value_13 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementTimeOccasion')))
     _MeasurementRequest_IEs_val_Value_14 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'MeasurementAmount')))
-    MeasurementRequest_IEs._val = ASN1Set(rv=[dict([('id', 39), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 41), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 3), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 4), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_3), ('presence', 'conditional')]), dict([('id', 52), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 26), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 31), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 49), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 50), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 64), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_10), ('presence', 'conditional')]), dict([('id', 72), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 92), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 91), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 95), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_14), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _MeasurementRequest_IEs_val_Value_15 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'TimeWindowInformation-Measurement-List')))
+    MeasurementRequest_IEs._val = ASN1Set(rv=[dict([('id', 39), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 41), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_1), ('presence', 'mandatory')]), dict([('id', 3), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_2), ('presence', 'mandatory')]), dict([('id', 4), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_3), ('presence', 'conditional')]), dict([('id', 52), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_4), ('presence', 'mandatory')]), dict([('id', 54), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_5), ('presence', 'optional')]), dict([('id', 26), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_6), ('presence', 'optional')]), dict([('id', 31), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_7), ('presence', 'optional')]), dict([('id', 49), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_8), ('presence', 'optional')]), dict([('id', 50), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_9), ('presence', 'optional')]), dict([('id', 64), ('criticality', 'reject'), ('Value', _MeasurementRequest_IEs_val_Value_10), ('presence', 'conditional')]), dict([('id', 72), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_11), ('presence', 'optional')]), dict([('id', 92), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_12), ('presence', 'optional')]), dict([('id', 91), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_13), ('presence', 'optional')]), dict([('id', 95), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_14), ('presence', 'optional')]), dict([('id', 125), ('criticality', 'ignore'), ('Value', _MeasurementRequest_IEs_val_Value_15), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< MeasurementResponse >-----#
     MeasurementResponse = SEQ(name='MeasurementResponse', mode=MODE_TYPE)
@@ -16980,7 +20025,8 @@ class NRPPA_PDU_Contents:
     ____SemipersistentSRS_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SpatialRelationInfo')))
     _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SpatialRelationPerSRSResource')))
-    ____SemipersistentSRS_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 48), ('criticality', 'ignore'), ('Extension', _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 63), ('criticality', 'ignore'), ('Extension', _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    ____SemipersistentSRS_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 48), ('criticality', 'ignore'), ('Extension', _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')]), dict([('id', 63), ('criticality', 'ignore'), ('Extension', _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_1), ('presence', 'optional')]), dict([('id', 122), ('criticality', 'ignore'), ('Extension', _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_2), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___SemipersistentSRS_iE_Extensions__item__id._const_tab = ____SemipersistentSRS_iE_Extensions__item__id_tab
     ___SemipersistentSRS_iE_Extensions__item__id._const_tab_at = None
     ___SemipersistentSRS_iE_Extensions__item__id._const_tab_id = 'id'
@@ -17010,7 +20056,8 @@ class NRPPA_PDU_Contents:
     SemipersistentSRS_ExtIEs = CLASS(name='SemipersistentSRS-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
     _SemipersistentSRS_ExtIEs_val_Extension_0 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SpatialRelationInfo')))
     _SemipersistentSRS_ExtIEs_val_Extension_1 = SEQ(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SpatialRelationPerSRSResource')))
-    SemipersistentSRS_ExtIEs._val = ASN1Set(rv=[dict([('id', 48), ('criticality', 'ignore'), ('Extension', _SemipersistentSRS_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 63), ('criticality', 'ignore'), ('Extension', _SemipersistentSRS_ExtIEs_val_Extension_1), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    _SemipersistentSRS_ExtIEs_val_Extension_2 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    SemipersistentSRS_ExtIEs._val = ASN1Set(rv=[dict([('id', 48), ('criticality', 'ignore'), ('Extension', _SemipersistentSRS_ExtIEs_val_Extension_0), ('presence', 'optional')]), dict([('id', 63), ('criticality', 'ignore'), ('Extension', _SemipersistentSRS_ExtIEs_val_Extension_1), ('presence', 'optional')]), dict([('id', 122), ('criticality', 'ignore'), ('Extension', _SemipersistentSRS_ExtIEs_val_Extension_2), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< AperiodicSRS >-----#
     AperiodicSRS = SEQ(name='AperiodicSRS', mode=MODE_TYPE)
@@ -17022,20 +20069,17 @@ class NRPPA_PDU_Contents:
     __AperiodicSRS_iE_Extensions__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolExtensionField')))
     ___AperiodicSRS_iE_Extensions__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['id']))
     ____AperiodicSRS_iE_Extensions__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____AperiodicSRS_iE_Extensions__item__id_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
+    _____AperiodicSRS_iE_Extensions__item__id_tab_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    ____AperiodicSRS_iE_Extensions__item__id_tab._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Extension', _____AperiodicSRS_iE_Extensions__item__id_tab_val_Extension_0), ('presence', 'optional')])], rr=[], ev=None, er=[])
     ___AperiodicSRS_iE_Extensions__item__id._const_tab = ____AperiodicSRS_iE_Extensions__item__id_tab
     ___AperiodicSRS_iE_Extensions__item__id._const_tab_at = None
     ___AperiodicSRS_iE_Extensions__item__id._const_tab_id = 'id'
     ___AperiodicSRS_iE_Extensions__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['criticality']))
-    ____AperiodicSRS_iE_Extensions__item__criticality_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____AperiodicSRS_iE_Extensions__item__criticality_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___AperiodicSRS_iE_Extensions__item__criticality._const_tab = ____AperiodicSRS_iE_Extensions__item__criticality_tab
+    ___AperiodicSRS_iE_Extensions__item__criticality._const_tab = ____AperiodicSRS_iE_Extensions__item__id_tab
     ___AperiodicSRS_iE_Extensions__item__criticality._const_tab_at = ('..', 'id')
     ___AperiodicSRS_iE_Extensions__item__criticality._const_tab_id = 'criticality'
     ___AperiodicSRS_iE_Extensions__item__extensionValue = OPEN(name='extensionValue', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION'), ['Extension']))
-    ____AperiodicSRS_iE_Extensions__item__extensionValue_tab = CLASS(name='_tab_NRPPA-PROTOCOL-EXTENSION', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    ____AperiodicSRS_iE_Extensions__item__extensionValue_tab._val = ASN1Set(rv=[], rr=[], ev=None, er=[])
-    ___AperiodicSRS_iE_Extensions__item__extensionValue._const_tab = ____AperiodicSRS_iE_Extensions__item__extensionValue_tab
+    ___AperiodicSRS_iE_Extensions__item__extensionValue._const_tab = ____AperiodicSRS_iE_Extensions__item__id_tab
     ___AperiodicSRS_iE_Extensions__item__extensionValue._const_tab_at = ('..', 'id')
     ___AperiodicSRS_iE_Extensions__item__extensionValue._const_tab_id = 'Extension'
     __AperiodicSRS_iE_Extensions__item_._cont = ASN1Dict([
@@ -17055,7 +20099,8 @@ class NRPPA_PDU_Contents:
     
     #-----< AperiodicSRS-ExtIEs >-----#
     AperiodicSRS_ExtIEs = CLASS(name='AperiodicSRS-ExtIEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-EXTENSION')))
-    AperiodicSRS_ExtIEs._val = ASN1Set(rv=[], rr=[], ev=[], er=[])
+    _AperiodicSRS_ExtIEs_val_Extension_0 = SEQ_OF(name='Extension', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PosSRSResourceSet-Aggregation-List')))
+    AperiodicSRS_ExtIEs._val = ASN1Set(rv=[dict([('id', 122), ('criticality', 'ignore'), ('Extension', _AperiodicSRS_ExtIEs_val_Extension_0), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
     #-----< PositioningActivationResponse >-----#
     PositioningActivationResponse = SEQ(name='PositioningActivationResponse', mode=MODE_TYPE)
@@ -17445,6 +20490,47 @@ class NRPPA_PDU_Contents:
     _MeasurementActivation_IEs_val_Value_1 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'PRS-Measurements-Info-List')))
     MeasurementActivation_IEs._val = ASN1Set(rv=[dict([('id', 98), ('criticality', 'reject'), ('Value', _MeasurementActivation_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 88), ('criticality', 'ignore'), ('Value', _MeasurementActivation_IEs_val_Value_1), ('presence', 'optional')])], rr=[], ev=[], er=[])
     
+    #-----< SRSInformationReservationNotification >-----#
+    SRSInformationReservationNotification = SEQ(name='SRSInformationReservationNotification', mode=MODE_TYPE)
+    _SRSInformationReservationNotification_protocolIEs = SEQ_OF(name='protocolIEs', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Container')))
+    __SRSInformationReservationNotification_protocolIEs__item_ = SEQ(name='_item_', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-Containers', 'ProtocolIE-Field')))
+    ___SRSInformationReservationNotification_protocolIEs__item__id = INT(name='id', mode=MODE_TYPE, tag=(0, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['id']))
+    ____SRSInformationReservationNotification_protocolIEs__item__id_tab = CLASS(name='_tab_NRPPA-PROTOCOL-IES', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_0 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSReservationType')))
+    _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSTransmissionCharacteristics')))
+    _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSPreconfigurationCharacteristics-List')))
+    ____SRSInformationReservationNotification_protocolIEs__item__id_tab._val = ASN1Set(rv=[dict([('id', 129), ('criticality', 'reject'), ('Value', _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_0), ('presence', 'mandatory')]), dict([('id', 138), ('criticality', 'ignore'), ('Value', _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_1), ('presence', 'optional')]), dict([('id', 163), ('criticality', 'ignore'), ('Value', _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_2), ('presence', 'optional')])], rr=[], ev=None, er=[])
+    ___SRSInformationReservationNotification_protocolIEs__item__id._const_tab = ____SRSInformationReservationNotification_protocolIEs__item__id_tab
+    ___SRSInformationReservationNotification_protocolIEs__item__id._const_tab_at = None
+    ___SRSInformationReservationNotification_protocolIEs__item__id._const_tab_id = 'id'
+    ___SRSInformationReservationNotification_protocolIEs__item__criticality = ENUM(name='criticality', mode=MODE_TYPE, tag=(1, TAG_CONTEXT_SPEC, TAG_IMPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['criticality']))
+    ___SRSInformationReservationNotification_protocolIEs__item__criticality._const_tab = ____SRSInformationReservationNotification_protocolIEs__item__id_tab
+    ___SRSInformationReservationNotification_protocolIEs__item__criticality._const_tab_at = ('..', 'id')
+    ___SRSInformationReservationNotification_protocolIEs__item__criticality._const_tab_id = 'criticality'
+    ___SRSInformationReservationNotification_protocolIEs__item__value = OPEN(name='value', mode=MODE_TYPE, tag=(2, TAG_CONTEXT_SPEC, TAG_EXPLICIT), typeref=ASN1RefClassField(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES'), ['Value']))
+    ___SRSInformationReservationNotification_protocolIEs__item__value._const_tab = ____SRSInformationReservationNotification_protocolIEs__item__id_tab
+    ___SRSInformationReservationNotification_protocolIEs__item__value._const_tab_at = ('..', 'id')
+    ___SRSInformationReservationNotification_protocolIEs__item__value._const_tab_id = 'Value'
+    __SRSInformationReservationNotification_protocolIEs__item_._cont = ASN1Dict([
+        ('id', ___SRSInformationReservationNotification_protocolIEs__item__id),
+        ('criticality', ___SRSInformationReservationNotification_protocolIEs__item__criticality),
+        ('value', ___SRSInformationReservationNotification_protocolIEs__item__value),
+        ])
+    __SRSInformationReservationNotification_protocolIEs__item_._ext = None
+    _SRSInformationReservationNotification_protocolIEs._cont = __SRSInformationReservationNotification_protocolIEs__item_
+    _SRSInformationReservationNotification_protocolIEs._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65535)], ev=None, er=[])
+    SRSInformationReservationNotification._cont = ASN1Dict([
+        ('protocolIEs', _SRSInformationReservationNotification_protocolIEs),
+        ])
+    SRSInformationReservationNotification._ext = []
+    
+    #-----< SRSInformationReservationNotification-IEs >-----#
+    SRSInformationReservationNotification_IEs = CLASS(name='SRSInformationReservationNotification-IEs', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-Containers', 'NRPPA-PROTOCOL-IES')))
+    _SRSInformationReservationNotification_IEs_val_Value_0 = ENUM(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'SRSReservationType')))
+    _SRSInformationReservationNotification_IEs_val_Value_1 = SEQ(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSTransmissionCharacteristics')))
+    _SRSInformationReservationNotification_IEs_val_Value_2 = SEQ_OF(name='Value', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-IEs', 'RequestedSRSPreconfigurationCharacteristics-List')))
+    SRSInformationReservationNotification_IEs._val = ASN1Set(rv=[dict([('id', 129), ('criticality', 'reject'), ('Value', _SRSInformationReservationNotification_IEs_val_Value_0), ('presence', 'mandatory')]), dict([('id', 138), ('criticality', 'ignore'), ('Value', _SRSInformationReservationNotification_IEs_val_Value_1), ('presence', 'optional')]), dict([('id', 163), ('criticality', 'ignore'), ('Value', _SRSInformationReservationNotification_IEs_val_Value_2), ('presence', 'optional')])], rr=[], ev=[], er=[])
+    
     _all_ = [
         ____E_CIDMeasurementInitiationRequest_protocolIEs__item__id_tab,
         _____E_CIDMeasurementInitiationRequest_protocolIEs__item__id_tab_val_Value_0,
@@ -17655,6 +20741,9 @@ class NRPPA_PDU_Contents:
         _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_1,
         _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_2,
         _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_3,
+        _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_4,
+        _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_5,
+        _____PositioningInformationRequest_protocolIEs__item__id_tab_val_Value_6,
         ___PositioningInformationRequest_protocolIEs__item__id,
         ___PositioningInformationRequest_protocolIEs__item__criticality,
         ___PositioningInformationRequest_protocolIEs__item__value,
@@ -17666,11 +20755,18 @@ class NRPPA_PDU_Contents:
         _PositioningInformationRequest_IEs_val_Value_1,
         _PositioningInformationRequest_IEs_val_Value_2,
         _PositioningInformationRequest_IEs_val_Value_3,
+        _PositioningInformationRequest_IEs_val_Value_4,
+        _PositioningInformationRequest_IEs_val_Value_5,
+        _PositioningInformationRequest_IEs_val_Value_6,
         ____PositioningInformationResponse_protocolIEs__item__id_tab,
         _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_0,
         _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_1,
         _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_2,
         _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_3,
+        _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_4,
+        _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_5,
+        _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_6,
+        _____PositioningInformationResponse_protocolIEs__item__id_tab_val_Value_7,
         ___PositioningInformationResponse_protocolIEs__item__id,
         ___PositioningInformationResponse_protocolIEs__item__criticality,
         ___PositioningInformationResponse_protocolIEs__item__value,
@@ -17682,6 +20778,10 @@ class NRPPA_PDU_Contents:
         _PositioningInformationResponse_IEs_val_Value_1,
         _PositioningInformationResponse_IEs_val_Value_2,
         _PositioningInformationResponse_IEs_val_Value_3,
+        _PositioningInformationResponse_IEs_val_Value_4,
+        _PositioningInformationResponse_IEs_val_Value_5,
+        _PositioningInformationResponse_IEs_val_Value_6,
+        _PositioningInformationResponse_IEs_val_Value_7,
         ____PositioningInformationFailure_protocolIEs__item__id_tab,
         _____PositioningInformationFailure_protocolIEs__item__id_tab_val_Value_0,
         _____PositioningInformationFailure_protocolIEs__item__id_tab_val_Value_1,
@@ -17699,6 +20799,8 @@ class NRPPA_PDU_Contents:
         _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_1,
         _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_2,
         _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_3,
+        _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_4,
+        _____PositioningInformationUpdate_protocolIEs__item__id_tab_val_Value_5,
         ___PositioningInformationUpdate_protocolIEs__item__id,
         ___PositioningInformationUpdate_protocolIEs__item__criticality,
         ___PositioningInformationUpdate_protocolIEs__item__value,
@@ -17710,6 +20812,8 @@ class NRPPA_PDU_Contents:
         _PositioningInformationUpdate_IEs_val_Value_1,
         _PositioningInformationUpdate_IEs_val_Value_2,
         _PositioningInformationUpdate_IEs_val_Value_3,
+        _PositioningInformationUpdate_IEs_val_Value_4,
+        _PositioningInformationUpdate_IEs_val_Value_5,
         ____MeasurementRequest_protocolIEs__item__id_tab,
         _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_0,
         _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_1,
@@ -17726,6 +20830,7 @@ class NRPPA_PDU_Contents:
         _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_12,
         _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_13,
         _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_14,
+        _____MeasurementRequest_protocolIEs__item__id_tab_val_Value_15,
         ___MeasurementRequest_protocolIEs__item__id,
         ___MeasurementRequest_protocolIEs__item__criticality,
         ___MeasurementRequest_protocolIEs__item__value,
@@ -17748,6 +20853,7 @@ class NRPPA_PDU_Contents:
         _MeasurementRequest_IEs_val_Value_12,
         _MeasurementRequest_IEs_val_Value_13,
         _MeasurementRequest_IEs_val_Value_14,
+        _MeasurementRequest_IEs_val_Value_15,
         ____MeasurementResponse_protocolIEs__item__id_tab,
         _____MeasurementResponse_protocolIEs__item__id_tab_val_Value_0,
         _____MeasurementResponse_protocolIEs__item__id_tab_val_Value_1,
@@ -17901,6 +21007,7 @@ class NRPPA_PDU_Contents:
         ____SemipersistentSRS_iE_Extensions__item__id_tab,
         _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_0,
         _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_1,
+        _____SemipersistentSRS_iE_Extensions__item__id_tab_val_Extension_2,
         ___SemipersistentSRS_iE_Extensions__item__id,
         ___SemipersistentSRS_iE_Extensions__item__criticality,
         ___SemipersistentSRS_iE_Extensions__item__extensionValue,
@@ -17910,18 +21017,19 @@ class NRPPA_PDU_Contents:
         SemipersistentSRS_ExtIEs,
         _SemipersistentSRS_ExtIEs_val_Extension_0,
         _SemipersistentSRS_ExtIEs_val_Extension_1,
+        _SemipersistentSRS_ExtIEs_val_Extension_2,
         _AperiodicSRS_aperiodic,
         _AperiodicSRS_sRSResourceTrigger,
         ____AperiodicSRS_iE_Extensions__item__id_tab,
+        _____AperiodicSRS_iE_Extensions__item__id_tab_val_Extension_0,
         ___AperiodicSRS_iE_Extensions__item__id,
-        ____AperiodicSRS_iE_Extensions__item__criticality_tab,
         ___AperiodicSRS_iE_Extensions__item__criticality,
-        ____AperiodicSRS_iE_Extensions__item__extensionValue_tab,
         ___AperiodicSRS_iE_Extensions__item__extensionValue,
         __AperiodicSRS_iE_Extensions__item_,
         _AperiodicSRS_iE_Extensions,
         AperiodicSRS,
         AperiodicSRS_ExtIEs,
+        _AperiodicSRS_ExtIEs_val_Extension_0,
         ____PositioningActivationResponse_protocolIEs__item__id_tab,
         _____PositioningActivationResponse_protocolIEs__item__id_tab_val_Value_0,
         _____PositioningActivationResponse_protocolIEs__item__id_tab_val_Value_1,
@@ -18040,6 +21148,20 @@ class NRPPA_PDU_Contents:
         MeasurementActivation_IEs,
         _MeasurementActivation_IEs_val_Value_0,
         _MeasurementActivation_IEs_val_Value_1,
+        ____SRSInformationReservationNotification_protocolIEs__item__id_tab,
+        _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_0,
+        _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_1,
+        _____SRSInformationReservationNotification_protocolIEs__item__id_tab_val_Value_2,
+        ___SRSInformationReservationNotification_protocolIEs__item__id,
+        ___SRSInformationReservationNotification_protocolIEs__item__criticality,
+        ___SRSInformationReservationNotification_protocolIEs__item__value,
+        __SRSInformationReservationNotification_protocolIEs__item_,
+        _SRSInformationReservationNotification_protocolIEs,
+        SRSInformationReservationNotification,
+        SRSInformationReservationNotification_IEs,
+        _SRSInformationReservationNotification_IEs_val_Value_0,
+        _SRSInformationReservationNotification_IEs_val_Value_1,
+        _SRSInformationReservationNotification_IEs_val_Value_2,
     ]
 
 class NRPPA_PDU_Descriptions:
@@ -18078,6 +21200,7 @@ class NRPPA_PDU_Descriptions:
         'pRSConfigurationExchange',
         'measurementPreconfiguration',
         'measurementActivation',
+        'sRSInformationReservationNotification',
         ]
     _type_ = [
         'NRPPA-ELEMENTARY-PROCEDURE',
@@ -18114,6 +21237,7 @@ class NRPPA_PDU_Descriptions:
         'pRSConfigurationExchange',
         'measurementPreconfiguration',
         'measurementActivation',
+        'sRSInformationReservationNotification',
         ]
     _class_ = [
         'NRPPA-ELEMENTARY-PROCEDURE',
@@ -18142,6 +21266,7 @@ class NRPPA_PDU_Descriptions:
         'pRSConfigurationExchange',
         'measurementPreconfiguration',
         'measurementActivation',
+        'sRSInformationReservationNotification',
         ]
     _param_ = [
         ]
@@ -18215,7 +21340,8 @@ class NRPPA_PDU_Descriptions:
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementFailureIndication')))
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'PositioningDeactivation')))
     ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
-    __InitiatingMessage_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_22 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    __InitiatingMessage_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___InitiatingMessage_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_22), ('procedureCode', 22), ('criticality', 'reject')])], rr=[], ev=None, er=[])
     _InitiatingMessage_procedureCode._const_tab = __InitiatingMessage_procedureCode_tab
     _InitiatingMessage_procedureCode._const_tab_at = None
     _InitiatingMessage_procedureCode._const_tab_id = 'procedureCode'
@@ -18278,7 +21404,8 @@ class NRPPA_PDU_Descriptions:
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementFailureIndication')))
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'PositioningDeactivation')))
     ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
-    __SuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    __SuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___SuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('procedureCode', 22), ('criticality', 'reject')])], rr=[], ev=None, er=[])
     _SuccessfulOutcome_procedureCode._const_tab = __SuccessfulOutcome_procedureCode_tab
     _SuccessfulOutcome_procedureCode._const_tab_at = None
     _SuccessfulOutcome_procedureCode._const_tab_id = 'procedureCode'
@@ -18341,7 +21468,8 @@ class NRPPA_PDU_Descriptions:
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementFailureIndication')))
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'PositioningDeactivation')))
     ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
-    __UnsuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')])], rr=[], ev=None, er=[])
+    ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    __UnsuccessfulOutcome_procedureCode_tab._val = ASN1Set(rv=[dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_0), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_1), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_2), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_3), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_4), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_5), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_6), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_7), ('SuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', ___UnsuccessfulOutcome_procedureCode_tab_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')]), dict([('InitiatingMessage', ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22), ('procedureCode', 22), ('criticality', 'reject')])], rr=[], ev=None, er=[])
     _UnsuccessfulOutcome_procedureCode._const_tab = __UnsuccessfulOutcome_procedureCode_tab
     _UnsuccessfulOutcome_procedureCode._const_tab_at = None
     _UnsuccessfulOutcome_procedureCode._const_tab_id = 'procedureCode'
@@ -18402,7 +21530,8 @@ class NRPPA_PDU_Descriptions:
     _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementFailureIndication')))
     _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'PositioningDeactivation')))
     _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
-    NRPPA_ELEMENTARY_PROCEDURES._val = ASN1Set(rv=[dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_0), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_1), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_2), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_3), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_4), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_5), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_6), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_7), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
+    _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_22 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    NRPPA_ELEMENTARY_PROCEDURES._val = ASN1Set(rv=[dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_0), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_0), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_0), ('procedureCode', 2), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_1), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_1), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_1), ('procedureCode', 6), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_2), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_2), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_2), ('procedureCode', 9), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_3), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_3), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_3), ('procedureCode', 11), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_4), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_4), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_4), ('procedureCode', 16), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_5), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_5), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_5), ('procedureCode', 17), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_6), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_6), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_6), ('procedureCode', 19), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_7), ('SuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_SuccessfulOutcome_7), ('UnsuccessfulOutcome', _NRPPA_ELEMENTARY_PROCEDURES_val_UnsuccessfulOutcome_7), ('procedureCode', 20), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_8), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_9), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_10), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_11), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_12), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_13), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_14), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_15), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_16), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_17), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_18), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21), ('procedureCode', 21), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_22), ('procedureCode', 22), ('criticality', 'reject')])], rr=[], ev=[], er=[])
     
     #-----< NRPPA-ELEMENTARY-PROCEDURES-CLASS-1 >-----#
     NRPPA_ELEMENTARY_PROCEDURES_CLASS_1 = CLASS(name='NRPPA-ELEMENTARY-PROCEDURES-CLASS-1', mode=MODE_SET, typeref=ASN1RefType(('NRPPA-PDU-Descriptions', 'NRPPA-ELEMENTARY-PROCEDURE')))
@@ -18448,7 +21577,8 @@ class NRPPA_PDU_Descriptions:
     _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementFailureIndication')))
     _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'PositioningDeactivation')))
     _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
-    NRPPA_ELEMENTARY_PROCEDURES_CLASS_2._val = ASN1Set(rv=[dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_0), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_1), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_2), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_3), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_4), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_5), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_6), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_7), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_8), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_9), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_10), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13), ('procedureCode', 21), ('criticality', 'ignore')])], rr=[], ev=[], er=[])
+    _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_14 = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    NRPPA_ELEMENTARY_PROCEDURES_CLASS_2._val = ASN1Set(rv=[dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_0), ('procedureCode', 3), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_1), ('procedureCode', 4), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_2), ('procedureCode', 5), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_3), ('procedureCode', 0), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_4), ('procedureCode', 1), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_5), ('procedureCode', 7), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_6), ('procedureCode', 8), ('criticality', 'reject')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_7), ('procedureCode', 10), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_8), ('procedureCode', 12), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_9), ('procedureCode', 13), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_10), ('procedureCode', 14), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11), ('procedureCode', 15), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12), ('procedureCode', 18), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13), ('procedureCode', 21), ('criticality', 'ignore')]), dict([('InitiatingMessage', _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_14), ('procedureCode', 22), ('criticality', 'reject')])], rr=[], ev=[], er=[])
     
     #-----< e-CIDMeasurementInitiation >-----#
     e_CIDMeasurementInitiation = CLASS(name='e-CIDMeasurementInitiation', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-PDU-Descriptions', 'NRPPA-ELEMENTARY-PROCEDURE')))
@@ -18576,6 +21706,11 @@ class NRPPA_PDU_Descriptions:
     _measurementActivation_val_InitiatingMessage = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'MeasurementActivation')))
     measurementActivation._val = dict([('InitiatingMessage', _measurementActivation_val_InitiatingMessage), ('procedureCode', 21), ('criticality', 'ignore')])
     
+    #-----< sRSInformationReservationNotification >-----#
+    sRSInformationReservationNotification = CLASS(name='sRSInformationReservationNotification', mode=MODE_VALUE, typeref=ASN1RefType(('NRPPA-PDU-Descriptions', 'NRPPA-ELEMENTARY-PROCEDURE')))
+    _sRSInformationReservationNotification_val_InitiatingMessage = SEQ(name='InitiatingMessage', mode=MODE_TYPE, typeref=ASN1RefType(('NRPPA-PDU-Contents', 'SRSInformationReservationNotification')))
+    sRSInformationReservationNotification._val = dict([('InitiatingMessage', _sRSInformationReservationNotification_val_InitiatingMessage), ('procedureCode', 22), ('criticality', 'reject')])
+    
     _all_ = [
         _NRPPA_ELEMENTARY_PROCEDURE_InitiatingMessage,
         _NRPPA_ELEMENTARY_PROCEDURE_SuccessfulOutcome,
@@ -18626,6 +21761,7 @@ class NRPPA_PDU_Descriptions:
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_19,
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_20,
         ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_21,
+        ___InitiatingMessage_procedureCode_tab_val_InitiatingMessage_22,
         _InitiatingMessage_procedureCode,
         _InitiatingMessage_criticality,
         _InitiatingMessage_nrppatransactionID,
@@ -18670,6 +21806,7 @@ class NRPPA_PDU_Descriptions:
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19,
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20,
         ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21,
+        ___SuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22,
         _SuccessfulOutcome_procedureCode,
         _SuccessfulOutcome_criticality,
         _SuccessfulOutcome_nrppatransactionID,
@@ -18714,6 +21851,7 @@ class NRPPA_PDU_Descriptions:
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_19,
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_20,
         ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_21,
+        ___UnsuccessfulOutcome_procedureCode_tab_val_InitiatingMessage_22,
         _UnsuccessfulOutcome_procedureCode,
         _UnsuccessfulOutcome_criticality,
         _UnsuccessfulOutcome_nrppatransactionID,
@@ -18758,6 +21896,7 @@ class NRPPA_PDU_Descriptions:
         _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_19,
         _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_20,
         _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_21,
+        _NRPPA_ELEMENTARY_PROCEDURES_val_InitiatingMessage_22,
         NRPPA_ELEMENTARY_PROCEDURES_CLASS_1,
         _NRPPA_ELEMENTARY_PROCEDURES_CLASS_1_val_InitiatingMessage_0,
         _NRPPA_ELEMENTARY_PROCEDURES_CLASS_1_val_SuccessfulOutcome_0,
@@ -18798,6 +21937,7 @@ class NRPPA_PDU_Descriptions:
         _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_11,
         _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_12,
         _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_13,
+        _NRPPA_ELEMENTARY_PROCEDURES_CLASS_2_val_InitiatingMessage_14,
         e_CIDMeasurementInitiation,
         _e_CIDMeasurementInitiation_val_InitiatingMessage,
         _e_CIDMeasurementInitiation_val_SuccessfulOutcome,
@@ -18858,6 +21998,8 @@ class NRPPA_PDU_Descriptions:
         _measurementPreconfiguration_val_UnsuccessfulOutcome,
         measurementActivation,
         _measurementActivation_val_InitiatingMessage,
+        sRSInformationReservationNotification,
+        _sRSInformationReservationNotification_val_InitiatingMessage,
     ]
 
 init_modules(NRPPA_CommonDataTypes, NRPPA_Constants, NRPPA_Containers, NRPPA_IEs, NRPPA_PDU_Contents, NRPPA_PDU_Descriptions)

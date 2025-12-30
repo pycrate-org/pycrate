@@ -67,6 +67,7 @@ X2AP-Constants.id-UERadioCapabilityIDMapping
 X2AP-Constants.id-accessAndMobilityIndication
 X2AP-Constants.id-procedure-code-58-not-to-be-used
 X2AP-Constants.id-CPC-cancel
+X2AP-Constants.id-rachIndication
 X2AP-Constants.maxEARFCN
 X2AP-Constants.maxEARFCNPlusOne
 X2AP-Constants.newmaxEARFCN
@@ -122,7 +123,7 @@ X2AP-Constants.maxnoofSSBAreas
 X2AP-Constants.maxnoofNRSCSs
 X2AP-Constants.maxnoofNRPhysicalResourceBlocks
 X2AP-Constants.maxnoofNonAnchorCarrierFreqConfig
-X2AP-Constants.maxnoofRACHReports
+X2AP-Constants.maxnoofRAReports
 X2AP-Constants.maxnoofPSCellsPerSN
 X2AP-Constants.maxnoofPSCellsPerPrimaryCellinUEHistoryInfo
 X2AP-Constants.maxnoofReportedNRCellsPossiblyAggregated
@@ -134,6 +135,7 @@ X2AP-Constants.maxnoofCSIRSneighbourCells
 X2AP-Constants.maxnoofCSIRSneighbourCellsInMTC
 X2AP-Constants.maxnoofSensorName
 X2AP-Constants.maxnoofTargetSgNBsMinusOne
+X2AP-Constants.maxnoofUEsforRAReportIndications
 X2AP-Constants.id-E-RABs-Admitted-Item
 X2AP-Constants.id-E-RABs-Admitted-List
 X2AP-Constants.id-E-RAB-Item
@@ -537,7 +539,7 @@ X2AP-Constants.id-DirectForwardingPathAvailability
 X2AP-Constants.id-sourceNG-RAN-node-id
 X2AP-Constants.id-SourceDLForwardingIPAddress
 X2AP-Constants.id-SourceNodeDLForwardingIPAddress
-X2AP-Constants.id-NRRACHReportInformation
+X2AP-Constants.id-NRRAReport
 X2AP-Constants.id-SCG-UE-HistoryInformation
 X2AP-Constants.id-PSCellHistoryInformationRetrieve
 X2AP-Constants.id-MeasurementResultforNRCellsPossiblyAggregated
@@ -565,6 +567,14 @@ X2AP-Constants.id-SCGreconfigNotification
 X2AP-Constants.id-MIMOPRBusageInformation
 X2AP-Constants.id-SensorMeasurementConfiguration
 X2AP-Constants.id-AdditionalListofForwardingGTPTunnelEndpoint
+X2AP-Constants.id-M4ReportAmount
+X2AP-Constants.id-M5ReportAmount
+X2AP-Constants.id-M6ReportAmount
+X2AP-Constants.id-M7ReportAmount
+X2AP-Constants.id-CHOTimeBasedInformation
+X2AP-Constants.id-RaReportIndicationList
+X2AP-Constants.id-PSCellListContainer
+X2AP-Constants.id-IABAuthorized
 X2AP-Containers.X2AP-PROTOCOL-IES
 X2AP-Containers.X2AP-PROTOCOL-IES-PAIR
 X2AP-Containers.X2AP-PROTOCOL-EXTENSION
@@ -680,9 +690,12 @@ X2AP-IEs.CyclicPrefixDL
 X2AP-IEs.CyclicPrefixUL
 X2AP-IEs.CHOtrigger
 X2AP-IEs.CHOinformation-REQ-ExtIEs
+X2AP-IEs.CHOTimeBasedInformation-ExtIEs
 X2AP-IEs.CHOinformation-ACK-ExtIEs
 X2AP-IEs.CandidateCellsToBeCancelledList
 X2AP-IEs.CHO-Probability
+X2AP-IEs.CHO-HandoverWindowStart
+X2AP-IEs.CHO-HandoverWindowDuration
 X2AP-IEs.CHOinformation-AddReq-ExtIEs
 X2AP-IEs.CHOinformation-ModReq-ExtIEs
 X2AP-IEs.CSI-RSTransmissionIndication
@@ -781,6 +794,7 @@ X2AP-IEs.HFNModified
 X2AP-IEs.HFNforPDCP-SNlength18
 X2AP-IEs.HWLoadIndicator-ExtIEs
 X2AP-IEs.IABNodeIndication
+X2AP-IEs.IABAuthorized
 X2AP-IEs.IMSvoiceEPSfallbackfrom5G
 X2AP-IEs.IntegrityProtectionAlgorithms
 X2AP-IEs.IntegrityProtectionIndication
@@ -812,13 +826,17 @@ X2AP-IEs.M3Configuration-ExtIEs
 X2AP-IEs.M3period
 X2AP-IEs.M4Configuration-ExtIEs
 X2AP-IEs.M4period
+X2AP-IEs.M4ReportAmountMDT
 X2AP-IEs.M5Configuration-ExtIEs
 X2AP-IEs.M5period
+X2AP-IEs.M5ReportAmountMDT
 X2AP-IEs.M6Configuration-ExtIEs
 X2AP-IEs.M6report-interval
 X2AP-IEs.M6delay-threshold
+X2AP-IEs.M6ReportAmountMDT
 X2AP-IEs.M7Configuration-ExtIEs
 X2AP-IEs.M7period
+X2AP-IEs.M7ReportAmountMDT
 X2AP-IEs.MakeBeforeBreakIndicator
 X2AP-IEs.ManagementBasedMDTallowed
 X2AP-IEs.Masked-IMEISV
@@ -866,9 +884,9 @@ X2AP-IEs.NRCompositeAvailableCapacity-ExtIEs
 X2AP-IEs.NRFreqInfo-ExtIEs
 X2AP-IEs.NRCellIdentifier
 X2AP-IEs.NRCGI-ExtIEs
-X2AP-IEs.NRRACHReportContainer
-X2AP-IEs.NRRACHReportInformation
-X2AP-IEs.NRRACHReportList-Item-ExtIEs
+X2AP-IEs.NRRAReportContainer
+X2AP-IEs.NRRAReport
+X2AP-IEs.NRRAReportList-Item-ExtIEs
 X2AP-IEs.NRNeighbour-Information-ExtIEs
 X2AP-IEs.NPRACHConfiguration-ExtIEs
 X2AP-IEs.NPRACHConfiguration-FDD-ExtIEs
@@ -930,6 +948,7 @@ X2AP-IEs.PrivacyIndicator
 X2AP-IEs.PSCellHistoryInformationRetrieve
 X2AP-IEs.PSCell-UE-HistoryInformation
 X2AP-IEs.PSCellChangeHistory
+X2AP-IEs.PSCellListContainer
 X2AP-IEs.QCI
 X2AP-IEs.QoS-Mapping-Information-ExtIEs
 X2AP-IEs.RadioframeAllocationOffset
@@ -971,6 +990,8 @@ X2AP-IEs.RRCConnSetupIndicator
 X2AP-IEs.RSRPMeasurementResult-ExtIEs
 X2AP-IEs.RSRPMRList-ExtIEs
 X2AP-IEs.RRCContainer
+X2AP-IEs.RaReportIndicationList
+X2AP-IEs.RaReportIndicationList-Item-ExtIEs
 X2AP-IEs.S1TNLLoadIndicator-ExtIEs
 X2AP-IEs.SCGActivationStatus
 X2AP-IEs.SCGActivationRequest
@@ -1443,6 +1464,7 @@ X2AP-PDU-Contents.F1CTrafficTransfer-IEs
 X2AP-PDU-Contents.UERadioCapabilityIDMappingRequestIEs
 X2AP-PDU-Contents.UERadioCapabilityIDMappingResponseIEs
 X2AP-PDU-Contents.CPC-cancel-IEs
+X2AP-PDU-Contents.RachIndication-IEs
 X2AP-PDU-Descriptions.X2AP-ELEMENTARY-PROCEDURE
 X2AP-PDU-Descriptions.X2AP-PDU
 X2AP-PDU-Descriptions.handoverPreparation
@@ -1504,6 +1526,7 @@ X2AP-PDU-Descriptions.f1CTrafficTransfer
 X2AP-PDU-Descriptions.uERadioCapabilityIDMapping
 X2AP-PDU-Descriptions.accessAndMobilityIndication
 X2AP-PDU-Descriptions.cPC-cancel
+X2AP-PDU-Descriptions.rachIndication
 X2AP-Containers.ProtocolIE-Container
 X2AP-Containers.ProtocolIE-Single-Container
 X2AP-Containers.ProtocolIE-ContainerPair
@@ -1559,6 +1582,7 @@ X2AP-IEs.CSIReportList
 X2AP-IEs.CSIReportPerCSIProcess
 X2AP-IEs.CSIReportPerCSIProcessItem
 X2AP-IEs.CHOinformation-REQ
+X2AP-IEs.CHOTimeBasedInformation
 X2AP-IEs.CHOinformation-ACK
 X2AP-IEs.CHOinformation-AddReq
 X2AP-IEs.CHOinformation-ModReq
@@ -1621,7 +1645,7 @@ X2AP-IEs.NRCompositeAvailableCapacityGroup
 X2AP-IEs.NRCompositeAvailableCapacity
 X2AP-IEs.NRFreqInfo
 X2AP-IEs.NRCGI
-X2AP-IEs.NRRACHReportList-Item
+X2AP-IEs.NRRAReportList-Item
 X2AP-IEs.NRNeighbour-Information
 X2AP-IEs.NPRACHConfiguration
 X2AP-IEs.NPRACHConfiguration-FDD
@@ -1652,6 +1676,7 @@ X2AP-IEs.ReservedSubframePattern
 X2AP-IEs.RLC-Status
 X2AP-IEs.RSRPMeasurementResult
 X2AP-IEs.RSRPMRList
+X2AP-IEs.RaReportIndicationList-Item
 X2AP-IEs.S1TNLLoadIndicator
 X2AP-IEs.SecondaryRATUsageReportList
 X2AP-IEs.SecondaryRATUsageReport-Item
@@ -1976,6 +2001,7 @@ X2AP-PDU-Contents.F1CTrafficTransfer
 X2AP-PDU-Contents.UERadioCapabilityIDMappingRequest
 X2AP-PDU-Contents.UERadioCapabilityIDMappingResponse
 X2AP-PDU-Contents.CPC-cancel
+X2AP-PDU-Contents.RachIndication
 X2AP-PDU-Descriptions.X2AP-ELEMENTARY-PROCEDURES-CLASS-1
 X2AP-PDU-Descriptions.X2AP-ELEMENTARY-PROCEDURES-CLASS-2
 X2AP-PDU-Descriptions.X2AP-ELEMENTARY-PROCEDURES

@@ -64,7 +64,8 @@ FROM NRPPA-CommonDataTypes
 	MeasurementPreconfigurationRequired,
 	MeasurementPreconfigurationConfirm,
 	MeasurementPreconfigurationRefuse,
-	MeasurementActivation
+	MeasurementActivation,
+	SRSInformationReservationNotification
 
 
 FROM NRPPA-PDU-Contents
@@ -90,7 +91,8 @@ FROM NRPPA-PDU-Contents
 	id-positioningDeactivation,
 	id-pRSConfigurationExchange,
 	id-measurementPreconfiguration,
-	id-measurementActivation
+	id-measurementActivation,
+	id-sRSInformationReservationNotification
 
 
 
@@ -191,7 +193,8 @@ NRPPA-ELEMENTARY-PROCEDURES-CLASS-2 NRPPA-ELEMENTARY-PROCEDURE ::= {
 	measurementAbort						|
 	measurementFailureIndication		|
 	positioningDeactivation		|
-	measurementActivation,
+	measurementActivation					|
+	sRSInformationReservationNotification,
 	...
 }
 
@@ -352,6 +355,12 @@ measurementActivation NRPPA-ELEMENTARY-PROCEDURE ::= {
 	INITIATING MESSAGE		MeasurementActivation
 	PROCEDURE CODE			id-measurementActivation
 	CRITICALITY				ignore
+}
+
+sRSInformationReservationNotification NRPPA-ELEMENTARY-PROCEDURE ::= {
+	INITIATING MESSAGE		SRSInformationReservationNotification
+	PROCEDURE CODE			id-sRSInformationReservationNotification
+	CRITICALITY				reject
 }
 
 
