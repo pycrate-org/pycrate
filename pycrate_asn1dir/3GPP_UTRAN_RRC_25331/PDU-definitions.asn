@@ -10261,7 +10261,7 @@ RRCConnectionRequest-NonCriticalExts-va40-IEs ::=	SEQUENCE {
 
 RRCConnectionRequest-va40ext-IEs ::=	SEQUENCE {
 	-- User equipment IEs
-		-- For 1.28 Mcps TDD, IE ”supportOfMoreThanTwoCellsOrMIMO4x4” represent MU-MIMO capability,
+		-- For 1.28 Mcps TDD, IE "supportOfMoreThanTwoCellsOrMIMO4x4" represent MU-MIMO capability,
 		-- higherRate indicates uplink and downlink MU-MIMO, lowerRate indicates uplink MU-MIMO
 		supportOfMoreThanTwoCellsOrMIMO4x4	ENUMERATED { higherRate, lowerRate }		OPTIONAL,
 		supportOf1stFrequencyBand			ENUMERATED { true }							OPTIONAL,

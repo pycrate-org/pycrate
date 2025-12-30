@@ -3325,7 +3325,7 @@ UE-RadioAccessCapability-vd20ext ::= SEQUENCE {
 
 UE-RadioAccessCapabBand-va40ext ::= SEQUENCE {
 	ue-RadioAccessCapabBandFDDList5				UE-RadioAccessCapabBandFDDList5,
-	-- This IE shall be included if the UE also supports Band I – Band XXII
+	-- This IE shall be included if the UE also supports Band I - Band XXII
 	ue-RadioAccessCapabBandFDDList-ext2			UE-RadioAccessCapabBandFDDList-ext2		OPTIONAL
 }
 
@@ -15290,7 +15290,7 @@ EUTRA-FrequencyAndPriorityInfo ::=	SEQUENCE {
 	threshXhigh							INTEGER (0..31),
 	-- Actual value = IE value * 2
 	threshXlow							INTEGER (0..31),
-	eutra-blackListedCellList			EUTRA-BlacklistedCellPerFreqList		OPTIONAL,
+	eutra-exclude-ListedCellList			EUTRA-Exclude-listedCellPerFreqList		OPTIONAL,
 	eutraDetection						BOOLEAN
 }
 
@@ -15326,7 +15326,7 @@ EUTRA-FrequencyAndPriorityInfoExtension-vb50ext ::=	SEQUENCE {
 	qqualMinEUTRA						INTEGER (-34..-3)						OPTIONAL,
 	threshXhigh2						INTEGER (0..31)							OPTIONAL,
 	threshXlow2							INTEGER (0..31)							OPTIONAL,
-	eutra-blackListedCellList			EUTRA-BlacklistedCellPerFreqList		OPTIONAL,
+	eutra-exclude-listedCellList			EUTRA-Exclude-listedCellPerFreqList		OPTIONAL,
 	eutraDetection						BOOLEAN
 }
 
@@ -15523,7 +15523,7 @@ EUTRA-FrequencyInfoList-r12 ::=			SEQUENCE (SIZE (1..maxNumEUTRAFreqs)) OF
 EUTRA-FrequencyInfo ::=				SEQUENCE {
 	earfcn								EARFCN,
 	measurementBandwidth				EUTRA-MeasurementBandwidth				OPTIONAL,
-	eutra-blackListedCellList			EUTRA-BlacklistedCellPerFreqList		OPTIONAL
+	eutra-exclude-listedCellList			EUTRA-Exclude-listedCellPerFreqList		OPTIONAL
 }
 
 EUTRA-FrequencyInfo-r11 ::=	SEQUENCE {
@@ -15532,7 +15532,7 @@ EUTRA-FrequencyInfo-r11 ::=	SEQUENCE {
 	earfcn								EARFCN,
 	earfcnExt							EARFCNExtension							OPTIONAL,
 	measurementBandwidth				EUTRA-MeasurementBandwidth				OPTIONAL,
-	eutra-blackListedCellList			EUTRA-BlacklistedCellPerFreqList		OPTIONAL,
+	eutra-exclude-listedCellList			EUTRA-Exclude-listedCellPerFreqList		OPTIONAL,
 	widebandRSRQMeasurements			ENUMERATED {true}						OPTIONAL
 }
 
@@ -15540,7 +15540,7 @@ EUTRA-FrequencyInfo-r12 ::=	SEQUENCE {
 	earfcn								EARFCNExtension2,
 	reducedMeasurementPerformance		ENUMERATED {true}						OPTIONAL,
 	measurementBandwidth				EUTRA-MeasurementBandwidth				OPTIONAL,
-	eutra-blackListedCellList			EUTRA-BlacklistedCellPerFreqList		OPTIONAL,
+	eutra-exclude-listedCellList			EUTRA-Exclude-listedCellPerFreqList		OPTIONAL,
 	widebandRSRQMeasurements			ENUMERATED {true}						OPTIONAL
 }
 
@@ -17045,10 +17045,10 @@ InterFreqRACHReportingInfo ::= SEQUENCE {
 	maxReportedCellsOnRACHinterFreq		MaxReportedCellsOnRACHinterFreq
 }
 
-InterFreqBlacklistedCellsList-r12 ::=		SEQUENCE (SIZE (1..maxFreq)) OF
-													InterFreqBlacklistedCells-r12
+InterFreqExclude-listedCellsList-r12 ::=		SEQUENCE (SIZE (1..maxFreq)) OF
+													InterFreqExclude-listedCells-r12
 
-InterFreqBlacklistedCells-r12 ::=		SEQUENCE {
+InterFreqExclude-listedCells-r12 ::=		SEQUENCE {
 	frequencyInfo						FrequencyInfo,
 	excludedCellInfoList				CellInfoListToBeExcluded
 }
@@ -17128,7 +17128,7 @@ InterFreqReportingCriteria-r11 ::=	SEQUENCE {
 
 InterFreqReportingCriteria-r12 ::=	SEQUENCE {
 	interFreqEventList					InterFreqEventList-r12			OPTIONAL,
-	interFreqBlacklistedCellsList		InterFreqBlacklistedCellsList-r12	OPTIONAL
+	interFreqExclude-listedCellsList		InterFreqExclude-listedCellsList-r12	OPTIONAL
 }
 
 InterFreqReportingQuantity ::=		SEQUENCE {
@@ -22803,12 +22803,12 @@ ETWS-Information ::=				SEQUENCE {
 -- This IE is not used in the specification.
 ETWS-WarningSecurityInfo ::=		OCTET STRING
 
-EUTRA-BlacklistedCell ::=			SEQUENCE {
+EUTRA-Exclude-listedCell ::=			SEQUENCE {
 	physicalCellIdentity				EUTRA-PhysicalCellIdentity
 }
 
-EUTRA-BlacklistedCellPerFreqList ::= SEQUENCE (SIZE (1..maxEUTRACellPerFreq)) OF
-											EUTRA-BlacklistedCell
+EUTRA-Exclude-listedCellPerFreqList ::= SEQUENCE (SIZE (1..maxEUTRACellPerFreq)) OF
+											EUTRA-Exclude-listedCell
 
 EUTRA-PhysicalCellIdentity ::=		INTEGER (0..503)
 
@@ -22824,7 +22824,7 @@ EUTRA-TargetFreqInfoList-vb50ext ::=	SEQUENCE (SIZE (1..maxEUTRATargetFreqs)) OF
 
 EUTRA-TargetFreqInfo ::=			SEQUENCE {
 	dlEUTRACarrierFreq					EARFCN,
-	eutraBlacklistedCellPerFreqList		EUTRA-BlacklistedCellPerFreqList	OPTIONAL
+	eutraExclude-listedCellPerFreqList		EUTRA-Exclude-listedCellPerFreqList	OPTIONAL
 }
 
 EUTRA-TargetFreqInfo-vb50ext ::=	SEQUENCE {
@@ -24870,7 +24870,7 @@ SysInfoType21 ::=					SEQUENCE {
 SysInfoType22 ::=				SEQUENCE {
 --	In the Tabular there are separate definitions for prach-PreambleForEnhancedUplinkListType1Ext
 --	and prach-PreambleForEnhancedUplinkListType2Ext/prach-PreambleForEnhancedUplinkListType3Ext even
---		though the contents are the same. The only difference is in how the IE “Weight” is used in
+--		though the contents are the same. The only difference is in how the IE "Weight" is used in
 --		calculating the weight for each signalled PRACH Control Parameters.
 --	To simplify the ASN.1, a single definition is used here for all three cases.
 	prach-PreambleForEnhancedUplinkListType1Ext
