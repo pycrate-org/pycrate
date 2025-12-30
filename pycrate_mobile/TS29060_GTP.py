@@ -31,6 +31,7 @@
 #__all__ = [
 #    ]
 
+import logging
 from binascii import *
 from enum   import IntEnum
 
@@ -64,6 +65,8 @@ from pycrate_mobile.TS24007         import (
 from pycrate_mobile.TS29002_MAPIE   import (
     AddressString
     )
+
+_logger = logging.getLogger(__name__)
 
 
 #------------------------------------------------------------------------------#
@@ -1884,7 +1887,7 @@ for k, infos in GTPIEType_dict.items():
     if infos[3] in _globals:
         GTPIELUT[k] = _globals[infos[3]]
     elif infos[3] not in _undef:
-        print('warning: GTP-C v1 IE %s undefined' % infos[3])
+        _logger.warning('GTP-C v1 IE %s undefined' % infos[3])
 del _globals, _undef
 # enumeration for all IEs (name: type)
 GTPIEType = IntEnum('GTPIEType', {v[3]: k for k, v in GTPIEType_dict.items()})
@@ -2235,8 +2238,6 @@ class GTPIEs(Envelope):
                 # not enough buffer available
                 break
             else:
-                #print('%s: IE %s type %i, decoded type %i'\
-                #       % (self._name, ie._name, ie.get_type(), char_type))
                 ie_type = ie.get_type()
                 if char_type == ie_type:
                     if ie._trans:

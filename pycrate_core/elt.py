@@ -89,7 +89,6 @@ def hview(buf, lw=16):
     #_SAFE_STAT
     #_SAFE_DYN
 ### methods to be inherited from Element
-    #_log()
     ## envelope, hierarchy, selection routines
     #set_env()
     #get_env()
@@ -149,10 +148,6 @@ class Element(object):
     _hier       = 0
     _trans      = None
     _transauto  = None
-    
-    
-    def _log(self, msg=''):
-        log('[%s] %s' % self._name, msg)
     
     
     #--------------------------------------------------------------------------#
@@ -1606,7 +1601,6 @@ class Envelope(Element):
         # if a content dict is passed as argument
         # broadcast it to the given content items
         if 'content' in kw:
-            #self._log('Envelope.__init__(content):', kw['content'])
             for i in kw['content']:
                 self.__getitem__(i).set_attr(**kw['content'][i])
         
@@ -2145,7 +2139,6 @@ class Envelope(Element):
             except Exception as err:
                 raise(EltErr('{0} [__getitem__] str item: {1}'.format(self._name, err)))
         elif isinstance(key, integer_types):
-            #print(self._name, self._content, len(self._content), key) #len(self), key)
             try:
                 return self._content[key]
             except Exception as err:

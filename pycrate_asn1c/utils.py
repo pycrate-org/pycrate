@@ -44,7 +44,7 @@ def asnlog(msg):
     """
     customizable logging function for the whole asn1c part
     """
-    log(msg)
+    print(msg)
 
 
 _PP = pprint.PrettyPrinter(indent=1, width=80, depth=None, stream=None)

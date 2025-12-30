@@ -27,11 +27,15 @@
 # *--------------------------------------------------------
 #*/
 
+import logging
 from zlib import crc32
 
 from pycrate_core.elt  import *
 from pycrate_core.base import *
 from pycrate_core.repr import *
+
+_logger = logging.getLogger(__name__)
+
 
 Buf.REPR_MAXLEN = 256
 
@@ -107,7 +111,7 @@ class PNGChunk(Envelope):
             crc = self[3].get_val()
             self[3].reautomate()
             if self[3].get_val() != crc:
-                log('warning, bad CRC32 for chunk {0}'.format(self[1].get_val()))
+                _logger.warning('bad CRC32 for chunk {0}'.format(self[1].get_val()))
 
 class PNG(Envelope):
     _GEN = (

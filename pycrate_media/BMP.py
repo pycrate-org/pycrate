@@ -31,17 +31,13 @@ from pycrate_core.elt  import *
 from pycrate_core.base import *
 from pycrate_core.repr import *
 
-Buf.REPR_MAXLEN = 256
 
+Buf.REPR_MAXLEN = 256
 
 # BMP pixels array, with 2 variants
 class PixelRow(Array):
     _GEN = UintLE('Pixel', bl=8, rep=REPR_HEX)
-    
-    #def _from_char(self, char):
-    #    self._log('val before: {0}'.format(self._val))
-    #    Array._from_char(self, char)
-    #    self._log('val after: {0}'.format(self._val))
+
 
 class PixelRowPad(Envelope):
     _GEN = (
@@ -173,7 +169,6 @@ class BMP(Envelope):
         w = self[1][1].get_val() # width
         h = self[1][2].get_val() # height
         pbl = self[1][4].get_val() # pixel bitlen
-        #log('w, h, pbl:', w, h, pbl)
         if isinstance(self[4], PixelArrayBuf):
             # set PixelRowBuf length in bits (width * bits per pixel)
             row_len = w * pbl
@@ -183,7 +178,6 @@ class BMP(Envelope):
         else:
             # set PixelArray pixel bit length, width and height
             self[4].set_attrs(num=h, tmpl={'content':{'PixelRow': {'num':w, 'tmpl':{'bl':pbl}}}})
-        #log(self[4].get_attrs())
         # continue parsing color table and pixel array
         self[2:]._from_char(char)
 

@@ -30,9 +30,14 @@
 # TIFF specification:
 # http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf
 
+import logging
+
 from pycrate_core.elt  import *
 from pycrate_core.base import *
 from pycrate_core.repr import *
+
+_logger = logging.getLogger(__name__)
+
 
 Buf.REPR_MAXLEN = 256
 
@@ -236,7 +241,7 @@ class TIFF(Envelope):
             self.append( Header_BE() )
             self[0]._from_char(char)
         else:
-            log('TIFF: invalid file signature')
+            _logger.warning('invalid TIFF file signature')
         self._from_char_cont(char)
     
     def _new_ifd(self, offset, ifd):
@@ -366,7 +371,7 @@ class TIFF(Envelope):
         for area in areas:
             if 8*area[0] != char._cur:
                 # undefined data exists in the TIFF file
-                log('TIFF: undefined data at offset {0}'.format(char._cur//8))
+                _logger.info('undefined TIFF data at offset {0}'.format(char._cur//8))
                 undef = Buf('Undef', bl=(8*area[0])-char._cur, rep=REPR_HD)
                 undef._from_char(char)
                 self.append(undef)

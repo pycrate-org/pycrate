@@ -59,6 +59,8 @@ __all__ = [
 # release 13 (d40)
 #------------------------------------------------------------------------------#
 
+import logging
+
 from pycrate_core.utils import *
 from pycrate_core.elt   import *
 from pycrate_core.base  import *
@@ -66,6 +68,8 @@ from pycrate_core.base  import *
 from .TS24007     import *
 from .TS24008_IE  import BufBCD, _BCDType_dict, _NumPlan_dict
 from .TS23040_SMS import *
+
+_logger = logging.getLogger(__name__)
 
 
 class SMS_CP(Layer3):
@@ -142,11 +146,11 @@ class CP_DATA(SMS_CP):
                 rp = PPSMSRPTypeClasses[mti]()
                 rp._from_char(char)
             except:
-                log('%s, _from_char: unable to decode RP message' % self._name)
+                _logger.warning('%s, _from_char: unable to decode RP message' % self._name)
             else:
                 if char.len_bit() > 0:
-                    log('%s, _from_char: incorrect decoding of RP message, %s'\
-                        % (self._name, rp._name))
+                    _logger.warning('%s, _from_char: incorrect decoding of RP message, %s'\
+                                    % (self._name, rp._name))
                 else:
                     self.set_rp(rp)
             char._cur, char._len_bit = ccur, clen
@@ -323,11 +327,11 @@ class _RP_DATA(SMS_RP):
                     tp = self.TPDU()
                 tp._from_char(char)
             except:
-                log('%s, _from_char: unable to decode TP message' % self._name)
+                _logger.warning('%s, _from_char: unable to decode TP message' % self._name)
             else:
                 if char.len_bit() > 0:
-                    log('%s, _from_char: incorrect decoding of TP message, %s'\
-                        % (self._name, tp._name))
+                    _logger.warning('%s, _from_char: incorrect decoding of TP message, %s'\
+                                    % (self._name, tp._name))
                 else:
                     self.set_tpdu(tp)
             char._cur, char._len_bit = ccur, clen

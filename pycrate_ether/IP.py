@@ -27,14 +27,17 @@
 # *--------------------------------------------------------
 #*/ 
 
+import logging
 from socket import inet_aton, inet_ntoa, inet_pton, inet_ntop, AF_INET, AF_INET6
 from struct import pack
 from array import array
 
-from pycrate_core.utils import reverse_dict, log, str_types
+from pycrate_core.utils import reverse_dict, str_types
 from pycrate_core.elt   import Envelope, Sequence, REPR_RAW, REPR_HEX, REPR_BIN, REPR_HUM
 from pycrate_core.base  import *
 from pycrate_core.repr  import *
+
+_logger = logging.getLogger(__name__)
 
 try:
     from socket import inet_pton, inet_ntop
@@ -42,7 +45,7 @@ except ImportError:
     try:
         from win_inet_pton import inet_pton, inet_ntop
     except ImportError:
-        log('pycrate_ether/IP.py: inet_pton() and inet_ntop() not available')
+        _logger.warning('pycrate_ether/IP.py: inet_pton() and inet_ntop() not available')
 
 
 #------------------------------------------------------------------------------#

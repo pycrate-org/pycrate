@@ -74,6 +74,8 @@ __all__ = [
 # release 13 (g51)
 #------------------------------------------------------------------------------#
 
+import logging
+
 from pycrate_core.utils import *
 from pycrate_core.elt   import *
 from pycrate_core.base  import *
@@ -86,11 +88,14 @@ from .TS24501_IE  import (
     )
 from .TS24301_ESM import ESMTypeClasses
 
+_logger = logging.getLogger(__name__)
+
+
 try:
     from CryptoMobile import CM
 except:
     _with_cm = False
-    log('warning: CryptoMobile Python module not found, unable to handle LTE NAS security')
+    _logger.warning('CryptoMobile Python module not found, unable to handle LTE NAS security')
 else:
     _with_cm = True
     _with_cm_eia_unk_as_eia0 = False

@@ -726,10 +726,6 @@ class SCTPChkAny(SCTPChk):
     
     def _from_char(self, char):
         chktype = char.to_uint(8)
-        #chkhdr  = char.to_bytes(32)
-        #chklen  = unpack('>H', chkhdr[2:4])[0]
-        #print('SCTP chk type %i, chk hdr 0x%s, chk len %i, buf len %i'\
-        #      % (chktype, hexlify(chkhdr).decode('ascii'), chklen, char.len_byte()))
         self._set_chk_struct(chktype, True)
         Envelope._from_char(self, char)
 

@@ -30,6 +30,7 @@
 #__all__ = [
 #    ]
 
+import logging
 from binascii import *
 from socket import inet_pton, inet_ntop, AF_INET, AF_INET6
 from enum   import IntEnum
@@ -103,6 +104,8 @@ from pycrate_mobile.TS24008_IE      import (
 from pycrate_mobile.TS24007         import (
     TI
     )
+
+_logger = logging.getLogger(__name__)
 
 
 #------------------------------------------------------------------------------#
@@ -378,7 +381,7 @@ for k, infos in GTPv0IEType_dict.items():
     if infos[3] in _globals:
         GTPv0IELUT[k] = _globals[infos[3]]
     elif infos[3] not in _undef:
-        print('warning: GTP v0 IE %s undefined' % infos[3])
+        _logger.warning('GTP v0 IE %s undefined' % infos[3])
 del _globals, _undef
 # enumeration for all IEs (name: type)
 GTPv0IEType = IntEnum('GTPv0IEType', {v[3]: k for k, v in GTPv0IEType_dict.items()})

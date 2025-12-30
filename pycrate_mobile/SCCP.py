@@ -747,7 +747,6 @@ class _Ptr(UintLE):
             ind = self._env._content.index(self)
             for ptr in self._env._content[ind:]:
                 val += ptr._bl//8
-                #print('%s: %s, %i' % (self._name, ptr._name, val))
             if self._bl == 16:
                 # see Q.713, section 2.3:
                 # pointer value is between the MSB (LE) of the pointer and the parameter
@@ -761,7 +760,6 @@ class _Ptr(UintLE):
                     break
                 else:
                     val += field.get_len()
-                #print('%s: %s, %i' % (self._name, field._name, val))
             #
             return min(self._max, val)
     
@@ -842,7 +840,6 @@ class SCCPMessage(Envelope):
                 char._cur += 8
             # select the corresponding field
             field = self._content[start+ind]
-            #print('%s: %s, %i' % (ptr._name, field._name, char._cur))
             field._from_char(char)
     
     def is_valid(self):
@@ -873,7 +870,6 @@ class SCCPMessage(Envelope):
                     areas.append( (ptrs[i]-(len_ptrs-i), 1+prm._content[0].get_val()) )
             areas.sort(key=lambda x: x[0])
             # areas: list of (prm_offset, prm_length), sorted by prm_offset
-            #print(areas)
             off = 0
             for prm in areas:
                 if prm[0] < off:
@@ -1328,7 +1324,6 @@ class SCCPLongUnitData(SCCPMessage):
                 areas.append( (ptrs[i]-2*(4-i), 2+prm._content[0].get_val()) )
         areas.sort(key=lambda x: x[0])
         # areas: list of (prm_offset, prm_length), sorted by prm_offset
-        #print(areas)
         off = 0
         for prm in areas:
             if prm[0] < off:
@@ -1392,7 +1387,6 @@ class SCCPLongUnitDataService(SCCPMessage):
                 areas.append( (ptrs[i]-2*(4-i), 2+prm._content[0].get_val()) )
         areas.sort(key=lambda x: x[0])
         # areas: list of (prm_offset, prm_length), sorted by prm_offset
-        #print(areas)
         off = 0
         for prm in areas:
             if prm[0] < off:

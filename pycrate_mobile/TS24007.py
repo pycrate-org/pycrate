@@ -52,6 +52,7 @@ __all__ = [
 # release 13 (d00)
 #------------------------------------------------------------------------------#
 
+import logging
 from binascii import hexlify
 
 from pycrate_core.utils  import *
@@ -63,6 +64,8 @@ from pycrate_core.elt    import (
 from pycrate_core.base   import *
 from pycrate_core.repr   import *
 from pycrate_csn1.csnobj import CSN1Obj
+
+_logger = logging.getLogger(__name__)
 
 
 #------------------------------------------------------------------------------#
@@ -164,7 +167,7 @@ class Layer3(Envelope):
             if not dec:
                 # unknown IEI
                 if self.DEC_BREAK_ON_UNK_IE:
-                    #log('%s, unknown IE remaining, not decoded' % self._name)
+                    _logger.info('%s, unknown IE remaining, not decoded' % self._name)
                     break
                 else:
                     char._cur += 8
@@ -179,14 +182,14 @@ class Layer3(Envelope):
     def _dec_unk_ie(self, T8, char):
         if T8 & 0x80:
             # Type1TV IE, could also be a Type2 IE
-            log('%s, _dec_unk_ie: unknown Type1TV IE, 0x%.2x' % (self._name, T8))
+            _logger.info('%s, _dec_unk_ie: unknown Type1TV IE, 0x%.2x' % (self._name, T8))
             self.append( Type1TV('_T_%X' % (T8>>4), val={'T':T8>>4, 'V':T8&0xf}) )
         else:
             # Type4TLV IE
             L = char.get_uint(8)
             V = char.get_bytes(8*L)
-            log('%s, _dec_unk_ie: unknown Type4TLV IE, T: 0x%.2x, V: 0x%s' \
-                % (self._name, T8, hexlify(V).decode('ascii')))
+            _logger.info('%s, _dec_unk_ie: unknown Type4TLV IE, T: 0x%.2x, V: 0x%s' \
+                         % (self._name, T8, hexlify(V).decode('ascii')))
             self.append( Type4TLV('_T_%X' % T8, val=[T8, L, V]) )
     
     def repr(self):
@@ -236,7 +239,7 @@ class Layer3(Envelope):
             opts, dec = self._opts[:], False
             while i < len(val):
                 if not val[i]:
-                    log('%s, _from_jval: invalid empty value at %i' % (self._name, val, i))
+                    _logger.warning('%s, _from_jval: invalid empty value at %i' % (self._name, val, i))
                     break
                 ki, vi = list(val[i].items())[0]
                 if not isinstance(vi, list) or 'T' not in vi[0]:
@@ -258,7 +261,7 @@ class Layer3(Envelope):
                 if not dec:
                     # unknown IEI
                     if self.DEC_BREAK_ON_UNK_IEI:
-                        log('%s, unknown IE remaining, not decoded' % self._name)
+                        _logger.info('%s, unknown IE remaining, not decoded' % self._name)
                         break
                     else:
                         self._dec_unk_ie_jv(tj, vi)
@@ -274,12 +277,12 @@ class Layer3(Envelope):
         def _dec_unk_ie_jv(self, tag, jval):
             if tag & 0x80:
                 # Type1TV IE, could also be a Type2 IE
-                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
+                _logger.info('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
                 tv = Type1TV('_T_%X' % (tag>>4), val={'T':tag>>4, 'V':tag&0xf})
             elif len(val) >= 3:
                 # Type4 TLV IE
-                log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
-                    % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                _logger.info('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
+                             % (self._name, tag, hexlify(jval[2]['V']).decode()))
                 self.append( Type4TLV('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
 
 
@@ -288,21 +291,21 @@ class Layer3E(Layer3):
     def _dec_unk_ie(self, T8, char):
         if T8 & 0x80:
             # Type1TV IE, could also be a Type2 IE
-            log('%s, _dec_unk_ie: unknown Type1TV IE, 0x%.2x' % (self._name, T8))
+            _logger.info('%s, _dec_unk_ie: unknown Type1TV IE, 0x%.2x' % (self._name, T8))
             self.append( Type1TV('_T_%X' % (T8>>4), val={'T':T8>>4, 'V':T8&0xf}) )
         elif T8 & 0x70 == 0x70:
             # Type6TLV IE
             L = char.get_uint(16)
             V = char.get_bytes(8*L)
-            log('%s, _dec_unk_ie: unknown Type6TLVE IE, T: 0x%.2x, V: 0x%s' \
-                % (self._name, T8, hexlify(V).decode()))
+            _logger.info('%s, _dec_unk_ie: unknown Type6TLVE IE, T: 0x%.2x, V: 0x%s' \
+                         % (self._name, T8, hexlify(V).decode()))
             self.append( Type6TLVE('_T_%X' % T8, val=[T8, L, V]) )
         else:
             # Type4TLV IE
             L = char.get_uint(8)
             V = char.get_bytes(8*L)
-            log('%s, _dec_unk_ie: unknown Type4TLV IE, T: 0x%.2x, V: 0x%s' \
-                % (self._name, T8, hexlify(V).decode()))
+            _logger.info('%s, _dec_unk_ie: unknown Type4TLV IE, T: 0x%.2x, V: 0x%s' \
+                         % (self._name, T8, hexlify(V).decode()))
             self.append( Type4TLV('_T_%X' % T8, val=[T8, L, V]) )
     
     
@@ -311,18 +314,18 @@ class Layer3E(Layer3):
         def _dec_unk_ie_jv(self, tag, jval):
             if tag & 0x80:
                 # Type1TV IE, could also be a Type2 IE
-                log('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
+                _logger.info('%s, _from_jval: unknown Type1TV IE, 0x%.2x' % (self._name, tag))
                 self.append( Type1TV('_T_%X' % (tag>>4), val={'T':tag>>4, 'V':tag&0xf}) )
             elif len(val) >= 3:
                 if tag & 0x70:
                     # Type6TLV IE
-                    log('%s, _from_jval: unknown Type6TLVE, T: 0x%.2x, V: 0x%s'\
-                        % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                    _logger.info('%s, _from_jval: unknown Type6TLVE, T: 0x%.2x, V: 0x%s'\
+                                 % (self._name, tag, hexlify(jval[2]['V']).decode()))
                     self.append( Type6TLVE('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
                 else:
                     # Type4 TLV IE
-                    log('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
-                        % (self._name, tag, hexlify(jval[2]['V']).decode()))
+                    _logger.info('%s, _from_jval: unknown Type4TLV, T: 0x%.2x, V: 0x%s'\
+                                 % (self._name, tag, hexlify(jval[2]['V']).decode()))
                     self.append( Type4TLV('_T_%X' % tag, val={'T':tag, 'L':jval[1]['L'], 'V':jval[2]['V']}) )
 
 
@@ -395,12 +398,10 @@ class IE(Envelope):
             try:
                 self._IE._from_char(char)
             except:
-                log('%s, _from_char: unable to decode IE, %s'\
-                    % (self._name, self._IE._name))
+                _logger.warning('%s, _from_char: unable to decode IE, %s' % (self._name, self._IE._name))
             else:
                 if char.len_bit() > 7:
-                    log('%s, _from_char: uncorrect decoding for IE, %s'\
-                        % (self._name, self._IE._name))
+                    _logger.warning('%s, _from_char: uncorrect decoding for IE, %s' % (self._name, self._IE._name))
                 else:
                     # replace V with the IE structure
                     self.replace(self[-1], self._IE)

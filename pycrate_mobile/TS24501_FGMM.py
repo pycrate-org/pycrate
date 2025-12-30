@@ -73,6 +73,8 @@ __all__ = [
 # release 16 (g51)
 #------------------------------------------------------------------------------#
 
+import logging
+
 from pycrate_core.utils import *
 from pycrate_core.elt   import *
 from pycrate_core.base  import *
@@ -92,11 +94,13 @@ from .TS24501_IE        import *
 from pycrate_crypto.EAP import EAP
 #from .TS24501_FGSM  import FGSMTypeClasses
 
+_logger = logging.getLogger(__name__)
+
 try:
     from CryptoMobile import CM
 except:
     _with_cm = False
-    log('warning: CryptoMobile Python module not found, unable to handle 5G NAS security')
+    _logger.warning('CryptoMobile Python module not found, unable to handle 5G NAS security')
 else:
     _with_cm = True
     if hasattr(CM, 'EEA2'):
