@@ -29,20 +29,18 @@
 
 import re
 
-from pycrate_core.elt      import Element
-from pycrate_core.utils    import *
-from pycrate_core.utils    import TYPE_UINT as _TYPE_UINT
+from pycrate_core.elt   import Element
+from pycrate_core.utils import *
+from pycrate_core.utils import TYPE_UINT as _TYPE_UINT
+from pycrate_core.log   import logging
 
 
 #------------------------------------------------------------------------------#
 # CSN.1 errors
 #------------------------------------------------------------------------------#
 
-def csnlog(msg):
-    '''
-    customizable logging function for the whole csn1 part
-    '''
-    log(msg)
+# dedicated logger for the CSN.1 sub_module
+logger = logging.getLogger('pycrate.csn1')
 
 
 # generic CSN.1 error
@@ -176,4 +174,3 @@ def uint_to_bitstr(uint, bl):
         return (bl-len(bs)) * '0' + bs
     else:
         return bs
-

@@ -76,9 +76,6 @@ class CSN1Obj(Element):
     
     CLASS = 'CSN1Obj'
     
-    # in order to disable any csnlog() during the runtime
-    _SILENT = False
-    
     #_REPR = 'B' # value always represented with bit-string
     _REPR = 'V' # value represented with their original type (uint -default- or bit-string)
     
@@ -244,8 +241,7 @@ class CSN1Obj(Element):
         """
         if ref[0][0] == '#':
             # reference not converted correclty, unable to process it
-            if not self._SILENT:
-                csnlog('%s: unable to resolve reference, %s' % (self._name, ref[0]))
+            logger.warning('%s: unable to resolve reference, %s' % (self._name, ref[0]))
             return 0
         #
         par = self._par
@@ -305,7 +301,7 @@ class CSN1Obj(Element):
         else:
             # static number of repetitions
             num = self._num
-        #csnlog('%-20s: offset %i' % (self._name, self._off))
+        #logger.debug('%-20s: offset %i' % (self._name, self._off))
         if num == 1:
             self._from_char_obj(char)
         elif num > 1:
@@ -319,19 +315,19 @@ class CSN1Obj(Element):
             val = []
             while char.len_bit():
                 char_cur = char._cur
-                #csnlog('%s: char_cur, %i' % (self._name, char_cur))
+                #logger.debug('%s: char_cur, %i' % (self._name, char_cur))
                 try:
                     self._from_char_obj(char)
                 except (CSN1NoCharErr, CSN1InvalidValueErr) as err:
                     # we went to far, have to exit the loop
-                    #csnlog('%s: err, %s' % (self._name, err))
+                    #logger.debug('%s: err, %s' % (self._name, err))
                     char._cur = char_cur
                     break
                 else:
                     val.append( self._val )
-                    #csnlog('%s: val, %r' % (self._name, val))
+                    #logger.debug('%s: val, %r' % (self._name, val))
             self._val = val
-            #csnlog('%s: self._val, %r' % (self._name, self._val))
+            #logger.debug('%s: self._val, %r' % (self._name, self._val))
         else:
             assert()
         #
@@ -364,7 +360,7 @@ class CSN1Obj(Element):
         else:
             # static number of repetitions
             num = self._num
-        #csnlog('%-20s: offset %i' % (self._name, self._off))
+        #logger.debug('%-20s: offset %i' % (self._name, self._off))
         if num == 1:
             ret.extend( self._to_pack_obj() )
         elif num == -1 or num > 1:

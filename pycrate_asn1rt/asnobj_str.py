@@ -406,9 +406,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('BIT_STR.__from_per_ws_buf: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('BIT_STR.__from_per_ws_buf: %s, specific CONTAINING encoder unhandled' % self._name)
                 self.__val_from_buf_struct(Buf)
             else:
                 char = Charpy(Buf())
@@ -419,10 +417,7 @@ Specific constraints attributes:
                     else:
                         self._const_cont.from_uper_ws(char)
                 except Exception:
-                    if not self._SILENT:
-                        asnlog('BIT_STR.__from_per_ws_buf: %s, CONTAINING object decoding failed'\
-                               % self._name)
-                    #
+                    logger.warning('BIT_STR.__from_per_ws_buf: %s, CONTAINING object decoding failed' % self._name)
                     self.__val_from_buf_struct(Buf)
                 else:
                     if self._const_cont._typeref:
@@ -504,9 +499,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('BIT_STR.__from_per_buf: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('BIT_STR.__from_per_buf: %s, specific CONTAINING encoder unhandled' % self._name)
                 self.__val_from_buf(buf, bl)
             else:
                 char = Charpy(buf)
@@ -517,9 +510,7 @@ Specific constraints attributes:
                     else:
                         self._const_cont.from_uper(char)
                 except Exception:
-                    if not self._SILENT:
-                        asnlog('BIT_STR.__from_per_buf: %s, CONTAINING object decoding failed'\
-                               % self._name)
+                    logger.warning('BIT_STR.__from_per_buf: %s, CONTAINING object decoding failed' % self._name)
                     self.__val_from_buf(buf, bl)
                 else:
                     if self._const_cont._typeref:
@@ -840,9 +831,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('BIT_STR.__from_ber_buf: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('BIT_STR.__from_ber_buf: %s, specific CONTAINING encoder unhandled' % self._name)
                 self.__val_from_buf(buf, bl)
             else:
                 Obj, char = self._const_cont, Charpy(buf)
@@ -852,9 +841,7 @@ Specific constraints attributes:
                 try:
                     Obj.from_ber(char, single=False)
                 except Exception:
-                    if not self._SILENT:
-                        asnlog('BIT_STR.__from_ber_buf: %s, CONTAINING object decoding failed'\
-                               % self._name)
+                    logger.warning('BIT_STR.__from_ber_buf: %s, CONTAINING object decoding failed' % self._name)
                     Obj._parent = _const_cont_par
                     self.__val_from_buf(buf, bl)
                 else:
@@ -971,9 +958,8 @@ Specific constraints attributes:
                 elif self._const_cont is not None:
                     if self._const_cont_enc is not None:
                         # TODO: different codec to be used
-                        if not self._SILENT:
-                            raise(ASN1NotSuppErr('{0}: specific CONTAINING decoder unhandled'\
-                                  .format(self.fullname())))
+                        raise(ASN1NotSuppErr('{0}: specific CONTAINING decoder unhandled'\
+                              .format(self.fullname())))
                     Cont = self._const_cont
                     if Cont._typeref:
                         ident = Cont._typeref.called[1]
@@ -1382,9 +1368,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('OCT_STR.__from_per_ws: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('OCT_STR.__from_per_ws: %s, specific CONTAINING encoder unhandled' % self._name)
                 if unconst:
                     self._val, _gen = ASN1CodecPER.decode_unconst_open_ws(char)
                 else:
@@ -1448,9 +1432,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('OCT_STR.__from_per: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('OCT_STR.__from_per: %s, specific CONTAINING encoder unhandled' % self._name)
                 if unconst:
                     self._val = ASN1CodecPER.decode_unconst_open(char)
                 else:
@@ -1679,9 +1661,7 @@ Specific constraints attributes:
         if self._const_cont is not None:
             if self._const_cont_enc is not None:
                 # TODO: different codec to be used
-                if not self._SILENT:
-                    asnlog('OCT_STR.__from_ber_buf: %s, specific CONTAINING encoder unhandled'\
-                           % self._name)
+                logger.warning('OCT_STR.__from_ber_buf: %s, specific CONTAINING encoder unhandled' % self._name)
                 self._val = buf
             else:
                 Obj, char = self._const_cont, Charpy(buf)
@@ -1690,9 +1670,7 @@ Specific constraints attributes:
                 try:
                     Obj.from_ber(char, single=False)
                 except Exception:
-                    if not self._SILENT:
-                        asnlog('OCT_STR.__from_ber_buf: %s, CONTAINING object decoding failed'\
-                               % self._name)
+                    logger.warning('OCT_STR.__from_ber_buf: %s, CONTAINING object decoding failed' % self._name)
                     Obj._parent = _const_cont_par
                     self._val = buf
                 else:
@@ -1778,9 +1756,8 @@ Specific constraints attributes:
             elif self._const_cont is not None:
                 if self._const_cont_enc is not None:
                     # TODO: different codec to be used
-                    if not self._SILENT:
-                        raise(ASN1NotSuppErr('{0}: specific CONTAINING decoder unhandled'\
-                              .format(self.fullname())))
+                    raise(ASN1NotSuppErr('{0}: specific CONTAINING decoder unhandled'\
+                          .format(self.fullname())))
                 Cont = self._const_cont
                 if Cont._typeref:
                     ident = Cont._typeref.called[1]

@@ -127,9 +127,6 @@ Attributes used at run-time:
 
 class ASN1Obj(Element):
     
-    # in order to disable any asnlog() during the runtime
-    _SILENT = False
-    
     # this enables object verification during Python module initialization
     _SAFE_INIT   = True
     # this enables object value verification when using set_val()
@@ -343,9 +340,8 @@ class ASN1Obj(Element):
             # check val against a constraint defined within the table constraint
             const_val_type, const_val = self._get_tab_obj()
             if const_val_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('%s._safechk_bnd: %s, unable to retrieve a defined object'\
-                           % (self.__class__.__name__, self._name))
+                logger.info('%s._safechk_bnd: %s, unable to retrieve a defined object' % (
+                            self.__class__.__name__, self._name))
             elif self._mode == MODE_VALUE and const_val_type == CLASET_UNIQ:
                 if val != const_val:
                     raise(ASN1ObjErr('{0}: value out of table constraint, {1!r}'\
@@ -672,8 +668,8 @@ class ASN1Obj(Element):
                         continue
                     if id(Comp) in self._proto_recur:
                         if print_recurs:
-                            print('[+] recursive %s, %s.%s: %r'\
-                                  % (self.TYPE, self._name, Comp._name, self._proto_path + [ident]))
+                            print('[+] recursive %s, %s.%s: %r' % (
+                                  self.TYPE, self._name, Comp._name, self._proto_path + [ident]))
                         cont[ident] = Comp.TYPE
                     else:
                         Comp._proto_recur = self._proto_recur + [id(Comp)]
@@ -699,8 +695,8 @@ class ASN1Obj(Element):
                         ident_ret = ident
                     if id(Comp) in self._proto_recur:
                         if print_recurs:
-                            print('[+] recursive %s, %s.%s: %r'\
-                                  % (self.TYPE, self._name, Comp._name, self._proto_path + [ident]))
+                            print('[+] recursive %s, %s.%s: %r' % (
+                                  self.TYPE, self._name, Comp._name, self._proto_path + [ident]))
                         cont[ident_ret] = Comp.TYPE
                     else:
                         Comp._proto_recur = self._proto_recur + [id(Comp)]
@@ -721,8 +717,8 @@ class ASN1Obj(Element):
             Comp = self._cont
             if id(Comp) in self._proto_recur:
                 if print_recurs:
-                    print('[+] recursive %s, %s.%s: %r'\
-                           % (self.TYPE, self._name, Comp._name, self._proto_path + [None]))
+                    print('[+] recursive %s, %s.%s: %r' % (
+                          self.TYPE, self._name, Comp._name, self._proto_path + [None]))
                 ret = self.TYPE
             else:
                 Comp._proto_recur = self._proto_recur + [id(Comp)]
@@ -747,8 +743,7 @@ class ASN1Obj(Element):
                 Comp = self._const_cont
                 if id(Comp) in self._proto_recur:
                     if print_recurs:
-                        asnlog('[+] recursive %s, %s.%s: %r'\
-                               % (self.TYPE, self._name, Comp._name, self._proto_path + [None]))
+                        print('[+] recursive %s, %s.%s: %r' % (self.TYPE, self._name, Comp._name, self._proto_path + [None]))
                     ret = self.TYPE
                 else:
                     Comp._proto_recur = self._proto_recur + [id(Comp)]

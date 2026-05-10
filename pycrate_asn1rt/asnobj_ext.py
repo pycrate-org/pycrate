@@ -255,9 +255,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._from_per_ws: %s, unable to retrieve a table-looked up object'\
-                           % (self.fullname()))
+                logger.info('OPEN._from_per_ws: %s, unable to retrieve a table-looked up object' % (self.fullname()))
                 Obj = None
             elif const_obj_type == CLASET_UNIQ:
                 Obj = const_obj
@@ -274,8 +272,7 @@ Single value: Python 2-tuple
         #
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_per_ws: %s, potential type constraint(s) available but unused'\
-                       % self.fullname())
+                logger.info('OPEN._from_per_ws: %s, potential type constraint(s) available but unused' % self.fullname())
             val, GEN = ASN1CodecPER.decode_unconst_open_ws(char, wrapped=None)
             assert( isinstance(val, bytes_types) )
             self._val = ('_unk_004', val)
@@ -294,9 +291,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._from_per: %s, unable to retrieve a table-looked up object'\
-                           % (self.fullname()))
+                logger.info('OPEN._from_per: %s, unable to retrieve a table-looked up object' % (self.fullname()))
                 Obj = None
             elif const_obj_type == CLASET_UNIQ:
                 Obj = const_obj
@@ -314,8 +309,7 @@ Single value: Python 2-tuple
         val = ASN1CodecPER.decode_unconst_open(char, wrapped=Obj)
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_per: %s, potential type constraint(s) available but unused'\
-                       % self.fullname())
+                logger.info('OPEN._from_per: %s, potential type constraint(s) available but unused' % self.fullname())
             assert( isinstance(val, bytes_types) )
             self._val = ('_unk_004', val)
         else:
@@ -369,9 +363,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._decode_ber_cont_ws: %s, unable to retrieve a table-looked up object'\
-                           % self.fullname())
+                logger.info('OPEN._decode_ber_cont_ws: %s, unable to retrieve a table-looked up object' % self.fullname())
             elif const_obj_type == CLASET_UNIQ:
                 Objs = [const_obj]
             else:
@@ -388,8 +380,7 @@ Single value: Python 2-tuple
         elif hasattr(self, '_defby') and self._defby is not None:
             # TODO: 3rd way to specify the potential defined object
             # is to use a DEFINED BY specification (this is old-school)
-            if not self._SILENT:
-                asnlog('OPEN._decode_ber_cont_ws: %s, DEFINED BY lookup not supported' % self.fullname())
+            logger.warning('OPEN._decode_ber_cont_ws: %s, DEFINED BY lookup not supported' % self.fullname())
         #
         decoded = False
         if Objs:
@@ -413,9 +404,8 @@ Single value: Python 2-tuple
                     V = Obj._struct
                     decoded = True
                     break
-            if not decoded and not self._SILENT:
-                asnlog('OPEN._decode_ber_cont_ws: %s, decoding failed for all possible objects'\
-                       % self.fullname())
+            if not decoded:
+                logger.warning('OPEN._decode_ber_cont_ws: %s, decoding failed for all possible objects' % self.fullname())
         #
         if not decoded:
             # we did not find a defined object, or failed to decode it
@@ -463,9 +453,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._decode_ber_cont: %s, unable to retrieve a table-looked up object'\
-                           % self.fullname())
+                logger.info('OPEN._decode_ber_cont: %s, unable to retrieve a table-looked up object' % self.fullname())
             elif const_obj_type == CLASET_UNIQ:
                 Objs = [const_obj]
             else:
@@ -482,8 +470,7 @@ Single value: Python 2-tuple
         elif hasattr(self, '_defby') and self._defby is not None:
             # TODO: 3rd way to specify the potential defined object
             # is to use a DEFINED BY specification (this is old-school)
-            if not self._SILENT:
-                asnlog('OPEN._decode_ber_cont: %s, DEFINED BY lookup not supported' % self.fullname())
+            logger.warning('OPEN._decode_ber_cont: %s, DEFINED BY lookup not supported' % self.fullname())
         #
         decoded = False
         if Objs:
@@ -505,9 +492,8 @@ Single value: Python 2-tuple
                         self._val = (Obj.TYPE, Obj._val)
                     decoded = True
                     break
-            if not decoded and not self._SILENT:
-                asnlog('OPEN._decode_ber_cont: %s, decoding failed for all possible objects'\
-                       % self.fullname())
+            if not decoded:
+                logger.warning('OPEN._decode_ber_cont: %s, decoding failed for all possible objects' % self.fullname())
         #
         if not decoded:
             # we did not find a defined object, or failed to decode it
@@ -597,9 +583,7 @@ Single value: Python 2-tuple
             if self._TAB_LUT and self._const_tab and self._const_tab_at:
                 const_obj_type, const_obj = self._get_tab_obj()
                 if const_obj_type == CLASET_NONE:
-                    if not self._SILENT:
-                        asnlog('OPEN._from_jval: %s, unable to retrieve a table-looked up object'\
-                               % self.fullname())
+                    logger.info('OPEN._from_jval: %s, unable to retrieve a table-looked up object' % self.fullname())
                     Obj = None
                 elif const_obj_type == CLASET_UNIQ:
                     Obj = const_obj
@@ -617,10 +601,7 @@ Single value: Python 2-tuple
                         raise(ASN1JERDecodeErr('{0}: invalid json value, {1!r}'\
                               .format(self.fullname(), val)))
                 else:
-                    #raise(ASN1JERDecodeErr('{0}: unknown wrapped object, {1!r}'\
-                    #      .format(self.fullname(), val)))
-                    if not self._SILENT:
-                        asnlog('OPEN._from_jval: %s, unknown value type, %r' % (self.fullname(), val))
+                    logger.info('OPEN._from_jval: %s, unknown value type, %r' % (self.fullname(), val))
                     self._val = ('_unk_004', val)
             else:
                 Obj._from_jval(val)
@@ -651,9 +632,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._from_oer: %s, unable to retrieve a table-looked up object' \
-                           % (self.fullname()))
+                logger.info('OPEN._from_oer: %s, unable to retrieve a table-looked up object' % (self.fullname()))
                 Obj = None
             elif const_obj_type == CLASET_UNIQ:
                 Obj = const_obj
@@ -672,8 +651,7 @@ Single value: Python 2-tuple
         val_bytes = ASN1CodecOER.decode_open_type(char)
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_oer: %s, potential type constraint(s) available but unused' \
-                       % self.fullname())
+                logger.info('OPEN._from_oer: %s, potential type constraint(s) available but unused' % self.fullname())
             self._val = ('_unk_004', val_bytes)
         else:
             Obj.from_oer(val_bytes)
@@ -688,9 +666,7 @@ Single value: Python 2-tuple
         if self._TAB_LUT and self._const_tab and self._const_tab_at:
             const_obj_type, const_obj = self._get_tab_obj()
             if const_obj_type == CLASET_NONE:
-                if not self._SILENT:
-                    asnlog('OPEN._from_oer_ws: %s, unable to retrieve a table-looked up object' \
-                           % (self.fullname()))
+                logger.info('OPEN._from_oer_ws: %s, unable to retrieve a table-looked up object' % (self.fullname()))
                 Obj = None
             elif const_obj_type == CLASET_UNIQ:
                 Obj = const_obj
@@ -708,8 +684,7 @@ Single value: Python 2-tuple
         val_bytes, GEN = ASN1CodecOER.decode_open_type_ws(char)
         if Obj is None:
             if self._const_val:
-                asnlog('OPEN._from_oer_ws: %s, potential type constraint(s) available but unused' \
-                       % self.fullname())
+                logger.info('OPEN._from_oer_ws: %s, potential type constraint(s) available but unused' % self.fullname())
             self._val = ('_unk_004', val_bytes)
         else:
             Obj.from_oer(val_bytes)

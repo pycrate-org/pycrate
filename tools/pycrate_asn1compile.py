@@ -34,8 +34,14 @@ import sys
 import argparse
 import inspect
 
-from pycrate_asn1c.generator import _Generator
-from pycrate_asn1c.asnproc import (
+from pycrate_core.log           import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
+
+from pycrate_asn1c.generator    import _Generator
+from pycrate_asn1c.asnproc      import (
     compile_text, compile_spec, compile_all, \
     generate_modules, PycrateGenerator, JSONDepGraphGenerator,
     ASN_SPECS, GLOBAL, get_spec_dir
@@ -103,6 +109,8 @@ def main():
                         help='force EXTENSIBILITY IMPLIED for all ASN.1 modules')
     parser.add_argument('-fverifwarn', action='store_true',
                         help='force warning instead of raising during the verification stage')
+    parser.add_argument('-v', dest='verbose', action='store_true',
+                        help='print additional debugging info from the decoding')
     #
     args = parser.parse_args()
     #
@@ -113,6 +121,8 @@ def main():
         ckw['extimpl'] = True
     if args.fverifwarn:
         ckw['verifwarn'] = True
+    if args.verbose:
+        logger.setLevel(logging.INFO)
     #
     generator_class = PycrateGenerator
     if args.generator_path:

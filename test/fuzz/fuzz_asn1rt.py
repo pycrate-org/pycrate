@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from pycrate_core.log   import logging, logger, logfmt
+#
 from pycrate_asn1dir    import TCAP_MAPv2v3
 from pycrate_asn1dir    import S1AP
 from pycrate_asn1dir    import X2AP
@@ -8,7 +10,6 @@ from pycrate_core       import utils
 from pycrate_core       import charpy
 from pycrate_asn1rt     import err
 from pycrate_asn1rt     import asnobj
-asnobj.ASN1Obj._SILENT = True
 #
 from pythonfuzz.main import PythonFuzz
 
@@ -48,7 +49,11 @@ def fuzz_x2ap(buf):
 
 
 if __name__ == '__main__':
+    loghdlr = logging.StreamHandler(sys.stderr)
+    loghdlr.setFormatter(logfmt)
+    logger.addHandler(loghdlr)
+    #
     fuzz_tcap_map()
-    #fuzz_s1ap()
+    fuzz_s1ap()
     fuzz_x2ap()
 

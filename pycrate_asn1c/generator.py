@@ -746,8 +746,7 @@ class PycrateGenerator(_Generator):
         Consts_val = [C for C in Obj._const if C['type'] == CONST_VAL]
         if Consts_val:
             if len(Consts_val) > 1:
-                asnlog('WNG: {0}.{1}: multiple OPEN type value constraints, compiling only '\
-                       'the first'.format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: multiple OPEN type value constraints, compiling only the first'.format(self._mod_name, Obj._name))
             Const = Consts_val[0]
             # process the root part of the constraint
             ind = 0
@@ -834,8 +833,7 @@ class PycrateGenerator(_Generator):
         Consts_tab = [C for C in Obj._const if C['type'] == CONST_TABLE]
         if Consts_tab:
             if len(Consts_tab) > 1:
-                asnlog('WNG: {0}.{1}: multiple table constraint, but compiling only the first'\
-                       .format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: multiple table constraint, but compiling only the first'.format(self._mod_name, Obj._name))
             Const = Consts_tab[0]
             link_name = None
             # check if the same constraint was already defined somewhere in the root object
@@ -870,8 +868,7 @@ class PycrateGenerator(_Generator):
             try:
                 self.wrl('{0}._const_tab_id = {1}'.format(Obj._pyname, repr(Obj._typeref.ced_path[-1])))
             except:
-                asnlog('WNG: {0}.{1}: unavailable table constraint ident, not compiling it'\
-                       .format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: unavailable table constraint ident, not compiling it'.format(self._mod_name, Obj._name))
                 self.wrl('{0}._const_tab_id = None')
     
     def gen_const_contain(self, Obj):
@@ -879,14 +876,12 @@ class PycrateGenerator(_Generator):
         Consts_contain = [C for C in Obj._const if C['type'] == CONST_CONTAINING]
         if Consts_contain:
             if len(Consts_contain) > 1:
-                asnlog('WNG: {0}.{1}: multiple CONTAINING constraint, compiling only '\
-                       'the first'.format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: multiple CONTAINING constraint, compiling only the first'.format(self._mod_name, Obj._name))
             Const = Consts_contain[0]
             if Const['enc'] is not None:
                 # Const['enc'] is an OID value
                 EncProxy = OID()
-                self.wrl('{0}._const_cont_enc = {1}'\
-                         .format(Obj._pyname, value_to_defin(Const['enc'], EncProxy, self)))
+                self.wrl('{0}._const_cont_enc = {1}'.format(Obj._pyname, value_to_defin(Const['enc'], EncProxy, self)))
             else:
                 # create the contained object first
                 Const['obj']._pyname = '_{0}_contain'.format(Obj._pyname)
@@ -906,16 +901,14 @@ class PycrateGenerator(_Generator):
         Consts_comps = [C for C in Obj._const if C['type'] == CONST_COMPS]
         if Consts_comps:
             if len(Consts_comps) > 1:
-                asnlog('WNG: {0}.{1}: multiple WITH COMPONENTS constraints, '\
-                       'generating only the first'.format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: multiple WITH COMPONENTS constraints, generating only the first'.format(self._mod_name, Obj._name))
             if Consts_comps[0]['ext'] is not None:
-                asnlog('INF: {0}.{1}: extensible WITH COMPONENTS constraint, '\
-                       'not generating extension'.format(self._mod_name, Obj._name))
+                logger.info('INF: {0}.{1}: extensible WITH COMPONENTS constraint, not generating extension'.format(self._mod_name, Obj._name))
             if not Consts_comps[0]['root']:
                 return
             '''
             if len(Consts_comps[0]['root']) > 1:
-                asnlog('WNG: {0}.{1}: multiple root parts in WITH COMPONENTS constraint, '\
+                logger.warning('{0}.{1}: multiple root parts in WITH COMPONENTS constraint, '\
                        'processing only the common components'.format(self._mod_name, Obj._name))
             '''
             #
@@ -959,8 +952,8 @@ class PycrateGenerator(_Generator):
                         del Obj._cont[ident]._flag[FLAG_OPT]
             #
             if len(Consts_comps[0]['root']) > 1:
-                asnlog('WNG: {0}.{1}: multiple root parts in WITH COMPONENTS constraint, '\
-                       'unable to compile them'.format(self._mod_name, Obj._name))
+                logger.warning('{0}.{1}: multiple root parts in WITH COMPONENTS constraint, unable to compile them'_
+                               .format(self._mod_name, Obj._name))
                 return
             '''
             #
@@ -978,7 +971,7 @@ class PycrateGenerator(_Generator):
             for ident in Const_kw:
                 Obj._cont[ident]._const = list(Obj._cont[ident]._const)
                 Obj._cont[ident]._const.extend(Const[ident]['const'])
-                #print('%s.%s: %r' % (Obj._name, ident, Obj._cont[ident]._const))
+                logger.debug('%s.%s: %r' % (Obj._name, ident, Obj._cont[ident]._const))
             '''
 
 #------------------------------------------------------------------------------#
@@ -1055,7 +1048,6 @@ class JSONDepGraphGenerator(_Generator):
         # remove last coma
         #nodes[-1] = nodes[-1][:-1]
         last_node = nodes[-1]
-        #print('last_node:', last_node)
         del nodes[-1]
         nodes.append( last_node[:-1] )
         #
@@ -1084,7 +1076,6 @@ class JSONDepGraphGenerator(_Generator):
         # remove last coma
         #links[-1] = links[-1][:-1]
         last_link = links[-1]
-        #print('last_link:', last_link)
         del links[-1]
         links.append( last_link[:-1] )
         #

@@ -32,8 +32,14 @@ import os
 import sys
 import argparse
 
-from binascii       import unhexlify, hexlify
-from pycrate_mobile import NAS
+from binascii import unhexlify, hexlify
+
+from pycrate_mobile     import NAS
+from pycrate_core.log   import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
 
 
 def main():

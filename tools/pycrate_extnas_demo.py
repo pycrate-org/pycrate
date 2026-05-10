@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 #/**
@@ -30,9 +30,20 @@
 #*/
 
 from binascii import hexlify
-import logging as log
+import sys
 import argparse
 import socket
+
+from pycrate_core.log      import logging, logger, logfmt
+# pycrate logger
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stdout)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
+# local logger under pycrate namespace
+log = logging.getLogger('pycrate.extnas_demo')
+log.setLevel(logging.DEBUG)
+
 
 from pycrate_mobile.NASLTE import parse_NASLTE_MT
 from pycrate_mobile import TS24301_EMM as NAS
@@ -231,7 +242,6 @@ ap.add_argument('--detach-type', metavar='TYPE',
                 type=int, default=2, choices=range(8),
                 help='IMSI detach type (default %(default)s, see _EPSDetTypeMO_dict)')
 
-log.basicConfig(format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s', level=log.INFO)
 
 if __name__ == '__main__':
     # Parse the arguments

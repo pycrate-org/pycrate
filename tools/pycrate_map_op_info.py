@@ -33,8 +33,11 @@ import argparse
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
-from pycrate_asn1rt.asnobj              import ASN1Obj
-ASN1Obj._SILENT = True
+from pycrate_core.log                   import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
 #
 from pycrate_asn1dir.TCAP_MAPv2v3       import *
 from pycrate_mobile.TS29002_MAPAppCtx   import *

@@ -1275,9 +1275,7 @@ Specific attribute:
                     self._val = self._ext[ind]
                 else:
                     # unknown extension
-                    if not self._SILENT:
-                        asnlog('ENUM._from_per_ws: %s, unknown extension index %r'\
-                               % (self._name, ind))
+                    logger.info('ENUM._from_per_ws: %s, unknown extension index %r' % (self._name, ind))
                     self._val = '_ext_%r' % ind
                 self._struct = Envelope(self._name, GEN=tuple(GEN))
                 return
@@ -1320,9 +1318,7 @@ Specific attribute:
                     self._val = self._ext[ind]
                 else:
                     # unknown extension
-                    if not self._SILENT:
-                        asnlog('ENUM._from_per: %s, unknown extension index %r'\
-                               % (self._name, ind))
+                    logger.info('ENUM._from_per: %s, unknown extension index %r' % (self._name, ind))
                     self._val = '_ext_%r' % ind
                 return
             elif ASN1CodecPER.ALIGNED:
@@ -1435,9 +1431,7 @@ Specific attribute:
         if val not in self._cont_rev:
             if self._ext is not None:
                 # unknown extension
-                if not self._SILENT:
-                    asnlog('ENUM._from_ber_ws: %s, unknown extension value %r'\
-                           % (self._name, val))
+                logger.info('ENUM._from_ber_ws: %s, unknown extension value %r' % (self._name, val))
                 self._val = '_ext_%r' % val
             else:
                 raise(ASN1BERDecodeErr('{0}: invalid ENUMERATED value, %r'\
@@ -1455,9 +1449,7 @@ Specific attribute:
         if val not in self._cont_rev:
             if self._ext is not None:
                 # unknown extension
-                if not self._SILENT:
-                    asnlog('ENUM._from_ber_ws: %s, unknown extension value %r'\
-                           % (self._name, val))
+                logger.info('ENUM._from_ber_ws: %s, unknown extension value %r' % (self._name, val))
                 self._val = '_ext_%r' % val
             else:
                 raise(ASN1BERDecodeErr('{0}: invalid ENUMERATED value, %r'\
@@ -1527,9 +1519,7 @@ Specific attribute:
             val = self._cont_rev[index]
         except (KeyError):
             if self._ext is not None:
-                if not self._SILENT:
-                    asnlog('ENUM._from_oer: %s, unknown extension value %r' \
-                           % (self._name, index))
+                logger.info('ENUM._from_oer: %s, unknown extension value %r' % (self._name, index))
                 # Just try to convert the value into an index
                 val = '_ext_%r' % index
             else:

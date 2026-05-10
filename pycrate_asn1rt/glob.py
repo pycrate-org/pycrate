@@ -27,7 +27,7 @@
 # *--------------------------------------------------------
 #*/
 
-from .utils   import asnlog, name_to_defin
+from .utils   import logger, name_to_defin
 from .err     import ASN1Err
 from .dictobj import ASN1Dict
 
@@ -91,7 +91,7 @@ def export_all(scope, GLOB=GLOBAL):
         for obj_name in GLOB.MOD[mod_name]:
             name = name_to_defin(obj_name)
             if name in scope:
-                asnlog('WNG: duplicate object\'s name {0}'.format(name))
+                logger.warning('duplicate object\'s name {0}'.format(name))
             scope[name] = GLOBAL.MOD[mod_name][obj_name]
 
 def get_asnobj(Ref, GLOB=GLOBAL):

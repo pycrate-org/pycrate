@@ -34,17 +34,15 @@ from keyword import iskeyword
 # pycrate_core is used only for basic library-wide functions / variables:
 # log(), integer_types, str_types
 from pycrate_core.utils import *
+from pycrate_core.log   import logging
 from .err               import ASN1Err
 
 # ------------------------------------------------------------------------------#
 # asn1-wide Python routines
 # ------------------------------------------------------------------------------#
 
-def asnlog(msg):
-    """
-    customizable logging function for the whole asn1c part
-    """
-    print(msg)
+# dedicated logger for the ASN.1 compiler submodule
+logger = logging.getLogger('pycrate.asn1c')
 
 
 _PP = pprint.PrettyPrinter(indent=1, width=80, depth=None, stream=None)

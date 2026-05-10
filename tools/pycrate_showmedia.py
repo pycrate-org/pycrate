@@ -34,6 +34,12 @@ import argparse
 
 from pycrate_core.base import Buf
 from pycrate_core.elt  import Element
+from pycrate_core.log  import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
+
 
 # list of supported media
 mediasup = 'BMP, GIF, JPEG, MP3, MPEG4, PNG, TIFF'

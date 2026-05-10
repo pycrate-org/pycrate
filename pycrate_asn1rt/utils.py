@@ -39,7 +39,7 @@ from .err                import *
 from pycrate_asn1c.utils import clean_text
 
 # pycrate_core is used for basic library-wide functions / variables
-# (i.e. log(), integer_types, bytes_types, str_types)
+# (i.e. integer_types, bytes_types, str_types)
 # and for encoding / decoding routines
 from pycrate_core.utils  import *
 from pycrate_core.utils  import TYPE_BYTES   as T_BYTES
@@ -50,6 +50,7 @@ from pycrate_core.utils  import TYPE_UINT_LE as T_UINT_LE
 from pycrate_core.elt    import *
 from pycrate_core.base   import *
 from pycrate_core.charpy import *
+from pycrate_core.log    import logging
 Atom.REPR_MAXLEN = 512
 
 
@@ -57,11 +58,8 @@ Atom.REPR_MAXLEN = 512
 # asn1-wide Python routines
 # -----------------------------------------------------------------------------#
 
-def asnlog(msg):
-    '''
-    customizable logging function for the whole asn1 part
-    '''
-    log(msg)
+# dedicated logger for the ASN.1 runtime submodule
+logger = logging.getLogger('pycrate.asn1rt')
 
 
 # -----------------------------------------------------------------------------#
@@ -623,7 +621,7 @@ def _get_json_dict(filepath):
     try:
         fd = open(filepath)
     except:
-        asnlog('unable to open file: %r' % filepath)
+        logger.warning('unable to open file: %r' % filepath)
         return None
     #
     import json
@@ -678,7 +676,7 @@ def get_referrers(filepath, objname):
         return []
     objects = [node['id'] for node in jd['nodes']]
     if objname not in objects:
-        asnlog('object %s not found' % objname)
+        logger.warning('object %s not found' % objname)
         return []
     #
     ret = []
@@ -704,7 +702,7 @@ def get_referees(filepath, objname):
         return []
     objects = [node['id'] for node in jd['nodes']]
     if objname not in objects:
-        asnlog('object %s not found' % objname)
+        logger.warning('object %s not found' % objname)
         return []
     #
     ret = []

@@ -37,6 +37,7 @@ from .asnobj    import *
 from .asnobj    import _path_stack, _path_pop
 from .extractor import get_objs
 from .generator import PycrateGenerator, JSONDepGraphGenerator
+from .utils     import logger
 
 #------------------------------------------------------------------------------#
 # ASN.1 files handling
@@ -51,7 +52,7 @@ def compile_all(dic=ASN_SPECS, clearing=True, **kwargs):
     if `clearing' is set to True, clear the GLOBAL structure after each module
     """
     for item in dic.items():
-        asnlog('[SPEC] {0}'.format(item[0]))
+        logger.info('[SPEC] {0}'.format(item[0]))
         if isinstance(item[1], tuple):
             kwargs['name'] = item[1][0]
             for flag in item[1][1:]:
@@ -74,7 +75,7 @@ def compile_spec(name='LDAP-v3', shortname=None, **kwargs):
             for arg in args:
                 kwargs[arg] = True
     elif shortname:
-        asnlog('WNG: specification {0} not found'.format(shortname))
+        logger.warning('specification {0} not found'.format(shortname))
     spec_dir = get_spec_dir(name)
     spec_obj = get_spec_objects(spec_dir)
     spec_texts, spec_fn = get_spec_files(spec_dir)
@@ -85,7 +86,7 @@ def compile_spec(name='LDAP-v3', shortname=None, **kwargs):
     else:
         GLOBAL.COMP['ORDER'] = None
     #
-    asnlog('[proc] starting with ASN.1 specification: {0}'.format(name))
+    logger.info('[proc] starting with ASN.1 specification: {0}'.format(name))
     compile_text(spec_texts, **kwargs)
 
 
@@ -101,20 +102,20 @@ def get_spec_files(spec_dir):
     try:
         fd = open('%sload_mod.txt' % spec_dir, 'r')
     except Exception as err:
-        asnlog('[proc] unable to open load_mod.txt in {0}'.format(spec_dir))
+        logger.info('[proc] unable to open load_mod.txt in {0}'.format(spec_dir))
     else:
         try:
             [load.append(fn.strip()) for fn in fd.readlines() if fn[:1] != '#']
         except Exception as err:
             fd.close()
-            asnlog('[proc] unable to read load_mod.txt in {0}'.format(spec_dir))
+            logger.warning('[proc] unable to read load_mod.txt in {0}'.format(spec_dir))
         else:
             fd.close()
     if not load:
         try:
             load = [fn for fn in sorted(os.listdir(spec_dir)) if fn[-4:] == '.asn']
         except Exception as err:
-            asnlog('[proc] unable to list {0}'.format(spec_dir))
+            logger.warning('[proc] unable to list {0}'.format(spec_dir))
     if not load:
         raise(ASN1Err('[proc] no ASN.1 spec found in {0}'.format(spec_dir)))
     #
@@ -123,14 +124,12 @@ def get_spec_files(spec_dir):
         try:
             fd = open('%s%s' % (spec_dir, fn), 'r', encoding='utf-8')
         except Exception as err:
-            raise(ASN1Err(
-                  '[proc] unable to open spec file {0}, {1}'.format(fn, err)))
+            raise(ASN1Err('[proc] unable to open spec file {0}, {1}'.format(fn, err)))
         try:
             spec_texts.append( fd.read() )
         except Exception as err:
             fd.close()
-            raise(ASN1Err(
-                  '[proc] unable to read spec file {0}, {1}'.format(fn, err)))
+            raise(ASN1Err('[proc] unable to read spec file {0}, {1}'.format(fn, err)))
         else:
             fd.close()
             spec_fn.append(fn)
@@ -141,14 +140,13 @@ def get_spec_objects(spec_dir):
     try:
         fd = open('%sload_obj.txt' % spec_dir, 'r')
     except Exception as err:
-        asnlog('[proc] unable to open load_obj.txt in {0}'.format(spec_dir))
+        logger.info('[proc] unable to open load_obj.txt in {0}'.format(spec_dir))
         return None
     else:
         try:
-            spec_obj = [names.strip().split('.') for names in fd.readlines() \
-                        if names[:1] != '#']
+            spec_obj = [names.strip().split('.') for names in fd.readlines() if names[:1] != '#']
         except Exception as err:
-            asnlog('[proc] unable to read load_obj.txt in {0}'.format(spec_dir))
+            logger.warning('[proc] unable to read load_obj.txt in {0}'.format(spec_dir))
             fd.close()
             return None
         else:
@@ -250,14 +248,13 @@ def compile_text(text=u'', **kwargs):
     remain = GLOBAL.COMP['ORDER'][:]
     # process all objects until all are compiled
     while remain:
-        asnlog('--- compilation cycle ---')
+        logger.debug('--- compilation cycle ---')
         remain_len = len(remain)
         compile_modules(remain)
         if remain_len == len(remain):
             # compilation is blocked
             raise(ASN1Err('[proc] unable to compile further, {0} objects remain:\n{1}'\
-                  .format(remain_len,
-                          '\n'.join(['%s.%s' % (i[0], i[1]) for i in remain]))))
+                  .format(remain_len, '\n'.join(['%s.%s' % (i[0], i[1]) for i in remain]))))
     #
     # 3) build the specific lists of objects' name
     types, sets, values = 0, 0, 0
@@ -284,13 +281,12 @@ def compile_text(text=u'', **kwargs):
     ASN1Obj._CACHE_ENABLED = True
     #
     # 4) verify all objects compiled
-    asnlog('--- verifications ---')
+    logger.debug('--- verifications ---')
     verify_modules(**kwargs)
     #
-    asnlog('[proc] ASN.1 modules processed: {0}'.format(mod_names))
-    asnlog('[proc] ASN.1 objects compiled: {0} types, {1} sets, {2} values'\
-           .format(types, sets, values))
-    asnlog('[proc] done')
+    logger.info('[proc] ASN.1 modules processed: {0}'.format(mod_names))
+    logger.info('[proc] ASN.1 objects compiled: {0} types, {1} sets, {2} values'.format(types, sets, values))
+    logger.info('[proc] done')
 
 
 def _compile_text_pass(text, with_order, **kwargs):
@@ -323,8 +319,7 @@ def _compile_text_pass(text, with_order, **kwargs):
                 rest = OidDummy.parse_value('{%s}' % oidstr)
             except Exception as err:
                 _path_pop()
-                asnlog('[proc]{0} module {1}: invalid OID value {2}, ignoring it'\
-                       .format(fn, name, oidstr))
+                logger.warning('[proc]{0} module {1}: invalid OID value {2}, ignoring it'.format(fn, name, oidstr))
                 module['_oid_'] = []
             else:
                 _path_pop()
@@ -344,8 +339,8 @@ def _compile_text_pass(text, with_order, **kwargs):
             module['_tag_'] = TAG_AUTO
         if 'extimpl' in kwargs and kwargs['extimpl']:
             module['_ext_'] = 'EXTENSIBILITY IMPLIED'
-        #asnlog('[proc] module {0} tagging mode: {1}'.format(name, module['_tag_']))
-        #asnlog('[proc] module {0} extensibility: {1}'.format(name, module['_ext_']))
+        logger.debug('[proc] module {0} tagging mode: {1}'.format(name, module['_tag_']))
+        logger.debug('[proc] module {0} extensibility: {1}'.format(name, module['_ext_']))
         text = text[m.end():]
         #
         # 3) scan text for BEGIN - END block
@@ -353,8 +348,7 @@ def _compile_text_pass(text, with_order, **kwargs):
         # are not supported
         m = re.search(r'(^|\s)BEGIN(\s)((.|\n)*?)(\s)END($|\s)', text)
         if not m:
-            raise(ASN1ProcTextErr('[proc]{0} module {1}: BEGIN - END scheme not found'\
-                  .format(fn, name)))
+            raise(ASN1ProcTextErr('[proc]{0} module {1}: BEGIN - END scheme not found'.format(fn, name)))
         asnblock = m.group(3)
         text = text[m.end():]
         #
@@ -387,22 +381,20 @@ def _compile_text_pass(text, with_order, **kwargs):
             Obj = module_extract_assign(lines)
             Obj._mod = name
             if Obj._name in module:
-                raise(ASN1ProcTextErr('[proc]{0} module {1}: duplicate object, {2}'\
-                      .format(fn, name, Obj._name)))
+                raise(ASN1ProcTextErr('[proc]{0} module {1}: duplicate object, {2}'.format(fn, name, Obj._name)))
             module[Obj._name] = Obj
             module['_obj_'].append(Obj._name)
         #
-        asnlog('[proc]{0} module {1} (oid: {2}): {3} ASN.1 assignments found'\
-               .format(fn, name, module['_oid_'], len(module)-12))
+        logger.info('[proc]{0} module {1} (oid: {2}): {3} ASN.1 assignments found'\
+                    .format(fn, name, module['_oid_'], len(module)-12))
         # 
         # 8) initalize the module in GLOBAL.MOD
         if name in GLOBAL.MOD:
             # module already compiled and loaded
             if module['_oid_'] and module['_oid_'] == GLOBAL.MOD[name]['_oid_']:
-                asnlog('[proc]{0} module {1}: already compiled'.format(fn, name))
+                logger.info('[proc]{0} module {1}: already compiled'.format(fn, name))
             else:
-                asnlog('[proc]{0} module {1}: already compiled but OID missing or mismatch'\
-                       .format(fn, name))
+                logger.warning('[proc]{0} module {1}: already compiled but OID missing or mismatch'.format(fn, name))
             if with_order:
                 # in case load_obj.txt is provided
                 # remove objects of this module from the compilation ORDER list
@@ -669,7 +661,7 @@ def module_get_import(text=''):
                 try:
                     rest = OidDummy.parse_value(oidstr)
                 except Exception as err:
-                    asnlog('IMPORTS directive: invalid OID value, ignoring it')
+                    logger.warning('IMPORTS directive: invalid OID value, ignoring it')
                     oid = []
                 else:
                     oid = OidDummy._val
@@ -766,8 +758,7 @@ def asnobj_getname(Obj):
         # 1) check for value assignment
         m1 = SYNT_RE_IDENT.match(text)
         if not m1:
-            raise(ASN1ProcTextErr('[proc] invalid syntax for an object name: {0}'\
-                  .format(text)))
+            raise(ASN1ProcTextErr('[proc] invalid syntax for an object name: {0}'.format(text)))
         # get lower-case 1st lexeme
         Obj._name = m1.group(1)
         Obj._mode = MODE_VALUE
@@ -807,8 +798,7 @@ def asnobj_gettype(Obj):
     if text[0:1] == '[':
         text, tag = extract_brack(text)
         if not tag:
-            raise(ASN1ProcTextErr('{0}: invalid tagging, {1}'\
-                  .format(self._name, Obj._text_def)))
+            raise(ASN1ProcTextErr('{0}: invalid tagging, {1}'.format(self._name, Obj._text_def)))
         m = re.match(r'(IMPLICIT|EXPLICIT)(?:\s)', text)
         if m:
             text = text[m.end():].strip()
@@ -876,8 +866,7 @@ def asnobj_compile(Obj):
     #
     # 3) if definition text is remaining: error!
     if text:
-        raise(ASN1ProcTextErr('{0}: remaining textual definition, {1}'\
-              .format(Obj.fullname(), text)))
+        raise(ASN1ProcTextErr('{0}: remaining textual definition, {1}'.format(Obj.fullname(), text)))
     #
     # 4) parse the value or set
     _path_stack(['val'])
@@ -895,8 +884,7 @@ def asnobj_compile(Obj):
     #
     # 5) if value text is remaining: error !
     if rest:
-        raise(ASN1ProcTextErr('{0}: remaining textual value(s) definition, {1}'\
-              .format(Obj.fullname(), rest)))
+        raise(ASN1ProcTextErr('{0}: remaining textual value(s) definition, {1}'.format(Obj.fullname(), rest)))
     #
     # 6) create a new object after resolving its type and return it
     if hasattr(Obj, '_new'):
@@ -962,7 +950,7 @@ def warn(msg, raising=True):
     if raising:
         raise(ASN1ObjErr(msg))
     else:
-        asnlog('WNG: %s' % msg)
+        logger.warning(msg)
 
 
 def verify_modules(**kwargs):
@@ -1067,8 +1055,8 @@ def verify_modules(**kwargs):
                     for ct in ctypes_loc:
                         if ctypes_glob.count(ct) > 1:
                             # multiple constraints of the same type apply to the object
-                            #asnlog('{0}.{1}, internal object {2}: multiple {3} constraints'\
-                            #       .format(mod, name, Objs.index(O), ct))
+                            logger.debug('{0}.{1}, internal object {2}: multiple {3} constraints'\
+                                         .format(mod, name, Objs.index(O), ct))
                             if ct == CONST_SIZE:
                                 # ensure that at least 1 value comply to all the constraints
                                 consts = [const for const in consts_glob if const['type'] == CONST_SIZE]
@@ -1089,9 +1077,8 @@ def verify_modules(**kwargs):
                                          'no intersecting constraints of type {3}'\
                                          .format(mod, name, Objs.index(O), ct), raising)
                             elif ct not in CONST_UNHANDLED:
-                                asnlog('INF: {0}.{1}, internal object {2}, '\
-                                       'multiple constraints of the same type, {3}'\
-                                       .format(mod, name, Objs.index(O), ct))
+                                logger.info('INF: {0}.{1}, internal object {2}, multiple constraints of the same type, {3}'\
+                                            .format(mod, name, Objs.index(O), ct))
                 #
                 # 3) for MODE_VALUE and MODE_SET objects, verifies that constraints are respected
                 # this can happen within MODE_TYPE CLASS objects too
@@ -1213,15 +1200,15 @@ def _verify_seq_const_tab(Obj, open_name, const_tab, modname, objname, obj_index
     val_key, val_all, ret = [], [], []
     for val in tab:
         if id_key not in val:
-            #asnlog('[WNG] constraint table value without key subvalue %s: %r' % (id_key, val))
+            #logger.warning('constraint table value without key subvalue %s: %r' % (id_key, val))
             pass
         else:
             if val[id_key] in val_key:
                 # duplicated key subvalue, get the corresponding complete value
                 if val != val_all[ val_key.index(val[id_key]) ]:
                     # Houston, we got a problem !
-                    #asnlog('[WNG] constraint table with duplicated key subvalue %s: %r, '\
-                    #       'and different associated value' % (id_key, val[id_key]))
+                    #logger.warning('constraint table with duplicated key subvalue %s: %r, '\
+                    #               'and different associated value' % (id_key, val[id_key]))
                     if id_key not in ret:
                         ret.append(id_key)
                     #assert()
@@ -1233,8 +1220,8 @@ def _verify_seq_const_tab(Obj, open_name, const_tab, modname, objname, obj_index
                 val_key.append( val[id_key] )
                 val_all.append( val )
     if ret:
-        asnlog('WNG: {0}.{1}: internal object {2}, non-unique key subvalue {3!r} '\
-               'within a table constraint'.format(modname, objname, obj_index, ret))
+        logger.warning('{0}.{1}: internal object {2}, non-unique key subvalue {3!r} within a table constraint'\
+                       .format(modname, objname, obj_index, ret))
     return True if ret else False
 
 
@@ -1257,7 +1244,7 @@ def generate_all(dic=ASN_SPECS, destpath=None):
                    os.path.sep + _ASN1DIR_PATH
     #
     for item in sorted(dic.items()):
-        asnlog('[GEN] {0}'.format(item[0]))
+        logger.info('[GEN] {0}'.format(item[0]))
         kwargs = {}
         if isinstance(item[1], tuple):
             kwargs['name'] = item[1][0]

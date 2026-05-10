@@ -61,19 +61,18 @@ _TRACE_NAME = None
 def tracemethod(meth, *args, **kwargs):
     def wrapper(*args, **kwargs):
         if _TRACE_NAME is None or GLOBAL.COMP['NS']['name'] in _TRACE_NAME:
-            asnlog('---------------------------TRACE (%s)---------------------------'\
-                   % GLOBAL.COMP['NS']['name'])
-            asnlog('{0}.{1} :: {2}.{3}()'.format(
-                   GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
-                   args[0].fullname(), meth.__name__))
-            asnlog('    args   : {0!r}'.format(args[1:]))
-            asnlog('    kwargs : {0!r}'.format(kwargs))
-            asnlog('    NS path: {0!r}'.format(GLOBAL.COMP['NS']['path']))
-            asnlog('    NS set : setdisp {0!r}, setpar {1!r}'.format(
-                   GLOBAL.COMP['NS']['setdisp'], GLOBAL.COMP['NS']['setpar']))
+            logger.debug('---------------------------TRACE (%s)---------------------------'.format(GLOBAL.COMP['NS']['name']))
+            logger.debug('{0}.{1} :: {2}.{3}()'.format(
+                         GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
+                         args[0].fullname(), meth.__name__))
+            logger.debug('    args   : {0!r}'.format(args[1:]))
+            logger.debug('    kwargs : {0!r}'.format(kwargs))
+            logger.debug('    NS path: {0!r}'.format(GLOBAL.COMP['NS']['path']))
+            logger.debug('    NS set : setdisp {0!r}, setpar {1!r}'.format(
+                         GLOBAL.COMP['NS']['setdisp'], GLOBAL.COMP['NS']['setpar']))
         ret = meth(*args, **kwargs)
         if _TRACE_NAME is None or GLOBAL.COMP['NS']['name'] in _TRACE_NAME:
-            asnlog('    ret    : {0!r}'.format(ret)) 
+            logger.debug('    ret    : {0!r}'.format(ret)) 
         return ret
     return wrapper
 
@@ -183,9 +182,8 @@ def _path_ext(ext):
     if len(GLOBAL.COMP['NS']['path']) > 1:
         GLOBAL.COMP['NS']['path'][-1].extend(ext)
     #
-    #asnlog('[DBG] _path_ext({0!r}), {1}.{2}'\
-    #       .format(ext, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
-    #asnlog('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
+    logger.debug('_path_ext({0!r}), {1}.{2}'.format(ext, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
+    logger.debug('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
 
 def _path_trunc(depth):
     assert( depth >= 0 )
@@ -196,23 +194,20 @@ def _path_trunc(depth):
         assert( len(GLOBAL.COMP['NS']['path'][-1]) >= depth )
         del GLOBAL.COMP['NS']['path'][-1][-depth:]
     #
-    #asnlog('[DBG] _path_trunc({0!r}), {1}.{2}'\
-    #       .format(depth, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
-    #asnlog('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
+    logger.debug('_path_trunc({0!r}), {1}.{2}'.format(depth, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
+    logger.debug('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
 
 def _path_stack(new_path):
     GLOBAL.COMP['NS']['path'].append( new_path )
     #
-    #asnlog('[DBG] _path_stack({0!r}), {1}.{2}'\
-    #       .format(new_path, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
-    #asnlog('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
+    logger.debug('_path_stack({0!r}), {1}.{2}'.format(new_path, GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
+    logger.debug('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
 
 def _path_pop():
     assert( len(GLOBAL.COMP['NS']['path']) > 0 )
     #
-    #asnlog('[DBG] _path_pop(), {0}.{1}'\
-    #       .format(GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
-    #asnlog('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
+    logger.debug('_path_pop(), {0}.{1}'.format(GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name']))
+    logger.debug('    {0!r}'.format(GLOBAL.COMP['NS']['path']))
     #
     return GLOBAL.COMP['NS']['path'].pop()
 
@@ -2290,11 +2285,7 @@ class ASN1Obj(object):
         # formal parameters
         text, params_act = extract_multi(text)
         if not params_act:
-            raise(ASN1ProcTextErr('{0}: missing actual parameters'\
-                  .format(self.fullname())))
-            #asnlog('WNG: {0}.{1}, missing actual parameters'\
-            #       .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
-            #return text
+            raise(ASN1ProcTextErr('{0}: missing actual parameters'.format(self.fullname())))
         #
         if len(params_act) != len(self._params_form):
             raise(ASN1ProcTextErr('{0}: invalid number of parameters, {1} instead of {2}'\
@@ -2337,19 +2328,19 @@ class ASN1Obj(object):
                 self.__parameterize_type(param_act)
             #
             if _DEBUG_PARAM:
-                asnlog('[DBG] _parameterize({0}): {1}.{2}'.format(
-                       text,
-                       GLOBAL.COMP['NS']['mod'],
-                       GLOBAL.COMP['NS']['name']))
-                asnlog('    param_act: {0}'.format(param_act))
-                asnlog('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
-                asnlog('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
-                       GLOBAL.COMP['NS']['setdisp'],
-                       GLOBAL.COMP['NS']['setpar']))
-                asnlog('    governor : name {0}, type {1}, typeref {2!r}, mode {3}'\
-                       .format(self._Gov._name, self._Gov._type,
-                               self._Gov._typeref, self._Gov._mode))    
-                asnlog('    referrers: {0!r}'.format(self._pathes))
+                logger.debug('_parameterize({0}): {1}.{2}'.format(
+                             text,
+                             GLOBAL.COMP['NS']['mod'],
+                             GLOBAL.COMP['NS']['name']))
+                logger.debug('    param_act: {0}'.format(param_act))
+                logger.debug('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
+                logger.debug('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
+                             GLOBAL.COMP['NS']['setdisp'],
+                             GLOBAL.COMP['NS']['setpar']))
+                logger.debug('    governor : name {0}, type {1}, typeref {2!r}, mode {3}'.format(
+                             self._Gov._name, self._Gov._type,
+                             self._Gov._typeref, self._Gov._mode))    
+                logger.debug('    referrers: {0!r}'.format(self._pathes))
             #
             # 2.6) clean-up temporary attributes
             del self._Gov
@@ -2581,16 +2572,16 @@ class ASN1Obj(object):
             _objval.append(objval)
         #
         if _DEBUG_PARAM_SET:
-            asnlog('DBG: __parameterize_set_comp({0!r}, {1}), {2}.{3}'.format(
-                   comp, dom,
-                   GLOBAL.COMP['NS']['mod'],
-                   GLOBAL.COMP['NS']['name']))
-            asnlog('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
-            asnlog('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
-                   GLOBAL.COMP['NS']['setdisp'],
-                   GLOBAL.COMP['NS']['setpar']))
-            asnlog('    referrers: {0!r}'.format(self._pathes))
-            asnlog('    _objval  : {0!r}'.format(_objval))
+            logger.debug('__parameterize_set_comp({0!r}, {1}), {2}.{3}'.format(
+                         comp, dom,
+                         GLOBAL.COMP['NS']['mod'],
+                         GLOBAL.COMP['NS']['name']))
+            logger.debug('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
+            logger.debug('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
+                         GLOBAL.COMP['NS']['setdisp'],
+                         GLOBAL.COMP['NS']['setpar']))
+            logger.debug('    referrers: {0!r}'.format(self._pathes))
+            logger.debug('    _objval  : {0!r}'.format(_objval))
     
     def __parameterize_pt(self, comp_spl):
         #
@@ -2619,8 +2610,8 @@ class ASN1Obj(object):
         if Gov_loc._typeref is not None:
             if self._Gov._typeref is None or \
             Gov_loc._typeref.__hash__() != self._Gov._typeref.__hash__():
-                asnlog('WNG: {0}.{1}, parameter pass-through may be incompatible, {1!r}'\
-                       .format(GLOBAL.COMP['NS']['mod'], self.fullname(), comp_spl))
+                logger.warning('{0}.{1}, parameter pass-through may be incompatible, {1!r}'\
+                               .format(GLOBAL.COMP['NS']['mod'], self.fullname(), comp_spl))
         #
         path_root = _path_root()
         path_cur = _path_cur()
@@ -2635,9 +2626,9 @@ class ASN1Obj(object):
             # 4.1) take potential current path into account (especially when
             # we handle ASN.1 value)
             if path_cur:
-                #asnlog('{0}.{1}, path_cur: {2!r}, path: {3!r}'.format(
-                #       GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
-                #       GLOBAL.COMP['NS']['path'], path))
+                logger.debug('{0}.{1}, path_cur: {2!r}, path: {3!r}'.format(
+                             GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
+                             GLOBAL.COMP['NS']['path'], path))
                 assert( path_cur[0] == 'val' )
                 path = path_cur + path[1:]
             #
@@ -2683,16 +2674,16 @@ class ASN1Obj(object):
             param_loc['ref'].append( path_full )
         # 
         if _DEBUG_PARAM_PT:
-            asnlog('[DBG] __parameterize_pt({0!r}), {1}.{2}'.format(
-                   comp_spl,
-                   GLOBAL.COMP['NS']['mod'],
-                   GLOBAL.COMP['NS']['name']))
-            asnlog('    NS path         : {0!r}'.format(GLOBAL.COMP['NS']['path']))
-            asnlog('    NS set          : setdisp {0!r}, setpar {1!r}'.format(
-                   GLOBAL.COMP['NS']['setdisp'],
-                   GLOBAL.COMP['NS']['setpar']))
-            asnlog('    formal referrers: {0!r}'.format(self._pathes))
-            asnlog('    local referrers : {0!r}'.format(param_loc['ref']))
+            logger.debug('__parameterize_pt({0!r}), {1}.{2}'.format(
+                         comp_spl,
+                         GLOBAL.COMP['NS']['mod'],
+                         GLOBAL.COMP['NS']['name']))
+            logger.debug('    NS path         : {0!r}'.format(GLOBAL.COMP['NS']['path']))
+            logger.debug('    NS set          : setdisp {0!r}, setpar {1!r}'.format(
+                         GLOBAL.COMP['NS']['setdisp'],
+                         GLOBAL.COMP['NS']['setpar']))
+            logger.debug('    formal referrers: {0!r}'.format(self._pathes))
+            logger.debug('    local referrers : {0!r}'.format(param_loc['ref']))
     
     def __parameterize_val(self, val):
         # in case Gov is a CLASS, comp can be a field selected within
@@ -2729,9 +2720,9 @@ class ASN1Obj(object):
             # 3.1) take potential current path into account (especially when
             # we handle ASN.1 value)
             if path_cur:
-                #asnlog('{0}.{1}, path_cur: {2!r}, path: {3!r}'.format(
-                #       GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
-                #       GLOBAL.COMP['NS']['path'], path))
+                logger.debug('{0}.{1}, path_cur: {2!r}, path: {3!r}'.format(
+                             GLOBAL.COMP['NS']['mod'], GLOBAL.COMP['NS']['name'],
+                             GLOBAL.COMP['NS']['path'], path))
                 assert( path_cur[0] == 'val' )
                 path = path_cur + path[1:]
             #
@@ -2821,16 +2812,16 @@ class ASN1Obj(object):
             _objval.append(objval)
         # 
         if _DEBUG_PARAM_VAL:
-            asnlog('DBG: __parameterize_val({0}), {2}.{3}'.format(
-                   val,
-                   GLOBAL.COMP['NS']['mod'],
-                   GLOBAL.COMP['NS']['name']))
-            asnlog('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
-            asnlog('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
-                   GLOBAL.COMP['NS']['setdisp'],
-                   GLOBAL.COMP['NS']['setpar']))
-            asnlog('    referrers: {0!r}'.format(self._pathes))
-            asnlog('    _objval  : {0!r}'.format(_objval))
+            logger.debug('__parameterize_val({0}), {2}.{3}'.format(
+                         val,
+                         GLOBAL.COMP['NS']['mod'],
+                         GLOBAL.COMP['NS']['name']))
+            logger.debug('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
+            logger.debug('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
+                         GLOBAL.COMP['NS']['setdisp'],
+                         GLOBAL.COMP['NS']['setpar']))
+            logger.debug('    referrers: {0!r}'.format(self._pathes))
+            logger.debug('    _objval  : {0!r}'.format(_objval))
     
     def __parameterize_type(self, typedef):
         # Gov is a MODE_TYPE / TYPE_OPEN ASN1Obj
@@ -2913,16 +2904,16 @@ class ASN1Obj(object):
             objects.append( Obj )
         #
         if _DEBUG_PARAM_TYPE:
-            asnlog('DBG: __parameterize_type({0}), {1}.{2}'.format(
-                   typedef,
-                   GLOBAL.COMP['NS']['mod'],
-                   GLOBAL.COMP['NS']['name']))
-            asnlog('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
-            asnlog('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
-                   GLOBAL.COMP['NS']['setdisp'],
-                   GLOBAL.COMP['NS']['setpar']))
-            asnlog('    referrers: {0!r}'.format(self._pathes))
-            asnlog('    objects  : {0!r}'.format(objects))
+            logger.debug('__parameterize_type({0}), {1}.{2}'.format(
+                         typedef,
+                         GLOBAL.COMP['NS']['mod'],
+                         GLOBAL.COMP['NS']['name']))
+            logger.debug('    NS path  : {0!r}'.format(GLOBAL.COMP['NS']['path']))
+            logger.debug('    NS set   : setdisp {0!r}, setpar {1!r}'.format(
+                         GLOBAL.COMP['NS']['setdisp'],
+                         GLOBAL.COMP['NS']['setpar']))
+            logger.debug('    referrers: {0!r}'.format(self._pathes))
+            logger.debug('    objects  : {0!r}'.format(objects))
     
     def __parameterize_transfer_obj(self, OldObj, NewObj, clone=False, ClassRef=None):
         # transfer existing flags, constraints and tag from OldObj to NewObj
@@ -3296,8 +3287,8 @@ class ASN1Obj(object):
                             raise(ASN1ProcTextErr('{0}: duplicate tags in CHOICE / SET with {1}, {2!r}'\
                                   .format(self.fullname(), ident, inter)))
                     else:
-                        asnlog('WNG: {0}.{1}, untagged OPEN / ANY in CHOICE / SET with {2}'\
-                               .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
+                        logger.warning('{0}.{1}, untagged OPEN / ANY in CHOICE / SET with {2}'\
+                                       .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
                 else:
                     tag = tuple(tag)
                     if tag in tag_db:
@@ -3321,8 +3312,8 @@ class ASN1Obj(object):
                         if Comp._type == TYPE_CHOICE:
                             tag = Comp.__choice_expand_tags()
                         else:
-                            asnlog('WNG: {0}.{1}, untagged OPEN / ANY in SEQUENCE with {2}'\
-                                   .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
+                            logger.warning('{0}.{1}, untagged OPEN / ANY in SEQUENCE with {2}'\
+                                           .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
                     #
                     if prev_tag is not None:
                         if isinstance(prev_tag, set):
@@ -3365,8 +3356,8 @@ class ASN1Obj(object):
                 if Cho._type == TYPE_CHOICE:
                     tag_db.update( Cho.__choice_expand_tags() )
                 else:
-                    asnlog('WNG: {0}.{1}, untagged OPEN / ANY component in {2}'\
-                           .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
+                    logger.warning('{0}.{1}, untagged OPEN / ANY component in {2}'\
+                                   .format(GLOBAL.COMP['NS']['mod'], self.fullname(), ident))
             else:
                 tag_db.add( tuple(tag) )
         return tag_db
@@ -3447,10 +3438,8 @@ class ASN1Obj(object):
                 else:
                     # this multiple extension markers actually exist in some
                     # ASN.1 spec (e.g. in ITU-T X series specs)
-                    #raise(ASN1ProcTextErr('{0}: duplicated extension marker'\
-                    #      .format(self.fullname())))
-                    #asnlog('WNG: {0}.{1}, multiple extension markers'\
-                    #       .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+                    logger.debug('{0}.{1}, multiple extension markers'\
+                                 .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
                     pass
                 comp_t = comp[3:].strip()
             #
@@ -3911,22 +3900,19 @@ class ASN1Obj(object):
                     self._synt_cur.append(' '.join(cap))
                     cap = []
                 elif self._synt_depth:
-                    asnlog('WNG: {0}.{1}, no starting SYNTAX keyword for optional field {1}'\
-                           .format(GLOBAL.COMP['NS']['mod'], self.fullname(), m.group(6)))
+                    logger.warning('{0}.{1}, no starting SYNTAX keyword for optional field {1}'\
+                                   .format(GLOBAL.COMP['NS']['mod'], self.fullname(), m.group(6)))
                 # do some control on the corresponding field
                 fn = m.group(6)
                 if fn not in self._cont:
                     raise(ASN1ProcTextErr('{0}: SYNTAX field name not in content, {1}'\
                           .format(self.fullname(), fn)))
-                    #pass
                 elif self._synt_depth > 0 and fn not in self._root_opt:
                     raise(ASN1ProcTextErr('{0}: field {1}, optional in SYNTAX but not in content'\
                           .format(self.fullname(), fn)))
-                    #pass
                 elif self._synt_depth == 0 and fn in self._root_opt:
-                    asnlog('WNG: {0}.{1}, field {1}, optional in content but not in SYNTAX'\
-                           .format(GLOBAL.COMP['NS']['mod'], self.fullname(), fn))
-                    #pass
+                    logger.warning('{0}.{1}, field {1}, optional in content but not in SYNTAX'\
+                                   .format(GLOBAL.COMP['NS']['mod'], self.fullname(), fn))
                 self._synt_fn.append(fn)
                 #
                 self._synt_cur.append('&' +fn)
@@ -4122,11 +4108,9 @@ class ASN1Obj(object):
         if text[0:1] == '!':
             # TODO: parse exception case
             const['exc'] = text[1:].strip()
-            asnlog('INF: {0}.{1}, unprocessed table constraint exception'\
-                   .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+            logger.info('{0}.{1}, unprocessed table constraint exception'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
         elif text:
-            raise(ASN1ProcTextErr('{0}: remaining text for table constraint, {1}'\
-                  .format(self.fullname(), text)))
+            raise(ASN1ProcTextErr('{0}: remaining text for table constraint, {1}'.format(self.fullname(), text)))
     
     def _parse_const_size(self, const):
         const_index = len(self._const)
@@ -4248,8 +4232,7 @@ class ASN1Obj(object):
             # this is a hack, and this is bad
             rest = ''
         if rest:
-            raise(ASN1ProcTextErr('{0}: remaining text for SIZE constraint, {1}'\
-                 .format(self.fullname(), rest)))
+            raise(ASN1ProcTextErr('{0}: remaining text for SIZE constraint, {1}'.format(self.fullname(), rest)))
     
     def _parse_const_withcomp(self, const):
         const_index = len(self._const)
@@ -4257,8 +4240,7 @@ class ASN1Obj(object):
         const['type'] = CONST_COMP
         const['keys'] = []
         # TODO
-        asnlog('INF: {0}.{1}, unprocessed WITH COMPONENT constraint'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+        logger.info('{0}.{1}, unprocessed WITH COMPONENT constraint'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
     
     def _parse_const_withcomps(self, const):
         const_index = len(self._const)
@@ -4327,8 +4309,8 @@ class ASN1Obj(object):
             # so we do our best here to manage the constraint definition when there is
             # no available content defined
             # TODO: the constraint should be parsed after parameterization has happened
-            asnlog('INF: {0}.{1}, unprocessed WITH COMPONENTS constraint on formal parameter'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+            logger.info('{0}.{1}, unprocessed WITH COMPONENTS constraint on formal parameter'\
+                        .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
             return
         #
         # 4) check for partial components
@@ -4498,8 +4480,7 @@ class ASN1Obj(object):
         for ident in absent:
             if cont[ident]._flag is not None and \
             (FLAG_OPT not in cont[ident]._flag or FLAG_DEF in cont[ident]._flag):
-                raise(ASN1ProcTextErr('{0}: invalid ABSENT component, {1}'\
-                      .format(self.fullname(), ident)))
+                raise(ASN1ProcTextErr('{0}: invalid ABSENT component, {1}'.format(self.fullname(), ident)))
             else:
                 const['_abs'].append(ident)
     
@@ -4509,8 +4490,7 @@ class ASN1Obj(object):
         const['type'] = CONST_REGEXP
         const['keys'] = []
         # TODO
-        asnlog('INF: {0}.{1}, unprocessed PATTERN constraint'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+        logger.info('{0}.{1}, unprocessed PATTERN constraint'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
     
     def _parse_const_property(self, const):
         const_index = len(self._const)
@@ -4518,8 +4498,7 @@ class ASN1Obj(object):
         const['type'] = CONST_PROPERTY
         const['keys'] = []
         # TODO
-        asnlog('INF: {0}.{1}, unprocessed SETTINGS constraint'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+        logger.info('INF: {0}.{1}, unprocessed SETTINGS constraint'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
     
     def _parse_const_containing(self, const):
         const_index = len(self._const)
@@ -4573,8 +4552,7 @@ class ASN1Obj(object):
         #
         if rest:
             raise(ASN1ProcTextErr(
-                  '{0}, CONTAINING constraint: remaining textual definition, {1}'\
-                  .format(self.fullname(), rest)))
+                  '{0}, CONTAINING constraint: remaining textual definition, {1}'.format(self.fullname(), rest)))
         const['obj'] = Obj.resolve()
         #
         # 3) copy references from Obj in self
@@ -4588,8 +4566,7 @@ class ASN1Obj(object):
         const['keys'] = ['enc']
         const['enc'] = None
         # TODO
-        asnlog('INF: {0}.{1}, unprocessed ENCODE BY constraint'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+        logger.info('{0}.{1}, unprocessed ENCODE BY constraint'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
     
     def _parse_const_userconst(self, const):
         const_index = len(self._const)
@@ -4599,8 +4576,7 @@ class ASN1Obj(object):
         const['user'] = None
         const['exc'] = None
         # TODO
-        asnlog('INF: {0}.{1}, unprocessed CONSTRAINED BY constraint'\
-               .format(GLOBAL.COMP['NS']['mod'], self.fullname()))
+        logger.info('{0}.{1}, unprocessed CONSTRAINED BY constraint'.format(GLOBAL.COMP['NS']['mod'], self.fullname()))
     
     
     #--------------------------------------------------------------------------#
@@ -4615,8 +4591,7 @@ class ASN1Obj(object):
         if self._type in self._PARSE_VALUE_DISPATCH:
             return getattr(self, self._PARSE_VALUE_DISPATCH[self._type])(text)
         else:
-            raise(ASN1ObjErr('{0}: undefined type, {1}'\
-                  .format(self.fullname(), self._type)))
+            raise(ASN1ObjErr('{0}: undefined type, {1}'.format(self.fullname(), self._type)))
     
     def _parse_value_ref(self, text, type_expected=None):
         # when text, the textual value, is a reference to a formal identifier or 
@@ -5853,21 +5828,20 @@ class ASN1Obj(object):
                 if len(val[dom]) >= 2 and len(val[dom]) == len_val + 1 \
                 and val[dom][-1] in val[dom][:-1]:
                     if _DEBUG_SET_VAL:
-                        asnlog('DBG: {0}.{1}, duplicated value in {2} set: {3}'\
-                               .format(GLOBAL.COMP['NS']['mod'], self.fullname(), dom,
-                                       repr(val[dom][-1]).replace('\n', '')))
+                        logger.debug('{0}.{1}, duplicated value in {2} set: {3}'.format(
+                                     GLOBAL.COMP['NS']['mod'], self.fullname(), dom,
+                                     repr(val[dom][-1]).replace('\n', '')))
                     del val[dom][-1]
             # 
             self.__parse_set_comp_path_unconfig()
             val = self.__parse_set_track_val(val)
             #
             if rest[:6] == 'EXCEPT':
-                asnlog('WNG: {0}.{1}, ignoring set exclusion, {2}'\
-                       .format(GLOBAL.COMP['NS']['mod'], self.fullname(), rest))
+                logger.warning('{0}.{1}, ignoring set exclusion, {2}'.format(
+                               GLOBAL.COMP['NS']['mod'], self.fullname(), rest))
                 rest = ''
             elif rest:
-                raise(ASN1ProcTextErr('{0}: remaining textual set definition, {1}'\
-                      .format(self.fullname(), rest)))
+                raise(ASN1ProcTextErr('{0}: remaining textual set definition, {1}'.format(self.fullname(), rest)))
         #
         # 4) collect values in the extension domain
         if text_val['ext'] is None:
@@ -5890,21 +5864,20 @@ class ASN1Obj(object):
                 if len(val[dom]) >= 2 and len(val[dom]) == len_val + 1 \
                 and val[dom][-1] in val[dom][:-1]:
                     if _DEBUG_SET_VAL:
-                        asnlog('DBG: {0}.{1}, duplicated value in {2} set: {3}'\
-                               .format(GLOBAL.COMP['NS']['mod'], self.fullname(), dom,
-                                       repr(val[dom][-1]).replace('\n', '')))
+                        logger.debug('{0}.{1}, duplicated value in {2} set: {3}'.format(
+                                     GLOBAL.COMP['NS']['mod'], self.fullname(), dom,
+                                     repr(val[dom][-1]).replace('\n', '')))
                     del val[dom][-1]
             #
             self.__parse_set_comp_path_unconfig()
             val = self.__parse_set_track_val(val)
             #
             if rest[:6] == 'EXCEPT':
-                asnlog('WNG: {0}.{1}, ignoring set exclusion, {2}'\
-                       .format(GLOBAL.COMP['NS']['mod'], self.fullname(), rest))
+                logger.warning('{0}.{1}, ignoring set exclusion, {2}'.format(
+                               GLOBAL.COMP['NS']['mod'], self.fullname(), rest))
                 rest = ''
             elif rest:
-                raise(ASN1ProcTextErr('{0}: remaining textual set definition, {1}'\
-                      .format(self.fullname(), rest)))
+                raise(ASN1ProcTextErr('{0}: remaining textual set definition, {1}'.format(self.fullname(), rest)))
     
     def __parse_set_comp_path_config(self, val, dom):
         _path = [dom, len(val[dom])]
@@ -6208,8 +6181,8 @@ class ASN1Obj(object):
         #
         # 2) otherwise unsupported, but stays nice, do not raise...
         else:
-            asnlog('WNG: {0}.{1}, unprocessed set of values from constraint, {1}'\
-                   .format(GLOBAL.COMP['NS']['mod'], self.fullname(), self._text_def))
+            logger.warning('{0}.{1}, unprocessed set of values from constraint, {1}'\
+                           .format(GLOBAL.COMP['NS']['mod'], self.fullname(), self._text_def))
             return {'root': [], 'ext': None}
     
     def __parse_set_comp_open(self, text, val, dom):

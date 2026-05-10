@@ -35,7 +35,11 @@ import base64
 import re
 from binascii import unhexlify
 
-from pycrate_asn1rt.asnobj import ASN1Obj
+from pycrate_core.log  import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
 
 
 SOC = '-----BEGIN CERTIFICATE-----'
@@ -115,9 +119,6 @@ def main():
             print('%s, input error: invalid base64 PEM content, %r' % (sys.argv[0], err))
             return 1
     #
-    # set silent mode
-    ASN1Obj._SILENT = True
-    #
     # decode the cert
     if args.itut:
         from pycrate_asn1dir import X509_2016
@@ -126,7 +127,7 @@ def main():
         from pycrate_asn1dir import RFC5912
         CertObj = RFC5912.PKIX1Explicit_2009.Certificate
     if args.verbose:
-        ASN1Obj._SILENT = False
+        logger.setLevel(logging.DEBUG)
     try:
         CertObj.from_der(cert)
     except Exception as err:

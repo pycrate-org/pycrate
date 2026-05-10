@@ -37,7 +37,12 @@ from binascii import unhexlify, hexlify
 from pycrate_core.utils    import str_types, bytes_types
 from pycrate_core.charpy   import Charpy
 from pycrate_asn1rt.codecs import ASN1CodecBER
-        
+from pycrate_core.log      import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
+
 
 pprint.stdprinter = pprint.PrettyPrinter
 

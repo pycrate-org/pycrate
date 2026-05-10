@@ -31,6 +31,12 @@
 import sys
 import argparse
 
+from pycrate_core.log               import logging, logger, logfmt
+logger.setLevel(logging.WARNING)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
+
 from pycrate_mobile.TS0960_GTPv0    import (
     GTPv0Dispatcher,
     GTPv0ReqResp

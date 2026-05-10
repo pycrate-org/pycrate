@@ -27,8 +27,15 @@
 # *--------------------------------------------------------
 #*/
 
+import sys
 from binascii import *
 from timeit   import timeit
+
+from pycrate_core.log import logging, logger, logfmt
+logger.setLevel(logging.ERROR)
+loghdlr = logging.StreamHandler(sys.stderr)
+loghdlr.setFormatter(logfmt)
+logger.addHandler(loghdlr)
 
 from pycrate_asn1rt.utils            import *
 from pycrate_asn1rt.err              import *
@@ -45,8 +52,6 @@ from pycrate_asn1rt.asnobj_ext       import *
 from pycrate_asn1rt.codecs           import _with_json
 
 
-# do not print runtime warnings on screen
-ASN1Obj._SILENT = True
 # handle default values in PER the canonical way
 ASN1CodecPER.GET_DEFVAL = True
 ASN1CodecPER.CANONICAL  = True
@@ -61,6 +66,7 @@ def _load_rt_base():
     #    GLOBAL.clear()
     #except:
     #    pass
+    sys.path.insert(0, '')
     from test import test_asn1rt_mod
     #print(list(GLOBAL.MOD.keys()))
 

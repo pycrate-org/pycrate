@@ -448,7 +448,7 @@ def tokenize_text(text=u'', **kwargs):
     #
     toks, rest = REScannerASN1.scan(text)
     if rest:
-        asnlog('%i remaining chars at the end of spec' % len(rest))
+        logger.debug('%i remaining chars at the end of spec' % len(rest))
     # build the handler for the tokens
     Tok = Tokenizer(toks)
     modules = ASN1Dict()
@@ -490,15 +490,15 @@ def tokenize_text(text=u'', **kwargs):
             module['_tag_'] = TOK_AUTO
         if 'extimpl' in kwargs and kwargs['extimpl']:
             module['_ext_'] = True
-        #asnlog('[proc] module %s, tags: %r' % (name, module['_tag_']))
-        #asnlog('[proc] module %s, extensibility implied: %r' % (name, module['_ext_']))
+        logger.debug('[proc] module %s, tags: %r' % (name, module['_tag_']))
+        logger.debug('[proc] module %s, extensibility implied: %r' % (name, module['_ext_']))
         #
         # 3) scan tokens for BEGIN - END block
         if Tok.get_tok() != TOK_BEG:
             raise(ASN1ProcTextErr('missing BEGIN statement'))
         TokDef = Tok.get_group(wbnd=False)
         module['_tok_'] = TokDef
-        #asnlog('[proc] module %s: %i tokens' % (name, TokDef.count()))
+        logger.debug('[proc] module %s: %i tokens' % (name, TokDef.count()))
         if Tok.has_next():
             Tok.get_next()
         #
@@ -506,7 +506,7 @@ def tokenize_text(text=u'', **kwargs):
         tok = TokDef.get_next()
         if tok == TOK_EXP:
             module['_exp_'] = scan_module_exp(TokDef)
-            #asnlog('[proc] module %s: %i tokens' % (name, TokDef.count()))
+            logger.debug('[proc] module %s: %i tokens' % (name, TokDef.count()))
         else:
             TokDef.undo()
         #
@@ -518,9 +518,9 @@ def tokenize_text(text=u'', **kwargs):
             for d in module['_imp_']:
                 for sym in d['sym']:
                     module['_resolv_'][sym] = d['name']
-            #asnlog('[proc] module %s: %i tokens' % (name, TokDef.count()))
+            logger.debug('[proc] module %s: %i tokens' % (name, TokDef.count()))
             #if module['_imp_']:
-            #    asnlog('[proc] module %s: imports parsed' % name)
+            #    logger.debug('[proc] module %s: imports parsed' % name)
         else:
             TokDef.undo()
         #
@@ -648,7 +648,7 @@ def scan_module_imp(Tok):
                 
                 rev = False
             elif tok[0] == TOK_LID:
-                asnlog('imported module OID reference is ambiguous, %s' % tok[1])
+                logger.warning('imported module OID reference is ambiguous, %s' % tok[1])
                 # will be dealt with at the end
             if rev:
                 Tok.undo()
@@ -657,7 +657,7 @@ def scan_module_imp(Tok):
         tok = Tok.get_next()
     if sym:
         if len(sym) == 1 and sym[0][0].islower():
-            asnlog('imported module ambiguous OID references were actually OID references') 
+            logger.info('imported module ambiguous OID references were actually OID references') 
             # this means all those ambiguous OID ref were actually OID ref for
             # the previous module instead of imported symbols
             for i in range(len(imp)-1):
@@ -678,7 +678,7 @@ def scan_objs(Tok):
     while Tok.has_next():
         objdict = scan_obj(Tok)
         if objdict['name'] in objs:
-            asnlog('multiple definitions of %s' % objdict['name'])
+            logger.warning('multiple definitions of %s' % objdict['name'])
         objs[objdict['name']] = objdict
     return objs
 
