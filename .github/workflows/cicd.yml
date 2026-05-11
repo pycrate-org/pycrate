@@ -3,7 +3,7 @@ on:
   - push
   - pull_request
 env:
-  DEFAULT_PYTHON: 3.11
+  DEFAULT_PYTHON: 3.13
 jobs:
   test:
     strategy:
@@ -14,12 +14,12 @@ jobs:
           - windows-latest
           - macos-latest
         python-version:
-          - 3.9
-          - '3.11'
-          - '3.13'
+          - '3.10'
+          - '3.12'
+          - '3.14'
         include:
           - os: ubuntu-22.04
-            python-version: 3.8
+            python-version: 3.9
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout

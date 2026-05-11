@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 
 # Pycrate Version
-VERSION = "0.8.0"
+VERSION = "0.8.1"
 
 
 # get long description from the README.md
