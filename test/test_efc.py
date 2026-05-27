@@ -120,12 +120,20 @@ def test_efc_t_apdus():
 
   t_apdu_get_req = bytes.fromhex("6A0304ACCE55C80110")
   EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_req)
+  get_req_jval = EfcDsrcGeneric.T_APDUs._to_jval()
+  assert 'get-request' in get_req_jval
 
   t_apdu_get_resp = bytes.fromhex("740301102FB280085745522D30303031")
   EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_resp)
+  get_resp_jval = EfcDsrcGeneric.T_APDUs._to_jval()
+  assert 'get-response' in get_resp_jval
 
   fragmented_t_apdu_action_req = bytes.fromhex("0D030004ACCE55C811012004FFFFFFFFFF")
   EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_req)
+  action_req_jval = EfcDsrcGeneric.T_APDUs._to_jval()
+  assert 'action-request' in action_req_jval
 
   fragmented_t_apdu_action_resp = bytes.fromhex("1403120120400F0F0F0F0F0F0F0F0F0F599F000004FFFFFFFF")
   EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_resp)
+  action_resp_jval = EfcDsrcGeneric.T_APDUs._to_jval()
+  assert 'action-response' in action_resp_jval
