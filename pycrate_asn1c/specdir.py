@@ -173,12 +173,12 @@ ASN_SPECS_ITS = {
 
 # Electronic Fee Collection
 ASN_SPECS_EFC = {
-    'DSRC_2014'  : 'ISO_EFC_DSRC_2014',
-    'DSRC_2018'  : 'ISO_EFC_DSRC_2018',
-    'DSRC_2023'  : 'ISO_EFC_DSRC_2023',
-    'CCC_2009'   : 'ISO_EFC_CCC_2009',
-    'CCC_2023'   : 'ISO_EFC_CCC_2023',
-    'EFC_2015'   : 'ISO_EFC_2015',
+    'DSRC_2014'  : 'EFC_DSRC_ISO14906_2014',
+    'DSRC_2018'  : 'EFC_DSRC_ISO14906_2018',
+    'DSRC_2023'  : 'EFC_DSRC_ISO14906_2023',
+    'CCC_2009'   : 'EFC_CCC_ISO12813_2009',
+    'CCC_2023'   : 'EFC_CCC_ISO12813_2023',
+    'EFC_2015'   : 'EFC_DSRC_ISO14906_2015',
     }
 
 # Open Mobile Alliance geolocation protocols
