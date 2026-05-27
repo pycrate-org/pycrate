@@ -64,16 +64,15 @@ def test_efc_bst():
     }
   BST.set_val(bst_value)
 
-  # print(f"BST encoded in UPER in hex: {BST.to_uper().hex().upper()}")
-  # print()
   assert expected_bst_uper == BST.to_uper()
 
-
-# countryCode = 195 = 0b 00110 00011 = NO (baudot ITA2)
-# providerId  = 1   = 0b 000001
-# contractProvider  = 0b0011 0000 1100 0001 = 0x30 C0 01
-# toc         = 1   = 0x0001
-# cv          = 2   = 0x02
+"""
+countryCode = 195 = 0b 00110 00011 = NO (baudot ITA2)
+providerId  = 1   = 0b 000001
+contractProvider  = 0b0011 0000 1100 0001 = 0x30 C0 01
+toc         = 1   = 0x0001
+cv          = 2   = 0x02
+"""
 expected_efc_cm_val = {
   'contractProvider': {
     'countryCode': (195, 10),
@@ -86,17 +85,7 @@ efc_cm_uper_bytes = bytes.fromhex("30C001000102")
 def test_efc_efc_cm():
   EfcContextMark = EfcDataDictionary.EfcContextMark
 
-  # print("We now get an UPER-encoded EFC-CM and decode it...")
-  # print(f"UPER-encoded EFC-CM in hex str format: {efc_cm_uper_bytes.hex()}")
-
   EfcContextMark.from_uper(efc_cm_uper_bytes)
-  # print("EFC-CM value (._val):", EfcContextMark._val)
-
-  # print()
-  # print("We now use .set_val() to set the EFC-CM value and later encode it in UPER ...")
-  # EfcContextMark.set_val(efc_cm)
-  # print(EfcContextMark.to_asn1())
-  # print("Encoding EFC-CM in UPER and representing as hex str:", EfcContextMark.to_uper().hex().upper())
 
   assert expected_efc_cm_val == EfcContextMark._val
 
@@ -105,7 +94,6 @@ def test_efc_efc_cm():
 def test_efc_efc_container():
   EfcContainer = EfcDsrcGeneric.EfcContainer
   EfcContainer.set_val(('efccontext', expected_efc_cm_val))
-  # print(EfcContainer.to_asn1())
 
   EfcContainer.set_val(('attrList', [
     {
@@ -113,50 +101,31 @@ def test_efc_efc_container():
     'attributeValue': ('octetstring', efc_cm_uper_bytes)
     }
   ]))
-  # print("EFC Container with AttrList encoded in UPER in hex:", EfcContainer.to_uper().hex().upper())
-  # print(EfcContainer.to_asn1())
 
 def test_efc_t_apdus():
-  # print("We now get to the most important part: encoding/decoding EFC T-APDUs (ISO 15628)")
-  # print("Sending a BST...")
-
   T_APDUs = EfcDsrcGeneric.T_APDUs
 
   t_apdu_init_req = bytes.fromhex("807FF8000100674F0C38000301141D0100")
   T_APDUs.from_uper(t_apdu_init_req)
-
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
   init_req_jval = EfcDsrcGeneric.T_APDUs._to_jval()
   assert 'initialisation-request' in init_req_jval
   assert init_req_jval['initialisation-request']['time'] == 1733233720
 
-  # print("Receiving VST...")
-  # BR in ITA2/baudot is 10011 01010 (=0x9A8 aligned to the left)
   t_apdu_init_resp = bytes.fromhex("900002C10402069A8001000102D40302109A8001000101020200FF0204C8A11E6E800100020000")
   EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_init_resp)
-
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
   init_resp_jval = EfcDsrcGeneric.T_APDUs._to_jval()
   assert 'initialisation-response' in init_resp_jval
   # The second application is CCC: AID = 20
   assert init_resp_jval['initialisation-response']['applications'][1]['aid'] == 20
 
-  # print("Sending GET.request")
   t_apdu_get_req = bytes.fromhex("6A0304ACCE55C80110")
   EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_req)
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
 
-  # print("Receiving GET.response")
   t_apdu_get_resp = bytes.fromhex("740301102FB280085745522D30303031")
   EfcDsrcGeneric.T_APDUs.from_uper(t_apdu_get_resp)
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
 
-  # print("Sending ACTION.request with GET_STAMPED.request parameter")
   fragmented_t_apdu_action_req = bytes.fromhex("0D030004ACCE55C811012004FFFFFFFFFF")
   EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_req)
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
 
-  # print("Receiving ACTION.response with GET_STAMPED.response parameter")
   fragmented_t_apdu_action_resp = bytes.fromhex("1403120120400F0F0F0F0F0F0F0F0F0F599F000004FFFFFFFF")
   EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_resp)
-  # print(EfcDsrcGeneric.T_APDUs.to_asn1())
