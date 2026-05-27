@@ -1,0 +1,872 @@
+EfcDataDictionary {iso(1) standard(0) 17573 dd(3) version1(1) minorVersion5(5)}
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN EXPORTS ALL;
+
+-- useful subtypes (with no semantics associated)
+
+Int1Unsigned ::= INTEGER (0..255)
+
+Int1Signed ::= INTEGER (-128..127)
+
+Int2Unsigned ::= INTEGER (0..65535)
+
+Int2Signed ::=	INTEGER (-32768..32767)
+
+Int3Unsigned ::= INTEGER (0..16777215)
+
+Int4Unsigned ::= INTEGER (0..4294967295)
+
+Int4Signed ::= INTEGER (-2147483648..2147483647)
+
+Int8Unsigned ::= INTEGER (0..9223372036854775807) -- 0 to 2^63-1
+
+Int8Signed ::=	INTEGER (-9223372036854775808..9223372036854775807) -- -2^63 to 2^63-1
+
+-- 5.2	Subtypes of simple data types
+
+AccountStatus ::= INTEGER {
+	ok			(0),
+	low			(1),
+	empty		(2),
+	negative	(3)
+	-- (4-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+}(0..255)
+
+ActualNumberOfPassengers ::= Int1Unsigned
+
+AlphabetIndicator ::= ENUMERATED {
+	latinAlphabetNo1		(1), 
+	latinAlphabetNo2		(2), 
+	latinAlphabetNo3		(3),
+	latinAlphabetNo4		(4),
+	latinCyrillicAlphabet	(5),
+	latinArabicAlphabet		(6),
+	latinGreekAlphabet		(7), 
+	latinHebrewAlphabet		(8),
+	latinAlphabetNo5		(9),
+	latinAlphabetNo6		(10),
+	twoOctetBMP				(11), --shall not be used
+	forOctetCannonical		(12), --shall not be used
+	latinAlphabetNo7		(13), --(1 byte) according to ISO/IEC 8859-13
+	latinAlphabetNo8		(14), --(1 byte) according to ISO/IEC 8859-14
+	latinAlphabetNo9		(15), --(1 byte) according to ISO/IEC 8859-15
+	latinAlphabetNo10		(16), --(1 byte) according to ISO/IEC 8859-16
+	latinThaiAlphabet		(17), --(1 byte) according to ISO/IEC 8859-11
+	utf8					(18), --UCS Transformation Format (variable length 1 to 4 bytes)  according to ISO/IEC 10646 (and RFC 3629)
+	utf16BigEndian			(19), --UCS Transformation Format (2 or 4 bytes)  according to ISO/IEC 10646 (and RFC 2781)
+	utf16LittleEndian		(20), --UCS Transformation Format (2 or 4 bytes)  according to ISO/IEC 10646 (and RFC 2781)
+	utf32BigEndian			(21), --UCS Transformation Format (4 bytes) according to ISO/IEC 10646
+	utf32LittleEndian		(22), --UCS Transformation Format (4 bytes) according to ISO/IEC 10646
+	ucs4					(23), --Universal Character Set (2 or 4 bytes) according to ISO/IEC 10646
+	ascii					(24), --(7 bit coded in 1 byte) according to ISO/IEC 646
+	iscii					(25), --Indian (7 bit variant coded in 1 byte) according to IS 13194:1991
+	tis620					(26), --Thai (1 byte) according to Thai Industrial Standard 620-2533
+	vscii					(27), --Vietnamese (1 byte) according to TCVN 5712
+	koi8R					(28), --Russian (1 byte) according to RFC 1489
+	koi8U					(29), --Ukrainian (1 byte) according to RFC 2319
+	jisX0213				(30), --Japanese (2 byte) according to JIS X 0213:2004
+	gbt2312					(31), --simplified Chinese (2 byte) according to GB 2312-1980
+	big5					(32), --traditional Chinese (2 byte) according to CNS 11643 
+	ksx1001					(33)  --Korean (2 byte) according to KS X 1001
+	-- 34-63 reserved for future CEN and ISO use
+}
+
+Altitude ::= Int2Signed 
+
+Axles ::= INTEGER (0..7)
+
+CabType ::= INTEGER {
+	dayCab			(0),
+	sleeperCab		(1)
+	-- 2-7 reserved for future CEN and ISO use
+	-- 8-15 reserved for private use
+}(0..15)
+
+ChassisType ::= INTEGER{
+	rigidLorry	(0),
+	tractor		(1),
+	van			(2)
+	-- 3-7 reserved for future CEN and ISO use
+} (0..7)
+
+Co2EmissionClass ::= INTEGER {
+	noEntry					(0),
+	co2EmissionClass1		(1),
+	co2EmissionClass2		(2),
+	co2EmissionClass3		(3),
+	co2EmissionClass4		(4),
+	co2EmissionClass5		(5),
+	co2EmissionClass6		(6),
+	co2EmissionClass7		(7)
+}(0..7)
+
+Co2EmissionValue ::= Int2Unsigned
+
+Co2EmissionValueLoad ::= Int4Unsigned
+
+Co2Scheme ::= INTEGER {
+	noEntry		(0),
+	eU			(1)
+	-- 2-3 reserved for future CEN and ISO use
+}(0..3)
+
+ContractAuthenticator ::= OCTET STRING
+
+ContractSerialNumber ::= Int4Unsigned
+
+CopValue ::= INTEGER {
+	noEntry			(0),
+	co2Class1		(1),
+	co2Class2		(2),
+	co2Class3		(3),
+	co2Class4		(4),
+	co2Class5		(5),
+	co2Class6		(6),
+	co2Class7		(7)
+	-- (8-15) are reserved for future CEN and ISO use
+} (0..15)
+
+CountryCode ::= BIT STRING(SIZE(10))
+
+DetectionMode ::= INTEGER {
+	measured	(0),
+	inferred	(1),
+	lac			(2)
+	-- (3-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+}(0..255)
+
+DistanceUnit ::= INTEGER {
+	kilometres		(0),
+	miles			(1), -- deprecated value kept for legacy reasons
+	metres			(2),
+	yards			(3), -- deprecated value kept for legacy reasons
+	feet			(4), -- deprecated value kept for legacy reasons
+	decimetres		(5), 
+	quartermetres	(6), -- deprecated value kept for legacy reasons
+	centimeters		(7),
+	millimeters		(8)
+	-- (9-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+} (0..255)
+
+DriverClass ::= INTEGER {
+	genericPerson		(0),
+	reducedMobility		(1),
+	otherDisability		(2),
+	officialAuthority	(3),
+	notToBeDisclosed	(4),
+	craftsPerson		(5)
+	-- (6-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+}(0..255)
+
+EmissionUnit ::= INTEGER {
+	mgPerKm		(0),
+	mgPerKwh	(1)
+} (0..1)
+
+EngineCapacity ::= Int2Unsigned
+
+EngineCharacteristics ::= INTEGER {
+	noEntry										(0),
+	noEngine									(1),
+	petrolUnleaded								(2),
+	petrolLeaded								(3),
+	diesel										(4),
+	lpg											(5),
+	battery										(6), 
+	solar										(7),
+	hybrid										(8), 
+	hydrogen									(9),
+	multiFuel									(10), 
+	bivalentPetrolLpg							(11), 
+	bivalentPetrolCng							(12),
+	combinedPetrolElectric						(13), 
+	cng											(14), 
+	lng											(15), 
+	combinedDieselElectric						(16), 
+	combinedHydrogenElectric					(17), 
+	bivalentHydrogenPetrol						(18), 
+	bivalentHydrogenPetrolElectricEngine		(19), 
+	fuelCellHydrogen							(20), 
+	fuelCellPetrol								(21), 
+	fuelCellMethanol							(22), 
+	fuelCellEthanol								(23), 
+	fuelCellDiesel								(24), 
+	combinedMultiFuelElectricEngine				(25), 
+	combinedCngElectricEngine					(26), 
+	combinedLngElectricEngine					(27), 
+	petrolEthanol								(28), 
+	combinedLpgElectricEngine					(29), 
+	hybridPetrolExternalBattery					(30), 
+	hybridDieselExternalBattery					(31), 
+	hybridLpgExternalBattery					(32), 
+	hybridHydrogenExternalBattery				(33), 
+	hybridMultiFuelExternalBattery				(34), 
+	hybridCngExternalBattery					(35), 
+	hybridLngExternalBattery					(36),
+	hybridBivalentHydrogenPetrolExternalBattery (37),
+	hydrogenCng									(38), 
+	hydrogenLng									(39), 
+	hybridHydrogenCngExternalBattery			(40), 
+	hybridHydrogenLngExternalBattery			(41), 
+	ethanol										(42), 
+	hybridFuelCellHydrogen						(43), 
+	hybridFuelCellHydrogenExternalBattery		(44), 
+	dualFuelLngDiesel							(45), 
+	electricExternal							(46), 
+	biogas										(47), 
+	bioDiesel									(48), 
+	bioPetrol									(49), 
+	bivalentPetrolBiogas						(50), 
+	combinedBiogasElectricEngine				(51), 
+	dualFuelCngDiesel							(52),
+	-- (53-254) are reserved for future CEN and ISO use
+	other										(255)
+} (0..255)
+
+EnginePower ::= Int2Unsigned
+
+EquipmentIccId ::= OCTET STRING
+
+EquipmentObuId ::= OCTET STRING
+
+EquipmentStatus ::= BIT STRING (SIZE(16))
+
+EuroValue ::= INTEGER {
+	noEntry		(0),
+	euro1		(1),
+	euro2		(2),
+	euro3		(3),
+	euro4		(4),
+	euro5		(5),
+	euro6		(6),
+	euro7		(7),
+	-- (8-14) are reserved for future CEN and ISO use
+	eev		(15)
+}(0..15)
+
+EuroValueSubClass ::= INTEGER {
+	noEntry		(0),
+	euro7G		(1),
+	euro7ext	(2),
+	euro7Gext	(3)
+	-- (4-255) are reserved for future CEN and ISO use
+}(0..255)
+
+IssuerIdentifier ::= INTEGER(0 .. 16383)
+
+Latitude ::= Int4Signed
+
+LocalVehicleClassId ::= Int2Unsigned
+
+LocationClassId ::= Int4Unsigned
+
+Longitude ::= Int4Signed
+
+Month ::= INTEGER {
+	noMonth		(0), --only allowed for use in DateCompact as no date (year 1990, month 0, day 0)
+	january		(1),
+	february	(2),
+	march		(3),
+	april		(4),
+	may			(5),
+	june		(6),
+	july		(7),
+	august		(8),
+	september	(9),
+	october		(10),
+	november	(11),
+	december	(12)
+} (0..12)
+
+PaymentSecurityData ::= OCTET STRING
+
+PayUnit ::= OCTET STRING (SIZE(2))
+
+PersonalAccountNumber ::= OCTET STRING (SIZE(10))
+
+RearWheelsSteeringType ::= INTEGER {
+	noRearWheels		(0),
+	foreMostRearWheels	(1),
+	rearMostRearWheels	(2),
+	allRearWheels		(3)
+} (0..3)
+
+ReceiptAuthenticator ::= OCTET STRING
+
+ReceiptDistance ::= Int3Unsigned
+
+ResultFin ::= OCTET STRING (SIZE(1))
+
+ReceiptIccId ::= OCTET STRING
+
+ReceiptObuId ::= OCTET STRING
+
+ResultOp ::= INTEGER {
+	correctTransaction								(0),
+	obeStatusNotAccepted							(1),
+	equipmentStatusNotAccepted						(2),
+	contractNotInWhiteList							(3),
+	contractIdentifierInBlackList					(4),
+	contractIdentifierNotCorrect					(5),
+	expiredContract									(6), 
+	contractRestrictionsNotFulfilled				(7),
+	claimedVehicleCharacteristicsNotValid			(8),
+	vehicleClassAuthenticationFailed				(9),
+	entryVehicleClassDifferentFromExitVehicleClass	(10),
+	entryReceiptMissing								(11),
+	entryReceiptNotValid							(12),
+	entryTollStationNotValid						(13),
+	equipmentNotCertified							(14),
+	timeDifference									(15),
+	accessCredentialsNotAccepted					(16),
+	contractAuthenticatorNotAccepted				(17),
+	receiptAuthenticatorNotAccepted					(18),
+	claimedVehicleCharacteristicsMissing			(19),
+	paymentMeansNotAccepted							(20),
+	paymentAuthenticatorNotAccepted					(21),
+	paymentMeansInBlackList							(22),
+	paymentMeansNotCorrect							(23),
+	expiredPaymentMeans								(24),
+	paymentMeansRestrictionsNotFulfilled			(25)
+	-- (26-255) are reserved for future CEN and ISO use
+} (0..255)
+
+ReceiptServiceSerialNumber ::= Int3Unsigned
+
+ReceiptText ::= OCTET STRING
+
+StationType ::= INTEGER {
+	unspecified					(0),
+	closedEntryWithPayment		(1),
+	closedEntryWithoutPayment	(2),
+	closedTransit				(3),
+	closedExit					(4),
+	closedCredit				(5),
+	mixed						(6),
+	passage						(7),
+	checkpoint					(8),
+	reload						(9)
+	-- (10-13) are reserved for future CEN and ISO use
+	-- (14-15) are reserved for private use
+} (0..15)
+
+SuspensionType ::= INTEGER {
+	noEntry				(0),
+	airSuspension		(1),
+	hydraulicSuspension	(2),
+	electricSuspension	(3)
+}(0..3)
+
+TariffClassId ::= Int4Unsigned
+
+Time ::= Int4Unsigned
+
+TimeClassId ::= Int2Unsigned
+
+TimeUnit ::= INTEGER {
+	seconds		(0),
+	minutes		(1),
+	hours		(2),
+	days		(3),
+	months		(4),
+	years		(5)
+	-- (6-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+}(0..255)
+
+TrailerType::= INTEGER {
+	notPresent		(0),
+	trailer			(1),
+	semiTrailer		(2)
+	-- (3-31) are reserved for future CEN and ISO use
+} (0..31)
+
+TripPurpose ::= INTEGER {
+	genericTrip			(0),
+	businessTrip		(1),
+	privateTrip			(2),
+	humanitarianAid		(3),
+	militaryPurposes	(4),
+	notToBeDisclosed	(5),
+	craftBasedTrip		(6),
+	combinedTransport	(7)
+	-- (8-127) are reserved for future CEN and ISO use
+	-- (128-255) are reserved for private use
+}(0..255)
+
+TyreConfiguration ::= INTEGER {
+	notSpecified	(0),
+	singleTyre		(1), -- single tyre on all axles
+	dualTyres		(2) -- dual tyres on at least one axle
+	-- (3) are reserved for future CEN and ISO use
+} (0..3)
+
+UserClassId ::= Int1Unsigned
+
+VehicleAuthenticator ::= OCTET STRING
+
+VehicleClass ::= Int1Unsigned
+
+VehicleCurrentMaxTrainWeight ::= Int2Unsigned
+
+VehicleFirstAxleHeight ::= Int1Unsigned
+
+VehicleHeightOverall ::= Int1Unsigned
+
+VehicleLengthOverall ::= Int1Unsigned
+
+VehicleMassInRunningOrder ::= Int2Unsigned
+
+VehicleMaxLadenWeight ::= Int2Unsigned
+
+VehicleOperationalRange ::= Int2Unsigned
+
+VehicleTechnicalPermissibleMaxLadenMass ::= Int2Unsigned
+
+VehicleTotalDistance ::= Int4Unsigned
+
+VehicleTrainMaximumWeight ::= Int2Unsigned
+
+VehicleUsageCategoryType ::= INTEGER {
+	noEntry					(0),  
+	handicappedPeople		(1),
+	military				(2),
+	police					(3),
+	roadMaintenance			(4),
+	circusTruck				(5),
+	mobileShopTruck			(6),
+	truckCarryingMilk		(7),
+	truckCarryingTimber		(8),
+	publicTransport			(9),
+	enforcementAgent		(10),
+	ambulance				(11),
+	fireBrigade				(12),
+	officialAuthority		(13),
+	agriculturalVehicle		(14),
+	bus						(15),
+	mobileHome				(16),
+	mobileCrane				(17),
+	exceptionalTransport	(18),
+	emperor					(19),
+	vocationalVehicle 		(20),
+	vehicleLiableToToll		(21),
+	craftsTransport			(22),
+	combinedTransport		(23)
+	-- 24-127 reserved for future CEN and ISO use
+	-- 128-255 reserved for private use
+} (0..255)
+
+VehicleWeightLaden ::= Int2Unsigned
+
+VehicleWeightUnladen ::= Int2Unsigned
+
+VehicleWidthOverall ::= Int1Unsigned
+
+Weekday ::= INTEGER {
+	reserved	(0),
+	monday		(1),
+	tuesday		(2),
+	wednesday	(3),
+	thursday	(4),
+	friday		(5),
+	saturday	(6),
+	sunday		(7)
+} (0..7)
+
+-- Clause 5.3	Single level data types
+
+AbsolutePosition2d ::= SEQUENCE {
+	gnssLon	Longitude,
+	gnssLat	Latitude
+}
+
+AbsolutePosition3d ::= SEQUENCE {
+	longitude	Longitude,
+	latitude	Latitude,
+	altitude	Altitude OPTIONAL
+}
+
+AxleWeightLimit ::= SEQUENCE {
+	axleNumber				Int1Unsigned,
+	maxLadenWeightOnAxle	Int2Unsigned
+}
+
+AxleWeightLimits ::= SEQUENCE {
+	maxLadenWeightOnAxle1		Int2Unsigned,
+	maxLadenWeightOnAxle2		Int2Unsigned,
+	maxLadenWeightOnAxle3		Int2Unsigned,
+	maxLadenWeightOnAxle4		Int2Unsigned,
+	maxLadenWeightOnAxle5		Int2Unsigned
+}
+
+DateCompact ::= SEQUENCE {
+	year	INTEGER (1990..2117),
+	month	Month,
+	day		INTEGER (0..31)	 --day 0 only allowed as no date (year 1990, month 0, day 0)
+}
+
+DieselEmissionValues ::= SEQUENCE { 
+	particulate			Particulate,
+	absorptionCoeff		Int2Unsigned
+}
+
+DriverCharacteristics ::= SEQUENCE {
+	driverClass		DriverClass,
+	tripPurpose		TripPurpose
+}
+
+Distance ::= SEQUENCE {
+	distanceValue	Int4Unsigned,
+	distanceUnit	DistanceUnit DEFAULT kilometres
+}
+
+Duration ::= SEQUENCE { 
+	durationValue	Int4Unsigned,
+	timeUnit		TimeUnit DEFAULT seconds
+}
+
+EngineDetails ::= SEQUENCE {
+	engineCapacity	EngineCapacity,
+	enginePower		EnginePower
+}
+
+EuVehicleGroup ::= SEQUENCE { 
+	mainEuVehicleGroup		UTF8String(SIZE(1..MAX)),
+	subGroup				UTF8String(SIZE(1..MAX)) OPTIONAL
+}
+
+ExhaustEmissionValues ::= SEQUENCE {
+	unitType		EmissionUnit,
+	emissionCo		INTEGER (0..32767),
+	emissionHc		Int2Unsigned,
+	emissionNox		Int2Unsigned,
+	emissionHcNox	Int2Unsigned
+} 
+
+FutureCharacteristics ::= SEQUENCE {
+	futureElement	INTEGER(0..1),
+	co2Scheme		Co2Scheme,
+	co2Class		Co2EmissionClass,
+	suspensionType	SuspensionType
+}
+
+NumberOfAxles ::= SEQUENCE {
+	trailerAxles	Axles,
+	tractorAxles	Axles
+}
+
+ObeId ::= SEQUENCE {
+	manufacturerId	Int2Unsigned, 	
+	equipmentObuId	EquipmentObuId
+} 
+
+Particulate ::= SEQUENCE {
+	unitType	EmissionUnit,
+	value		INTEGER (0..32767)
+}
+
+PassengerCapacity ::= SEQUENCE {
+	numberOfSeats			Int1Unsigned,
+	numberOfStandingPlaces	Int1Unsigned
+}
+
+PaymentFee ::= SEQUENCE {
+	paymentFeeAmount	Int2Unsigned,
+	paymentFeeUnit		PayUnit
+}
+
+Period ::= SEQUENCE {
+	beginOfPeriod	GeneralizedTime,
+	endOfPeriod		GeneralizedTime
+}
+
+Provider ::= SEQUENCE {
+	countryCode			CountryCode,
+	providerIdentifier	IssuerIdentifier
+}
+
+RelativePosition3d ::= SEQUENCE {
+	longitude	Int2Signed,
+	latitude	Int2Signed, 
+	altitude	Int2Signed OPTIONAL 
+}
+
+SessionClass ::= SEQUENCE {
+	sessionTariffClass	Int1Unsigned,
+	sessionClaimedClass	Int1Unsigned
+}
+
+SessionLocation ::= SEQUENCE {
+	ascendingKilometrage	BOOLEAN,
+	laneCodeNumber			INTEGER(0..127) 
+}
+
+SignedValue ::= CHOICE {
+	positive	INTEGER (0..8388607),
+	negative	INTEGER (-8388608..-1)
+}
+
+SoundLevel ::= SEQUENCE {
+	soundStationary		Int1Unsigned,
+	soundDriveBy		Int1Unsigned
+}
+
+TimeCompact ::= SEQUENCE { 
+	hours		INTEGER (0..23), 
+	mins		INTEGER (0..59), 
+	doubleSecs	INTEGER (0..30) 
+}
+
+TrailerDetails::= SEQUENCE {
+	trailerType		TrailerType,
+	trailerAxles	Axles
+}
+
+WheelsConfiguration ::= SEQUENCE{
+	numberOfWheels				INTEGER (1..15),
+	numberOfDrivenWheels		INTEGER (1..15),
+	numberOfSteeredWheels		INTEGER (1..15) OPTIONAL,
+	rearWheelsSteeringType		RearWheelsSteeringType OPTIONAL
+}
+
+-- Clause 5.4	Two level data types
+
+AxlesWeightLimits ::= SEQUENCE OF AxleWeightLimit
+
+ChargeObjectId ::= SEQUENCE {
+	chargeObjectOperator		Provider OPTIONAL,
+	chargeObjectDesignation		Int4Unsigned
+}
+
+ContractValidity ::= SEQUENCE {
+	contractRestrictions	OCTET STRING (SIZE(4)),
+	contractExpiryDate		DateCompact
+}
+
+DateAndTime ::= SEQUENCE {
+	timeDate		DateCompact,
+	timeCompact		TimeCompact
+}
+
+EnvironmentalCharacteristics::= SEQUENCE {
+	euroValue	EuroValue,
+	copValue	CopValue
+}
+
+InitialVehicleRegistrationDate ::= DateCompact
+
+Lpn::= SEQUENCE {
+	countryCode			CountryCode,
+	alphabetIndicator	AlphabetIndicator,
+	licencePlateNumber	OCTET STRING
+}
+
+PaymentMeans ::= SEQUENCE {
+	personalAccountNumber		PersonalAccountNumber,
+	paymentMeansExpiryDate		DateCompact,
+	paymentMeansUsageControl	OCTET STRING(SIZE(2))
+}
+
+PaymentMeansBalance ::= SignedValue
+
+PurseBalance ::= SEQUENCE {
+	purseValue	SignedValue,
+	purseUnit	PayUnit
+}
+
+TrailerCharacteristics ::= SEQUENCE {
+	trailerDetails			TrailerDetails,
+	trailerMaxLadenWeight	Int2Unsigned,
+	trailerWeightUnladen	Int2Unsigned
+}
+
+ValidityOfContract ::= SEQUENCE {
+	issuerRestrictions	OCTET STRING (SIZE(2)),
+	contractExpiryDate	DateCompact
+}
+
+VehicleAxlesNumber ::= SEQUENCE {
+	tyreConfiguration	TyreConfiguration,
+	numberOfAxles		NumberOfAxles
+}
+
+VehicleDimensions ::= SEQUENCE {
+	vehicleLengthOverall	VehicleLengthOverall,
+	vehicleHeightOverall	VehicleHeightOverall,
+	vehicleWidthOverall		VehicleWidthOverall
+}
+
+VehicleIdentificationNumber ::= SEQUENCE{
+	vin		VisibleString (SIZE(17)), -- 17 characters VIN
+	fill	BIT STRING (SIZE(9)) DEFAULT '000000000'B
+}
+
+VehicleWeightLimits ::= SEQUENCE {
+	vehicleMaxLadenWeight		VehicleMaxLadenWeight,
+	vehicleTrainMaximumWeight	VehicleTrainMaximumWeight,
+	vehicleWeightUnladen		VehicleWeightUnladen
+}
+
+-- Clause 5.5	Three level data types
+
+EfcContextMark ::= SEQUENCE {
+	contractProvider	Provider,
+	typeOfContract		OCTET STRING (SIZE(2)),
+	contextVersion		INTEGER(0..127,...)
+}
+
+ReceiptContract ::= SEQUENCE {
+	sessionContractProvider			Provider,
+	sessionTypeOfContract			OCTET STRING(SIZE(2)),
+	sessionContractSerialNumber		Int4Unsigned
+}
+
+ReceiptData ::= SEQUENCE {
+	sessionTime					DateAndTime,
+	sessionServiceProvider		Provider,
+	locationOfStation			Int2Unsigned,
+	sessionLocation				SessionLocation,
+	sessionType					Int1Unsigned,
+	sessionResult				ResultOp,
+	sessionTariffClass			Int1Unsigned,
+	sessionClaimedClass			Int1Unsigned,
+	sessionFee					PaymentFee,
+	sessionContractProvider		Provider,
+	sessionTypeOfContract		OCTET STRING (SIZE(2)),
+	sessionContextVersion		INTEGER (0..127,...),
+	receiptDataAuthenticator	OCTET STRING(SIZE(4))
+}
+
+ReceiptFinancialPart ::= SEQUENCE {
+	personalAccountNumber			PersonalAccountNumber,
+	sessionPaymentFee				PaymentFee,
+	sessionCurrentBalance			PurseBalance,
+	receiptFinancialSerialNumber	Int4Unsigned
+}
+
+ReceiptServicePart ::= SEQUENCE {
+	sessionTime					DateAndTime,
+	sessionServiceProvider		Provider,
+	stationLocation				INTEGER(0..1048575),
+	sessionLocation				BIT STRING (SIZE(8)),
+	typeOfSession				StationType,
+	sessionResultOperational	ResultOp,
+	sessionResultFinancial		ResultFin
+}
+
+VehicleAxles ::= SEQUENCE {
+	vehicleFirstAxleHeight	VehicleFirstAxleHeight,
+	vehicleAxlesNumber		VehicleAxlesNumber
+}
+
+VehicleSpecificCharacteristics ::= SEQUENCE {
+	environmentalCharacteristics	EnvironmentalCharacteristics,
+	engineCharacteristics			EngineCharacteristics,
+	descriptiveCharacteristics		VehicleUsageCategoryType,
+	futureCharacteristics			FutureCharacteristics
+}
+
+-- Clause 5.6	Complex data types
+/*The complex data types in this section are outdated and no longer maintained. They are only used in ISO 12855 and are thus defined in ISO 12855 version 6 minor version 2 (2024) and later versions. 
+They are solely kept for legacy purposes for earlier versions of ISO 12855 where they were not included but imported from this standard and should no longer be used.*/
+
+AggregatedSingleTariffClassSession ::= SEQUENCE {
+	timePeriodCovered		Period OPTIONAL,
+	currentTariffClass		TariffClassDescription OPTIONAL,
+	vehicleDescription		VehicleDescription OPTIONAL,
+	totalDistanceCovered	Distance OPTIONAL,
+	numberOfDetectedEvents	Int2Unsigned OPTIONAL, 
+	obeStatus				Int1Unsigned OPTIONAL, 
+	feeExclVat				PaymentFee OPTIONAL, 	
+	sumVat					PaymentFee OPTIONAL,
+	...
+}(	WITH COMPONENTS {..., timePeriodCovered PRESENT }| 
+	WITH COMPONENTS {..., currentTariffClass PRESENT}| 
+	WITH COMPONENTS {..., vehicleDescription PRESENT}| 
+	WITH COMPONENTS {..., totalDistanceCovered PRESENT}|
+	WITH COMPONENTS {..., numberOfDetectedEvents PRESENT}|
+	WITH COMPONENTS {..., obeStatus PRESENT}| 
+	WITH COMPONENTS {..., feeExclVat PRESENT}| 
+	WITH COMPONENTS {..., sumVat PRESENT}) 
+ 
+DetectedChargeObject ::= SEQUENCE {
+	chargeObjectId			ChargeObjectId,
+	subObjectNumber			Int4Unsigned OPTIONAL,
+	timeWhenUsed			GeneralizedTime OPTIONAL,
+	mileageWhenUsed			Distance OPTIONAL,
+	currentTariffClass		TariffClassDescription OPTIONAL,
+	vehicleDescription		VehicleDescription OPTIONAL,
+	obeStatus				Int1Unsigned OPTIONAL,
+	feeExclVat				PaymentFee OPTIONAL,
+	sumVat					PaymentFee OPTIONAL,
+	chargeObjDetectionMode	DetectionMode OPTIONAL,
+	...
+}
+
+TariffClassDescription ::= SEQUENCE {
+	tariffClassId			TariffClassId DEFAULT 0,
+	localVehicleClassId		LocalVehicleClassId OPTIONAL,
+	timeClassId				TimeClassId OPTIONAL,
+	locationClassId			LocationClassId OPTIONAL,
+	userClassId				UserClassId OPTIONAL
+}
+
+UserId ::= SEQUENCE {
+	pan						PersonalAccountNumber OPTIONAL, 
+	contractSerialNumber	ContractSerialNumber OPTIONAL,
+	licencePlateNumber		Lpn OPTIONAL,
+	obeId					ObeId OPTIONAL,
+	equipmentIccId			EquipmentIccId OPTIONAL,
+	customerId 				OCTET STRING (SIZE(10)) OPTIONAL,
+	efcContextMark			EfcContextMark OPTIONAL,
+	...
+}(	WITH COMPONENTS {..., pan PRESENT }| 
+	WITH COMPONENTS {..., contractSerialNumber PRESENT} | 
+	WITH COMPONENTS {..., licencePlateNumber PRESENT} | 
+	WITH COMPONENTS {..., obeId PRESENT, efcContextMark PRESENT} |
+	WITH COMPONENTS {..., obeId PRESENT, efcContextMark ABSENT} |
+	WITH COMPONENTS {..., equipmentIccId PRESENT} |
+	WITH COMPONENTS {..., customerId PRESENT})
+
+VehicleDescription ::= SEQUENCE {
+	vehicleLPNr						Lpn OPTIONAL,
+	axles							VehicleAxles OPTIONAL,
+	class							VehicleClass OPTIONAL,
+	dimensions						VehicleDimensions OPTIONAL,
+	specificCharacteristics			VehicleSpecificCharacteristics OPTIONAL,
+	ladenWeight						VehicleWeightLaden OPTIONAL,
+	weightLimits					VehicleWeightLimits OPTIONAL,
+	trailerCharacteristics			TrailerCharacteristics OPTIONAL,
+	vehicleCurrentMaxTrainWeight	VehicleCurrentMaxTrainWeight OPTIONAL,
+	actualNumberOfPassengers		ActualNumberOfPassengers OPTIONAL,
+	axleWeightLimits				AxleWeightLimits OPTIONAL,
+	dieselEmissionValues			DieselEmissionValues OPTIONAL,
+	driverCharacteristics			DriverCharacteristics OPTIONAL,
+	engineDetails					EngineDetails OPTIONAL,
+	exhaustEmissionValues			ExhaustEmissionValues OPTIONAL,
+	passengerCapacity				PassengerCapacity OPTIONAL,
+	soundLevel						SoundLevel OPTIONAL,
+	...
+}(	WITH COMPONENTS {..., vehicleLPNr PRESENT }|
+	WITH COMPONENTS {..., axles PRESENT }| 
+	WITH COMPONENTS {..., class PRESENT}| 
+	WITH COMPONENTS {..., dimensions PRESENT}| 
+	WITH COMPONENTS {..., specificCharacteristics PRESENT}|
+	WITH COMPONENTS {..., ladenWeight PRESENT}|
+	WITH COMPONENTS {..., weightLimits PRESENT}| 
+	WITH COMPONENTS {..., trailerCharacteristics PRESENT}| 
+	WITH COMPONENTS {..., vehicleCurrentMaxTrainWeight PRESENT}|
+	WITH COMPONENTS {..., actualNumberOfPassengers PRESENT}|
+	WITH COMPONENTS {..., axleWeightLimits PRESENT }| 
+	WITH COMPONENTS {..., dieselEmissionValues PRESENT}| 
+	WITH COMPONENTS {..., driverCharacteristics PRESENT}| 
+	WITH COMPONENTS {..., engineDetails PRESENT}|
+	WITH COMPONENTS {..., exhaustEmissionValues PRESENT}|
+	WITH COMPONENTS {..., passengerCapacity PRESENT}| 
+	WITH COMPONENTS {..., soundLevel PRESENT})
+
+END
