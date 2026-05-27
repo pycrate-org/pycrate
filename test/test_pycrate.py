@@ -52,6 +52,7 @@ from test.test_gsmrr  import *
 from test.test_sms    import *
 from test.test_crypto import *
 from test.test_gmr1   import *
+from test.test_efc    import *
 from pycrate_asn1c.specdir import ASN_SPECS
 from pycrate_asn1c.asnproc import (
     compile_text,
@@ -252,6 +253,15 @@ class TestPycrate(unittest.TestCase):
     def test_crypto(self):
         print('[<>] testing pycrate_crypto')
         test_ikev2()
+
+    # efc protocols (DSRC, AutonomousCharging, InfoExchange...)
+    def test_efc(self):
+        print('[<>] testing pycrate_efc')
+        test_efc_beacon_id()
+        test_efc_bst()
+        test_efc_efc_cm()
+        test_efc_efc_container()
+        test_efc_t_apdus()
 
 
 def test_perf_all():
