@@ -179,7 +179,7 @@ ASN_SPECS_EFC = {
     'DSRC_2023'  : 'EFC_DSRC_ISO14906_2023',
     'CCC_2009'   : 'EFC_CCC_ISO12813_2009',
     'CCC_2023'   : 'EFC_CCC_ISO12813_2023',
-    'EFC_2015'   : 'EFC_DSRC_ISO14906_2015',
+    'AC_2016'    : 'EFC_AC_ISO17575_2016',
     }
 
 # Open Mobile Alliance geolocation protocols
