@@ -175,10 +175,10 @@ ASN_SPECS_ITS = {
 ASN_SPECS_EFC = {
     'DSRC_2014'  : 'ISO_EFC_DSRC_2014',
     'DSRC_2018'  : 'ISO_EFC_DSRC_2018',
+    'DSRC_2023'  : 'ISO_EFC_DSRC_2023',
     'CCC_2009'   : 'ISO_EFC_CCC_2009',
     'CCC_2023'   : 'ISO_EFC_CCC_2023',
     'EFC_2015'   : 'ISO_EFC_2015',
-    'EFC_2023'   : 'ISO_EFC_2023',
     }
 
 # Open Mobile Alliance geolocation protocols
