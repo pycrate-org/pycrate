@@ -181,6 +181,7 @@ ASN_SPECS_EFC = {
     'CCC_2015'   : 'EFC_AC_ISO17575_2016',
     'CCC_2023'   : 'EFC_CCC_ISO12813_2023',
     'AC_2016'    : 'EFC_AC_ISO17575_2016',
+    'IE_2025'    : 'EFC_IE_ISO12855_2025',
     }
 
 # Open Mobile Alliance geolocation protocols
