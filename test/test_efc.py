@@ -28,6 +28,7 @@
 #*/
 
 from pycrate_asn1dir.EFC_2023 import EfcDsrcGeneric, EfcDataDictionary
+from pycrate_asn1dir.IE_2025  import EfcInfoExchange
 
 # Sample DSRC tests, especially for T-APDUs (L7)
 
@@ -137,3 +138,39 @@ def test_efc_t_apdus():
   EfcDsrcGeneric.T_APDUs.from_uper(fragmented_t_apdu_action_resp)
   action_resp_jval = EfcDsrcGeneric.T_APDUs._to_jval()
   assert 'action-response' in action_resp_jval
+
+mrd_1 = {
+  'measuredPosition': {
+    'latitude': 0,
+    'longitude': 0,
+  },
+  'timeWhenMeasured': "20260415203000.0Z",
+  'additionalGnssData': "",
+}
+
+mrd_2 = {
+  'measuredPosition': {
+    'latitude': 0,
+    'longitude': 0,
+  },
+  'timeWhenMeasured': "20260415203000.0+0200",
+  'additionalGnssData': "",
+}
+
+usage_statement_jval = {
+   'usageStatementId': 1,
+   'tollContextOperator': {
+    'countryCode': 'b280',
+    'providerIdentifier': 1,
+   },
+   'listOfRawUsageData': {
+      'rawDataList': [
+        mrd_1,
+        mrd_2,
+      ]
+   }
+}
+def test_ie_usage_statement():
+  # TODO: Improve if XML encoding/decoding is implemented
+  EfcInfoExchange.UsageStatement._from_jval(usage_statement_jval)
+  assert 'listOfRawUsageData' in EfcInfoExchange.UsageStatement._val

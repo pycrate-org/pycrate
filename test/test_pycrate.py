@@ -262,6 +262,7 @@ class TestPycrate(unittest.TestCase):
         test_efc_efc_cm()
         test_efc_efc_container()
         test_efc_t_apdus()
+        test_ie_usage_statement()
 
 
 def test_perf_all():
