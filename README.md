@@ -68,9 +68,6 @@ and [CryptoMobile](https://github.com/pycrate-org/CryptoMobile) to run.
 The _pycrate\_diameter/parse\_iana\_diameter\_xml.py_ file uses [lxml](https://pypi.org/project/lxml/) 
 to translate xml files from IANA to Python dictionnaries ; this is however not required for standard runtime.
 
-The _pycrate\_osmo/SEDebugMux.py_ module relies on the [crcmod](https://pypi.org/project/crcmod/)
-to compute custom CRC in the frame format.
-
 
 Automatic installation
 ----------------------
