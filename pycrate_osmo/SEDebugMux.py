@@ -53,16 +53,16 @@ class DebugMuxMsgType(enum.Enum):
     Ident               = 0x66 # 'f'
     Ping                = 0x67 # 'g'
     Pong                = 0x68 # 'h'
-
     DPAnnounce          = 0x69 # 'i'
-    # TODO              = 0x6a # 'j'
+    DPShutdown          = 0x6a # 'j'
     ConnEstablish       = 0x6b # 'k'
     ConnEstablished     = 0x6c # 'l'
     ConnTerminate       = 0x6d # 'm'
     ConnTerminated      = 0x6e # 'n'
     ConnData            = 0x6f # 'o'
-    # TODO:             = 0x70 # 'p'
+    FlowControl         = 0x70 # 'p'
     Ack                 = 0x71 # 'q'
+    CrcDisable          = 0x72 # 'r'
 
 DebugMuxMsgType_dict = { e.value : e.name for e in DebugMuxMsgType }
 
@@ -83,6 +83,13 @@ class DebugMuxMsg(Alt):
         _GEN = (
             Uint16LE('DPRef'),
             PascalString('Name'),
+            )
+
+    class DPShutdown(Envelope):
+        ''' DebugMuxMsgType.DPShutdown structure '''
+        _GEN = (
+            Uint16LE('DPRef'),
+            Uint16LE('ConnRef'),
             )
 
     class ConnEstablish(Envelope):
@@ -119,17 +126,26 @@ class DebugMuxMsg(Alt):
             BufAuto('Data'),
             )
 
+    class FlowControl(Envelope):
+        ''' DebugMuxMsgType.FlowControl structure '''
+        _GEN = (
+            Uint16LE('ConnRef'),
+            Uint8('DataBlockCount'),
+            )
+
     # All currently known messages
     _GEN = {
         DebugMuxMsgType.Ident.value              : Ident(),
         DebugMuxMsgType.Ping.value               : PingPong(),
         DebugMuxMsgType.Pong.value               : PingPong(),
         DebugMuxMsgType.DPAnnounce.value         : DPAnnounce(),
+        DebugMuxMsgType.DPShutdown.value         : DPShutdown(),
         DebugMuxMsgType.ConnEstablish.value      : ConnEstablish(),
         DebugMuxMsgType.ConnEstablished.value    : ConnEstablished(),
         DebugMuxMsgType.ConnTerminate.value      : ConnTerminate(),
         DebugMuxMsgType.ConnTerminated.value     : ConnTerminated(),
         DebugMuxMsgType.ConnData.value           : ConnData(),
+        DebugMuxMsgType.FlowControl.value        : FlowControl(),
         }
 
 class DebugMuxFrame(Envelope):
