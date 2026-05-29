@@ -71,7 +71,7 @@ class DebugMuxMsg(Alt):
     class Ident(Envelope):
         ''' DebugMuxMsgType.Ident structure '''
         _GEN = (
-            Buf('Magic', bl=32), # TODO: what's here?
+            Uint32LE('TargetId'),
             PascalString('Ident'),
             )
 
