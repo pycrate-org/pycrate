@@ -171,6 +171,19 @@ ASN_SPECS_ITS = {
     'ITS_IS'          : 'ETSI_ITS_IS_TS103301',
     }
 
+# Electronic Fee Collection
+ASN_SPECS_EFC = {
+    'DSRC_2014'  : 'EFC_DSRC_ISO14906_2014',
+    'DSRC_2018'  : 'EFC_DSRC_ISO14906_2018',
+    'DSRC_2022'  : 'EFC_DSRC_ISO14906_2022',
+    'DSRC_2023'  : 'EFC_DSRC_ISO14906_2023',
+    'CCC_2009'   : 'EFC_CCC_ISO12813_2009',
+    'CCC_2015'   : 'EFC_AC_ISO17575_2016',
+    'CCC_2023'   : 'EFC_CCC_ISO12813_2023',
+    'AC_2016'    : 'EFC_AC_ISO17575_2016',
+    'IE_2025'    : 'EFC_IE_ISO12855_2025',
+    }
+
 # Open Mobile Alliance geolocation protocols
 ASN_SPECS_OMA = {
     'ILP'       : 'OMA_ILP',
@@ -212,6 +225,7 @@ ASN_SPECS.update( ASN_SPECS_ORAN )
 ASN_SPECS.update( ASN_SPECS_ITUT )
 ASN_SPECS.update( ASN_SPECS_IETF )
 ASN_SPECS.update( ASN_SPECS_CORE )
+ASN_SPECS.update( ASN_SPECS_EFC )
 ASN_SPECS.update( ASN_SPECS_ITS )
 ASN_SPECS.update( ASN_SPECS_OMA )
 ASN_SPECS.update( ASN_SPECS_EUICC )
