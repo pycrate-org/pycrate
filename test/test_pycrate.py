@@ -34,14 +34,6 @@ import importlib
 import unittest
 import time
 
-try:
-    # required for SEDebugMux module
-    import crcmod
-    from test.test_sedebugmux  import *
-    _with_crcmod = True
-except ImportError:
-    _with_crcmod = False
-
 from test.test_core   import *
 from test.test_media  import *
 from test.test_ether  import *
@@ -52,6 +44,7 @@ from test.test_gsmrr  import *
 from test.test_sms    import *
 from test.test_crypto import *
 from test.test_gmr1   import *
+from test.test_sedebugmux  import *
 from test.test_efc    import *
 from pycrate_asn1c.specdir import ASN_SPECS
 from pycrate_asn1c.asnproc import (
@@ -243,11 +236,10 @@ class TestPycrate(unittest.TestCase):
         print('[<>] testing GMR-1 RR in pycrate_gmr1 and pycrate_gmr1_csn1')
         test_gmr()
     
-    # osmo related protocols, needs crcmod
+    # osmo related protocols
     def test_osmo(self):
         print('[<>] testing pycrate_osmo')
-        if _with_crcmod:
-            test_sedebugmux()
+        test_sedebugmux()
     
     # crypto protocols
     def test_crypto(self):
@@ -283,8 +275,7 @@ def test_perf_all():
     test_perf_gsmrr()
     test_perf_sms()
     test_perf_gmr()
-    if _with_crcmod:
-        test_perf_sedebugmux()
+    test_perf_sedebugmux()
     test_perf_crypto()
     print('[<<<>>>] test_perf_all total time: %.4f' % (time.time() - T0))
 
