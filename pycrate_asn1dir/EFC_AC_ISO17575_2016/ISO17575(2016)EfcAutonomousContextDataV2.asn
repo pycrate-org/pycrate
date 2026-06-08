@@ -1,0 +1,1034 @@
+EfcAutonomousContextData {iso(1) standard(0) 17575 part3(3) version2(2)}
+
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+
+IMPORTS
+
+Distance, Duration, VersionId, MessageAuthenticator
+FROM EfcAutonomousCharging {iso(1) standard(0) 17575 part1(1) version2(2)}
+
+EquipmentOBUId, PaymentMeans, EFC-ContextMark, Provider, DateCompact, PayUnit, VehicleClass,  VehicleWeightLaden, TrailerAxles, TractorAxles, PaymentFee, UnitType, EuroValue, CopValue
+FROM EfcDsrcApplication {iso(1) standard(0) 14906 application(0) version5(5)}
+
+Longitude, Latitude
+FROM EfcCcc {iso(1) standard(0) 12813 version2(2)};
+
+-- Note: This is the top level information exchange structure
+
+Iso17575-3InformationContent ::=    CHOICE { 
+    notAuthenticatedIso17575-3Adu       Iso17575-3Adu,
+    authenticatedIso1575-3Adu           AuthenticatedIso17575-3Adu
+}
+
+AuthenticatedIso17575-3Adu ::=  SEQUENCE {
+    iso17575-3AduPer                BIT STRING,
+    -- PER encoded content of the ASN.1 data element Iso17575-3 Adu
+    messageAuthenticator            MessageAuthenticator
+    -- over the full and single data element InfoExchangeContent
+    -- imported from ISO17575-1:2016
+}
+
+-- NOTE: The following is the definition of the ISO17575-3 ADU
+
+Iso17575-3Adu ::=   SEQUENCE {
+    aduHeader           Iso17575-3AduHeader,
+    aduBody             Iso17575-3AduBody
+}
+--------------------------------------------------------------------
+-- NOTE: The following are the definitions of the 17575-3 ADU Header
+--------------------------------------------------------------------
+
+Iso17575-3AduHeader ::= SEQUENCE {
+    protocolVersion         AidIdentifier,
+    informationSender       Provider,
+    informationOriginator   Provider,
+    tollContext             Provider,
+    aduSequenceNumber       Int4,
+    messageDate             GeneralizedTime
+}
+
+-- NOTE: The following are the definitions of the ISO 17575-3 ADU Body
+-- i.e. the sequence of optional attributes
+
+Iso17575-3AduBody ::=           SEQUENCE {
+    tollContextOverview             Optionally-Signed{TollContextOverview} OPTIONAL,
+    tollContextPartitionOverview    Optionally-Signed{SEQUENCE OF TollContextPartitionOverview} OPTIONAL,
+    tariffTable                     Optionally-Signed{SEQUENCE OF TariffTable} OPTIONAL,
+    currencyConversionTable         Optionally-Signed{CurrencyConversionTable} OPTIONAL,
+    tariffClassDefinition           Optionally-Signed{TariffClassDefinition} OPTIONAL,
+    localVehicleClassDefinition     Optionally-Signed{LocalVehicleClassDefinition} OPTIONAL,
+    timeClassDefinition             Optionally-Signed{TimeClassDefinition} OPTIONAL,
+    userClassDefinition             Optionally-Signed{UserClassDefinition} OPTIONAL,
+    tollContextLayout               Optionally-Signed{SEQUENCE OF TollContextPartitionLayout} OPTIONAL,
+    chargeReportingEvents           Optionally-Signed{SEQUENCE OF ChargeReportingEvents} OPTIONAL,
+    chargeReportConfiguration       Optionally-Signed{SEQUENCE OF ChargeReportConfiguration} OPTIONAL,
+    tollContextVersion              Int1 OPTIONAL,
+    ...
+}
+
+------------------------------------------------------------------------------------------
+-- NOTE: The following are the definitions of the EFC Attributes
+------------------------------------------------------------------------------------------
+
+TollContextOverview ::=         SEQUENCE {
+    tollContext                     Provider,
+    tollContextPartitions           SEQUENCE OF TollContextPartitionId,
+    -- at least one partition shall be defined
+    tollSchemeName                  UTF8String OPTIONAL,
+    tollContextBoundingBoxes        SEQUENCE OF SphericalBox OPTIONAL,
+    tollContextOverviewVersion      VersionAndValidity,
+    ...
+}
+
+TollContextPartitionOverview ::=    SEQUENCE {
+    tollContextPartitionId              TollContextPartitionId,
+    tollContextPartitionName            UTF8String OPTIONAL,
+    tollContextPartitionType            TollSchemeType,
+    operationalStatus                   OperationalStatus,
+    timeZone                            INTEGER (-720..720),
+    -- offset in minutes in comparison to UTC
+    dstOffset                           INTEGER (-120..120) OPTIONAL,
+    -- DST offset in minutes to standard local time
+    tollContextPartitionBoundingPolygon Polygon OPTIONAL,
+    sendChargeReportIfEntering          BOOLEAN OPTIONAL,
+    precedenceLevel                     Int1 OPTIONAL,
+    chargeReportFinalRecipient          Provider OPTIONAL,
+    tollContextPartitionOverviewVersion VersionAndValidity,
+    ...
+}
+
+TariffTable ::=             SEQUENCE {
+    applicablePartitions        SEQUENCE OF TollContextPartitionId,
+    tariffs                     SEQUENCE OF Tariff,
+    standardCurrency            PayUnit, -- provides for currency and unit
+    typeOfFee                   TypeOfFee OPTIONAL,
+    tariffTableVersion          VersionAndValidity,
+    ...
+}
+
+CurrencyConversionTable ::= SEQUENCE {
+    conversions                 SEQUENCE OF SEQUENCE {
+        alternativeCurrency         Currency,
+        conversionRate              Int4
+    }, -- in 0,0001 units
+    currencyConversionTableVersion      VersionAndValidity
+}
+
+TariffClassDefinition ::=       SEQUENCE {
+    tariffClasses                   SEQUENCE OF TariffClass,
+    tariffClassDefinitionVersion    VersionAndValidity,
+    ...
+}
+
+LocalVehicleClassDefinition ::= SEQUENCE {
+    localVehicleClasses             SEQUENCE OF LocalVehicleClass,
+    localVehicleClassVersion        VersionAndValidity OPTIONAL,
+    ...
+}
+
+TimeClassDefinition ::=         SEQUENCE {
+    timeClasses                     SEQUENCE OF TimeClass,
+    timeClassDefinitionVersion      VersionAndValidity OPTIONAL,
+    ...
+}
+
+UserClassDefinition ::=         SEQUENCE {
+    userClasses                     SEQUENCE OF UserClass,
+    userClassDefinitionVersion      VersionAndValidity OPTIONAL,
+    ...
+}
+
+TollContextPartitionLayout ::=  SEQUENCE {
+    tollContextPartitionId          TollContextPartitionId,
+    layoutDescription               Layout,
+    geoRefPoint                     Point OPTIONAL,
+    tollContextPartitionVersion     VersionAndValidity,
+    ...
+}
+
+ChargeReportingEvents ::=       SEQUENCE {
+    applicablePartitions            SEQUENCE OF TollContextPartitionId,
+    absoluteTimeEvents              SEQUENCE OF AbsoluteTimeEvent OPTIONAL,
+    relativeTimeEvents              RelativeTimeEvent OPTIONAL,
+    travelledDistanceEvents         Distance OPTIONAL,
+    locationEvents                  SEQUENCE OF LocationEvent OPTIONAL,
+    feeLimitEvents                  FeeLimit OPTIONAL,
+    chargeReportingEventsVersion    VersionAndValidity,
+    ...
+}
+
+ChargeReportConfiguration ::=               SEQUENCE {
+    applicablePartitions                        SEQUENCE OF TollContextPartitionId,
+    chargeReportContent                         ChargeReportContent,
+    usageStatementContent                       UsageStatementContent,
+    cccAttributesContent                        CccAttributesContent OPTIONAL,
+    aggregatedSingleTariffClassSessionContent   AggregatedSingleTariffClassSessionContent OPTIONAL,
+    detectedChargeObjectContent                 DetectedChargeObjectContent OPTIONAL,
+    listOfRawUsageDataContent                   ListOfRawUsageDataContent OPTIONAL,
+    listOfDsrcUsageDateContent                  ListOfDsrcUsageDataContent OPTIONAL,
+    aggregatedFeeContent                        AggregatedFeeContent OPTIONAL,
+    measuredRawDataContent                      MeasuredRawDataContent OPTIONAL,
+    nmeaDataContent                             NmeaDataContent OPTIONAL,
+    chargeReportConfigurationVersion            VersionAndValidity,
+    ...
+}
+
+----------------------------------------------------------------------------------------
+-- NOTE: The following are the data definitions required for message and attribute
+-- authentication
+----------------------------------------------------------------------------------------
+
+Optionally-Signed{Payload} ::=  CHOICE {
+    unsigned-data                   Payload,
+    signed-data                     Signed{Payload}
+}
+
+Signed{Payload} ::=     SEQUENCE {
+    payload                 Payload,
+    -- PER encoded content of the ASN.1 data element Iso17575-3 Adu
+    timeOfAuthentication    GeneralizedTime,
+    authenticator           MessageAuthenticator
+    -- over the full and single data element Payload
+    -- imported from ISO17575-1:2016
+}
+
+----------------------------------------------------------------------------------------
+-- NOTE: The following are the definitions of the data elements in alphabetic order
+----------------------------------------------------------------------------------------
+
+AbsolutePointCoordinates ::=    SEQUENCE {
+    longitude                       Longitude,
+    latitude                        Latitude,
+    altitude                        Int2Signed OPTIONAL
+}
+
+AbsoluteTimeEvent ::=   SEQUENCE {
+    timesDuringDay          Time,
+    randomDelay             Int3 OPTIONAL
+}
+
+ActualNumberOfPassengers ::=    Int1
+    -- according to ISO 14906:2015
+    -- actual number of passengers (i.e. human beings) present in the vehicle,
+    -- including the driver
+
+AggregatedFeeContent ::=    SEQUENCE { -- part of the Charge Report configuration
+    sumVat                      BOOLEAN
+}
+
+AggregatedSingleTariffClassSessionContent ::=   SEQUENCE {
+    -- part of the Charge Report configuration
+    timePeriodCovered                               BOOLEAN,
+    currentTariffClass                              BOOLEAN,
+    tariffClassDescriptionContent                   TariffClassDescriptionContent OPTIONAL,
+    -- only present in case currentTariffClass = TRUE
+    vehicleDescription                              BOOLEAN,
+    vehicleDescriptionContent                       VehicleDescriptionContent OPTIONAL,
+    -- only present in case vehicleDescription = TRUE
+    totalDistanceCovered                            BOOLEAN,
+    numberOfDetectedEvents                          BOOLEAN,
+    obeStatus                                       BOOLEAN,
+    feeExclVat                                      BOOLEAN,
+    sumVat                                          BOOLEAN,
+    ...
+}
+
+AidIdentifier ::=   INTEGER {
+                        iso17575-3-2010 (0),
+                        iso17575-3-2016 (1)
+    -- values 2 - 100 reserved for future use
+    -- values 101 - 255 reserve for private use defined by sender
+}(0..255)
+
+AreaId ::=  Int1
+
+AreaLayout ::=              SEQUENCE {
+    areaId                      AreaId,
+    areaBorder                  Polygon,
+    locationClass               LocationClassId OPTIONAL,
+    applicableTimeClasses       SEQUENCE OF TimeClassId OPTIONAL,
+    roadNetworks                SEQUENCE OF RoadNetwork OPTIONAL
+}
+
+CccAttributesContent ::=    SEQUENCE {
+    -- part of the Charge Report configuration
+    timeOfCCCRecord             BOOLEAN,
+    axlesHistory                BOOLEAN,
+    commStatus                  BOOLEAN,
+    gnssStatus                  BOOLEAN,
+    distRecStatus               BOOLEAN,
+    activeContexts              BOOLEAN,
+    obeHistory                  BOOLEAN
+}
+
+ChargeDistance ::=          CHOICE {
+    predefinedDistance          Distance,
+    entryDependingDistance      SEQUENCE {
+        entryDependingDistance      SEQUENCE OF EntryDependingDistanceData,
+        missingEntryInformation     Distance
+    }
+}
+
+ChargeObjectDesignation ::= Int4
+
+ChargeObjectIdContent ::=       SEQUENCE {
+-- part of the Charge Report configuration
+    chargeReportFinalRecipient      BOOLEAN
+}
+
+ChargeReportContent ::=         SEQUENCE {
+-- part of the Charge Report configuration
+    useOfCrAuthentication           BOOLEAN,
+    obeId                           BOOLEAN,
+    vehicleLPNr                     BOOLEAN,
+    paymentMeans                    BOOLEAN,
+    tollContext                     BOOLEAN,
+    chargeReportFinalRecipient      BOOLEAN,
+    timeOfReport                    BOOLEAN,
+    reportPeriod                    BOOLEAN,
+    versionInfo                     BOOLEAN,
+    sumVatForThisSession            BOOLEAN,
+    accountStatus                   BOOLEAN,
+    chargeReportCounter             BOOLEAN,
+    mileage                         BOOLEAN,
+    listOfCCCAttributes             BOOLEAN,
+    ...
+}
+
+ChargeUnit ::=  CHOICE {
+    distance        Distance,
+    time            Duration,
+    event           Int1,
+    ...
+}
+
+CO2EmissionValue ::= Int2   --according to vehicle registration documents in g/km as specified in ISO 14906:2015)
+
+CO2EmissionValueRange ::=   SEQUENCE {
+    lowerLimit                  CO2EmissionValue,
+    upperLimit                  CO2EmissionValue
+}
+
+ContextId ::= Int2
+
+ContractTypes ::=   SEQUENCE {
+    contractProvider    Provider,
+    typeOfContract      OCTET STRING(SIZE(2))
+}
+
+
+CopValueRange ::=   SEQUENCE {
+    lowerLimit          CopValue, -- same definition as in ISO 14906:2015
+    upperLimit          CopValue -- same definition as in ISO 14906:2015 
+}
+
+CordonBorderSegment ::= SEQUENCE {
+    cordonSegmentId         CordonSegmentId,
+    startPoint              Point,
+    cordonEntryLocation     CordonEntryLocation OPTIONAL,
+    cordonExitLocation      CordonExitLocation OPTIONAL
+}
+
+CordonEntryLocation ::= SEQUENCE {
+    entryLocationId         ChargeObjectDesignation,
+    entryLocationClass      LocationClassId,
+    applicableTimeClasses   SEQUENCE OF TimeClassId OPTIONAL
+}
+
+CordonExitLocation ::=  SEQUENCE {
+    exitLocationId          ChargeObjectDesignation,
+    exitLocationClass       SEQUENCE OF SEQUENCE {
+        locationClass           LocationClassId,
+        entryLocation           SEQUENCE OF EntryLocationId OPTIONAL
+    },
+    applicableTimeClasses   SEQUENCE OF TimeClassId OPTIONAL
+}
+
+CordonId ::= Int1
+
+CordonLayout ::=    SEQUENCE {
+    cordonId            CordonId,
+    cordonBorderPolygon SEQUENCE OF CordonBorderSegment
+}
+
+CordonSegmentId ::= Int4
+
+Currency ::=    INTEGER(1..999) -- Currency code according to ISO 4217
+
+DetectedChargeObjectContent ::=     SEQUENCE {
+    -- part of the Charge Report configuration
+    chargeObjectIdContent               ChargeObjectIdContent,
+    subObjectNumber                     BOOLEAN,
+    timeWhenUsed                        BOOLEAN,
+    mileageWhenUsed                     BOOLEAN,
+    currentTariffClass                  BOOLEAN,
+    tariffClassDescriptionContent       TariffClassDescriptionContent OPTIONAL,
+    -- only present in case currentTariffClass = TRUE
+    vehicleDescription                  BOOLEAN,
+    vehicleDescriptionContent           VehicleDescriptionContent OPTIONAL,
+    -- only present in case vehicleDescription = TRUE
+    obeStatus                           BOOLEAN,
+    feeExclVat                          BOOLEAN,
+    sumVat                              BOOLEAN,
+    chargeObjDetectionMode              BOOLEAN
+}
+
+DieselEmissionValueRange ::=    SEQUENCE {
+    particulate                     SEQUENCE {
+        unitType                        UnitType,
+        valueRange                      SEQUENCE {
+            lowerLimit                      INTEGER (0..32767),
+            upperLimit                      INTEGER (0..32767)
+        }
+    } OPTIONAL,
+    absorptionCoeffRange                SEQUENCE {
+        lowerLimit                              Int2,
+        upperLimit                              Int2
+    }
+}
+    -- definitions for all data elements as specified in ISO14906:2015
+
+EfcLayer ::=            SEQUENCE {
+    efcLayerId              INTEGER, -- unique within the toll context
+    tollContextName         UTF8String OPTIONAL,
+    chargeObjects           SEQUENCE OF GdfChargeObject,
+    referencedGdfSource     GdfSource,
+    efcLayerVersion         VersionAndValidity
+}
+
+EfcNodeId ::=           SEQUENCE {
+    efcContextSpecificId    INTEGER, -- unique within the toll context
+    sectionName             UTF8String OPTIONAL,
+    gdfSpecificId           GdfReference OPTIONAL
+}
+    
+EntityId ::=    Provider
+
+EntryDependingDistanceData ::=  SEQUENCE {
+    chargeObjectAtEntry             ChargeObjectDesignation,
+    definedDistance                 Distance
+}
+
+EntryLocationId ::= Int4
+
+EuroValueRange ::=      SEQUENCE {
+    lowerLimit              EuroValue, -- same definition as in ISO 14906:2015
+    upperLimit              EuroValue -- same definition as in ISO 14906:2015
+}
+
+ExhaustEmissionValueRange ::=   SEQUENCE {
+    unitType                        UnitType,
+    emissionCORange                 SEQUENCE {
+        lowerLimit                      INTEGER (0..32767),
+        upperLimit                      INTEGER (0..32767)
+    } OPTIONAL,
+    emissionHCRange                 SEQUENCE {
+        lowerLimit                      Int2,
+        upperLimit                      Int2
+    } OPTIONAL,
+    emissionNOXRange                SEQUENCE {
+        lowerLimit                      Int2,
+        upperLimit                      Int2
+    } OPTIONAL,
+    emissionHCNOXRange              SEQUENCE {
+    lowerLimit                          Int2,
+    upperLimit                          Int2
+    } OPTIONAL
+}
+    -- definitions for all data elements as specified in ISO14906:2015
+
+FeeLimit ::= PaymentFee
+
+GdfChargeObject ::=         SEQUENCE { 
+    chargeObjectDesignation     ChargeObjectDesignation,
+    roadOperatorId              Provider OPTIONAL,
+    applicableLocationClass     INTEGER OPTIONAL,
+    applicableTimeClasses       SEQUENCE OF TimeClassId OPTIONAL,
+    tollRelevantLength          Distance,
+    equivalentMeasuredLength    Distance OPTIONAL,
+    tollRoad                    TollRoad,
+    liabilityRules              CHOICE {
+        tollPoint                   [1] GdfReference, -- check if point has been passed
+        minTollPath                 [2] SEQUENCE {
+            firstPoint                  GdfReference,
+            secondPoint                 GdfReference
+        -- check if point has been passed
+        },
+        minimumUsage                [3] INTEGER (1 .. 1000) -- in 0.1 %
+    }
+}
+
+GdfReference ::=    SEQUENCE {
+    datasetId           INTEGER,
+    layerId             INTEGER,
+    sectionId           INTEGER,
+    objectId            INTEGER
+}
+
+GdfSource ::=       SEQUENCE {
+    dataProvider        UTF8String,
+    typeId              INTEGER,
+    versionNumberId     INTEGER
+}
+
+Int1 ::= INTEGER(0..255)
+
+Int2 ::= INTEGER(0..65535)
+
+Int2Signed ::= INTEGER(-32768..32767)
+
+Int3 ::= INTEGER(0..16777215)
+
+Int4 ::= INTEGER(0..4294967295)
+
+IntervalScaleParameter ::=          SEQUENCE {
+    vehicleMaxLadenWeightIntervals      SEQUENCE {
+        zeroOffset                          Int2Signed,
+        -- same definition as in ISO 14906:2015 in attribute VehicleMaxLadenWeight
+        resolution                          VehicleMaxLadenWeight,
+        max                                 VehicleMaxLadenWeight
+    } OPTIONAL,
+    vehicleLengthOverallIntervals       SEQUENCE {
+        zeroOffset                          Int2Signed,
+        -- same definition as in ISO 14906:2015 in attribute VehicleLengthOverall
+        resolution                          VehicleLengthOverall,
+        max                                 VehicleLengthOverall
+    } OPTIONAL
+}
+
+Layout ::=                      CHOICE {
+    sectionPricingLayout            CHOICE {
+        sectionLayoutDescription        SEQUENCE OF SectionLayout,
+        sectionLayoutDescriptionGdf     SectionLayoutGdf
+    },
+    areaPricingLayout               SEQUENCE OF AreaLayout,
+    cordonPricingLayout             SEQUENCE OF CordonLayout
+}
+
+LiabilityRules ::=      CHOICE {
+    tollPoints              SEQUENCE(SIZE(1..2)) OF Point,
+    minTollPath             Link,
+    minimumUsage            INTEGER(0..1000) -- value in 0,1%
+}
+
+Line ::=    SEQUENCE {
+    point1      Point, -- 1st end point of the line
+    point2      Point -- 2nd end point of the line
+}
+
+Link ::=            SEQUENCE {
+    linkId              LinkId,
+    startPoint          Point,
+    endPoint            Point,
+    intermediatePoints  SEQUENCE OF Point OPTIONAL
+}
+
+LinkId ::= Int4
+
+ListOfDsrcUsageDataContent ::=  SEQUENCE {
+    -- part of the Charge Report configuration
+    data14906                       BOOLEAN,
+    data12813                       BOOLEAN,
+    data13141                       BOOLEAN,
+    ...
+}
+
+ListOfRawUsageDataContent ::=   SEQUENCE {
+    -- part of the Charge Report configuration
+    currentTariffClass              BOOLEAN,
+    tariffClassDescriptionContent   TariffClassDescriptionContent OPTIONAL,
+    -- only present in case currentTariffClass = true
+    vehicleDescription              BOOLEAN,
+    vehicleDescriptionContent       VehicleDescriptionContent OPTIONAL,
+    -- only present in case vehicleDescription = true
+    ...
+}
+
+LocalVehicleClass ::=           SEQUENCE {
+    localVehicleClassId             LocalVehicleClassId,
+    nominalElements                 NominalVehicleParameters,
+    ordinalElements                 OrdinalVehicleParameters OPTIONAL,
+    priorityValue                   Int1 OPTIONAL
+    -- 0: lowest priority, 255: highest priority
+}
+
+LocalVehicleClassId ::= Int2
+
+LocationClassId ::= Int4
+
+LocationEvent ::=           SEQUENCE {
+    chargeObject                ChargeObjectDesignation OPTIONAL,
+    line                        SEQUENCE {
+        lineDescription             Line,
+        crossingDirection1          BOOLEAN,
+        crossingDirection2          BOOLEAN
+    } OPTIONAL,
+    area                        SEQUENCE {
+        areaDescription             Polygon,
+        atEntry                     BOOLEAN,
+        atExit                      BOOLEAN
+    } OPTIONAL
+}
+
+MaxFee ::=      SEQUENCE {
+    perDay          Int4 OPTIONAL,
+    perWeek         Int4 OPTIONAL,
+    perMonth        Int4 OPTIONAL,
+    perYear         Int4 OPTIONAL   
+}
+
+MeasuredRawDataContent ::=  SEQUENCE {
+    -- part of the Charge Report configuration
+    measuredPosition            BOOLEAN,
+    timeWhenMeasured            BOOLEAN,
+    nMEAData                    BOOLEAN,
+    additionalGNSSData          BOOLEAN,
+    ...
+}
+
+NmeaDataContent ::=     SEQUENCE {
+    time                    BOOLEAN,
+    status                  BOOLEAN,
+    latitude                BOOLEAN,
+    latNS                   BOOLEAN,
+    longitude               BOOLEAN,
+    longEW                  BOOLEAN,
+    speed                   BOOLEAN,
+    heading                 BOOLEAN,
+    date                    BOOLEAN,
+    signalIntegrity         BOOLEAN,
+    altitude                BOOLEAN,
+    usedSatellites          BOOLEAN,
+    hdop                    BOOLEAN,
+    ...
+}
+
+NominalTimeParameters ::=       SEQUENCE {
+    weekdays                        SEQUENCE OF Weekday OPTIONAL,
+    dates                           SEQUENCE OF DateCompact OPTIONAL,
+    classesSetExternally            SEQUENCE OF INTEGER {
+        reserved                        (0),
+        congestionChargeLevel1          (1),
+        congestionChargeLevel2          (2)
+        -- value 0 not used
+        -- values 3 .. 100 reserved for future CEN and ISO use
+        -- values 101 .. 255 reserved for private use
+    } (0..255) OPTIONAL
+}
+
+NominalVehicleParameters ::=    SEQUENCE {
+    vehicleClasses                  SEQUENCE OF VehicleClass,
+    -- use according to EN 15509:2014
+    vehicleTrainAxlesNumbers        SEQUENCE OF INTEGER (0..15) OPTIONAL,
+    -- same definition as in ISO 14906:2015 in VehicleAxles:    
+    -- number of axles, including drop axles of the entire train
+    euroValues                      SEQUENCE OF EuroValue OPTIONAL,
+    -- use according to ISO 14906:2015
+    copValues                       SEQUENCE OF CopValue OPTIONAL,
+    -- use according to ISO 14906:2015
+    ...
+}
+
+OperationalStatus ::=   SEQUENCE {
+    startsOperationAt       GeneralizedTime,
+    stopsOperationAt        GeneralizedTime OPTIONAL
+}
+
+OrdinalTimeParameters ::=   SEQUENCE {
+    weekdays                    SEQUENCE OF SEQUENCE {
+        startDay                    Weekday,
+        endDay                      Weekday
+    } OPTIONAL,
+    absoluteTimeOfDay           SEQUENCE OF SEQUENCE {
+        startTime                   Time,
+        endTime                     Time
+    } OPTIONAL,
+    relativeTimePeriods         SEQUENCE OF SEQUENCE {
+        minPeriod                   Int2 OPTIONAL, -- in minutes
+        maxPeriod                   Int2 OPTIONAL  -- in minutes
+    } OPTIONAL,
+    periodsInYear               SEQUENCE OF SEQUENCE {
+        startDay                    DateCompact,
+        endDay                      DateCompact
+    } OPTIONAL
+}
+
+OrdinalVehicleParameters ::=    SEQUENCE {
+    vehicleLengthOverall            SEQUENCE OF VehicleLengthOverallRange OPTIONAL,
+    vehicleHeightOverall            SEQUENCE OF VehicleHeightOverallRange OPTIONAL,
+    vehicleWidthOverall             SEQUENCE OF VehicleWidthOverallRange OPTIONAL,
+    vehicleFirstAxleHeight          SEQUENCE OF VehicleFirstAxleHeightRange OPTIONAL,
+    vehicleTractorAxlesNumber       SEQUENCE OF VehicleTractorAxlesNumberRange OPTIONAL,
+    vehicleTrailerAxlesNumber       SEQUENCE OF VehicleTrailerAxlesNumberRange OPTIONAL,
+    vehicleMaxLadenWeight           SEQUENCE OF VehicleMaxLadenWeightRange OPTIONAL,
+    vehicleTrainMaximumWeight       SEQUENCE OF VehicleTrainMaximumWeightRange OPTIONAL,
+    vehicleWeightUnladen            SEQUENCE OF VehicleWeightUnladenRange OPTIONAL,
+    vehicleWeightLaden              SEQUENCE OF VehicleWeightLadenRange OPTIONAL,
+    euroValue                       SEQUENCE OF EuroValueRange OPTIONAL,
+    copValue                        SEQUENCE OF CopValueRange OPTIONAL,
+    vehicleClass                    SEQUENCE OF VehicleClassRange OPTIONAL,
+    co2EmissionValue                SEQUENCE OF CO2EmissionValueRange OPTIONAL,
+    dieselEmissionValue             SEQUENCE OF DieselEmissionValueRange OPTIONAL,
+    exhaustEmissionValue            SEQUENCE OF ExhaustEmissionValueRange OPTIONAL,
+    ...
+}
+
+Point ::=                   CHOICE {
+    pointIdentifier             PointId,
+    absolutePointCoordinates    AbsolutePointCoordinates,
+    relativePointCoordinates    RelativePointCoordinates
+}
+
+PointId ::=     Int4
+
+PointIdDefinition ::=   SEQUENCE {
+    pointId                 PointId,
+    pointCoordinates        AbsolutePointCoordinates
+}
+
+Polygon ::= SEQUENCE OF Point
+
+RelativePointCoordinates ::=    SEQUENCE {
+    longitude                       Int2Signed, -- in microdegrees
+    latitude                        Int2Signed, -- in microdegrees
+    altitude                        Int2Signed OPTIONAL -- in 0,25m
+}
+
+RelativeTimeEvent ::=   SEQUENCE {
+    timeDuration            Int3,
+    randomDelay             Int3 OPTIONAL
+}
+
+RoadElementsTowardChargePoint ::=   SEQUENCE {
+    junctionIdFrom                      GdfReference,
+    gdfRoadElement                      GdfReference
+}
+
+RoadNetwork ::=         SEQUENCE {
+    networkId               Int1,
+    locationClass           LocationClassId,
+    roadNetworkObjects      SEQUENCE OF RoadNetworkObject
+}
+
+RoadNetworkObject ::=   SEQUENCE {
+    chargeObjectId          ChargeObjectDesignation,
+    chargeObjectName        CHARACTER STRING OPTIONAL,
+    chargeObjectRefPoint    Point OPTIONAL,
+    -- reference point for use of relative coordinates
+    networkPoints           SEQUENCE OF Point OPTIONAL,
+    tollPath                Link,
+    supportingInformation   SEQUENCE OF SupportingPoint OPTIONAL,
+    applicableTimeClasses   SEQUENCE OF TimeClassId OPTIONAL
+}
+
+RoundingRule ::=    INTEGER {
+    no                  (0), -- no rounding
+    up                  (1),
+    -- always rounding up to next larger value of the minor curency unit
+    down                (2),
+    -- always rounding down to next lower value of the minor currency unit
+    accounting          (3)
+    -- rounding according to accounting rules (as e.g. defined in DIN 1333)
+    -- values 4 .. 100 reserved for future CEN and ISO use
+    -- values 101 .. 255 reserved for private use
+} (0..255)
+
+SectionLayout ::=           SEQUENCE {
+    chargeObjectId              ChargeObjectDesignation,
+    chargeObjectName            UTF8String OPTIONAL,
+    chargeObjectRefPoint        Point OPTIONAL,
+    networkPoints               SEQUENCE OF PointIdDefinition OPTIONAL,
+    tollPath                    Link,
+    liabilityRules              LiabilityRules,
+    pathStructureTowards        SEQUENCE OF Link OPTIONAL,
+    pathStructureOnwards        SEQUENCE OF Link OPTIONAL,
+    supportingInformation       SEQUENCE OF SupportingPoint OPTIONAL,
+    chargeDistance              ChargeDistance,
+    realDistance                Distance OPTIONAL,
+    applicableTimeClasses       SEQUENCE OF TimeClassId OPTIONAL,
+    locationClass               LocationClassId,
+    storageRequired             BOOLEAN OPTIONAL,
+    invoicingRelatedData        SupplementaryInvoicingData OPTIONAL,
+    ...
+}
+
+SectionLayoutGdf ::=    SEQUENCE {
+    efcLayer                EfcLayer,
+    ...
+}
+
+SphericalBox ::=        SEQUENCE {
+    southernLatitude        Latitude,
+    northernLatitude        Latitude,
+    westernLongitude        Longitude,
+    easternLongitude        Longitude
+}
+
+SupplementaryInvoicingData ::= SEQUENCE {
+    countryCode                     UTF8String OPTIONAL,
+    --according to ISO 3166-1-Alpha-2 code elements 
+    description                     UTF8String OPTIONAL,
+    networkName                     UTF8String OPTIONAL,
+    roadNumber                      UTF8String OPTIONAL,
+    sectionNumber                   INTEGER OPTIONAL,
+    directionCode                   UTF8String OPTIONAL,
+    directionDescription            UTF8String OPTIONAL,
+    laneNumber                      UTF8String OPTIONAL,
+    typeOfSection                   TypeOfSection OPTIONAL
+}
+
+SupportingPoint ::=     SEQUENCE {
+    supportPoint            Point,
+    distanceToNextRoad      Distance OPTIONAL
+}
+
+Tariff ::=                          SEQUENCE {
+    tariffClass                         TariffClassId,
+    chargeUnit                          ChargeUnit,
+    roundingRuleForChargeUnitsUsed      RoundingRule,
+    basicFeePerChargeUnit               Int4,
+    -- in currency and units specified in TariffTable
+    roundingRuleForFee                  RoundingRule,
+    vat                                 Int4 OPTIONAL,
+    -- in 0,01%
+    roundingRuleForVat                  RoundingRule OPTIONAL,
+    intervalScaleParameters             SEQUENCE OF IntervalScaleParameter OPTIONAL,
+    offsetFee                           Int4 OPTIONAL,
+    -- in currency and units specified in TariffTable
+    minFee                              Int4 OPTIONAL,
+    -- in currency and units specified in the TariffTable
+    thresholdFee                        Int4 OPTIONAL,
+    -- in currency and units specified in TariffTable
+    maxFee                              MaxFee OPTIONAL,
+    alternativeCurrency                 Currency OPTIONAL
+}
+
+TariffClass ::=         SEQUENCE {
+    tariffClassId           TariffClassId,
+    localVehicleClasses     SEQUENCE OF LocalVehicleClassId,
+    timeClasses             SEQUENCE OF TimeClassId OPTIONAL,
+    locationClasses         SEQUENCE OF LocationClassId OPTIONAL,
+    userClasses             SEQUENCE OF UserClassId OPTIONAL
+}
+
+TariffClassDescriptionContent ::=   SEQUENCE {
+    -- part of the Charge Report configuration
+    tariffClassId                       BOOLEAN,
+    localVehicleClasses                 BOOLEAN,
+    timeClasses                         BOOLEAN,
+    locationClasses                     BOOLEAN,
+    userClasses                         BOOLEAN
+}
+
+TariffClassId ::= Int4 -- default TariffClassId = 0
+
+Time ::=        SEQUENCE {
+    hours           INTEGER (0..23),
+    mins            INTEGER (0..59),
+    secs            INTEGER (0..59)
+}
+
+TimeClass ::=           SEQUENCE {
+    timeClassId             TimeClassId,
+    nominalElements         NominalTimeParameters OPTIONAL,
+    ordinalElements         SEQUENCE OF OrdinalTimeParameters OPTIONAL,
+    -- either nominal or ordinal or both time parameters shall be present
+    priorityValue           Int1 OPTIONAL
+    -- 0: lowest priority, 255: highest priority
+}
+
+TimeClassId ::= Int2
+
+TollContextPartitionId ::= Int1
+
+TollRoad ::=                    SEQUENCE {
+    efcNodeFrom                     EfcNodeId, -- unique within the toll context
+    efcLink                         SEQUENCE {
+        roadElementsTowardChargePoint   SEQUENCE OF RoadElementsTowardChargePoint,
+        junctionIdTo                    GdfReference
+    },
+    efcNnodeTo                      EfcNodeId -- unique within the toll context
+}
+
+TollSchemeType ::=      INTEGER {
+    roadSectionPricing      (0),
+    areaPricingDistance     (1),
+    areaPricingTime         (2),
+    cordonPricing           (3)
+    -- values 4 .. 100 reserved for future CEN and ISO use
+    -- values 101 .. 255 reserved for private use
+} (0..255)
+
+TypeOfFee ::=           INTEGER {
+    reserved                (0),
+    fee                     (1),
+    tax                     (2),
+    custom                  (3)
+    -- value 0 not used
+    -- values 4-100 reserved for future CEN and ISO use
+    -- values 101-255 reserved for private use
+} (0..255)
+
+TypeOfSection ::=                   INTEGER {
+    reserved                            (0),
+    manual                              (1),
+    closedEntry                         (2),
+    closedExit                          (3),
+    checkpoint                          (4),
+    openRoadTolling                     (5),
+    distanceBasedFreeFlowPhysical       (6),
+    distanceBasedFreeFlowVirtual        (7),
+    aggregatedTrx                       (8)
+    -- value 0 not used
+    -- values 9-100 reserved for future CEN and ISO use
+    -- velues 101-255 reserved for private use
+} (0..255)
+
+UsageStatementContent ::=           SEQUENCE { 
+    -- part of the Charge Report configuration
+    useOfUsageStatementAuthentication   BOOLEAN,
+    usageStatementId                    BOOLEAN,
+    tollContext                         BOOLEAN,
+    chargeReportFinalRecipient          BOOLEAN,
+    aggregatedFee                       BOOLEAN,
+    sumVat                              BOOLEAN,
+    aggregatedSingleTariffClassSession  BOOLEAN,
+    listOfChargeObjects                 BOOLEAN,
+    listOfDSRCUsageData                 BOOLEAN,
+    listOfRawUsageData                  BOOLEAN,
+    noUsage                             BOOLEAN,
+    additionalUsageInformation          BOOLEAN,
+    ...
+}
+
+UserClass ::=                   SEQUENCE {
+    userClassId                     UserClassId,
+    contractTypes                   SEQUENCE OF ContractTypes OPTIONAL,
+    actualNumberOfPassengers        SEQUENCE OF ActualNumberOfPassengers OPTIONAL,
+    priorityValue                   Int1 OPTIONAL
+    -- 0: lowest priority, 255: highest priority
+}
+
+UserClassId ::= Int1
+
+VehicleClassRange ::=   SEQUENCE {
+    lowerLimit              VehicleClass, -- definition according to EN 15509
+    upperLimit              VehicleClass -- definition according to EN 15509
+}
+
+VehicleDescriptionContent ::=   SEQUENCE {
+    vehicleLPNr                     BOOLEAN,
+    axles                           BOOLEAN,
+    class                           BOOLEAN,
+    dimensions                      BOOLEAN,
+    specificCharacteristics         BOOLEAN,
+    ladenWeight                     BOOLEAN,
+    weightLimits                    BOOLEAN,
+    trailerCharacteristics          BOOLEAN,
+    ...
+}
+
+VehicleFirstAxleHeight ::= Int1
+    -- same definition as in ISO 14906:2015 in VehicleAxles:
+    -- bonnet height, measured over the front axle, in dm, rounded to the next dm
+
+VehicleFirstAxleHeightRange ::= SEQUENCE {
+    lowerLimit                      VehicleFirstAxleHeight,
+    upperLimit                      VehicleFirstAxleHeight
+}
+
+VehicleHeightOverall ::= Int1
+    -- same definition as in ISO 14906:2015 in VehicleDimensions:
+    -- Nominal overall unladen height, according to ISO 612,
+    -- in dm, rounded to the next dm.
+
+VehicleHeightOverallRange ::=   SEQUENCE {
+    lowerLimit                      VehicleHeightOverall,
+    upperLimit                      VehicleHeightOverall
+}
+
+VehicleLengthOverall ::= Int1
+    -- same definition as in ISO 14906:2015 in VehicleDimensions:
+    -- Nominal maximum overall length of the vehicle according to ISO 612,
+    -- in dm, rounded to the next dm
+
+VehicleLengthOverallRange ::=   SEQUENCE {
+    lowerLimit                      VehicleLengthOverall,
+    upperLimit                      VehicleLengthOverall
+}
+
+VehicleMaxLadenWeight ::= Int2
+    -- same definition as in ISO 14906:2015 in VehicleWeightLimits:
+    -- Maximum permissible total weight including payload, according to ISO 1176,
+    -- 10 kg units, rounded down to the next 10 kg step.
+
+VehicleMaxLadenWeightRange ::=  SEQUENCE {
+    lowerLimit                      VehicleMaxLadenWeight,
+    upperLImit                      VehicleMaxLadenWeight
+}
+
+VehicleTractorAxlesNumberRange ::=  SEQUENCE {
+    lowerLimit                          TractorAxles,
+    upperLimit                          TractorAxles
+}
+
+VehicleTrailerAxlesNumberRange ::=  SEQUENCE {
+    lowerLimit                          TrailerAxles,
+    upperLimit                          TrailerAxles
+}
+
+VehicleTrainMaximumWeight ::= Int2
+    -- same definition as in ISO 14906:2015 in VehicleWeightLimits:
+    -- Maximum permissible weight of the complete vehicle train, as defined in ISO 1176,
+    -- 10 kg units, rounded down to the next 10 kg step
+
+VehicleTrainMaximumWeightRange ::=  SEQUENCE {
+    lowerLimit                          VehicleTrainMaximumWeight,
+    upperLimit                          VehicleTrainMaximumWeight
+}
+
+VehicleWeightLadenRange ::=     SEQUENCE {
+    lowerLimit                      VehicleWeightLaden,
+    upperLimit                      VehicleWeightLaden
+}
+
+VehicleWidthOverall ::= Int1
+    -- same definition as in ISO 14906:2015 in VehicleDimensions:
+    -- Nominal overall width, according to ISO 612, in dm, rounded to the next dm
+
+VehicleWidthOverallRange ::=    SEQUENCE {
+    lowerLimit                      VehicleWidthOverall,
+    upperLimit                      VehicleWidthOverall
+}
+
+VehicleWeightUnladen ::= Int2
+    -- same definition as in ISO 14906:2015 in VehicleWeightLimits:
+    -- Nominal unladen weight, according to ISO 1176,
+    -- 10 kg units, rounded down to the next 10 kg step
+
+VehicleWeightUnladenRange ::=   SEQUENCE {
+    lowerLimit                      VehicleWeightUnladen,
+    upperLimit                      VehicleWeightUnladen
+}    
+
+VersionAndValidity ::=  SEQUENCE {
+    version                 VersionId,
+    validFrom               GeneralizedTime
+}
+
+Weekday ::=         INTEGER {
+    reserved            (0),
+    monday              (1),
+    tuesday             (2),
+    wednesday           (3),
+    thursday            (4),
+    friday              (5),
+    saturday            (6),
+    sunday              (7)
+    -- values 0, 8 .. 255 not used
+}
+
+END
+
+

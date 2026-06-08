@@ -1,0 +1,332 @@
+EfcCcc {iso(1) standard(0) 12813 version4(4) minorVersion1(1)}
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+IMPORTS
+-- ********* ISO/DIS 17573-3:2022 *********
+	AbsolutePosition2d, Altitude, EfcContextMark, EquipmentObuId, LocalVehicleClassId, Latitude, Longitude, Lpn, PaymentMeans, Provider, TrailerCharacteristics, Time, 
+	VehicleAxles, VehicleClass, VehicleCurrentMaxTrainWeight, VehicleDimensions, VehicleSpecificCharacteristics, VehicleWeightLimits, 
+	Int1Signed, Int1Unsigned, Int2Unsigned, Int4Unsigned
+	FROM EfcDataDictionary {iso(1) standard(0) 17573 dd(3) version1(1) minorVersion1(1)} WITH SUCCESSORS
+	
+-- ********* ISO 14906:2022 (EFC modules)
+-- Imports function parameters from the EFC Application Interface Definition
+	GetStampedRq, GetStampedRs{}, SetMMIRq
+	FROM EfcDsrcApplication {iso(1) standard(0) 14906 application(0) version9(9) minorVersion1(1)} WITH SUCCESSORS
+
+-- Imports the L7 DSRCData module data from the EFC Application Interface Definition, i.e. the lower interface within the CCC scope
+	Action-Request{}, Action-Response{}, ActionType, ApplicationList, AttributeIdList, AttributeList{}, Attributes{},
+	BeaconID, BST, Dsrc-EID, DSRCApplicationEntityID, Event-Report-Request{}, Event-Report-Response, EventType,
+	Get-Request, Get-Response{}, Initialisation-Request, Initialisation-Response, ObeConfiguration, Profile,
+	ReturnStatus, VST, ApplicationContextMark
+	FROM EfcDsrcGeneric {iso(1) standard(0) 14906 generic(1) version10(10) minorVersion1(1)} WITH SUCCESSORS;
+
+-- ******************************************************************
+-- Level 1: CCC functions
+-- ******************************************************************
+
+CccInitialiseCommRequest ::= BST
+
+CccInitialiseCommResponse ::= VST
+
+CccDataRetrievalRequest ::= Get-Request (WITH COMPONENTS {fill (SIZE(1)), eid, accessCredentials (SIZE(4)), attrIdList})
+
+CccDataRetrievalResponse ::= Get-Response {CccContainer} (WITH COMPONENTS {..., eid, iid ABSENT})
+
+CccAuthDataRetrievalRequest ::= Action-Request {CccContainer} (WITH COMPONENTS {mode (TRUE), eid, actionType (0), accessCredentials (SIZE(4)), actionParameter })
+-- uses actionParameter (GetStampedRq)
+
+CccAuthDataRetrievalResponse ::= Action-Response {GetStampedRs{CccContainer}} (WITH COMPONENTS {..., iid ABSENT, responseParameter PRESENT})
+
+CccNotificationRequest ::= Action-Request {CccContainer} (WITH COMPONENTS {mode, eid (0), actionType (10), actionParameter }) -- uses actionParameter (SetMMIRq)
+
+CccNotificationResponse ::= Action-Response {CccContainer}(WITH COMPONENTS {..., eid (0), iid ABSENT, responseParameter ABSENT})
+
+CccTerminateComm ::= Event-Report-Request {CccContainer} (WITH COMPONENTS {mode (FALSE), eid (0), eventType (0)})
+
+CccTestCommRequest ::= Action-Request {CccContainer} (WITH COMPONENTS {..., eid (0), actionType (15), accessCredentials ABSENT, iid ABSENT})
+
+CccTestCommResponse ::= Action-Response {CccContainer} (WITH COMPONENTS {..., fill (SIZE(1)), eid (0), iid ABSENT})
+
+-- ******************************************************************
+-- Level 1: CCC attributes
+-- ******************************************************************
+
+ActiveContexts ::= SEQUENCE OF SEQUENCE{
+	tollContext		Provider,
+	contextVersion	Int1Unsigned
+}
+
+CccContextMark ::= EfcContextMark
+
+CommunicationStatus ::= SEQUENCE {
+	timeOfLastTransmission	Time,
+	pendingSince			Time -- pending since when
+}
+
+DistanceRecordingStatus ::= SEQUENCE {
+	distRecordingStatus				DistRecordingStatus,
+	accumulatedTravelledDistance	Int4Unsigned, -- in meter modulo max
+	deviationFromGnss				Int1Signed
+}
+    
+GnssStatus ::= SEQUENCE {
+	lastGnssFixLon		Longitude,
+	lastGnssFixLat		Latitude,
+	lastGnssFixTime		Time,
+	currentHdop			CurrentHdop,
+	lastLac				LastLac
+}
+
+ObeStatusHistory ::= SEQUENCE {
+	statusIndicator		StatusIndicator,
+	timeWhenChanged		Time,
+	timeWhenActived		Time,
+	timeWhenObePowered	Time
+}
+
+ExtendedObeStatusHistory ::= SEQUENCE {
+	statusIndicator				StatusIndicator,
+	timeWhenChanged				Time,
+	previousStatusIndicator		StatusIndicator,
+	timeWhenChangedToPrevious	Time,
+	timeWhenActived				Time,
+	timeWhenObePowered			Time
+}
+    
+ExtendedObeStatusHistoryPart1 ::= SEQUENCE {
+	statusIndicator				StatusIndicator,
+	timeWhenChanged				Time,
+	tspStatus					Int1Unsigned,
+	position					AbsolutePosition2d,
+	previousStatusIndicator		StatusIndicator,
+	timeWhenChangedToPrevious	Time,
+	previousTspStatus			Int1Unsigned,
+	previousPosition			AbsolutePosition2d,
+	timeWhenActived				Time,
+	timeWhenObePowered			Time
+}
+
+ExtendedObeStatusHistoryPart2 ::= SEQUENCE {
+	previousStatusIndicator2	StatusIndicator,
+	previousTspStatus2			Int1Unsigned,
+	timeWhenChangedToPrevious2	Time,
+	previousPosition2			AbsolutePosition2d,
+	previousStatusIndicator3	StatusIndicator,
+	previousTspStatus3			Int1Unsigned,
+	timeWhenChangedToPrevious3	Time,
+	previousPosition3			AbsolutePosition2d
+}
+
+VehicleAxlesHistory ::= SEQUENCE {
+	timeWhenChanged				Time,
+	previousVehicleAxles		VehicleAxles
+}
+
+ExtendedVehicleAxlesHistory ::= SEQUENCE {
+	timeWhenChanged				Time,
+	previousVehicleAxles		VehicleAxles,
+	timeWhenChangedToPrevious	Time
+}
+
+VehicleWeightHistory ::= SEQUENCE {
+	timeWhenChangedToCurrentValue	Time,
+	previousVehicleWeight			VehicleCurrentMaxTrainWeight,
+	previousLocalVehicleClassId		LocalVehicleClassId,
+	timeWhenChangedToPrevious		Time
+}
+
+UserConfirmation ::= SEQUENCE {
+	timeOfConfirmation			Time,
+	positionOfConfirmation		AbsolutePosition2d,
+	tspStatus					Int1Unsigned
+}
+
+StatusIndicator ::= INTEGER {
+	noGo					(0),
+	go						(1),
+	noGoContractual			(2),
+	noGoUserSwitchedOff		(3),
+	noGoPaymentMeans		(4),
+	goSuspicion				(5)
+	-- (6..127) are reserved for future CEN and ISO use
+	-- (128..255) are reserved for future private use
+} (0..255)
+
+VehicleLicensePlateNumber ::= Lpn (WITH COMPONENTS {..., alphabetIndicator (latinAlphabetNo1), licencePlateNumber (SIZE(10..14))})
+
+AttributeUpdateInterval ::=  Int1Unsigned
+
+-- ******************************************************************
+-- Level 2: data elements for the CCC attributes
+-- ******************************************************************
+
+CurrentHdop ::= SEQUENCE {
+	hDop						Int1Unsigned, -- HDOP value, keep max
+	numberOfUsedSatellites		Int1Unsigned -- Number of satellites from which a GNSS signal is received
+}
+
+LastLac ::= SEQUENCE {
+	timeOfLac		Time,
+	lacOperator		Provider,
+	rseId			Int2Unsigned
+}
+
+DistRecordingStatus ::= INTEGER {
+	notPresent				(1),
+	presentAndActive		(2),
+	presentAndInactive		(3),
+	reservedForFutureUse	(4)
+	-- (5..127) are reserved for future CEN and ISO use
+	-- (128..255) are reserved for future private use
+} (0..255)
+
+
+-- Adoption of T-APDUs for CCC
+CccTApdus ::= CHOICE {
+	actionRequest			[0] CccAuthDataRetrievalRequest,
+	actionResponse			[1] CccAuthDataRetrievalResponse,
+	eventReportRequest		[2] CccTerminateComm,
+	eventReportResponse		[3] Event-Report-Response,
+	reserved4				[4] NULL,       -- set-request
+	reserved5				[5] NULL,       -- set-response
+	getRequest				[6] CccDataRetrievalRequest,
+	getResponse				[7] CccDataRetrievalResponse,
+	initialisationRequest	[8] CccInitialiseCommRequest,
+	initialisationResponse	[9] CccInitialiseCommResponse
+}
+
+-- ******************************************************************
+-- Level 1: Extension of the layer 7 module
+-- ******************************************************************
+
+
+CccContainer ::= CHOICE {
+	integer							[0] INTEGER,
+	reserved1						[1] NULL,
+	octetstring						[2] OCTET STRING (SIZE (0..127, ...)),
+	universalString					[3] UniversalString,
+	beaconId						[4] BeaconID,
+	t-apdu							[5] CccTApdus,
+	dsrcApplicationEntityId			[6] DSRCApplicationEntityID,
+	dsrc-Ase-Id						[7] Dsrc-EID,
+	attrIdList						[8] AttributeIdList,
+	attrList						[9] AttributeList{CccContainer},
+	
+	reserved10						[10] NULL,
+	reserved11						[11] NULL,
+	reserved12						[12] NULL,
+	reserved13						[13] NULL,
+	reserved14						[14] NULL,
+	time							[15] Time,
+	reserved16						[16] NULL,
+	gstrq							[17] GetStampedRq,
+	gstrs							[18] GetStampedRs{CccContainer},
+	reserved19						[19] NULL,
+	
+	reserved20						[20] NULL,
+	reserved21						[21] NULL,
+	reserved22						[22] NULL,
+	reserved23						[23] NULL,
+	reserved24						[24] NULL,
+	reserved25						[25] NULL,
+	reserved26						[26] NULL,
+	reserved27						[27] NULL,
+	reserved28						[28] NULL,
+	reserved29						[29] NULL,
+	
+	reserved30						[30] NULL,
+	reserved31						[31] NULL,
+	efccontext						[32] EfcContextMark,
+	reserved33						[33] NULL,
+	reserved34						[34] NULL,
+	reserved35						[35] NULL,
+	reserved36						[36] NULL,
+	reserved37						[37] NULL,
+	reserved38						[38] NULL,
+	reserved39						[39] NULL,
+	
+	reserved40						[40] NULL,
+	reserved41						[41] NULL,
+	reserved42						[42] NULL,
+	reserved43						[43] NULL,
+	reserved44						[44] NULL,
+	reserved45						[45] NULL,
+	reserved46						[46] NULL,
+	vehlpn							[47] VehicleLicensePlateNumber,
+	reserved48						[48] NULL,
+	vehclass						[49] VehicleClass,
+	
+	vehdims							[50] VehicleDimensions,
+	vehaxles						[51] VehicleAxles,
+	vehwtlims						[52] VehicleWeightLimits,
+	reserved53						[53] NULL,
+	vehspchars						[54] VehicleSpecificCharacteristics,
+	reserved55						[55] NULL,
+	equOBUId						[56] EquipmentObuId,
+	reserved57						[57] NULL,
+	reserved58						[58] NULL,
+	reserved59						[59] NULL,
+	
+	reserved60						[60] NULL,
+	reserved61						[61] NULL,
+	reserved62						[62] NULL,
+	reserved63						[63] NULL,
+	paymeans						[64] PaymentMeans,
+	reserved65						[65] NULL,
+	reserved66						[66] NULL,
+	reserved67						[67] NULL,
+	reserved68						[68] NULL,
+	setmmirq						[69] SetMMIRq,
+	
+	reserved70						[70] NULL,
+	reserved71						[71] NULL,
+	reserved72						[72] NULL,
+	reserved73						[73] NULL,
+	reserved74						[74] NULL,
+	reserved75						[75] NULL,
+	reserved76						[76] NULL,
+	reserved77						[77] NULL,
+	reserved78						[78] NULL,
+	tch								[79] TrailerCharacteristics,
+	
+	reserved80						[80] NULL,
+	vehicleAxlesHistory				[81] VehicleAxlesHistory,
+	communicationStatus				[82] CommunicationStatus,
+	gnssStatus						[83] GnssStatus,
+	distanceRecordingStatus			[84] DistanceRecordingStatus,
+	activeContexts					[85] ActiveContexts,
+	obeStatusHistory				[86] ObeStatusHistory,
+	
+	reservedForFutureISOCENuse87	[87] NULL,
+	reservedForFutureISOCENuse88	[88] NULL,
+	reservedForFutureISOCENuse89	[89] NULL,
+	reservedForFutureISOCENuse90	[90] NULL,
+	reservedForFutureISOCENuse91	[91] NULL,
+	reservedForFutureISOCENuse92	[92] NULL,
+	
+	vehicleWeightHistory			[93] VehicleWeightHistory,
+	extendedObeStatusHistory		[94] ExtendedObeStatusHistory,
+	extendedVehicleAxlesHistory		[95] ExtendedVehicleAxlesHistory,
+	localVehicleClassId				[96] LocalVehicleClassId,
+	vehicleCurrentMaxTrainWeight	[97] VehicleCurrentMaxTrainWeight,
+	attributeUpdateInterval			[98] AttributeUpdateInterval,
+	
+	extendedObeStatusHistoryPart1	[99] ExtendedObeStatusHistoryPart1,
+	extendedObeStatusHistoryPart2	[100] ExtendedObeStatusHistoryPart2,
+	userConfirmation				[101] UserConfirmation,
+	reservedForFutureISOCENuse102	[102] NULL,
+	
+	reservedForFutureISOCENuse103	[103] NULL,
+	reservedForFutureISOCENuse104	[104] NULL,
+	reservedForFutureISOCENuse105	[105] NULL,
+	reservedForFutureISOCENuse106	[106] NULL,
+	reservedForFutureISOCENuse107	[107] NULL,
+	reservedForFutureISOCENuse108	[108] NULL,
+	reservedForFutureISOCENuse109	[109] NULL,
+	reservedForFutureISOCENuse110	[110] NULL,
+	reservedForFutureISOCENuse111	[111] NULL,
+	reservedForFutureISOCENuse112	[112] NULL,
+	...
+}
+
+END

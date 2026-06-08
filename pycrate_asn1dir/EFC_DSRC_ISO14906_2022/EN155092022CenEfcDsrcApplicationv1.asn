@@ -1,0 +1,163 @@
+CenEfcDsrc {iso(1) identified-organization(3) cen(162) 15509 version1(1)}
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+IMPORTS
+-- ********* CEN ISO/TS 17573-3:2021 *********
+	EfcContextMark, EquipmentObuId, Lpn, PaymentMeans, Time, VehicleAxles, VehicleDimensions, VehicleSpecificCharacteristics, VehicleWeightLimits, 
+	Int1Signed, Int1Unsigned, Int2Unsigned, Int4Unsigned
+	FROM EfcDataDictionary {iso(1) standard(0) 17573 dd(3) version1(1)} 
+	
+-- ********* prEN ISO/DIS 14906:2022 (EFC modules)
+-- Imports function parameters from the EFC Application Interface Definition
+	GetStampedRq, GetStampedRs{}, SetMMIRq
+	FROM EfcDsrcApplication {iso(1) standard(0) 14906 application(0) version9(9)}
+
+-- Imports the L7 DSRCData module data from the EFC Application Interface Definition, i.e. the lower interface within the CEN EFC scope
+	AttributeIdList, AttributeList{}, BeaconID, Dsrc-EID, DSRCApplicationEntityID, ReceiptData1, ReceiptData2, 
+	Action-Request{}, Action-Response{}, BST, Event-Report-Request{}, Get-Request, Get-Response{}, Set-Request{}, Set-Response, VST
+	FROM EfcDsrcGeneric {iso(1) standard(0) 14906 generic(1) version10(10)};
+
+-- ******************************************************************
+-- Level 1: CEN EFC attributes - constraints on data elements in EN 15509
+-- ******************************************************************
+
+En15509EquipmentObuId ::= EquipmentObuId (SIZE(4))
+
+En15509EquipmentStatus ::=  SEQUENCE {
+	forLocalTCUse				BIT STRING (SIZE(4)),
+	transactionCounter			BIT STRING (SIZE(12))
+} -- more detailed definition and specifciation than EquipmentStatus defined in CEN ISO/TS 17573-3:2021
+
+En15509VehicleLicensePlateNumber ::= Lpn (WITH COMPONENTS {..., alphabetIndicator (latinAlphabetNo1), licencePlateNumber (SIZE(10..14))})
+
+En15509VehicleClass ::= SEQUENCE {
+	trailerPresenceIndicator	BIT STRING (SIZE(1)) DEFAULT '0'B,
+	unEceVehicleClass			BIT STRING (SIZE(3)),
+	localVehicleClassId			BIT STRING (SIZE(4)) DEFAULT '0000'B
+} -- more detailed definition and specifciation than VehicleCLass defined in CEN ISO/TS 17573-3:2021
+
+-- ******************************************************************
+-- Level 2: data elements for the CEN EFC attributes
+-- ******************************************************************
+
+-- Adoption of T-APDUs for CEN EFC
+En15509TApdus ::= CHOICE {
+	actionRequest			[0] Action-Request{En15509Container},		--Request for GET_STAMPED, SET_MMI and ECHO
+	actionResponse			[1] Action-Response{En15509Container},		--Response to request for GET_STAMPED, SET_MMI and ECHO
+	eventReportRequest		[2] Event-Report-Request{En15509Container},	--Request for RELEASE
+	eventReportResponse		[3] NULL,									--No response to request for RELEASE
+	setRequest				[4] Set-Request{En15509Container},			--Request for SET not further profiled from 14906
+	setResponse				[5] Set-Response,							--Response to request for SET not further profiled from 14906
+	getRequest				[6] Get-Request,							--Request for GET not further profiled from 14906
+	getResponse				[7] Get-Response{En15509Container},			--Response to request for GET not further profiled from 14906
+	initialisationRequest	[8] BST,									--Request for INITIALISATION
+	initialisationResponse	[9] VST										--Response to request for INITIALISATION
+}
+
+-- ******************************************************************
+-- Level 1: Extension of the layer 7 module according to Table 2
+-- ******************************************************************
+
+En15509Container ::= CHOICE { 
+	integer							[0] INTEGER,
+	reserved1						[1] NULL,
+	octetstring						[2] OCTET STRING (SIZE (0..127, ...)),
+	universalString					[3] UniversalString,
+	beaconId						[4] BeaconID,
+	t-apdu							[5] En15509TApdus,
+	dsrcApplicationEntityId			[6] DSRCApplicationEntityID,
+	dsrc-Ase-Id						[7] Dsrc-EID,
+	attrIdList						[8] AttributeIdList,
+	attrList						[9] AttributeList{En15509Container},
+	
+	broadcastPool					[10] NULL,
+	directory						[11] NULL,
+	file							[12] NULL,
+	fileType						[13] NULL,
+	record							[14] NULL,
+	time							[15] Time,
+	vector							[16] NULL,
+	gstrq							[17] GetStampedRq,
+	gstrs							[18] GetStampedRs{En15509Container},
+	sstrq							[19] NULL,
+	
+	ginrq							[20] NULL,
+	ginrs							[21] NULL,
+	sinrq							[22] NULL,
+	charq							[23] NULL,
+	chars							[24] NULL,
+	cpprq							[25] NULL,
+	subrq							[26] NULL,
+	addrq							[27] NULL,
+	debrq							[28] NULL,
+	debrs							[29] NULL,
+	
+	crerq							[30] NULL,
+	crers							[31] NULL,
+	efccontext						[32] EfcContextMark,
+	contser							[33] NULL,
+	contval							[34] NULL,
+	contveh							[35] NULL,
+	contauth						[36] NULL,
+	recspt							[37] NULL,
+	sessioncls						[38] NULL,
+	recservserialno					[39] NULL,
+	
+	recfinptENV						[40] NULL,
+	reccont							[41] NULL,
+	recObuId						[42] NULL,
+	recIccId						[43] NULL,
+	rectext							[44] NULL,
+	recauth							[45] NULL,
+	recdist							[46] NULL,
+	vehlpn							[47] En15509VehicleLicensePlateNumber,
+	vehid							[48] NULL,
+	vehclass						[49] En15509VehicleClass,
+	
+	vehdims							[50] VehicleDimensions,
+	vehaxles						[51] VehicleAxles,
+	vehwtlims						[52] VehicleWeightLimits,
+	vehwtladen						[53] NULL,
+	vehspchars						[54] VehicleSpecificCharacteristics,
+	vehauth							[55] NULL,
+	equObuId						[56] En15509EquipmentObuId,
+	equIccId						[57] NULL,
+	equstat							[58] En15509EquipmentStatus,
+	dvrchars						[59] NULL,
+	
+	paymeansEnv						[60] NULL,
+	paymbal							[61] NULL,
+	paymunit						[62] NULL,
+	paysecdata						[63] NULL,
+	paymeans						[64] PaymentMeans,
+	recdata1						[65] ReceiptData1,
+	recdata2						[66] ReceiptData2,
+	valofcon						[67] NULL,
+	recfinpt						[68] NULL,
+	setmmirq						[69] SetMMIRq,
+	
+	awl								[70] NULL,
+	paca							[71] NULL,
+	eng								[72] NULL,
+	sl								[73] NULL,
+	eev								[74] NULL,
+	dev								[75] NULL,
+	co2ev							[76] NULL,
+	vtd								[77] NULL,
+	tlpn							[78] NULL,
+	tch								[79] NULL,
+	
+	anp								[80] NULL,
+	vehicleAxlesHistory				[81] NULL, -- used in ISO 12813 (CCC)
+	communicationStatus				[82] NULL, -- used in ISO 12813 (CCC)
+	gnssStatus						[83] NULL, -- used in ISO 12813 (CCC)
+	distanceRecordingStatus			[84] NULL, -- used in ISO 12813 (CCC)
+	activeContexts					[85] NULL, -- used in ISO 12813 (CCC)
+	obeStatusHistory				[86] NULL, -- used in ISO 12813 (CCC)
+	...
+	-- the use of privat elements is allowed but not considered for conformance to EN 15509
+	-- private element 87 is used in ISO 13141 (LAC)
+	-- private elements 93 to 101 are used in ISO 12813 (CCC)
+}
+
+END

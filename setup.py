@@ -59,7 +59,6 @@ setup(
         "NAS5G"   : ["CryptoMobile"],
         "corenet" : ["pysctp", "CryptoMobile"],
         "diameter_dict" : ["lxml"],
-        "SEDebugMux": ["crcmod"],
         },
     
     # for pycrate_asn1dir, pycrate_csn1dir, pycrate_gmr1_csn1:
