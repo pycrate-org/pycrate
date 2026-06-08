@@ -1,0 +1,141 @@
+CccModule {iso standard 12813 modules(0) ccc(0) version(1)}
+DEFINITIONS AUTOMATIC TAGS
+::= BEGIN
+IMPORTS
+EquipmentOBUId, PaymentMeans, LPN, VehicleClass, VehicleDimensions, VehicleAxles,
+VehicleWeightLimits, VehicleSpecificCharacteristics, EFC-ContextMark, Provider,
+-- Imports data attributes and elements from EFC which are used for CCC
+GetStampedRq, GetStampedRs, SetMMIRq
+-- Imports function parameters from the EFC Application Interface Definition
+FROM EfcModule {iso standard 14906 modules(0) efc(0) version(1)}
+
+Action-Request, Action-Response, ActionType, ApplicationList, AttributeIdList, AttributeList, Attributes, BeaconID, BST, Dsrc-EID, DSRCApplicationEntityID, Event-Report-Request, Event-Report-Response, EventType, Get-Request, Get-Response, InitialisationRequest, Initialisation-Response, ObeConfiguration, Profile, ReturnStatus, Time, T-APDUs, VST
+FROM DSRCData {iso standard 14906 modules (0) dsrc (1) version (1)};
+-- Imports the L7 DSRCData module data from the EFC Application Interface Definition, i.e.
+-- the lower interface within the CCC scope
+--Note the following are the definitions of the CCC functions:
+CCC-InitialiseComm-Request ::= BST
+CCC-InitialiseComm-Response ::= VST
+CCC-DataRetrieval-Request::= Get-Request (WITH COMPONENTS {fill (SIZE(1)), eid,
+accessCredentials (SIZE(4)), attrIdList})
+CCC-DataRetrieval-Response::= Get-Response (WITH COMPONENTS {..., eid, iid ABSENT})
+CCC-AuthDataRetrieval-Request::= Action-Request (WITH COMPONENTS {mode (TRUE), eid,
+actionType (0), accessCredentials (SIZE(4)), actionParameter })
+-- uses actionParameter (GetStampedRq)
+CCC-AuthDataRetrieval-Response::= Action-Response (WITH COMPONENTS {..., iid ABSENT,
+responseParameter PRESENT}) -- uses responseParameter (GetStampedRs)
+CCC-Notification-Request::= Action-Request (WITH COMPONENTS {mode, eid (0), actionType
+(10), actionParameter }) -- uses actionParameter (SetMMIRq)
+CCC-Notification-Response::= Action-Response (WITH COMPONENTS {..., eid (0), iid ABSENT,
+responseParameter ABSENT})
+CCC-TerminateComm::= Event-Report-Request (WITH COMPONENTS {mode (FALSE), eid (0),
+eventType (0)})
+CCC-TestComm-Request::= Action-Request (WITH COMPONENTS {..., eid (0), actionType (15),
+accessCredentials ABSENT, iid ABSENT})
+CCC-TestComm-Response::= Action-Response (WITH COMPONENTS {..., fill (SIZE(1)), eid (0),
+iid ABSENT})
+-- NOTE: The following are the definitions of the CCC attributes:
+ActiveContext ::= SEQUENCE OF SEQUENCE{
+ contextId Provider,
+ contextVersion INT1
+ }
+CCC-ContextMark ::= EFC-ContextMark
+CommunicationStatus ::= SEQUENCE {
+ timeOfLastTransmission Time,
+ pendingSince Time -- pending since when
+ }
+DistanceRecordingStatus ::= SEQUENCE {
+ odometerStatus OdometerStatus,
+ accumulatedTravelledDistance INT4, -- in meter modulo max
+ deviationFromGnss INT1Signed --in 0.1%, positive indicates GNSS is faster,
+ -- averaged over one hour, standing still periods removed
+ }
+
+GnssStatus ::= SEQUENCE {
+ lastGnssFixLon Longitude,
+ lastGnssFixLat Latitude,
+ lastGnssFixTime Time,
+ currentHDOP CurrentHDOP,
+ lastLAC LastLAC
+ }
+OBEStatusHistory ::= SEQUENCE {
+ statusIndicator INTEGER{
+ noGo (0),
+ go (1)
+ -- (2..255) are reserved for future use
+ } (0..255),
+ timeWhenChanged Time,
+ timeWhenActived Time,
+ timeWhenObePowered Time
+ }
+VehicleAxlesHistory ::= SEQUENCE {
+ timeWhenChanged Time,
+ previousVehicleAxles VehicleAxles
+ }
+VehicleLicensePlateNumber ::= LPN (WITH COMPONENTS {..., licencePlateNumber (SIZE(14))})
+-- NOTE: The following are the definitions of data elements in the CCC attributes:
+CurrentHDOP::= SEQUENCE {
+ hDOP INT1, -- HDOP value, keep max
+ numberOfUsedSatellites INT1 -- Number of satellites from which a GNSS signal
+-- is received
+ }
+INT1 ::= INTEGER(0..255)
+INT1Signed::= INTEGER (-128..127)
+INT2 ::= INTEGER(0..65535)
+INT4 ::= INTEGER(0..4294967295)
+INT4Signed ::= INTEGER(-2147483648..2147483647)
+LastLAC ::= SEQUENCE {
+ timeOfLAC Time, -- Time received in the LAC
+ lACOperator Provider, -- Operator of the LAC
+ rSEId INT2 -- Id of the LAC RSE
+ }
+Latitude ::= INT4Signed --in micro degrees, >0 =north, <0=south, absolute value shall
+-- not exceed 90 degrees
+Longitude ::= INT4Signed --in micro degrees, >0 =east, <0 =west, absolute value shall not
+-- exceed 180 degrees
+OdometerStatus::= ENUMERATED {
+ odometerInterfaceNotPresent (1),
+ presentAndSignalReceived (2),
+ presentAndSignalNotReceived (3),
+ reservedForFutureUse (4)
+ }
+--Note: the following is the extension of the Layer 7 module
+ApplicationContextMark::= SEQUENCE {
+ cCC-ContextMark CCC-ContextMark,
+ aC-CR-Reference OCTET STRING (SIZE (2)),
+ rndOBE OCTET STRING (SIZE (4))
+}
+Container::=CHOICE{
+integer [0] INTEGER,
+bitstring [1] BIT STRING,
+octetstring [2] OCTET STRING (SIZE (0..127), ...),
+universalString [3] UniversalString,
+beaconId [4] BeaconID,
+t-apdu [5] T-APDUs,
+dsrcApplicationEntityId [6] DSRCApplicationEntityID,
+dsrc-Ase-Id[7] Dsrc-EID,
+attrIdList [8] AttributeIdList,
+attrList [9] AttributeList,
+time [15] Time,
+gstrq [17] GetStampedRq,
+gstrs [18] GetStampedRs,
+efccontext [32] EFC-ContextMark,
+vehlpn [47] LPN, -- vehicle licence plate number
+vehclass [49] VehicleClass,
+vehdims [50] VehicleDimensions,
+vehaxles [51] VehicleAxles,
+vehwtlims [52] VehicleWeightLimits,
+vehspchars [54] VehicleSpecificCharacteristics,
+equOBUId [56] EquipmentOBUId,
+paymeans [64] PaymentMeans,
+setmmirq [69] SetMMIRq,
+contCCC1 [81] VehicleAxlesHistory,
+contCCC2 [82] CommunicationStatus,
+contCCC3 [83] GnssStatus,
+contCCC4 [84] DistanceRecordingStatus,
+contCCC5 [85] ActiveContext,
+contCCC6 [86] OBEStatusHistory
+--Defines the CCC Container types as the next values in the row after the efc data types
+--of ISO 14906
+}
+END
