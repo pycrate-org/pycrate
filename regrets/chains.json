@@ -1,0 +1,34 @@
+{
+  "chains": [
+    {
+      "id": "nas-mo-decode-reencode",
+      "steps": [
+        {
+          "cluster": "parse-nas-mo",
+          "input": "05080200f11040005705f44c6a94c033035758a6"
+        },
+        {
+          "cluster": "decode-access-type",
+          "input": "50"
+        },
+        {
+          "cluster": "decode-security-hdr",
+          "input": 0
+        }
+      ]
+    },
+    {
+      "id": "gtpc-nas-combined",
+      "steps": [
+        {
+          "cluster": "parse-gtpc",
+          "input": "3200000a0000000000000001"
+        },
+        {
+          "cluster": "parse-nas-mo",
+          "input": "052401035758a605f4345b7129c2"
+        }
+      ]
+    }
+  ]
+}

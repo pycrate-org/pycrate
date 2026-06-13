@@ -1,0 +1,84 @@
+{
+  "clusters": [
+    {
+      "id": "decode-access-type",
+      "entry": "decode_access_type",
+      "watches": ["decode_access_type"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": ["50", "10", "30", "00"],
+      "description": "5G NAS AccessType IE decode — pure function returning value dict"
+    },
+    {
+      "id": "encode-access-type",
+      "entry": "encode_access_type",
+      "watches": ["encode_access_type"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": [{"spare": 1, "Value": 1}, {"spare": 0, "Value": 2}],
+      "description": "5G NAS AccessType IE encode — value dict to hex bytes"
+    },
+    {
+      "id": "decode-dnn",
+      "entry": "decode_dnn",
+      "watches": ["decode_dnn"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": ["04696e7465726e6574", "02696d"],
+      "description": "5G NAS DNN IE decode — APN name parsing"
+    },
+    {
+      "id": "parse-nas-mo",
+      "entry": "parse_nas_mo",
+      "watches": ["parse_nas_mo"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": [
+        "05080200f11040005705f44c6a94c033035758a6",
+        "052401035758a605f4345b7129c2",
+        "0514a3c729e021042a92f637"
+      ],
+      "description": "NAS Mobile-Originated message parsing — MM/CC/SMS messages"
+    },
+    {
+      "id": "parse-nas-mt",
+      "entry": "parse_nas_mt",
+      "watches": ["parse_nas_mt"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": [
+        "05020210f11040005705f44c6a94c033035758a6",
+        "0514a3c729e021042a92f637"
+      ],
+      "description": "NAS Mobile-Terminated message parsing"
+    },
+    {
+      "id": "parse-gtpc",
+      "entry": "parse_gtpc",
+      "watches": ["parse_gtpc"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": [
+        "3200000a0000000000000001",
+        "140000080000000000000001"
+      ],
+      "description": "GTP-C (TS 29.274) message parsing — create/delete session"
+    },
+    {
+      "id": "decode-security-hdr",
+      "entry": "decode_security_hdr_type",
+      "watches": ["decode_security_hdr_type"],
+      "module": "regrets._wrappers",
+      "stack": "python",
+      "outputTransform": null,
+      "inputs": [0, 1, 2, 3, 4],
+      "description": "5G NAS Security Header Type dictionary lookup"
+    }
+  ]
+}
