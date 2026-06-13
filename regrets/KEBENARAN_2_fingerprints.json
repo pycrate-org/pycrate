@@ -1,0 +1,30 @@
+{
+  "decode-access-type": {
+    "fingerprint": "1zt4dif",
+    "goldenHash": "1zt4dif"
+  },
+  "decode-dnn": {
+    "fingerprint": "4qn3z4t",
+    "goldenHash": "4qn3z4t"
+  },
+  "decode-security-hdr": {
+    "fingerprint": "1pkhz5c",
+    "goldenHash": "1pkhz5c"
+  },
+  "encode-access-type": {
+    "fingerprint": "ct7625r",
+    "goldenHash": "ct7625r"
+  },
+  "parse-gtpc": {
+    "fingerprint": "6a3imtu",
+    "goldenHash": "6a3imtu"
+  },
+  "parse-nas-mo": {
+    "fingerprint": "41261jq",
+    "goldenHash": "41261jq"
+  },
+  "parse-nas-mt": {
+    "fingerprint": "29nftke",
+    "goldenHash": "29nftke"
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "decode-access-type": {
+    "entry": "decode_access_type",
+    "outputs": [
+      {
+        "input": "50",
+        "output": {
+          "spare": 1,
+          "Value": 1
+        }
+      },
+      {
+        "input": "10",
+        "output": {
+          "spare": 0,
+          "Value": 1
+        }
+      },
+      {
+        "input": "30",
+        "output": {
+          "spare": 0,
+          "Value": 3
+        }
+      },
+      {
+        "input": "00",
+        "output": {
+          "spare": 0,
+          "Value": 0
+        }
+      }
+    ]
+  },
+  "encode-access-type": {
+    "entry": "encode_access_type",
+    "outputs": [
+      {
+        "input": {
+          "spare": 1,
+          "Value": 1
+        },
+        "output": "50"
+      },
+      {
+        "input": {
+          "spare": 0,
+          "Value": 2
+        },
+        "output": "20"
+      }
+    ]
+  },
+  "decode-dnn": {
+    "entry": "decode_dnn",
+    "outputs": [
+      {
+        "input": "04696e7465726e6574",
+        "output": {
+          "Len": 4,
+          "APN": []
+        }
+      },
+      {
+        "input": "02696d",
+        "output": {
+          "Len": 2,
+          "APN": []
+        }
+      }
+    ]
+  },
+  "parse-nas-mo": {
+    "entry": "parse_nas_mo",
+    "outputs": [
+      {
+        "input": "05080200f11040005705f44c6a94c033035758a6",
+        "output": {
+          "msg_type": "MMLocationUpdatingRequest",
+          "val": {
+            "MMHeader": {
+              "SkipInd": 0,
+              "ProtDisc": 5,
+              "Seqn": 0,
+              "Type": 8
+            },
+            "CKSN": {
+              "V": 0
+            },
+            "LocUpdateType": {
+              "LocUpdateType": {
+                "FollowOnReq": 0,
+                "spare": 0,
+                "Type": 2
+              }
+            },
+            "LAI": {
+              "LAI": {
+                "PLMN": "00f110",
+                "LAC": 16384
+              }
+            },
+            "MSCm1": {
+              "MSCm1": {
+                "spare": 0,
+                "RevLevel": 2,
+                "EarlyCmCap": 1,
+                "NoA51": 0,
+                "RFClass": 7
+              }
+            },
+            "ID": {
+              "L": 5,
+              "ID": {
+                "Digit1": 15,
+                "Odd": 0,
+                "Type": 4,
+                "TMSI": 1282053312
+              }
+            },
+            "MSCm2": {
+              "T": 51,
+              "L": 3,
+              "MSCm2": {
+                "spare": 0,
+                "RevLevel": 2,
+                "EarlyCmCap": 1,
+                "NoA51": 0,
+                "RFClass": 7,
+                "PSCap": 1,
+                "SSScreeningCap": 1,
+                "MTSMSCap": 1,
+                "VBSNotifCap": 0,
+                "VGCSNotifCap": 0,
+                "FCFreqCap": 0,
+                "MSCm3Cap": 1,
+                "LCSVACap": 1,
+                "UCS2": 0,
+                "SoLSACap": 0,
+                "CMServPrompt": 1,
+                "A53": 1,
+                "A52": 0
+              }
+            }
+          },
+          "chunks_left": 0
+        }
+      },
+      {
+        "input": "052401035758a605f4345b7129c2",
+        "output": {
+          "msg_type": "MMCMServiceRequest",
+          "val": {
+            "MMHeader": {
+              "SkipInd": 0,
+              "ProtDisc": 5,
+              "Seqn": 0,
+              "Type": 36
+            },
+            "CKSN": {
+              "V": 0
+            },
+            "Service": {
+              "V": 1
+            },
+            "MSCm2": {
+              "L": 3,
+              "MSCm2": {
+                "spare": 0,
+                "RevLevel": 2,
+                "EarlyCmCap": 1,
+                "NoA51": 0,
+                "RFClass": 7,
+                "PSCap": 1,
+                "SSScreeningCap": 1,
+                "MTSMSCap": 1,
+                "VBSNotifCap": 0,
+                "VGCSNotifCap": 0,
+                "FCFreqCap": 0,
+                "MSCm3Cap": 1,
+                "LCSVACap": 1,
+                "UCS2": 0,
+                "SoLSACap": 0,
+                "CMServPrompt": 1,
+                "A53": 1,
+                "A52": 0
+              }
+            },
+            "ID": {
+              "L": 5,
+              "ID": {
+                "Digit1": 15,
+                "Odd": 0,
+                "Type": 4,
+                "TMSI": 878407977
+              }
+            },
+            "AddUpdateParams": {
+              "T": 12,
+              "AddUpdateParams": {
+                "spare": 0,
+                "CSMO": 1,
+                "CSMT": 0
+              }
+            }
+          },
+          "chunks_left": 0
+        }
+      },
+      {
+        "input": "0514a3c729e021042a92f637",
+        "output": {
+          "msg_type": "MMAuthenticationResponse",
+          "val": {
+            "MMHeader": {
+              "SkipInd": 0,
+              "ProtDisc": 5,
+              "Seqn": 0,
+              "Type": 20
+            },
+            "RES": {
+              "V": "a3c729e0"
+            },
+            "RESExt": {
+              "T": 33,
+              "L": 4,
+              "V": "2a92f637"
+            }
+          },
+          "chunks_left": 0
+        }
+      }
+    ]
+  },
+  "parse-nas-mt": {
+    "entry": "parse_nas_mt",
+    "outputs": [
+      {
+        "input": "05020210f11040005705f44c6a94c033035758a6",
+        "output": {
+          "msg_type": null,
+          "val": null,
+          "chunks_left": 96
+        }
+      },
+      {
+        "input": "0514a3c729e021042a92f637",
+        "output": {
+          "msg_type": "MMAuthenticationResponse",
+          "val": {
+            "MMHeader": {
+              "SkipInd": 0,
+              "ProtDisc": 5,
+              "Seqn": 0,
+              "Type": 20
+            },
+            "RES": {
+              "V": "a3c729e0"
+            },
+            "RESExt": {
+              "T": 33,
+              "L": 4,
+              "V": "2a92f637"
+            }
+          },
+          "chunks_left": 0
+        }
+      }
+    ]
+  },
+  "parse-gtpc": {
+    "entry": "parse_gtpc",
+    "outputs": [
+      {
+        "input": "3200000a0000000000000001",
+        "output": {
+          "msg_type": null,
+          "val": null,
+          "chunks_left": 3
+        }
+      },
+      {
+        "input": "140000080000000000000001",
+        "output": {
+          "msg_type": null,
+          "val": null,
+          "chunks_left": 3
+        }
+      }
+    ]
+  },
+  "decode-security-hdr": {
+    "entry": "decode_security_hdr_type",
+    "outputs": [
+      {
+        "input": 0,
+        "output": "No security"
+      },
+      {
+        "input": 1,
+        "output": "Integrity protected"
+      },
+      {
+        "input": 2,
+        "output": "Integrity protected and ciphered"
+      },
+      {
+        "input": 3,
+        "output": "Integrity protected with new 5G NAS security context"
+      },
+      {
+        "input": 4,
+        "output": "Integrity protected and ciphered with new 5G NAS security context"
+      }
+    ]
+  }
+}
