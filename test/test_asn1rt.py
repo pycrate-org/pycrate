@@ -1838,6 +1838,29 @@ def _test_rt_base():
     U8s02.from_aper_ws(b'\x06\xce\xb2\xce\xb2\xce\xb2')
     assert( U8s02._val == 'βββ' )
     
+    # U8s04 ::= UTF8String (FROM ("013"))
+    # Ges01 ::= GeneralString (FROM ("013"))
+    # Tes01 ::= TeletexString (FROM ("013"))
+    # for character string types that are not known-multiplier types, a
+    # permitted-alphabet constraint is not PER-visible (X.691 30.6): the value
+    # is encoded as an unconstrained length in octets followed by the octets,
+    # exactly as if the constraint were absent
+    for strtype in ('U8s04', 'Ges01', 'Tes01'):
+        obj = Mod[strtype]
+        obj.from_asn1('"13"')
+        # encoding
+        assert( obj.to_uper() == obj.to_uper_ws() == b'\x02\x31\x33' )
+        assert( obj.to_aper() == obj.to_aper_ws() == b'\x02\x31\x33' )
+        # decoding
+        obj.from_uper(b'\x02\x31\x33')
+        assert( obj._val == '13' )
+        obj.from_uper_ws(b'\x02\x31\x33')
+        assert( obj._val == '13' )
+        obj.from_aper(b'\x02\x31\x33')
+        assert( obj._val == '13' )
+        obj.from_aper_ws(b'\x02\x31\x33')
+        assert( obj._val == '13' )
+    
     # Uns01 ::= UniversalString
     Uns01 = Mod['Uns01']
     Uns01.from_asn1(u'"ambiguïté"')

@@ -66,6 +66,9 @@ BEGIN
   U8s01 ::= UTF8String
   U8s02 ::= UTF8String (SIZE (0..24))
   U8s03 ::= UTF8String (SIZE (0..65535, ...))
+  U8s04 ::= UTF8String (FROM ("013"))
+  Ges01 ::= GeneralString (FROM ("013"))
+  Tes01 ::= TeletexString (FROM ("013"))
   Uns01 ::= UniversalString
   Uns02 ::= UniversalString (SIZE (0..255, ...))
   

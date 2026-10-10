@@ -1950,7 +1950,7 @@ Virtual parent for any ASN.1 *String object
     
     def _get_char_dyn(self):
         # returns the number of bits required to encode a character
-        if self._const_alpha:
+        if self._const_alpha and self._clen is not None:
             if self._const_alpha._ev is not None:
                 # extensible alphabet constraint
                 cdyn = self._clen
