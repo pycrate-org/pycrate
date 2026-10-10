@@ -68,6 +68,9 @@ class Test_Asn1rt:
         'U8s01',
         'U8s02',
         'U8s03',
+        'U8s04',
+        'Ges01',
+        'Tes01',
         'Uns01',
         'Uns02',
         'Uti01',
@@ -127,6 +130,9 @@ class Test_Asn1rt:
         'U8s01',
         'U8s02',
         'U8s03',
+        'U8s04',
+        'Ges01',
+        'Tes01',
         'Uns01',
         'Uns02',
         'Uti01',
@@ -332,6 +338,18 @@ class Test_Asn1rt:
     U8s03 = STR_UTF8(name='U8s03', mode=MODE_TYPE)
     U8s03._const_sz = ASN1Set(rv=[], rr=[ASN1RangeInt(lb=0, ub=65535)], ev=[], er=[])
     
+    #-----< U8s04 >-----#
+    U8s04 = STR_UTF8(name='U8s04', mode=MODE_TYPE)
+    U8s04._const_alpha = ASN1Set(rv=['0', '1', '3'], rr=[], ev=None, er=[])
+    
+    #-----< Ges01 >-----#
+    Ges01 = STR_GENE(name='Ges01', mode=MODE_TYPE)
+    Ges01._const_alpha = ASN1Set(rv=['0', '1', '3'], rr=[], ev=None, er=[])
+    
+    #-----< Tes01 >-----#
+    Tes01 = STR_TELE(name='Tes01', mode=MODE_TYPE)
+    Tes01._const_alpha = ASN1Set(rv=['0', '1', '3'], rr=[], ev=None, er=[])
+    
     #-----< Uns01 >-----#
     Uns01 = STR_UNIV(name='Uns01', mode=MODE_TYPE)
     
@@ -462,6 +480,9 @@ class Test_Asn1rt:
         U8s01,
         U8s02,
         U8s03,
+        U8s04,
+        Ges01,
+        Tes01,
         Uns01,
         Uns02,
         Uti01,
