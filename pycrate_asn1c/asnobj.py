@@ -6325,7 +6325,7 @@ class REAL(ASN1Obj):
         elif self.REPR_VAL == b'N' and val[1] == 10:
             return '%iE%i' % (val[0], val[2])
         else:
-            return '{mantissa %i, base %i, exponent %i}'.format(*val)
+            return '{mantissa %i, base %i, exponent %i}' % (*val,)
 
 class ENUM(ASN1Obj):
     __doc__ = """
@@ -6430,7 +6430,7 @@ class BIT_STR(ASN1Obj):
         # an ASN.1 compliant value
         if self.REPR_VAL == b'H' and not val[1]%4:
             # hstr
-            hstr = hex(val[0])[2:]
+            hstr = hex(val[0])[2:].upper()
             if 4*len(hstr) < val[1]:
                 hstr = (val[1]//4 - len(hstr))*'0' + hstr
             return '\'%s\'H' % hstr
@@ -6481,21 +6481,15 @@ class OCT_STR(ASN1Obj):
         # to be applied to an internal single value `val' to get 
         # an ASN.1 compliant value
         if isinstance(val, tuple):
-            if self.REPR_VAL == b'H':
-                return '\'%s\'H' % hexlify(val[0]).upper()
-            else:
-                bstr = bin(bytes_to_uint(val[0], len(val[0])))[2:]
-                if len(bstr) < 8*len(val[0]):
-                    bstr = (8*len(val[0]) - len(bstr))*'0' + bstr
-                return '\'%s\'B' % bstr
+            val = val[0]
+        if self.REPR_VAL == b'H':
+            return '\'%s\'H' % hexlify(val).decode('ascii').upper()
         else:
-            if self.REPR_VAL == b'H':
-                return '\'%s\'H' % hexlify(val).upper()
-            else:
-                bstr = bin(bytes_to_uint(val, len(val)))[2:]
-                if len(bstr) < 8*len(val):
-                    bstr = (8*len(val) - len(bstr))*'0' + bstr
-                return '\'%s\'B' % bstr
+            valbits = 8*len(val)
+            bstr = bin(bytes_to_uint(val, valbits))[2:]
+            if len(bstr) < valbits:
+                bstr = (valbits - len(bstr))*'0' + bstr
+            return '\'%s\'B' % bstr
 
 
 _String_docstring = """
@@ -6701,7 +6695,7 @@ class TIME_UTC(_Time):
     __doc__ = """
     ASN.1 basic type UTCTime object
     
-    single value: Python 7-tuple of int (AA, MM, DD, HH, MM, [SS,] Z),
+    single value: Python 7-tuple of str (AA, MM, DD, HH, MM, [SS,] Z),
         SS is optional, hence 6th element can be None
         Z corresponds to the UTC decay
     
@@ -6715,22 +6709,18 @@ class TIME_UTC(_Time):
     def _to_asn1(self, val):
         # to be applied to an internal single value `val' to get 
         # an ASN.1 compliant value
-        ret = '%.2i%.2i%.2i%.2i%.2i' % val[:5]
+        ret = ''.join(val[:5])
         if val[5] is not None:
-            ret += '%.2i' % val[5]
-        if val[6] == 0:
-            ret += 'Z'
-        elif val[6] > 0:
-            ret += '+%.4i' % val[6]
-        else:
-            ret += '%.4i' % val[6]
+            ret += val[5]
+        if val[6] is not None:
+            ret += val[6]
         return ret
 
 class TIME_GEN(_Time):
     __doc__ = """
     ASN.1 basic type GeneralizedTime object
     
-    single value: Python 8-tuple of int 
+    single value: Python 8-tuple of str
         (AAAA, MM, DD, HH, [MM, [SS, [FFFF,]]], Z),
         MM, SS and FFFF are optional, hence 5th, 6th and 7th element can be None
         Z corresponds to the UTC decay and is optional, hence 8th element 
@@ -6746,19 +6736,15 @@ class TIME_GEN(_Time):
     def _to_asn1(self, val):
         # to be applied to an internal single value `val' to get 
         # an ASN.1 compliant value
-        ret = '%.4i%.2i%.2i%.2i' % val[:4]
+        ret = ''.join(val[:4])
         if val[4] is not None:
-            ret += '%.2i' % val[4]
+            ret += val[4]
             if val[5] is not None:
-                ret += '%.2i' % val[5]
+                ret += val[5]
                 if val[6] is not None:
-                    ret += '.%.4i' % val[6]
-        if val[7] == 0:
-            ret += 'Z'
-        elif val[7] > 0:
-            ret += '+%.4i' % val[7]
-        elif val[7] < 0:
-            ret += '%.4i' % val[7]
+                    ret += '.' + val[6]
+        if val[7] is not None:
+            ret += val[7]
         return ret
 
 #///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#

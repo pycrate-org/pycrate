@@ -186,7 +186,52 @@ class TestPycrate(unittest.TestCase):
         with open('./test/res/Imports.json') as inj, \
             open('./test_asn_todelete/Imports.json') as outj:
             self.assertListEqual(list(inj), list(outj))
-        print('[<>] all ASN.1 modules loaded successfully')
+        GLOBAL.clear()
+
+    # asn1c _to_asn1()
+    def test_asn1c_to_asn1(self):
+        print('[<>] testing pycrate_asn1c _to_asn1() methods')
+        # compile and generate the Hardcore ASN.1 module
+        with open('./test/res/Hardcore.asn', 'r') as fd:
+            asntext = fd.read()
+        compile_text(asntext)
+
+        # check various types
+        hc = GLOBAL.MOD['HardcoreSyntax']
+        hc['bs01'].REPR_VAL = b'H'  # force BIT STRING hex repr
+        hc['os01'].REPR_VAL = b'H'  # force OCTET STRING hex repr
+        hc['real00'].REPR_VAL = b'N'  # force REAL numeric repr
+        hc['real01'].REPR_VAL = b'N'  # force REAL numeric repr
+        hc['real02'].REPR_VAL = b'N'  # force REAL numeric repr
+        for var, expect in {
+            'null00': 'NULL',
+            'bool00': 'TRUE',
+            'int00': '-1',
+            'int01': '0',
+            'int02': '1024',
+            'real00': '25386E9',   # 25.386e12
+            'real01': '1024E-56',
+            'real02': '-10000E1',  # -100.00e3
+            'real03': '{mantissa 25386, base 10, exponent 9}',
+            'real04': '{mantissa 3, base 2, exponent -128}',
+            'enum01': 'eX',
+            'bs00': '\'00111110000110011101101110001101\'B',
+            'bs01': '\'0123456789ABCDEF\'H',
+            'os00': '\'00111110000110011101101110001101\'B',
+            'os01': '\'0123456789ABCDEF\'H',
+            'oid01': '{0 0 13 28 59}',
+            'roid01': '{28 59 2569 6533125}',
+            'utim00': '1606251200Z',
+            'utim01': '160625123055-0230',
+            'gtim00': '2016062512+0200',
+            'gtim01': '20160625124539.5290',
+            'gtim02': '20160625124539.5290Z',  # fractional always '.'
+            # TODO: should _String._to_val() be doubling quotes or returning as-is?
+            'str00': '"abcd """"ABCD"""" efgh """"EFGH"""" \'test\' OK; go-there !"',
+        }.items():
+            print(f'[<>]  check {var}={expect}')
+            self.assertEqual(hc[var]._to_asn1(hc[var]._val), expect)
+
         GLOBAL.clear()
 
     # asn1rt
