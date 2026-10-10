@@ -186,6 +186,12 @@ def compile_text(text=u'', **kwargs):
         - _ext_: str (IMPLIED) or None, extensibility mode of the module
         - _exp_: list of str or None, list of objects' name exported
         - _imp_: dict of imported objects' name (str) to list(corresponding module names (str))
+        - _imports_: list of dict per imported module, each dict comprised of:
+            - name: str, module name
+            - obj: list of str, all objects' name defined in the module
+            - oid: list of uint or None, OID of the module
+            - oidstr: str or None
+            - with: str or None, WITH expression
         - _obj_: list of str, all objects' name defined in the module
         - _type_: list of str, all ASN.1 subtypes' name defined in the module
         - _val_: list of str, all ASN.1 values' name defined in the module
@@ -360,6 +366,7 @@ def _compile_text_pass(text, with_order, **kwargs):
         # 5) scan the asnblock for module imports
         imports, cur = module_get_import(asnblock)
         module['_imp_'] = collections.defaultdict(list)
+        module['_imports_'] = imports or []
         if cur:
             asnblock = asnblock[cur:]
             for imp in imports:
@@ -424,6 +431,7 @@ def build_implicit_mod():
     module['_name_'] = '_IMPL_'
     module['_oid_']  = []
     module['_imp_'] = collections.defaultdict(list)
+    module['_imports_'] = []
     module['_obj_'] = [TYPE_REAL, TYPE_EXT, TYPE_EMB_PDV, TYPE_CHAR_STR, TYPE_TYPEIDENT, TYPE_ABSSYNT]
     GLOBAL.COMP['NS']['mod'] = '_IMPL_'
     #
@@ -677,6 +685,8 @@ def module_get_import(text=''):
             next_imp = imp[fro.start() + cur_end:].strip()
             # get all ASN.1 objects reference before FROM
             obj = imp[:fro.start()].strip()
+            if obj.endswith(','):
+                raise(ASN1ProcTextErr('[proc] IMPORTS has trailing comma before FROM'))
             # clean them up and split them to a list
             obj = map(strip, re.sub(r'\s{1,}', ' ', obj).split(','))
             # remove {} at the end of parameterized objects

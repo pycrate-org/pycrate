@@ -5,7 +5,7 @@ BEGIN
 IMPORTS
   ConflictSeq,
   Imp1Int,
-  Imp1Str,
+  Imp1Str
     FROM ImportModule1
 
   ConflictSeq,

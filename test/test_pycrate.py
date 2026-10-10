@@ -112,26 +112,24 @@ class TestPycrate(unittest.TestCase):
         if 'test_asn_todelete' not in os.listdir('.'):
             os.mkdir('test_asn_todelete')
         # compile and generate the Hardcore ASN.1 module
-        fd = open('./test/res/Hardcore.asn', 'r')
-        asntext = fd.read()
-        fd.close()
-        fd_init = open('./test_asn_todelete/__init__.py', 'w')
-        fd_init.write('__all__ = [')
-        compile_text(asntext)
-        generate_modules(PycrateGenerator, './test_asn_todelete/Hardcore.py')
-        generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Hardcore.json')
-        GLOBAL.clear()
-        fd_init.write('\'Hardcore\', ')
-        if test_all_comp:
-            print(ASN_SPECS)
-            # compile and generate all specifications from the asndir
-            for sn in ASN_SPECS:
-                compile_spec(shortname=sn)
-                generate_modules(PycrateGenerator, './test_asn_todelete/%s.py' % sn)
-                GLOBAL.clear()
-                fd_init.write('\'%s\',' % sn)
-        fd_init.write(']\n')
-        fd_init.close()
+        with open('./test/res/Hardcore.asn', 'r') as fd:
+            asntext = fd.read()
+        with open('./test_asn_todelete/__init__.py', 'w') as fd_init:
+            fd_init.write('__all__ = [')
+            compile_text(asntext)
+            generate_modules(PycrateGenerator, './test_asn_todelete/Hardcore.py')
+            generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Hardcore.json')
+            GLOBAL.clear()
+            fd_init.write('\'Hardcore\', ')
+            if test_all_comp:
+                print(ASN_SPECS)
+                # compile and generate all specifications from the asndir
+                for sn in ASN_SPECS:
+                    compile_spec(shortname=sn)
+                    generate_modules(PycrateGenerator, './test_asn_todelete/%s.py' % sn)
+                    GLOBAL.clear()
+                    fd_init.write('\'%s\',' % sn)
+            fd_init.write(']\n')
         print('[<>] all ASN.1 modules generated to ./test_asn_todelete/')
         # load all specification
         print('[<>] loading all compiled module')
@@ -167,6 +165,19 @@ class TestPycrate(unittest.TestCase):
         with open('./test/res/Imports.asn', 'r') as fd:
             asntext = fd.read()
         compile_text(asntext)
+        # check various module variables
+        assert(GLOBAL.MOD['BaseModule']['_name_'] == 'BaseModule')
+        self.assertListEqual(
+            GLOBAL.MOD['BaseModule']['_imp_']['ConflictSeq'],
+            ['ImportModule1', 'ImportModule2'])
+        self.assertDictEqual(
+            GLOBAL.MOD['BaseModule']['_imports_'][0],
+            {'name': 'ImportModule1',
+             'obj': ['ConflictSeq', 'Imp1Int', 'Imp1Str'],
+             'oid': [],
+             'oidstr': '',
+             'with': None})
+        self.assertListEqual(GLOBAL.MOD['ImportModule2']['_imports_'], [])
         # generate JSON dependency graph
         generate_modules(JSONDepGraphGenerator, './test_asn_todelete/Imports.json')
         GLOBAL.clear()

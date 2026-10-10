@@ -60,6 +60,12 @@ def make_GLOBAL(global_name=None):
                                ('_exp_'    : list of exported objects name or None),
                                ('_imp_'    : dict of imported objects name as index 
                                              and corresponding module name),
+                               ('_imports_': list of dict per import, each dict has keys:
+                                    - name: str, module name
+                                    - obj: list of str, all objects' name defined in the module
+                                    - oid: list of uint or None, OID of the module
+                                    - oidstr: str or None
+                                    - with: str or None, WITH expression),
                                ('_obj_'    : list of all objects name),
                                ('_type_'   : list of types name),
                                ('_set_'    : list of sets name),
