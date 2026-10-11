@@ -44,7 +44,7 @@ from .TS24007       import *
 from .TS24526_UEPOL import *
 from .TS24588_UEPOL import *
 from .TS24008_IE    import (
-    PLMN, 
+    PLMN, PLMNList,
     )
 
 
@@ -82,6 +82,8 @@ _UEPolPartType_dict = {
     2 : 'ANDSP',
     3 : 'V2XP',
     4 : 'ProSeP',
+    5 : 'A2XP',
+    6 : 'RSLPP',
     }
 
 
@@ -93,7 +95,7 @@ class UEPolPart(Envelope):
         Alt('Cont', GEN={
             1 : URSPRules(),
             2 : ANDSPInfos(),
-            3 : V2XPInfos()
+            3 : V2XPInfos(),
             # TODO: ProSePInfos(), see TS 24.555
             },
             DEFAULT=Buf('unk', val=b'', rep=REPR_HEX),
@@ -102,11 +104,11 @@ class UEPolPart(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: self[3].get_len())
-        self[3].set_blauto(lambda: self[0].get_val()<<3)
+        self[0].set_valauto(lambda: self[3].get_len()+1)
+        self[3].set_blauto(lambda: (self[0].get_val()-1)<<3)
 
 
-class UEPolInstruction(Envelope):
+class UEPolInstr(Envelope):
     _GEN = (
         Uint16('Len'),
         Uint16('UPSC', rep=REPR_HEX),
@@ -115,15 +117,15 @@ class UEPolInstruction(Envelope):
     
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: self[2].get_len())
-        self[2].set_blauto(lambda: self[0].get_val()<<3)
+        self[0].set_valauto(lambda: self[2].get_len()+2)
+        self[2].set_blauto(lambda: (self[0].get_val()-2)<<3)
 
 
 class UEPolSectionSublist(Envelope):
     _GEN = (
         Uint16('Len'),
         PLMN(),
-        Sequence('Cont', GEN=UEPolInstruction())
+        Sequence('Cont', GEN=UEPolInstr())
         )
     
     def __init__(self, *args, **kwargs):
@@ -149,7 +151,7 @@ class UEPolResult(Envelope):
         )
 
 
-class UEPolSectionMgmtSubresult(Envelope):
+class UEPolSectionSubresult(Envelope):
     _GEN = (
         Uint8('Num'),
         PLMN(),
@@ -162,8 +164,8 @@ class UEPolSectionMgmtSubresult(Envelope):
         self[2].set_numauto(lambda: self[0].get_val())
 
 
-class UEPolSectionMgmtResult(Sequence):
-    _GEN = UEPolSectionMgmtSubresult()
+class UEPolSectionResult(Sequence):
+    _GEN = UEPolSectionSubresult()
 
 
 #------------------------------------------------------------------------------#
@@ -193,7 +195,7 @@ class UPSIList(Sequence):
 # TS 24.501, section D.6.5
 #------------------------------------------------------------------------------#
 
-class UEPolicyCm(Envelope):
+class UEPolCm(Envelope):
     _GEN = (
         Uint('spare', bl=7),
         Uint('ANDSPSupp', bl=1),
@@ -231,7 +233,7 @@ class UEOSId(Array):
 # TS 24.501, section D.6.7
 #------------------------------------------------------------------------------#
 
-class UEPolicyNetCm(Envelope):
+class UEPolNetCm(Envelope):
     _GEN = (
         Uint('spare', bl=7),
         Uint('NSSUI', bl=1),
@@ -256,16 +258,103 @@ class UEPolicyNetCm(Envelope):
 
 
 #------------------------------------------------------------------------------#
+# VPS URSP configuration
+# TS 24.501, section D.6.8
+#------------------------------------------------------------------------------#
+
+class _VPSURSPConfigVPLMNs(Envelope):
+    _GEN = (
+        Uint8('Num'),
+        PLMNList()
+        )
+    
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self[0].set_valauto(lambda: self[1].get_num())
+        self[1].set_numauto(lambda: self[0].get_val())
+    
+    def decode(self):
+        return [self['Num'].get_val(), self['PLMNList'].decode()]
+
+
+class _VPSURSPConfigMCCs(Envelope):
+    _GEN = (
+        Uint8('Num'),
+        Buf('Values', rep=REPR_HEX)
+        )
+    
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self[0].set_valauto(lambda: self._get_num_mccs())
+        self[1].set_blauto(lambda: self._get_len_mccs())
+    
+    def _get_num_mccs(self):
+        mccs_len  = self['Values'].get_len()
+        num, rest = mccs_len // 3, mccs_len % 3
+        if rest:
+            # odd number of MCCs
+            num += 1
+        return num
+    
+    def _get_len_mccs(self):
+        mccs_num = self['Num'].get_val()
+        if mccs_num % 2:
+            # odd number of MCCs
+            return ((mccs_num//2)*3 + 2)<<3
+        else:
+            return ((mccs_num//2)*3)<<3
+    
+    # Note: we're missing proper encoding / decoding for those nested MCC pairs
+
+
+class _VPSURSPConfigNetDesc(Envelope):
+    _GEN = (
+        Uint8('Type', val=2, dic={1: 'one or more VPLMNs', 2: 'one or more MCCs', 3: 'any VPLMN'}),
+        Alt('Entries', GEN={
+            1 : _VPSURSPConfigVPLMNs('VPLMNs'),
+            2 : _VPSURSPConfigMCCs('MCCs'),
+            3 : Buf('none', bl=0),
+            },
+            DEFAULT=Buf('unk', val=b'', rep=REPR_HEX),
+            sel=lambda self: self.get_env()['Type'].get_val())
+        )
+
+
+class _VPSURSPConfigTuple(Envelope):
+    _GEN = (
+        Uint16('Len'),
+        Uint8('ID'),
+        Uint8('NumNetDescs'),
+        Sequence('NetDescs', GEN=_VPSURSPConfigNetDesc('NetDesc'))
+        )
+    
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self['Len'].set_valauto(lambda: self['NetDescs'].get_len() + 2)
+        self['NumNetDescs'].set_valauto(lambda: self['NetDescs'].get_num())
+        self['NetDescs'].set_numauto(lambda: self['NumNetDescs'].get_val())
+
+
+class VPSURSPConfig(Envelope):
+    _GEN = (
+        Uint('spare', bl=6, rep=REPR_HEX),
+        Uint('RT', val=1, bl=2, dic={1: 'per-tuple replacement', 2: 'full list of tuples'}),
+        Sequence('Tuples', GEN=_VPSURSPConfigTuple('Tuple'))
+        )
+
+
+#------------------------------------------------------------------------------#
 # Manage UE policy command
 # TS 24.501, section D.5.1
 #------------------------------------------------------------------------------#
 
-class FGUEPOLManageUEPolicyCommand(Layer3):
-    _name = '5GUEPOLManageUEPolicyCommand'
+class FGUEPOLManageUEPolCmd(Layer3):
+    _name = '5GUEPOLManageUEPolCmd'
     _GEN = (
         FGUEPOLHeader(val={'Type':1}),
-        Type6LVE('UEPolSectionList', val={'V':b'\0\7\0\xf1\x10\0\3\0\0\0\0\0'}, IE=UEPolSectionList()),
-        Type4TLV('UEPolicyCm', val={'T':0x42, 'V':b'\0'}, IE=UEPolicyNetCm()),
+        Type6LVE('UEPolSectionList', val={'V':b'\0\x09\0\7\0\xf1\x10\0\2\0\0'}, IE=UEPolSectionList()),
+        Type4TLV('UEPolNetCm', val={'T':0x42, 'V':b'\0'}, IE=UEPolNetCm()),
+        Type6TLVE('VPSURSPConfig', val={'T': 0x70, 'V':b'\1' }, IE=VPSURSPConfig())
         )
 
 
@@ -274,8 +363,8 @@ class FGUEPOLManageUEPolicyCommand(Layer3):
 # TS 24.501, section D.5.2
 #------------------------------------------------------------------------------#
 
-class FGUEPOLManageUEPolicyComplete(Layer3):
-    _name = '5GUEPOLManageUEPolicyComplete'
+class FGUEPOLManageUEPolCmpl(Layer3):
+    _name = '5GUEPOLManageUEPolCmpl'
     _GEN = (
         FGUEPOLHeader(val={'Type':2}),
         )
@@ -286,11 +375,11 @@ class FGUEPOLManageUEPolicyComplete(Layer3):
 # TS 24.501, section D.5.3
 #------------------------------------------------------------------------------#
 
-class FGUEPOLManageUEPolicyCommandReject(Layer3):
-    _name = '5GUEPOLManageUEPolicyCommandReject'
+class FGUEPOLManageUEPolRej(Layer3):
+    _name = '5GUEPOLManageUEPolRej'
     _GEN = (
         FGUEPOLHeader(val={'Type':3}),
-        Type6LVE('UEPolSectionMgmtResult', val={'V':b'\1\0\xf1\x10\0\0\0\0\x6f'}, IE=UEPolSectionMgmtResult()),
+        Type6LVE('UEPolSectionResult', val={'V':b'\1\0\xf1\x10\0\0\0\0\x6f'}, IE=UEPolSectionResult()),
         )
 
 
@@ -304,7 +393,7 @@ class FGUEPOLStateInd(Layer3):
     _GEN = (
         FGUEPOLHeader(val={'Type':4}),
         Type6LVE('UPSIList', val={'V':b'\0\5\0\xf1\x10\0\0'}, IE=UPSIList()),
-        Type4LV('UEPolicyCm', val={'V':b'\0'}, IE=UEPolicyCm()),
+        Type4LV('UEPolCm', val={'V':b'\0'}, IE=UEPolCm()),
         Type4TLV('UEOSId', val={'T':0x41, 'V':16*b'\0'}, IE=UEOSId())
         )
 
@@ -314,12 +403,11 @@ class FGUEPOLStateInd(Layer3):
 #------------------------------------------------------------------------------#
 
 FGUEPOLTypeClasses = {
-    1 : FGUEPOLManageUEPolicyCommand,
-    2 : FGUEPOLManageUEPolicyComplete,
-    3 : FGUEPOLManageUEPolicyCommandReject,
+    1 : FGUEPOLManageUEPolCmd,
+    2 : FGUEPOLManageUEPolCmpl,
+    3 : FGUEPOLManageUEPolRej,
     4 : FGUEPOLStateInd
     }
 
 def get_5guepol_msg_instances():
     return {k: FGUEPOLTypeClasses[k]() for k in FGUEPOLTypeClasses}
-
