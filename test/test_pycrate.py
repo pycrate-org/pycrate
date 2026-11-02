@@ -237,6 +237,7 @@ class TestPycrate(unittest.TestCase):
     # asn1rt
     def test_asn1rt(self):
         print('[<>] testing pycrate_asn1rt')
+        test_setobj_intersect()
         test_rt_base()
         test_rrc3g()
         test_lteran()

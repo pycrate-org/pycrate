@@ -2157,6 +2157,24 @@ def _test_rt_base():
     
     return 0
 
+def test_setobj_intersect():
+    # integer root ranges, for non-extensible and extensible sets
+    for ev in (None, []):
+        left  = ASN1Set(rr=[ASN1RangeInt(0, 10)], ev=ev)
+        right = ASN1Set(rr=[ASN1RangeInt(5, 15)], ev=ev)
+        inter = left.intersect(right)
+        assert( [(r.lb, r.ub) for r in inter._rr] == [(5, 10)] )
+        assert( inter.in_root(5) and inter.in_root(10) )
+        assert( not inter.in_root(4) and not inter.in_root(11) )
+        assert( inter.is_ext() == (ev is not None) )
+    # individual root values outside the intersection go to the extension
+    left  = ASN1Set(rv=[20], rr=[ASN1RangeInt(0, 10)], ev=[])
+    right = ASN1Set(rr=[ASN1RangeInt(5, 15)], ev=[])
+    inter = left.intersect(right)
+    assert( inter.in_root(7) and not inter.in_root(20) )
+    assert( inter.in_ext(20) )
+    return 0
+
 def test_rt_base():
     _load_rt_base()
     _test_rt_base()

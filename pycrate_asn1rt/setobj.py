@@ -851,7 +851,7 @@ class ASN1Set(object):
         return self._rv == [] and self._rr == []
     
     def is_ext(self):
-        return self._er is not None
+        return self._ev is not None
     
     def __contains__(self, v):
         if self._CONTAIN_WEXT:
@@ -928,13 +928,14 @@ class ASN1Set(object):
                 if not ret.in_root(v) and not ret.in_ext(v):
                     ret._ev.append(v)
             # 4.3) add self and S root values not intersecting
-            for v in self.root:
+            # (root ranges are already part of ret._er, from 4.1)
+            for v in self._rv:
                 if not ret.in_root(v) and not ret.in_ext(v):
                     ret._ev.append(v)
-            for v in S.root:
+            for v in S._rv:
                 if not ret.in_root(v) and not ret.in_ext(v):
                     ret._ev.append(v)
-        ret._init()
+        ret._init(True, True)
         return ret
     
     def get_root_dyn(self):
