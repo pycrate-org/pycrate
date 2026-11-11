@@ -1607,17 +1607,22 @@ class CAGInfo(Envelope):
     _GEN = (
         Uint8('Len'),
         PLMN(),
+        Uint('spare', bl=7, rep=REPR_HEX),
+        Uint('CAGOnly', val=0, bl=1, dic={
+            0: 'UE allowed to access 5GS via non-CAG cells',
+            1: 'UE not allowed to access 5GS via non-CAG cells'}),
         Array('CAGIDList', GEN=Uint32('CAGID', rep=REPR_HEX))
         )
-    
+
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 3 + self[2].get_len())
-        self[2].set_blauto(lambda: (self[0].get_val()-3)<<3)
-    
+        self[0].set_valauto(lambda: 4 + self[4].get_len())
+        self[4].set_blauto(lambda: (self[0].get_val() - 4) << 3)
+
     def decode(self):
         return {
             'PLMN'      : self['PLMN'].decode(),
+            'CAGOnly'   : self['CAGOnly'].get_val(),
             'CAGIDList' : self['CAGIDList'].get_val()
             }
 
@@ -2753,27 +2758,115 @@ class RegistrationWaitRange(Envelope):
 # TS 24.501, 9.11.3.86
 #------------------------------------------------------------------------------#
 
-class ExtCAGInfo(Envelope):
+# Needed here to avoid circular imports
+class _RouteSelectDescCompTimeWin(Envelope):
     _GEN = (
-        Uint8('Len'),
-        PLMN(),
-        Uint('spare', bl=7, rep=REPR_HEX),
-        Uint('CAGOnly', val=0, bl=1, dic={
-            0 : 'UE allowed to access 5GS via non-CAG cells',
-            1 : 'UE not allowed to access 5GS via non-CAG cells'}),
-        Array('CAGIDList', GEN=Uint32('CAGID', rep=REPR_HEX))
-        )
-    
+        Envelope('StartTime', GEN=(
+            Uint32('Second'),
+            Uint32('Fraction')
+        )),
+        Envelope('StopTime', GEN=(
+            Uint32('Second'),
+            Uint32('Fraction')
+        ))
+    )
+    def decode(self):
+        return {
+            'StartTime' : {'Second':self[0][0].get_val(), 'Fraction':self[0][1].get_val()},
+            'StopTime' : {'Second':self[1][0].get_val(), 'Fraction':self[1][1].get_val()}
+        }
+
+
+class CAGIDAdditionalInfo(Envelope):
+    _GEN = (
+        Uint16('Len'),
+        Uint32('CAGID', rep=REPR_HEX),
+        Uint('spare', bl=1),
+        Uint('SVII', bl=6, dic={
+            0b000000: "Spare validity information is absent",
+            0b111111: "Spare validity information is present"
+        }),
+        Uint('TVII', bl=1, dic={
+            0: "Time validity information field is absent",
+            1: "Time validity information field is present"
+        }),
+        Uint8('TimePeriodCnt'),
+        Sequence('TimePeriods', GEN=_RouteSelectDescCompTimeWin())
+    )
+
     def __init__(self, *args, **kwargs):
         Envelope.__init__(self, *args, **kwargs)
-        self[0].set_valauto(lambda: 4 + self[4].get_len())
-        self[4].set_blauto(lambda: (self[0].get_val()-4)<<3)
-    
+        self[0].set_valauto(lambda: 6 + 16 * self[5].get_val())
+        self[5].set_valauto(lambda: self[6].get_num())
+        self[6].set_numauto(lambda: self[5].get_val())
+        self[6].set_transauto(lambda: not self[4])
+
+    def decode(self):
+        return {
+            'Len': self[0].get_val(),
+            'CAGID': self[1].get_val(),
+            'SVII': self[3].get_val(),
+            'TVII': self[4].get_val(),
+            'TimePeriodCnt': self[5].get_val(),
+            'TimePeriods' : [x.decode() for x in self['TimePeriods']]
+        }
+
+
+class CAGAdditionalInfoList(Envelope):
+    _GEN = (
+        Uint16('Len'),
+        Sequence('CAGIDAdditionalInfos', GEN=CAGIDAdditionalInfo())
+    )
+
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self[0].set_valauto(lambda: self[1].get_len())
+    def decode(self):
+        12
+        return {'Len': self['Len'].get_val(),
+                'CAGIDAdditionalInfos': [x.decode() for x in self[1]]}
+
+class ExtCAGInfo(Envelope):
+    _GEN = (
+        Uint16('Len'),
+        PLMN(),
+        Uint('spare', bl=4, rep=REPR_HEX),
+        Uint('CAILI', val=0, bl=1, dic={
+            0: "CAG-ID with additional information list field is absent",
+            1: "CAG-ID with additional information list field is present"
+        }),
+        Uint('LCI', val=0, bl=1, dic={
+            0: "Length of CAG-ID without additional information list field is absent",
+            1: "Length of CAG-ID without additional information list field is present"
+        }),
+        Uint('spare', bl=1, rep=REPR_HEX),
+        Uint('CAGOnly', val=0, bl=1, dic={
+            0: 'UE allowed to access 5GS via non-CAG cells',
+            1: 'UE not allowed to access 5GS via non-CAG cells'}),
+        Uint16('LenCAGIDListWithout'),
+        Array('CAGIDList', GEN=Uint32('CAGID', rep=REPR_HEX)),
+        CAGAdditionalInfoList()
+    )
+
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self[0].set_valauto(lambda: 4 +
+                                    (2 if self[4].get_val() else 0) +
+                                    self[8].get_len() +
+                                    self[9].get_len())
+        self[7].set_transauto(lambda: not self[4].get_val())
+        self[7].set_valauto(lambda: self[8].get_len())
+        self[8].set_numauto(lambda: self[7].get_val())
+        self[9].set_transauto(lambda: not self[3].get_val())
+
     def decode(self):
         return {
             'PLMN'      : self['PLMN'].decode(),
+            'CAILI'     : self['CAILI'].get_val(),
+            'LCI'       : self['LCI'].get_val(),
             'CAGOnly'   : self['CAGOnly'].get_val(),
-            'CAGIDList' : self['CAGIDList'].get_val()
+            'CAGIDList' : [cag.decode() for cag in self['CAGIDList']],
+            'CAGAdditionalInfoList': self['CAGAdditionalInfoList'].decode()
             }
 
 
