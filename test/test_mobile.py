@@ -44,7 +44,9 @@ from pycrate_mobile.TS0960_GTPv0    import parse_GTPv0
 from pycrate_mobile.TS29060_GTP     import parse_GTP
 from pycrate_mobile.TS29281_GTPU    import parse_GTPU
 from pycrate_mobile.TS29274_GTPC    import parse_GTPC
-from pycrate_mobile.TS29244_PFCP    import parse_PFCP
+from pycrate_mobile.TS29244_PFCP    import (
+    parse_PFCP, AccessAvailabilityReport, OverloadControlInformation, PFCPIEType
+    )
 from pycrate_diameter.Diameter      import DiameterGeneric
 from pycrate_diameter.DiameterIETF  import DiameterIETF
 from pycrate_diameter.Diameter3GPP  import Diameter3GPP
@@ -531,7 +533,26 @@ def test_diameter(diam_pdu=diam_pdu):
                 assert( dm.get_val() == v )
 
 
+def test_pfcp_grouped_ies():
+    for cls, wopt, types in (
+            (AccessAvailabilityReport, False,
+             (PFCPIEType.AccessAvailabilityInformation.value, )),
+            (OverloadControlInformation, True,
+             (PFCPIEType.SequenceNumber.value, PFCPIEType.Metric.value,
+              PFCPIEType.Timer.value, PFCPIEType.OCIFlags.value))):
+        ies = cls()
+        ies.init_ies(wopt=wopt)
+        assert( tuple(ie['Type'].get_val() for ie in ies) == types )
+        assert( ies.chk_comp() == (set(), set()) )
+        encoded = ies.to_bytes()
+        decoded = cls()
+        decoded.from_bytes(encoded)
+        assert( decoded.get_val() == ies.get_val() )
+        assert( decoded.to_bytes() == encoded )
+
+
 def test_pfcp(pfcp_pdu=pfcp_pdu):
+    test_pfcp_grouped_ies()
     for pdu in pfcp_pdu:
         m, e = parse_PFCP(pdu)
         assert( e == 0 )

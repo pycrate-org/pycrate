@@ -1335,7 +1335,7 @@ class OverloadControlInformation(PFCPIEs):
         PFCPIEType.Timer.value
         )
     OPT  = (
-        PFCPIEType.OCIFlags.value
+        PFCPIEType.OCIFlags.value,
         )
 
 
@@ -2006,7 +2006,7 @@ class SessionReport(PFCPIEs):
 # IE Type: 218
 class AccessAvailabilityReport(PFCPIEs):
     MAND = (
-        PFCPIEType.AccessAvailabilityInformation
+        PFCPIEType.AccessAvailabilityInformation.value,
         )
 
 
