@@ -29,6 +29,7 @@
 
 from binascii   import unhexlify
 from timeit     import timeit
+import unittest
 
 #from pycrate_core.elt               import Element
 #Element._SAFE_STAT = False
@@ -44,7 +45,7 @@ from pycrate_mobile.TS0960_GTPv0    import parse_GTPv0
 from pycrate_mobile.TS29060_GTP     import parse_GTP
 from pycrate_mobile.TS29281_GTPU    import parse_GTPU
 from pycrate_mobile.TS29274_GTPC    import parse_GTPC
-from pycrate_mobile.TS29244_PFCP    import parse_PFCP
+from pycrate_mobile.TS29244_PFCP    import parse_PFCP, PFCPIE
 from pycrate_diameter.Diameter      import DiameterGeneric
 from pycrate_diameter.DiameterIETF  import DiameterIETF
 from pycrate_diameter.Diameter3GPP  import Diameter3GPP
@@ -57,6 +58,7 @@ from pycrate_mobile.TS24501_IE      import (
     )
 #
 from pycrate_core.elt               import _with_json
+from pycrate_core.utils             import PycrateErr
 
 
 # uplink messages
@@ -545,6 +547,83 @@ def test_pfcp(pfcp_pdu=pfcp_pdu):
             t = m.to_json()
             m.from_json(t)
             assert( m.get_val() == v )
+
+
+class TestPFCPPacketCount(unittest.TestCase):
+    # TS 29.244, 8.2.30 allows one or two octets, including a leading zero.
+    counts = ((0, 1), (1, 1), (127, 1), (128, 1), (255, 1),
+              (0, 2), (1, 2), (255, 2), (256, 2), (32767, 2),
+              (32768, 2), (65535, 2))
+
+    @staticmethod
+    def count_ie(value, size):
+        return b'\x00\x30' + size.to_bytes(2, 'big') + value.to_bytes(size, 'big')
+
+    def test_ie_roundtrip(self):
+        for value, size in self.counts:
+            with self.subTest(value=value, size=size):
+                wire = self.count_ie(value, size)
+                ie = PFCPIE()
+                ie.from_bytes(wire)
+                self.assertEqual(ie[3].get_val(), value)
+                self.assertEqual(ie.to_bytes(), wire)
+
+    def test_reused_ie(self):
+        ie = PFCPIE()
+        for value, size in reversed(self.counts):
+            with self.subTest(value=value, size=size):
+                wire = self.count_ie(value, size)
+                ie.from_bytes(wire)
+                self.assertEqual(ie[3].get_val(), value)
+                self.assertEqual(ie.to_bytes(), wire)
+
+    def test_grouped_ie_in_session_report_response(self):
+        for value, size in self.counts:
+            with self.subTest(value=value, size=size):
+                # Update BAR: BAR ID, packet count, and a following delay IE.
+                bar = (b'\x00\x58\x00\x01\x03' + self.count_ie(value, size)
+                       + b'\x00\x2e\x00\x01\x02')
+                payload = (b'\x00\x13\x00\x01\x01'  # Cause: accepted
+                           + b'\x00\x0c' + len(bar).to_bytes(2, 'big') + bar
+                           + b'\x7f\xff\x00\x02\xab\xcd')
+                wire = (b'\x21\x39' + (12 + len(payload)).to_bytes(2, 'big')
+                        + b'\x00' * 8 + b'\x00\x00\x01\x00' + payload)
+                message, error = parse_PFCP(wire)
+                self.assertEqual(error, 0)
+                ies = message[1]
+                self.assertEqual(ies[1][3][1][3].get_val(), value)
+                self.assertEqual(ies[1][3][2][3]['Val'].get_val(), 2)
+                self.assertEqual(ies[2][3].get_val(), b'\xab\xcd')
+                self.assertEqual(message.to_bytes(), wire)
+
+    def test_constructed_counts(self):
+        for value, size in self.counts:
+            with self.subTest(value=value, size=size):
+                ie = PFCPIE()
+                ie.set_val({'Type': 48, 'Data': value})
+                minimal_size = max(1, (value.bit_length() + 7) // 8)
+                self.assertEqual(ie.to_bytes(), self.count_ie(value, minimal_size))
+
+    def test_reautomated_counts(self):
+        for value, size in self.counts:
+            with self.subTest(value=value, size=size):
+                ie = PFCPIE()
+                ie.from_bytes(self.count_ie(value, size))
+                self.assertEqual(ie.clone().to_bytes(), self.count_ie(value, size))
+                ie.reautomate()
+                minimal_size = max(1, (value.bit_length() + 7) // 8)
+                self.assertEqual(ie.to_bytes(), self.count_ie(value, minimal_size))
+
+    def test_truncated_ie_and_reuse(self):
+        ie = PFCPIE()
+        for wire in (b'\x00\x30\x00\x01', b'\x00\x30\x00\x02\x01'):
+            with self.subTest(wire=wire):
+                with self.assertRaises(PycrateErr):
+                    ie.from_bytes(wire)
+                valid = self.count_ie(256, 2)
+                ie.from_bytes(valid)
+                self.assertEqual(ie[3].get_val(), 256)
+                self.assertEqual(ie.to_bytes(), valid)
 
 
 def test_bssap(bssap_pdu=bssap_pdu):
