@@ -1137,7 +1137,11 @@ Specific constraints attributes:
         l_det = ASN1CodecOER.decode_length_determinant(char)
         pad_bits = char.get_uint(8)
         l_val = 8*(l_det - 1) - pad_bits
-        self._val = (char.get_uint(l_val+pad_bits) >> pad_bits, l_val)
+        if l_val:
+            self._val = (char.get_uint(l_val+pad_bits) >> pad_bits, l_val)
+        else:
+            # empty bit string
+            self._val = (0, 0)
     
     def _from_oer_ws(self, char):
         if self._const_sz:
