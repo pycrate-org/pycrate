@@ -40,6 +40,7 @@ from test.test_ether  import *
 from test.test_csn1   import *
 from test.test_asn1rt import *
 from test.test_mobile import *
+from test.test_pfcp   import TestPFCPFieldLayouts
 from test.test_gsmrr  import *
 from test.test_sms    import *
 from test.test_crypto import *

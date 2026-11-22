@@ -3024,6 +3024,11 @@ class DroppedDLTrafficThreshold(Envelope):
         Buf('ext', val=b'', rep=REPR_HEX)
         )
 
+    def __init__(self, *args, **kwargs):
+        Envelope.__init__(self, *args, **kwargs)
+        self['DLPackets'].set_transauto(lambda: False if self['DLPA'].get_val() else True)
+        self['NumBytesDLData'].set_transauto(lambda: False if self['DLBY'].get_val() else True)
+
 
 #------------------------------------------------------------------------------#
 # TS 29.244, section 8.2.50: Volume Quota
@@ -3368,7 +3373,7 @@ class HeaderEnrichment(Envelope):
         Uint('spare', bl=3, rep=REPR_HEX),
         Uint('Type', bl=5, dic={0: 'HTTP'}),
         _LU8V('HeaderFieldName'),
-        _LU16V('HeaderFieldValue'),
+        _LU8V('HeaderFieldValue'),
         Buf('ext', val=b'', rep=REPR_HEX)
         )
 
@@ -4379,6 +4384,7 @@ class SourceIPAddress(Envelope):
         Envelope.__init__(self, *args, **kwargs)
         self['IPv4Addr'].set_transauto(lambda: False if self['V4'].get_val() else True)
         self['IPv6Addr'].set_transauto(lambda: False if self['V6'].get_val() else True)
+        self['MaskPrefLen'].set_transauto(lambda: False if self['MPL'].get_val() else True)
 
 
 #------------------------------------------------------------------------------#
@@ -4938,7 +4944,7 @@ class SNSSAI(Envelope):
 # IE Type: 258
 class IPversion(Envelope):
     _GEN = (
-        Uint('spare', bl=7, rep=REPR_HEX),
+        Uint('spare', bl=6, rep=REPR_HEX),
         Uint('V6', bl=1),
         Uint('V4', bl=1),
         Buf('ext', val=b'', rep=REPR_HEX)
