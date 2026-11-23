@@ -1292,6 +1292,13 @@ def _test_rt_base():
     assert( Bst01._val == (62042, 18) )
     Bst01.from_coer_ws(b'\x04\x06<\x96\x80')
     assert( Bst01._val == (62042, 18) )
+    # empty BIT STRING
+    Bst01.from_asn1('\'\'B')
+    assert( Bst01.to_oer() == Bst01.to_oer_ws() == b'\x01\x00' )
+    Bst01.from_oer(b'\x01\x00')
+    assert( Bst01._val == (0, 0) )
+    Bst01.from_oer_ws(b'\x01\x00')
+    assert( Bst01._val == (0, 0) )
     
     # Bst03 ::= BIT STRING (SIZE (0..24, ...))
     Bst03 = Mod['Bst03']
