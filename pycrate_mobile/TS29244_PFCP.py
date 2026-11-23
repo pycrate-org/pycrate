@@ -2635,11 +2635,20 @@ class DLBufferingSuggestedPacketCount(Uint):
     # to get it properly working with pycrate_core, we need to set the bit length
     # when a value is set
     def set_val(self, val):
-        self._bl = val.bit_length()
-        if self._bl % 8:
-            # need to increase the bl to the next multiple of 8 bits
-            self._bl += 8 - (self._bl % 8)
+        self._bl = max(8, ((val.bit_length() + 7) // 8) * 8)
         Uint.set_val(self, val)
+
+    def _get_bl_from_val(self):
+        # reautomate() clears _bl when the enclosing IE supplies its length.
+        return max(8, ((Uint._get_bl_from_val(self) + 7) // 8) * 8)
+
+    def _from_char(self, char):
+        if self.get_trans():
+            return
+        bl = char.len_bit()
+        Uint._from_char(self, char)
+        # Keep the width consumed using the enclosing IE's length automation.
+        self._bl = bl - char.len_bit()
 
 
 #------------------------------------------------------------------------------#
