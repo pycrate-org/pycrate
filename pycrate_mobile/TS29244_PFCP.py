@@ -3744,7 +3744,7 @@ class _VLANTAG(Envelope):
         Uint('PCP', bl=1),
         Uint('CVID_MSB', bl=4),
         Uint('DEIFlag', bl=1),
-        Uint('PCPValue', bl=1),
+        Uint('PCPValue', bl=3),
         Uint8('CVID_LSB'),
         Buf('ext', val=b'', rep=REPR_HEX)
         )
@@ -5474,7 +5474,7 @@ class PFCPHdr(Envelope):
         Alt('MPSel', GEN={
             0 : Uint8('spare'),
             1 : Envelope('MP', GEN=(
-                    Uint('MsgPriority', bl=4, dic={0:'lowest priority', 15:'highest priority'}),
+                    Uint('MsgPriority', bl=4, dic={0:'highest priority', 15:'lowest priority'}),
                     Uint('spare', bl=4)
                     ))},
             sel=lambda self: self.get_env()['MP'].get_val()
