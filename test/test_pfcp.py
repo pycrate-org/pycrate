@@ -117,6 +117,39 @@ class TestPFCPFieldLayouts(unittest.TestCase):
                                 {'V4': flags & 1, 'V6': (flags >> 1) & 1,
                                  'spare': flags >> 2, 'ext': b'\xab\xcd'})
 
+    def test_vlan_tags(self):
+        # TS 29.244 8.2.94 / 8.2.95: octet 6 = VID MSB (4 bits), DEI flag (1 bit),
+        # PCP value (3 bits); octet 7 = VID LSB
+        for typ, cls in ((134, P.CTAG), (135, P.STAG)):
+            for pcp, dei, vid in ((0, 0, 0), (5, 1, 0x123), (7, 1, 0xfff)):
+                with self.subTest(cls=cls.__name__, pcp=pcp, dei=dei, vid=vid):
+                    data = bytes([0x07, (vid >> 8) << 4 | dei << 3 | pcp, vid & 0xff])
+                    value = cls()
+                    value.from_bytes(data)
+                    self.assertEqual(value['PCPValue'].get_val(), pcp)
+                    self.assertEqual(value['DEIFlag'].get_val(), dei)
+                    self.assertEqual(value['CVID_MSB'].get_val(), vid >> 8)
+                    self.assertEqual(value['CVID_LSB'].get_val(), vid & 0xff)
+                    self.assertEqual(value.to_bytes(), data)
+                    wire = self.ie(typ, data)
+                    ie = P.PFCPIE()
+                    ie.from_bytes(wire)
+                    self.assertIsInstance(ie[3], cls)
+                    self.assertEqual(ie.to_bytes(), wire)
+
+    def test_message_priority_labels(self):
+        # TS 29.244 7.2.2.4.1: 0 is the highest priority, 15 the lowest
+        for prio, label in ((0, 'highest priority'), (15, 'lowest priority')):
+            with self.subTest(prio=prio):
+                data = (bytes([0x22, 0x01, 0x00, 0x0c, 0, 0, 1, prio << 4])
+                        + self.ie(96, b'\0\0\0\x3c'))
+                message, error = P.parse_PFCP(data)
+                self.assertEqual(error, 0)
+                field = message[0]['MPSel'].get_alt()['MsgPriority']
+                self.assertEqual(field.get_val(), prio)
+                self.assertIn(label, field.repr())
+                self.assertEqual(message.to_bytes(), data)
+
     def test_flag_changes_on_retained_objects(self):
         threshold = P.DroppedDLTrafficThreshold()
         threshold.from_bytes(b'\x03' + (5).to_bytes(8, 'big') * 2 + b'\xab')
